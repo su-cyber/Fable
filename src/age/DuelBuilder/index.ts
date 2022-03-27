@@ -69,7 +69,7 @@ class DuelBuilder {
 
     async sendInfoMessage() {
         if (this.messageQueue.length > 0) {
-            const messages = '**LOG:** 📋\n‎\n\n' + this.messageQueue.join('\n')
+            const messages = '**LOG:** 📋\n‎\n' + this.messageQueue.join('\n')
             this.infoMessage.push(await this.interaction.channel.send(messages))
         }
     }
