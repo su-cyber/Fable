@@ -6,7 +6,7 @@ class Mage extends ClassEntity {
     static create(user: GuildMember) {
         return new Mage({
             id: user.id,
-            name: user.nickname,
+            name: user.user.username,
             health: 100,
             attackDamage: 10,
             magicPower: 0,

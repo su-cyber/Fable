@@ -7,7 +7,7 @@ class Warrior extends ClassEntity {
     static create(user: GuildMember) {
         return new Warrior({
             id: user.id,
-            name: user.nickname,
+            name: user.user.username,
             health: 100,
             attackDamage: 10,
             magicPower: 0,
