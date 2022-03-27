@@ -6,10 +6,9 @@ import { locker, sleep } from '../src/utils'
 import { getRandomMonster } from '../src/age/monsters'
 import { Entity, MonsterEntity } from '../src/age/classes'
 import { removeIndentation } from '../src/utils/removeIndentation'
-import { randint } from '../src/utils/randint'
 
 export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explore the world' }).setDo(
-    async interaction => {
+    async (bot, interaction) => {
         const authorId = interaction.user.id
 
         const author = interaction.guild.members.cache.get(authorId)
@@ -70,7 +69,6 @@ class PvEDuel extends DuelBuilder {
             await sleep(3)
             await this.deleteInfoMessages()
             await this.replyOrEdit(content, this.createDuelComponent(this.attacker.skills, true))
-            await sleep(randint(2, 3))
 
             this.attacker.useSkill(
                 async (text: string) => await this.addMessage(text),
