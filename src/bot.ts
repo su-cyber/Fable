@@ -3,7 +3,7 @@ import { env, cwd } from 'process'
 import { config as loadEnvs } from 'dotenv'
 import { REST } from '@discordjs/rest'
 import { Routes } from 'discord-api-types/v9'
-import { Client, Collection, MessageComponentInteraction } from 'discord.js'
+import { Client, Collection, Interaction, MessageComponentInteraction } from 'discord.js'
 
 import { MyCommandSlashBuilder } from './lib/builders/slash-command'
 import { getCommandsFromFolder } from './lib/utils/getCommandsFromFolder'
@@ -15,6 +15,7 @@ class Bot extends Client {
     commandsPath = `${cwd()}/commands`
     commands: Map<string, SlashCommandBuilder>
     interactions = new Collection<string, InteractionFn>()
+    components = {}
 
     checkEnvs() {
         Array('BOT_TOKEN', 'BOT_ID', 'DEV_SERVER').forEach(i => {
@@ -23,17 +24,28 @@ class Bot extends Client {
     }
 
     setupEvents() {
-        this.on('interactionCreate', async interaction => {
-            if (interaction.isCommand()) {
+        this.on('interactionCreate', async (interaction: Interaction & { customId: string }) => {
+            const componentCallback = this.components[interaction.customId]
+
+            if (componentCallback) {
+                await componentCallback(interaction)
+            } else if (interaction.isCommand()) {
                 const command = this.commands.get(interaction.commandName) as MyCommandSlashBuilder
 
                 if (command) {
-                    await command.do(interaction)
+                    await command.do(this, interaction)
                 }
             }
         })
 
         this.on('ready', () => console.log('Ready'))
+    }
+
+    onComponent(
+        customId: string,
+        callback: (interaction: Interaction & { customId: string }) => Promise<void>
+    ) {
+        this.components[customId] = callback
     }
 
     async startREST() {

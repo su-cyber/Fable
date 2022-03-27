@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from '@discordjs/builders'
 import { CommandInteraction } from 'discord.js'
+import { Bot } from '../../bot'
 import { notIn } from '../../utils/notIn'
 
 
@@ -15,12 +16,12 @@ export class MyCommandSlashBuilder extends SlashCommandBuilder {
         this.setDescription(description)
     }
 
-    setDo(doFn: (interaction: CommandInteraction) => Promise<void>) {
+    setDo(doFn: (bot: Bot, interaction: CommandInteraction) => Promise<void>) {
         this.do = doFn
         return this
     }
 
-    async do(interaction: CommandInteraction) {
+    async do(bot: Bot, interaction: CommandInteraction) {
         throw new Error('Not implemented')
     }
 

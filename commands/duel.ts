@@ -12,7 +12,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
     .addUserOption((option: SlashCommandUserOption) =>
         option.setName('user').setDescription('Player to duel with').setRequired(true)
     )
-    .setDo(async interaction => {
+    .setDo(async (bot, interaction) => {
         const authorId = interaction.user.id
         const opponentId = interaction.options.getUser('user').id
 
