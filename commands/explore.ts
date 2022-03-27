@@ -67,10 +67,10 @@ class PvEDuel extends DuelBuilder {
         `)
 
         if (this.attacker instanceof MonsterEntity) {
-            await sleep(2)
+            await sleep(3)
             await this.deleteInfoMessages()
-            await this.replyOrEdit(content)
-            await sleep(randint(1, 3))
+            await this.replyOrEdit(content, this.createDuelComponent(this.attacker.skills, true))
+            await sleep(randint(2, 3))
 
             this.attacker.useSkill(
                 async (text: string) => await this.addMessage(text),

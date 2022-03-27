@@ -47,7 +47,7 @@ class DuelBuilder {
         this.interaction = interaction
     }
 
-    createDuelComponent(skills: Skill[]) {
+    createDuelComponent(skills: Skill[], disabled: boolean = false) {
         return new MessageActionRow().addComponents(
             new MessageSelectMenu()
                 .setCustomId('select-menu__skills')
@@ -59,6 +59,7 @@ class DuelBuilder {
                         value: skill.name,
                     }))
                 )
+                .setDisabled(disabled)
         )
     }
 
@@ -68,12 +69,8 @@ class DuelBuilder {
 
     async sendInfoMessage() {
         if (this.messageQueue.length > 0) {
-            this.infoMessage.push(await this.interaction.channel.send('**LOG:** 📋\n‎'))
-            await sleep(0.5)
-
-            for (const message of this.messageQueue) {
-                this.infoMessage.push(await this.interaction.channel.send(message))
-            }
+            const messages = '**LOG:** 📋\n‎\n\n' + this.messageQueue.join('\n')
+            this.infoMessage.push(await this.interaction.channel.send(messages))
         }
     }
 
