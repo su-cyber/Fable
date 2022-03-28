@@ -189,8 +189,4 @@ function skill(props: TypeSkill) {
     return new Skill(props)
 }
 
-function effect(props: TypeEffect) {
-    return new Effect(props)
-}
-
-export { Skill, Entity, ClassEntity, Effect, MonsterEntity, skill, effect }
+export { Skill, Entity, ClassEntity, Effect, MonsterEntity, skill }
