@@ -34,7 +34,6 @@ type TypeEffect = {
     duration: number
     stacks: number
     emoji: string
-    use: (attacker: Entity, defender: Entity) => Promise<void>
 }
 
 class Entity {
@@ -140,15 +139,28 @@ class Skill {
 }
 
 class Effect {
-    public name: string
-    public description: string
-    public duration: number
-    public stacks: number
-    public emoji: string
-    public use: (attacker: Entity, defender: Entity) => Promise<void>
+    name: string
+    description: string
+    duration: number
+    stacks: number
+    emoji: string
 
     constructor(props: TypeEffect) {
         Object.assign(this, props)
+    }
+
+    use(attacker: Entity, defender: Entity) {
+        throw new Error('Not implemented')
+    }
+
+    setUse(fn: (attacker: Entity, defender: Entity) => void) {
+        this.use = fn
+        return this
+    }
+    
+    setDuration(duration: number) {
+        this.duration = duration
+        return this
     }
 }
 

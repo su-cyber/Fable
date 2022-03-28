@@ -1,5 +1,6 @@
 import { GuildMember } from 'discord.js'
-import { ClassEntity, effect, Skill } from '../classes'
+import { ClassEntity, Skill } from '../classes'
+import { Burning } from '../effects/burning'
 import { AttackType } from '../enums'
 
 class Mage extends ClassEntity {
@@ -61,16 +62,9 @@ class Mage extends ClassEntity {
 }
 
 const effects = {
-    burning: effect({
-        name: 'Burning',
-        description: 'Burning',
-        duration: 3,
-        stacks: 1,
-        emoji: '🔥',
-        use: async (attacker, defender) => {
-            const damage = 5
-            defender.takeDamage({ damage, attackType: AttackType.MAGICAL })
-        },
+    burning: new Burning().setUse((attacker, defender) => {
+        const damage = 5
+        defender.takeDamage({ damage, attackType: AttackType.MAGICAL })
     }),
 }
 

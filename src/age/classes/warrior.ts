@@ -1,6 +1,6 @@
 import { GuildMember } from 'discord.js'
-import { emoji } from '../../lib/utils/emoji'
-import { ClassEntity, effect, skill } from '../classes'
+import { ClassEntity, skill } from '../classes'
+import { Bleeding } from '../effects/bleeding'
 import { AttackType } from '../enums'
 
 class Warrior extends ClassEntity {
@@ -55,12 +55,8 @@ class Warrior extends ClassEntity {
                         defender.applyEffect(effects.bleeding)
 
                         async function run() {
-                            const damage = 7
-                            const takeDamage = defender.takeDamage({
-                                damage,
-                                attackType: AttackType.PHYSICAL,
-                            })
-                            await sendInfoMessage(`**${defender.name}** lost ${takeDamage} HP due to 🩸`)
+                            const damage = effects.bleeding.use(attacker, defender)
+                            await sendInfoMessage(`**${defender.name}** lost ${damage} HP due to 🩸`)
                         }
 
                         // prettier-ignore
@@ -82,16 +78,9 @@ class Warrior extends ClassEntity {
 }
 
 const effects = {
-    bleeding: effect({
-        name: 'Bleeding',
-        description: 'Defender is bleeding',
-        duration: 3,
-        stacks: 1,
-        emoji: emoji.BLEED,
-        use: async (attacker, defender) => {
-            const damage = 7
-            defender.takeDamage({ damage, attackType: AttackType.PHYSICAL })
-        },
+    bleeding: new Bleeding().setUse((attacker, defender) => {
+        const damage = 7
+        return defender.takeDamage({ damage, attackType: AttackType.PHYSICAL })
     }),
 }
 
