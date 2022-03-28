@@ -28,7 +28,7 @@ class Bot extends Client {
             const componentCallback = this.components[interaction.customId]
 
             if (componentCallback) {
-                await componentCallback(interaction)
+                await componentCallback()
             } else if (interaction.isCommand()) {
                 const command = this.commands.get(interaction.commandName) as MyCommandSlashBuilder
 
@@ -41,10 +41,7 @@ class Bot extends Client {
         this.on('ready', () => console.log('Ready'))
     }
 
-    onComponent(
-        customId: string,
-        callback: (interaction: Interaction & { customId: string }) => Promise<void>
-    ) {
+    onComponent(customId: string, callback: () => Promise<void>) {
         this.components[customId] = callback
     }
 
