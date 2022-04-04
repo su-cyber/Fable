@@ -16,6 +16,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
         await interaction.reply({ components: [await monstersDropdown()] })
 
         bot.onComponent('select-menu__monsters', async componentInteraction => {
+            componentInteraction.deferUpdate()
             const monster = (await getMonsters())
                 .find(m => m.name === componentInteraction.values[0])
                 .create()
