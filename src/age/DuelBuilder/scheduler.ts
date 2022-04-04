@@ -1,14 +1,14 @@
 import cloneDeep from 'lodash.clonedeep'
 import range from 'lodash.range'
 
-import { ClassEntity } from '../classes'
+import { Entity } from '../classes'
 
 // prettier-ignore
 type TaskOptions = {
-    check   : (attacker: ClassEntity, defender: ClassEntity) => boolean
-    run     : () => Promise<void>
+    check   : (attacker: Entity, defender: Entity) => boolean
+    run     : () => void
     end     : () => void
-    runEnd  : () => Promise<void>
+    runEnd  : () => void
     skipTurn: boolean
     id      : string
     type    : 'skill' | 'effect'
@@ -17,10 +17,10 @@ type TaskOptions = {
 
 // prettier-ignore
 type TaskImplement = {
-    check   : (f: (attacker: ClassEntity, defender: ClassEntity) => boolean) => Task
-    run     : (f: () => Promise<void>) => void
+    check   : (f: (attacker: Entity, defender: Entity) => boolean) => Task
+    run     : (f: () => void) => void
     end     : (f: () => void) => Task
-    id      : (id: string) => Task
+    id      : (s: string) => Task
     turns   : (turns: number) => Task
     isEffect: Task
     isSkill : Task
@@ -47,17 +47,27 @@ class Task implements TaskImplement {
     /**
      * Check done each turn, if true the task is executed
      */
-    check(f: (attacker: ClassEntity, defender: ClassEntity) => boolean) {
+    check(f: (attacker: Entity, defender: Entity) => boolean) {
         this.options.check = f
+        return this
+    }
+
+    turnOf(entity: Entity) {
+        this.options.check = (attacker, defender) => attacker.equals(entity)
         return this
     }
 
     /**
      * Function to be executed in the task
      */
-    run(f: () => Promise<void>) {
+    run(f: () => void) {
         this.options.run = f
         this.scheduler.add(this)
+    }
+
+    id(s: string) {
+        this.options.id = s
+        return this
     }
 
     /**
@@ -67,14 +77,6 @@ class Task implements TaskImplement {
      */
     end(f: () => void) {
         this.options.end = f
-        return this
-    }
-
-    /**
-     * Sets the id of the task
-     */
-    id(id: string) {
-        this.options.id = id
         return this
     }
 
@@ -125,9 +127,11 @@ class Task implements TaskImplement {
 
 class Scheduler {
     scheduler: Task[][]
+    ids: { [id: string]: string }
 
     constructor() {
         this.scheduler = []
+        this.ids = {}
     }
 
     /**
@@ -142,7 +146,7 @@ class Scheduler {
         let t: Task = null
 
         async function runEnd() {
-            await task.options.run()
+            task.options.run()
             task.options.end()
         }
 
@@ -179,7 +183,7 @@ class Scheduler {
         }
     }
 
-    async run(attacker: ClassEntity, defender: ClassEntity): Promise<boolean> {
+    async run(attacker: Entity, defender: Entity): Promise<boolean> {
         let skipTurn = false
         let queue: Task[] = []
         const copy = cloneDeep(this.scheduler)
@@ -204,9 +208,10 @@ class Scheduler {
                     skipTurn = true
                 }
 
-                task.options.runEnd && this.search_all(copy, task).length === 1
-                    ? await task.options.runEnd()
-                    : await task.options.run()
+                if (task.options.runEnd && this.search_all(copy, task).length === 1) {
+                    task.options.runEnd()
+                }
+                task.options.run()
             }
         }
 

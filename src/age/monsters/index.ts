@@ -2,10 +2,11 @@ import { readdirSync } from 'fs'
 import { endsWith, notIn } from '../../utils'
 import { weightedRandom } from '../../utils/weightedRandom'
 
-async function getMonsters() {
+export async function getMonsters() {
     const monsters = []
     for (const file of readdirSync(__dirname).filter(endsWith('.ts')).filter(notIn('index.ts'))) {
-        //if (['slime.ts'].includes(file)) continue
+        //if (['slime.ts', 'goblin.ts', 'blood-hound.ts'].includes(file)) continue
+        //if (!['orc.ts'].includes(file)) continue
 
         const module = await import(`${__dirname}/${file}`)
 

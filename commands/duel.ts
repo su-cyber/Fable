@@ -2,11 +2,9 @@ import { SlashCommandUserOption } from '@discordjs/builders'
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import { DuelBuilder } from '../src/age/DuelBuilder'
 import { emoji } from '../src/lib/utils/emoji'
-import { locker } from '../src/utils'
 import { warrior } from '../src/age/classes/warrior'
 import { mage } from '../src/age/classes/mage'
 import { Entity } from '../src/age/classes'
-import { removeIndentation } from '../src/utils/removeIndentation'
 
 export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with a player' })
     .addUserOption((option: SlashCommandUserOption) =>
@@ -51,10 +49,10 @@ class PvPDuel extends DuelBuilder {
             **Attacker**: ${this.attacker.name}
         `
 
-        await this.replyOrEdit(removeIndentation(content), this.createDuelComponent(this.attacker.skills))
+        //await this.replyOrEdit(removeIndentation(content), this.createDuelComponent(this.attacker.skills))
 
-        await locker.wait()
-        locker.lock()
+        await this.locker.wait()
+        this.locker.lock()
     }
 
     async onEnd(winner: Entity, loser: Entity) {

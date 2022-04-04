@@ -3,15 +3,21 @@ import {
     CommandInteraction,
     InteractionCollector,
     MappedInteractionTypes,
-    Message,
     MessageActionRow,
     MessageComponentInteraction,
+    MessageEmbed,
     MessageSelectMenu,
 } from 'discord.js'
+import chunk from 'lodash.chunk'
+import { emoji } from '../../lib/utils/emoji'
 
-import { sleep, locker } from '../../utils'
+import { getLocker } from '../../utils'
+import { removeIndentation } from '../../utils/removeIndentation'
+import { wrapText } from '../../utils/wrapText'
 import { Entity, Skill } from '../classes'
 import { Scheduler } from './scheduler'
+
+const lineBreak = '\n\u200b'
 
 class DuelBuilder {
     removeCollector: () => void
@@ -19,13 +25,13 @@ class DuelBuilder {
     attacker: Entity
     defender: Entity
     scheduler: Scheduler
-    infoMessage: Message[]
-    messageQueue: string[]
+    logMessages: string[]
     interaction: CommandInteraction
     player1: Entity
     player2: Entity
 
     collector: InteractionCollector<MappedInteractionTypes['ACTION_ROW']>
+    locker: { isLock: boolean; wait(): Promise<void>; lock(): void; unlock(): void }
 
     constructor({
         interaction,
@@ -42,16 +48,22 @@ class DuelBuilder {
         this.attacker = player1
         this.defender = player2
         this.scheduler = new Scheduler()
-        this.infoMessage = []
-        this.messageQueue = []
+        this.logMessages = []
         this.interaction = interaction
+        this.locker = getLocker()
+
+        player1.addLogMessage = this.addLogMessage.bind(this)
+        player2.addLogMessage = this.addLogMessage.bind(this)
+
+        player1.scheduler = this.scheduler
+        player2.scheduler = this.scheduler
     }
 
     createDuelComponent(skills: Skill[], disabled: boolean = false) {
         return new MessageActionRow().addComponents(
             new MessageSelectMenu()
                 .setCustomId('select-menu__skills')
-                .setPlaceholder('Select a skill')
+                .setPlaceholder(`Select a skill ${this.attacker.name}`)
                 .addOptions(
                     skills.map(skill => ({
                         label: skill.name,
@@ -63,33 +75,84 @@ class DuelBuilder {
         )
     }
 
-    async addMessage(text: string) {
-        this.messageQueue.push(text)
+    duelMessageEmbeds() {
+        const messages = this.logMessages.join('\n')
+
+        const p1 = this.player1
+        const p2 = this.player2
+
+        const p1Effects = chunk(
+            [...p1.effects.values()].map(effect => effect.emoji),
+            5
+        )
+            .map(i => i.join(''))
+            .join('\n')
+
+        const p2Effects = chunk(
+            [...p2.effects.values()].map(effect => effect.emoji),
+            5
+        )
+            .map(i => i.join(''))
+            .join('\n')
+
+        return [
+            new MessageEmbed()
+                .setColor('#2f3136')
+                .setTitle(`~ Turn ${this.turn + 1}`)
+                .setDescription(
+                    removeIndentation(`
+                    ${lineBreak.repeat(1)}
+                    **${wrapText(this.player1.name, 20)}**${p1Effects ? `\n${p1Effects}` : ''}
+                    ${emoji.HEALTH_POTION} ${p1.health}/${p1.maxHealth} HP
+                    ${emoji.MANA_POTION} 100/100 MP
+
+                    **${wrapText(this.player2.name, 20)}**${p2Effects ? `\n${p2Effects}` : ''}
+                    ${emoji.HEALTH_POTION} ${p2.health}/${p2.maxHealth} HP
+                    ${emoji.MANA_POTION} 100/100 MP
+                    ${lineBreak.repeat(2)}${messages.length ? `**LOG: 📋**\n\n${messages}` : ''}
+                `)
+                ),
+        ]
     }
 
-    async sendInfoMessage() {
-        if (this.messageQueue.length > 0) {
-            const messages = '**LOG:** 📋\n‎\n' + this.messageQueue.join('\n')
-            this.infoMessage.push(await this.interaction.channel.send(messages))
+    addLogMessage(...text: string[]) {
+        this.logMessages.push(...text)
+    }
+
+    async sendInfoMessage(skills: Skill[], disableComponent: boolean = false) {
+        await this.replyOrEdit({
+            content: null,
+            embeds: this.duelMessageEmbeds(),
+            components: [this.createDuelComponent(skills, disableComponent)],
+        })
+    }
+
+    async replyOrEdit({
+        content,
+        embeds,
+        components,
+    }: {
+        content?: string
+        embeds?: MessageEmbed[]
+        components?: any
+    }) {
+        try {
+            await this.interaction.reply({ content, embeds, components })
+        } catch {
+            await this.interaction.editReply({ content, embeds, components })
         }
     }
 
-    async deleteInfoMessages() {
-        for (const message of this.infoMessage) {
-            await message.delete()
-            await sleep(0.1)
-        }
-
-        this.infoMessage.length = 0
-        this.messageQueue.length = 0
+    deleteInfoMessages() {
+        this.logMessages.length = 0
     }
 
     async onTurn() {}
 
     async onSkillSelect(skillName: string) {
+        this.deleteInfoMessages()
+
         this.attacker.useSkill(
-            async (text: string) => await this.addMessage(text),
-            this.scheduler,
             this.defender,
             this.attacker.skills.find(skill => skill.name === skillName)
         )
@@ -102,7 +165,7 @@ class DuelBuilder {
 
             await this.onSkillSelect(skillName)
 
-            locker.unlock()
+            this.locker.unlock()
         }
 
         const filter = (interaction: any) =>
@@ -119,24 +182,18 @@ class DuelBuilder {
         this.removeCollector = () => {
             this.collector.removeListener('collect', onCollect.bind(thisThis))
         }
+
+        this.player1.beforeDuelStart(this.player1, this.player2)
+        this.player2.beforeDuelStart(this.player2, this.player1)
     }
 
     async onEnd(winner: Entity, loser: Entity) {}
-
-    async replyOrEdit(content: string, ...components: any) {
-        try {
-            await this.interaction.reply({ content, components })
-        } catch {
-            await this.interaction.editReply({ content, components })
-        }
-    }
 
     async start() {
         await this.beforeDuelStart()
 
         while (!(this.player1.isDead() || this.player2.isDead())) {
             if (!(await this.scheduler.run(this.attacker, this.defender))) {
-                await this.sendInfoMessage()
                 await this.onTurn()
             }
 

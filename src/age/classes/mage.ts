@@ -1,71 +1,55 @@
 import { GuildMember } from 'discord.js'
-import { ClassEntity, Skill } from '../classes'
-import { Burning } from '../effects/burning'
+import { emoji } from '../../lib/utils/emoji'
+import { ClassEntity } from '../classes'
+import { burning } from '../effects/burning'
 import { AttackType } from '../enums'
 
 class Mage extends ClassEntity {
     static create(user: GuildMember) {
         return new Mage({
-            id: user.id,
-            name: user.user.username,
+            user,
             health: 100,
             attackDamage: 10,
             magicPower: 0,
             armor: 0,
+            evasion: 0.8,
             magicResistance: 0,
-            effects: new Set(),
             skills: [
-                new Skill({
+                {
                     cooldown: 0,
                     name: 'Basic Attack',
                     description: 'Basic Attack',
-                    use: async (sendInfoMessage, scheduler, attacker, defender) => {
-                        const damage = attacker.attackDamage
-                        defender.takeDamage({ damage, attackType: AttackType.PHYSICAL })
-
-                        await sendInfoMessage(`**${attacker.name}** used Basic Attack`)
-                    },
-                }),
-                new Skill({
+                    use: (attacker, defender) =>
+                        defender
+                            .takeDamage({ damage: attacker.attackDamage, type: AttackType.PHYSICAL })
+                            .send(`**${attacker.name}** used Basic Attack`),
+                },
+                {
                     cooldown: 0,
                     name: 'Fireball',
-                    description:
-                        'Shoots a fireball at the opponent dealing damage and burning them for 3 turns',
-                    use: async (sendInfoMessage, scheduler, attacker, defender) => {
-                        defender.applyEffect(effects.burning)
-
-                        async function run() {
-                            const damage = 5
-                            const takeDamage = defender.takeDamage({ damage, attackType: AttackType.MAGICAL })
-                            await sendInfoMessage(`**${defender.name}** lost ${takeDamage} HP due to 🔥`)
-                        }
+                    description: 'Dealing damage and burning them for 3 turns',
+                    use: (attacker, defender) => {
+                        defender.applyEffect(burning)
 
                         // prettier-ignore
-                        scheduler.task
-                            .id('mage__fireball')
+                        attacker.scheduler.task
                             .all
                             .isEffect
                             .turns(3)
-                            .end(() => defender.removeEffect(effects.burning))
-                            .run(run)
+                            .end(() => defender.removeEffect(burning))
+                            .run(() => 
+                                defender
+                                    .takeDamage({ damage: 5, type: AttackType.MAGICAL, canEvade: false })
+                                    .send(damage => `**${defender.name}** lost ${damage} HP due to ${emoji.FIRE}`))
 
-                        const damage = 15
-                        defender.takeDamage({ damage, attackType: AttackType.MAGICAL })
-
-                        await sendInfoMessage(`**${attacker.name}** used Fireball`)
-                        await sendInfoMessage(`**${defender.name}** is burning`)
+                        defender
+                            .takeDamage({ damage: 15, type: AttackType.MAGICAL })
+                            .send(`**${attacker.name}** used Fireball`, `**${defender.name}** is burning`)
                     },
-                }),
+                },
             ],
         })
     }
-}
-
-const effects = {
-    burning: new Burning().setUse((attacker, defender) => {
-        const damage = 5
-        defender.takeDamage({ damage, attackType: AttackType.MAGICAL })
-    }),
 }
 
 function mage(user: GuildMember) {

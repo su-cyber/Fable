@@ -1,5 +1,9 @@
+import { CommandInteraction } from 'discord.js'
+import sample from 'lodash.sample'
 import sum from 'lodash.sum'
+import { formatMoney, randfloat, randint, removeIndentation } from '../utils'
 import { weightedRandom } from '../utils/weightedRandom'
+import { Entity } from './classes'
 import { Item } from './item'
 
 type Props = {
@@ -29,5 +33,25 @@ export class Dropper {
         const items = this.items.map(item => item.item)
 
         return weightedRandom([...items, null], [...dropRates, 1 - this.dropRateSum])
+    }
+
+    async sendDeathMessage(
+        withDropMessages: string[],
+        withoutDropMessages: string[],
+        interaction: CommandInteraction,
+        killed: Entity
+    ) {
+        const coins = formatMoney(randfloat(1, 1e8, 3), 3)
+        const drop = this.drop()
+        const text = `
+            **${killed.name} was successfully killed!**
+
+            ${drop ? sample(withDropMessages) : sample(withoutDropMessages)}
+
+            🪙 ${coins}
+            ${drop ? `${drop.emoji} ${randint(1, 2)}x` : ''}
+        `
+
+        await interaction.channel.send(removeIndentation(text))
     }
 }

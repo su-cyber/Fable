@@ -3,7 +3,13 @@ import { env, cwd } from 'process'
 import { config as loadEnvs } from 'dotenv'
 import { REST } from '@discordjs/rest'
 import { Routes } from 'discord-api-types/v9'
-import { Client, Collection, Interaction, MessageComponentInteraction } from 'discord.js'
+import {
+    Client,
+    Collection,
+    Interaction,
+    MessageComponentInteraction,
+    SelectMenuInteraction,
+} from 'discord.js'
 
 import { MyCommandSlashBuilder } from './lib/builders/slash-command'
 import { getCommandsFromFolder } from './lib/utils/getCommandsFromFolder'
@@ -28,7 +34,7 @@ class Bot extends Client {
             const componentCallback = this.components[interaction.customId]
 
             if (componentCallback) {
-                await componentCallback()
+                await componentCallback(interaction)
             } else if (interaction.isCommand()) {
                 const command = this.commands.get(interaction.commandName) as MyCommandSlashBuilder
 
@@ -41,7 +47,10 @@ class Bot extends Client {
         this.on('ready', () => console.log('Ready'))
     }
 
-    onComponent(customId: string, callback: () => Promise<void>) {
+    onComponent(
+        customId: string,
+        callback: (interaction: SelectMenuInteraction & { values: string[] }) => Promise<void>
+    ) {
         this.components[customId] = callback
     }
 
