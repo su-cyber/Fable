@@ -1,6 +1,5 @@
 import { CommandInteraction } from 'discord.js'
 import { Dropper } from '../dropper'
-import { AttackType } from '../enums'
 import { teddyBear } from '../items'
 import { percentOf, randint } from '../../utils'
 import range from 'lodash.range'

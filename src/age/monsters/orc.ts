@@ -1,5 +1,5 @@
 import { CommandInteraction } from 'discord.js'
-import { MonsterEntity, ClassEntity, Entity } from '../classes'
+import { MonsterEntity, ClassEntity } from '../classes'
 import { Dropper } from '../dropper'
 import { teddyBear } from '../items'
 

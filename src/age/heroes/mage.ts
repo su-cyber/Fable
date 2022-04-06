@@ -1,5 +1,5 @@
 import { GuildMember } from 'discord.js'
-import { ClassEntity, Entity } from '../classes'
+import { ClassEntity } from '../classes'
 import { burning } from '../effects/burning'
 
 export class Mage extends ClassEntity {

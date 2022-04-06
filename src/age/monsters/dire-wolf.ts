@@ -2,7 +2,7 @@ import { CommandInteraction } from 'discord.js'
 import { Dropper } from '../dropper'
 import { teddyBear } from '../items'
 import { bleeding } from '../effects/bleeding'
-import { MonsterEntity, ClassEntity, Entity } from '../classes'
+import { MonsterEntity, ClassEntity } from '../classes'
 
 export class DireWold extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {

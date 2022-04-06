@@ -1,7 +1,6 @@
 import { CommandInteraction } from 'discord.js'
 import { MonsterEntity, ClassEntity } from '../classes'
 import { Dropper } from '../dropper'
-import { AttackType } from '../enums'
 import { teddyBear } from '../items'
 
 export class Goblin extends MonsterEntity {

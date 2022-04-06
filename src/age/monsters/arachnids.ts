@@ -4,7 +4,7 @@ import { Dropper } from '../dropper'
 import { teddyBear } from '../items'
 import { poisoning } from '../effects/poisoning'
 import { emoji } from '../../lib/utils/emoji'
-import { MonsterEntity, ClassEntity, Entity } from '../classes'
+import { MonsterEntity, ClassEntity } from '../classes'
 
 export class Arachnids extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
