@@ -1,4 +1,4 @@
 import { emoji } from '../../lib/utils/emoji'
 import { Effect } from '../classes'
 
-export const weakness = new Effect({ emoji: emoji.WEAKNESS })
+export const weakness: Effect = { emoji: emoji.WEAKNESS }

@@ -3,3 +3,7 @@ test.ts
 node_modules/
 tests/
 jest.config.js
+twoArr.ts
+pnpm-lock.yaml
+package-lock.json
+yarn.lock

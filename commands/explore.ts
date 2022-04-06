@@ -1,17 +1,17 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import { DuelBuilder } from '../src/age/DuelBuilder'
-import { warrior } from '../src/age/classes/warrior'
 import { sleep } from '../src/utils'
 import { getMonsters } from '../src/age/monsters'
-import { Entity, MonsterEntity } from '../src/age/classes'
 import { MessageActionRow, MessageSelectMenu } from 'discord.js'
+import { Warrior } from '../src/age/heroes/warrior'
+import { MonsterEntity, Entity } from '../src/age/classes'
 
 export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explore the world' }).setDo(
     async (bot, interaction) => {
         const authorId = interaction.user.id
 
         const author = interaction.guild.members.cache.get(authorId)
-        const attacker = warrior(author)
+        const attacker = Warrior.create(author)
 
         await interaction.reply({ components: [await monstersDropdown()] })
 

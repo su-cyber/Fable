@@ -1,19 +1,21 @@
 import { CommandInteraction } from 'discord.js'
+import { MonsterEntity, ClassEntity, Attack } from '../classes'
 import { Dropper } from '../dropper'
-import { Attack, ClassEntity, MonsterEntity } from '../classes'
 import { teddyBear } from '../items'
 
 export class Dunny extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
-        const withoutDropMessages = ['The goblin was badly wounded, but he managed to escape']
-        const withDropMessages = ['You can hear his last grunts before his death']
+        const messages = {
+            withoutDropMessages: ['The goblin was badly wounded, but he managed to escape'],
+            withDropMessages: ['You can hear his last grunts before his death'],
+        }
 
         new Dropper([
             {
                 item: teddyBear,
                 dropRate: 0.9,
             },
-        ]).sendDeathMessage(withDropMessages, withoutDropMessages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this)
     }
 
     onReceivedAttack(attack: Attack, ignoreAttack: () => void) {
@@ -36,9 +38,7 @@ export class Dunny extends MonsterEntity {
                     cooldown: 0,
                     name: 'Nothing',
                     description: 'Basic attack',
-                    use: (attacker, defender) => {
-                        attacker.addLogMessage('**Nothing happened**')
-                    },
+                    use: (attacker, defender) => attacker.addLogMessage('**Nothing happened**'),
                 },
             ],
         })

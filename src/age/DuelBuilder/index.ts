@@ -14,7 +14,8 @@ import { emoji } from '../../lib/utils/emoji'
 import { getLocker } from '../../utils'
 import { removeIndentation } from '../../utils/removeIndentation'
 import { wrapText } from '../../utils/wrapText'
-import { Entity, Skill } from '../classes'
+import { Skill } from '../classes'
+import { Entity } from '../classes/entity'
 import { Scheduler } from './scheduler'
 
 const lineBreak = '\n\u200b'
@@ -54,6 +55,9 @@ class DuelBuilder {
 
         player1.addLogMessage = this.addLogMessage.bind(this)
         player2.addLogMessage = this.addLogMessage.bind(this)
+
+        player1.oponent = player2
+        player2.oponent = player1
 
         player1.scheduler = this.scheduler
         player2.scheduler = this.scheduler

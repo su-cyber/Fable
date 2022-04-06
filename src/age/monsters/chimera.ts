@@ -1,23 +1,24 @@
 import { CommandInteraction } from 'discord.js'
 import { Dropper } from '../dropper'
-import { ClassEntity, Entity, MonsterEntity } from '../classes'
-import { AttackType } from '../enums'
 import { teddyBear } from '../items'
 import { poisoning } from '../effects/poisoning'
 import { emoji } from '../../lib/utils/emoji'
 import { burning } from '../effects/burning'
+import { MonsterEntity, ClassEntity, Entity } from '../classes'
 
 export class Chimera extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
-        const withoutDropMessages = ['The goblin was badly wounded, but he managed to escape']
-        const withDropMessages = ['You can hear his last grunts before his death']
+        const messages = {
+            withoutDropMessages: ['The goblin was badly wounded, but he managed to escape'],
+            withDropMessages: ['You can hear his last grunts before his death'],
+        }
 
         new Dropper([
             {
                 item: teddyBear,
                 dropRate: 0.9,
             },
-        ]).sendDeathMessage(withDropMessages, withoutDropMessages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this)
     }
 
     beforeDuelStart(you: Entity, opponent: Entity) {
@@ -40,23 +41,25 @@ export class Chimera extends MonsterEntity {
                     name: 'Fire breath',
                     description: 'Basic attack',
                     use: (attacker, defender) => {
-                        defender.applyEffect(burning)
-
-                        // prettier-ignore
-                        attacker.scheduler.task
+                        const fireBreath = attacker.scheduler.task
                             .id('chimera__fire-breath')
-                            .all
-                            .isEffect
+                            .all.effect(burning)
                             .turns(3)
-                            .end(() => defender.removeEffect(poisoning))
-                            .run(() => 
-                                defender
-                                    .takeDamage({ damage: 10, type: AttackType.PHYSICAL, canEvade: false })
-                                    .send(damage => `**${attacker.name}** lost ${damage} HP due to ${emoji.FIRE}`))
+                            .end(() => defender.removeEffect(burning))
+                            .run(() =>
+                                defender.takeDamage
+                                    .physical(10)
+                                    .run(
+                                        damage =>
+                                            `**${defender.name}** lost ${damage} HP due to ${emoji.FIRE}`
+                                    )
+                            )
 
-                        defender
-                            .takeDamage({ damage: 50, type: AttackType.MAGICAL })
-                            .send(`**${attacker.name}** used Fire breath`)
+                        defender.applyEffect(fireBreath)
+
+                        defender.takeDamage
+                            .physical(50)
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Fire breath`)
                     },
                 },
                 {
@@ -64,23 +67,25 @@ export class Chimera extends MonsterEntity {
                     name: 'Venom splash',
                     description: 'Increases attack damage for a short time',
                     use: (attacker, defender) => {
-                        defender.applyEffect(burning)
-
-                        // prettier-ignore
-                        attacker.scheduler.task
+                        const venomSplash = attacker.scheduler.task
                             .id('chimera__venom-splash')
-                            .all
-                            .isEffect
+                            .all.effect(poisoning)
                             .turns(3)
                             .end(() => defender.removeEffect(poisoning))
-                            .run(() => 
-                                defender
-                                    .takeDamage({ damage: 10, type: AttackType.PHYSICAL, canEvade: false })
-                                    .send(damage => `**${attacker.name}** lost ${damage} HP due to ${emoji.POISON}`))
+                            .run(() =>
+                                defender.takeDamage
+                                    .physical(10)
+                                    .run(
+                                        damage =>
+                                            `**${defender.name}** lost ${damage} HP due to ${emoji.FIRE}`
+                                    )
+                            )
 
-                        defender
-                            .takeDamage({ damage: 50, type: AttackType.PHYSICAL })
-                            .send(`**${attacker.name}** used Venom splash`)
+                        defender.applyEffect(venomSplash)
+
+                        defender.takeDamage
+                            .physical(50)
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Venom splash`)
                     },
                 },
                 {
@@ -88,15 +93,14 @@ export class Chimera extends MonsterEntity {
                     name: 'Aerial Combat',
                     description: 'Increases attack damage for a short time',
                     use: (attacker, defender) => {
-                        // prettier-ignore
-                        attacker.scheduler.task
+                        const aerialCombat = attacker.scheduler.task
                             .id('chimera__aerial-combat')
                             .turnOf(defender)
-                            .skipTurn
-                            .turns(2)
+                            .skipTurn.turns(2)
                             .run(() => {})
 
                         attacker.evasion *= 2
+                        defender.applyEffect(aerialCombat)
                         defender.addLogMessage(`**${attacker.name}** used Aerial Combat`)
                     },
                 },
@@ -105,17 +109,17 @@ export class Chimera extends MonsterEntity {
                     name: 'Mad Ram',
                     description: 'Increases attack damage for a short time',
                     use: (attacker, defender) => {
-                        // prettier-ignore
-                        attacker.scheduler.task
+                        const madRam = attacker.scheduler.task
                             .id('chimera__mad-ram')
-                            .all
-                            .isEffect
-                            .turns(3)
-                            .end(() => 
-                                defender
-                                    .takeDamage({ damage: 100, type: AttackType.PHYSICAL })
-                                    .send(damage => `**${defender.name}** suffered ${damage} HP`))
+                            .all.turns(3)
+                            .end(() =>
+                                defender.takeDamage
+                                    .physical(100)
+                                    .run(damage => `**${defender.name}** lost ${damage} HP due to Mad Ram`)
+                            )
                             .run(() => {})
+
+                        defender.applyEffect(madRam)
 
                         attacker.addLogMessage(`**${attacker.name}** used Mad Ram`)
                     },

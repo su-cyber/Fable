@@ -1,22 +1,24 @@
 import { CommandInteraction } from 'discord.js'
 import { Dropper } from '../dropper'
-import { ClassEntity, MonsterEntity } from '../classes'
-import { AttackType } from '../enums'
+
 import { teddyBear } from '../items'
 import { poisoning } from '../effects/poisoning'
 import { emoji } from '../../lib/utils/emoji'
+import { MonsterEntity, ClassEntity, Entity } from '../classes'
 
 export class Arachnids extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
-        const withoutDropMessages = ['The goblin was badly wounded, but he managed to escape']
-        const withDropMessages = ['You can hear his last grunts before his death']
+        const messages = {
+            withDropMessages: ['You can hear his last grunts before his death'],
+            withoutDropMessages: ['The goblin was badly wounded, but he managed to escape'],
+        }
 
         new Dropper([
             {
                 item: teddyBear,
                 dropRate: 0.9,
             },
-        ]).sendDeathMessage(withDropMessages, withoutDropMessages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this)
     }
 
     static create() {
@@ -35,22 +37,25 @@ export class Arachnids extends MonsterEntity {
                     name: 'Poison Sting',
                     description: 'Basic attack',
                     use: (attacker, defender) => {
-                        defender.applyEffect(poisoning)
-                        defender.takeDamage({ damage: 10, type: AttackType.PHYSICAL })
+                        defender.takeDamage.physical(10).run(damage => {
+                            const poisonSting = attacker.scheduler.task
+                                .id('arachnids__poison-sting')
+                                .all.turns(3)
+                                .effect(poisoning)
+                                .end(() => defender.removeEffect(poisoning))
+                                .run(() =>
+                                    defender.takeDamage
+                                        .physical(5)
+                                        .run(
+                                            damage =>
+                                                `**${defender.name}** lost ${damage} HP due to ${emoji.POISON}`
+                                        )
+                                )
 
-                        // prettier-ignore
-                        attacker.scheduler.task
-                            .id('arachnids__poison-sting')
-                            .isEffect
-                            .all
-                            .turns(3)
-                            .end(() => defender.removeEffect(poisoning))
-                            .run(() => 
-                                defender
-                                    .takeDamage({ damage: 5, type: AttackType.PHYSICAL, canEvade: false })
-                                    .send(damage => `**${defender.name}** lost ${damage} HP due to ${emoji.POISON}`))
+                            defender.applyEffect(poisonSting)
 
-                        attacker.addLogMessage(`**${attacker.name}** used Poison Sting`)
+                            return `${defender.name} was poisoned by the **Poison Sting**`
+                        })
                     },
                 },
             ],

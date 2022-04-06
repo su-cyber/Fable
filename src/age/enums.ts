@@ -3,3 +3,7 @@ export enum AttackType {
     MAGICAL,
 }
 
+export enum CauseOfDeath {
+    NORMAL,
+    OWN
+}

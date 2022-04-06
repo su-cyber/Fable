@@ -1,20 +1,21 @@
 import { CommandInteraction } from 'discord.js'
+import { MonsterEntity, ClassEntity } from '../classes'
 import { Dropper } from '../dropper'
-import { ClassEntity, MonsterEntity } from '../classes'
-import { AttackType } from '../enums'
 import { slimeGoo } from '../items'
 
 export class Slime extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
-        const hasntDropMessages = ['The slime just exploded, take it easy next time']
-        const hasDropMessages = ['The slime seems to have dropped something']
+        const messages = {
+            withoutDropMessages: ['The slime just exploded, take it easy next time'],
+            withDropMessages: ['The slime seems to have dropped something'],
+        }
 
         await new Dropper([
             {
                 item: slimeGoo,
                 dropRate: 0.9,
             },
-        ]).sendDeathMessage(hasDropMessages, hasntDropMessages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this)
     }
 
     static create() {
@@ -33,9 +34,9 @@ export class Slime extends MonsterEntity {
                     name: 'Attack',
                     description: 'Basic attack',
                     use: (attacker, defender) =>
-                        defender
-                            .takeDamage({ damage: attacker.attackDamage, type: AttackType.PHYSICAL })
-                            .send(`**${attacker.name}** used Basic attack`),
+                        defender.takeDamage
+                            .physical(attacker.attackDamage)
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Attack`),
                 },
             ],
         })

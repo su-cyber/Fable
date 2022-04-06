@@ -1,20 +1,22 @@
 import { CommandInteraction } from 'discord.js'
+import { MonsterEntity, ClassEntity } from '../classes'
 import { Dropper } from '../dropper'
-import { ClassEntity, MonsterEntity } from '../classes'
 import { AttackType } from '../enums'
 import { teddyBear } from '../items'
 
 export class Goblin extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
-        const withoutDropMessages = ['The goblin was badly wounded, but he managed to escape']
-        const withDropMessages = ['You can hear his last grunts before his death']
+        const messages = {
+            withoutDropMessages: ['The goblin was badly wounded, but he managed to escape'],
+            withDropMessages: ['You can hear his last grunts before his death'],
+        }
 
         await new Dropper([
             {
                 item: teddyBear,
                 dropRate: 0.9,
             },
-        ]).sendDeathMessage(withDropMessages, withoutDropMessages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this)
     }
 
     static create() {
@@ -33,9 +35,9 @@ export class Goblin extends MonsterEntity {
                     name: 'Attack',
                     description: 'Basic attack',
                     use: (attacker, defender) =>
-                        defender
-                            .takeDamage({ damage: attacker.attackDamage, type: AttackType.PHYSICAL })
-                            .send(`**${attacker.name}** used Basic attack`),
+                        defender.takeDamage
+                            .physical(attacker.attackDamage)
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Attack`),
                 },
             ],
         })

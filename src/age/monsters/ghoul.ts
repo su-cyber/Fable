@@ -1,21 +1,22 @@
 import { CommandInteraction } from 'discord.js'
 import { Dropper } from '../dropper'
-import { ClassEntity, MonsterEntity } from '../classes'
-import { AttackType } from '../enums'
 import { teddyBear } from '../items'
 import { percentOf } from '../../utils/percentOf'
+import { MonsterEntity, ClassEntity } from '../classes'
 
 export class Ghoul extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
-        const withoutDropMessages = ['The goblin was badly wounded, but he managed to escape']
-        const withDropMessages = ['You can hear his last grunts before his death']
+        const messages = {
+            withoutDropMessages: ['The goblin was badly wounded, but he managed to escape'],
+            withDropMessages: ['You can hear his last grunts before his death'],
+        }
 
         new Dropper([
             {
                 item: teddyBear,
                 dropRate: 0.9,
             },
-        ]).sendDeathMessage(withDropMessages, withoutDropMessages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this)
     }
 
     static create() {
@@ -34,9 +35,9 @@ export class Ghoul extends MonsterEntity {
                     name: 'Claw Attack',
                     description: 'Basic attack',
                     use: (attacker, defender) =>
-                        defender
-                            .takeDamage({ damage: 12, type: AttackType.PHYSICAL })
-                            .send(`**${attacker.name}** used Claw Attack`),
+                        defender.takeDamage
+                            .physical(12)
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Claw Attack`),
                 },
                 {
                     cooldown: 0,
@@ -47,13 +48,12 @@ export class Ghoul extends MonsterEntity {
                         defender.armor -= drainedArmor
                         attacker.armor += drainedArmor
 
-                        defender
-                            .takeDamage({
-                                damage: percentOf(0.7, attacker.attackDamage),
-                                type: AttackType.PHYSICAL,
-                            })
-
-                            .send(`**${attacker.name}** used Hollow Screech`)
+                        defender.addLogMessage(
+                            `**${defender.name}** lost ${drainedArmor} armor by Hollow Screech`
+                        )
+                        defender.takeDamage
+                            .physical(percentOf(0.7, attacker.attackDamage))
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Hollow Screech`)
                     },
                 },
             ],

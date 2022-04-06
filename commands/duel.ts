@@ -2,9 +2,9 @@ import { SlashCommandUserOption } from '@discordjs/builders'
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import { DuelBuilder } from '../src/age/DuelBuilder'
 import { emoji } from '../src/lib/utils/emoji'
-import { warrior } from '../src/age/classes/warrior'
-import { mage } from '../src/age/classes/mage'
-import { Entity } from '../src/age/classes'
+import { Entity } from '../src/age/classes/entity'
+import { Warrior } from '../src/age/heroes/warrior'
+import { Mage } from '../src/age/heroes/mage'
 
 export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with a player' })
     .addUserOption((option: SlashCommandUserOption) =>
@@ -17,8 +17,8 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
         const author = interaction.guild.members.cache.get(authorId)
         const opponent = interaction.guild.members.cache.get(opponentId)
 
-        const attacker = warrior(author)
-        const defender = mage(opponent)
+        const attacker = Warrior.create(author)
+        const defender = Mage.create(opponent)
 
         await new PvPDuel({
             interaction,

@@ -3,12 +3,18 @@ import sample from 'lodash.sample'
 import sum from 'lodash.sum'
 import { formatMoney, randfloat, randint, removeIndentation } from '../utils'
 import { weightedRandom } from '../utils/weightedRandom'
-import { Entity } from './classes'
+import { Entity } from './classes/entity'
+import { CauseOfDeath } from './enums'
 import { Item } from './item'
 
 type Props = {
     item: Item
     dropRate: number
+}
+
+type Messages = {
+    withDropMessages: string[]
+    withoutDropMessages: string[]
 }
 
 /**
@@ -36,8 +42,7 @@ export class Dropper {
     }
 
     async sendDeathMessage(
-        withDropMessages: string[],
-        withoutDropMessages: string[],
+        { withDropMessages, withoutDropMessages }: Messages,
         interaction: CommandInteraction,
         killed: Entity
     ) {

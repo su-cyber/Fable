@@ -1,7 +1,8 @@
 import cloneDeep from 'lodash.clonedeep'
 import range from 'lodash.range'
+import { Effect } from '../classes/effect'
 
-import { Entity } from '../classes'
+import { Entity } from '../classes/entity'
 
 // prettier-ignore
 type TaskOptions = {
@@ -11,19 +12,18 @@ type TaskOptions = {
     runEnd  : () => void
     skipTurn: boolean
     id      : string
-    type    : 'skill' | 'effect'
+    effect? : Effect
     turns   : number
 }
 
 // prettier-ignore
 type TaskImplement = {
     check   : (f: (attacker: Entity, defender: Entity) => boolean) => Task
-    run     : (f: () => void) => void
-    end     : (f: () => void) => Task
-    id      : (s: string) => Task
-    turns   : (turns: number) => Task
-    isEffect: Task
-    isSkill : Task
+    run     : (f: () => void)                                      => void
+    end     : (f: () => void)                                      => Task
+    id      : (s: string)                                          => Task
+    turns   : (turns: number)                                      => Task
+    effect  : (effect: Effect)                                     => Task
     skipTurn: Task
 }
 
@@ -38,7 +38,7 @@ class Task implements TaskImplement {
             check   : undefined,
             run     : undefined,
             end     : undefined,
-            type    : undefined,
+            effect  : undefined,
             runEnd  : undefined,
             skipTurn: false,
         }
@@ -62,7 +62,7 @@ class Task implements TaskImplement {
      */
     run(f: () => void) {
         this.options.run = f
-        this.scheduler.add(this)
+        return this
     }
 
     id(s: string) {
@@ -91,16 +91,8 @@ class Task implements TaskImplement {
     /**
      * Sets the task as an effect
      */
-    get isEffect() {
-        this.options.type = 'effect'
-        return this
-    }
-
-    /**
-     * Sets the task as a skill
-     */
-    get isSkill() {
-        this.options.type = 'skill'
+    effect(effect: Effect) {
+        this.options.effect = effect
         return this
     }
 
@@ -150,7 +142,7 @@ class Scheduler {
             task.options.end()
         }
 
-        if (task.options.type === 'effect' && task_exists) {
+        if (task.options.effect && task_exists) {
             const { r, c } = task_exists
             const l = range(1, task.options.turns)
 
