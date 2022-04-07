@@ -1,4 +1,5 @@
 import { GuildMember } from 'discord.js'
+import { emoji } from '../../lib/utils/emoji'
 import { ClassEntity } from '../classes'
 import { bleeding } from '../effects/bleeding'
 
@@ -10,7 +11,7 @@ export class Warrior extends ClassEntity {
             attackDamage: 10,
             magicPower: 0,
             armor: 10,
-            evasion: 0.7,
+            evasion: 0.1,
             magicResistance: 10,
             skills: [
                 {
@@ -46,13 +47,16 @@ export class Warrior extends ClassEntity {
                     description: 'Apply bleeding for 3 turns',
                     use: (attacker, defender) => {
                         const deepCut = attacker.scheduler.task
-                            .turns(1)
-                            .turnOf(attacker)
-                            .effect(bleeding)
-                            .skipTurn.run(() =>
+                            .turns(3)
+                            .all.effect(bleeding)
+                            .end(() => defender.removeEffect(bleeding))
+                            .run(() =>
                                 defender.takeDamage
                                     .physical(7)
-                                    .run(damage => `**${defender.name}** lost ${damage} HP by Charged Attack`)
+                                    .run(
+                                        damage =>
+                                            `**${defender.name}** lost ${damage} HP due to ${emoji.BLEED}`
+                                    )
                             )
 
                         defender.applyEffect(deepCut)

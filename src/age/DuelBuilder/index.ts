@@ -197,7 +197,9 @@ class DuelBuilder {
         await this.beforeDuelStart()
 
         while (!(this.player1.isDead() || this.player2.isDead())) {
-            if (!(await this.scheduler.run(this.attacker, this.defender))) {
+            const skipTurn = !(await this.scheduler.run(this.attacker, this.defender))
+
+            if (skipTurn) {
                 await this.onTurn()
             }
 

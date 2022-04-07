@@ -102,7 +102,7 @@ export class Entity {
                     type: this.type,
                 }
 
-                let damage = null
+                let damage = 0
                 let notAttack = false
 
                 thisThis.onReceivedAttack(attack, ignoreAttack)

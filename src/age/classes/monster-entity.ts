@@ -2,7 +2,6 @@ import { CommandInteraction } from 'discord.js'
 import sample from 'lodash.sample'
 import { nanoid } from 'nanoid'
 import { Dropper } from '../dropper'
-import { ClassEntity } from './class-entity'
 import { Entity, EntityProps } from './entity'
 import { Skill } from './skill'
 
@@ -31,10 +30,18 @@ export class MonsterEntity extends Entity {
     useSkill(defender: Entity) {
         const skill = this.chooseSkill(defender)
 
-        skill.use(this, defender)
+        if (this.oponent.evade()) {
+            return this.addLogMessage(`**${this.name}** used ${skill.name} but ${this.oponent.name} evaded`)
+        }
+
+        const text = skill.use(this, defender)
+
+        if (text) {
+            this.addLogMessage(...(Array.isArray(text) ? text : [text]))
+        }
     }
 
-    async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
+    async onDeath(interaction: CommandInteraction, killer: Entity) {
         throw new Error('Not implemented')
     }
 

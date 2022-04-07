@@ -61,6 +61,7 @@ export class BloodHound extends MonsterEntity {
                         const bloodlust = attacker.scheduler.task
                             .id('bloodhound__bloodlust')
                             .turnOf(attacker)
+                            .effect(strength)
                             .turns(3)
                             .end(() => attacker.removeEffect(strength))
                             .run(() => {})

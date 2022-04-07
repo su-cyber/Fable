@@ -1,5 +1,6 @@
 import cloneDeep from 'lodash.clonedeep'
 import range from 'lodash.range'
+
 import { Effect } from '../classes/effect'
 
 import { Entity } from '../classes/entity'
@@ -175,7 +176,7 @@ class Scheduler {
         }
     }
 
-    async run(attacker: Entity, defender: Entity): Promise<boolean> {
+    async run(attacker: Entity, defender: Entity) {
         let skipTurn = false
         let queue: Task[] = []
         const copy = cloneDeep(this.scheduler)
@@ -202,8 +203,9 @@ class Scheduler {
 
                 if (task.options.runEnd && this.search_all(copy, task).length === 1) {
                     task.options.runEnd()
+                } else {
+                    task.options.run()
                 }
-                task.options.run()
             }
         }
 

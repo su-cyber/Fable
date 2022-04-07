@@ -25,7 +25,7 @@ export class Arachnids extends MonsterEntity {
         return new Arachnids({
             name: 'Arachnids',
             spawnRate: 0.5,
-            evasion: 0.5,
+            evasion: 0.05,
             health: 40,
             attackDamage: 8,
             magicPower: 6,

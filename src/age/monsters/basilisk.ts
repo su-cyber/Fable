@@ -102,7 +102,7 @@ export class Basilisk extends MonsterEntity {
                         const lostedArmor = percentOf(0.15, defender.armor)
 
                         defender.removeArmor(lostedArmor)
-                        defender.addLogMessage(`**${defender.name}** lost ${lostedArmor} armor`)
+                        defender.addLogMessage(`**${defender.name}** lost ${lostedArmor.toFixed(1)} armor`)
 
                         defender.takeDamage
                             .physical(60)

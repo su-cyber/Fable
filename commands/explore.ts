@@ -17,6 +17,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
 
         bot.onComponent('select-menu__monsters', async componentInteraction => {
             componentInteraction.deferUpdate()
+            await interaction.editReply({ content: '\u200b', components: [] })
             const monster = (await getMonsters())
                 .find(m => m.name === componentInteraction.values[0])
                 .create()
@@ -57,10 +58,9 @@ class PvEDuel extends DuelBuilder {
     }
 
     async onSkillSelect(skillName: string) {
-        this.attacker.useSkill(
-            this.defender,
-            this.attacker.skills.find(skill => skill.name === skillName)
-        )
+        const skill = this.attacker.skills.find(skill => skill.name === skillName)
+
+        this.attacker.useSkill(this.defender, skill)
     }
 
     async onTurn() {

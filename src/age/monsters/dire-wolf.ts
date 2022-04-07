@@ -4,7 +4,7 @@ import { teddyBear } from '../items'
 import { bleeding } from '../effects/bleeding'
 import { MonsterEntity, ClassEntity } from '../classes'
 
-export class DireWold extends MonsterEntity {
+export class DireWolf extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
             withoutDropMessages: ['The goblin was badly wounded, but he managed to escape'],
@@ -20,7 +20,7 @@ export class DireWold extends MonsterEntity {
     }
 
     static create() {
-        return new DireWold({
+        return new DireWolf({
             name: 'Dire Wolf',
             spawnRate: 0.4,
             evasion: 0.1,
@@ -45,13 +45,12 @@ export class DireWold extends MonsterEntity {
                     description: 'Increases attack damage for a short time',
                     use: (attacker, defender) => {
                         attacker.evasion += 0.1
-
-                        defender.addLogMessage(`**${attacker.name}** used Wild reflex`)
+                        return `**${attacker.name}** used Wild reflex`
                     },
                 },
                 {
                     cooldown: 0,
-                    name: 'Mutilate ',
+                    name: 'Mutilate',
                     description: 'Increases attack damage for a short time',
                     use: (attacker, defender) => {
                         const mutilate = attacker.scheduler.task
@@ -67,7 +66,7 @@ export class DireWold extends MonsterEntity {
 
                         defender.applyEffect(mutilate)
 
-                        defender.addLogMessage(`**${attacker.name}** used Wild reflex`)
+                        return `**${attacker.name}** used Wild reflex`
                     },
                 },
             ],

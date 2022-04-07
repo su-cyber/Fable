@@ -77,7 +77,7 @@ export class Chimera extends MonsterEntity {
                                     .physical(10)
                                     .run(
                                         damage =>
-                                            `**${defender.name}** lost ${damage} HP due to ${emoji.FIRE}`
+                                            `**${defender.name}** lost ${damage} HP due to ${emoji.POISON}`
                                     )
                             )
 
@@ -99,7 +99,6 @@ export class Chimera extends MonsterEntity {
                             .skipTurn.turns(2)
                             .run(() => {})
 
-                        attacker.evasion *= 2
                         defender.applyEffect(aerialCombat)
                         defender.addLogMessage(`**${attacker.name}** used Aerial Combat`)
                     },

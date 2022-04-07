@@ -49,8 +49,9 @@ export class Ghoul extends MonsterEntity {
                         attacker.armor += drainedArmor
 
                         defender.addLogMessage(
-                            `**${defender.name}** lost ${drainedArmor} armor by Hollow Screech`
+                            `**${defender.name}** lost ${drainedArmor.toFixed(1)} armor by Hollow Screech`
                         )
+                        
                         defender.takeDamage
                             .physical(percentOf(0.7, attacker.attackDamage))
                             .run(damage => `**${defender.name}** lost ${damage} HP by Hollow Screech`)
