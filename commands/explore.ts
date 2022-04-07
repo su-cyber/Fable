@@ -63,20 +63,31 @@ class PvEDuel extends DuelBuilder {
         this.attacker.useSkill(this.defender, skill)
     }
 
-    async onTurn() {
+    async onTurn(skipTurn: boolean) {
+        const isMonsterTurn = this.attacker instanceof MonsterEntity
+
+        if (skipTurn) {
+            if (isMonsterTurn) {
+                await sleep(1.5)
+                this.deleteInfoMessages()
+            }
+
+            return
+        }
+
         if (this.attacker instanceof MonsterEntity) {
             await sleep(1.5)
             this.deleteInfoMessages()
             await this.sendInfoMessage(this.attacker.skills, true)
 
             this.attacker.useSkill(this.defender)
-            await this.sendInfoMessage(this.attacker.skills)
         } else {
             await this.sendInfoMessage(this.attacker.skills)
             await this.locker.wait()
             this.locker.lock()
-            await this.sendInfoMessage(this.attacker.skills)
         }
+
+        await this.sendInfoMessage(this.attacker.skills)
     }
 
     async onEnd(winner: Entity, loser: MonsterEntity) {
