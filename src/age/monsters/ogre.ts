@@ -35,6 +35,7 @@ export class Ogre extends MonsterEntity {
                     cooldown: 0,
                     name: 'Ogre smash',
                     description: 'Basic attack',
+                    canEvade: true,
                     use: (attacker, defender) =>
                         defender.takeDamage
                             .physical(30)
@@ -44,6 +45,7 @@ export class Ogre extends MonsterEntity {
                     cooldown: 0,
                     name: 'Guard',
                     description: 'Increases attack damage for a short time',
+                    canEvade: true,
                     use: (attacker, defender) => {
                         const gainedArmor = percentOf(0.1, attacker.armor)
                         attacker.armor += gainedArmor
@@ -58,6 +60,7 @@ export class Ogre extends MonsterEntity {
                     cooldown: 0,
                     name: 'Savage fury',
                     description: 'Increases attack damage for a short time',
+                    canEvade: true,
                     use: (attacker, defender) => {
                         const n = randint(2, 4)
 

@@ -36,6 +36,7 @@ export class Arachnids extends MonsterEntity {
                     cooldown: 0,
                     name: 'Poison Sting',
                     description: 'Basic attack',
+                    canEvade: true,
                     use: (attacker, defender) => {
                         defender.takeDamage.physical(10).run(damage => {
                             const poisonSting = attacker.scheduler.task

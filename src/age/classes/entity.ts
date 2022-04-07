@@ -121,7 +121,7 @@ export class Entity {
     }
 
     useSkill(defender: Entity, skill: Skill) {
-        if (this.oponent.evade()) {
+        if (skill.canEvade && this.oponent.evade()) {
             return this.addLogMessage(`**${this.name}** used ${skill.name} but ${this.oponent.name} evaded`)
         }
 

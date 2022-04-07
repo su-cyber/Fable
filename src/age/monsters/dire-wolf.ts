@@ -34,6 +34,7 @@ export class DireWolf extends MonsterEntity {
                     cooldown: 0,
                     name: 'Razor Bite',
                     description: 'Basic attack',
+                    canEvade: true,
                     use: (attacker, defender) =>
                         defender.takeDamage
                             .physical(20)
@@ -43,6 +44,7 @@ export class DireWolf extends MonsterEntity {
                     cooldown: 0,
                     name: 'Wild reflex',
                     description: 'Increases attack damage for a short time',
+                    canEvade: false,
                     use: (attacker, defender) => {
                         attacker.evasion += 0.1
                         return `**${attacker.name}** used Wild reflex`
@@ -52,6 +54,7 @@ export class DireWolf extends MonsterEntity {
                     cooldown: 0,
                     name: 'Mutilate',
                     description: 'Increases attack damage for a short time',
+                    canEvade: true,
                     use: (attacker, defender) => {
                         const mutilate = attacker.scheduler.task
                             .id('dire-wolf__mutilate')

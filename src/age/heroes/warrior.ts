@@ -18,6 +18,7 @@ export class Warrior extends ClassEntity {
                     name: 'Basic attack',
                     cooldown: 0,
                     description: 'Basic attack',
+                    canEvade: true,
                     use: (attacker, defender) =>
                         defender.takeDamage
                             .physical(attacker.attackDamage)
@@ -27,6 +28,7 @@ export class Warrior extends ClassEntity {
                     name: 'Charged Attack',
                     cooldown: 0,
                     description: 'Charge a powerful attack for 1 turn',
+                    canEvade: true,
                     use: (attacker, defender) => {
                         const chargedAttack = attacker.scheduler.task
                             .turns(1)
@@ -45,6 +47,7 @@ export class Warrior extends ClassEntity {
                     cooldown: 0,
                     name: 'Deep cut',
                     description: 'Apply bleeding for 3 turns',
+                    canEvade: true,
                     use: (attacker, defender) => {
                         const deepCut = attacker.scheduler.task
                             .turns(3)

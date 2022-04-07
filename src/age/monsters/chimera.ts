@@ -40,6 +40,7 @@ export class Chimera extends MonsterEntity {
                     cooldown: 0,
                     name: 'Fire breath',
                     description: 'Basic attack',
+                    canEvade: true,
                     use: (attacker, defender) => {
                         const fireBreath = attacker.scheduler.task
                             .id('chimera__fire-breath')
@@ -66,6 +67,7 @@ export class Chimera extends MonsterEntity {
                     cooldown: 0,
                     name: 'Venom splash',
                     description: 'Increases attack damage for a short time',
+                    canEvade: true,
                     use: (attacker, defender) => {
                         const venomSplash = attacker.scheduler.task
                             .id('chimera__venom-splash')
@@ -92,6 +94,7 @@ export class Chimera extends MonsterEntity {
                     cooldown: 0,
                     name: 'Aerial Combat',
                     description: 'Increases attack damage for a short time',
+                    canEvade: false,
                     use: (attacker, defender) => {
                         const aerialCombat = attacker.scheduler.task
                             .id('chimera__aerial-combat')
@@ -107,6 +110,7 @@ export class Chimera extends MonsterEntity {
                     cooldown: 0,
                     name: 'Mad Ram',
                     description: 'Increases attack damage for a short time',
+                    canEvade: true,
                     use: (attacker, defender) => {
                         const madRam = attacker.scheduler.task
                             .id('chimera__mad-ram')

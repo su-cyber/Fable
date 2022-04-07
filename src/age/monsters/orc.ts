@@ -33,6 +33,7 @@ export class Orc extends MonsterEntity {
                     cooldown: 0,
                     name: 'Savage charge',
                     description: 'Basic attack',
+                    canEvade: true,
                     use: (attacker, defender) => {
                         const savageCharge = attacker.scheduler.task
                             .id('orc__savage-charge')
@@ -52,6 +53,7 @@ export class Orc extends MonsterEntity {
                     cooldown: 0,
                     name: 'Brute stomp',
                     description: 'Basic attack',
+                    canEvade: true,
                     use: (attacker, defender) =>
                         defender.takeDamage
                             .physical(30)

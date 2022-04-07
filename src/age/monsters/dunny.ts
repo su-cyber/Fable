@@ -38,6 +38,7 @@ export class Dunny extends MonsterEntity {
                     cooldown: 0,
                     name: 'Nothing',
                     description: 'Basic attack',
+                    canEvade: true,
                     use: (attacker, defender) => attacker.addLogMessage('**Nothing happened**'),
                 },
             ],

@@ -17,6 +17,7 @@ export class Mage extends ClassEntity {
                     cooldown: 0,
                     name: 'Basic Attack',
                     description: 'Basic Attack',
+                    canEvade: true,
                     use: (attacker, defender) =>
                         defender.takeDamage
                             .physical(attacker.attackDamage)
@@ -26,6 +27,7 @@ export class Mage extends ClassEntity {
                     cooldown: 0,
                     name: 'Fireball',
                     description: 'Dealing damage and burning them for 3 turns',
+                    canEvade: true,
                     use: (attacker, defender) => {
                         const fireball = attacker.scheduler.task.all
                             .effect(burning)

@@ -46,6 +46,7 @@ export class BloodHound extends MonsterEntity {
                     cooldown: 0,
                     name: 'Bite',
                     description: 'Basic attack',
+                    canEvade: true,
                     use: (attacker, defender) =>
                         defender.takeDamage
                             .physical(attacker.attackDamage)
@@ -57,6 +58,7 @@ export class BloodHound extends MonsterEntity {
                     cooldown: 0,
                     name: 'Bloodlust',
                     description: 'Increases attack damage for a short time',
+                    canEvade: false,
                     use: (attacker, defender) => {
                         const bloodlust = attacker.scheduler.task
                             .id('bloodhound__bloodlust')

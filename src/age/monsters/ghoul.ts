@@ -34,6 +34,7 @@ export class Ghoul extends MonsterEntity {
                     cooldown: 0,
                     name: 'Claw Attack',
                     description: 'Basic attack',
+                    canEvade: true,
                     use: (attacker, defender) =>
                         defender.takeDamage
                             .physical(12)
@@ -43,6 +44,7 @@ export class Ghoul extends MonsterEntity {
                     cooldown: 0,
                     name: 'Hollow Screech',
                     description: 'Increases attack damage for a short time',
+                    canEvade: true,
                     use: (attacker, defender) => {
                         const drainedArmor = percentOf(0.05, defender.armor)
                         defender.armor -= drainedArmor

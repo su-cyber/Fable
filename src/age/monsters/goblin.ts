@@ -33,6 +33,7 @@ export class Goblin extends MonsterEntity {
                     cooldown: 0,
                     name: 'Attack',
                     description: 'Basic attack',
+                    canEvade: true,
                     use: (attacker, defender) =>
                         defender.takeDamage
                             .physical(attacker.attackDamage)
