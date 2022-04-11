@@ -19,10 +19,12 @@ export class Warrior extends ClassEntity {
                     cooldown: 0,
                     description: 'Basic attack',
                     canEvade: true,
-                    use: (attacker, defender) =>
+                    use: (attacker, defender) =>{
+                        attacker.addLogMessage(`**${attacker.name}** used Basic attack`)
                         defender.takeDamage
                             .physical(attacker.attackDamage)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by Basic Attack`),
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Basic Attack`)
+                    }
                 },
                 {
                     name: 'Charged Attack',
@@ -40,7 +42,7 @@ export class Warrior extends ClassEntity {
                             )
                         attacker.applyEffect(chargedAttack)
 
-                        attacker.addLogMessage(`**${attacker.name}** is carrying a powerful attack`)
+                        attacker.addLogMessage(`**${attacker.name}** is charging...`)
                     },
                 },
                 {

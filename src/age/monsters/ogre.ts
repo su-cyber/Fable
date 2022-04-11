@@ -36,23 +36,25 @@ export class Ogre extends MonsterEntity {
                     name: 'Ogre smash',
                     description: 'Basic attack',
                     canEvade: true,
-                    use: (attacker, defender) =>
+                    use: (attacker, defender) =>{
+                        defender.addLogMessage(`**${attacker.name}** used Ogre smash`)
                         defender.takeDamage
                             .physical(30)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by Ogre smash`),
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Ogre smash`)
+                    }
                 },
                 {
                     cooldown: 0,
                     name: 'Guard',
                     description: 'Increases attack damage for a short time',
-                    canEvade: true,
+                    canEvade: false,
                     use: (attacker, defender) => {
                         const gainedArmor = percentOf(0.1, attacker.armor)
                         attacker.armor += gainedArmor
 
-                        defender.addLogMessage(
+                        attacker.addLogMessage(
                             `**${attacker.name}** used Guard`,
-                            `${attacker.name}'s armor increased by ${gainedArmor}`
+                            `${attacker.name}'s armor increased by 10%`
                         )
                     },
                 },
@@ -64,7 +66,9 @@ export class Ogre extends MonsterEntity {
                     use: (attacker, defender) => {
                         const n = randint(2, 4)
 
-                        attacker.addLogMessage(`**${attacker.name}** used Savage fury`)
+                        attacker.addLogMessage(
+                         `**${attacker.name}** used Savage fury`
+                        )
 
                         range(n).forEach(() =>
                             defender.takeDamage

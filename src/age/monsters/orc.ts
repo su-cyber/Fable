@@ -46,7 +46,11 @@ export class Orc extends MonsterEntity {
                             )
 
                         attacker.applyEffect(savageCharge)
-                        attacker.addLogMessage(`**${attacker.name}** is carrying a powerful attack`)
+                        attacker.addLogMessage(
+                            `**${attacker.name}** used Savage charge`,
+                            `**${attacker.name}** is charging...`
+                        
+                        )
                     },
                 },
                 {
@@ -54,10 +58,12 @@ export class Orc extends MonsterEntity {
                     name: 'Brute stomp',
                     description: 'Basic attack',
                     canEvade: true,
-                    use: (attacker, defender) =>
+                    use: (attacker, defender) =>{
+                        attacker.addLogMessage(`**${attacker.name}** used Brute Stomp`)
                         defender.takeDamage
                             .physical(30)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by Brute stomp`),
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Brute stomp`)
+                    }
                 },
             ],
         })

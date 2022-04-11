@@ -28,7 +28,7 @@ export class Basilisk extends MonsterEntity {
 
         you.addLogMessage(
             "Basilisk has activated unique skill: **Basilisk's domain**",
-            'Agility halved and you cannot run anymore'
+            'evasion has been halved and you cannot run anymore'
         )
     }
 
@@ -93,7 +93,10 @@ export class Basilisk extends MonsterEntity {
                             .run(() => {})
 
                         defender.applyEffect(_paralyzed)
-                        defender.addLogMessage(`**${attacker.name}** used Serpent Gaze`)
+                        defender.addLogMessage(
+                            `**${attacker.name}** used Serpent Gaze`,
+                            `**${defender.name}** has been paralyzed for 2 turns`
+                        )
                     },
                 },
                 {

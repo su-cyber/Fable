@@ -1,6 +1,7 @@
-import { CommandInteraction } from 'discord.js'
+import { CommandInteraction, Emoji } from 'discord.js'
 import { Dropper } from '../dropper'
 import { teddyBear } from '../items'
+import { emoji } from '../../lib/utils/emoji'
 import { bleeding } from '../effects/bleeding'
 import { MonsterEntity, ClassEntity } from '../classes'
 
@@ -35,10 +36,12 @@ export class DireWolf extends MonsterEntity {
                     name: 'Razor Bite',
                     description: 'Basic attack',
                     canEvade: true,
-                    use: (attacker, defender) =>
+                    use: (attacker, defender) =>{
+                        attacker.addLogMessage(`**${attacker.name}** used Razor Bite`)
                         defender.takeDamage
                             .physical(20)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by Razor Bite`),
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Razor Bite`)
+                    }
                 },
                 {
                     cooldown: 0,
@@ -47,7 +50,13 @@ export class DireWolf extends MonsterEntity {
                     canEvade: false,
                     use: (attacker, defender) => {
                         attacker.evasion += 0.1
-                        return `**${attacker.name}** used Wild reflex`
+                        attacker.addLogMessage(
+                            `**${attacker.name}** used Wild reflex`,
+                            `**${attacker.name}'s** speed increased by 10%`
+                        )
+                        
+                       
+                       
                     },
                 },
                 {
@@ -64,12 +73,20 @@ export class DireWolf extends MonsterEntity {
                             .run(() =>
                                 defender.takeDamage
                                     .physical(5)
-                                    .run(damage => `**${defender.name}** lost ${damage} HP by Mutilate`)
+                                    .run(damage => `**${defender.name}** lost ${damage} HP by ${emoji.BLEED}`)
                             )
 
                         defender.applyEffect(mutilate)
-
-                        return `**${attacker.name}** used Wild reflex`
+                        attacker.addLogMessage(`**${attacker.name}** used Mutilate`)
+                        defender.takeDamage
+                                    .physical(20)
+                                    .run(damage => `**${defender.name}** lost ${damage} HP by Mutilate`)
+                        attacker.addLogMessage(`**${defender.name}** started bleeding`)
+                        
+                        
+                                
+                        
+                            
                     },
                 },
             ],

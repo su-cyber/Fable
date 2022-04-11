@@ -31,13 +31,15 @@ export class Goblin extends MonsterEntity {
             skills: [
                 {
                     cooldown: 0,
-                    name: 'Attack',
+                    name: 'Knife stab ',
                     description: 'Basic attack',
                     canEvade: true,
-                    use: (attacker, defender) =>
+                    use: (attacker, defender) =>{
+                        attacker.addLogMessage(`**${attacker.name}** used Knife stab`)
                         defender.takeDamage
                             .physical(attacker.attackDamage)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by Attack`),
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Knife stab`)
+                    }
                 },
             ],
         })

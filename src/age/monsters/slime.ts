@@ -31,13 +31,15 @@ export class Slime extends MonsterEntity {
             skills: [
                 {
                     cooldown: 0,
-                    name: 'Attack',
+                    name: 'Dissolve',
                     description: 'Basic attack',
                     canEvade: true,
-                    use: (attacker, defender) =>
+                    use: (attacker, defender) =>{
+                        attacker.addLogMessage(`**${attacker.name}** used Dissolve`)
                         defender.takeDamage
                             .physical(attacker.attackDamage)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by Attack`),
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Dissolve`)
+                    }
                 },
             ],
         })

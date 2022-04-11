@@ -74,6 +74,7 @@ export class BloodHound extends MonsterEntity {
                         defender.takeDamage
                             .physical(attacker.attackDamage)
                             .run(damage => `**${attacker.name}** used Bloodlust`)
+                        attacker.addLogMessage(`**${attacker.name}'s** damage has increased`)
                     },
                 },
             ],

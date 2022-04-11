@@ -57,7 +57,7 @@ export class Chimera extends MonsterEntity {
                             )
 
                         defender.applyEffect(fireBreath)
-
+                        attacker.addLogMessage(`**${attacker.name}** used Fire breath`)
                         defender.takeDamage
                             .physical(50)
                             .run(damage => `**${defender.name}** lost ${damage} HP by Fire breath`)
@@ -84,10 +84,11 @@ export class Chimera extends MonsterEntity {
                             )
 
                         defender.applyEffect(venomSplash)
-
+                        attacker.addLogMessage(`**${attacker.name}** used Venom splash`)
                         defender.takeDamage
                             .physical(50)
                             .run(damage => `**${defender.name}** lost ${damage} HP by Venom splash`)
+                        attacker.addLogMessage(`**${defender.name}** has been poisoned!`)
                     },
                 },
                 {

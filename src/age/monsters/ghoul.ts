@@ -35,28 +35,29 @@ export class Ghoul extends MonsterEntity {
                     name: 'Claw Attack',
                     description: 'Basic attack',
                     canEvade: true,
-                    use: (attacker, defender) =>
+                    use: (attacker, defender) =>{
+                        attacker.addLogMessage(`**${attacker.name}** used Claw attack`)
                         defender.takeDamage
                             .physical(12)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by Claw Attack`),
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Claw Attack`)
+                    }
                 },
                 {
                     cooldown: 0,
                     name: 'Hollow Screech',
                     description: 'Increases attack damage for a short time',
-                    canEvade: true,
+                    canEvade: false,
                     use: (attacker, defender) => {
                         const drainedArmor = percentOf(0.05, defender.armor)
                         defender.armor -= drainedArmor
-                        attacker.armor += drainedArmor
+        
 
-                        defender.addLogMessage(
-                            `**${defender.name}** lost ${drainedArmor.toFixed(1)} armor by Hollow Screech`
+                        attacker.addLogMessage(
+                            `**${attacker.name}** used Hollow Screech`,
+                            `**${defender.name}** lost 5% armor due to Hollow Screech`
                         )
                         
-                        defender.takeDamage
-                            .physical(percentOf(0.7, attacker.attackDamage))
-                            .run(damage => `**${defender.name}** lost ${damage} HP by Hollow Screech`)
+                       
                     },
                 },
             ],

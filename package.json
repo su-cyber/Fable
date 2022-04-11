@@ -16,7 +16,8 @@
         "lodash.range": "^3.2.0",
         "lodash.sample": "^4.2.1",
         "lodash.sum": "4.0.2",
-        "nanoid": "^3.3.1"
+        "nanoid": "^3.3.1",
+        "nodemon": "^2.0.15"
     },
     "devDependencies": {
         "@types/jest": "^27.4.1",
