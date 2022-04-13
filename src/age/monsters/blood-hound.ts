@@ -1,7 +1,7 @@
 import { CommandInteraction } from 'discord.js'
 import sample from 'lodash.sample'
 import { Dropper } from '../dropper'
-import { teddyBear } from '../items'
+import { bloodhoundTooth } from '../items'
 import { strength } from '../effects/strength'
 import { percentOf } from '../../utils/percentOf'
 import { MonsterEntity, ClassEntity, Entity } from '../classes'
@@ -15,7 +15,7 @@ export class BloodHound extends MonsterEntity {
 
         new Dropper([
             {
-                item: teddyBear,
+                item: bloodhoundTooth,
                 dropRate: 0.9,
             },
         ]).sendDeathMessage(messages, interaction, this)

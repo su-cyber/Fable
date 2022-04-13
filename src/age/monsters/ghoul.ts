@@ -1,6 +1,6 @@
 import { CommandInteraction } from 'discord.js'
 import { Dropper } from '../dropper'
-import { teddyBear } from '../items'
+import { ghoulSkull } from '../items'
 import { percentOf } from '../../utils/percentOf'
 import { MonsterEntity, ClassEntity } from '../classes'
 
@@ -13,7 +13,7 @@ export class Ghoul extends MonsterEntity {
 
         new Dropper([
             {
-                item: teddyBear,
+                item: ghoulSkull,
                 dropRate: 0.9,
             },
         ]).sendDeathMessage(messages, interaction, this)

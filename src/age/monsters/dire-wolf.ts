@@ -1,6 +1,6 @@
 import { CommandInteraction, Emoji } from 'discord.js'
 import { Dropper } from '../dropper'
-import { teddyBear } from '../items'
+import { direwolfClaw, direwolfHide } from '../items'
 import { emoji } from '../../lib/utils/emoji'
 import { bleeding } from '../effects/bleeding'
 import { MonsterEntity, ClassEntity } from '../classes'
@@ -14,10 +14,15 @@ export class DireWolf extends MonsterEntity {
 
         new Dropper([
             {
-                item: teddyBear,
-                dropRate: 0.9,
+                item: direwolfHide,
+                dropRate: 0.5,
+            },
+            {
+                item: direwolfClaw,
+                dropRate: 0.4,
             },
         ]).sendDeathMessage(messages, interaction, this)
+        
     }
 
     static create() {

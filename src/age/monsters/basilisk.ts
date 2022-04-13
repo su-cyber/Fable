@@ -1,6 +1,6 @@
 import { CommandInteraction } from 'discord.js'
 import { Dropper } from '../dropper'
-import { teddyBear } from '../items'
+import { basiliskScale, basiliskVenom } from '../items'
 import { percentOf } from '../../utils'
 import { poisoning } from '../effects/poisoning'
 import { emoji } from '../../lib/utils/emoji'
@@ -17,9 +17,13 @@ export class Basilisk extends MonsterEntity {
 
         new Dropper([
             {
-                item: teddyBear,
-                dropRate: 0.9,
+                item: basiliskScale,
+                dropRate: 0.5,
             },
+            {
+                item: basiliskVenom,
+                dropRate: 0.4,
+            }
         ]).sendDeathMessage(messages, interaction, this)
     }
 

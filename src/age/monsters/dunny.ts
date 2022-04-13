@@ -1,7 +1,8 @@
 import { CommandInteraction } from 'discord.js'
 import { MonsterEntity, ClassEntity, Attack } from '../classes'
 import { Dropper } from '../dropper'
-import { teddyBear } from '../items'
+import { ghoulSkull } from '../items'
+
 
 export class Dunny extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -12,7 +13,7 @@ export class Dunny extends MonsterEntity {
 
         new Dropper([
             {
-                item: teddyBear,
+                item: ghoulSkull,
                 dropRate: 0.9,
             },
         ]).sendDeathMessage(messages, interaction, this)

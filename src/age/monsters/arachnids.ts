@@ -1,7 +1,7 @@
 import { CommandInteraction } from 'discord.js'
 import { Dropper } from '../dropper'
 
-import { teddyBear } from '../items'
+import { arachnidVenom } from '../items'
 import { poisoning } from '../effects/poisoning'
 import { emoji } from '../../lib/utils/emoji'
 import { MonsterEntity, ClassEntity } from '../classes'
@@ -15,7 +15,7 @@ export class Arachnids extends MonsterEntity {
 
         new Dropper([
             {
-                item: teddyBear,
+                item: arachnidVenom,
                 dropRate: 0.9,
             },
         ]).sendDeathMessage(messages, interaction, this)
@@ -23,7 +23,7 @@ export class Arachnids extends MonsterEntity {
 
     static create() {
         return new Arachnids({
-            name: 'Arachnids',
+            name: 'Arachnid',
             spawnRate: 0.5,
             evasion: 0.05,
             health: 40,

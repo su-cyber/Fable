@@ -53,8 +53,11 @@ export class Dropper {
 
             ${drop ? sample(withDropMessages) : sample(withoutDropMessages)}
 
-            🪙 ${coins}
-            ${drop ? `${drop.emoji} ${randint(1, 2)}x` : ''}
+            You gained few coins!
+            🪙 X ${coins}
+            
+            ${drop ? `You found ${drop.name}! 
+            ${drop.emoji} X ${1}` : ''}
         `
 
         await interaction.channel.send(removeIndentation(text))

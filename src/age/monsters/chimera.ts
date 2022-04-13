@@ -1,6 +1,6 @@
 import { CommandInteraction } from 'discord.js'
 import { Dropper } from '../dropper'
-import { teddyBear } from '../items'
+import { chimeraFeather, chimeraHorn } from '../items'
 import { poisoning } from '../effects/poisoning'
 import { emoji } from '../../lib/utils/emoji'
 import { burning } from '../effects/burning'
@@ -15,14 +15,18 @@ export class Chimera extends MonsterEntity {
 
         new Dropper([
             {
-                item: teddyBear,
-                dropRate: 0.9,
+                item: chimeraFeather,
+                dropRate: 0.5,
             },
+            {
+                item: chimeraHorn,
+                dropRate: 0.4,
+            }
         ]).sendDeathMessage(messages, interaction, this)
     }
 
     beforeDuelStart(you: Entity, opponent: Entity) {
-        opponent.evasion /= 2
+        
     }
 
     static create() {

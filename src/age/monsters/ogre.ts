@@ -1,6 +1,6 @@
 import { CommandInteraction } from 'discord.js'
 import { Dropper } from '../dropper'
-import { teddyBear } from '../items'
+import { woodClub } from '../items'
 import { percentOf, randint } from '../../utils'
 import range from 'lodash.range'
 import { MonsterEntity, ClassEntity } from '../classes'
@@ -14,7 +14,7 @@ export class Ogre extends MonsterEntity {
 
         new Dropper([
             {
-                item: teddyBear,
+                item: woodClub,
                 dropRate: 0.9,
             },
         ]).sendDeathMessage(messages, interaction, this)
