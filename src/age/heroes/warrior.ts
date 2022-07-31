@@ -1,14 +1,16 @@
 import { GuildMember } from 'discord.js'
 import { emoji } from '../../lib/utils/emoji'
-import { ClassEntity } from '../classes'
+import { calculate, ClassEntity } from '../classes'
 import { bleeding } from '../effects/bleeding'
+import { burning } from '../effects/burning'
 
 export class Warrior extends ClassEntity {
     static create(user: GuildMember) {
         return new Warrior({
             user,
             health: 1000,
-            attackDamage: 10,
+            attackDamage: 100,
+            mana:50,
             magicPower: 0,
             armor: 10,
             evasion: 0.1,
@@ -19,6 +21,8 @@ export class Warrior extends ClassEntity {
                     cooldown: 0,
                     description: 'Basic attack',
                     canEvade: true,
+                    mana_cost: 0,
+                    type: 'physical',
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`**${attacker.name}** used Basic attack`)
                         defender.takeDamage
@@ -31,7 +35,10 @@ export class Warrior extends ClassEntity {
                     cooldown: 0,
                     description: 'Charge a powerful attack for 1 turn',
                     canEvade: true,
+                    mana_cost: 0,
+                    type: 'physical',
                     use: (attacker, defender) => {
+                        
                         const chargedAttack = attacker.scheduler.task
                             .turns(1)
                             .turnOf(attacker)
@@ -39,7 +46,9 @@ export class Warrior extends ClassEntity {
                                 defender.takeDamage
                                     .physical(40)
                                     .run(damage => `**${defender.name}** lost ${damage} HP by Charged Attack`)
+                        
                             )
+                        
                         attacker.applyEffect(chargedAttack)
 
                         attacker.addLogMessage(`**${attacker.name}** is charging...`)
@@ -50,6 +59,8 @@ export class Warrior extends ClassEntity {
                     name: 'Deep cut',
                     description: 'Apply bleeding for 3 turns',
                     canEvade: true,
+                    mana_cost: 0,
+                    type: 'physical',
                     use: (attacker, defender) => {
                         const deepCut = attacker.scheduler.task
                             .turns(3)
@@ -72,6 +83,30 @@ export class Warrior extends ClassEntity {
                         )
                     },
                 },
+                {
+                    cooldown: 0,
+                    name: 'Fireball',
+                    description: 'Dealing damage and burning them for 3 turns',
+                    canEvade: true,
+                    mana_cost: 20,
+                    type: 'magical',
+                    use: (attacker, defender) => {
+                        const fireball = attacker.scheduler.task.all
+                            .effect(burning)
+                            .turns(3)
+                            .end(() => defender.removeEffect(burning))
+                            .run(() =>
+                                defender.takeDamage
+                                    .physical(5)
+                                    .run(damage => `**${defender.name}** lost ${damage} HP by Burning`)
+                            )
+                        defender.applyEffect(fireball)
+
+                        defender.takeDamage
+                            .magical(15)
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Fireball`)
+                    },
+                }
             ],
         })
     }

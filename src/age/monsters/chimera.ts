@@ -5,6 +5,8 @@ import { poisoning } from '../effects/poisoning'
 import { emoji } from '../../lib/utils/emoji'
 import { burning } from '../effects/burning'
 import { MonsterEntity, ClassEntity, Entity } from '../classes'
+import { anti_physical } from '../effects/anti-physical'
+
 
 export class Chimera extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -26,16 +28,22 @@ export class Chimera extends MonsterEntity {
     }
 
     beforeDuelStart(you: Entity, opponent: Entity) {
-        
+        you.evasion = you.evasion+0.5*you.evasion
+        you.addLogMessage(
+            "Chimera has activated unique skill: **Triple Vision**",
+            "Chimera's vision and evasiveness has increased!"
+            
+        )
     }
 
     static create() {
         return new Chimera({
             name: 'Chimera',
             spawnRate: 0.2,
-            evasion: 0.05,
+            evasion: 0.3,
             health: 80,
             attackDamage: 30,
+            mana:100,
             magicPower: 20,
             armor: 20,
             magicResistance: 30,
@@ -45,6 +53,8 @@ export class Chimera extends MonsterEntity {
                     name: 'Fire breath',
                     description: 'Basic attack',
                     canEvade: true,
+                    type: 'magical',
+                    mana_cost: 30,
                     use: (attacker, defender) => {
                         const fireBreath = attacker.scheduler.task
                             .id('chimera__fire-breath')
@@ -63,7 +73,7 @@ export class Chimera extends MonsterEntity {
                         defender.applyEffect(fireBreath)
                         attacker.addLogMessage(`**${attacker.name}** used Fire breath`)
                         defender.takeDamage
-                            .physical(50)
+                            .magical(50)
                             .run(damage => `**${defender.name}** lost ${damage} HP by Fire breath`)
                     },
                 },
@@ -72,6 +82,8 @@ export class Chimera extends MonsterEntity {
                     name: 'Venom splash',
                     description: 'Increases attack damage for a short time',
                     canEvade: true,
+                    type: 'physical',
+                    mana_cost: 0,
                     use: (attacker, defender) => {
                         const venomSplash = attacker.scheduler.task
                             .id('chimera__venom-splash')
@@ -98,17 +110,25 @@ export class Chimera extends MonsterEntity {
                 {
                     cooldown: 0,
                     name: 'Aerial Combat',
-                    description: 'Increases attack damage for a short time',
+                    type: 'anti-physical',
+                    description: 'attacker is unable to use physical attacks for 2 turns',
                     canEvade: false,
+                    mana_cost: 0,
                     use: (attacker, defender) => {
+                        
                         const aerialCombat = attacker.scheduler.task
                             .id('chimera__aerial-combat')
                             .turnOf(defender)
-                            .skipTurn.turns(2)
-                            .run(() => {})
+                            .all.effect(anti_physical)
+                            .turns(4)
+                            .end(()=>defender.removeEffect(anti_physical) )
+                            .run(() => {
+                                
+                            })
 
                         defender.applyEffect(aerialCombat)
                         defender.addLogMessage(`**${attacker.name}** used Aerial Combat`)
+                        defender.addLogMessage(`**${attacker.name}** is now flying! physical attacks will have no effect.`)
                     },
                 },
                 {
@@ -116,6 +136,8 @@ export class Chimera extends MonsterEntity {
                     name: 'Mad Ram',
                     description: 'Increases attack damage for a short time',
                     canEvade: true,
+                    type: 'physical',
+                    mana_cost: 0,
                     use: (attacker, defender) => {
                         const madRam = attacker.scheduler.task
                             .id('chimera__mad-ram')

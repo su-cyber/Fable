@@ -23,7 +23,8 @@ export class Slime extends MonsterEntity {
             name: 'Slime',
             spawnRate: 0.5,
             health: 20,
-            evasion: 0.01,
+            mana:10,
+            evasion: 0.05,
             attackDamage: 3,
             magicPower: 0,
             armor: 0,
@@ -34,6 +35,8 @@ export class Slime extends MonsterEntity {
                     name: 'Dissolve',
                     description: 'Basic attack',
                     canEvade: true,
+                    type: 'physical',
+                    mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`**${attacker.name}** used Dissolve`)
                         defender.takeDamage

@@ -27,6 +27,7 @@ export class Ogre extends MonsterEntity {
             evasion: 0.01,
             health: 70,
             attackDamage: 15,
+            mana:10,
             magicPower: 0,
             armor: 12,
             magicResistance: 4,
@@ -36,6 +37,8 @@ export class Ogre extends MonsterEntity {
                     name: 'Ogre smash',
                     description: 'Basic attack',
                     canEvade: true,
+                    type: 'physical',
+                    mana_cost: 0,
                     use: (attacker, defender) =>{
                         defender.addLogMessage(`**${attacker.name}** used Ogre smash`)
                         defender.takeDamage
@@ -48,6 +51,8 @@ export class Ogre extends MonsterEntity {
                     name: 'Guard',
                     description: 'Increases attack damage for a short time',
                     canEvade: false,
+                    type: 'self',
+                    mana_cost: 0,
                     use: (attacker, defender) => {
                         const gainedArmor = percentOf(0.1, attacker.armor)
                         attacker.armor += gainedArmor
@@ -63,6 +68,8 @@ export class Ogre extends MonsterEntity {
                     name: 'Savage fury',
                     description: 'Increases attack damage for a short time',
                     canEvade: true,
+                    type: 'physical',
+                    mana_cost: 0,
                     use: (attacker, defender) => {
                         const n = randint(2, 4)
 

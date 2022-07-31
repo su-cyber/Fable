@@ -25,6 +25,7 @@ export class Orc extends MonsterEntity {
             spawnRate: 0.4,
             health: 70,
             attackDamage: 12,
+            mana:10,
             evasion: 0.01,
             magicPower: 0,
             armor: 10,
@@ -35,6 +36,8 @@ export class Orc extends MonsterEntity {
                     name: 'Savage charge',
                     description: 'Basic attack',
                     canEvade: true,
+                    type: 'physical',
+                    mana_cost: 0,
                     use: (attacker, defender) => {
                         const savageCharge = attacker.scheduler.task
                             .id('orc__savage-charge')
@@ -44,6 +47,9 @@ export class Orc extends MonsterEntity {
                                 defender.takeDamage
                                     .physical(40)
                                     .run(damage => `**${defender.name}** lost ${damage} HP by Savage charge`)
+                                
+
+                            
                             )
 
                         attacker.applyEffect(savageCharge)
@@ -58,7 +64,9 @@ export class Orc extends MonsterEntity {
                     cooldown: 0,
                     name: 'Brute stomp',
                     description: 'Basic attack',
+                    mana_cost: 0,
                     canEvade: true,
+                    type: 'physical',
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`**${attacker.name}** used Brute Stomp`)
                         defender.takeDamage

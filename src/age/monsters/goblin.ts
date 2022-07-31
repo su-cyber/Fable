@@ -25,6 +25,7 @@ export class Goblin extends MonsterEntity {
             health: 30,
             evasion: 0.05,
             attackDamage: 5,
+            mana:10,
             magicPower: 0,
             armor: 2,
             magicResistance: 1,
@@ -34,6 +35,8 @@ export class Goblin extends MonsterEntity {
                     name: 'Knife stab ',
                     description: 'Basic attack',
                     canEvade: true,
+                    type: 'physical',
+                    mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`**${attacker.name}** used Knife stab`)
                         defender.takeDamage

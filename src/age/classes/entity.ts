@@ -5,6 +5,9 @@ import { Attack } from './attack'
 import { calculate } from './calculate'
 import { Effect } from './effect'
 import { Skill } from './skill'
+import { anti_physical } from '../effects/anti-physical'
+import { anti_magic } from '../effects/anti-magic'
+import { illusion } from '../effects/illusion'
 
 // prettier-ignore
 export type EntityProps = {
@@ -12,6 +15,7 @@ export type EntityProps = {
     name           : string
     health         : number
     attackDamage   : number
+    mana           : number
     magicPower     : number
     armor          : number
     evasion        : number
@@ -26,6 +30,8 @@ export class Entity {
     health: number
     maxHealth: number
     attackDamage: number
+    mana : number
+    maxMana : number
     magicPower: number
     evasion: number
     armor: number
@@ -40,7 +46,9 @@ export class Entity {
     constructor(props: EntityProps) {
         Object.assign(this, props)
         this.maxHealth = this.health
+        this.maxMana = this.mana
         this.effects = []
+        
     }
 
     equals(other: Entity) {
@@ -73,16 +81,18 @@ export class Entity {
         this.armor = Math.max(0, this.armor - n)
     }
 
-    get takeDamage() {
+     get takeDamage() {
         const thisThis = this
 
         const foo = {
             damage: null as number,
             type: null as AttackType,
+            manacost: null as number,
 
             physical(damage: number) {
                 this.damage = damage
                 this.type = AttackType.PHYSICAL
+                
                 return this as typeof foo
             },
 
@@ -110,6 +120,7 @@ export class Entity {
                 if (!notAttack) {
                     damage = calculate.damage(attack, thisThis)
                     thisThis.health = Math.max(0, thisThis.health - damage)
+                    
                 }
 
                 const text = fn(damage)
@@ -120,16 +131,60 @@ export class Entity {
         return foo as Omit<typeof foo, 'damage' | 'type'>
     }
 
-    useSkill(defender: Entity, skill: Skill) {
+    useSkill(attacker:Entity,defender: Entity, skill: Skill) {
+        if(attacker.mana>=skill.mana_cost){
+        attacker.mana=attacker.mana-skill.mana_cost
         if (skill.canEvade && this.oponent.evade()) {
             return this.addLogMessage(`**${this.name}** used ${skill.name} but ${this.oponent.name} evaded`)
         }
+        else{
 
-        const text = skill.use(this, defender)
-
-        if (text) {
-            this.addLogMessage(...(Array.isArray(text) ? text : [text]))
         }
+        if(attacker.hasEffect(anti_physical)){
+            if(skill.type!='physical'){
+                const text = skill.use(this, defender)
+                if (text) {
+                    this.addLogMessage(...(Array.isArray(text) ? text : [text]))
+            }
+        }
+            else{
+                attacker.addLogMessage('physical attacks have been disabled!')
+            }
+        }
+        else if(attacker.hasEffect(anti_magic)){
+            if(skill.type!='magical'){
+                const text = skill.use(this, defender)
+                if (text) {
+                    this.addLogMessage(...(Array.isArray(text) ? text : [text]))
+            }
+        }
+            else{
+                attacker.addLogMessage('magical attacks have been disabled!')
+            }
+        }
+        else if(attacker.hasEffect(illusion)){
+            attacker.addLogMessage("You are under illusion!")
+                const text = skill.use(this, attacker)
+                if (text) {
+                    this.addLogMessage(...(Array.isArray(text) ? text : [text]))
+            
+        }
+            
+        }
+        else {
+            const text = skill.use(this, defender)
+                if (text) {
+                    this.addLogMessage(...(Array.isArray(text) ? text : [text]))
+        }
+    }
+        }
+        else{
+            attacker.addLogMessage("Insufficient mana! Attack failed!")
+        }
+        
+       
+
+        
     }
 
     beforeDuelStart(you: Entity, opponent: Entity) {}

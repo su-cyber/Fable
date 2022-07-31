@@ -28,6 +28,7 @@ export class Arachnids extends MonsterEntity {
             evasion: 0.05,
             health: 40,
             attackDamage: 8,
+            mana:10,
             magicPower: 6,
             armor: 2,
             magicResistance: 2,
@@ -37,6 +38,8 @@ export class Arachnids extends MonsterEntity {
                     name: 'Poison Sting',
                     description: 'Basic attack',
                     canEvade: true,
+                    mana_cost: 0,
+                    type: 'physical',
                     use: (attacker, defender) => {
                         defender.takeDamage.physical(10).run(damage => {
                             const poisonSting = attacker.scheduler.task

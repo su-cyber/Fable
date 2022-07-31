@@ -5,6 +5,8 @@ import { getMonsters } from '../src/age/monsters'
 import { MessageActionRow, MessageSelectMenu } from 'discord.js'
 import { Warrior } from '../src/age/heroes/warrior'
 import { MonsterEntity, Entity } from '../src/age/classes'
+import { getRandomMonster } from '../src/age/monsters'
+
 
 export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explore the world' }).setDo(
     async (bot, interaction) => {
@@ -60,7 +62,7 @@ class PvEDuel extends DuelBuilder {
     async onSkillSelect(skillName: string) {
         const skill = this.attacker.skills.find(skill => skill.name === skillName)
 
-        this.attacker.useSkill(this.defender, skill)
+        this.attacker.useSkill(this.attacker,this.defender,skill)
     }
 
     async onTurn(skipTurn: boolean) {
@@ -76,18 +78,24 @@ class PvEDuel extends DuelBuilder {
         }
 
         if (this.attacker instanceof MonsterEntity) {
-            await sleep(1.5)
-            this.deleteInfoMessages()
+            
+           
             await this.sendInfoMessage(this.attacker.skills, true)
 
-            this.attacker.useSkill(this.defender)
+            this.attacker.useSkill(this.attacker,this.defender)
+            
+            
         } else {
+            
             await this.sendInfoMessage(this.attacker.skills)
+            await sleep(1.5)
+            this.deleteInfoMessages()
             await this.locker.wait()
             this.locker.lock()
         }
 
         await this.sendInfoMessage(this.attacker.skills)
+        
     }
 
     async onEnd(winner: Entity, loser: MonsterEntity) {
