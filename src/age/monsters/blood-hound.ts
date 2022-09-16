@@ -5,6 +5,7 @@ import { bloodhoundTooth } from '../items'
 import { strength } from '../effects/strength'
 import { percentOf } from '../../utils/percentOf'
 import { MonsterEntity, ClassEntity, Entity } from '../classes'
+import generateXP from '../../utils/generateXP'
 
 export class BloodHound extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -18,7 +19,7 @@ export class BloodHound extends MonsterEntity {
                 item: bloodhoundTooth,
                 dropRate: 0.9,
             },
-        ]).sendDeathMessage(messages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this,killer)
     }
 
     chooseSkill(defender: Entity) {
@@ -37,6 +38,7 @@ export class BloodHound extends MonsterEntity {
             spawnRate: 0.4,
             evasion: 0.02,
             health: 50,
+            xp: generateXP(5,20),
             attackDamage: 12,
             mana:10,
             magicPower: 0,

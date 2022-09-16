@@ -3,8 +3,37 @@ import { emoji } from '../../lib/utils/emoji'
 import { calculate, ClassEntity } from '../classes'
 import { bleeding } from '../effects/bleeding'
 import { burning } from '../effects/burning'
+import { CommandInteraction } from 'discord.js'
+import { removeIndentation } from '../../utils'
+import { Entity } from '../classes/entity'
+import passive_skills from './passive_skills'
 
 export class Warrior extends ClassEntity {
+
+    async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
+        this.sendDeathMessage(interaction,this)
+    }
+
+
+    async sendDeathMessage(
+        interaction: CommandInteraction,
+        killed: Entity
+    ) {
+       
+        const text = `
+            **${killed.name} was killed!**
+        `
+
+        await interaction.channel.send(removeIndentation(text))
+    }
+    
+    beforeDuelStart(you: Entity, opponent: Entity) {
+        let i
+        for(i=0;i<you.passive_skills.length;i++){
+            const passive_skill = passive_skills.find(skill => skill.name === you.passive_skills[i].name)
+            you.useSkill(you,opponent,passive_skill)
+        } 
+    }
     static create(user: GuildMember) {
         return new Warrior({
             user,
@@ -15,6 +44,7 @@ export class Warrior extends ClassEntity {
             armor: 10,
             evasion: 0.1,
             magicResistance: 10,
+            
             skills: [
                 {
                     name: 'Basic attack',

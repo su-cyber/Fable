@@ -7,6 +7,7 @@ import { emoji } from '../../lib/utils/emoji'
 import { paralyzed } from '../effects/paralyze'
 import sample from 'lodash.sample'
 import { MonsterEntity, ClassEntity, Entity } from '../classes'
+import generateXP from '../../utils/generateXP'
 
 export class Basilisk extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -24,7 +25,7 @@ export class Basilisk extends MonsterEntity {
                 item: basiliskVenom,
                 dropRate: 0.4,
             }
-        ]).sendDeathMessage(messages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this,killer)
     }
 
     beforeDuelStart(you: Entity, opponent: Entity) {
@@ -52,6 +53,7 @@ export class Basilisk extends MonsterEntity {
             spawnRate: 0.2,
             evasion: 0.05,
             health: 100,
+            xp: generateXP(1000,1500),
             attackDamage: 30,
             mana:100,
             magicPower: 20,

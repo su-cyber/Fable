@@ -201,11 +201,13 @@ class DuelBuilder {
         embeds?: MessageEmbed[]
         components?: any
     }) {
-        try {
-            await this.interaction.reply({ content, embeds, components })
-        } catch {
-            await this.interaction.editReply({ content, embeds, components })
-        }
+        
+             this.interaction.reply({ content, embeds, components }).catch(() => {
+                this.interaction.editReply({ content, embeds, components }).catch(() => null)
+            })
+         
+         
+        
     }
 
     deleteInfoMessages() {
@@ -226,7 +228,7 @@ class DuelBuilder {
 
     async beforeDuelStart() {
         async function onCollect(collected: MessageComponentInteraction<CacheType> & { values: string[] }) {
-            collected.deferUpdate()
+            collected.deferUpdate().catch(() => null)
             const skillName = collected.values[0]
 
             await this.onSkillSelect(skillName)
@@ -254,6 +256,7 @@ class DuelBuilder {
     }
 
     async onEnd(winner: Entity, loser: Entity) {}
+    
 
     async start() {
         await this.beforeDuelStart()
@@ -279,6 +282,7 @@ class DuelBuilder {
         const loser = this.player1.isDead() ? this.player1 : this.player2
 
         this.onEnd(winner, loser)
+        
     }
 }
 

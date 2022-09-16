@@ -10,10 +10,14 @@ import {
     MessageComponentInteraction,
     SelectMenuInteraction,
 } from 'discord.js'
-
+import profileSchema from '../models/profileSchema'
+import xpFormulate from './utils/XPformulate'
+import { MessageEmbed } from 'discord.js'
 import { MyCommandSlashBuilder } from './lib/builders/slash-command'
 import { getCommandsFromFolder } from './lib/utils/getCommandsFromFolder'
 import { SlashCommandBuilder } from '@discordjs/builders'
+import mongoose from "mongoose"
+import { sleep } from './utils'
 
 type InteractionFn = (interaction: MessageComponentInteraction & { values: string[] }) => Promise<void>
 
@@ -40,11 +44,52 @@ class Bot extends Client {
 
                 if (command) {
                     await command.do(this, interaction)
+                    const userID=interaction.user.id
+                    profileSchema.exists({userID:userID},async function(err,res){
+                        if(res){
+                            profileSchema.findOne({userID:userID},async function(err,foundUser){
+                                
+                                for(let i =1;i<1000;i++){
+                                    if(foundUser.xp>=xpFormulate(i) && foundUser.level<i){
+                                        let levelupEmbed= new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('LEVEL UP!')
+                                                    .setDescription(`you have levelled up to level ${i}!`)
+                                        await sleep(2)
+                                        await interaction.channel.send({embeds:[levelupEmbed]})
+                                        foundUser.level=foundUser.level+1
+                                        
+                                        
+                                   }
+                                   
+                                }
+                                await profileSchema.findOneAndUpdate({userID:userID},foundUser)
+                                
+                                
+                            })
+                            
+                        }
+                       })
+     
+
+                     
+                    
+                    
+                 
                 }
+                
             }
         })
 
-        this.on('ready', () => console.log('Ready'))
+        this.on('ready', () => {
+            console.log('Bot is Ready')
+            mongoose.connect(process.env.MONGO_URL || '',{
+                keepAlive:true
+            })
+        }
+        )
+
+        
     }
 
     onComponent(
@@ -56,7 +101,7 @@ class Bot extends Client {
 
     async startREST() {
         const rest = new REST({ version: '9' }).setToken(env.BOT_TOKEN)
-        await rest.put(Routes.applicationGuildCommands(env.BOT_ID, env.DEV_SERVER), {
+        await rest.put(Routes.applicationCommands(env.BOT_ID), {
             body: [...this.commands.values()].map(command => command.toJSON()),
         })
     }

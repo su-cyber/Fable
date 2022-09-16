@@ -3,6 +3,7 @@ import { Dropper } from '../dropper'
 import { ghoulSkull } from '../items'
 import { percentOf } from '../../utils/percentOf'
 import { MonsterEntity, ClassEntity } from '../classes'
+import generateXP from '../../utils/generateXP'
 
 export class Ghoul extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -16,7 +17,7 @@ export class Ghoul extends MonsterEntity {
                 item: ghoulSkull,
                 dropRate: 0.9,
             },
-        ]).sendDeathMessage(messages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this,killer)
     }
 
     static create() {
@@ -27,6 +28,7 @@ export class Ghoul extends MonsterEntity {
             evasion: 0.04,
             attackDamage: 10,
             mana:10,
+            xp: generateXP(5,15),
             magicPower: 0,
             armor: 5,
             magicResistance: 3,

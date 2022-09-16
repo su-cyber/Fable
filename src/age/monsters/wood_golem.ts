@@ -7,6 +7,7 @@ import { emoji } from '../../lib/utils/emoji'
 import { paralyzed } from '../effects/paralyze'
 import sample from 'lodash.sample'
 import { MonsterEntity, ClassEntity, Entity } from '../classes'
+import generateXP from '../../utils/generateXP'
 
 export class WoodGolem extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -20,7 +21,7 @@ export class WoodGolem extends MonsterEntity {
                 item: woodGolem_core,
                 dropRate: 0.9,
             }
-        ]).sendDeathMessage(messages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this,killer)
     }
 
     beforeDuelStart(you: Entity, opponent: Entity) {
@@ -73,6 +74,7 @@ export class WoodGolem extends MonsterEntity {
             health: 500,
             attackDamage: 80,
             mana:350,
+            xp: generateXP(2500,3000),
             magicPower: 40,
             armor: 80,
             magicResistance: 65,

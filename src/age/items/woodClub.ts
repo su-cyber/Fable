@@ -5,4 +5,5 @@ export const woodClub = new Item({
     name: 'Wooden Club',
     description: 'A huge wooden club',
     emoji: '🪵',
+    cost:1750
 })

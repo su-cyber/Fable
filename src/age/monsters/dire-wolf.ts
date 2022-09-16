@@ -4,6 +4,7 @@ import { direwolfClaw, direwolfHide } from '../items'
 import { emoji } from '../../lib/utils/emoji'
 import { bleeding } from '../effects/bleeding'
 import { MonsterEntity, ClassEntity } from '../classes'
+import generateXP from '../../utils/generateXP'
 
 export class DireWolf extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -21,7 +22,7 @@ export class DireWolf extends MonsterEntity {
                 item: direwolfClaw,
                 dropRate: 0.4,
             },
-        ]).sendDeathMessage(messages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this,killer)
         
     }
 
@@ -31,6 +32,7 @@ export class DireWolf extends MonsterEntity {
             spawnRate: 0.4,
             evasion: 0.1,
             health: 40,
+            xp: generateXP(30,70),
             attackDamage: 8,
             mana:10,
             magicPower: 0,

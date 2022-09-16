@@ -6,4 +6,5 @@ export const slimeBlob = new Item({
     name: 'Slime Blob',
     description: 'A blob of slime',
     emoji: emoji.SLIME_GOO,
+    cost:200
 })

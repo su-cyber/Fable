@@ -4,6 +4,7 @@ import { woodClub } from '../items'
 import { percentOf, randint } from '../../utils'
 import range from 'lodash.range'
 import { MonsterEntity, ClassEntity } from '../classes'
+import generateXP from '../../utils/generateXP'
 
 export class Ogre extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -17,7 +18,7 @@ export class Ogre extends MonsterEntity {
                 item: woodClub,
                 dropRate: 0.9,
             },
-        ]).sendDeathMessage(messages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this,killer)
     }
 
     static create() {
@@ -28,6 +29,7 @@ export class Ogre extends MonsterEntity {
             health: 70,
             attackDamage: 15,
             mana:10,
+            xp: generateXP(30,70),
             magicPower: 0,
             armor: 12,
             magicResistance: 4,

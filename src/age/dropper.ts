@@ -6,6 +6,10 @@ import { weightedRandom } from '../utils/weightedRandom'
 import { Entity } from './classes/entity'
 import { CauseOfDeath } from './enums'
 import { Item } from './item'
+import inventory from '../../models/InventorySchema'
+import profileModel from '../../models/profileSchema'
+import { MonsterEntity } from './classes'
+
 
 type Props = {
     item: Item
@@ -44,22 +48,57 @@ export class Dropper {
     async sendDeathMessage(
         { withDropMessages, withoutDropMessages }: Messages,
         interaction: CommandInteraction,
-        killed: Entity
+        killed: MonsterEntity,
+        killer: Entity
     ) {
+        const gainedXP=killed.xp
+        profileModel.findOne({userID:killer.id},async function(err,foundUser){
+            foundUser.xp+=gainedXP
+            await profileModel.findOneAndUpdate({userID:killer.id},foundUser)
+        })
         const coins = formatMoney(randfloat(1, 1e8, 3), 3)
         const drop = this.drop()
         const text = `
             **${killed.name} was successfully killed!**
 
-            ${drop ? sample(withDropMessages) : sample(withoutDropMessages)}
+            ${drop ? sample(withDropMessages)  : sample(withoutDropMessages)}
 
             You gained few coins!
             🪙 X ${coins}
+            You gained ${gainedXP} XP!
             
             ${drop ? `You found ${drop.name}! 
             ${drop.emoji} X ${1}` : ''}
         `
+        if(drop){this.addItem(interaction,drop,1)}
+       
 
         await interaction.channel.send(removeIndentation(text))
+    }
+
+    async addItem(interaction:CommandInteraction,drop:Item,quantity:number){
+        
+        inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+            if(err){
+                console.log(err);
+                
+            }
+            else{
+                const foundItem = foundUser.inventory.items.find(item => item.name === drop.name)
+                if (foundItem){
+
+                    foundItem.quantity+=quantity
+                }
+                else{
+                    const newItem = {
+                        name:drop.name,
+                        description:drop.description,
+                        quantity:Number(quantity)
+                    }
+                    foundUser.inventory.items.push(newItem)
+                }
+                await inventory.findOneAndUpdate({userID:interaction.user.id},foundUser)
+            }
+        })
     }
 }

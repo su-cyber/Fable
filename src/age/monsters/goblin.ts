@@ -2,6 +2,7 @@ import { CommandInteraction } from 'discord.js'
 import { MonsterEntity, ClassEntity } from '../classes'
 import { Dropper } from '../dropper'
 import { goblinPouch } from '../items'
+import generateXP from '../../utils/generateXP'
 
 export class Goblin extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -15,7 +16,7 @@ export class Goblin extends MonsterEntity {
                 item: goblinPouch,
                 dropRate: 0.9,
             },
-        ]).sendDeathMessage(messages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this,killer)
     }
 
     static create() {
@@ -26,6 +27,7 @@ export class Goblin extends MonsterEntity {
             evasion: 0.05,
             attackDamage: 5,
             mana:10,
+            xp: generateXP(5,15),
             magicPower: 0,
             armor: 2,
             magicResistance: 1,

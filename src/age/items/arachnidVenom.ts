@@ -6,4 +6,5 @@ export const arachnidVenom = new Item({
     name: "Arachnid's Venom",
     description: 'Weak Venom of an Arachnid',
     emoji: emoji.POISON,
+    cost:50
 })

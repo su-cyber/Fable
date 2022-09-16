@@ -3,6 +3,7 @@ type TypeItem = {
     name: string
     description: string
     emoji: string
+    cost: number
 }
 
 class Item {
@@ -10,6 +11,7 @@ class Item {
     name: string
     description: string
     emoji: string
+    cost: number
 
     constructor(props: TypeItem) {
         Object.assign(this, props)

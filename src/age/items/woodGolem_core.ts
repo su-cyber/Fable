@@ -5,4 +5,5 @@ export const woodGolem_core = new Item({
     name: "Wood Golem's core",
     description: 'the core of the wood golem ',
     emoji: '🪵',
+    cost:25000
 })

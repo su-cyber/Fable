@@ -2,6 +2,7 @@ import { CommandInteraction } from 'discord.js'
 import { MonsterEntity, ClassEntity } from '../classes'
 import { Dropper } from '../dropper'
 import { woodAxe } from '../items'
+import generateXP from '../../utils/generateXP'
 
 export class Orc extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -16,7 +17,7 @@ export class Orc extends MonsterEntity {
                 dropRate: 0.9,
             },
             
-        ]).sendDeathMessage(messages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this,killer)
     }
 
     static create() {
@@ -26,6 +27,7 @@ export class Orc extends MonsterEntity {
             health: 70,
             attackDamage: 12,
             mana:10,
+            xp: generateXP(20,50),
             evasion: 0.01,
             magicPower: 0,
             armor: 10,

@@ -8,6 +8,8 @@ import { Skill } from './skill'
 import { anti_physical } from '../effects/anti-physical'
 import { anti_magic } from '../effects/anti-magic'
 import { illusion } from '../effects/illusion'
+import { CommandInteraction } from 'discord.js'
+import passive_skills from '../heroes/passive_skills'
 
 // prettier-ignore
 export type EntityProps = {
@@ -37,6 +39,7 @@ export class Entity {
     armor: number
     magicResistance: number
     skills: Skill[]
+    passive_skills: Skill[]
     effects: Effect[]
 
     addLogMessage: (...text: string[]) => void
@@ -55,10 +58,13 @@ export class Entity {
         return this.id === other.id
     }
 
+    
     isDead() {
         return this.health <= 0
     }
-
+    onDeath(interaction: CommandInteraction, killer: Entity) {
+        throw new Error('Not implemented')
+    }
     applyEffect(task: Task) {
         const effect = task.options.effect
 
@@ -187,7 +193,12 @@ export class Entity {
         
     }
 
-    beforeDuelStart(you: Entity, opponent: Entity) {}
+    beforeDuelStart(you: Entity, opponent: Entity) {
+       
+        
+         
+        
+    }
 
     onReceivedAttack(attack: Attack, ignoreAttack: () => void) {}
 

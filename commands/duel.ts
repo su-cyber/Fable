@@ -5,6 +5,8 @@ import { emoji } from '../src/lib/utils/emoji'
 import { Entity } from '../src/age/classes/entity'
 import { Warrior } from '../src/age/heroes/warrior'
 import { Mage } from '../src/age/heroes/mage'
+import profileModel from '../models/profileSchema'
+import allskills from '../src/age/heroes/skills'
 
 export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with a player' })
     .addUserOption((option: SlashCommandUserOption) =>
@@ -17,14 +19,83 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
         const author = interaction.guild.members.cache.get(authorId)
         const opponent = interaction.guild.members.cache.get(opponentId)
 
-        const attacker = Warrior.create(author)
-        const defender = Mage.create(opponent)
+        profileModel.exists({userID: authorId},async function(err,res){
+            if(err){
+                console.log(err);
+                
+            }
+            else{
+                if(res){
+                    profileModel.exists({userID: opponentId},async function(err,result){
 
-        await new PvPDuel({
-            interaction,
-            player1: attacker,
-            player2: defender,
-        }).start()
+                        if(err){
+                            console.log(err);
+                            
+                        }
+                        else{
+                            if(result){
+                                const attacker = Warrior.create(author)
+                                const defender = Mage.create(opponent)
+                                profileModel.findOne({userID:authorId},async function(err,foundUser) {
+                                    if(err){
+                                        console.log(err);
+                                        
+                                    }
+                                    else{
+                                        attacker.health=foundUser.health
+                                        attacker.mana=foundUser.mana
+                                        attacker.armor=foundUser.armour
+                                        attacker.magicPower=foundUser.magicPower
+                                        attacker.attackDamage=foundUser.attackDamage
+                                        attacker.evasion=foundUser.evasion
+                                        attacker.maxHealth=foundUser.health
+                                        attacker.skills=foundUser.skills
+                                    }
+                                })
+                                profileModel.findOne({userID:opponentId},async function(err,foundUser) {
+                                    if(err){
+                                        console.log(err);
+                                        
+                                    }
+                                    else{
+                                        defender.health=foundUser.health
+                                        defender.mana=foundUser.mana
+                                        defender.armor=foundUser.armour
+                                        defender.magicPower=foundUser.magicPower
+                                        defender.attackDamage=foundUser.attackDamage
+                                        defender.evasion=foundUser.evasion
+                                        defender.maxHealth=foundUser.health
+                                        defender.skills=foundUser.skills
+                                    }
+                                })
+                                await new PvPDuel({
+                                    interaction,
+                                    player1: attacker,
+                                    player2: defender,
+                                }).start()
+                        
+                            }
+                            else{
+                                interaction.reply({content:"it seems that the user you selected is not an awakened yet!"})
+                            }
+                        }
+                    })
+
+                    
+                }
+                else{
+                    interaction.reply({content:"it seems that you are not an awakened yet!"})
+                }
+            }
+
+        })
+        
+        
+        
+        
+
+
+        
     })
 
 class PvPDuel extends DuelBuilder {

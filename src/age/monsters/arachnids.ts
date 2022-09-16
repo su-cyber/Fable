@@ -5,6 +5,7 @@ import { arachnidVenom } from '../items'
 import { poisoning } from '../effects/poisoning'
 import { emoji } from '../../lib/utils/emoji'
 import { MonsterEntity, ClassEntity } from '../classes'
+import generateXP from '../../utils/generateXP'
 
 export class Arachnids extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -18,7 +19,7 @@ export class Arachnids extends MonsterEntity {
                 item: arachnidVenom,
                 dropRate: 0.9,
             },
-        ]).sendDeathMessage(messages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this,killer)
     }
 
     static create() {
@@ -27,6 +28,7 @@ export class Arachnids extends MonsterEntity {
             spawnRate: 0.5,
             evasion: 0.05,
             health: 40,
+            xp: generateXP(20,50),
             attackDamage: 8,
             mana:10,
             magicPower: 6,

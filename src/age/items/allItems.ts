@@ -14,7 +14,7 @@ import { chimeraHorn } from './chimeraHorn'
 import { woodGolem_core } from './woodGolem_core'
 import { DryadJewel } from './Dryad_Jewel'
 
-export { goblinPouch, slimeBlob, direwolfHide,bloodhoundTooth,direwolfClaw,woodClub,
+export default [ goblinPouch, slimeBlob, direwolfHide,bloodhoundTooth,direwolfClaw,woodClub,
     woodAxe,ghoulSkull,chimeraFeather,basiliskScale,basiliskVenom,arachnidVenom,chimeraHorn,woodGolem_core,DryadJewel
 
-}
+]

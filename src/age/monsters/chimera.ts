@@ -6,6 +6,7 @@ import { emoji } from '../../lib/utils/emoji'
 import { burning } from '../effects/burning'
 import { MonsterEntity, ClassEntity, Entity } from '../classes'
 import { anti_physical } from '../effects/anti-physical'
+import generateXP from '../../utils/generateXP'
 
 
 export class Chimera extends MonsterEntity {
@@ -24,7 +25,7 @@ export class Chimera extends MonsterEntity {
                 item: chimeraHorn,
                 dropRate: 0.4,
             }
-        ]).sendDeathMessage(messages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this,killer)
     }
 
     beforeDuelStart(you: Entity, opponent: Entity) {
@@ -44,6 +45,7 @@ export class Chimera extends MonsterEntity {
             health: 80,
             attackDamage: 30,
             mana:100,
+            xp: generateXP(1000,1500),
             magicPower: 20,
             armor: 20,
             magicResistance: 30,

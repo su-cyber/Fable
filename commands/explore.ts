@@ -6,6 +6,9 @@ import { MessageActionRow, MessageSelectMenu } from 'discord.js'
 import { Warrior } from '../src/age/heroes/warrior'
 import { MonsterEntity, Entity } from '../src/age/classes'
 import { getRandomMonster } from '../src/age/monsters'
+import profileModel from '../models/profileSchema'
+import allskills from '../src/age/heroes/skills'
+import passive_skills from '../src/age/heroes/passive_skills'
 
 
 export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explore the world' }).setDo(
@@ -13,9 +16,45 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
         const authorId = interaction.user.id
 
         const author = interaction.guild.members.cache.get(authorId)
-        const attacker = Warrior.create(author)
 
-        await interaction.reply({ components: [await monstersDropdown()] })
+        profileModel.exists({userID: authorId},async function(err,res){
+            if(err){
+                console.log(err);
+                
+            }
+            else{
+                if(res){
+                    const attacker = Warrior.create(author)
+        profileModel.findOne({userID:authorId},async function(err,foundUser) {
+            if(err){
+                console.log(err);
+                
+            }
+            else{
+                attacker.health=foundUser.health
+                attacker.mana=foundUser.mana
+                attacker.armor=foundUser.armour
+                attacker.magicPower=foundUser.magicPower
+                attacker.attackDamage=foundUser.attackDamage
+                attacker.evasion=foundUser.evasion
+                attacker.maxHealth=foundUser.health
+                attacker.passive_skills = foundUser.passiveskills
+
+                if(foundUser.weapon.length === 0){
+                    attacker.skills=foundUser.magicskills
+                }
+                else{
+                    attacker.attackDamage+=foundUser.weapon[0].damage
+                    attacker.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
+                }
+
+                
+                
+            }
+        })
+        await interaction.deferReply()
+        await interaction.editReply({ content: 'searching...'})
+        await interaction.editReply({ components: [await monstersDropdown()] })
 
         bot.onComponent('select-menu__monsters', async componentInteraction => {
             componentInteraction.deferUpdate()
@@ -30,6 +69,15 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 player2: monster,
             }).start()
         })
+        
+            }
+
+            else {
+                    interaction.reply({content:"it seems that you are not an awakened yet!"})
+                }
+            }
+        })
+       
     }
 )
 
@@ -50,6 +98,7 @@ async function monstersDropdown() {
 }
 
 class PvEDuel extends DuelBuilder {
+    player1: Entity
     player2: MonsterEntity
 
     async beforeDuelStart() {
@@ -57,10 +106,12 @@ class PvEDuel extends DuelBuilder {
 
         await this.replyOrEdit({ content: `🔎 Found a ${this.player2.name}!` })
         await sleep(1.2)
+        
+        
     }
 
     async onSkillSelect(skillName: string) {
-        const skill = this.attacker.skills.find(skill => skill.name === skillName)
+        const skill = allskills.find(skill => skill.name === skillName)
 
         this.attacker.useSkill(this.attacker,this.defender,skill)
     }
@@ -100,5 +151,8 @@ class PvEDuel extends DuelBuilder {
 
     async onEnd(winner: Entity, loser: MonsterEntity) {
         await loser.onDeath(this.interaction, winner)
+        
     }
+
+    
 }

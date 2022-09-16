@@ -9,6 +9,7 @@ import { MonsterEntity, ClassEntity, Entity } from '../classes'
 import { anti_magic } from '../effects/anti-magic'
 import { percentOf, randint } from '../../utils'
 import range from 'lodash.range'
+import generateXP from '../../utils/generateXP'
 
 export class Dryad extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -22,7 +23,7 @@ export class Dryad extends MonsterEntity {
                 item: DryadJewel,
                 dropRate: 0.9,
             }
-        ]).sendDeathMessage(messages, interaction, this)
+        ]).sendDeathMessage(messages, interaction, this,killer)
     }
 
     beforeDuelStart(you: Entity, opponent: Entity) {
@@ -101,6 +102,7 @@ export class Dryad extends MonsterEntity {
             evasion: 0.05,
             health: 350,
             mana:500,
+            xp: generateXP(2500,3000),
             attackDamage: 120,
             magicPower: 100,
             armor: 50,

@@ -5,4 +5,5 @@ export const direwolfClaw = new Item({
     name: 'Direwolf Claw',
     description: 'A Claw of a Direwolf',
     emoji: '🐾',
+    cost:2000
 })

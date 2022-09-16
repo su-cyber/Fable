@@ -1,8 +1,30 @@
 import { GuildMember } from 'discord.js'
 import { ClassEntity } from '../classes'
 import { burning } from '../effects/burning'
+import { CommandInteraction } from 'discord.js'
+import { removeIndentation } from '../../utils'
+import { Entity } from '../classes/entity'
 
 export class Mage extends ClassEntity {
+    async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
+        this.sendDeathMessage(interaction,this)
+    }
+
+
+    async sendDeathMessage(
+        interaction: CommandInteraction,
+        killed: Entity
+    ) {
+       
+        const text = `
+            **${killed.name} was killed!**
+        `
+
+        await interaction.channel.send(removeIndentation(text))
+    }
+
+
+
     static create(user: GuildMember) {
         return new Mage({
             user,
