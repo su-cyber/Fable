@@ -1,1 +1,1 @@
-worker: ts-node main.ts
+Worker: ts-node main.ts
