@@ -1,0 +1,1 @@
+Worker: ts-node main.ts
