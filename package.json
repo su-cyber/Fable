@@ -2,9 +2,8 @@
     "license": "MIT",
     "scripts": {
         "start": "ts-node main.ts",
-        "dev": "ts-node-dev --respawn --debounce=100 --exit-child main.ts",
         "test": "jest",
-        "build": "tsc && npm run test"
+        "build": "tsc"
     },
     "dependencies": {
         "@discordjs/builders": "^0.12.0",
