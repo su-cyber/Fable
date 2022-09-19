@@ -4,6 +4,7 @@ import inventory from '../models/InventorySchema'
 import { arachnidVenom } from '../src/age/items'
 import { ghoulSkull } from '../src/age/items'
 import { Sword } from '../src/age/weapons/sword'
+import { steelArmour } from '../src/age/armour/steel_armour'
 
 export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken to your story' }).setDo(
     async (bot, interaction) => {
@@ -43,10 +44,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         name: 'Fireball',
                         description: 'Dealing damage and burning them for 3 turns',
                     }],
-                    passiveskills:[{
-                        name: 'Regeneration',
-                        description: '+5HP every turn'
-                    }]
+                    passiveskills:[]
                     
                 })
                 profile.save();
@@ -65,6 +63,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         quantity:Number(3)
 
                     }],
+                    armour:[{name: steelArmour,
+                        quantity:Number(1)}],
                     potions:[],
                 }
             })

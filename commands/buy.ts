@@ -6,6 +6,7 @@ import { SlashCommandStringOption } from '@discordjs/builders'
 import shopWeapons_lvl5 from '../src/age/weapons/shopWeapons_lvl5'
 import { Channel, Collector, Message, MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu } from 'discord.js'
 import shopItems_lvl5 from '../src/age/items/shopItems_lvl5'
+import shopArmour_lvl5 from '../src/age/armour/shopArmour_lvl5'
 
 
 export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any weapon,armour or item' })
@@ -163,7 +164,71 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                         else{
                             await interaction.reply(`no object called ${userobject} was found in the shop`)
                         }
-                    }  
+                    }
+                    else if(userType === "armour") {
+                        const foundObject = shopArmour_lvl5.find(object => object.name.toLowerCase() === userobject)
+                        if(foundObject){
+                            profileModel.findOne({userID:authorId},async function(err,userProfile){
+                                if(err){
+                                    console.log(err);
+                                    
+                                }
+                                else{
+                                    if(userProfile.coins<foundObject.cost*userQuantity){
+                                        interaction.reply("you dont have enough coins!")
+                                    }
+                                    else{
+                                        userProfile.coins-=foundObject.cost*userQuantity
+                                        inventory.exists({userID:authorId},async function(err,res){
+                                            if(err){
+                                                console.log(err);
+                                                
+                                            }
+                                            else{
+                                                if(res){
+                                                    inventory.findOne({userID:authorId},async function(err,foundProfile){
+                                                        if(err){
+                                                            console.log(err);
+                                                            
+                                                        }
+                                                        else{
+                                                            const foundInventory=foundProfile.inventory.armour.find(object => object.name.name.toLowerCase() === userobject)
+                                                            if(foundInventory){
+                                                                foundInventory.quantity+=userQuantity
+                                                            }
+                                                            else{
+                                                                
+                                                                const newItem = {
+                                                                    name:foundObject,
+                                                                    quantity:Number(userQuantity)
+                                                                }
+                                                                foundProfile.inventory.armour.push(newItem)
+                                                            }
+                                                            
+                                                        await inventory.findOneAndUpdate({userID:authorId},foundProfile)
+            
+                                                        
+                                                        }
+                                                        
+                                                    })
+                                                    await interaction.reply({content:`${userQuantity} ${userobject}(s) has been bought successfully!`})
+                                                }
+                                                else{
+                                                   
+                                                }
+                        
+                                            }
+                                        })
+                                    }
+                                    await profileModel.findOneAndUpdate({userID:authorId},userProfile)
+                                }})
+                                
+                            
+                        }
+                        else{
+                            await interaction.reply(`no object called ${userobject} was found in the shop`)
+                        }
+                    }
                 }
                 else{
                     await interaction.reply("it seems you are not an awakened yet")

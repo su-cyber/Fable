@@ -14,7 +14,14 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'Know you
             if(res){
                 profileModel.findOne({userID:authorId},async function(err,foundUser) {
                     let statEmbed
-                    if(foundUser.weapon.length === 0){
+                    const weaponExist = foundUser.weapon.length
+                    const armourExist = foundUser.armourSuit.length
+                    const itemExist = foundUser.items.length
+
+                    const mappedSkills = foundUser.items.map((item) => {
+                        return `${item.name}`
+                    }).join(", ")
+                    
                         statEmbed= new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('STATUS WINDOW')
@@ -25,25 +32,14 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'Know you
                         Health: ${foundUser.health}
                         Magic Power: ${foundUser.magicPower}
                         Attack Power: ${foundUser.attackDamage}
+                        Armour: ${foundUser.armour}
                         Mana: ${foundUser.mana}
-                        Weapon: None
+                        Weapon: ${weaponExist? foundUser.weapon[0].name : "none"}
+                        Armour Suit: ${armourExist? foundUser.armourSuit[0].name : "none"}
+                        Items: ${itemExist? mappedSkills : "none"}
                         `)
-                    }
-                    else{
-                        statEmbed= new MessageEmbed()
-                        .setColor('RANDOM')
-                        .setTitle('STATUS WINDOW')
-                        .setDescription(`
-                        Level: ${foundUser.level}
-                        XP: ${foundUser.xp}
-                        Coins: ${foundUser.coins}
-                        Health: ${foundUser.health}
-                        Magic Power: ${foundUser.magicPower}
-                        Attack Power: ${foundUser.attackDamage}
-                        Mana: ${foundUser.mana}
-                        Weapon: ${foundUser.weapon[0].name}
-                        `)
-                    }
+                    
+                    
                     
                     await interaction.reply({embeds:[statEmbed]})
                 })

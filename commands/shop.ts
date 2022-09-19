@@ -7,6 +7,7 @@ import allWeapons from '../src/age/weapons/allWeapons'
 import shopWeapons_lvl5 from '../src/age/weapons/shopWeapons_lvl5'
 import { Collector, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 import shopItems_lvl5 from '../src/age/items/shopItems_lvl5'
+import shopArmour_lvl5 from '../src/age/armour/shopArmour_lvl5'
 
 export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access the Shop' })
     .setDo(
@@ -21,6 +22,11 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
         const mappeditems = shopItems_lvl5.map((item) => {
             return `${item.name} - ${item.cost} 🪙`
         }).join("\n")
+
+        const mappedarmour = shopArmour_lvl5.map((item) => {
+            return `${item.name} - ${item.cost} 🪙`
+        }).join("\n")
+
 
         let homeembed= new MessageEmbed()
         .setColor('RANDOM')
@@ -51,6 +57,10 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
         .setTitle('ITEMS')
         .setDescription(`${mappeditems}`)
 
+        let armourEmbed =  new MessageEmbed()
+        .setColor('RANDOM')
+        .setTitle('ARMOUR')
+        .setDescription(`${mappedarmour}`)
 
 
        
@@ -68,7 +78,7 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
                 }
                 else if(btn.customId === "armour"){
                     await btn.deferUpdate().catch(e => {})
-                    msg.edit({embeds: [homeembed]})
+                    msg.edit({embeds: [armourEmbed]})
                 }
                 else if(btn.customId === "items"){
                     await btn.deferUpdate().catch(e => {})

@@ -5,5 +5,7 @@ export const DryadJewel = new Item({
     name: "Dryad's Jewel",
     description: 'A magical jewel of a Dryad',
     emoji: '💎',
-    cost:30000
+    cost:30000,
+    type:"equipable",
+    skills:[]
 })

@@ -14,5 +14,6 @@ export default model;
  weapons:array[{name,quantity,description}]
  items:array[{name,quantity,description}]
  potions:array[{name,quantity,description}]
+ armour:array[{name,quantity,description}]
 
 */

@@ -5,5 +5,7 @@ export const direwolfHide = new Item({
     name: 'Direwolf Hide',
     description: 'The hide skinned from the Direwolf',
     emoji: '🐺',
-    cost:1500
+    cost:1500,
+    type:"none",
+    skills:[]
 })

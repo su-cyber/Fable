@@ -44,10 +44,11 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                     attacker.skills=foundUser.magicskills
                 }
                 else{
-                    attacker.attackDamage+=foundUser.weapon[0].damage
+                    
                     attacker.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
                 }
 
+                
                 
                 
             }

@@ -5,5 +5,7 @@ export const basiliskScale = new Item({
     name: "Basilisk's scales",
     description: 'A Claw of a Direwolf',
     emoji: '🐍',
-    cost:10000
+    cost:10000,
+    type:"none",
+    skills:[]
 })

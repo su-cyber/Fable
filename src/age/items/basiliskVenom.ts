@@ -6,5 +6,7 @@ export const basiliskVenom = new Item({
     name: "Basilisk's Venom",
     description: 'Extremely potent Venom of the Basilisk',
     emoji: emoji.POISON,
-    cost:15000
+    cost:15000,
+    type:"none",
+    skills:[]
 })

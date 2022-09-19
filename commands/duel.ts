@@ -50,6 +50,16 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         attacker.evasion=foundUser.evasion
                                         attacker.maxHealth=foundUser.health
                                         attacker.skills=foundUser.skills
+                                        attacker.passive_skills = foundUser.passiveskills
+
+                                        if(foundUser.weapon.length === 0){
+                                            attacker.skills=foundUser.magicskills
+                                        }
+                                        else{
+                                            
+                                            attacker.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
+                                        }
+                          
                                     }
                                 })
                                 profileModel.findOne({userID:opponentId},async function(err,foundUser) {
@@ -66,6 +76,22 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         defender.evasion=foundUser.evasion
                                         defender.maxHealth=foundUser.health
                                         defender.skills=foundUser.skills
+                                        defender.passive_skills = foundUser.passiveskills
+
+                                        if(foundUser.weapon.length === 0){
+                                            defender.skills=foundUser.magicskills
+                                        }
+                                        else{
+                                            
+                                            defender.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
+                                        }
+                                        if(foundUser.armourSuit.length === 0){
+
+                                        }
+                                        else{
+                                            
+                                            defender.passive_skills= foundUser.passiveskills.concat(foundUser.armourSuit[0].skills)
+                                        }
                                     }
                                 })
                                 await new PvPDuel({

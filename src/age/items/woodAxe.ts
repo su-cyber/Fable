@@ -6,5 +6,7 @@ export const woodAxe = new Item({
     name: 'Wooden Axe',
     description: 'A huge Wooden Axe',
     emoji: '🪓',
-    cost:1500
+    cost:1500,
+    type:"none",
+    skills:[]
 })

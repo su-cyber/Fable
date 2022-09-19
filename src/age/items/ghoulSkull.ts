@@ -5,5 +5,7 @@ export const ghoulSkull = new Item({
     name: "Ghoul's Skull",
     description: 'THe skull of a dead ghoul',
     emoji: '💀',
-    cost:1000
+    cost:1000,
+    type:"none",
+    skills:[]
 })

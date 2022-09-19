@@ -5,5 +5,7 @@ export const bloodhoundTooth = new Item({
     name: "Bloodhound's Tooth",
     description: 'The tooth of the Bloodhound',
     emoji: '🦷',
-    cost:1000
+    cost:1000,
+    type:"none",
+    skills:[]
 })

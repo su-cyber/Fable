@@ -3,10 +3,14 @@ import profileModel from '../models/profileSchema'
 import inventory from '../models/InventorySchema'
 import { SlashCommandUserOption } from '@discordjs/builders'
 import { SlashCommandStringOption } from '@discordjs/builders'
+import allItems from '../src/age/items/allItems'
 
 
 
 export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a weapon,armour or item' })
+.addStringOption((option: SlashCommandStringOption) =>
+        option.setName('type').setDescription('type of the object').setRequired(true)
+    )
 .addStringOption((option: SlashCommandStringOption) =>
         option.setName('object').setDescription('name of the weapon,armour or item').setRequired(true)
     )
@@ -14,7 +18,10 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
     async (bot, interaction) => {
         const authorId = interaction.user.id;
         const guildID = interaction.guildId;
+        const userType = interaction.options.getString('type').toLowerCase()
         const userobject = interaction.options.getString('object').toLowerCase()
+
+      
 
         inventory.exists({userID:authorId}, async function(err,res){
             if(err){
@@ -29,29 +36,122 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                             
                         }
                         else{
-                            const foundObject=foundUser.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject)
-                            if(foundObject){
-                                foundObject.quantity-=1
-                                if(foundObject.quantity===0){
-                                    const index = foundUser.inventory.weapons.indexOf(foundObject)
-                                    foundUser.inventory.weapons.splice(index)
-                                }
-                                profileModel.findOne({userID:authorId},async function(err,foundProfile){
-                                    if(err){
-                                        console.log(err);
+                            if(userType === "weapon"){
+                                const foundObject=foundUser.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject)
+                                if(foundObject){
+                                    
+                                    profileModel.findOne({userID:authorId},async function(err,foundProfile){
+                                        if(err){
+                                            console.log(err);
+                                            
+                                        }
+                                        else{
+                                            if(foundProfile.weapon.length === 0){
+                                                foundObject.quantity-=1
+                                    if(foundObject.quantity===0){
+                                        const index = foundUser.inventory.weapons.indexOf(foundObject)
+                                        foundUser.inventory.weapons.splice(index)
+                                    }
+                                                foundProfile.weapon.push(foundObject.name)
+                                                foundProfile.attackDamage+=foundObject.name.damage
+                                                await interaction.reply({content:`${userobject} has been equipped successfully!`})
+                                            }
+                                            
+                                            else{
+                                                
+                                                interaction.reply("you already have a weapon equipped!")
+                                            }
+                                           
+                                        await profileModel.findOneAndUpdate({userID:authorId},foundProfile)
+                                        }
                                         
+                                    })
+                                    
+                                }
+                                else{
+                                    await interaction.reply({content:`you dont own anything called ${userobject}`})
+                                }
+                            }
+                            else if(userType === "armour"){
+                                const foundObject=foundUser.inventory.armour.find(object => object.name.name.toLowerCase() === userobject)
+                                if(foundObject){
+                                    
+                                    profileModel.findOne({userID:authorId},async function(err,foundProfile){
+                                        if(err){
+                                            console.log(err);
+                                            
+                                        }
+                                        else{
+                                            if(foundProfile.armourSuit.length === 0){
+                                                foundObject.quantity-=1
+                                    if(foundObject.quantity===0){
+                                        const index = foundUser.inventory.armour.indexOf(foundObject)
+                                        foundUser.inventory.armour.splice(index)
+                                    }
+                                                foundProfile.armourSuit.push(foundObject.name)
+                                                foundProfile.armour+=foundObject.name.armour
+                                                foundProfile.passiveskills = foundProfile.passiveskills.concat(foundObject.name.skills)
+                                                await interaction.reply({content:`${userobject} has been equipped successfully!`})
+                                            }
+                                            else{
+                                                
+                                                interaction.reply("you already have an armour equipped!")
+                                            }
+                                        await profileModel.findOneAndUpdate({userID:authorId},foundProfile)
+                                        }
+                                        
+                                    })
+                                    
+                                }
+                                else{
+                                    await interaction.reply({content:`you dont own anything called ${userobject}`})
+                                }
+                            }
+                    
+                            else if(userType === "item"){
+                                const foundObject = foundUser.inventory.items.find(object => object.name.toLowerCase() === userobject)
+                                if(foundObject){
+                                    const foundItem = allItems.find(item => item.name.toLowerCase() === userobject)
+                                    if(foundItem.type === "equipable"){
+                                        profileModel.findOne({userID:authorId},async function(err,foundProfile){
+                                            if(err){
+                                                console.log(err);
+                                                
+                                            }
+                                            else{
+                                                if(foundProfile.items.length <= 3){
+                                                    foundObject.quantity-=1
+                                        if(foundObject.quantity===0){
+                                            const index = foundUser.inventory.items.indexOf(foundObject)
+                                            foundUser.inventory.items.splice(index)
+                                        }
+                                                    foundProfile.items.push(foundItem)
+                                                    foundProfile.passiveskills = foundProfile.passiveskills.concat(foundItem.skills)
+                                                    await interaction.reply({content:`${userobject} has been equipped successfully!`})
+                                                }
+                                                else{
+                                                    
+                                                    interaction.reply("you cannot have more than 3 items eqipped!")
+                                                }
+                                            await profileModel.findOneAndUpdate({userID:authorId},foundProfile)
+                                            }
+                                            
+                                        })
                                     }
                                     else{
-                                        foundProfile.weapon.push(foundObject.name)
-                                    await profileModel.findOneAndUpdate({userID:authorId},foundProfile)
+                                        interaction.reply("this item cannot be equipped")
                                     }
-                                    
-                                })
-                                await interaction.reply({content:`${userobject} has been equipped successfully!`})
+
+                                }
+                                else{
+                                    await interaction.reply({content:`you dont own anything called ${userobject}`})
+                                }
+                    
                             }
                             else{
-                                await interaction.reply({content:`you dont own anything called ${userobject}`})
+                                interaction.reply("invalid type")
                             }
+                           
                         }
                         await inventory.findOneAndUpdate({userID:authorId},foundUser)
                         
