@@ -10,19 +10,10 @@ const potions = [
         type: 'self',
         use: (attacker, defender) =>{
            
-            const healthPotion = attacker.scheduler.task.all
-            .turns(1)
-            .end(() => {attacker.removeEffect(healthPotion)})
-            .run(() =>
-                attacker.addHealth
-                    .physical(20)
-                    .run(
-                        health =>
-                            `**${attacker.name}** gained ${health} HP`
-                    )
-            )
-
-        attacker.applyEffect(healthPotion)
+           attacker.addHealth
+           .magical(20)
+            .run(damage => `**${attacker.name}** gained ${damage} HP`)
+           
 
             
         }

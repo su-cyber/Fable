@@ -144,35 +144,50 @@ export class Entity {
         const thisThis = this
 
         const foo = {
-            health: null as number,
-            
-            physical(health: number) {
-                this.health = health
+            damage: null as number,
+            type: null as AttackType,
+            manacost: null as number,
+
+            physical(damage: number) {
+                this.damage = damage
+                this.type = AttackType.PHYSICAL
                 
                 return this as typeof foo
             },
 
-            run(fn: (health: number) => string | string[] | void) {
-                
+            magical(damage: number) {
+                this.damage = damage
+                this.type = AttackType.MAGICAL
+                return this as typeof foo
+            },
 
-                
-                let health = 0
+            run(fn: (damage: number) => string | string[] | void) {
+                function ignoreAttack() {
+                    notAttack = true
+                }
+
+                const attack = {
+                    damage: this.damage,
+                    type: this.type,
+                }
+
+                let damage = 0
                 let notAttack = false
 
-
+                thisThis.onReceivedAttack(attack, ignoreAttack)
 
                 if (!notAttack) {
-                     health = this.health
-                    thisThis.health = Math.max(0, thisThis.health + health)
+                    damage = this.damage
+                    thisThis.health = Math.max(0, thisThis.health + damage)
                     
                 }
 
-                const text = fn(health)
+                const text = fn(damage)
                 text && thisThis.addLogMessage(...(Array.isArray(text) ? text : [text]))
             },
         }
 
-        return foo as Omit<typeof foo, 'health'>
+        return foo as Omit<typeof foo, 'damage' | 'type'>
     }
 
     useSkill(attacker:Entity,defender: Entity, skill: Skill) {
