@@ -12,7 +12,7 @@ const potions = [
            
             const healthPotion = attacker.scheduler.task.all
             .turns(1)
-            .end(() => {})
+            .end(() => {attacker.removeEffect(healthPotion)})
             .run(() =>
                 attacker.addHealth
                     .physical(20)
