@@ -33,7 +33,9 @@ export class Arachnids extends MonsterEntity {
             mana:10,
             magicPower: 6,
             armor: 2,
+            run_chance: 0.05,
             magicResistance: 2,
+            passive_skills:[],
             skills: [
                 {
                     cooldown: 0,

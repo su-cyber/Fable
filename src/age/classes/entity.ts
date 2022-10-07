@@ -10,6 +10,7 @@ import { anti_magic } from '../effects/anti-magic'
 import { illusion } from '../effects/illusion'
 import { CommandInteraction } from 'discord.js'
 import passive_skills from '../heroes/passive_skills'
+import { Potion } from './potion'
 
 // prettier-ignore
 export type EntityProps = {
@@ -24,6 +25,7 @@ export type EntityProps = {
     magicResistance: number
     skills         : Skill[]
     effects?       : Effect
+    passive_skills: Skill[]
 }
 
 export class Entity {
@@ -41,6 +43,7 @@ export class Entity {
     skills: Skill[]
     passive_skills: Skill[]
     effects: Effect[]
+    potions: Potion[]
 
     addLogMessage: (...text: string[]) => void
     scheduler: Scheduler
@@ -137,6 +140,41 @@ export class Entity {
         return foo as Omit<typeof foo, 'damage' | 'type'>
     }
 
+    get addHealth() {
+        const thisThis = this
+
+        const foo = {
+            health: null as number,
+            
+            physical(health: number) {
+                this.health = health
+                
+                return this as typeof foo
+            },
+
+            run(fn: (health: number) => string | string[] | void) {
+                
+
+                
+                let health = 0
+                let notAttack = false
+
+
+
+                if (!notAttack) {
+                     health = this.health
+                    thisThis.health = Math.max(0, thisThis.health + health)
+                    
+                }
+
+                const text = fn(health)
+                text && thisThis.addLogMessage(...(Array.isArray(text) ? text : [text]))
+            },
+        }
+
+        return foo as Omit<typeof foo, 'health'>
+    }
+
     useSkill(attacker:Entity,defender: Entity, skill: Skill) {
         if(attacker.mana>=skill.mana_cost){
         attacker.mana=attacker.mana-skill.mana_cost
@@ -193,10 +231,17 @@ export class Entity {
         
     }
 
-    beforeDuelStart(you: Entity, opponent: Entity) {
-       
+    beforeDuelStart(you: Entity, opponent: Entity, interaction: CommandInteraction) {
         
-         
+        if(you.passive_skills.length !=0){
+            let i
+            for(i=0;i<you.passive_skills.length;i++){
+                const passive_skill = passive_skills.find(skill => skill.name === you.passive_skills[i].name)
+                you.useSkill(you,opponent,passive_skill)
+                
+                
+            } 
+        }
         
     }
 

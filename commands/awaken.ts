@@ -5,6 +5,7 @@ import { arachnidVenom } from '../src/age/items'
 import { ghoulSkull } from '../src/age/items'
 import { Sword } from '../src/age/weapons/sword'
 import { steelArmour } from '../src/age/armour/steel_armour'
+import { healthPotion } from '../src/age/potions/healthPotion'
 
 export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken to your story' }).setDo(
     async (bot, interaction) => {
@@ -65,7 +66,10 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     }],
                     armour:[{name: steelArmour,
                         quantity:Number(1)}],
-                    potions:[],
+                    potions:[{
+                        name: healthPotion,
+                        quantity:Number(1)
+                    }],
                 }
             })
             playerInventory.save();

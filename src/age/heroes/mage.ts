@@ -4,6 +4,7 @@ import { burning } from '../effects/burning'
 import { CommandInteraction } from 'discord.js'
 import { removeIndentation } from '../../utils'
 import { Entity } from '../classes/entity'
+import passive_skills from './passive_skills'
 
 export class Mage extends ClassEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -23,7 +24,17 @@ export class Mage extends ClassEntity {
         await interaction.channel.send(removeIndentation(text))
     }
 
-
+    beforeDuelStart(you: Entity, opponent: Entity) {
+        
+        if(you.passive_skills.length !=0){
+            let i
+            for(i=0;i<you.passive_skills.length;i++){
+                const passive_skill = passive_skills.find(skill => skill.name === you.passive_skills[i].name)
+                you.useSkill(you,opponent,passive_skill)
+            } 
+        }
+        
+    }
 
     static create(user: GuildMember) {
         return new Mage({
@@ -35,6 +46,7 @@ export class Mage extends ClassEntity {
             armor: 0,         
             evasion: 0.8,
             magicResistance: 0,
+            passive_skills:[],
             skills: [
                 {
                     cooldown: 0,

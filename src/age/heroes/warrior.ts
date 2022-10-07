@@ -27,16 +27,7 @@ export class Warrior extends ClassEntity {
         await interaction.channel.send(removeIndentation(text))
     }
     
-    beforeDuelStart(you: Entity, opponent: Entity) {
-        if(you.passive_skills.length !=0){
-            let i
-            for(i=0;i<you.passive_skills.length;i++){
-                const passive_skill = passive_skills.find(skill => skill.name === you.passive_skills[i].name)
-                you.useSkill(you,opponent,passive_skill)
-            } 
-        }
-        
-    }
+    
     static create(user: GuildMember) {
         return new Warrior({
             user,
@@ -47,7 +38,7 @@ export class Warrior extends ClassEntity {
             armor: 10,
             evasion: 0.1,
             magicResistance: 10,
-            
+            passive_skills:[],
             skills: [
                 {
                     name: 'Basic attack',

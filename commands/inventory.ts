@@ -29,7 +29,11 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'open
                             const mappedarmour =foundUser.inventory.armour.map((armour) => {
                                 return `${armour.name.name} X ${armour.quantity}`
                             }).join("\n")
-                            await interaction.reply({content:`${mappeditems}\n ${mappedweapons}\n ${mappedarmour}`});
+                            const mappedpotions =foundUser.inventory.potions.map((potion) => {
+                                return `${potion.name.name} X ${potion.quantity}`
+                            }).join("\n")
+
+                            await interaction.reply({content:`${mappeditems}\n ${mappedweapons}\n ${mappedarmour} \n ${mappedpotions}`});
                         }
                     })
                 }

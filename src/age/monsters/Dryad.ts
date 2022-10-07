@@ -107,6 +107,8 @@ export class Dryad extends MonsterEntity {
             magicPower: 100,
             armor: 50,
             magicResistance: 80,
+            run_chance: 1,
+            passive_skills:[],
             skills: [
                 {
                     name: 'Wood Dragon',

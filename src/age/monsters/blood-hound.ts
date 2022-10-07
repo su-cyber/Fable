@@ -42,8 +42,10 @@ export class BloodHound extends MonsterEntity {
             attackDamage: 12,
             mana:10,
             magicPower: 0,
+            run_chance: 0.07,
             armor: 3,
             magicResistance: 5,
+            passive_skills:[],
             skills: [
                 {
                     cooldown: 0,

@@ -36,8 +36,10 @@ export class DireWolf extends MonsterEntity {
             attackDamage: 8,
             mana:10,
             magicPower: 0,
+            run_chance: 0.3,
             armor: 4,
             magicResistance: 2,
+            passive_skills:[],
             skills: [
                 {
                     cooldown: 0,

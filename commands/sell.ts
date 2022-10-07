@@ -163,6 +163,49 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
 
                                 }})
                         }
+
+                        else if(userType === "potion"){
+                        
+                            inventory.findOne({userID:authorId},async function(err,userProfile){
+                                if(err){
+                                    console.log(err);
+                                    
+                                }
+                                else{
+                                    const foundObject=userProfile.inventory.potions.find(object => object.name.name.toLowerCase() === userobject)
+                                    if(foundObject){
+                                        if(foundObject.quantity>=userQuantity){
+                                            foundObject.quantity-=userQuantity
+                                            if(foundObject.quantity===0){
+                                                const index = userProfile.inventory.potions.indexOf(foundObject)
+                                                userProfile.inventory.potions.splice(index)
+                                            }
+                                            const selling_price=foundObject.name.cost*0.6
+                                            profileModel.findOne({userID:authorId},async function(err,foundProfile){
+                                                if(err){
+                                                    console.log(err);
+                                                    
+                                                }
+                                                else{
+                                                    foundProfile.coins+=selling_price*userQuantity
+
+                                                }
+                                                await profileModel.findOneAndUpdate({userID:authorId},foundProfile)
+
+                                            })
+                                            await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
+                                            
+                                        }
+                                        else{
+                                            interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
+                                        }
+                                       
+                                        await inventory.findOneAndUpdate({userID:authorId},userProfile)
+                                    }
+
+                                }})
+                            
+                        }
                         else{
                             interaction.reply("invalid type")
                         }

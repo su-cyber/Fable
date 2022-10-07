@@ -81,9 +81,9 @@ class Bot extends Client {
             }
         })
 
-        this.on('ready', () => {
+        this.on('ready', async () => {
             console.log('Bot is Ready')
-            mongoose.connect(process.env.MONGO_URL || '',{
+           await mongoose.connect(process.env.MONGO_URL || '',{
                 keepAlive:true
             })
         }

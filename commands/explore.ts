@@ -9,6 +9,7 @@ import { getRandomMonster } from '../src/age/monsters'
 import profileModel from '../models/profileSchema'
 import allskills from '../src/age/heroes/skills'
 import passive_skills from '../src/age/heroes/passive_skills'
+import inventory from '../models/InventorySchema'
 
 
 export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explore the world' }).setDo(
@@ -39,6 +40,21 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 attacker.evasion=foundUser.evasion
                 attacker.maxHealth=foundUser.health
                 attacker.passive_skills = foundUser.passiveskills
+                
+                inventory.findOne({userID:authorId},async function(err,foundProfile) {
+                    if(foundProfile.inventory.potions.length !=0){
+                        attacker.potions = []
+                        for(let i=0;i<foundProfile.inventory.potions.length;i++){
+                            
+                            attacker.potions.push(foundProfile.inventory.potions[i].name)
+                                    }
+
+                        
+                    }
+                    else{
+                        attacker.potions =[]
+                    }
+                })
 
                 if(foundUser.weapon.length === 0){
                     attacker.skills=foundUser.magicskills
@@ -116,6 +132,9 @@ class PvEDuel extends DuelBuilder {
 
         this.attacker.useSkill(this.attacker,this.defender,skill)
     }
+
+    
+    
 
     async onTurn(skipTurn: boolean) {
         const isMonsterTurn = this.attacker instanceof MonsterEntity

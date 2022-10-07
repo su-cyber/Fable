@@ -13,11 +13,13 @@ export class MonsterEntity extends Entity {
     dropper: Dropper
     lastSkill: Skill
     xp: number
+    run_chance: number
 
     constructor(
         props: Omit<EntityProps, 'id'> & {
             spawnRate: number
             xp: number
+            run_chance: number
         }
     ) {
         const { spawnRate, ...rest } = props

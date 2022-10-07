@@ -8,6 +8,7 @@ import shopWeapons_lvl5 from '../src/age/weapons/shopWeapons_lvl5'
 import { Collector, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 import shopItems_lvl5 from '../src/age/items/shopItems_lvl5'
 import shopArmour_lvl5 from '../src/age/armour/shopArmour_lvl5'
+import shopPotions_lvl5 from '../src/age/potions/shopPotions_lvl5'
 
 export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access the Shop' })
     .setDo(
@@ -27,11 +28,15 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
             return `${item.name} - ${item.cost} 🪙`
         }).join("\n")
 
+        const mappedpotions = shopPotions_lvl5.map((item) => {
+            return `${item.name} - ${item.cost} 🪙`
+        }).join("\n")
+
 
         let homeembed= new MessageEmbed()
         .setColor('RANDOM')
         .setTitle('SHOP')
-        .setDescription('All the weapons,items and potions currently available in shop')
+        .setDescription(`user: ${interaction.user.username}\n All the weapons,items and potions currently available in shop`)
 
         let btnraw= new MessageActionRow().addComponents([
             new MessageButton().setCustomId("armour").setStyle("PRIMARY").setLabel("ARMOUR"),
@@ -62,33 +67,43 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
         .setTitle('ARMOUR')
         .setDescription(`${mappedarmour}`)
 
+        let potionEmbed = new MessageEmbed()
+        .setColor('RANDOM')
+        .setTitle('POTIONS')
+        .setDescription(`${mappedpotions}`)
+
 
        
         await interaction.deferReply()
-        await interaction.deleteReply()
-       await interaction.channel.send({content: null,embeds:[homeembed],components:[btnraw]}).then(async (msg) => {
-        let filter = i => i.user.id === authorId
-        let collector = await msg.createMessageComponentCollector({filter: filter , time : 1000 * 120})
-
-        collector.on('collect',async (btn) => {
-            if(btn.isButton()){
-                if(btn.customId === "weapons"){
-                    await btn.deferUpdate().catch(e => {})
-                    msg.edit({embeds: [weaponEmbed]})
+        await interaction.editReply({content: null,embeds:[homeembed],components:[btnraw]})
+            let filter = i => i.user.id === authorId
+            let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
+    
+            collector.on('collect',async (btn) => {
+                if(btn.isButton()){
+                    if(btn.customId === "weapons"){
+                        await btn.deferUpdate().catch(e => {})
+                        interaction.editReply({embeds: [weaponEmbed]})
+                    }
+                    else if(btn.customId === "armour"){
+                        await btn.deferUpdate().catch(e => {})
+                        interaction.editReply({embeds: [armourEmbed]})
+                    }
+                    else if(btn.customId === "items"){
+                        await btn.deferUpdate().catch(e => {})
+                        interaction.editReply({embeds: [itemEmbed]})
+                    }
+                    else if(btn.customId === "potions"){
+                        await btn.deferUpdate().catch(e => {})
+                        interaction.editReply({embeds: [potionEmbed]})
+                    }
+                    
                 }
-                else if(btn.customId === "armour"){
-                    await btn.deferUpdate().catch(e => {})
-                    msg.edit({embeds: [armourEmbed]})
-                }
-                else if(btn.customId === "items"){
-                    await btn.deferUpdate().catch(e => {})
-                    msg.edit({embeds: [itemEmbed]})
-                }
-            }
-        })
-
+            
+    
+       
         collector.on('end', () => {
-            msg.edit({embeds: [homeembed], components: [d_btnraw]})
+            interaction.editReply({embeds: [homeembed], components: [d_btnraw]})
         })
        })
       

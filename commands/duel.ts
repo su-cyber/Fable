@@ -2,11 +2,12 @@ import { SlashCommandUserOption } from '@discordjs/builders'
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import { DuelBuilder } from '../src/age/DuelBuilder'
 import { emoji } from '../src/lib/utils/emoji'
-import { Entity } from '../src/age/classes/entity'
+import { MonsterEntity, Entity } from '../src/age/classes'
 import { Warrior } from '../src/age/heroes/warrior'
 import { Mage } from '../src/age/heroes/mage'
 import profileModel from '../models/profileSchema'
 import allskills from '../src/age/heroes/skills'
+import { sleep } from '../src/utils'
 
 export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with a player' })
     .addUserOption((option: SlashCommandUserOption) =>
@@ -35,13 +36,15 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                         else{
                             if(result){
                                 const attacker = Warrior.create(author)
-                                const defender = Mage.create(opponent)
+                                const defender = Warrior.create(opponent)
                                 profileModel.findOne({userID:authorId},async function(err,foundUser) {
                                     if(err){
                                         console.log(err);
                                         
                                     }
                                     else{
+                                        console.log("called!");
+                                        
                                         attacker.health=foundUser.health
                                         attacker.mana=foundUser.mana
                                         attacker.armor=foundUser.armour
@@ -85,13 +88,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                             
                                             defender.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
                                         }
-                                        if(foundUser.armourSuit.length === 0){
-
-                                        }
-                                        else{
-                                            
-                                            defender.passive_skills= foundUser.passiveskills.concat(foundUser.armourSuit[0].skills)
-                                        }
+                                        
                                     }
                                 })
                                 await new PvPDuel({
@@ -125,31 +122,54 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
     })
 
 class PvPDuel extends DuelBuilder {
-    async onTurn() {
-        const p1 = this.player1
-        const p2 = this.player2
+    player1: Entity
+    player2: Entity
 
-        const p1EmojiEffects = [...p1.effects.values()].map(effect => effect.emoji).join(' ')
-        const p2EmojiEffects = [...p2.effects.values()].map(effect => effect.emoji).join(' ')
+    async onTurn(skipTurn: boolean) {
+        const isMonsterTurn = this.attacker instanceof MonsterEntity
 
-        const content = `
-            Turn: **${this.turn + 1}**
+        if (skipTurn) {
+            if (isMonsterTurn) {
+                await sleep(1.5)
+                this.deleteInfoMessages()
+            }
 
-            **${p1.name}**: ${p1EmojiEffects}
-            ${emoji.HEALTH_POTION} ${p1.health}/${p1.maxHealth} HP
-            ${emoji.MANA_POTION} 100/100 MP
+            return
+        }
 
-            **${p2.name}**: ${p2EmojiEffects}
-            ${emoji.HEALTH_POTION} ${p2.health}/${p2.maxHealth} HP
-            ${emoji.MANA_POTION} 100/100 MP
+        if (this.attacker instanceof MonsterEntity) {
+            
+           
+            await this.sendInfoMessage(this.attacker.skills, true)
 
-            **Attacker**: ${this.attacker.name}
-        `
+            this.attacker.useSkill(this.attacker,this.defender)
+            
+            
+        } else {
+            
+            await this.sendInfoMessage(this.attacker.skills)
+            await sleep(1.5)
+            this.deleteInfoMessages()
+            await this.locker.wait()
+            this.locker.lock()
+        }
 
-        //await this.replyOrEdit(removeIndentation(content), this.createDuelComponent(this.attacker.skills))
+        await this.sendInfoMessage(this.attacker.skills)
+        
+    }
 
-        await this.locker.wait()
-        this.locker.lock()
+    async beforeDuelStart() {
+        super.beforeDuelStart()
+
+        await this.replyOrEdit({ content: `initiating duel with ${this.player2.name}!` })
+        await sleep(1.2)
+        
+        
+    }
+    async onSkillSelect(skillName: string) {
+        const skill = allskills.find(skill => skill.name === skillName)
+
+        this.attacker.useSkill(this.attacker,this.defender,skill)
     }
 
     async onEnd(winner: Entity, loser: Entity) {

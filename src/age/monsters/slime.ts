@@ -29,8 +29,10 @@ export class Slime extends MonsterEntity {
             evasion: 0.05,
             attackDamage: 3,
             magicPower: 0,
+            run_chance: 0.02,
             armor: 0,
             magicResistance: 0,
+            passive_skills:[],
             skills: [
                 {
                     cooldown: 0,

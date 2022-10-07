@@ -1,4 +1,4 @@
-import { CommandInteraction } from 'discord.js'
+import { CommandInteraction, Interaction } from 'discord.js'
 import { Dropper } from '../dropper'
 import { basiliskScale, basiliskVenom } from '../items'
 import { percentOf } from '../../utils'
@@ -8,6 +8,7 @@ import { paralyzed } from '../effects/paralyze'
 import sample from 'lodash.sample'
 import { MonsterEntity, ClassEntity, Entity } from '../classes'
 import generateXP from '../../utils/generateXP'
+import { DuelBuilder } from '../DuelBuilder'
 
 export class Basilisk extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -28,7 +29,7 @@ export class Basilisk extends MonsterEntity {
         ]).sendDeathMessage(messages, interaction, this,killer)
     }
 
-    beforeDuelStart(you: Entity, opponent: Entity) {
+    beforeDuelStart(you: Entity, opponent: Entity, interaction: CommandInteraction) {
         opponent.evasion /= 2
 
         you.addLogMessage(
@@ -58,7 +59,9 @@ export class Basilisk extends MonsterEntity {
             mana:100,
             magicPower: 20,
             armor: 20,
+            run_chance: Infinity,
             magicResistance: 25,
+            passive_skills:[],
             skills: [
                 {
                     cooldown: 0,
