@@ -177,8 +177,8 @@ export class Entity {
                 thisThis.onReceivedAttack(attack, ignoreAttack)
 
                 if (!notAttack) {
-                    damage = this.damage
-                    thisThis.health = Math.max(0, thisThis.health + damage)
+                    damage = calculate.damage(attack, thisThis)
+                    thisThis.health = Math.max(0, thisThis.health - damage + damage +20)
                     
                 }
 
