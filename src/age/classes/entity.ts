@@ -178,7 +178,7 @@ export class Entity {
 
                 if (!notAttack) {
                     damage = calculate.damage(attack, thisThis)
-                    thisThis.health = Math.max(0, thisThis.health - damage + damage +20)
+                    thisThis.health = Math.max(0, thisThis.health + damage)
                     
                 }
 

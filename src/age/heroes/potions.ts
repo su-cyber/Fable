@@ -10,7 +10,7 @@ const potions = [
         type: 'self',
         use: (attacker, defender) =>{
            
-           attacker.addHealth
+           defender.addHealth
            .magical(20)
             .run(damage => `**${attacker.name}** gained ${damage} HP`)
            
