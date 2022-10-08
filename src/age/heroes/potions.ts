@@ -9,10 +9,10 @@ const potions = [
         mana_cost: 0,
         type: 'self',
         use: (attacker, defender) =>{
-           
-           defender.addHealth
-           .magical(20)
-            .run(damage => `**${attacker.name}** gained ${damage} HP`)
+           const potion = 20
+           let hp = attacker.health + potion
+           attacker.health = hp
+           attacker.addLogMessage(`20 hp gained`)
            
 
             
