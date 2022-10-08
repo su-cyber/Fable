@@ -1,3 +1,4 @@
+import { Entity } from "../classes"
 
 let num = 0
 const potions = [
@@ -9,10 +10,8 @@ const potions = [
         mana_cost: 0,
         type: 'self',
         use: (attacker, defender) =>{
-           const potion = 20
-           const atk_hp = attacker.health
-           let hp = atk_hp + potion
-           attacker.health = hp
+           
+           attacker.health = addHealth(20,attacker,defender)
            attacker.addLogMessage(`20 hp gained`)
            
 
@@ -30,5 +29,11 @@ const potions = [
         }
     },
 ]
+
+
+async function addHealth(n:number,attacker:Entity,defender:Entity){
+const hp = attacker.health +=n
+return hp
+}
 
 export default potions
