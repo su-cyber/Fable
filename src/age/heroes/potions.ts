@@ -17,13 +17,13 @@ const potions = [
             .all.effect(healthPotion)
             .end(() => attacker.removeEffect(healthPotion))
             .run(() =>{
-                attacker.health+=20
+                
             }
                 
             )
 
         defender.applyEffect(hp)
-
+        attacker.health+=20
         attacker.addLogMessage(
             `**${attacker.name}** health potion`,
             `**${defender.name}** gained 20 hp`
