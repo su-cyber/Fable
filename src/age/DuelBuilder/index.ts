@@ -372,12 +372,12 @@ class DuelBuilder {
                 const PotionName = collected.values[0]
                 const potion = allPotions.find(potion => potion.name === PotionName)
                 if(thisThis.attacker.hasEffect(healthPotion) && potion.type == "health"){
-                    await thisThis.attacker.addLogMessage(`You have already used a similar type of potion!`)
+                    await thisThis.addLogMessage(`You have already used a similar type of potion!`)
                     const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
                     foundPotion.quantity+=1
                 }
                 else if (thisThis.attacker.hasEffect(manaPotion) && potion.type == "mana"){
-                    await thisThis.attacker.addLogMessage(`You have already used a similar type of potion!`)
+                    await thisThis.addLogMessage(`You have already used a similar type of potion!`)
                     const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
                     foundPotion.quantity+=1
                 }
