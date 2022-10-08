@@ -23,9 +23,9 @@ import potions from '../heroes/potions'
 import inventory from '../../../models/InventorySchema'
 import { Potion } from '../classes/potion'
 import shopPotions_lvl5 from '../potions/shopPotions_lvl5'
-import { healthPotion } from '../effects/healthPotion'
-import { manaPotion } from '../effects/manaPotion'
+
 import allPotions from '../potions/allPotions'
+import { potionEffect } from '../effects/potionEffect'
 
 const lineBreak = '\n\u200b'
 
@@ -326,126 +326,83 @@ class DuelBuilder {
                 
             }
             else if(i.customId === 'use_btn'){
-                let interaction = this.interaction
-                let collector_use = this.collector_use
-                inventory.findOne({userID:i.user.id},async function(err,foundUser){
-                    let potions = []
-                    for(let i=0;i<foundUser.inventory.potions.length;i++){
-                        potions.push(foundUser.inventory.potions[i].name)
-                    }
-                    
-                    
-                if(thisThis.attacker.hasEffect(manaPotion)){
-                        for(let i=0;i<potions.length;i++){
-                            if(potions[i].type == "mana"){
-                                potions.splice(i)
-                            } 
-                    }
+                if(thisThis.attacker.hasEffect(potionEffect)){
+                    thisThis.attacker.addLogMessage("You have already used a potion!")
                 }
                 else{
-
-                }
-                if (thisThis.attacker.hasEffect(healthPotion)){
-                    for(let i=0;i<potions.length;i++){
-                    if(potions[i].type == "health"){
-                        potions.splice(i)
+                    let interaction = this.interaction
+                    let collector_use = this.collector_use
+                    inventory.findOne({userID:i.user.id},async function(err,foundUser){
+                        const potions = foundUser.inventory.potions
+                        let potions_filtered= []
+                        
+                        let useSelect
+                    if(foundUser.inventory.potions.length === 0){
+                        useSelect = new MessageActionRow().addComponents([
+                            new MessageSelectMenu()
+                            .setCustomId('use_menu')
+                                .setPlaceholder(`Select a potion ${i.user.username}`)
+                                .addOptions({
+                                    
+                                        label: 'None',
+                                        description: 'you are out of potions',
+                                        value: 'None',
+                                }
+                                )
+                                .setDisabled(false),
+                        ]) 
                     }
-                   
-                }
-            }
-            else{
-
-            }
-                    let useSelect
-                if(foundUser.inventory.potions.length === 0 || potions.length === 0){
-                    useSelect = new MessageActionRow().addComponents([
-                        new MessageSelectMenu()
-                        .setCustomId('use_menu')
-                            .setPlaceholder(`Select a potion ${i.user.username}`)
-                            .addOptions({
-                                
-                                    label: 'None',
-                                    description: 'you are out of potions',
-                                    value: 'None',
-                            }
-                            )
-                            .setDisabled(false),
-                    ]) 
-                }
-                else{
-                    
-                    useSelect = new MessageActionRow().addComponents([
-                        new MessageSelectMenu()
-                        .setCustomId('use_menu')
-                            .setPlaceholder(`Select a potion ${i.user.username}`)
-                            .addOptions(
-                                potions.map(item => ({
-                                    label: item.name,
-                                    description: item.description,
-                                    value: item.name,
-                                }))
-                            )
-                            .setDisabled(false),
-                    ])
-                }
+                    else{
+                        
+                        useSelect = new MessageActionRow().addComponents([
+                            new MessageSelectMenu()
+                            .setCustomId('use_menu')
+                                .setPlaceholder(`Select a potion ${i.user.username}`)
+                                .addOptions(
+                                    potions.map(item => ({
+                                        label: item.name.name,
+                                        description: item.name.description,
+                                        value: item.name.name,
+                                    }))
+                                )
+                                .setDisabled(false),
+                        ])
+                    }
+               
+               
+                    interaction.editReply({components:[useSelect]})
                 
-            interaction.editReply({components:[useSelect]})
-                
-            
-            collector_use.on("collect",async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
-                collected.deferUpdate().catch(() => null)
-                //insert potions code here
-                 const PotionName = collected.values[0]
-                 await thisThis.onPotionSelect(PotionName)
-                // const potion = allPotions.find(potion => potion.name === PotionName)
-                // if(potion.type == "health"){
-                //     if(thisThis.attacker.hasEffect(healthPotion)){
-                //         thisThis.addLogMessage(`You have already used a similar type of potion!`)
-                //         const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
-                //         foundPotion.quantity+=1
-                //     }
-                //     else{
-                //         await thisThis.onPotionSelect(PotionName)
-
-                //     }
+               
                     
-                // }
-                // else if (potion.type == "mana"){
-                   
-                //     if(thisThis.attacker.hasEffect(manaPotion)){
-                //         thisThis.addLogMessage(`You have already used a similar type of potion!`)
-                //         const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
-                //         foundPotion.quantity+=1
-                //     }
-                //     else{
-                //         await thisThis.onPotionSelect(PotionName)
-
-                //     }
-                // }
-                // else{
-                    
-                // }
                 
+                collector_use.on("collect",async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                    collected.deferUpdate().catch(() => null)
+                    //insert potions code here
+                    const PotionName = collected.values[0]
+                    await thisThis.onPotionSelect(PotionName)
+                    
+        
+                    thisThis.locker.unlock()
+                    
+                    if(PotionName == 'None'){
     
-                thisThis.locker.unlock()
-                
-                if(PotionName == 'None'){
-
-                }
-                else{
-                    const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
-                    foundPotion.quantity-=1
-                    if(foundPotion.quantity===0){
-                        const index = foundUser.inventory.potions.indexOf(foundPotion)
-                        foundUser.inventory.potions.splice(index)
                     }
-                }
-                    
-                    await inventory.findOneAndUpdate({userID:i.user.id},foundUser)
+                    else{
+                        const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
+                        foundPotion.quantity-=1
+                        if(foundPotion.quantity===0){
+                            const index = foundUser.inventory.potions.indexOf(foundPotion)
+                            foundUser.inventory.potions.splice(index)
+                        }
+                    }
+                        
+                        await inventory.findOneAndUpdate({userID:i.user.id},foundUser)
+                    })
                 })
-            })
-
-            
+    
+                 
+                }
+ 
             }
         })
        

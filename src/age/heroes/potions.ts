@@ -1,6 +1,6 @@
 import { Entity } from "../classes"
-import { healthPotion } from "../effects/healthPotion"
-import { manaPotion } from "../effects/manaPotion"
+
+import { potionEffect } from "../effects/potionEffect"
 
 let num = 0
 const potions = [
@@ -15,8 +15,8 @@ const potions = [
             attacker.health+=20
             const hp = attacker.scheduler.task
             .turns(1000)
-            .all.effect(healthPotion)
-            .end(() => attacker.removeEffect(healthPotion))
+            .all.effect(potionEffect)
+            .end(() => attacker.removeEffect(potionEffect))
             .run(() =>{
                 
             }
@@ -44,8 +44,8 @@ const potions = [
                 attacker.mana+=50
                 const mana = attacker.scheduler.task
                 .turns(1000)
-                .all.effect(manaPotion)
-                .end(() => attacker.removeEffect(manaPotion))
+                .all.effect(potionEffect)
+                .end(() => attacker.removeEffect(potionEffect))
                 .run(() =>{
                     
                 }
