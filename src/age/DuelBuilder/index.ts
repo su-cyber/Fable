@@ -393,6 +393,7 @@ class DuelBuilder {
                 collected.deferUpdate().catch(() => null)
                 //insert potions code here
                  const PotionName = collected.values[0]
+                 await thisThis.onPotionSelect(PotionName)
                 // const potion = allPotions.find(potion => potion.name === PotionName)
                 // if(potion.type == "health"){
                 //     if(thisThis.attacker.hasEffect(healthPotion)){
