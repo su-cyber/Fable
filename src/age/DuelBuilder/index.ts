@@ -334,17 +334,7 @@ class DuelBuilder {
                         potions.push(foundUser.inventory.potions[i].name)
                     }
                     
-                    if (thisThis.attacker.hasEffect(healthPotion)){
-                            for(let i=0;i<potions.length;i++){
-                            if(potions[i].type == "health"){
-                                potions.splice(i)
-                            }
-                           
-                        }
-                    }
-                    else{
-
-                    }
+                    
                 if(thisThis.attacker.hasEffect(manaPotion)){
                         for(let i=0;i<potions.length;i++){
                             if(potions[i].type == "mana"){
@@ -355,6 +345,17 @@ class DuelBuilder {
                 else{
 
                 }
+                if (thisThis.attacker.hasEffect(healthPotion)){
+                    for(let i=0;i<potions.length;i++){
+                    if(potions[i].type == "health"){
+                        potions.splice(i)
+                    }
+                   
+                }
+            }
+            else{
+
+            }
                     let useSelect
                 if(foundUser.inventory.potions.length === 0 || potions.length === 0){
                     useSelect = new MessageActionRow().addComponents([
