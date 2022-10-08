@@ -326,8 +326,8 @@ class DuelBuilder {
                 
             }
             else if(i.customId === 'use_btn'){
-                if(thisThis.attacker.hasEffect(potionEffect)){
-                    thisThis.attacker.addLogMessage("You have already used a potion!")
+                if(this.attacker.hasEffect(potionEffect)){
+                    this.attacker.addLogMessage("You have already used a potion!")
                 }
                 else{
                     let interaction = this.interaction
