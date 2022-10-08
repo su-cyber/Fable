@@ -370,7 +370,7 @@ class DuelBuilder {
                 //insert potions code here
                 const PotionName = collected.values[0]
                 const potion = allPotions.find(potion => potion.name === PotionName)
-                if(this.attacker.hasEffect(healthPotion) && potion.type == "health"){
+                if(thisThis.attacker.hasEffect(healthPotion) && potion.type == "health"){
                     await thisThis.onPotionSelect("same")
                     const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
                     foundPotion.quantity+=1
