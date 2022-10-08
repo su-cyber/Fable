@@ -253,27 +253,17 @@ class DuelBuilder {
 
     async onPotionSelect(potionName: string) {
         this.deleteInfoMessages()
-        const potion = allPotions.find(potion => potion.name === potionName)
-        inventory.findOne({userID:this.interaction.user.id},async function(err,foundUser){
-            if(this.attacker.hasEffect(healthPotion) && potion.type == "health"){
-
-                this.attacker.useSkill(
-                    this.attacker,
-                    this.defender,
-                    potions.find(potion => potion.name === "same")
-                )
-                const foundPotion = foundUser.inventory.potions.find(object => object.name.name === potionName)
-                foundPotion.quantity+=1
-            }
-            else{
+        
+            
+            
                 this.attacker.useSkill(
                     this.attacker,
                     this.defender,
                     potions.find(potion => potion.name === potionName)
                 )
-            }
-            await inventory.findOneAndUpdate({userID:this.interaction.user.id},foundUser)
-        })
+            
+           
+      
         
     }
 
@@ -379,8 +369,16 @@ class DuelBuilder {
                 collected.deferUpdate().catch(() => null)
                 //insert potions code here
                 const PotionName = collected.values[0]
-
-                await thisThis.onPotionSelect(PotionName)
+                const potion = allPotions.find(potion => potion.name === PotionName)
+                if(this.attacker.hasEffect(healthPotion) && potion.type == "health"){
+                    await thisThis.onPotionSelect("same")
+                    const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
+                    foundPotion.quantity+=1
+                }
+                else{
+                    await thisThis.onPotionSelect(PotionName)
+                }
+                
     
                 thisThis.locker.unlock()
                 
