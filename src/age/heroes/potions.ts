@@ -22,7 +22,7 @@ const potions = [
                 
             )
 
-        defender.applyEffect(hp)
+        attacker.applyEffect(hp)
         attacker.health+=20
         attacker.addLogMessage(
             `**${attacker.name}** health potion`,
