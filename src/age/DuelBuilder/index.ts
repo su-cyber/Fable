@@ -327,7 +327,7 @@ class DuelBuilder {
             }
             else if(i.customId === 'use_btn'){
                 if(this.attacker.hasEffect(potionEffect)){
-                    i.editReply("you already used a potion!")
+                    this.interaction.editReply("you already used a potion!")
                 }
                 else{
                     let interaction = this.interaction
