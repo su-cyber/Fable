@@ -1,5 +1,6 @@
 import { Entity } from "../classes"
 import { healthPotion } from "../effects/healthPotion"
+import { manaPotion } from "../effects/manaPotion"
 
 let num = 0
 const potions = [
@@ -31,7 +32,36 @@ const potions = [
     },
 
             
-        }
+        },
+        {
+            name: 'Mana Potion',
+            cooldown: 0,
+            description: 'Recovers 50 mana instantly',
+            canEvade: false,
+            mana_cost: 0,
+            type: 'self',
+            use: (attacker, defender) =>{
+               
+                const mana = attacker.scheduler.task
+                .turns(1000)
+                .all.effect(manaPotion)
+                .end(() => attacker.removeEffect(manaPotion))
+                .run(() =>{
+                    
+                }
+                    
+                )
+    
+            attacker.applyEffect(mana)
+            attacker.mana+=50
+            attacker.addLogMessage(
+                `**${attacker.name}** mana potion`,
+                `**${defender.name}** gained 50 mana`
+            )
+        },
+    
+                
+            }
     ,{
         name: 'same',
         cooldown: 0,

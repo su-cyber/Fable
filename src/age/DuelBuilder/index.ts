@@ -24,6 +24,7 @@ import inventory from '../../../models/InventorySchema'
 import { Potion } from '../classes/potion'
 import shopPotions_lvl5 from '../potions/shopPotions_lvl5'
 import { healthPotion } from '../effects/healthPotion'
+import { manaPotion } from '../effects/manaPotion'
 import allPotions from '../potions/allPotions'
 
 const lineBreak = '\n\u200b'
@@ -371,6 +372,11 @@ class DuelBuilder {
                 const PotionName = collected.values[0]
                 const potion = allPotions.find(potion => potion.name === PotionName)
                 if(thisThis.attacker.hasEffect(healthPotion) && potion.type == "health"){
+                    await thisThis.onPotionSelect("same")
+                    const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
+                    foundPotion.quantity+=1
+                }
+                else if (thisThis.attacker.hasEffect(manaPotion) && potion.type == "mana"){
                     await thisThis.onPotionSelect("same")
                     const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
                     foundPotion.quantity+=1

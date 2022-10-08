@@ -1,3 +1,3 @@
 import { Effect } from '../classes'
 
-export const healthPotion: Effect = { emoji: '❤️' }
+export const healthPotion: Effect = { emoji: '' }

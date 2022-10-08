@@ -1,4 +1,5 @@
 import { healthPotion } from "./healthPotion";
-const allPotions = [healthPotion]
+import { manaPotion } from "./manaPotion";
+const allPotions = [healthPotion,manaPotion]
 
 export default allPotions
