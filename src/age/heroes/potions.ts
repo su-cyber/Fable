@@ -12,14 +12,27 @@ const potions = [
         type: 'self',
         use: (attacker, defender) =>{
            
-           attacker.applyEffect(healthPotion)
-           attacker.health+=20
-           attacker.addLogMessage("20 hp added")
-           
+            const hp = attacker.scheduler.task
+            .turns(1000)
+            .attacker.effect(healthPotion)
+            .end(() => attacker.removeEffect(healthPotion))
+            .run(() =>{
+                attacker.health+=20
+            }
+                
+            )
+
+        defender.applyEffect(hp)
+
+        attacker.addLogMessage(
+            `**${attacker.name}** health potion`,
+            `**${defender.name}** gained 20 hp`
+        )
+    },
 
             
         }
-    },{
+    ,{
         name: 'same',
         cooldown: 0,
         description: 'same type of potion',
