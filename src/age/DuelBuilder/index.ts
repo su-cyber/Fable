@@ -330,8 +330,31 @@ class DuelBuilder {
                 let collector_use = this.collector_use
                 inventory.findOne({userID:i.user.id},async function(err,foundUser){
                     const potions = foundUser.inventory.potions
+                    let potions_filtered = []
+                    
+                    if (thisThis.attacker.hasEffect(healthPotion)){
+                            for(let i=0;i<potions.length;i++){
+                            if(potions[i].name.type == "health"){
+                                potions.splice(i)
+                            }
+                           
+                        }
+                    }
+                    else{
+
+                    }
+                if(thisThis.attacker.hasEffect(manaPotion)){
+                        for(let i=0;i<potions.length;i++){
+                            if(potions[i].name.type == "mana"){
+                                potions.splice(i)
+                            } 
+                    }
+                }
+                else{
+
+                }
                     let useSelect
-                if(foundUser.inventory.potions.length === 0){
+                if(foundUser.inventory.potions.length === 0 || potions.length === 0){
                     useSelect = new MessageActionRow().addComponents([
                         new MessageSelectMenu()
                         .setCustomId('use_menu')
@@ -369,35 +392,35 @@ class DuelBuilder {
             collector_use.on("collect",async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                 collected.deferUpdate().catch(() => null)
                 //insert potions code here
-                const PotionName = collected.values[0]
-                const potion = allPotions.find(potion => potion.name === PotionName)
-                if(potion.type == "health"){
-                    if(thisThis.attacker.hasEffect(healthPotion)){
-                        thisThis.addLogMessage(`You have already used a similar type of potion!`)
-                        const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
-                        foundPotion.quantity+=1
-                    }
-                    else{
-                        await thisThis.onPotionSelect(PotionName)
+                 const PotionName = collected.values[0]
+                // const potion = allPotions.find(potion => potion.name === PotionName)
+                // if(potion.type == "health"){
+                //     if(thisThis.attacker.hasEffect(healthPotion)){
+                //         thisThis.addLogMessage(`You have already used a similar type of potion!`)
+                //         const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
+                //         foundPotion.quantity+=1
+                //     }
+                //     else{
+                //         await thisThis.onPotionSelect(PotionName)
 
-                    }
+                //     }
                     
-                }
-                else if (potion.type == "mana"){
+                // }
+                // else if (potion.type == "mana"){
                    
-                    if(thisThis.attacker.hasEffect(manaPotion)){
-                        thisThis.addLogMessage(`You have already used a similar type of potion!`)
-                        const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
-                        foundPotion.quantity+=1
-                    }
-                    else{
-                        await thisThis.onPotionSelect(PotionName)
+                //     if(thisThis.attacker.hasEffect(manaPotion)){
+                //         thisThis.addLogMessage(`You have already used a similar type of potion!`)
+                //         const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
+                //         foundPotion.quantity+=1
+                //     }
+                //     else{
+                //         await thisThis.onPotionSelect(PotionName)
 
-                    }
-                }
-                else{
+                //     }
+                // }
+                // else{
                     
-                }
+                // }
                 
     
                 thisThis.locker.unlock()
