@@ -252,11 +252,8 @@ class DuelBuilder {
     async onPotionSelect(potionName: string) {
         this.deleteInfoMessages()
 
-        this.attacker.useSkill(
-            this.attacker,
-            this.defender,
-            potions.find(potion => potion.name === potionName)
-        )
+        this.attacker.health+=20
+        this.attacker.addLogMessage("20 hp added")
     }
 
     async beforeDuelStart() {

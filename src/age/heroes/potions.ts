@@ -12,6 +12,7 @@ const potions = [
         use: (attacker, defender) =>{
            
            attacker.health = addHealth(20,attacker,defender)
+           
            attacker.addLogMessage(`20 hp gained`)
            
 
