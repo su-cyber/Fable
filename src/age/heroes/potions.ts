@@ -14,7 +14,7 @@ const potions = [
            
             const hp = attacker.scheduler.task
             .turns(1000)
-            .attacker.effect(healthPotion)
+            .all.effect(healthPotion)
             .end(() => attacker.removeEffect(healthPotion))
             .run(() =>{
                 attacker.health+=20
