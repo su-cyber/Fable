@@ -12,7 +12,7 @@ const potions = [
         mana_cost: 0,
         type: 'self',
         use: (attacker, defender) =>{
-           
+            attacker.health+=20
             const hp = attacker.scheduler.task
             .turns(1000)
             .all.effect(healthPotion)
@@ -27,7 +27,7 @@ const potions = [
                 `**${attacker.name}** gained 20 hp`
             )
         attacker.applyEffect(hp)
-        attacker.health+=20
+        
         
     },
 
@@ -41,7 +41,7 @@ const potions = [
             mana_cost: 0,
             type: 'self',
             use: (attacker, defender) =>{
-               
+                attacker.mana+=50
                 const mana = attacker.scheduler.task
                 .turns(1000)
                 .all.effect(manaPotion)
@@ -56,21 +56,21 @@ const potions = [
                     `**${attacker.name}** gained 50 mana`
                 )
             attacker.applyEffect(mana)
-            attacker.mana+=50
+            
            
         },
     
                 
             }
     ,{
-        name: 'same',
+        name: 'None',
         cooldown: 0,
-        description: 'same type of potion',
+        description: 'no potions',
         canEvade: false,
         mana_cost: 0,
         type: 'self',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`You have already used a similar type of potion!`)
+            attacker.addLogMessage(`You are out of potions!`)
         }
     },
 ]
