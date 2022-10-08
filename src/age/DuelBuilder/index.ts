@@ -23,6 +23,8 @@ import potions from '../heroes/potions'
 import inventory from '../../../models/InventorySchema'
 import { Potion } from '../classes/potion'
 import shopPotions_lvl5 from '../potions/shopPotions_lvl5'
+import { healthPotion } from '../effects/healthPotion'
+import allPotions from '../potions/allPotions'
 
 const lineBreak = '\n\u200b'
 
@@ -251,9 +253,28 @@ class DuelBuilder {
 
     async onPotionSelect(potionName: string) {
         this.deleteInfoMessages()
+        const potion = allPotions.find(potion => potion.name === potionName)
+        inventory.findOne({userID:this.interaction.user.id},async function(err,foundUser){
+            if(this.attacker.hasEffect(healthPotion) && potion.type == "health"){
 
-        this.attacker.health+=20
-        this.attacker.addLogMessage("20 hp added")
+                this.attacker.useSkill(
+                    this.attacker,
+                    this.defender,
+                    potions.find(potion => potion.name === "same")
+                )
+                const foundPotion = foundUser.inventory.potions.find(object => object.name.name === potionName)
+                foundPotion.quantity+=1
+            }
+            else{
+                this.attacker.useSkill(
+                    this.attacker,
+                    this.defender,
+                    potions.find(potion => potion.name === potionName)
+                )
+            }
+            await inventory.findOneAndUpdate({userID:this.interaction.user.id},foundUser)
+        })
+        
     }
 
     async beforeDuelStart() {
