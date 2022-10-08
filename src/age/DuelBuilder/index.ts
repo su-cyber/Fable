@@ -329,12 +329,14 @@ class DuelBuilder {
                 let interaction = this.interaction
                 let collector_use = this.collector_use
                 inventory.findOne({userID:i.user.id},async function(err,foundUser){
-                    const potions = foundUser.inventory.potions
-                    let potions_filtered = []
+                    let potions = []
+                    for(let i=0;i<foundUser.inventory.potions.length;i++){
+                        potions.push(foundUser.inventory.potions[i].name)
+                    }
                     
                     if (thisThis.attacker.hasEffect(healthPotion)){
                             for(let i=0;i<potions.length;i++){
-                            if(potions[i].name.type == "health"){
+                            if(potions[i].type == "health"){
                                 potions.splice(i)
                             }
                            
@@ -345,7 +347,7 @@ class DuelBuilder {
                     }
                 if(thisThis.attacker.hasEffect(manaPotion)){
                         for(let i=0;i<potions.length;i++){
-                            if(potions[i].name.type == "mana"){
+                            if(potions[i].type == "mana"){
                                 potions.splice(i)
                             } 
                     }
@@ -377,9 +379,9 @@ class DuelBuilder {
                             .setPlaceholder(`Select a potion ${i.user.username}`)
                             .addOptions(
                                 potions.map(item => ({
-                                    label: item.name.name,
-                                    description: item.name.description,
-                                    value: item.name.name,
+                                    label: item.name,
+                                    description: item.description,
+                                    value: item.name,
                                 }))
                             )
                             .setDisabled(false),
