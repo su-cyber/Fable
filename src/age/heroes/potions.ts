@@ -22,13 +22,13 @@ const potions = [
             }
                 
             )
-
+            attacker.addLogMessage(
+                `**${attacker.name}** health potion`,
+                `**${attacker.name}** gained 20 hp`
+            )
         attacker.applyEffect(hp)
         attacker.health+=20
-        attacker.addLogMessage(
-            `**${attacker.name}** health potion`,
-            `**${defender.name}** gained 20 hp`
-        )
+        
     },
 
             
@@ -51,13 +51,13 @@ const potions = [
                 }
                     
                 )
-    
+                attacker.addLogMessage(
+                    `**${attacker.name}** used mana potion`,
+                    `**${attacker.name}** gained 50 mana`
+                )
             attacker.applyEffect(mana)
             attacker.mana+=50
-            attacker.addLogMessage(
-                `**${attacker.name}** mana potion`,
-                `**${defender.name}** gained 50 mana`
-            )
+           
         },
     
                 

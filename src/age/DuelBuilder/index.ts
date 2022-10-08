@@ -371,20 +371,32 @@ class DuelBuilder {
                 //insert potions code here
                 const PotionName = collected.values[0]
                 const potion = allPotions.find(potion => potion.name === PotionName)
-                if(thisThis.attacker.hasEffect(healthPotion) && potion.type == "health"){
-                    thisThis.deleteInfoMessages()
-                    thisThis.addLogMessage(`You have already used a similar type of potion!`)
-                    const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
-                    foundPotion.quantity+=1
+                if(potion.type == "health"){
+                    if(thisThis.attacker.hasEffect(healthPotion)){
+                        thisThis.addLogMessage(`You have already used a similar type of potion!`)
+                        const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
+                        foundPotion.quantity+=1
+                    }
+                    else{
+                        await thisThis.onPotionSelect(PotionName)
+
+                    }
+                    
                 }
-                else if (thisThis.attacker.hasEffect(manaPotion) && potion.type == "mana"){
-                    thisThis.deleteInfoMessages()
-                    thisThis.addLogMessage(`You have already used a similar type of potion!`)
-                    const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
-                    foundPotion.quantity+=1
+                else if (potion.type == "mana"){
+                   
+                    if(thisThis.attacker.hasEffect(manaPotion)){
+                        thisThis.addLogMessage(`You have already used a similar type of potion!`)
+                        const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
+                        foundPotion.quantity+=1
+                    }
+                    else{
+                        await thisThis.onPotionSelect(PotionName)
+
+                    }
                 }
                 else{
-                    await thisThis.onPotionSelect(PotionName)
+                    
                 }
                 
     
