@@ -10,7 +10,8 @@ const potions = [
         type: 'self',
         use: (attacker, defender) =>{
            const potion = 20
-           let hp = attacker.health + potion
+           const atk_hp = attacker.health
+           let hp = atk_hp + potion
            attacker.health = hp
            attacker.addLogMessage(`20 hp gained`)
            
