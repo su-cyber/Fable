@@ -31,7 +31,7 @@ const potions = [
 ]
 
 
-async function addHealth(n:number,attacker:Entity,defender:Entity){
+function addHealth(n:number,attacker:Entity,defender:Entity){
 const hp = attacker.health +=n
 return hp
 }
