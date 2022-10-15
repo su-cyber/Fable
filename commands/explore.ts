@@ -14,16 +14,13 @@ import { SlashCommandStringOption } from '@discordjs/builders'
 
 
 export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explore the world' })
-.addStringOption((option: SlashCommandStringOption) =>
-        option.setName('Location').setDescription('Location to explore').setRequired(true)
-    )
+
 .setDo(
     async (bot, interaction) => {
         const authorId = interaction.user.id
 
         const author = interaction.guild.members.cache.get(authorId)
-        const location = interaction.options.getString('Location').toLowerCase()
-        console.log(location);
+        
         
 
         profileModel.exists({userID: authorId},async function(err,res){
