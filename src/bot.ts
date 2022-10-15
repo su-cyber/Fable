@@ -86,7 +86,7 @@ class Bot extends Client {
            await mongoose.connect(process.env.MONGO_URL || '',{
                 keepAlive:true
             })
-            this.application.commands.set([])
+            
         }
         )
 
