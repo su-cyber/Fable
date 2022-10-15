@@ -84,11 +84,13 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                             if(btn.isButton()){
                                 if(btn.customId === "btn_accept"){
                                     await btn.deferUpdate().catch(e => {})
-                                    interaction.editReply('quest accepted!')
+                                    interaction.deleteReply()
+                                    interaction.channel.send(`${interaction.user.id} accepted the quest!`)
                                 }
-                                else if(btn.customId === "armour"){
+                                else if(btn.customId === "btn_reject"){
                                     await btn.deferUpdate().catch(e => {})
-                                    interaction.editReply('quest rejected!')
+                                    interaction.deleteReply()
+                                    interaction.channel.send(`${interaction.user.id} rejected the quest!`)
                                 }
                                
                                 
