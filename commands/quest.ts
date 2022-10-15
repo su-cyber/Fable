@@ -58,7 +58,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                     }
                     else if(scene === 'item exploration'){
                         let itemOptions = ["Ghoul's Skull","Goblin's Pouch","Direwolf Claw"]
-                        let item = Math.floor(Math.random() * ((itemOptions.length-1) - 0 + 1)) + 0
+                        let item = itemOptions[Math.floor(Math.random() * ((itemOptions.length-1) - 0 + 1)) + 0]
                         let quantity = Math.floor(Math.random() * (10 - 2 + 1)) + 2
                 
                 
@@ -85,12 +85,12 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                                 if(btn.customId === "btn_accept"){
                                     await btn.deferUpdate().catch(e => {})
                                     interaction.deleteReply()
-                                    interaction.channel.send(`${interaction.user.id} accepted the quest!`)
+                                    interaction.channel.send(`${interaction.user.username} accepted the quest!`)
                                 }
                                 else if(btn.customId === "btn_reject"){
                                     await btn.deferUpdate().catch(e => {})
                                     interaction.deleteReply()
-                                    interaction.channel.send(`${interaction.user.id} rejected the quest!`)
+                                    interaction.channel.send(`${interaction.user.username} rejected the quest!`)
                                 }
                                
                                 
