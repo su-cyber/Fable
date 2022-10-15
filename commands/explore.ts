@@ -23,7 +23,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
         const location = interaction.options.getString('location').toLowerCase()
         const author = interaction.guild.members.cache.get(authorId)
         
-        console.log(location);
+        
         
 
         profileModel.exists({userID: authorId},async function(err,res){
@@ -77,23 +77,31 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 
             }
         })
-        await interaction.deferReply()
-        await interaction.editReply({ content: 'searching...'})
-        await interaction.editReply({ components: [await monstersDropdown()] })
 
-        bot.onComponent('select-menu__monsters', async componentInteraction => {
-            componentInteraction.deferUpdate()
-            await interaction.editReply({ content: '\u200b', components: [] })
-            const monster = (await getMonsters())
-                .find(m => m.name === componentInteraction.values[0])
-                .create()
-
-            await new PvEDuel({
-                interaction,
-                player1: attacker,
-                player2: monster,
-            }).start()
-        })
+        if(location === "ellior"){
+            await interaction.deferReply()
+            await interaction.editReply({ content: `searching ${location}...`})
+            await interaction.editReply({ components: [await monstersDropdown()] })
+    
+            bot.onComponent('select-menu__monsters', async componentInteraction => {
+                componentInteraction.deferUpdate()
+                await interaction.editReply({ content: '\u200b', components: [] })
+                const monster = (await getMonsters())
+                    .find(m => m.name === componentInteraction.values[0])
+                    .create()
+    
+                await new PvEDuel({
+                    interaction,
+                    player1: attacker,
+                    player2: monster,
+                }).start()
+            })
+        }
+        else{
+            await interaction.deferReply()
+            await interaction.editReply(`cannot access ${location}`)
+        }
+     
         
             }
 
