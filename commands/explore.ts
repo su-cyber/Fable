@@ -10,13 +10,19 @@ import profileModel from '../models/profileSchema'
 import allskills from '../src/age/heroes/skills'
 import passive_skills from '../src/age/heroes/passive_skills'
 import inventory from '../models/InventorySchema'
+import { SlashCommandStringOption } from '@discordjs/builders'
 
 
-export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explore the world' }).setDo(
+export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explore the world' })
+.addStringOption((option: SlashCommandStringOption) =>
+        option.setName('Location').setDescription('Location to explore').setRequired(true)
+    )
+.setDo(
     async (bot, interaction) => {
         const authorId = interaction.user.id
 
         const author = interaction.guild.members.cache.get(authorId)
+        const location = interaction.options.getString('Location').toLowerCase()
 
         profileModel.exists({userID: authorId},async function(err,res){
             if(err){
@@ -69,25 +75,34 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 
             }
         })
-        await interaction.deferReply()
-        await interaction.editReply({ content: 'searching...'})
-        await interaction.editReply({ components: [await monstersDropdown()] })
 
-        bot.onComponent('select-menu__monsters', async componentInteraction => {
-            componentInteraction.deferUpdate()
-            await interaction.editReply({ content: '\u200b', components: [] })
-            const monster = (await getMonsters())
-                .find(m => m.name === componentInteraction.values[0])
-                .create()
-
-            await new PvEDuel({
-                interaction,
-                player1: attacker,
-                player2: monster,
-            }).start()
-        })
-        
+        if(location === "ellior"){
+            await interaction.deferReply()
+            await interaction.editReply({ content: `searching ${location}...`})
+            await interaction.editReply({ components: [await monstersDropdown()] })
+    
+            bot.onComponent('select-menu__monsters', async componentInteraction => {
+                componentInteraction.deferUpdate()
+                await interaction.editReply({ content: '\u200b', components: [] })
+                const monster = (await getMonsters())
+                    .find(m => m.name === componentInteraction.values[0])
+                    .create()
+    
+                await new PvEDuel({
+                    interaction,
+                    player1: attacker,
+                    player2: monster,
+                }).start()
+            })
+            
+                }
+            else{
+                await interaction.deferReply()
+                await interaction.editReply(`Cannot access the location ${location}`)
             }
+
+        }
+       
 
             else {
                     interaction.reply({content:"it seems that you are not an awakened yet!"})
