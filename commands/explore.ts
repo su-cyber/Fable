@@ -23,6 +23,8 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
 
         const author = interaction.guild.members.cache.get(authorId)
         const location = interaction.options.getString('Location').toLowerCase()
+        console.log(location);
+        
 
         profileModel.exists({userID: authorId},async function(err,res){
             if(err){
@@ -75,34 +77,25 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 
             }
         })
+        await interaction.deferReply()
+        await interaction.editReply({ content: 'searching...'})
+        await interaction.editReply({ components: [await monstersDropdown()] })
 
-        if(location === "ellior"){
-            await interaction.deferReply()
-            await interaction.editReply({ content: `searching ${location}...`})
-            await interaction.editReply({ components: [await monstersDropdown()] })
-    
-            bot.onComponent('select-menu__monsters', async componentInteraction => {
-                componentInteraction.deferUpdate()
-                await interaction.editReply({ content: '\u200b', components: [] })
-                const monster = (await getMonsters())
-                    .find(m => m.name === componentInteraction.values[0])
-                    .create()
-    
-                await new PvEDuel({
-                    interaction,
-                    player1: attacker,
-                    player2: monster,
-                }).start()
-            })
-            
-                }
-            else{
-                await interaction.deferReply()
-                await interaction.editReply(`Cannot access the location ${location}`)
+        bot.onComponent('select-menu__monsters', async componentInteraction => {
+            componentInteraction.deferUpdate()
+            await interaction.editReply({ content: '\u200b', components: [] })
+            const monster = (await getMonsters())
+                .find(m => m.name === componentInteraction.values[0])
+                .create()
+
+            await new PvEDuel({
+                interaction,
+                player1: attacker,
+                player2: monster,
+            }).start()
+        })
+        
             }
-
-        }
-       
 
             else {
                     interaction.reply({content:"it seems that you are not an awakened yet!"})
