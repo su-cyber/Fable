@@ -45,7 +45,12 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         name: 'Fireball',
                         description: 'Dealing damage and burning them for 3 turns',
                     }],
-                    passiveskills:[]
+                    passiveskills:[],
+                    quest:false,
+                    quest_location:'',
+                    quest_mob:'',
+                    quest_quantity:0,
+                    quest_item:''
                     
                 })
                 profile.save();

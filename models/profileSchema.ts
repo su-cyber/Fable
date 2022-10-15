@@ -19,7 +19,12 @@ const profileSchema = new mongoose.Schema({
     items:{type: Array},
     weaponskills: {type:Array},
     magicskills: {type:Array},
-    passiveskills:{type: Array}
+    passiveskills:{type: Array},
+    quest:{type: Boolean},
+    quest_location:{type: String},
+    quest_mob:{type: String},
+    quest_quantity:{type: Number},
+    quest_item:{type: String}
 });
 
 const model = mongoose.model('ProfileModels',profileSchema);
