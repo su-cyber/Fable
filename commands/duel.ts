@@ -8,6 +8,7 @@ import { Mage } from '../src/age/heroes/mage'
 import profileModel from '../models/profileSchema'
 import allskills from '../src/age/heroes/skills'
 import { sleep } from '../src/utils'
+import passive_skills from '../src/age/heroes/passive_skills'
 
 export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with a player' })
     .addUserOption((option: SlashCommandUserOption) =>
@@ -43,7 +44,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         
                                     }
                                     else{
-                                        console.log("called!");
+                                        
                                         
                                         attacker.health=foundUser.health
                                         attacker.mana=foundUser.mana
@@ -160,7 +161,32 @@ class PvPDuel extends DuelBuilder {
 
     async beforeDuelStart() {
         super.beforeDuelStart()
+        if(this.player1.passive_skills.length !=0){
+            let i
+            for(i=0;i<this.player1.passive_skills.length;i++){
+                const passive_skill = passive_skills.find(skill => skill.name === this.player1.passive_skills[i].name)
+                this.player1.useSkill(this.player1,this.player2,passive_skill)
+                
+                
+            } 
+        }
+        else{
 
+        }
+
+        if(this.player2.passive_skills.length !=0){
+            let i
+            for(i=0;i<this.player2.passive_skills.length;i++){
+                const passive_skill = passive_skills.find(skill => skill.name === this.player2.passive_skills[i].name)
+                this.player2.useSkill(this.player2,this.player1,passive_skill)
+                
+                
+            } 
+        }
+        else{
+
+        }
+        
         await this.replyOrEdit({ content: `initiating duel with ${this.player2.name}!` })
         await sleep(1.2)
         
