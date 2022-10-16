@@ -93,7 +93,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                                     await interaction.editReply({content:`${interaction.user.username} accepted the quest!`,embeds:null})
 
                                     
-                                    
+                                await profileModel.findOneAndUpdate({userID:authorId},foundUser)
                                     
                                     
                                 }
@@ -106,11 +106,14 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                                     foundUser.quest_quantity=0,
                                     foundUser.quest_item =''
                                     foundUser.quest = false
+                                
+                                    await profileModel.findOneAndUpdate({userID:authorId},foundUser)
                                 }
-                               
+
+                                
                                 
                             }
-                        
+                              
                 
                    
                    
@@ -121,7 +124,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                    })
 
                    
-                await profileModel.findOneAndUpdate({userID:authorId},foundUser)   
+                
                 }
             
                
