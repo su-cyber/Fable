@@ -100,16 +100,22 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
 
         else if(location === "quest"){
             profileModel.findOne({userID:authorId},async function (err,foundUser){
+                if(foundUser.quest_quantity !=0){
                 const monsters = await getMonsters()
                 const monster = monsters
                 .find(m => m.name === foundUser.quest_mob)
                 .create()
             
-                await new PvEDuel({
+                await new PvEDuel_Quest({
                     interaction,
                     player1: attacker,
                     player2: monster,
                 }).start()
+            }
+            else{
+                await interaction.deferReply()
+                await interaction.editReply(`You have no active quest!`)
+            }
             })
             
 
@@ -208,4 +214,27 @@ class PvEDuel extends DuelBuilder {
     }
 
     
+}
+
+
+class PvEDuel_Quest extends PvEDuel {
+    player1: Entity
+    player2: MonsterEntity
+
+
+    async onEnd(winner: Entity, loser: MonsterEntity) {
+        await loser.onDeath(this.interaction, winner)
+        if(winner instanceof Entity){
+            profileModel.findOne({userID:winner.id},async function(err,foundUser){
+                foundUser.quest_quantity-=1
+                if(foundUser.quest_quantity === 0){
+                    foundUser.quest = false
+                }
+
+                await profileModel.findOneAndUpdate({userID:winner.id},foundUser)
+            })
+        }
+        
+    }
+
 }
