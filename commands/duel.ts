@@ -8,7 +8,6 @@ import { Mage } from '../src/age/heroes/mage'
 import profileModel from '../models/profileSchema'
 import allskills from '../src/age/heroes/skills'
 import { sleep } from '../src/utils'
-import passive_skills from '../src/age/heroes/passive_skills'
 
 export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with a player' })
     .addUserOption((option: SlashCommandUserOption) =>
@@ -38,7 +37,60 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                             if(result){
                                 const attacker = Warrior.create(author)
                                 const defender = Warrior.create(opponent)
-                                
+                                profileModel.findOne({userID:authorId},async function(err,foundUser) {
+                                    if(err){
+                                        console.log(err);
+                                        
+                                    }
+                                    else{
+                                        
+                                        
+                                        attacker.health=foundUser.health
+                                        attacker.mana=foundUser.mana
+                                        attacker.armor=foundUser.armour
+                                        attacker.magicPower=foundUser.magicPower
+                                        attacker.attackDamage=foundUser.attackDamage
+                                        attacker.evasion=foundUser.evasion
+                                        attacker.maxHealth=foundUser.health
+                                        attacker.skills=foundUser.skills
+                                        attacker.passive_skills = foundUser.passiveskills
+
+                                        if(foundUser.weapon.length === 0){
+                                            attacker.skills=foundUser.magicskills
+                                        }
+                                        else{
+                                            
+                                            attacker.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
+                                        }
+                          
+                                    }
+                                })
+                                profileModel.findOne({userID:opponentId},async function(err,foundUser) {
+                                    if(err){
+                                        console.log(err);
+                                        
+                                    }
+                                    else{
+                                        defender.health=foundUser.health
+                                        defender.mana=foundUser.mana
+                                        defender.armor=foundUser.armour
+                                        defender.magicPower=foundUser.magicPower
+                                        defender.attackDamage=foundUser.attackDamage
+                                        defender.evasion=foundUser.evasion
+                                        defender.maxHealth=foundUser.health
+                                        defender.skills=foundUser.skills
+                                        defender.passive_skills = foundUser.passiveskills
+
+                                        if(foundUser.weapon.length === 0){
+                                            defender.skills=foundUser.magicskills
+                                        }
+                                        else{
+                                            
+                                            defender.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
+                                        }
+                                        
+                                    }
+                                })
                                 await new PvPDuel({
                                     interaction,
                                     player1: attacker,
@@ -107,92 +159,8 @@ class PvPDuel extends DuelBuilder {
     }
 
     async beforeDuelStart() {
-        const authorId = this.interaction.user.id
-        const opponentId = this.interaction.options.getUser('user').id
+        super.beforeDuelStart()
 
-        profileModel.findOne({userID:authorId},async function(err,foundUser) {
-            if(err){
-                console.log(err);
-                
-            }
-            else{
-                console.log("called");
-                
-                
-                this.attacker.health=foundUser.health
-                this.attacker.mana=foundUser.mana
-                this.attacker.armor=foundUser.armour
-                this. attacker.magicPower=foundUser.magicPower
-                this. attacker.attackDamage=foundUser.attackDamage
-                this. attacker.evasion=foundUser.evasion
-                this. attacker.maxHealth=foundUser.health
-                this. attacker.skills=foundUser.skills
-                this.attacker.passive_skills = foundUser.passiveskills
-
-                if(foundUser.weapon.length === 0){
-                    this. attacker.skills=foundUser.magicskills
-                }
-                else{
-                    
-                    this. attacker.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
-                }
-  
-            }
-        })
-        profileModel.findOne({userID:opponentId},async function(err,foundOpp) {
-            if(err){
-                console.log(err);
-                
-            }
-            else{
-                console.log("called");
-                
-                this.defender.health=foundOpp.health
-                this.defender.mana=foundOpp.mana
-                this.defender.armor=foundOpp.armour
-                this.defender.magicPower=foundOpp.magicPower
-                this.defender.attackDamage=foundOpp.attackDamage
-                this.defender.evasion=foundOpp.evasion
-                this.defender.maxHealth=foundOpp.health
-                this.defender.skills=foundOpp.skills
-                this.defender.passive_skills = foundOpp.passiveskills
-
-                if(foundOpp.weapon.length === 0){
-                    this.defender.skills=foundOpp.magicskills
-                }
-                else{
-                    
-                    this.defender.skills=foundOpp.weaponskills.concat(foundOpp.magicskills,foundOpp.weapon[0].skills)
-                }
-                
-            }
-        })
-        if(this.attacker.passive_skills.length !=0){
-            let i
-            for(i=0;i<this.attacker.passive_skills.length;i++){
-                const passive_skill = passive_skills.find(skill => skill.name === this.attacker.passive_skills[i].name)
-                this.attacker.useSkill(this.attacker,this.defender,passive_skill)
-                
-                
-            } 
-        }
-        else{
-
-        }
-
-        if(this.defender.passive_skills.length !=0){
-            let i
-            for(i=0;i<this.defender.passive_skills.length;i++){
-                const passive_skill = passive_skills.find(skill => skill.name === this.defender.passive_skills[i].name)
-                this.defender.useSkill(this.defender,this.attacker,passive_skill)
-                
-                
-            } 
-        }
-        else{
-
-        }
-        
         await this.replyOrEdit({ content: `initiating duel with ${this.player2.name}!` })
         await sleep(1.2)
         

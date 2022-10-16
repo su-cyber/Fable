@@ -49,6 +49,9 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                         let mob = mobOptions[Math.floor(Math.random() * ((mobOptions.length-1) - 0 + 1)) + 0]
                         let location = locationOptions[Math.floor(Math.random() * ((locationOptions.length-1) - 0 + 1)) + 0]
                 
+                        foundUser.quest_location = location
+                        foundUser.quest_mob = mob
+                        foundUser.quest_quantity = quantity
                 
                        questEmbed = new MessageEmbed()
                         .setColor('RANDOM')
@@ -61,6 +64,8 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                         let item = itemOptions[Math.floor(Math.random() * ((itemOptions.length-1) - 0 + 1)) + 0]
                         let quantity = Math.floor(Math.random() * (10 - 2 + 1)) + 2
                 
+                        foundUser.quest_item = item
+                        foundUser.quest_quantity = quantity
                 
                         questEmbed = new MessageEmbed()
                         .setColor('RANDOM')
@@ -86,11 +91,21 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                                     await btn.deferUpdate().catch(e => {})
                                     interaction.deleteReply()
                                     interaction.channel.send(`${interaction.user.username} accepted the quest!`)
+
+                                    
+                                    foundUser.quest = true
+                                        
+                                    
                                 }
                                 else if(btn.customId === "btn_reject"){
                                     await btn.deferUpdate().catch(e => {})
                                     interaction.deleteReply()
                                     interaction.channel.send(`${interaction.user.username} rejected the quest!`)
+
+                                    foundUser.quest_location='',
+                                    foundUser.quest_mob='',
+                                    foundUser.quest_quantity=0,
+                                    foundUser.quest_item =''
                                 }
                                
                                 
@@ -98,14 +113,18 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                         
                 
                    
+                   
+                    })
+
                     collector.on('end', () => {
                         interaction.editReply('quest expired!')
-                    })
                    })
-                       
+
+                   
+                profileModel.findOneAndUpdate({userID:authorId},foundUser)   
                 }
             
-
+                interaction.channel.send(`${foundUser.quest_location}\n${foundUser.quest_item}`)
 
             }
         })
