@@ -223,7 +223,7 @@ class PvEDuel_Quest extends PvEDuel {
 
 
     async onEnd(winner: Entity, loser: MonsterEntity) {
-        await loser.onDeath(this.interaction, winner)
+        
         if(winner instanceof Entity){
             profileModel.findOne({userID:winner.id},async function(err,foundUser){
                 foundUser.quest_quantity-=1
@@ -234,6 +234,7 @@ class PvEDuel_Quest extends PvEDuel {
                 await profileModel.findOneAndUpdate({userID:winner.id},foundUser)
             })
         }
+        await loser.onDeath(this.interaction, winner)
         
     }
 
