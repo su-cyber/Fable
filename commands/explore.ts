@@ -100,7 +100,8 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
 
         else if(location === "quest"){
             profileModel.findOne({userID:authorId},async function (err,foundUser){
-                const monster = (await getMonsters())
+                const monsters = await getMonsters()
+                const monster = monsters
                 .find(m => m.name === foundUser.quest_mob)
                 .create()
             
