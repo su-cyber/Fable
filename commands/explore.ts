@@ -225,6 +225,8 @@ class PvEDuel_Quest extends PvEDuel {
     async onEnd(winner: Entity, loser: MonsterEntity) {
         
         if(winner instanceof Entity){
+            console.log("called");
+            
             profileModel.findOne({userID:winner.id},async function(err,foundUser){
                 foundUser.quest_quantity-=1
                 if(foundUser.quest_quantity === 0){
