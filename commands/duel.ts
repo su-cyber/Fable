@@ -160,6 +160,8 @@ class PvPDuel extends DuelBuilder {
     }
 
     async beforeDuelStart() {
+        console.log(this.player1.passive_skills);
+        console.log(this.player2.passive_skills);
         
         if(this.player1.passive_skills.length !=0){
             let i
