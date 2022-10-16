@@ -120,9 +120,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                    
                     })
 
-                    collector.on('end', () => {
-                        interaction.editReply('quest expired!')
-                   })
+                   
 
                    
                 
