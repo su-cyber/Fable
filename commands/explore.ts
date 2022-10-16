@@ -101,10 +101,10 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
         else if(location === "quest"){
             profileModel.findOne({userID:authorId},async function (err,foundUser){
                 if(foundUser.quest_quantity !=0){
-                const monsters = await getMonsters()
-                const monster = monsters
-                .find(m => m.name === foundUser.quest_mob)
-                .create()
+                    const monster = (await getMonsters())
+                    .find(m => m.name === foundUser.quest_mob)
+                    .create()
+    
             
                 await new PvEDuel_Quest({
                     interaction,
