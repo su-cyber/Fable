@@ -94,7 +94,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
 
                                     
                                     foundUser.quest = true
-                                        
+                                    interaction.channel.send(`${foundUser.quest_location}\n${foundUser.quest_mob}`)
                                     
                                 }
                                 else if(btn.customId === "btn_reject"){
