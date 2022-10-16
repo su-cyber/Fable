@@ -226,11 +226,11 @@ class PvEDuel_Quest extends PvEDuel {
         const authorId = this.interaction.user.id
         profileModel.findOne({userID:authorId},async function(err,foundUser){
         if(winner.name != foundUser.quest_mob){
-            console.log(winner.name);
             
             
-                foundUser.quest_quantity-=1
-                if(foundUser.quest_quantity === 0){
+                const finalValue = foundUser.quest_quantity - 1
+                foundUser.quest_quantity = finalValue
+                if(finalValue === 0){
                     foundUser.quest = false
                 }
 
