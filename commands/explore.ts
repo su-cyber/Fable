@@ -217,11 +217,60 @@ class PvEDuel extends DuelBuilder {
 }
 
 
-class PvEDuel_Quest extends PvEDuel {
+class PvEDuel_Quest extends DuelBuilder {
     player1: Entity
     player2: MonsterEntity
 
+    async beforeDuelStart() {
+        super.beforeDuelStart()
 
+        await this.replyOrEdit({ content: `🔎 Found a ${this.player2.name}!` })
+        await sleep(1.2)
+        
+        
+    }
+
+    async onSkillSelect(skillName: string) {
+        const skill = allskills.find(skill => skill.name === skillName)
+
+        this.attacker.useSkill(this.attacker,this.defender,skill)
+    }
+
+    
+    
+
+    async onTurn(skipTurn: boolean) {
+        const isMonsterTurn = this.attacker instanceof MonsterEntity
+
+        if (skipTurn) {
+            if (isMonsterTurn) {
+                await sleep(1.5)
+                this.deleteInfoMessages()
+            }
+
+            return
+        }
+
+        if (this.attacker instanceof MonsterEntity) {
+            
+           
+            await this.sendInfoMessage(this.attacker.skills, true)
+
+            this.attacker.useSkill(this.attacker,this.defender)
+            
+            
+        } else {
+            
+            await this.sendInfoMessage(this.attacker.skills)
+            await sleep(1.5)
+            this.deleteInfoMessages()
+            await this.locker.wait()
+            this.locker.lock()
+        }
+
+        await this.sendInfoMessage(this.attacker.skills)
+        
+    }
     async onEnd(winner: Entity, loser: MonsterEntity) {
         const authorId = this.interaction.user.id
         profileModel.findOne({userID:authorId},async function(err,foundUser){
@@ -230,11 +279,13 @@ class PvEDuel_Quest extends PvEDuel {
             
                 const finalValue = foundUser.quest_quantity - 1
                 foundUser.quest_quantity = finalValue
+                await profileModel.findOneAndUpdate({userID:authorId},foundUser)
                 if(finalValue === 0){
                     foundUser.quest = false
+                    await profileModel.findOneAndUpdate({userID:authorId},foundUser)
                 }
 
-            await profileModel.findOneAndUpdate({userID:authorId},foundUser)
+           
             
         }
     })
