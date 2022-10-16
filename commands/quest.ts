@@ -89,8 +89,8 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                             if(btn.isButton()){
                                 if(btn.customId === "btn_accept"){
                                     await btn.deferUpdate().catch(e => {})
-                                    await interaction.deleteReply()
-                                    await interaction.channel.send({content:`${interaction.user.username} accepted the quest!`,embeds:null})
+                                    await btn.editReply(`${interaction.user.username} accepted the quest!`)
+                                    
 
                                     
                                 await profileModel.findOneAndUpdate({userID:authorId},foundUser)
@@ -100,8 +100,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                                 else if(btn.customId === "btn_reject"){
                                     await btn.deferUpdate().catch(e => {})
                                     await interaction.deleteReply()
-                                    await interaction.channel.send({content:`${interaction.user.username} rejected the quest!`,embeds:null})
-
+                                    await btn.editReply(`${interaction.user.username} rejected the quest!`)
                                     foundUser.quest_location='',
                                     foundUser.quest_mob='',
                                     foundUser.quest_quantity=0,
