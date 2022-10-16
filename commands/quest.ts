@@ -44,7 +44,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
 
                     if(scene === 'mob attack'){
                         let locationOptions = ['Hagard','Hage','Pacifia','Feltis']
-                        let mobOptions = ['Arachnid','Goblin','Orcs','Ogres']
+                        let mobOptions = ['Arachnid','Goblin','Orc','Ogre']
                         let quantity = Math.floor(Math.random() * (10 - 2 + 1)) + 2
                         let mob = mobOptions[Math.floor(Math.random() * ((mobOptions.length-1) - 0 + 1)) + 0]
                         let location = locationOptions[Math.floor(Math.random() * ((locationOptions.length-1) - 0 + 1)) + 0]
@@ -52,7 +52,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                         foundUser.quest_location = location
                         foundUser.quest_mob = mob
                         foundUser.quest_quantity = quantity
-                
+                        foundUser.quest = true
                        questEmbed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('QUEST')
@@ -66,7 +66,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                 
                         foundUser.quest_item = item
                         foundUser.quest_quantity = quantity
-                
+                        foundUser.quest = true
                         questEmbed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('QUEST')
@@ -89,23 +89,23 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                             if(btn.isButton()){
                                 if(btn.customId === "btn_accept"){
                                     await btn.deferUpdate().catch(e => {})
-                                    interaction.deleteReply()
-                                    interaction.channel.send(`${interaction.user.username} accepted the quest!`)
+                                   
+                                    await interaction.editReply({content:`${interaction.user.username} accepted the quest!`,embeds:null})
 
                                     
-                                    foundUser.quest = true
+                                    
                                     interaction.channel.send(`${foundUser.quest_location}\n${foundUser.quest_mob}`)
                                     
                                 }
                                 else if(btn.customId === "btn_reject"){
                                     await btn.deferUpdate().catch(e => {})
-                                    interaction.deleteReply()
-                                    interaction.channel.send(`${interaction.user.username} rejected the quest!`)
+                                    await interaction.editReply({content:`${interaction.user.username} rejected the quest!`,embeds:null})
 
                                     foundUser.quest_location='',
                                     foundUser.quest_mob='',
                                     foundUser.quest_quantity=0,
                                     foundUser.quest_item =''
+                                    foundUser.quest = false
                                 }
                                
                                 
