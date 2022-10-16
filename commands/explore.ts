@@ -97,6 +97,22 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 }).start()
             })
         }
+
+        else if(location === "quest"){
+            profileModel.findOne({userID:authorId},async function (err,foundUser){
+                const monster = (await getMonsters())
+                .find(m => m.name === foundUser.quest_mob)
+                .create()
+            
+                await new PvEDuel({
+                    interaction,
+                    player1: attacker,
+                    player2: monster,
+                }).start()
+            })
+            
+
+        }
         else{
             await interaction.deferReply()
             await interaction.editReply(`cannot access ${location}`)

@@ -124,7 +124,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                 profileModel.findOneAndUpdate({userID:authorId},foundUser)   
                 }
             
-                interaction.channel.send(`${foundUser.quest_location}\n${foundUser.quest_item}`)
+               
 
             }
         })
