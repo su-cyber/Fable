@@ -160,7 +160,7 @@ class PvPDuel extends DuelBuilder {
     }
 
     async beforeDuelStart() {
-        super.beforeDuelStart()
+        
         if(this.player1.passive_skills.length !=0){
             let i
             for(i=0;i<this.player1.passive_skills.length;i++){
