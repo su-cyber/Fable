@@ -121,7 +121,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                    })
 
                    
-                profileModel.findOneAndUpdate({userID:authorId},foundUser)   
+                await profileModel.findOneAndUpdate({userID:authorId},foundUser)   
                 }
             
                
