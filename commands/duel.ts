@@ -119,22 +119,22 @@ class PvPDuel extends DuelBuilder {
                 console.log("called");
                 
                 
-                this.player1.health=foundUser.health
-                this.player1.mana=foundUser.mana
-                this.player1.armor=foundUser.armour
-                this.player1.magicPower=foundUser.magicPower
-                this.player1.attackDamage=foundUser.attackDamage
-                this.player1.evasion=foundUser.evasion
-                this.player1.maxHealth=foundUser.health
-                this.player1.skills=foundUser.skills
-                this.player1.passive_skills = foundUser.passiveskills
+                this.attacker.health=foundUser.health
+                this.attacker.mana=foundUser.mana
+                this.attacker.armor=foundUser.armour
+                this. attacker.magicPower=foundUser.magicPower
+                this. attacker.attackDamage=foundUser.attackDamage
+                this. attacker.evasion=foundUser.evasion
+                this. attacker.maxHealth=foundUser.health
+                this. attacker.skills=foundUser.skills
+                this.attacker.passive_skills = foundUser.passiveskills
 
                 if(foundUser.weapon.length === 0){
-                    this.player1.skills=foundUser.magicskills
+                    this. attacker.skills=foundUser.magicskills
                 }
                 else{
                     
-                    this.player1.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
+                    this. attacker.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
                 }
   
             }
@@ -147,31 +147,31 @@ class PvPDuel extends DuelBuilder {
             else{
                 console.log("called");
                 
-                this.player2.health=foundOpp.health
-                this.player2.mana=foundOpp.mana
-                this.player2.armor=foundOpp.armour
-                this.player2.magicPower=foundOpp.magicPower
-                this.player2.attackDamage=foundOpp.attackDamage
-                this.player2.evasion=foundOpp.evasion
-                this.player2.maxHealth=foundOpp.health
-                this.player2.skills=foundOpp.skills
-                this.player2.passive_skills = foundOpp.passiveskills
+                this.defender.health=foundOpp.health
+                this.defender.mana=foundOpp.mana
+                this.defender.armor=foundOpp.armour
+                this.defender.magicPower=foundOpp.magicPower
+                this.defender.attackDamage=foundOpp.attackDamage
+                this.defender.evasion=foundOpp.evasion
+                this.defender.maxHealth=foundOpp.health
+                this.defender.skills=foundOpp.skills
+                this.defender.passive_skills = foundOpp.passiveskills
 
                 if(foundOpp.weapon.length === 0){
-                    this.player2.skills=foundOpp.magicskills
+                    this.defender.skills=foundOpp.magicskills
                 }
                 else{
                     
-                    this.player2.skills=foundOpp.weaponskills.concat(foundOpp.magicskills,foundOpp.weapon[0].skills)
+                    this.defender.skills=foundOpp.weaponskills.concat(foundOpp.magicskills,foundOpp.weapon[0].skills)
                 }
                 
             }
         })
-        if(this.player1.passive_skills.length !=0){
+        if(this.attacker.passive_skills.length !=0){
             let i
-            for(i=0;i<this.player1.passive_skills.length;i++){
-                const passive_skill = passive_skills.find(skill => skill.name === this.player1.passive_skills[i].name)
-                this.player1.useSkill(this.player1,this.player2,passive_skill)
+            for(i=0;i<this.attacker.passive_skills.length;i++){
+                const passive_skill = passive_skills.find(skill => skill.name === this.attacker.passive_skills[i].name)
+                this.attacker.useSkill(this.attacker,this.defender,passive_skill)
                 
                 
             } 
@@ -180,11 +180,11 @@ class PvPDuel extends DuelBuilder {
 
         }
 
-        if(this.player2.passive_skills.length !=0){
+        if(this.defender.passive_skills.length !=0){
             let i
-            for(i=0;i<this.player2.passive_skills.length;i++){
-                const passive_skill = passive_skills.find(skill => skill.name === this.player2.passive_skills[i].name)
-                this.player2.useSkill(this.player2,this.player1,passive_skill)
+            for(i=0;i<this.defender.passive_skills.length;i++){
+                const passive_skill = passive_skills.find(skill => skill.name === this.defender.passive_skills[i].name)
+                this.defender.useSkill(this.defender,this.attacker,passive_skill)
                 
                 
             } 
