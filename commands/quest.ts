@@ -99,7 +99,6 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                                 }
                                 else if(btn.customId === "btn_reject"){
                                     await btn.deferUpdate().catch(e => {})
-                                    await interaction.deleteReply()
                                     await btn.editReply(`${interaction.user.username} rejected the quest!`)
                                     foundUser.quest_location='',
                                     foundUser.quest_mob='',
