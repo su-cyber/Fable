@@ -83,7 +83,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                     await interaction.deferReply()
                     await interaction.editReply({content: null,embeds:[questEmbed],components:[btnraw]})
                         let filter = i => i.user.id === authorId
-                        let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
+                        let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
                 
                         collector.on('collect',async (btn) => {
                             if(btn.isButton()){
