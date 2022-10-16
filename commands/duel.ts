@@ -44,6 +44,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         
                                     }
                                     else{
+                                        console.log("called");
                                         
                                         
                                         attacker.health=foundUser.health
@@ -66,28 +67,30 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                           
                                     }
                                 })
-                                profileModel.findOne({userID:opponentId},async function(err,foundUser) {
+                                profileModel.findOne({userID:opponentId},async function(err,foundOpp) {
                                     if(err){
                                         console.log(err);
                                         
                                     }
                                     else{
-                                        defender.health=foundUser.health
-                                        defender.mana=foundUser.mana
-                                        defender.armor=foundUser.armour
-                                        defender.magicPower=foundUser.magicPower
-                                        defender.attackDamage=foundUser.attackDamage
-                                        defender.evasion=foundUser.evasion
-                                        defender.maxHealth=foundUser.health
-                                        defender.skills=foundUser.skills
-                                        defender.passive_skills = foundUser.passiveskills
+                                        console.log("called");
+                                        
+                                        defender.health=foundOpp.health
+                                        defender.mana=foundOpp.mana
+                                        defender.armor=foundOpp.armour
+                                        defender.magicPower=foundOpp.magicPower
+                                        defender.attackDamage=foundOpp.attackDamage
+                                        defender.evasion=foundOpp.evasion
+                                        defender.maxHealth=foundOpp.health
+                                        defender.skills=foundOpp.skills
+                                        defender.passive_skills = foundOpp.passiveskills
 
-                                        if(foundUser.weapon.length === 0){
-                                            defender.skills=foundUser.magicskills
+                                        if(foundOpp.weapon.length === 0){
+                                            defender.skills=foundOpp.magicskills
                                         }
                                         else{
                                             
-                                            defender.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
+                                            defender.skills=foundOpp.weaponskills.concat(foundOpp.magicskills,foundOpp.weapon[0].skills)
                                         }
                                         
                                     }
@@ -160,8 +163,7 @@ class PvPDuel extends DuelBuilder {
     }
 
     async beforeDuelStart() {
-        console.log(this.player1.passive_skills);
-        console.log(this.player2.passive_skills);
+        
         
         if(this.player1.passive_skills.length !=0){
             let i
