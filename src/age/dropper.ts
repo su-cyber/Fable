@@ -100,15 +100,19 @@ export class Dropper {
 
                 profileModel.findOne({userID:interaction.user.id,async function(err,foundProfile){
 
-                    if(foundProfile.quest_item != "" && foundProfile.quest == true){
-                        if(foundProfile.quest_item === drop.name){
+                    
+                        if(foundProfile.quest_item === drop.name && foundProfile.quest == true){
+                            console.log("called!");
+                            
                             foundProfile.quest_quantity -= 1
+                            await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
                             if(foundProfile.quest_quantity === 0){
                                 foundProfile.quest = false
+                                await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
                             }
                         }
-                    }
-                    await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
+                    
+                    
                 }})
                 await inventory.findOneAndUpdate({userID:interaction.user.id},foundUser)
             }
