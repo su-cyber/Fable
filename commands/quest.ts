@@ -108,7 +108,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
 
                                     
                                 await profileModel.findOneAndUpdate({userID:authorId},foundUser)
-                                    
+                                collector.stop()
                                     
                                 }
                                 else if(btn.customId === "btn_reject"){
@@ -121,6 +121,8 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                                     foundUser.quest = false
                                 
                                     await profileModel.findOneAndUpdate({userID:authorId},foundUser)
+
+                                    collector.stop()
                                 }
 
                                 
