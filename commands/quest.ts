@@ -34,6 +34,11 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                         new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Reject"),
                     ])
 
+                    let d_btnraw = new MessageActionRow().addComponents([
+                        new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Accept").setDisabled(true),
+                        new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Reject").setDisabled(true),
+                    ])
+
                     let sceneOptions = ['mob attack','item exploration']
                     const scene = sceneOptions[Math.floor(Math.random() * ((sceneOptions.length-1) - 0 + 1)) + 0]
                     let questEmbed = new MessageEmbed()
@@ -98,7 +103,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                             if(btn.isButton()){
                                 if(btn.customId === "btn_accept"){
                                     await btn.deferUpdate().catch(e => {})
-                                    await btn.editReply({embeds:[acceptEmbed]})
+                                    await interaction.editReply({embeds:[acceptEmbed]})
                                     
 
                                     
@@ -108,7 +113,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                                 }
                                 else if(btn.customId === "btn_reject"){
                                     await btn.deferUpdate().catch(e => {})
-                                    await btn.editReply({embeds:[rejectEmbed]})
+                                    await interaction.editReply({embeds:[rejectEmbed]})
                                     foundUser.quest_location='',
                                     foundUser.quest_mob='',
                                     foundUser.quest_quantity=0,
@@ -125,6 +130,10 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                 
                    
                    
+                    })
+
+                    collector.on('end', () => {
+                        interaction.editReply({components: [d_btnraw]})
                     })
 
                    

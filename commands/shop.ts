@@ -102,9 +102,11 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
             
     
        
-        collector.on('end', () => {
-            interaction.editReply({embeds: [homeembed], components: [d_btnraw]})
-        })
+       
        })
+
+       collector.on('end', () => {
+        interaction.editReply({embeds: [homeembed], components: [d_btnraw]})
+    })
       
     })
