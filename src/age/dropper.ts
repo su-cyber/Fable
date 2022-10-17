@@ -58,6 +58,26 @@ export class Dropper {
         })
         const coins = formatMoney(randfloat(1, 1e8, 3), 3)
         const drop = this.drop()
+
+        profileModel.findOne({userID:killer.id},async function(err,foundProfile){
+
+            console.log(foundProfile.quest_item);
+            console.log(drop.name);
+            
+            
+        if(foundProfile.quest_item === drop.name && foundProfile.quest == true){
+            console.log("called!");
+            
+            foundProfile.quest_quantity -= 1
+            await profileModel.findOneAndUpdate({userID:killer.id},foundProfile)
+            if(foundProfile.quest_quantity === 0){
+                foundProfile.quest = false
+                await profileModel.findOneAndUpdate({userID:killer.id},foundProfile)
+            }
+        }
+    
+    
+})
         const text = `
             **${killed.name} was successfully killed!**
 
@@ -72,25 +92,7 @@ export class Dropper {
         `
         if(drop){
             this.addItem(interaction,drop,1)
-            profileModel.findOne({userID:interaction.user.id,async function(err,foundProfile){
 
-                    console.log(foundProfile.quest_item);
-                    console.log(drop.name);
-                    
-                    
-                if(foundProfile.quest_item === drop.name && foundProfile.quest == true){
-                    console.log("called!");
-                    
-                    foundProfile.quest_quantity -= 1
-                    await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
-                    if(foundProfile.quest_quantity === 0){
-                        foundProfile.quest = false
-                        await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
-                    }
-                }
-            
-            
-        }})
         }
        
 
