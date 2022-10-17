@@ -74,6 +74,9 @@ export class Dropper {
             this.addItem(interaction,drop,1)
             profileModel.findOne({userID:interaction.user.id,async function(err,foundProfile){
 
+                    console.log(foundProfile.quest_item);
+                    console.log(drop.name);
+                    
                     
                 if(foundProfile.quest_item === drop.name && foundProfile.quest == true){
                     console.log("called!");
