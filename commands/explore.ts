@@ -35,11 +35,13 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 if(res){
                     const attacker = Warrior.create(author)
         profileModel.findOne({userID:authorId},async function(err,foundUser) {
+            var userQuestLocation = foundUser.quest_location.toLowerCase()
             if(err){
                 console.log(err);
                 
             }
             else{
+            
                 attacker.health=foundUser.health
                 attacker.mana=foundUser.mana
                 attacker.armor=foundUser.armour
@@ -76,55 +78,57 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 
                 
             }
-        })
 
-        if(location === "ellior"){
-            await interaction.deferReply()
-            await interaction.editReply({ content: `searching ${location}...`})
-            await interaction.editReply({ components: [await monstersDropdown()] })
-    
-            bot.onComponent('select-menu__monsters', async componentInteraction => {
-                componentInteraction.deferUpdate()
-                await interaction.editReply({ content: '\u200b', components: [] })
-                const monster = (await getMonsters())
-                    .find(m => m.name === componentInteraction.values[0])
-                    .create()
-    
-                await new PvEDuel({
-                    interaction,
-                    player1: attacker,
-                    player2: monster,
-                }).start()
-            })
-        }
-
-        else if(location === "quest"){
-            profileModel.findOne({userID:authorId},async function (err,foundUser){
-                if(foundUser.quest_quantity !=0){
+            if(location === "ellior"){
+                await interaction.deferReply()
+                await interaction.editReply({ content: `searching ${location}...`})
+                await interaction.editReply({ components: [await monstersDropdown()] })
+        
+                bot.onComponent('select-menu__monsters', async componentInteraction => {
+                    componentInteraction.deferUpdate()
+                    await interaction.editReply({ content: '\u200b', components: [] })
                     const monster = (await getMonsters())
-                    .find(m => m.name === foundUser.quest_mob)
-                    .create()
+                        .find(m => m.name === componentInteraction.values[0])
+                        .create()
+        
+                    await new PvEDuel({
+                        interaction,
+                        player1: attacker,
+                        player2: monster,
+                    }).start()
+                })
+            }
     
-            
-                await new PvEDuel_Quest({
-                    interaction,
-                    player1: attacker,
-                    player2: monster,
-                }).start()
+            else if(location === userQuestLocation){
+                profileModel.findOne({userID:authorId},async function (err,foundUser){
+                    if(foundUser.quest_quantity !=0){
+                        const monster = (await getMonsters())
+                        .find(m => m.name === foundUser.quest_mob)
+                        .create()
+        
+                
+                    await new PvEDuel_Quest({
+                        interaction,
+                        player1: attacker,
+                        player2: monster,
+                    }).start()
+                }
+                else{
+                    await interaction.deferReply()
+                    await interaction.editReply(`You have no active quest!`)
+                }
+                })
+                
+    
             }
             else{
                 await interaction.deferReply()
-                await interaction.editReply(`You have no active quest!`)
+                await interaction.editReply(`cannot access ${location}`)
             }
-            })
-            
+         
+        })
 
-        }
-        else{
-            await interaction.deferReply()
-            await interaction.editReply(`cannot access ${location}`)
-        }
-     
+        
         
             }
 

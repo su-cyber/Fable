@@ -97,6 +97,19 @@ export class Dropper {
                     }
                     foundUser.inventory.items.push(newItem)
                 }
+
+                profileModel.findOne({userID:interaction.user.id,async function(err,foundProfile){
+
+                    if(foundProfile.quest_item != "" && foundProfile.quest == true){
+                        if(foundProfile.quest_item === drop.name){
+                            foundProfile.quest_quantity -= 1
+                            if(foundProfile.quest_quantity === 0){
+                                foundProfile.quest = false
+                            }
+                        }
+                    }
+                    await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
+                }})
                 await inventory.findOneAndUpdate({userID:interaction.user.id},foundUser)
             }
         })
