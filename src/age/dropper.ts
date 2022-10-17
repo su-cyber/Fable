@@ -79,6 +79,7 @@ export class Dropper {
             
             
                 if(foundProfile.quest_item === drop.name && foundProfile.quest == true){
+                    console.log("called");
                     
                     
                     foundProfile.quest_quantity -= 1
