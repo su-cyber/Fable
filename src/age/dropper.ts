@@ -85,9 +85,12 @@ export class Dropper {
                         foundProfile.quest = false
                         
                     }
+                    console.log(foundProfile.quest_quantity);
+                    
                     await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
                 }
             
+            console.log(foundProfile.quest_quantity);
             
         })
 
