@@ -41,6 +41,15 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                     .setTitle('QUEST')
                     .setDescription('initial')
 
+                    let acceptEmbed = new MessageEmbed()
+                    .setColor('GREEN')
+                    .setTitle('ACCEPTED')
+                    .setDescription('You have accepted the quest!')
+
+                    let rejectEmbed = new MessageEmbed()
+                    .setColor('RED')
+                    .setTitle('REJECTED')
+                    .setDescription('You have rejected! the quest!')
 
                     if(scene === 'mob attack'){
                         let locationOptions = ['Hagard','Hage','Pacifia','Feltis']
@@ -89,7 +98,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                             if(btn.isButton()){
                                 if(btn.customId === "btn_accept"){
                                     await btn.deferUpdate().catch(e => {})
-                                    await btn.editReply(`${interaction.user.username} accepted the quest!`)
+                                    await btn.editReply({embeds:[acceptEmbed]})
                                     
 
                                     
@@ -99,7 +108,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                                 }
                                 else if(btn.customId === "btn_reject"){
                                     await btn.deferUpdate().catch(e => {})
-                                    await btn.editReply(`${interaction.user.username} rejected the quest!`)
+                                    await btn.editReply({embeds:[rejectEmbed]})
                                     foundUser.quest_location='',
                                     foundUser.quest_mob='',
                                     foundUser.quest_quantity=0,
