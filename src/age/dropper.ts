@@ -70,7 +70,25 @@ export class Dropper {
             ${drop ? `You found ${drop.name}! 
             ${drop.emoji} X ${1}` : ''}
         `
-        if(drop){this.addItem(interaction,drop,1)}
+        if(drop){
+            this.addItem(interaction,drop,1)
+            profileModel.findOne({userID:interaction.user.id,async function(err,foundProfile){
+
+                    
+                if(foundProfile.quest_item === drop.name && foundProfile.quest == true){
+                    console.log("called!");
+                    
+                    foundProfile.quest_quantity -= 1
+                    await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
+                    if(foundProfile.quest_quantity === 0){
+                        foundProfile.quest = false
+                        await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
+                    }
+                }
+            
+            
+        }})
+        }
        
 
         await interaction.channel.send(removeIndentation(text))
@@ -98,22 +116,7 @@ export class Dropper {
                     foundUser.inventory.items.push(newItem)
                 }
 
-                profileModel.findOne({userID:interaction.user.id,async function(err,foundProfile){
-
-                    
-                        if(foundProfile.quest_item === drop.name && foundProfile.quest == true){
-                            console.log("called!");
-                            
-                            foundProfile.quest_quantity -= 1
-                            await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
-                            if(foundProfile.quest_quantity === 0){
-                                foundProfile.quest = false
-                                await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
-                            }
-                        }
-                    
-                    
-                }})
+               
                 await inventory.findOneAndUpdate({userID:interaction.user.id},foundUser)
             }
         })
