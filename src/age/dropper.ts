@@ -73,28 +73,7 @@ export class Dropper {
         if(drop){
             this.addItem(interaction,drop,1)
 
-            profileModel.findOne({userID:interaction.user.id},async function(err,foundProfile){
-
-            
-            
-            
-                if(foundProfile.quest_item === drop.name && foundProfile.quest == true){
-                    
-                    const change = foundProfile.quest_quantity - 1
-                    foundProfile.quest_quantity = change
-                    await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
-                    if(foundProfile.quest_quantity === 0){
-                        foundProfile.quest = false
-                        await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
-                    }
-                   
-                    
-                    
-                }
-            
-            
-            
-        })
+           
 
         }
        
@@ -123,6 +102,28 @@ export class Dropper {
                     }
                     foundUser.inventory.items.push(newItem)
                 }
+                profileModel.findOne({userID:interaction.user.id},async function(err,foundProfile){
+
+            
+            
+            
+                    if(foundProfile.quest_item === drop.name && foundProfile.quest == true){
+                        
+                        const change = foundProfile.quest_quantity - 1
+                        foundProfile.quest_quantity = change
+                        await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
+                        if(foundProfile.quest_quantity === 0){
+                            foundProfile.quest = false
+                            await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
+                        }
+                       
+                        
+                        
+                    }
+                
+                
+                
+            })
 
                
                 await inventory.findOneAndUpdate({userID:interaction.user.id},foundUser)
