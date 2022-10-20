@@ -62,7 +62,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
 
                     if(scene === 'mob attack'){
                         let locationOptions = ['Hagard','Hage','Pacifia','Feltis']
-                        let mobOptions = ['Arachnid','Goblin','Orc','Ogre']
+                        let mobOptions = ['Blood Hound','Goblin','Orc','Ogre']
                         let quantity = Math.floor(Math.random() * (10 - 2 + 1)) + 2
                         let mob = mobOptions[Math.floor(Math.random() * ((mobOptions.length-1) - 0 + 1)) + 0]
                         let location = locationOptions[Math.floor(Math.random() * ((locationOptions.length-1) - 0 + 1)) + 0]

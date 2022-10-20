@@ -233,11 +233,10 @@ class PvEDuel_Quest extends PvEDuel {
             
             
                 const finalValue = foundUser.quest_quantity - 1
-                foundUser.quest_quantity = finalValue
-                await profileModel.findOneAndUpdate({userID:authorId},foundUser)
+                await profileModel.updateOne({userID:authorId},{quest_quantity: finalValue})
                 if(finalValue === 0){
-                    foundUser.quest = false
-                    await profileModel.findOneAndUpdate({userID:authorId},foundUser)
+                    
+                    await profileModel.updateOne({userID:authorId},{quest: false})
                 }
 
            
