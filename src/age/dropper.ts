@@ -110,11 +110,9 @@ export class Dropper {
                     if(foundProfile.quest_item === drop.name && foundProfile.quest == true){
                         
                         const change = foundProfile.quest_quantity - 1
-                        foundProfile.quest_quantity = change
-                        await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
+                        await profileModel.updateOne({userID:interaction.user.id},{quest_quantity: change})
                         if(foundProfile.quest_quantity === 0){
-                            foundProfile.quest = false
-                            await profileModel.findOneAndUpdate({userID:interaction.user.id},foundProfile)
+                            await profileModel.updateOne({userID:interaction.user.id},{quest: false})
                         }
                        
                         
