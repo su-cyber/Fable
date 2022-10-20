@@ -66,6 +66,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                         foundUser.quest_location = location
                         foundUser.quest_mob = mob
                         foundUser.quest_quantity = quantity
+                        foundUser.quest_item = ""
                         foundUser.quest = true
                        questEmbed = new MessageEmbed()
                         .setColor('RANDOM')
@@ -81,6 +82,8 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                         foundUser.quest_item = item
                         foundUser.quest_quantity = quantity
                         foundUser.quest = true
+                        foundUser.quest_location = ""
+                        foundUser.quest_mob=""
                         questEmbed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('QUEST')
