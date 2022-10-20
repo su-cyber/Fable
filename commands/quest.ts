@@ -26,7 +26,11 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
             }
             else{
                 if(foundUser.quest){
-                    interaction.reply('You already have an ongoing quest!')
+                    let questEmbed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('QUEST')
+                    .setDescription(`You already have an ongoing quest!\n\nmob: ${foundUser.quest_mob}\nquantity: ${foundUser.quest_quantity}\nlocation: ${foundUser.quest_location}\nitem: ${foundUser.quest_item}`)
+                    interaction.reply({embeds:[questEmbed]})
                 }
                 else{
                     let btnraw= new MessageActionRow().addComponents([
