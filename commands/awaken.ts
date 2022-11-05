@@ -26,6 +26,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     coins: 20000,
                     xp:205,
                     level:1,
+                    skill_points:0,
+                    vitality:1,
                     health: 100,
                     magicPower: 5,
                     mana: 50,

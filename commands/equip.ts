@@ -62,7 +62,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                 interaction.reply("you already have a weapon equipped!")
                                             }
                                            
-                                        await profileModel.findOneAndUpdate({userID:authorId},foundProfile)
+                                        await profileModel.updateOne({userID:authorId},foundProfile)
                                         }
                                         
                                     })
@@ -97,7 +97,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                 
                                                 interaction.reply("you already have an armour equipped!")
                                             }
-                                        await profileModel.findOneAndUpdate({userID:authorId},foundProfile)
+                                        await profileModel.updateOne({userID:authorId},foundProfile)
                                         }
                                         
                                     })
@@ -133,7 +133,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                     
                                                     interaction.reply("you cannot have more than 3 items eqipped!")
                                                 }
-                                            await profileModel.findOneAndUpdate({userID:authorId},foundProfile)
+                                            await profileModel.updateOne({userID:authorId},foundProfile)
                                             }
                                             
                                         })
@@ -153,7 +153,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                             }
                            
                         }
-                        await inventory.findOneAndUpdate({userID:authorId},foundUser)
+                        await inventory.updateOne({userID:authorId},foundUser)
                         
                     })
                 }

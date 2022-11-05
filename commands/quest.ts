@@ -114,7 +114,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                                     
 
                                     
-                                await profileModel.findOneAndUpdate({userID:authorId},foundUser)
+                                await profileModel.updateOne({userID:authorId},foundUser)
                                 collector.stop()
                                     
                                 }
@@ -127,7 +127,7 @@ export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a qu
                                     foundUser.quest_item =''
                                     foundUser.quest = false
                                 
-                                    await profileModel.findOneAndUpdate({userID:authorId},foundUser)
+                                    await profileModel.updateOne({userID:authorId},foundUser)
 
                                     collector.stop()
                                 }

@@ -37,6 +37,8 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'Know you
                         Weapon: ${weaponExist? foundUser.weapon[0].name : "none"}
                         Armour Suit: ${armourExist? foundUser.armourSuit[0].name : "none"}
                         Items: ${itemExist? mappedSkills : "none"}
+
+                        Available Skill Points :- ${foundUser.skill_points}
                         `)
                     
                     

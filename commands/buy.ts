@@ -78,7 +78,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                                                 foundProfile.inventory.weapons.push(newItem)
                                                             }
                                                             
-                                                        await inventory.findOneAndUpdate({userID:authorId},foundProfile)
+                                                        await inventory.updateOne({userID:authorId},foundProfile)
             
                                                         
                                                         }
@@ -93,7 +93,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                             }
                                         })
                                     }
-                                    await profileModel.findOneAndUpdate({userID:authorId},userProfile)
+                                    await profileModel.updateOne({userID:authorId},userProfile)
                                 }})
                                 
                             
@@ -142,7 +142,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                                                 foundProfile.inventory.items.push(newItem)
                                                             }
                                                             
-                                                        await inventory.findOneAndUpdate({userID:authorId},foundProfile)
+                                                        await inventory.updateOne({userID:authorId},foundProfile)
             
                                                         
                                                         }
@@ -157,7 +157,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                             }
                                         })
                                     }
-                                    await profileModel.findOneAndUpdate({userID:authorId},userProfile)
+                                    await profileModel.updateOne({userID:authorId},userProfile)
                                 }})
                                 
                             
@@ -206,7 +206,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                                                 foundProfile.inventory.armour.push(newItem)
                                                             }
                                                             
-                                                        await inventory.findOneAndUpdate({userID:authorId},foundProfile)
+                                                        await inventory.updateOne({userID:authorId},foundProfile)
             
                                                         
                                                         }
@@ -221,7 +221,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                             }
                                         })
                                     }
-                                    await profileModel.findOneAndUpdate({userID:authorId},userProfile)
+                                    await profileModel.updateOne({userID:authorId},userProfile)
                                 }})
                                 
                             
@@ -271,7 +271,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                                                 foundProfile.inventory.potions.push(newItem)
                                                             }
                                                             
-                                                        await inventory.findOneAndUpdate({userID:authorId},foundProfile)
+                                                        await inventory.updateOne({userID:authorId},foundProfile)
             
                                                         
                                                         }
@@ -286,7 +286,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                             }
                                         })
                                     }
-                                    await profileModel.findOneAndUpdate({userID:authorId},userProfile)
+                                    await profileModel.updateOne({userID:authorId},userProfile)
                                 }})
                                 
                             

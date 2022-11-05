@@ -60,7 +60,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                     foundProfile.coins+=selling_price*userQuantity
 
                                                 }
-                                                await profileModel.findOneAndUpdate({userID:authorId},foundProfile)
+                                                await profileModel.updateOne({userID:authorId},foundProfile)
 
                                             })
                                             await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
@@ -70,7 +70,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                             interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
                                         }
                                        
-                                        await inventory.findOneAndUpdate({userID:authorId},userProfile)
+                                        await inventory.updateOne({userID:authorId},userProfile)
                                     }
 
                                 }})
@@ -104,7 +104,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                     foundProfile.coins+=selling_price*userQuantity
 
                                                 }
-                                                await profileModel.findOneAndUpdate({userID:authorId},foundProfile)
+                                                await profileModel.updateOne({userID:authorId},foundProfile)
 
                                             })
                                             await interaction.reply({content:`${userQuantity} ${found.name}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
@@ -114,7 +114,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                             interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
                                         }
                                        
-                                        await inventory.findOneAndUpdate({userID:authorId},userProfile)
+                                        await inventory.updateOne({userID:authorId},userProfile)
                                     }
 
                                 }
@@ -148,7 +148,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                     foundProfile.coins+=selling_price*userQuantity
 
                                                 }
-                                                await profileModel.findOneAndUpdate({userID:authorId},foundProfile)
+                                                await profileModel.updateOne({userID:authorId},foundProfile)
 
                                             })
                                             await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
@@ -158,7 +158,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                             interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
                                         }
                                        
-                                        await inventory.findOneAndUpdate({userID:authorId},userProfile)
+                                        await inventory.updateOne({userID:authorId},userProfile)
                                     }
 
                                 }})
@@ -190,7 +190,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                     foundProfile.coins+=selling_price*userQuantity
 
                                                 }
-                                                await profileModel.findOneAndUpdate({userID:authorId},foundProfile)
+                                                await profileModel.updateOne({userID:authorId},foundProfile)
 
                                             })
                                             await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
@@ -200,7 +200,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                             interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
                                         }
                                        
-                                        await inventory.findOneAndUpdate({userID:authorId},userProfile)
+                                        await inventory.updateOne({userID:authorId},userProfile)
                                     }
 
                                 }})

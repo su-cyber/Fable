@@ -396,7 +396,7 @@ class DuelBuilder {
                         }
                     }
                         
-                        await inventory.findOneAndUpdate({userID:i.user.id},foundUser)
+                        await inventory.updateOne({userID:i.user.id},foundUser)
                     })
                 })
     

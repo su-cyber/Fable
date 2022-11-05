@@ -83,7 +83,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 await interaction.deferReply()
                 await interaction.editReply({ content: `searching ${location}...`})
                 await interaction.editReply({ components: [await monstersDropdown()] })
-        
+         
                 bot.onComponent('select-menu__monsters', async componentInteraction => {
                     componentInteraction.deferUpdate()
                     await interaction.editReply({ content: '\u200b', components: [] })

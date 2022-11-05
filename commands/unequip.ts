@@ -61,7 +61,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                                 foundProfile.inventory.weapons.push(newItem)
                                             }
                                             
-                                        await inventory.findOneAndUpdate({userID:authorId},foundProfile)
+                                        await inventory.updateOne({userID:authorId},foundProfile)
                                         }
                                         
                                     })
@@ -98,7 +98,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                                 foundProfile.inventory.armour.push(newItem)
                                             }
                                             
-                                        await inventory.findOneAndUpdate({userID:authorId},foundProfile)
+                                        await inventory.updateOne({userID:authorId},foundProfile)
                                         }
                                         
                                     })
@@ -141,7 +141,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                                 foundProfile.inventory.items.push(newItem)
                                             }
                                             
-                                        await inventory.findOneAndUpdate({userID:authorId},foundProfile)
+                                        await inventory.updateOne({userID:authorId},foundProfile)
                                         }
                                         
                                     })
@@ -162,7 +162,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                             }
                            
                         }
-                        await profileModel.findOneAndUpdate({userID:authorId},foundUser)
+                        await profileModel.updateOne({userID:authorId},foundUser)
                         
                     })
 

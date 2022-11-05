@@ -18,6 +18,7 @@ import { getCommandsFromFolder } from './lib/utils/getCommandsFromFolder'
 import { SlashCommandBuilder } from '@discordjs/builders'
 import mongoose from "mongoose"
 import { sleep } from './utils'
+import getHealth from './utils/getHealth'
 
 type InteractionFn = (interaction: MessageComponentInteraction & { values: string[] }) => Promise<void>
 
@@ -51,19 +52,35 @@ class Bot extends Client {
                                 
                                 for(let i =1;i<1000;i++){
                                     if(foundUser.xp>=xpFormulate(i) && foundUser.level<i){
+                                        let sp
+                                        if(i===2){
+                                            sp = 5
+                                        }
+                                        else{
+                                            sp = 3
+                                        }
+                                        foundUser.health = getHealth(i,foundUser.vitality+1)
                                         let levelupEmbed= new MessageEmbed()
                                                     .setColor('RANDOM')
                                                     .setTitle('LEVEL UP!')
-                                                    .setDescription(`you have levelled up to level ${i}!`)
+                                                    .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour health has increased to ${foundUser.health}HP`)
+                                        
                                         await sleep(2)
                                         await interaction.channel.send({embeds:[levelupEmbed]})
                                         foundUser.level=foundUser.level+1
+                                        foundUser.vitality=foundUser.vitality+1
+                                        if(foundUser.level === 2){
+                                            foundUser.skill_points += 5
+                                        }
+                                        else{
+                                            foundUser.skill_points += 3
+                                        }
                                         
                                         
                                    }
                                    
                                 }
-                                await profileSchema.findOneAndUpdate({userID:userID},foundUser)
+                                await profileSchema.updateOne({userID:userID},foundUser)
                                 
                                 
                             })
