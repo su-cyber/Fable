@@ -1,6 +1,6 @@
 import { Entity } from "../classes"
 
-import { potionEffect } from "../effects/potionEffect"
+
 
 let num = 0
 const potions = [
@@ -13,20 +13,12 @@ const potions = [
         type: 'self',
         use: (attacker, defender) =>{
             attacker.health+=20
-            const hp = attacker.scheduler.task
-            .turns(1000)
-            .all.effect(potionEffect)
-            .end(() => attacker.removeEffect(potionEffect))
-            .run(() =>{
-                
-            }
-                
-            )
+           
             attacker.addLogMessage(
                 `**${attacker.name}** health potion`,
                 `**${attacker.name}** gained 20 hp`
             )
-        attacker.applyEffect(hp)
+        
         
         
     },
@@ -42,20 +34,12 @@ const potions = [
             type: 'self',
             use: (attacker, defender) =>{
                 attacker.mana+=50
-                const mana = attacker.scheduler.task
-                .turns(1000)
-                .all.effect(potionEffect)
-                .end(() => attacker.removeEffect(potionEffect))
-                .run(() =>{
-                    
-                }
-                    
-                )
+                
                 attacker.addLogMessage(
                     `**${attacker.name}** used mana potion`,
                     `**${attacker.name}** gained 50 mana`
                 )
-            attacker.applyEffect(mana)
+            
             
            
         },

@@ -33,7 +33,7 @@ const skills = [
                 .turnOf(attacker)
                 .skipTurn.run(() =>
                     defender.takeDamage
-                        .physical(40)
+                        .physical(attacker.attackDamage*2)
                         .run(damage => `**${defender.name}** lost ${damage} HP by Charged Attack`)
             
                 )
@@ -57,7 +57,7 @@ const skills = [
                 .end(() => defender.removeEffect(bleeding))
                 .run(() =>
                     defender.takeDamage
-                        .physical(7)
+                        .physical(attacker.attackDamage*0.5)
                         .run(
                             damage =>
                                 `**${defender.name}** lost ${damage} HP due to ${emoji.BLEED}`
@@ -92,7 +92,7 @@ const skills = [
             defender.applyEffect(fireball)
 
             defender.takeDamage
-                .magical(15)
+                .magical(attacker.magicPower)
                 .run(damage => `**${defender.name}** lost ${damage} HP by Fireball`)
         },
     }

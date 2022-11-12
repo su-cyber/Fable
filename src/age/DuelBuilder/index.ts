@@ -25,7 +25,7 @@ import { Potion } from '../classes/potion'
 import shopPotions_lvl5 from '../potions/shopPotions_lvl5'
 
 import allPotions from '../potions/allPotions'
-import { potionEffect } from '../effects/potionEffect'
+
 
 const lineBreak = '\n\u200b'
 
@@ -326,10 +326,7 @@ class DuelBuilder {
                 
             }
             else if(i.customId === 'use_btn'){
-                if(this.attacker.hasEffect(potionEffect)){
-                    this.interaction.editReply("you already used a potion!")
-                }
-                else{
+                
                     let interaction = this.interaction
                     let collector_use = this.collector_use
                     inventory.findOne({userID:i.user.id},async function(err,foundUser){
@@ -375,13 +372,13 @@ class DuelBuilder {
                
                     
                 
-                collector_use.on("collect",async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collector_use.once("collect",async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                     collected.deferUpdate().catch(() => null)
                     //insert potions code here
                     const PotionName = collected.values[0]
                     await thisThis.onPotionSelect(PotionName)
                     
-        
+                    
                     thisThis.locker.unlock()
                     
                     if(PotionName == 'None'){
@@ -401,7 +398,7 @@ class DuelBuilder {
                 })
     
                  
-                }
+                
  
             }
         })
@@ -410,6 +407,7 @@ class DuelBuilder {
         
         this.removeCollector = () => {
             this.collector.removeListener('collect', onCollect.bind(thisThis))
+            
         }
 
         this.player1.beforeDuelStart(this.player1, this.player2,this.interaction)

@@ -36,7 +36,7 @@ export class Warrior extends ClassEntity {
             mana:50,
             magicPower: 0,
             armor: 10,
-            evasion: 0.1,
+            evasion: 0.05,
             magicResistance: 10,
             passive_skills:[],
             skills: [
@@ -68,7 +68,7 @@ export class Warrior extends ClassEntity {
                             .turnOf(attacker)
                             .skipTurn.run(() =>
                                 defender.takeDamage
-                                    .physical(40)
+                                    .physical(attacker.attackDamage*2)
                                     .run(damage => `**${defender.name}** lost ${damage} HP by Charged Attack`)
                         
                             )
@@ -92,7 +92,7 @@ export class Warrior extends ClassEntity {
                             .end(() => defender.removeEffect(bleeding))
                             .run(() =>
                                 defender.takeDamage
-                                    .physical(7)
+                                    .physical(attacker.attackDamage*0.5)
                                     .run(
                                         damage =>
                                             `**${defender.name}** lost ${damage} HP due to ${emoji.BLEED}`
@@ -127,7 +127,7 @@ export class Warrior extends ClassEntity {
                         defender.applyEffect(fireball)
 
                         defender.takeDamage
-                            .magical(15)
+                            .magical(attacker.magicPower)
                             .run(damage => `**${defender.name}** lost ${damage} HP by Fireball`)
                     },
                 }
