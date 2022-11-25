@@ -6,5 +6,5 @@ import { steelSpear } from "./steelSpear";
 import { steelSword } from "./steelSword";
 
 
-const allWeapons = [Sword,Spear,Dagger,steelDagger,steelSpear,steelSword]
-export default allWeapons
+const shopWeapons_lvl10 = [Sword,Spear,Dagger,steelDagger,steelSpear,steelSword]
+export default shopWeapons_lvl10

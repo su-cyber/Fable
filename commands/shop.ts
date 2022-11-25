@@ -9,6 +9,7 @@ import { Collector, MessageActionRow, MessageButton, MessageEmbed } from 'discor
 import shopItems_lvl5 from '../src/age/items/shopItems_lvl5'
 import shopArmour_lvl5 from '../src/age/armour/shopArmour_lvl5'
 import shopPotions_lvl5 from '../src/age/potions/shopPotions_lvl5'
+import shopWeapons_lvl10 from '../src/age/weapons/shopWeapons_lvl10'
 
 export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access the Shop' })
     .setDo(
@@ -19,19 +20,59 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
         const mappedweapons=shopWeapons_lvl5.map((weapon) => {
             return `${weapon.name} - ${weapon.cost} 🪙`
         }).join("\n")
-
+    
         const mappeditems = shopItems_lvl5.map((item) => {
             return `${item.name} - ${item.cost} 🪙`
         }).join("\n")
-
+    
         const mappedarmour = shopArmour_lvl5.map((item) => {
             return `${item.name} - ${item.cost} 🪙`
         }).join("\n")
-
+    
         const mappedpotions = shopPotions_lvl5.map((item) => {
             return `${item.name} - ${item.cost} 🪙`
         }).join("\n")
+        profileModel.findOne({userID:authorId},async (err,foundUser) => {
+if(foundUser.level > 5 && foundUser.level<10){
+    const mappedweapons=shopWeapons_lvl10.map((weapon) => {
+        return `${weapon.name} - ${weapon.cost} 🪙`
+    }).join("\n")
 
+    const mappeditems = shopItems_lvl5.map((item) => {
+        return `${item.name} - ${item.cost} 🪙`
+    }).join("\n")
+
+    const mappedarmour = shopArmour_lvl5.map((item) => {
+        return `${item.name} - ${item.cost} 🪙`
+    }).join("\n")
+
+    const mappedpotions = shopPotions_lvl5.map((item) => {
+        return `${item.name} - ${item.cost} 🪙`
+    }).join("\n")
+
+}
+
+if(foundUser.level < 5){
+    const mappedweapons=shopWeapons_lvl5.map((weapon) => {
+        return `${weapon.name} - ${weapon.cost} 🪙`
+    }).join("\n")
+
+    const mappeditems = shopItems_lvl5.map((item) => {
+        return `${item.name} - ${item.cost} 🪙`
+    }).join("\n")
+
+    const mappedarmour = shopArmour_lvl5.map((item) => {
+        return `${item.name} - ${item.cost} 🪙`
+    }).join("\n")
+
+    const mappedpotions = shopPotions_lvl5.map((item) => {
+        return `${item.name} - ${item.cost} 🪙`
+    }).join("\n")
+
+}
+        })
+        
+        
 
         let homeembed= new MessageEmbed()
         .setColor('RANDOM')
