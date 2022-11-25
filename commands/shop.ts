@@ -17,16 +17,6 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
         const authorId = interaction.user.id;
         const guildID = interaction.guildId;
 
-        let mappedweapons
-    
-        let mappeditems
-    
-        let mappedarmour
-    
-        let mappedpotions 
-
-        
-
         let homeembed= new MessageEmbed()
         .setColor('RANDOM')
         .setTitle('SHOP')
@@ -47,87 +37,164 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
         ])
 
 
-
-       
         await interaction.deferReply()
         await interaction.editReply({content: null,embeds:[homeembed],components:[btnraw]})
-            let filter = i => i.user.id === authorId
-            let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
+
+        let filter = i => i.user.id === authorId
+        let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
+
+        profileModel.findOne({userID:authorId},async (err,foundUser) => {
+if(foundUser.level > 5 && foundUser.level<10){
+    const mappedweapons=shopWeapons_lvl10.map((weapon) => {
+        return `${weapon.name} - ${weapon.cost} 🪙`
+    }).join("\n")
+
+    const mappeditems = shopItems_lvl5.map((item) => {
+        return `${item.name} - ${item.cost} 🪙`
+    }).join("\n")
+
+    const mappedarmour = shopArmour_lvl5.map((item) => {
+        return `${item.name} - ${item.cost} 🪙`
+    }).join("\n")
+
+    const mappedpotions = shopPotions_lvl5.map((item) => {
+        return `${item.name} - ${item.cost} 🪙`
+    }).join("\n")
+
+    let weaponEmbed= new MessageEmbed()
+    .setColor('RANDOM')
+    .setTitle('WEAPONS')
+    .setDescription(`${mappedweapons}`)
+
+    let itemEmbed =  new MessageEmbed()
+    .setColor('RANDOM')
+    .setTitle('ITEMS')
+    .setDescription(`${mappeditems}`)
+
+    let armourEmbed =  new MessageEmbed()
+    .setColor('RANDOM')
+    .setTitle('ARMOUR')
+    .setDescription(`${mappedarmour}`)
+
+    let potionEmbed = new MessageEmbed()
+    .setColor('RANDOM')
+    .setTitle('POTIONS')
+    .setDescription(`${mappedpotions}`)
+
     
-            collector.on('collect',async (btn) => {
-                if(btn.isButton()){
-                    if(btn.customId === "weapons"){
-                        profileModel.findOne({userID:authorId},async (err,foundUser) => {
-                            if(foundUser.level > 5 && foundUser.level<10){
-                                mappedweapons=shopWeapons_lvl10.map((weapon) => {
-                                   return `${weapon.name} - ${weapon.cost} 🪙`
-                               }).join("\n")
-                           
-                           }
-                           else if(foundUser.level < 5){
-
-                            mappedweapons=shopWeapons_lvl5.map((weapon) => {
-                                return `${weapon.name} - ${weapon.cost} 🪙`
-                            }).join("\n")
-                           }
-                           
-
-                        })
-                        let weaponEmbed= new MessageEmbed()
-                        .setColor('RANDOM')
-                        .setTitle('WEAPONS')
-                        .setDescription(`${mappedweapons}`)
-
-                        await btn.deferUpdate().catch(e => {})
-                        interaction.editReply({embeds: [weaponEmbed]})
-                    }
-                    else if(btn.customId === "armour"){
-                        mappedarmour = shopArmour_lvl5.map((item) => {
-                            return `${item.name} - ${item.cost} 🪙`
-                        }).join("\n")
-
-                        let armourEmbed =  new MessageEmbed()
-                        .setColor('RANDOM')
-                        .setTitle('ARMOUR')
-                        .setDescription(`${mappedarmour}`)
-                        await btn.deferUpdate().catch(e => {})
-                        interaction.editReply({embeds: [armourEmbed]})
-                    }
-                    else if(btn.customId === "items"){
-                        mappeditems = shopItems_lvl5.map((item) => {
-                            return `${item.name} - ${item.cost} 🪙`
-                        }).join("\n")
-
-                        let itemEmbed =  new MessageEmbed()
-                        .setColor('RANDOM')
-                        .setTitle('ITEMS')
-                        .setDescription(`${mappeditems}`)
-                        await btn.deferUpdate().catch(e => {})
-                        interaction.editReply({embeds: [itemEmbed]})
-                    }
-                    else if(btn.customId === "potions"){
-                        mappedpotions = shopPotions_lvl5.map((item) => {
-                            return `${item.name} - ${item.cost} 🪙`
-                        }).join("\n")
-                    
-                        let potionEmbed = new MessageEmbed()
-                        .setColor('RANDOM')
-                        .setTitle('POTIONS')
-                        .setDescription(`${mappedpotions}`)
-
-                        await btn.deferUpdate().catch(e => {})
-                        interaction.editReply({embeds: [potionEmbed]})
-                    }
-                    
-                }
+    collector.on('collect',async (btn) => {
+        if(btn.isButton()){
+            if(btn.customId === "weapons"){
+                await btn.deferUpdate().catch(e => {})
+                interaction.editReply({embeds: [weaponEmbed]})
+            }
+            else if(btn.customId === "armour"){
+                await btn.deferUpdate().catch(e => {})
+                interaction.editReply({embeds: [armourEmbed]})
+            }
+            else if(btn.customId === "items"){
+                await btn.deferUpdate().catch(e => {})
+                interaction.editReply({embeds: [itemEmbed]})
+            }
+            else if(btn.customId === "potions"){
+                await btn.deferUpdate().catch(e => {})
+                interaction.editReply({embeds: [potionEmbed]})
+            }
             
+        }
     
-       
-       
-       })
 
-       collector.on('end', () => {
-        interaction.editReply({embeds: [homeembed], components: [d_btnraw]})
-    })
+
+
+})
+
+collector.on('end', () => {
+interaction.editReply({embeds: [homeembed], components: [d_btnraw]})
+})
+
+}
+
+else if(foundUser.level < 5){
+    const mappedweapons=shopWeapons_lvl5.map((weapon) => {
+        return `${weapon.name} - ${weapon.cost} 🪙`
+    }).join("\n")
+
+    const mappeditems = shopItems_lvl5.map((item) => {
+        return `${item.name} - ${item.cost} 🪙`
+    }).join("\n")
+
+    const mappedarmour = shopArmour_lvl5.map((item) => {
+        return `${item.name} - ${item.cost} 🪙`
+    }).join("\n")
+
+    const mappedpotions = shopPotions_lvl5.map((item) => {
+        return `${item.name} - ${item.cost} 🪙`
+    }).join("\n")
+
+    let weaponEmbed= new MessageEmbed()
+        .setColor('RANDOM')
+        .setTitle('WEAPONS')
+        .setDescription(`${mappedweapons}`)
+
+        let itemEmbed =  new MessageEmbed()
+        .setColor('RANDOM')
+        .setTitle('ITEMS')
+        .setDescription(`${mappeditems}`)
+
+        let armourEmbed =  new MessageEmbed()
+        .setColor('RANDOM')
+        .setTitle('ARMOUR')
+        .setDescription(`${mappedarmour}`)
+
+        let potionEmbed = new MessageEmbed()
+        .setColor('RANDOM')
+        .setTitle('POTIONS')
+        .setDescription(`${mappedpotions}`)
+
+            
+        collector.on('collect',async (btn) => {
+            if(btn.isButton()){
+                if(btn.customId === "weapons"){
+                    await btn.deferUpdate().catch(e => {})
+                    interaction.editReply({embeds: [weaponEmbed]})
+                }
+                else if(btn.customId === "armour"){
+                    await btn.deferUpdate().catch(e => {})
+                    interaction.editReply({embeds: [armourEmbed]})
+                }
+                else if(btn.customId === "items"){
+                    await btn.deferUpdate().catch(e => {})
+                    interaction.editReply({embeds: [itemEmbed]})
+                }
+                else if(btn.customId === "potions"){
+                    await btn.deferUpdate().catch(e => {})
+                    interaction.editReply({embeds: [potionEmbed]})
+                }
+                
+            }
+        
+
+   
+   
+   })
+
+   collector.on('end', () => {
+    interaction.editReply({embeds: [homeembed], components: [d_btnraw]})
+})
+
+}
+
+
+
+        })
+        
+        
+
+      
+        
+       
+        
+            
+
       
     })
