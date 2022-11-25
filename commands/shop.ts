@@ -24,46 +24,7 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
         let mappedarmour
     
         let mappedpotions 
-        profileModel.findOne({userID:authorId},async (err,foundUser) => {
-if(foundUser.level > 5 && foundUser.level<10){
-     mappedweapons=shopWeapons_lvl10.map((weapon) => {
-        return `${weapon.name} - ${weapon.cost} 🪙`
-    }).join("\n")
 
-     mappeditems = shopItems_lvl5.map((item) => {
-        return `${item.name} - ${item.cost} 🪙`
-    }).join("\n")
-
-     mappedarmour = shopArmour_lvl5.map((item) => {
-        return `${item.name} - ${item.cost} 🪙`
-    }).join("\n")
-
-     mappedpotions = shopPotions_lvl5.map((item) => {
-        return `${item.name} - ${item.cost} 🪙`
-    }).join("\n")
-
-}
-
-if(foundUser.level < 5){
-     mappedweapons=shopWeapons_lvl5.map((weapon) => {
-        return `${weapon.name} - ${weapon.cost} 🪙`
-    }).join("\n")
-
-     mappeditems = shopItems_lvl5.map((item) => {
-        return `${item.name} - ${item.cost} 🪙`
-    }).join("\n")
-
-     mappedarmour = shopArmour_lvl5.map((item) => {
-        return `${item.name} - ${item.cost} 🪙`
-    }).join("\n")
-
-     mappedpotions = shopPotions_lvl5.map((item) => {
-        return `${item.name} - ${item.cost} 🪙`
-    }).join("\n")
-
-}
-        })
-        
         
 
         let homeembed= new MessageEmbed()
@@ -85,25 +46,6 @@ if(foundUser.level < 5){
             new MessageButton().setCustomId("d_potions").setStyle("PRIMARY").setLabel("POTIONS").setDisabled(true)
         ])
 
-        let weaponEmbed= new MessageEmbed()
-        .setColor('RANDOM')
-        .setTitle('WEAPONS')
-        .setDescription(`${mappedweapons}`)
-
-        let itemEmbed =  new MessageEmbed()
-        .setColor('RANDOM')
-        .setTitle('ITEMS')
-        .setDescription(`${mappeditems}`)
-
-        let armourEmbed =  new MessageEmbed()
-        .setColor('RANDOM')
-        .setTitle('ARMOUR')
-        .setDescription(`${mappedarmour}`)
-
-        let potionEmbed = new MessageEmbed()
-        .setColor('RANDOM')
-        .setTitle('POTIONS')
-        .setDescription(`${mappedpotions}`)
 
 
        
@@ -115,18 +57,64 @@ if(foundUser.level < 5){
             collector.on('collect',async (btn) => {
                 if(btn.isButton()){
                     if(btn.customId === "weapons"){
+                        profileModel.findOne({userID:authorId},async (err,foundUser) => {
+                            if(foundUser.level > 5 && foundUser.level<10){
+                                mappedweapons=shopWeapons_lvl10.map((weapon) => {
+                                   return `${weapon.name} - ${weapon.cost} 🪙`
+                               }).join("\n")
+                           
+                           }
+                           else if(foundUser.level < 5){
+
+                            mappedweapons=shopWeapons_lvl5.map((weapon) => {
+                                return `${weapon.name} - ${weapon.cost} 🪙`
+                            }).join("\n")
+                           }
+                           
+
+                        })
+                        let weaponEmbed= new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('WEAPONS')
+                        .setDescription(`${mappedweapons}`)
+
                         await btn.deferUpdate().catch(e => {})
                         interaction.editReply({embeds: [weaponEmbed]})
                     }
                     else if(btn.customId === "armour"){
+                        mappedarmour = shopArmour_lvl5.map((item) => {
+                            return `${item.name} - ${item.cost} 🪙`
+                        }).join("\n")
+
+                        let armourEmbed =  new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('ARMOUR')
+                        .setDescription(`${mappedarmour}`)
                         await btn.deferUpdate().catch(e => {})
                         interaction.editReply({embeds: [armourEmbed]})
                     }
                     else if(btn.customId === "items"){
+                        mappeditems = shopItems_lvl5.map((item) => {
+                            return `${item.name} - ${item.cost} 🪙`
+                        }).join("\n")
+
+                        let itemEmbed =  new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('ITEMS')
+                        .setDescription(`${mappeditems}`)
                         await btn.deferUpdate().catch(e => {})
                         interaction.editReply({embeds: [itemEmbed]})
                     }
                     else if(btn.customId === "potions"){
+                        mappedpotions = shopPotions_lvl5.map((item) => {
+                            return `${item.name} - ${item.cost} 🪙`
+                        }).join("\n")
+                    
+                        let potionEmbed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('POTIONS')
+                        .setDescription(`${mappedpotions}`)
+
                         await btn.deferUpdate().catch(e => {})
                         interaction.editReply({embeds: [potionEmbed]})
                     }
