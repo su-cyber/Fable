@@ -17,21 +17,13 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
         const authorId = interaction.user.id;
         const guildID = interaction.guildId;
 
-        let mappedweapons=shopWeapons_lvl5.map((weapon) => {
-            return `${weapon.name} - ${weapon.cost} 🪙`
-        }).join("\n")
+        let mappedweapons
     
-        let mappeditems = shopItems_lvl5.map((item) => {
-            return `${item.name} - ${item.cost} 🪙`
-        }).join("\n")
+        let mappeditems
     
-        let mappedarmour = shopArmour_lvl5.map((item) => {
-            return `${item.name} - ${item.cost} 🪙`
-        }).join("\n")
+        let mappedarmour
     
-        let mappedpotions = shopPotions_lvl5.map((item) => {
-            return `${item.name} - ${item.cost} 🪙`
-        }).join("\n")
+        let mappedpotions 
         profileModel.findOne({userID:authorId},async (err,foundUser) => {
 if(foundUser.level > 5 && foundUser.level<10){
      mappedweapons=shopWeapons_lvl10.map((weapon) => {
