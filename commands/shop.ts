@@ -17,55 +17,55 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
         const authorId = interaction.user.id;
         const guildID = interaction.guildId;
 
-        const mappedweapons=shopWeapons_lvl5.map((weapon) => {
+        let mappedweapons=shopWeapons_lvl5.map((weapon) => {
             return `${weapon.name} - ${weapon.cost} 🪙`
         }).join("\n")
     
-        const mappeditems = shopItems_lvl5.map((item) => {
+        let mappeditems = shopItems_lvl5.map((item) => {
             return `${item.name} - ${item.cost} 🪙`
         }).join("\n")
     
-        const mappedarmour = shopArmour_lvl5.map((item) => {
+        let mappedarmour = shopArmour_lvl5.map((item) => {
             return `${item.name} - ${item.cost} 🪙`
         }).join("\n")
     
-        const mappedpotions = shopPotions_lvl5.map((item) => {
+        let mappedpotions = shopPotions_lvl5.map((item) => {
             return `${item.name} - ${item.cost} 🪙`
         }).join("\n")
         profileModel.findOne({userID:authorId},async (err,foundUser) => {
 if(foundUser.level > 5 && foundUser.level<10){
-    const mappedweapons=shopWeapons_lvl10.map((weapon) => {
+     mappedweapons=shopWeapons_lvl10.map((weapon) => {
         return `${weapon.name} - ${weapon.cost} 🪙`
     }).join("\n")
 
-    const mappeditems = shopItems_lvl5.map((item) => {
+     mappeditems = shopItems_lvl5.map((item) => {
         return `${item.name} - ${item.cost} 🪙`
     }).join("\n")
 
-    const mappedarmour = shopArmour_lvl5.map((item) => {
+     mappedarmour = shopArmour_lvl5.map((item) => {
         return `${item.name} - ${item.cost} 🪙`
     }).join("\n")
 
-    const mappedpotions = shopPotions_lvl5.map((item) => {
+     mappedpotions = shopPotions_lvl5.map((item) => {
         return `${item.name} - ${item.cost} 🪙`
     }).join("\n")
 
 }
 
 if(foundUser.level < 5){
-    const mappedweapons=shopWeapons_lvl5.map((weapon) => {
+     mappedweapons=shopWeapons_lvl5.map((weapon) => {
         return `${weapon.name} - ${weapon.cost} 🪙`
     }).join("\n")
 
-    const mappeditems = shopItems_lvl5.map((item) => {
+     mappeditems = shopItems_lvl5.map((item) => {
         return `${item.name} - ${item.cost} 🪙`
     }).join("\n")
 
-    const mappedarmour = shopArmour_lvl5.map((item) => {
+     mappedarmour = shopArmour_lvl5.map((item) => {
         return `${item.name} - ${item.cost} 🪙`
     }).join("\n")
 
-    const mappedpotions = shopPotions_lvl5.map((item) => {
+     mappedpotions = shopPotions_lvl5.map((item) => {
         return `${item.name} - ${item.cost} 🪙`
     }).join("\n")
 
