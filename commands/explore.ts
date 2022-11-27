@@ -85,7 +85,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 await interaction.deferReply()
                 await interaction.editReply({ content: `searching ${location}...`})
 
-                const pick = weightedRandom(["flora","monster"],[0.3,0.7])
+                const pick = weightedRandom(["flora","monster"],[0.7,0.3])
 
                 if(pick === "flora"){
                     await interaction.editReply({ content: '\u200b', components: [] })
