@@ -90,7 +90,31 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 if(pick === "flora"){
                     await interaction.editReply({ content: '\u200b', components: [] })
                     const flora = (await getRandomFlora())
-                    await interaction.editReply(`you found a ${flora.name}`)
+                    await interaction.editReply(`you found a ${flora.name}\n${flora.name} added to inventory!`)
+
+                    inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                        if(err){
+                            console.log(err);
+                            
+                        }
+                        else{
+                            const foundItem = foundUser.inventory.items.find(item => item.name === flora.name)
+                            if (foundItem){
+            
+                                foundItem.quantity+=1
+                            }
+                            else{
+                                const newItem = {
+                                    name:flora.name,
+                                    description:flora.description,
+                                    quantity:Number(1)
+                                }
+                                foundUser.inventory.items.push(newItem)
+                            }
+                            await inventory.updateOne({userID:authorId},foundUser)
+                        }
+                        
+                    })
                 }
 
                 else if(pick === "monster"){
