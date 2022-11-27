@@ -13,8 +13,9 @@ import { arachnidVenom } from './arachnidVenom'
 import { chimeraHorn } from './chimeraHorn'
 import { woodGolem_core } from './woodGolem_core'
 import { DryadJewel } from './Dryad_Jewel'
+import { Herbs } from '../flora/herbs'
 
 export default [ goblinPouch, slimeBlob, direwolfHide,bloodhoundTooth,direwolfClaw,woodClub,
-    woodAxe,ghoulSkull,chimeraFeather,basiliskScale,basiliskVenom,arachnidVenom,chimeraHorn,woodGolem_core,DryadJewel
+    woodAxe,ghoulSkull,chimeraFeather,basiliskScale,basiliskVenom,arachnidVenom,chimeraHorn,woodGolem_core,DryadJewel,Herbs.create()
 
 ]
