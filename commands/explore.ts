@@ -89,7 +89,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
 
                 if(pick === "flora"){
                     await interaction.editReply({ content: '\u200b', components: [] })
-                    const flora = (await getRandomFlora()).create()
+                    const flora = (await getRandomFlora())
                     await interaction.editReply(`you found a ${flora.name}`)
                 }
 
