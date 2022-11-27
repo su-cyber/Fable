@@ -1,11 +1,12 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import { DuelBuilder } from '../src/age/DuelBuilder'
-import { sleep } from '../src/utils'
+import { sleep, weightedRandom } from '../src/utils'
 import { getMonsters } from '../src/age/monsters'
 import { MessageActionRow, MessageSelectMenu } from 'discord.js'
 import { Warrior } from '../src/age/heroes/warrior'
 import { MonsterEntity, Entity } from '../src/age/classes'
 import { getRandomMonster } from '../src/age/monsters'
+import { getRandomFlora } from '../src/age/flora'
 import profileModel from '../models/profileSchema'
 import allskills from '../src/age/heroes/skills'
 import passive_skills from '../src/age/heroes/passive_skills'
@@ -83,22 +84,34 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
             if(location === "ellior"){
                 await interaction.deferReply()
                 await interaction.editReply({ content: `searching ${location}...`})
-                await interaction.editReply({ components: [await monstersDropdown()] })
-         
-                bot.onComponent('select-menu__monsters', async componentInteraction => {
-                    componentInteraction.deferUpdate()
+
+                const pick = weightedRandom(["flora","monster"],[0.3,0.7])
+
+                if(pick === "flora"){
                     await interaction.editReply({ content: '\u200b', components: [] })
-                    const monster = (await getMonsters())
-                        .find(m => m.name === componentInteraction.values[0])
-                        .create()
-        
-                    await new PvEDuel({
-                        interaction,
-                        player1: attacker,
-                        player2: monster,
-                    }).start()
-                })
-            }
+                    const flora = (await getRandomFlora()).create()
+                    await interaction.editReply(`you found a ${flora.name}`)
+                }
+
+                else if(pick === "monster"){
+                    await interaction.editReply({ components: [await monstersDropdown()] })
+         
+                    bot.onComponent('select-menu__monsters', async componentInteraction => {
+                        componentInteraction.deferUpdate()
+                        await interaction.editReply({ content: '\u200b', components: [] })
+                        const monster = (await getMonsters())
+                            .find(m => m.name === componentInteraction.values[0])
+                            .create()
+            
+                        await new PvEDuel({
+                            interaction,
+                            player1: attacker,
+                            player2: monster,
+                        }).start()
+                    })
+                }
+                }
+                
     
             else if(location === userQuestLocation){
                 profileModel.findOne({userID:authorId},async function (err,foundUser){
