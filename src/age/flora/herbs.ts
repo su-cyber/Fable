@@ -11,7 +11,8 @@ export class Herbs extends Flora{
     description: "Regular Herbs",
     spawnRate: 0.5,
     type: "regular",
-    cost:500
+    cost:500,
+    skills:[]
 
         })
     }

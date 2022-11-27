@@ -11,7 +11,8 @@ export class Mushroom extends Flora{
     description: "Regular mushrooms",
     spawnRate: 0.6,
     type: "regular",
-    cost:200
+    cost:200,
+    skills:[]
 
         })
     }
