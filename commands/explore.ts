@@ -137,7 +137,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                     })
                 }
                 else if(pick === "spren"){
-                    const spren = weightedRandom(["fireSpren","windSpren","waterSpen"],[0.3,0.4,0.3])
+                    const spren = weightedRandom(["fireSpren","windSpren","waterSpren"],[0.3,0.4,0.3])
                     specialModel.exists({Spren:spren},async function(err,res){
                         if(res){
                             specialModel.findOne({Spren:spren},async function(err,found){
@@ -146,14 +146,11 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             
                         }
                         else{
-                           
-
-                               
                                     interaction.editReply(`congrats! you found a ${spren}`)
                                     let special = await new specialModel({
                                         userID: authorId,
                                         serverID: guildID,
-                                        spren: spren,
+                                        Spren: spren,
                                         owner: interaction.user.username
                                         
                                     })
