@@ -12,6 +12,7 @@ import allskills from '../src/age/heroes/skills'
 import passive_skills from '../src/age/heroes/passive_skills'
 import inventory from '../models/InventorySchema'
 import { SlashCommandStringOption } from '@discordjs/builders'
+import specialModel from '../models/specialSchema'
 
 
 export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explore the world' })
@@ -23,6 +24,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
         const authorId = interaction.user.id
         const location = interaction.options.getString('location').toLowerCase()
         const author = interaction.guild.members.cache.get(authorId)
+        const guildID = interaction.guildId;
         
         
         
@@ -85,7 +87,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 await interaction.deferReply()
                 await interaction.editReply({ content: `searching ${location}...`})
 
-                const pick = weightedRandom(["flora","monster"],[0.7,0.3])
+                const pick = weightedRandom(["flora","monster","spren"],[0.1,0.1,0.8])
 
                 if(pick === "flora"){
                     await interaction.editReply({ content: '\u200b', components: [] })
@@ -132,6 +134,28 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             player1: attacker,
                             player2: monster,
                         }).start()
+                    })
+                }
+                else if(pick === "spren"){
+                    const spren = weightedRandom(["fireSpren","windSpren","waterSpen"],[0.3,0.4,0.3])
+                    specialModel.exists({Spren:spren},async function(err,res){
+                        if(res){
+                            specialModel.findOne({Spren:spren},async function(err,found){
+                                interaction.editReply(`${spren} has already been claimed in the world\nclaimed by: ${found.owner}`)
+                            })
+                            
+                        }
+                        else{
+                            interaction.editReply(`congrats! you found a ${spren}`)
+                            let special = await new specialModel({
+                                userID: authorId,
+                                serverID: guildID,
+                                spren: spren,
+                                owner: interaction.user.username
+                                
+                            })
+                            special.save();
+                        }
                     })
                 }
                 }
