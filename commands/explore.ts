@@ -146,15 +146,25 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             
                         }
                         else{
-                            interaction.editReply(`congrats! you found a ${spren}`)
-                            let special = await new specialModel({
-                                userID: authorId,
-                                serverID: guildID,
-                                spren: spren,
-                                owner: interaction.user.username
-                                
+                            specialModel.findOne({Spren:spren},async function(err,found){
+                                if(found.userID === authorId){
+                                    interaction.editReply(`you already possess a spren!`)
+                                }
+
+                                else{
+                                    interaction.editReply(`congrats! you found a ${spren}`)
+                                    let special = await new specialModel({
+                                        userID: authorId,
+                                        serverID: guildID,
+                                        spren: spren,
+                                        owner: interaction.user.username
+                                        
+                                    })
+                                    special.save();
+                                }
+
                             })
-                            special.save();
+                          
                         }
                     })
                 }
