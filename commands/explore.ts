@@ -54,6 +54,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 attacker.maxHealth=foundUser.health
                 attacker.passive_skills = foundUser.passiveskills
                 attacker.maxMana = foundUser.mana
+                attacker.speed = foundUser.speed
                 
                 inventory.findOne({userID:authorId},async function(err,foundProfile) {
                     if(foundProfile.inventory.potions.length !=0){
