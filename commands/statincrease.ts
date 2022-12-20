@@ -217,6 +217,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                     const num = collected.values[0]
                     
                     foundUser.evasion += 0.005*Number(num)
+                    foundUser.speed += 5*Number(num)
                     
                     foundUser.skill_points -= Number(num)
                 

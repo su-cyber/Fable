@@ -54,6 +54,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         attacker.maxHealth=foundUser.health
                                         attacker.skills=foundUser.skills
                                         attacker.passive_skills = foundUser.passiveskills
+                                        attacker.speed = foundUser.speed
 
                                         if(foundUser.weapon.length === 0){
                                             attacker.skills=foundUser.magicskills
@@ -80,6 +81,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         defender.maxHealth=foundUser.health
                                         defender.skills=foundUser.skills
                                         defender.passive_skills = foundUser.passiveskills
+                                        defender.speed = foundUser.speed
 
                                         if(foundUser.weapon.length === 0){
                                             defender.skills=foundUser.magicskills
@@ -91,11 +93,21 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         
                                     }
                                 })
-                                await new PvPDuel({
-                                    interaction,
-                                    player1: attacker,
-                                    player2: defender,
-                                }).start()
+                                if(attacker.speed>= defender.speed){
+                                    await new PvPDuel({
+                                        interaction,
+                                        player1: attacker,
+                                        player2: defender,
+                                    }).start()
+                                }
+                                else{
+                                    await new PvPDuel({
+                                        interaction,
+                                        player1: defender,
+                                        player2: attacker,
+                                    }).start()
+                                }
+                                
                         
                             }
                             else{

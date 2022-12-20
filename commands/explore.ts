@@ -190,11 +190,21 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .create()
         
                 
-                    await new PvEDuel_Quest({
-                        interaction,
-                        player1: attacker,
-                        player2: monster,
-                    }).start()
+                        if(attacker.speed >= monster.speed){
+                            await new PvEDuel_Quest({
+                                interaction,
+                                player1: attacker,
+                                player2: monster,
+                            }).start()
+                        }
+                        else{
+                            await new PvEDuel_Quest({
+                                interaction,
+                                player1: monster,
+                                player2: attacker,
+                            }).start()
+                        }
+                        
                 }
                 else{
                     await interaction.deferReply()
@@ -246,8 +256,13 @@ class PvEDuel extends DuelBuilder {
 
     async beforeDuelStart() {
         super.beforeDuelStart()
-
-        await this.replyOrEdit({ content: `🔎 Found a ${this.player2.name}!` })
+        if(this.attacker instanceof MonsterEntity){
+            await this.replyOrEdit({ content: `🔎 Found a ${this.player1.name}!` })
+        }
+        else{
+            await this.replyOrEdit({ content: `🔎 Found a ${this.player2.name}!` })
+        }
+       
         await sleep(1.2)
         
         
