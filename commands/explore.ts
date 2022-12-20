@@ -87,7 +87,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 await interaction.deferReply()
                 await interaction.editReply({ content: `searching ${location}...`})
 
-                const pick = weightedRandom(["flora","monster","spren"],[0.1,0.1,0.8])
+                const pick = weightedRandom(["flora","monster","spren"],[0.1,0.8,0.1])
 
                 if(pick === "flora"){
                     await interaction.editReply({ content: '\u200b', components: [] })
@@ -128,12 +128,21 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         const monster = (await getMonsters())
                             .find(m => m.name === componentInteraction.values[0])
                             .create()
-            
-                        await new PvEDuel({
-                            interaction,
-                            player1: attacker,
-                            player2: monster,
-                        }).start()
+                        if(attacker.speed >= monster.speed){
+                            await new PvEDuel({
+                                interaction,
+                                player1: attacker,
+                                player2: monster,
+                            }).start()
+                        }
+                        else{
+                            await new PvEDuel({
+                                interaction,
+                                player1: monster,
+                                player2: attacker,
+                            }).start()
+                        }
+                        
                     })
                 }
                 else if(pick === "spren"){

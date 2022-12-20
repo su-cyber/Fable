@@ -48,6 +48,7 @@ export class Chimera extends MonsterEntity {
             xp: generateXP(1000,1500),
             magicPower: 20,
             armor: 20,
+            speed: 5,
             run_chance: 0.5,
             magicResistance: 30,
             passive_skills:[],

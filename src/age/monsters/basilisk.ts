@@ -59,6 +59,7 @@ export class Basilisk extends MonsterEntity {
             mana:100,
             magicPower: 20,
             armor: 20,
+            speed: 5,
             run_chance: Infinity,
             magicResistance: 25,
             passive_skills:[],

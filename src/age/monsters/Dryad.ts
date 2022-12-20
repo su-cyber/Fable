@@ -102,6 +102,7 @@ export class Dryad extends MonsterEntity {
             evasion: 0.05,
             health: 350,
             mana:500,
+            speed: 5,
             xp: generateXP(2500,3000),
             attackDamage: 120,
             magicPower: 100,

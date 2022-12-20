@@ -13,6 +13,7 @@ const profileSchema = new mongoose.Schema({
     magicPower: {type:Number},
     mana: {type:Number},
     evasion: {type:Number},
+    speed: {type:Number},
     magicResistance: {type:Number},
     armour: {type:Number},
     attackDamage: {type:Number},

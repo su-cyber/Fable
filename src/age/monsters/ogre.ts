@@ -32,6 +32,7 @@ export class Ogre extends MonsterEntity {
             xp: generateXP(30,70),
             magicPower: 0,
             armor: 12,
+            speed: 5,
             run_chance: 0.2,
             magicResistance: 4,
             passive_skills:[],

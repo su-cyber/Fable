@@ -77,6 +77,7 @@ export class WoodGolem extends MonsterEntity {
             xp: generateXP(2500,3000),
             magicPower: 40,
             armor: 80,
+            speed: 5,
             run_chance: 1,
             magicResistance: 65,
             passive_skills:[],

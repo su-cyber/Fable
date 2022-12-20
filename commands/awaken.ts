@@ -32,6 +32,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     magicPower: 5,
                     mana: 50,
                     evasion: 0.05,
+                    speed: 10,
                     magicResistance: 5,
                     armour: 5,
                     attackDamage: 10,

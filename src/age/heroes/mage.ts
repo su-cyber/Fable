@@ -45,6 +45,7 @@ export class Mage extends ClassEntity {
             magicPower: 0,
             armor: 0,         
             evasion: 0.8,
+            speed: 10,
             magicResistance: 0,
             passive_skills:[],
             skills: [

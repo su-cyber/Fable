@@ -37,6 +37,7 @@ export class Warrior extends ClassEntity {
             magicPower: 0,
             armor: 10,
             evasion: 0.05,
+            speed: 10,
             magicResistance: 10,
             passive_skills:[],
             skills: [

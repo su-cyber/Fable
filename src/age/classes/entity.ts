@@ -22,6 +22,7 @@ export type EntityProps = {
     magicPower     : number
     armor          : number
     evasion        : number
+    speed          : number
     magicResistance: number
     skills         : Skill[]
     effects?       : Effect
@@ -38,6 +39,7 @@ export class Entity {
     maxMana : number
     magicPower: number
     evasion: number
+    speed: number
     armor: number
     magicResistance: number
     skills: Skill[]
