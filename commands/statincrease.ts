@@ -225,7 +225,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                     .setColor('RANDOM')
                     .setTitle('STAT INVEST')
                     .setDescription(`Your speed has been increased!\nyou now have ${foundUser.evasion*100}% chance of evading an attack`)
-                await profileModel.updateOne({userID:authorId},{evasion:foundUser.evasion,skill_points:foundUser.skill_points})
+                await profileModel.updateOne({userID:authorId},{evasion:foundUser.evasion,skill_points:foundUser.skill_points,speed:foundUser.speed})
                 await interaction.editReply({embeds:[successembed],components:[]})
                 
                 collector_select.stop()
