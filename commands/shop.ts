@@ -5,11 +5,12 @@ import { SlashCommandUserOption } from '@discordjs/builders'
 import { SlashCommandStringOption } from '@discordjs/builders'
 import allWeapons from '../src/age/weapons/allWeapons'
 import shopWeapons_lvl5 from '../src/age/weapons/shopWeapons_lvl5'
-import { Collector, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
+import { Client, Collector, Message, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 import shopItems_lvl5 from '../src/age/items/shopItems_lvl5'
 import shopArmour_lvl5 from '../src/age/armour/shopArmour_lvl5'
 import shopPotions_lvl5 from '../src/age/potions/shopPotions_lvl5'
 import shopWeapons_lvl10 from '../src/age/weapons/shopWeapons_lvl10'
+import { IncomingMessage } from 'http'
 
 export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access the Shop' })
     .setDo(
@@ -42,7 +43,7 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
 
         let filter = i => i.user.id === authorId
         let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
-
+        
         profileModel.findOne({userID:authorId},async (err,foundUser) => {
 if(foundUser.level > 5 && foundUser.level<10){
     const mappedweapons=shopWeapons_lvl10.map((weapon) => {
