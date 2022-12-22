@@ -86,7 +86,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
 
             if(location === "ellior"){
                 
-                await interaction.user.send({ content: `searching ${location}...`})
+                await interaction.reply({ content: `searching ${location}...`})
                 
     
 
@@ -124,7 +124,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 }
 
                 else if(pick === "monster"){
-                    await interaction.user.send({ components: [await monstersDropdown()] })
+                    await interaction.editReply({ components: [await monstersDropdown()] })
          
                     bot.onComponent('select-menu__monsters', async componentInteraction => {
                         componentInteraction.deferUpdate()
