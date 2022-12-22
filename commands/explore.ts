@@ -85,7 +85,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
             }
 
             if(location === "ellior"){
-                
+                await interaction.deferReply()
                 await interaction.user.send({ content: `searching ${location}...`})
                 
     
