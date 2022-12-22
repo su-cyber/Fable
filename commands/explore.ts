@@ -85,7 +85,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
             }
 
             if(location === "ellior"){
-                await interaction.deferReply()
+                
                 await interaction.user.send({ content: `searching ${location}...`})
                 
     
@@ -93,6 +93,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 const pick = weightedRandom(["flora","monster","spren"],[0.1,0.8,0.1])
 
                 if(pick === "flora"){
+                    
                     await interaction.editReply({ content: '\u200b', components: [] })
                     const flora = (await getRandomFlora())
                     await interaction.editReply(`you found a ${flora.name}\n${flora.name} added to inventory!`)
@@ -123,7 +124,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 }
 
                 else if(pick === "monster"){
-                    await interaction.editReply({ components: [await monstersDropdown()] })
+                    await interaction.user.send({ components: [await monstersDropdown()] })
          
                     bot.onComponent('select-menu__monsters', async componentInteraction => {
                         componentInteraction.deferUpdate()
