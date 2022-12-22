@@ -44,7 +44,7 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'Know you
                     
                     
                     
-                    await interaction.reply({embeds:[statEmbed]})
+                    await interaction.reply({embeds:[statEmbed],ephemeral:true})
                 })
             }
             else{
