@@ -215,7 +215,6 @@ class DuelBuilder {
             content: null,
             embeds: this.duelMessageEmbeds(),
             components: [this.createDuelComponent(skills, disableComponent),this.btn],
-            ephemeral:true
             
         })
     }
@@ -224,16 +223,14 @@ class DuelBuilder {
         content,
         embeds,
         components,
-        ephemeral
     }: {
         content?: string
         embeds?: MessageEmbed[]
         components?: any
-        ephemeral?: boolean
     }) {
         
-             this.interaction.reply({ content, embeds, components, ephemeral }).catch(() => {
-                this.interaction.followUp({ content, embeds, components, ephemeral }).catch(() => null)
+             this.interaction.reply({ content, embeds, components }).catch(() => {
+                this.interaction.editReply({ content, embeds, components }).catch(() => null)
             })
          
          

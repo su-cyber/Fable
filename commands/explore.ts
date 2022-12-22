@@ -121,7 +121,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 }
 
                 else if(pick === "monster"){
-                    await interaction.followUp({ components: [await monstersDropdown()],ephemeral:true})
+                    await interaction.editReply({ components: [await monstersDropdown()] })
          
                     bot.onComponent('select-menu__monsters', async componentInteraction => {
                         componentInteraction.deferUpdate()
