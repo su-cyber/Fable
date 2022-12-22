@@ -1,4 +1,4 @@
-import { GuildMember } from 'discord.js'
+import { GuildMember, User } from 'discord.js'
 import { ClassEntity } from '../classes'
 import { burning } from '../effects/burning'
 import { CommandInteraction } from 'discord.js'
@@ -36,7 +36,7 @@ export class Mage extends ClassEntity {
         
     }
 
-    static create(user: GuildMember) {
+    static create(user: User) {
         return new Mage({
             user,
             health: 100,

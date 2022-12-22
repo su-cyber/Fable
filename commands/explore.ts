@@ -23,7 +23,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
     async (bot, interaction) => {
         const authorId = interaction.user.id
         const location = interaction.options.getString('location').toLowerCase()
-        const author = interaction.guild.members.cache.get(authorId)
+        const author = await bot.users.fetch(authorId)
         const guildID = interaction.guildId;
         
         

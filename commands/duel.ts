@@ -17,8 +17,8 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
         const authorId = interaction.user.id
         const opponentId = interaction.options.getUser('user').id
 
-        const author = interaction.guild.members.cache.get(authorId)
-        const opponent = interaction.guild.members.cache.get(opponentId)
+        const author = await bot.users.fetch(authorId)
+        const opponent = await bot.users.fetch(opponentId)
 
         profileModel.exists({userID: authorId},async function(err,res){
             if(err){

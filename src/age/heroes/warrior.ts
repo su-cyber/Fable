@@ -1,4 +1,4 @@
-import { GuildMember } from 'discord.js'
+import { GuildMember, User } from 'discord.js'
 import { emoji } from '../../lib/utils/emoji'
 import { calculate, ClassEntity } from '../classes'
 import { bleeding } from '../effects/bleeding'
@@ -28,7 +28,7 @@ export class Warrior extends ClassEntity {
     }
     
     
-    static create(user: GuildMember) {
+    static create(user: User) {
         return new Warrior({
             user,
             health: 1000,
