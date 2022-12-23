@@ -53,7 +53,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     quest_location:'',
                     quest_mob:'',
                     quest_quantity:0,
-                    quest_item:''
+                    quest_item:'',
+                    encounter:[]
                     
                 })
                 profile.save();

@@ -27,7 +27,8 @@ const profileSchema = new mongoose.Schema({
     quest_location:{type: String},
     quest_mob:{type: String},
     quest_quantity:{type: Number},
-    quest_item:{type: String}
+    quest_item:{type: String},
+    encounter:{type: Array}
 });
 
 const model = mongoose.model('ProfileModels',profileSchema);

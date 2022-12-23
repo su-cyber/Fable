@@ -2,7 +2,7 @@ import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import { DuelBuilder } from '../src/age/DuelBuilder'
 import { sleep, weightedRandom } from '../src/utils'
 import { getMonsters } from '../src/age/monsters'
-import { MessageActionRow, MessageSelectMenu } from 'discord.js'
+import { MessageActionRow, MessageSelectMenu, SelectMenuInteraction } from 'discord.js'
 import { Warrior } from '../src/age/heroes/warrior'
 import { MonsterEntity, Entity } from '../src/age/classes'
 import { getRandomMonster } from '../src/age/monsters'
@@ -125,28 +125,18 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
 
                 else if(pick === "monster"){
                     await interaction.editReply({ components: [await monstersDropdown()] })
-         
+                    
                     bot.onComponent('select-menu__monsters', async componentInteraction => {
                         componentInteraction.deferUpdate()
                         await interaction.editReply({ content: '\u200b', components: [] })
                         const monster = (await getMonsters())
                             .find(m => m.name === componentInteraction.values[0])
                             .create()
-                        if(attacker.speed >= monster.speed){
-                            await new PvEDuel({
-                                interaction,
-                                player1: attacker,
-                                player2: monster,
-                            }).start()
-                        }
-                        else{
-                            await new PvEDuel({
-                                interaction,
-                                player1: monster,
-                                player2: attacker,
-                            }).start()
-                        }
-                        
+
+                        await interaction.editReply(`🔎 you found a ${monster.name}!`)
+                        foundUser.encounter.push(monster)
+                        profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
+                        interaction.user.send(`Use /fight to begin encounter`)
                     })
                 }
                 else if(pick === "spren"){
