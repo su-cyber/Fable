@@ -137,7 +137,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         foundUser.encounter = []
                         foundUser.encounter.push(componentInteraction.values[0])
                         await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
-                        console.log(foundUser.encounter.length);
+                   
                         
                         interaction.user.send(`Use /fight to begin encounter`)
                     })

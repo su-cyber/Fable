@@ -116,7 +116,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
             }
             else{
                 await interaction.reply(`you have not encountered anything!`)
-                console.log(foundUser.encounter.length);
+                
                 
             }
                         
@@ -221,7 +221,7 @@ class PvEDuel extends DuelBuilder {
     }
 
     async onEnd(winner: Entity, loser: MonsterEntity) {
-        await loser.onDeath(this.interaction, winner)
+       
         profileModel.findOne({userID:this.interaction.user.id},async function(err,foundUser) {
             
             if(err){
@@ -234,6 +234,7 @@ class PvEDuel extends DuelBuilder {
 
             }
         })
+        await loser.onDeath(this.interaction, winner)
     }
 
     
