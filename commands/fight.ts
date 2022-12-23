@@ -122,7 +122,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                             }
                             else{
                                 interaction.reply(`you responded too late, your encounter is lost`)
-                                const authorID = this.interaction.user.id
+                                const authorID = interaction.user.id
                     profileModel.findOne({userID:authorID},async function(err,foundUser) {
             
                         if(err){
@@ -139,7 +139,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                         }
                         else{
                             interaction.reply(`you responded too late, your encounter is lost`) 
-                            const authorID = this.interaction.user.id
+                            const authorID = interaction.user.id
                     profileModel.findOne({userID:authorID},async function(err,foundUser) {
             
                         if(err){
@@ -156,7 +156,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                     }
                     else{
                         interaction.reply(`you responded too late, your encounter is lost`) 
-                        const authorID = this.interaction.user.id
+                        const authorID = interaction.user.id
                     profileModel.findOne({userID:authorID},async function(err,foundUser) {
             
                         if(err){
@@ -173,7 +173,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                 }
                 else{
                     interaction.reply(`you responded too late, your encounter is lost`)
-                    const authorID = this.interaction.user.id
+                    const authorID = interaction.user.id
                     profileModel.findOne({userID:authorID},async function(err,foundUser) {
             
                         if(err){
