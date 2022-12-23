@@ -114,6 +114,8 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
             }
             else{
                 await interaction.reply(`you have not encountered anything!`)
+                console.log(foundUser.encounter.length);
+                
             }
                         
                         
