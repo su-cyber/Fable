@@ -95,24 +95,99 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                     
                     
             if(foundUser.encounter.length != 0){
-                const monster = await (await getMonsters())
-                            .find(m => m.name === foundUser.encounter[0])
-                            .create()
-                
-                if(attacker.speed >= monster.speed){
-                    await new PvEDuel({
-                        interaction,
-                        player1: attacker,
-                        player2: monster,
-                    }).start()
+               const timestamp = new Date()
+
+                if(foundUser.encounter[0].time.getMonth() == timestamp.getMonth()){
+                    if(foundUser.encounter[0].time.getDay() == timestamp.getDay()){
+                        if(foundUser.encounter[0].time.getHours() == timestamp.getHours()){
+                            if((timestamp.getMinutes() - foundUser.encounter[0].time.getMinutes()) < 2){
+                                const monster = await (await getMonsters())
+                                .find(m => m.name === foundUser.encounter[0].name)
+                                .create()
+                    
+                    if(attacker.speed >= monster.speed){
+                        await new PvEDuel({
+                            interaction,
+                            player1: attacker,
+                            player2: monster,
+                        }).start()
+                    }
+                    else{
+                        await new PvEDuel({
+                            interaction,
+                            player1: monster,
+                            player2: attacker,
+                        }).start()
+                    }
+                            }
+                            else{
+                                interaction.reply(`you responded too late, your encounter is lost`)
+                                const authorID = this.interaction.user.id
+                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
+            
+                        if(err){
+                            console.log(err);
+                            
+                        }
+                        else{
+                            foundUser.encounter = []
+                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
+            
+                        }
+                    })
+                            }
+                        }
+                        else{
+                            interaction.reply(`you responded too late, your encounter is lost`) 
+                            const authorID = this.interaction.user.id
+                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
+            
+                        if(err){
+                            console.log(err);
+                            
+                        }
+                        else{
+                            foundUser.encounter = []
+                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
+            
+                        }
+                    })
+                        }
+                    }
+                    else{
+                        interaction.reply(`you responded too late, your encounter is lost`) 
+                        const authorID = this.interaction.user.id
+                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
+            
+                        if(err){
+                            console.log(err);
+                            
+                        }
+                        else{
+                            foundUser.encounter = []
+                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
+            
+                        }
+                    })
+                    }
                 }
                 else{
-                    await new PvEDuel({
-                        interaction,
-                        player1: monster,
-                        player2: attacker,
-                    }).start()
+                    interaction.reply(`you responded too late, your encounter is lost`)
+                    const authorID = this.interaction.user.id
+                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
+            
+                        if(err){
+                            console.log(err);
+                            
+                        }
+                        else{
+                            foundUser.encounter = []
+                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
+            
+                        }
+                    })
                 }
+
             }
             else{
                 await interaction.reply(`you have not encountered anything!`)

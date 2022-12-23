@@ -136,16 +136,15 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
 
                         
                         foundUser.encounter = []
-                        foundUser.encounter.push(componentInteraction.values[0])
-                        await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
+                       
                    
                         let btnraw= new MessageActionRow().addComponents([
-                            new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Accept"),
-                            new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Reject"),])
+                            new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Fight"),
+                            new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Run"),])
 
                             let d_btnraw = new MessageActionRow().addComponents([
-                                new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Accept").setDisabled(true),
-                                new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Reject").setDisabled(true),
+                                new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Fight").setDisabled(true),
+                                new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Run").setDisabled(true),
                             ])
 
                             
@@ -161,19 +160,27 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
     
                         let rejectEmbed = new MessageEmbed()
                         .setColor('RED')
-                        .setTitle('REJECTED')
+                        .setTitle('RAN AWAY')
                         .setDescription('You ran away!')
                         
                     
                     await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw]})
                     let filter = i => i.user.id === authorId
-                        let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
+                        let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                 
                         collector.on('collect',async (btn) => {
                             if(btn.isButton()){
                                 if(btn.customId === "btn_accept"){
                                     await btn.deferUpdate().catch(e => {})
                                     await interaction.editReply({embeds:[acceptEmbed]})
+                                    const encounter = {
+                                        name: componentInteraction.values[0],
+                                        time : new Date()
+
+                                    }
+                                    
+                                    foundUser.encounter.push(encounter)
+                                    await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
                                     interaction.user.send(`Use /fight to begin encounter`)
 
                                     
