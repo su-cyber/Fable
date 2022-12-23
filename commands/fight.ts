@@ -222,7 +222,18 @@ class PvEDuel extends DuelBuilder {
 
     async onEnd(winner: Entity, loser: MonsterEntity) {
         await loser.onDeath(this.interaction, winner)
-        
+        profileModel.findOne({userID:this.interaction.user.id},async function(err,foundUser) {
+            
+            if(err){
+                console.log(err);
+                
+            }
+            else{
+                foundUser.encounter = []
+                await profileModel.updateOne({userID:this.interaction.user.id},{encounter:foundUser.encounter})
+
+            }
+        })
     }
 
     
