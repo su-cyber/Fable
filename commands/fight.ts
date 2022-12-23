@@ -95,8 +95,10 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                     
                     
             if(foundUser.encounter.length != 0){
-                const monster = foundUser.encounter[0]
-                        
+                const monster = await (await getMonsters())
+                            .find(m => m.name === foundUser.encounter[0])
+                            .create()
+                
                 if(attacker.speed >= monster.speed){
                     await new PvEDuel({
                         interaction,

@@ -134,7 +134,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .create()
 
                         await interaction.editReply(`🔎 you found a ${monster.name}!`)
-                        foundUser.encounter.push(monster)
+                        foundUser.encounter.push(monster.name)
                         await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
                         console.log(foundUser.encounter.length);
                         
