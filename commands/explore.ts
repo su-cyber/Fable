@@ -13,6 +13,7 @@ import passive_skills from '../src/age/heroes/passive_skills'
 import inventory from '../models/InventorySchema'
 import { SlashCommandStringOption } from '@discordjs/builders'
 import specialModel from '../models/specialSchema'
+import { Collector, MessageButton, MessageEmbed } from 'discord.js'
 
 
 export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explore the world' })
@@ -133,13 +134,77 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .find(m => m.name === componentInteraction.values[0])
                             .create()
 
-                        await interaction.editReply(`🔎 you found a ${monster.name}!`)
+                        
                         foundUser.encounter = []
                         foundUser.encounter.push(componentInteraction.values[0])
                         await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
                    
+                        let btnraw= new MessageActionRow().addComponents([
+                            new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Accept"),
+                            new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Reject"),])
+
+                            let d_btnraw = new MessageActionRow().addComponents([
+                                new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Accept").setDisabled(true),
+                                new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Reject").setDisabled(true),
+                            ])
+
+                            
+                        let fightEmbed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('ENCOUNTER')
+                        .setDescription(`🔎 you found a ${monster.name}!`)
+    
+                        let acceptEmbed = new MessageEmbed()
+                        .setColor('GREEN')
+                        .setTitle('ACCEPTED')
+                        .setDescription('You have decided to fight!\ncheck your private message')
+    
+                        let rejectEmbed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('REJECTED')
+                        .setDescription('You ran away!')
                         
-                        interaction.user.send(`Use /fight to begin encounter`)
+                        await interaction.deferReply()
+                    await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw]})
+                    let filter = i => i.user.id === authorId
+                        let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
+                
+                        collector.on('collect',async (btn) => {
+                            if(btn.isButton()){
+                                if(btn.customId === "btn_accept"){
+                                    await btn.deferUpdate().catch(e => {})
+                                    await interaction.editReply({embeds:[acceptEmbed]})
+                                    interaction.user.send(`Use /fight to begin encounter`)
+
+                                    
+                               
+                                collector.stop()
+                                    
+                                }
+                                else if(btn.customId === "btn_reject"){
+                                    await btn.deferUpdate().catch(e => {})
+                                    await interaction.editReply({embeds:[rejectEmbed]})
+                                     foundUser.encounter = []
+                                
+                                    await profileModel.updateOne({userID:authorId},foundUser)
+
+                                    collector.stop()
+                                }
+
+                                
+                                
+                            }
+                              
+                
+                   
+                   
+                    })
+
+                    collector.on('end', () => {
+                        interaction.editReply({components: [d_btnraw]})
+                    })
+
+                        
                     })
                 }
                 else if(pick === "spren"){

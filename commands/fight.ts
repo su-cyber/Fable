@@ -222,7 +222,7 @@ class PvEDuel extends DuelBuilder {
 
     async onEnd(winner: Entity, loser: MonsterEntity) {
        
-        profileModel.findOne({userID:this.interaction.user.id},async function(err,foundUser) {
+        profileModel.findOne({userID:winner.id},async function(err,foundUser) {
             
             if(err){
                 console.log(err);
@@ -230,7 +230,7 @@ class PvEDuel extends DuelBuilder {
             }
             else{
                 foundUser.encounter = []
-                await profileModel.updateOne({userID:this.interaction.user.id},{encounter:foundUser.encounter})
+                await profileModel.updateOne({userID:winner.id},{encounter:foundUser.encounter})
 
             }
         })
