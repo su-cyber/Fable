@@ -32,181 +32,187 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
             }
             else{
                 if(res){
-                    const attacker = Warrior.create(author)
-        profileModel.findOne({userID:authorId},async function(err,foundUser) {
-            
-            if(err){
-                console.log(err);
-                
-            }
-            else{
-            
-                attacker.health=foundUser.health
-                attacker.mana=foundUser.mana
-                attacker.armor=foundUser.armour
-                attacker.magicPower=foundUser.magicPower
-                attacker.attackDamage=foundUser.attackDamage
-                attacker.evasion=foundUser.evasion
-                attacker.maxHealth=foundUser.health
-                attacker.passive_skills = foundUser.passiveskills
-                attacker.maxMana = foundUser.mana
-                attacker.speed = foundUser.speed
-                
-                inventory.findOne({userID:authorId},async function(err,foundProfile) {
-                    if(foundProfile.inventory.potions.length !=0){
-                        attacker.potions = []
-                        for(let i=0;i<foundProfile.inventory.potions.length;i++){
+                    if(interaction.guild == null){
+                        const attacker = Warrior.create(author)
+                        profileModel.findOne({userID:authorId},async function(err,foundUser) {
                             
-                            attacker.potions.push(foundProfile.inventory.potions[i].name)
-                                    }
-
-                        
-                    }
-                    else{
-                        attacker.potions =[]
-                    }
-                })
-
-                if(foundUser.weapon.length === 0){
-                    attacker.skills=foundUser.magicskills
-                }
-                else{
-                    
-                    attacker.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
-                }
-
-                
-                
-                
-            }
-
-           
-                
-                
-                
-    
-
-               
-
-                
-
-                
-                 
-                    
-                    
-            if(foundUser.encounter.length != 0){
-               const timestamp = new Date()
-
-                if(foundUser.encounter[0].time.getMonth() == timestamp.getMonth()){
-                    if(foundUser.encounter[0].time.getDay() == timestamp.getDay()){
-                        if(foundUser.encounter[0].time.getHours() == timestamp.getHours()){
-                            if((timestamp.getMinutes() - foundUser.encounter[0].time.getMinutes()) < 2){
-                                const monster = await (await getMonsters())
-                                .find(m => m.name === foundUser.encounter[0].name)
-                                .create()
-                    
-                    if(attacker.speed >= monster.speed){
-                        await new PvEDuel({
-                            interaction,
-                            player1: attacker,
-                            player2: monster,
-                        }).start()
-                    }
-                    else{
-                        await new PvEDuel({
-                            interaction,
-                            player1: monster,
-                            player2: attacker,
-                        }).start()
-                    }
+                            if(err){
+                                console.log(err);
+                                
                             }
                             else{
-                                interaction.reply(`you responded too late, your encounter is lost`)
-                                const authorID = interaction.user.id
-                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
-            
-                        if(err){
-                            console.log(err);
                             
-                        }
-                        else{
-                            foundUser.encounter = []
-                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
-            
-                        }
-                    })
+                                attacker.health=foundUser.health
+                                attacker.mana=foundUser.mana
+                                attacker.armor=foundUser.armour
+                                attacker.magicPower=foundUser.magicPower
+                                attacker.attackDamage=foundUser.attackDamage
+                                attacker.evasion=foundUser.evasion
+                                attacker.maxHealth=foundUser.health
+                                attacker.passive_skills = foundUser.passiveskills
+                                attacker.maxMana = foundUser.mana
+                                attacker.speed = foundUser.speed
+                                
+                                inventory.findOne({userID:authorId},async function(err,foundProfile) {
+                                    if(foundProfile.inventory.potions.length !=0){
+                                        attacker.potions = []
+                                        for(let i=0;i<foundProfile.inventory.potions.length;i++){
+                                            
+                                            attacker.potions.push(foundProfile.inventory.potions[i].name)
+                                                    }
+                
+                                        
+                                    }
+                                    else{
+                                        attacker.potions =[]
+                                    }
+                                })
+                
+                                if(foundUser.weapon.length === 0){
+                                    attacker.skills=foundUser.magicskills
+                                }
+                                else{
+                                    
+                                    attacker.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
+                                }
+                
+                                
+                                
+                                
                             }
-                        }
-                        else{
-                            interaction.reply(`you responded too late, your encounter is lost`) 
-                            const authorID = interaction.user.id
-                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
-            
-                        if(err){
-                            console.log(err);
-                            
-                        }
-                        else{
-                            foundUser.encounter = []
-                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
-            
-                        }
-                    })
-                        }
-                    }
-                    else{
-                        interaction.reply(`you responded too late, your encounter is lost`) 
-                        const authorID = interaction.user.id
-                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
-            
-                        if(err){
-                            console.log(err);
-                            
-                        }
-                        else{
-                            foundUser.encounter = []
-                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
-            
-                        }
-                    })
-                    }
-                }
-                else{
-                    interaction.reply(`you responded too late, your encounter is lost`)
-                    const authorID = interaction.user.id
-                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
-            
-                        if(err){
-                            console.log(err);
-                            
-                        }
-                        else{
-                            foundUser.encounter = []
-                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
-            
-                        }
-                    })
-                }
-
-            }
-            else{
-                await interaction.reply(`you have not encountered anything!`)
                 
-                
-            }
-                        
-                        
+                           
+                                
+                                
+                                
                     
                 
-             
+                               
                 
+                                
                 
-    
-       
-        
-        })
-
-        
+                                
+                                 
+                                    
+                                    
+                            if(foundUser.encounter.length != 0){
+                               const timestamp = new Date()
+                
+                                if(foundUser.encounter[0].time.getMonth() == timestamp.getMonth()){
+                                    if(foundUser.encounter[0].time.getDay() == timestamp.getDay()){
+                                        if(foundUser.encounter[0].time.getHours() == timestamp.getHours()){
+                                            if((timestamp.getMinutes() - foundUser.encounter[0].time.getMinutes()) < 2){
+                                                const monster = await (await getMonsters())
+                                                .find(m => m.name === foundUser.encounter[0].name)
+                                                .create()
+                                    
+                                    if(attacker.speed >= monster.speed){
+                                        await new PvEDuel({
+                                            interaction,
+                                            player1: attacker,
+                                            player2: monster,
+                                        }).start()
+                                    }
+                                    else{
+                                        await new PvEDuel({
+                                            interaction,
+                                            player1: monster,
+                                            player2: attacker,
+                                        }).start()
+                                    }
+                                            }
+                                            else{
+                                                interaction.reply(`you responded too late, your encounter is lost`)
+                                                const authorID = interaction.user.id
+                                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
+                            
+                                        if(err){
+                                            console.log(err);
+                                            
+                                        }
+                                        else{
+                                            foundUser.encounter = []
+                                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
+                            
+                                        }
+                                    })
+                                            }
+                                        }
+                                        else{
+                                            interaction.reply(`you responded too late, your encounter is lost`) 
+                                            const authorID = interaction.user.id
+                                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
+                            
+                                        if(err){
+                                            console.log(err);
+                                            
+                                        }
+                                        else{
+                                            foundUser.encounter = []
+                                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
+                            
+                                        }
+                                    })
+                                        }
+                                    }
+                                    else{
+                                        interaction.reply(`you responded too late, your encounter is lost`) 
+                                        const authorID = interaction.user.id
+                                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
+                            
+                                        if(err){
+                                            console.log(err);
+                                            
+                                        }
+                                        else{
+                                            foundUser.encounter = []
+                                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
+                            
+                                        }
+                                    })
+                                    }
+                                }
+                                else{
+                                    interaction.reply(`you responded too late, your encounter is lost`)
+                                    const authorID = interaction.user.id
+                                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
+                            
+                                        if(err){
+                                            console.log(err);
+                                            
+                                        }
+                                        else{
+                                            foundUser.encounter = []
+                                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
+                            
+                                        }
+                                    })
+                                }
+                
+                            }
+                            else{
+                                await interaction.reply(`you have not encountered anything!`)
+                                
+                                
+                            }
+                                        
+                                        
+                                    
+                                
+                             
+                                
+                                
+                    
+                       
+                        
+                        })
+                
+                        
+                    }
+                    else{
+                        interaction.reply(`this command can be used only in DMs`)
+                    }
+                    
         
             }
 
