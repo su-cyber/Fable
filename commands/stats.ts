@@ -27,8 +27,8 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'Know you
                         .setColor('RANDOM')
                         .setTitle('STATUS WINDOW')
                         .setDescription(`
-                        Level: ${foundUser.level}/${xpFormulate(foundUser.level + 1)}
-                        XP: ${foundUser.xp}
+                        Level: ${foundUser.level}
+                        XP: ${foundUser.xp}/${xpFormulate(foundUser.level + 1)}
                         Coins: ${foundUser.coins}
                         Health: ${foundUser.health}
                         Magic Power: ${foundUser.magicPower}
