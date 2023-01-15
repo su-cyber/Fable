@@ -2,6 +2,7 @@ import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
 import inventory from '../models/InventorySchema'
 import { MessageEmbed } from 'discord.js'
+import xpFormulate from '../src/utils/XPformulate'
 
 export default new MyCommandSlashBuilder({ name: 'stats', description: 'Know your Stats' }).setDo(
     async (bot, interaction) => {
@@ -26,7 +27,7 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'Know you
                         .setColor('RANDOM')
                         .setTitle('STATUS WINDOW')
                         .setDescription(`
-                        Level: ${foundUser.level}
+                        Level: ${foundUser.level}/${xpFormulate(foundUser.level + 1)}
                         XP: ${foundUser.xp}
                         Coins: ${foundUser.coins}
                         Health: ${foundUser.health}
