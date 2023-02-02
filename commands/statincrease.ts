@@ -79,18 +79,25 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                 collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                     collected.deferUpdate().catch(() => null)
                     const num = collected.values[0]
+
+                    if(num>foundUser.skill_points){
+                        interaction.editReply(`not enough skill points to invest!`)
+                    }
+                    else{
+                        foundUser.attackDamage += 5*Number(num)
+                        foundUser.skill_points -= Number(num)
                     
-                    foundUser.attackDamage += 5*Number(num)
-                    foundUser.skill_points -= Number(num)
-                
-                    let successembed = new MessageEmbed()
-                    .setColor('RANDOM')
-                    .setTitle('STAT INVEST')
-                    .setDescription(`Your attack damage has been increased to ${foundUser.attackDamage}`)
-                await profileModel.updateOne({userID:authorId},{attackDamage:foundUser.attackDamage,skill_points:foundUser.skill_points})
-                await interaction.editReply({embeds:[successembed],components:[]})
-                collector_select.stop()
-                collector_btn.stop()
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('STAT INVEST')
+                        .setDescription(`Your attack damage has been increased to ${foundUser.attackDamage}`)
+                    await profileModel.updateOne({userID:authorId},{attackDamage:foundUser.attackDamage,skill_points:foundUser.skill_points})
+                    await interaction.editReply({embeds:[successembed],components:[]})
+                    collector_select.stop()
+                    collector_btn.stop()
+                    }
+                    
+                   
                     
                     
                 })
@@ -112,21 +119,26 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                 collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                     collected.deferUpdate().catch(() => null)
                     const num = collected.values[0]
+                    if(num>foundUser.skill_points){
+                        interaction.editReply(`not enough skill points to invest!`)
+                    }
+                    else{
+                        foundUser.magicPower += 5*Number(num)
+                        foundUser.mana += 100*Number(num)
+                        foundUser.skill_points -= Number(num)
                     
-                    foundUser.magicPower += 5*Number(num)
-                    foundUser.mana += 100*Number(num)
-                    foundUser.skill_points -= Number(num)
-                
-                    let successembed = new MessageEmbed()
-                    .setColor('RANDOM')
-                    .setTitle('STAT INVEST')
-                    .setDescription(`Your magic damage has been increased to ${foundUser.magicPower}\nYour mana has been increased to ${foundUser.mana}`)
-                await profileModel.updateOne({userID:authorId},{magicPower:foundUser.magicPower,skill_points:foundUser.skill_points,mana:foundUser.mana})
-                await interaction.editReply({embeds:[successembed],components:[]})
-                
-                collector_select.stop()
-                collector_btn.stop()
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('STAT INVEST')
+                        .setDescription(`Your magic damage has been increased to ${foundUser.magicPower}\nYour mana has been increased to ${foundUser.mana}`)
+                    await profileModel.updateOne({userID:authorId},{magicPower:foundUser.magicPower,skill_points:foundUser.skill_points,mana:foundUser.mana})
+                    await interaction.editReply({embeds:[successembed],components:[]})
                     
+                    collector_select.stop()
+                    collector_btn.stop()
+                        
+                    }
+                   
                 })
                 collector_cancel.on('collect', async j => {
                     j.deferUpdate().catch(() => null)
@@ -147,20 +159,25 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                 collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                     collected.deferUpdate().catch(() => null)
                     const num = collected.values[0]
+                    if(num>foundUser.skill_points){
+                        interaction.editReply(`not enough skill points to invest!`)
+                    }
+                    else{
+                        foundUser.vitality += Number(num)
+                        foundUser.health = getHealth(foundUser.level,foundUser.vitality)
+                        foundUser.skill_points -= Number(num)
                     
-                    foundUser.vitality += Number(num)
-                    foundUser.health = getHealth(foundUser.level,foundUser.vitality)
-                    foundUser.skill_points -= Number(num)
-                
-                    let successembed = new MessageEmbed()
-                    .setColor('RANDOM')
-                    .setTitle('STAT INVEST')
-                    .setDescription(`Your health has been increased to ${foundUser.health}`)
-                await profileModel.updateOne({userID:authorId},{vitality:foundUser.vitality,skill_points:foundUser.skill_points,health:foundUser.health})
-                await interaction.editReply({embeds:[successembed],components:[]})
-                
-                collector_select.stop()
-                collector_btn.stop()
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('STAT INVEST')
+                        .setDescription(`Your health has been increased to ${foundUser.health}`)
+                    await profileModel.updateOne({userID:authorId},{vitality:foundUser.vitality,skill_points:foundUser.skill_points,health:foundUser.health})
+                    await interaction.editReply({embeds:[successembed],components:[]})
+                    
+                    collector_select.stop()
+                    collector_btn.stop()
+                    }
+                    
                     
                 })
                 collector_cancel.on('collect', async j => {
@@ -181,8 +198,11 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                 collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                     collected.deferUpdate().catch(() => null)
                     const num = collected.values[0]
-                    
-                    foundUser.armour += 5*Number(num)
+                    if(num>foundUser.skill_points){
+                        interaction.editReply(`not enough skill points to invest!`)
+                    }
+                    else{
+                        foundUser.armour += 5*Number(num)
                     foundUser.magicResistance += 5*Number(num)
                     foundUser.skill_points -= Number(num)
                 
@@ -195,6 +215,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                 
                 collector_select.stop()
                 collector_btn.stop()
+                    }
                     
                 })
                 collector_cancel.on('collect', async j => {
@@ -215,22 +236,27 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                 collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                     collected.deferUpdate().catch(() => null)
                     const num = collected.values[0]
+                    if(num>foundUser.skill_points){
+                        interaction.editReply(`not enough skill points to invest!`)
+                    }
+                    else{
+                        foundUser.evasion += 0.001*Number(num)
+                        foundUser.speed += 5*Number(num)
+                        
+                        foundUser.skill_points -= Number(num)
                     
-                    foundUser.evasion += 0.005*Number(num)
-                    foundUser.speed += 5*Number(num)
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('STAT INVEST')
+                        .setDescription(`Your speed has been increased!\nyou now have ${foundUser.evasion*100}% chance of evading an attack`)
+                    await profileModel.updateOne({userID:authorId},{evasion:foundUser.evasion,skill_points:foundUser.skill_points,speed:foundUser.speed})
+                    await interaction.editReply({embeds:[successembed],components:[]})
                     
-                    foundUser.skill_points -= Number(num)
-                
-                    let successembed = new MessageEmbed()
-                    .setColor('RANDOM')
-                    .setTitle('STAT INVEST')
-                    .setDescription(`Your speed has been increased!\nyou now have ${foundUser.evasion*100}% chance of evading an attack`)
-                await profileModel.updateOne({userID:authorId},{evasion:foundUser.evasion,skill_points:foundUser.skill_points,speed:foundUser.speed})
-                await interaction.editReply({embeds:[successembed],components:[]})
-                
-                collector_select.stop()
-                collector_btn.stop()
-                    
+                    collector_select.stop()
+                    collector_btn.stop()
+                        
+                    }
+                   
                     
                 })
                 collector_cancel.on('collect', async j => {

@@ -112,6 +112,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                             player1: attacker,
                                             player2: monster,
                                         }).start()
+                                        
                                     }
                                     else{
                                         await new PvEDuel({
