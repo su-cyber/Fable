@@ -8,6 +8,7 @@ import { steelArmour } from '../src/age/armour/steel_armour'
 import { healthPotion } from '../src/age/potions/healthPotion'
 import { MessageActionRow, MessageSelectMenu, SelectMenuInteraction } from 'discord.js'
 import { Collector, MessageButton, MessageEmbed } from 'discord.js'
+import { steelSword } from '../src/age/weapons/steelSword'
 
 export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken to your story' }).setDo(
     async (bot, interaction) => {
@@ -94,15 +95,22 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         weapon: [],
                                         armourSuit:[],
                                         items:[],
-                                        weaponskills: [{
+                                        currentskills: [{
                                             name: 'Basic attack',
                                             description: 'Basic attack',
                                         },{name: 'Charged Attack',
-                                        description: 'Charge a powerful attack for 1 turn'},],
-                                        magicskills:[{
+                                        description: 'Charge a powerful attack for 1 turn'},{
                                             name: 'Fireball',
                                             description: 'Dealing damage and burning them for 3 turns',
                                         }],
+                                        allskills:[{
+                                            name: 'Basic attack',
+                                            description: 'Basic attack',
+                                        },{name: 'Charged Attack',
+                                        description: 'Charge a powerful attack for 1 turn'},{
+                                            name: 'Fireball',
+                                            description: 'Dealing damage and burning them for 3 turns',
+                                        },],
                                         passiveskills:[],
                                         quest:false,
                                         quest_location:'',
@@ -111,10 +119,13 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         quest_item:'',
                                         encounter:[],
                                         main_quest:"Tutorial",
-                                        side_quest:"",
-                                        completed_quests:"",
+                                        side_quest:[],
+                                        completed_quests:[],
                                         main_quest_phase:"1",
-                                        side_quest_phase:""
+                                        side_quest_phase:"",
+                                        kingdom:"solarstrio",
+                                        city_town:"aube",
+                                        location:"none"
                                         
                                     })
                                     profile.save();
@@ -124,7 +135,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     serverID: guildID,
                                     inventory: {
                                         weapons:[{name: Sword,
-                                        quantity:Number(1)}],
+                                        quantity:Number(1)},{name: steelSword,
+                                            quantity:Number(1)}],
                                         items:[{name:arachnidVenom.name,
                                             description:arachnidVenom.description,
                                             quantity:Number(2)

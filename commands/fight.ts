@@ -68,13 +68,14 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                     }
                                 })
                 
-                                if(foundUser.weapon.length === 0){
-                                    attacker.skills=foundUser.magicskills
-                                }
-                                else{
+                               
+                                    attacker.skills=foundUser.currentskills.concat([{name: 'Run',
+                                    description: 'Run from the enemy',}])
+                                
+                                
                                     
-                                    attacker.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
-                                }
+                                   
+                                
                 
                                 
                                 
@@ -102,7 +103,8 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                     if(foundUser.encounter[0].time.getDay() == timestamp.getDay()){
                                         if(foundUser.encounter[0].time.getHours() == timestamp.getHours()){
                                             if((timestamp.getMinutes() - foundUser.encounter[0].time.getMinutes()) < 2){
-                                                const monster = await (await getMonsters())
+                                                if(foundUser.location == foundUser.encounter[0].location){
+                                                    const monster = await (await getMonsters(foundUser.location))
                                                 .find(m => m.name === foundUser.encounter[0].name)
                                                 .create()
                                     
@@ -121,6 +123,11 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                             player2: attacker,
                                         }).start()
                                     }
+                                                }
+                                                else{
+                                                    interaction.reply(`you are not in ${foundUser.encounter[0].location} where you encountered ${foundUser.encounter[0].name}`)
+                                                }
+                                                
                                             }
                                             else{
                                                 interaction.reply(`you responded too late, your encounter is lost`)
@@ -226,8 +233,8 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
     }
 )
 
-async function monstersDropdown() {
-    const monsters = await getMonsters()
+async function monstersDropdown(location:String) {
+    const monsters = await getMonsters(location)
 
     return new MessageActionRow().addComponents(
         new MessageSelectMenu()

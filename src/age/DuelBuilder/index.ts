@@ -23,7 +23,7 @@ import potions from '../heroes/potions'
 import inventory from '../../../models/InventorySchema'
 import { Potion } from '../classes/potion'
 import shopPotions_lvl5 from '../potions/shopPotions_lvl5'
-
+import profileModel from '../../../models/profileSchema'
 import allPotions from '../potions/allPotions'
 
 
@@ -68,7 +68,6 @@ class DuelBuilder {
         this.interaction = interaction
         this.locker = getLocker()
         this.btn = new MessageActionRow().addComponents([
-            new MessageButton().setCustomId("run_btn").setStyle("DANGER").setLabel("RUN"),
             new MessageButton().setCustomId("use_btn").setStyle("SUCCESS").setLabel("POTIONS"),
         ])
         this.run = false
@@ -273,8 +272,25 @@ class DuelBuilder {
         async function onCollect(collected: MessageComponentInteraction<CacheType> & { values: string[] }) {
             collected.deferUpdate().catch(() => null)
             const skillName = collected.values[0]
-
-            await this.onSkillSelect(skillName)
+            if(skillName == 'Run'){
+                 this.addLogMessage(`${this.attacker.name} is trying to run away...`)
+                 sleep(2)
+                if(this.defender instanceof MonsterEntity){
+                    if(this.attacker.evasion > this.defender.run_chance){
+                        this.run = true
+                    }
+                    else{
+                        this.addLogMessage(`${this.attacker.name} couldnt run`)
+                    }
+                }
+                else{
+                    this.run = true
+                }
+            }
+            else{
+                await this.onSkillSelect(skillName)
+            }
+            
 
             this.locker.unlock()
         }
@@ -310,23 +326,8 @@ class DuelBuilder {
         this.collector.on('collect', onCollect.bind(thisThis))
         this.collector_btn.on('collect', async i => {
             i.deferUpdate().catch(() => null)
-            if(i.customId === 'run_btn'){
-                this.addLogMessage(`${this.attacker.name} is trying to run away...`)
-                await sleep(2)
-                if(this.defender instanceof MonsterEntity){
-                    if(this.attacker.evasion > this.defender.run_chance){
-                        this.run = true
-                    }
-                    else{
-                        this.addLogMessage(`${this.attacker.name} couldnt run`)
-                    }
-                }
-                else{
-                    this.run = true
-                }
-                
-            }
-            else if(i.customId === 'use_btn'){
+            
+             if(i.customId === 'use_btn'){
                 
                     let interaction = this.interaction
                     let collector_use = this.collector_use
@@ -444,6 +445,7 @@ class DuelBuilder {
         const loser = this.player1.isDead() ? this.player1 : this.player2
         if(this.run === true){
             this.interaction.channel.send(`**${winner.name} ran away!**`)
+           await profileModel.updateOne({userID:winner.id},{encounter:[]})
         }
         else{
             this.onEnd(winner, loser)

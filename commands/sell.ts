@@ -26,7 +26,8 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
         const userType = interaction.options.getString('type').toLowerCase()
         const userobject = interaction.options.getString('object').toLowerCase()
         const userQuantity = interaction.options.getInteger('quantity')
-
+        
+        
         profileModel.exists({userID:authorId},async function(err,res){
             if(err){
                 console.log(err);
@@ -34,181 +35,193 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
             }
             else{
                 if(res){
-                    if(userType === "weapon"){
+                    profileModel.findOne({userID:authorId},async function(err,foundUser){
+                        const location = foundUser.location
+                        if(location == "Crofter's Market"){
+                            if(userType === "weapon"){
                         
-                            inventory.findOne({userID:authorId},async function(err,userProfile){
-                                if(err){
-                                    console.log(err);
-                                    
-                                }
-                                else{
-                                    const foundObject=userProfile.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject)
-                                    if(foundObject){
-                                        if(foundObject.quantity>=userQuantity){
-                                            foundObject.quantity-=userQuantity
-                                            if(foundObject.quantity===0){
-                                                const index = userProfile.inventory.weapons.indexOf(foundObject)
-                                                userProfile.inventory.weapons.splice(index)
-                                            }
-                                            const selling_price=foundObject.name.cost*0.6
-                                            profileModel.findOne({userID:authorId},async function(err,foundProfile){
-                                                if(err){
-                                                    console.log(err);
+                                inventory.findOne({userID:authorId},async function(err,userProfile){
+                                    if(err){
+                                        console.log(err);
+                                        
+                                    }
+                                    else{
+                                        const foundObject=userProfile.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject)
+                                        if(foundObject){
+                                            if(foundObject.quantity>=userQuantity){
+                                                foundObject.quantity-=userQuantity
+                                                if(foundObject.quantity===0){
+                                                    const index = userProfile.inventory.weapons.indexOf(foundObject)
+                                                    userProfile.inventory.weapons.splice(index,1)
+                                                    console.log(index);
                                                     
                                                 }
-                                                else{
-                                                    foundProfile.coins+=selling_price*userQuantity
-
-                                                }
-                                                await profileModel.updateOne({userID:authorId},foundProfile)
-
-                                            })
-                                            await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
-                                            
-                                        }
-                                        else{
-                                            interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
-                                        }
-                                       
-                                        await inventory.updateOne({userID:authorId},userProfile)
-                                    }
-
-                                }})
-                            
-                        }
-
-                        else if(userType === "item"){
-                        
-                            inventory.findOne({userID:authorId},async function(err,userProfile){
-                                if(err){
-                                    console.log(err);
-                                    
-                                }
-                                else{
-                                    const foundObject=userProfile.inventory.items.find(object => object.name.toLowerCase() === userobject)
-                                    if(foundObject){
-                                        if(foundObject.quantity>=userQuantity){
-                                            foundObject.quantity-=userQuantity
-                                            if(foundObject.quantity===0){
-                                                const index = userProfile.inventory.weapons.indexOf(foundObject)
-                                                userProfile.inventory.weapons.splice(index)
+                                                const selling_price=foundObject.name.cost*0.6
+                                                profileModel.findOne({userID:authorId},async function(err,foundProfile){
+                                                    if(err){
+                                                        console.log(err);
+                                                        
+                                                    }
+                                                    else{
+                                                        foundProfile.coins+=selling_price*userQuantity
+    
+                                                    }
+                                                    await profileModel.updateOne({userID:authorId},foundProfile)
+    
+                                                })
+                                                await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
+                                                
                                             }
-                                            const found = allItems.find(object => object.name.toLowerCase() === userobject)
-                                            const selling_price=found.cost*0.6
-                                            profileModel.findOne({userID:authorId},async function(err,foundProfile){
-                                                if(err){
-                                                    console.log(err);
-                                                    
-                                                }
-                                                else{
-                                                    foundProfile.coins+=selling_price*userQuantity
-
-                                                }
-                                                await profileModel.updateOne({userID:authorId},foundProfile)
-
-                                            })
-                                            await interaction.reply({content:`${userQuantity} ${found.name}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
-                                            
-                                        }
-                                        else{
-                                            interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
-                                        }
-                                       
-                                        await inventory.updateOne({userID:authorId},userProfile)
-                                    }
-
-                                }
-                            
-                            
-                            })
-                            
-                        }
-                        else if(userType === "armour"){
-                            inventory.findOne({userID:authorId},async function(err,userProfile){
-                                if(err){
-                                    console.log(err);
-                                    
-                                }
-                                else{
-                                    const foundObject=userProfile.inventory.armour.find(object => object.name.name.toLowerCase() === userobject)
-                                    if(foundObject){
-                                        if(foundObject.quantity>=userQuantity){
-                                            foundObject.quantity-=userQuantity
-                                            if(foundObject.quantity===0){
-                                                const index = userProfile.inventory.armour.indexOf(foundObject)
-                                                userProfile.inventory.armour.splice(index)
+                                            else{
+                                                interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
                                             }
-                                            const selling_price=foundObject.name.cost*0.6
-                                            profileModel.findOne({userID:authorId},async function(err,foundProfile){
-                                                if(err){
-                                                    console.log(err);
-                                                    
-                                                }
-                                                else{
-                                                    foundProfile.coins+=selling_price*userQuantity
-
-                                                }
-                                                await profileModel.updateOne({userID:authorId},foundProfile)
-
-                                            })
-                                            await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
-                                            
+                                           
+                                            await inventory.updateOne({userID:authorId},userProfile)
                                         }
-                                        else{
-                                            interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
-                                        }
-                                       
-                                        await inventory.updateOne({userID:authorId},userProfile)
-                                    }
-
-                                }})
-                        }
-
-                        else if(userType === "potion"){
-                        
-                            inventory.findOne({userID:authorId},async function(err,userProfile){
-                                if(err){
-                                    console.log(err);
-                                    
-                                }
-                                else{
-                                    const foundObject=userProfile.inventory.potions.find(object => object.name.name.toLowerCase() === userobject)
-                                    if(foundObject){
-                                        if(foundObject.quantity>=userQuantity){
-                                            foundObject.quantity-=userQuantity
-                                            if(foundObject.quantity===0){
-                                                const index = userProfile.inventory.potions.indexOf(foundObject)
-                                                userProfile.inventory.potions.splice(index)
-                                            }
-                                            const selling_price=foundObject.name.cost*0.6
-                                            profileModel.findOne({userID:authorId},async function(err,foundProfile){
-                                                if(err){
-                                                    console.log(err);
-                                                    
-                                                }
-                                                else{
-                                                    foundProfile.coins+=selling_price*userQuantity
-
-                                                }
-                                                await profileModel.updateOne({userID:authorId},foundProfile)
-
-                                            })
-                                            await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
-                                            
-                                        }
-                                        else{
-                                            interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
-                                        }
-                                       
-                                        await inventory.updateOne({userID:authorId},userProfile)
-                                    }
-
-                                }})
+    
+                                    }})
+                                
+                            }
+    
+                            else if(userType === "item"){
                             
+                                inventory.findOne({userID:authorId},async function(err,userProfile){
+                                    if(err){
+                                        console.log(err);
+                                        
+                                    }
+                                    else{
+                                        const foundObject=userProfile.inventory.items.find(object => object.name.toLowerCase() === userobject)
+                                        if(foundObject){
+                                            if(foundObject.quantity>=userQuantity){
+                                                foundObject.quantity-=userQuantity
+                                                if(foundObject.quantity===0){
+                                                    const index = userProfile.inventory.items.indexOf(foundObject)
+                                                    userProfile.inventory.items.splice(index,1)
+                                                }
+                                                const found = allItems.find(object => object.name.toLowerCase() === userobject)
+                                                const selling_price=found.cost*0.6
+                                                profileModel.findOne({userID:authorId},async function(err,foundProfile){
+                                                    if(err){
+                                                        console.log(err);
+                                                        
+                                                    }
+                                                    else{
+                                                        foundProfile.coins+=selling_price*userQuantity
+    
+                                                    }
+                                                    await profileModel.updateOne({userID:authorId},foundProfile)
+    
+                                                })
+                                                await interaction.reply({content:`${userQuantity} ${found.name}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
+                                                
+                                            }
+                                            else{
+                                                interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
+                                            }
+                                           
+                                            await inventory.updateOne({userID:authorId},userProfile)
+                                        }
+    
+                                    }
+                                
+                                
+                                })
+                                
+                            }
+                            else if(userType === "armour"){
+                                inventory.findOne({userID:authorId},async function(err,userProfile){
+                                    if(err){
+                                        console.log(err);
+                                        
+                                    }
+                                    else{
+                                        const foundObject=userProfile.inventory.armour.find(object => object.name.name.toLowerCase() === userobject)
+                                        if(foundObject){
+                                            if(foundObject.quantity>=userQuantity){
+                                                foundObject.quantity-=userQuantity
+                                                if(foundObject.quantity===0){
+                                                    const index = userProfile.inventory.armour.indexOf(foundObject)
+                                                    userProfile.inventory.armour.splice(index,1)
+                                                }
+                                                const selling_price=foundObject.name.cost*0.6
+                                                profileModel.findOne({userID:authorId},async function(err,foundProfile){
+                                                    if(err){
+                                                        console.log(err);
+                                                        
+                                                    }
+                                                    else{
+                                                        foundProfile.coins+=selling_price*userQuantity
+    
+                                                    }
+                                                    await profileModel.updateOne({userID:authorId},foundProfile)
+    
+                                                })
+                                                await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
+                                                
+                                            }
+                                            else{
+                                                interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
+                                            }
+                                           
+                                            await inventory.updateOne({userID:authorId},userProfile)
+                                        }
+    
+                                    }})
+                            }
+    
+                            else if(userType === "potion"){
+                            
+                                inventory.findOne({userID:authorId},async function(err,userProfile){
+                                    if(err){
+                                        console.log(err);
+                                        
+                                    }
+                                    else{
+                                        const foundObject=userProfile.inventory.potions.find(object => object.name.name.toLowerCase() === userobject)
+                                        if(foundObject){
+                                            if(foundObject.quantity>=userQuantity){
+                                                foundObject.quantity-=userQuantity
+                                                if(foundObject.quantity===0){
+                                                    const index = userProfile.inventory.potions.indexOf(foundObject)
+                                                    userProfile.inventory.potions.splice(index,1)
+                                                }
+                                                const selling_price=foundObject.name.cost*0.6
+                                                profileModel.findOne({userID:authorId},async function(err,foundProfile){
+                                                    if(err){
+                                                        console.log(err);
+                                                        
+                                                    }
+                                                    else{
+                                                        foundProfile.coins+=selling_price*userQuantity
+    
+                                                    }
+                                                    await profileModel.updateOne({userID:authorId},foundProfile)
+    
+                                                })
+                                                await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
+                                                
+                                            }
+                                            else{
+                                                interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
+                                            }
+                                           
+                                            await inventory.updateOne({userID:authorId},userProfile)
+                                        }
+    
+                                    }})
+                                
+                            }
+                            else{
+                                interaction.reply("invalid type")
+                            }
                         }
                         else{
-                            interaction.reply("invalid type")
+                            interaction.reply(`you are not in a location where you can sell!`)
                         }
+                    })
+                    
+                    
 
 
 

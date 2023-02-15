@@ -1,11 +1,11 @@
 import { CommandInteraction } from 'discord.js'
-import { Dropper } from '../dropper'
+import { Dropper } from '../../dropper'
 
-import { arachnidVenom } from '../items'
-import { poisoning } from '../effects/poisoning'
-import { emoji } from '../../lib/utils/emoji'
-import { MonsterEntity, ClassEntity } from '../classes'
-import generateXP from '../../utils/generateXP'
+import { arachnidVenom } from '../../items'
+import { poisoning } from '../../effects/poisoning'
+import { emoji } from '../../../lib/utils/emoji'
+import { MonsterEntity, ClassEntity } from '../../classes'
+import generateXP from '../../../utils/generateXP'
 
 export class Arachnids extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {

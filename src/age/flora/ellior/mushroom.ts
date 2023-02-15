@@ -1,4 +1,4 @@
-import { Flora } from "../classes/flora";
+import { Flora } from "../../classes/flora";
 
 export class Mushroom extends Flora{
 
@@ -12,7 +12,9 @@ export class Mushroom extends Flora{
     spawnRate: 0.6,
     type: "regular",
     cost:200,
-    skills:[]
+    fake_name:"",
+    skills:[],
+    quantity:2
 
         })
     }

@@ -11,6 +11,7 @@ import shopArmour_lvl5 from '../src/age/armour/shopArmour_lvl5'
 import shopPotions_lvl5 from '../src/age/potions/shopPotions_lvl5'
 import shopWeapons_lvl10 from '../src/age/weapons/shopWeapons_lvl10'
 import { IncomingMessage } from 'http'
+import aubeTownShop from '../src/age/shops/aubeTownShop'
 
 export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access the Shop' })
     .setDo(
@@ -18,10 +19,7 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
         const authorId = interaction.user.id;
         const guildID = interaction.guildId;
 
-        let homeembed= new MessageEmbed()
-        .setColor('RANDOM')
-        .setTitle('SHOP')
-        .setDescription(`user: ${interaction.user.username}\n All the weapons,items and potions currently available in shop`)
+
 
         let btnraw= new MessageActionRow().addComponents([
             new MessageButton().setCustomId("armour").setStyle("PRIMARY").setLabel("ARMOUR"),
@@ -38,27 +36,32 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
         ])
 
 
-        await interaction.deferReply()
-        await interaction.editReply({content: null,embeds:[homeembed],components:[btnraw]})
-
-        let filter = i => i.user.id === authorId
-        let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
+       
         
         profileModel.findOne({userID:authorId},async (err,foundUser) => {
-if(foundUser.level > 5 && foundUser.level<10){
-    const mappedweapons=shopWeapons_lvl10.map((weapon) => {
+if(foundUser.location == "Crofter's Market"){
+    let homeembed= new MessageEmbed()
+    .setColor('RANDOM')
+    .setTitle('SHOP')
+    .setDescription(`user: ${interaction.user.username}\n All the weapons,items and potions currently available in ${foundUser.location}`)
+    await interaction.deferReply()
+    await interaction.editReply({content: null,embeds:[homeembed],components:[btnraw]})
+
+    let filter = i => i.user.id === authorId
+    let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
+    const mappedweapons=aubeTownShop.weapons.map((weapon) => {
         return `${weapon.name} - ${weapon.cost} 🪙`
     }).join("\n")
 
-    const mappeditems = shopItems_lvl5.map((item) => {
+    const mappeditems = aubeTownShop.items.map((item) => {
         return `${item.name} - ${item.cost} 🪙`
     }).join("\n")
 
-    const mappedarmour = shopArmour_lvl5.map((item) => {
+    const mappedarmour = aubeTownShop.armour.map((item) => {
         return `${item.name} - ${item.cost} 🪙`
     }).join("\n")
 
-    const mappedpotions = shopPotions_lvl5.map((item) => {
+    const mappedpotions = aubeTownShop.potions.map((item) => {
         return `${item.name} - ${item.cost} 🪙`
     }).join("\n")
 
@@ -88,10 +91,14 @@ if(foundUser.level > 5 && foundUser.level<10){
             if(btn.customId === "weapons"){
                 await btn.deferUpdate().catch(e => {})
                 interaction.editReply({embeds: [weaponEmbed]})
+                
+                
             }
             else if(btn.customId === "armour"){
                 await btn.deferUpdate().catch(e => {})
                 interaction.editReply({embeds: [armourEmbed]})
+                
+                
             }
             else if(btn.customId === "items"){
                 await btn.deferUpdate().catch(e => {})
@@ -115,22 +122,32 @@ interaction.editReply({embeds: [homeembed], components: [d_btnraw]})
 
 }
 
-else if(foundUser.level < 5){
-    const mappedweapons=shopWeapons_lvl5.map((weapon) => {
+else if(foundUser.location == "some other shop"){
+    let homeembed= new MessageEmbed()
+    .setColor('RANDOM')
+    .setTitle('SHOP')
+    .setDescription(`user: ${interaction.user.username}\n All the weapons,items and potions currently available in ${foundUser.location}`)
+    await interaction.deferReply()
+    await interaction.editReply({content: null,embeds:[homeembed],components:[btnraw]})
+
+    let filter = i => i.user.id === authorId
+    let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
+    const mappedweapons=aubeTownShop.weapons.map((weapon) => {
         return `${weapon.name} - ${weapon.cost} 🪙`
     }).join("\n")
 
-    const mappeditems = shopItems_lvl5.map((item) => {
+    const mappeditems = aubeTownShop.items.map((item) => {
         return `${item.name} - ${item.cost} 🪙`
     }).join("\n")
 
-    const mappedarmour = shopArmour_lvl5.map((item) => {
+    const mappedarmour = aubeTownShop.armour.map((item) => {
         return `${item.name} - ${item.cost} 🪙`
     }).join("\n")
 
-    const mappedpotions = shopPotions_lvl5.map((item) => {
+    const mappedpotions = aubeTownShop.potions.map((item) => {
         return `${item.name} - ${item.cost} 🪙`
     }).join("\n")
+
 
     let weaponEmbed= new MessageEmbed()
         .setColor('RANDOM')
@@ -183,6 +200,9 @@ else if(foundUser.level < 5){
     interaction.editReply({embeds: [homeembed], components: [d_btnraw]})
 })
 
+}
+else{
+    interaction.reply(`you are not in a location where you can access a shop`)
 }
 
 

@@ -1,14 +1,16 @@
 import { readdirSync } from 'fs'
+import { dirname } from 'path'
 import { endsWith, notIn } from '../../utils'
 import { weightedRandom } from '../../utils/weightedRandom'
 
-export async function getFlora() {
+export async function getFlora(location:String) {
     const flora = []
-    for (const file of readdirSync(__dirname).filter(endsWith('.ts')).filter(notIn('index.ts'))) {
+    const path = __dirname+"/"+location
+    for (const file of readdirSync(path).filter(endsWith('.ts')).filter(notIn('index.ts'))) {
         //if (['slime.ts', 'goblin.ts', 'blood-hound.ts'].includes(file)) continue
         //if (!['orc.ts'].includes(file)) continue
 
-        const module = await import(`${__dirname}/${file}`)
+        const module = await import(`${path}/${file}`)
 
         const values = Object.values(module)
 
@@ -23,8 +25,8 @@ export async function getFlora() {
     return flora
 }
 
-async function getRandomFlora() {
-    const flora = (await getFlora()).map(fn => fn.create())
+async function getRandomFlora(location:String) {
+    const flora = (await getFlora(location)).map(fn => fn.create())
 
     return weightedRandom(
         flora,

@@ -1,14 +1,14 @@
 import { CommandInteraction, Interaction } from 'discord.js'
-import { Dropper } from '../dropper'
-import { basiliskScale, basiliskVenom } from '../items'
-import { percentOf } from '../../utils'
-import { poisoning } from '../effects/poisoning'
-import { emoji } from '../../lib/utils/emoji'
-import { paralyzed } from '../effects/paralyze'
+import { Dropper } from '../../dropper'
+import { basiliskScale, basiliskVenom } from '../../items'
+import { percentOf } from '../../../utils'
+import { poisoning } from '../../effects/poisoning'
+import { emoji } from '../../../lib/utils/emoji'
+import { paralyzed } from '../../effects/paralyze'
 import sample from 'lodash.sample'
-import { MonsterEntity, ClassEntity, Entity } from '../classes'
-import generateXP from '../../utils/generateXP'
-import { DuelBuilder } from '../DuelBuilder'
+import { MonsterEntity, ClassEntity, Entity } from '../../classes'
+import generateXP from '../../../utils/generateXP'
+import { DuelBuilder } from '../../DuelBuilder'
 
 export class Basilisk extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {

@@ -1,13 +1,13 @@
 import { CommandInteraction } from 'discord.js'
-import { Dropper } from '../dropper'
-import { woodGolem_core } from '../items'
-import { percentOf } from '../../utils'
-import { bleeding } from '../effects/bleeding'
-import { emoji } from '../../lib/utils/emoji'
-import { paralyzed } from '../effects/paralyze'
+import { Dropper } from '../../dropper'
+import { woodGolem_core } from '../../items'
+import { percentOf } from '../../../utils'
+import { bleeding } from '../../effects/bleeding'
+import { emoji } from '../../../lib/utils/emoji'
+import { paralyzed } from '../../effects/paralyze'
 import sample from 'lodash.sample'
-import { MonsterEntity, ClassEntity, Entity } from '../classes'
-import generateXP from '../../utils/generateXP'
+import { MonsterEntity, ClassEntity, Entity } from '../../classes'
+import generateXP from '../../../utils/generateXP'
 
 export class WoodGolem extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {

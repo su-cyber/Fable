@@ -1,14 +1,14 @@
 import { CommandInteraction } from 'discord.js'
-import { MonsterEntity, ClassEntity } from '../classes'
-import { Dropper } from '../dropper'
-import { slimeBlob} from '../items'
-import generateXP from '../../utils/generateXP'
+import { MonsterEntity, ClassEntity } from '../../classes'
+import { Dropper } from '../../dropper'
+import { slimeBlob} from '../../items'
+import generateXP from '../../../utils/generateXP'
 
-export class Slime extends MonsterEntity {
+export class BeerBuccaneer extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The slime just exploded, take it easy next time'],
-            withDropMessages: ['The slime seems to have dropped something'],
+            withoutDropMessages: ['The Beer Buccaneer ran away as you were about to finish it'],
+            withDropMessages: ['The Beer Buccaneer dropped something'],
         }
 
         await new Dropper([
@@ -20,10 +20,10 @@ export class Slime extends MonsterEntity {
     }
 
     static create() {
-        return new Slime({
-            name: 'Slime',
+        return new BeerBuccaneer({
+            name: 'Beer Buccaneer',
             spawnRate: 0.5,
-            health: 20,
+            health: 30,
             mana:10,
             xp: generateXP(5,15),
             evasion: 0.05,
@@ -37,16 +37,16 @@ export class Slime extends MonsterEntity {
             skills: [
                 {
                     cooldown: 0,
-                    name: 'Dissolve',
-                    description: 'Basic attack',
+                    name: 'Knife Stab',
+                    description: 'attacks with a knife',
                     canEvade: true,
                     type: 'physical',
                     mana_cost: 0,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Dissolve`)
+                        attacker.addLogMessage(`**${attacker.name}** used Knife Stab`)
                         defender.takeDamage
                             .physical(attacker.attackDamage)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by Dissolve`)
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Knife Stab`)
                     }
                 },
             ],

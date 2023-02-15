@@ -49,12 +49,30 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                             if(foundProfile.weapon.length === 0){
                                                 foundObject.quantity-=1
                                     if(foundObject.quantity===0){
-                                        const index = foundUser.inventory.weapons.indexOf(foundObject)
-                                        foundUser.inventory.weapons.splice(index)
+                                        const index = foundUser.inventory.weapons.findIndex(object => object.name.name.toLowerCase() === userobject)
+                                        foundUser.inventory.weapons.splice(index,1)
                                     }
-                                                foundProfile.weapon.push(foundObject.name)
-                                                foundProfile.attackDamage+=foundObject.name.damage
-                                                await interaction.reply({content:`${userobject} has been equipped successfully!`})
+                                    else{
+
+                                    }
+                                    if(foundProfile.currentskills.length<4){
+                                        foundProfile.currentskills.push(foundObject.name.skills[0])
+                                        await profileModel.updateOne({userID:authorId},{currentskills:foundProfile.currentskills})
+                                        
+                                        foundProfile.weapon.push(foundObject.name)
+                                        foundProfile.attackDamage+=foundObject.name.damage
+                                        await interaction.reply({content:`${userobject} has been equipped successfully!\n${foundObject.skills[0].name} has been added to your skill cycle!`})
+                                    }
+                                    else{
+                                        foundProfile.allskills.push(foundObject.name.skills[0])
+                                        await profileModel.updateOne({userID:authorId},{allskills:foundProfile.allskills})
+                                        
+                                        foundProfile.weapon.push(foundObject.name)
+                                        foundProfile.attackDamage+=foundObject.name.damage
+                                        await interaction.reply({content:`${userobject} has been equipped successfully!\n${foundObject.name.skills[0].name} has been added to your skill list!`})
+                                 
+                                    }
+                                               
                                             }
                                             
                                             else{
@@ -63,6 +81,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                             }
                                            
                                         await profileModel.updateOne({userID:authorId},foundProfile)
+                                        await inventory.updateOne({userID:authorId},foundUser)
                                         }
                                         
                                     })
@@ -86,7 +105,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                 foundObject.quantity-=1
                                     if(foundObject.quantity===0){
                                         const index = foundUser.inventory.armour.indexOf(foundObject)
-                                        foundUser.inventory.armour.splice(index)
+                                        foundUser.inventory.armour.splice(index,1)
                                     }
                                                 foundProfile.armourSuit.push(foundObject.name)
                                                 foundProfile.armour+=foundObject.name.armour
@@ -123,7 +142,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                     foundObject.quantity-=1
                                         if(foundObject.quantity===0){
                                             const index = foundUser.inventory.items.indexOf(foundObject)
-                                            foundUser.inventory.items.splice(index)
+                                            foundUser.inventory.items.splice(index,1)
                                         }
                                                     foundProfile.items.push(foundItem)
                                                     foundProfile.passiveskills = foundProfile.passiveskills.concat(foundItem.skills)

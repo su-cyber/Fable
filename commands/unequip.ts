@@ -40,7 +40,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                 if(foundObject){
                                     
                                         const index = foundUser.weapon.indexOf(foundObject)
-                                        foundUser.weapon.splice(index)
+                                        foundUser.weapon.splice(index,1)
                                     
                                     inventory.findOne({userID:authorId},async function(err,foundProfile){
                                         if(err){
@@ -66,7 +66,28 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                         
                                     })
                                     foundUser.attackDamage-=foundObject.damage
+
+                                    if(foundObject.skills.length !=0){
+                                        const foundskill=foundUser.allskills.find(skill => skill.name.toLowerCase() === foundObject.skills[0].name.toLowerCase())
+                                    const foundcurrent = foundUser.currentskills.find(skill => skill.name.toLowerCase() === foundObject.skills[0].name.toLowerCase())
+                                    if(foundcurrent){
+                                        const index1 = foundUser.currentskills.findIndex(skill => skill.name.toLowerCase() === foundcurrent.name.toLowerCase())
+                                        foundUser.currentskills.splice(index1,1)
+                                        await profileModel.updateOne({userID:authorId},{currentskills:foundUser.currentskills})
+                                        const index2 = foundUser.allskills.findIndex(skill => skill.name.toLowerCase() === foundskill.name.toLowerCase())
+                                        foundUser.allskills.splice(index2,1)
+                                        await profileModel.updateOne({userID:authorId},{allskills:foundUser.allskills})
+                                    }
+                                    else{
+                                        const index = foundUser.allskills.findIndex(skill => skill.name.toLowerCase() === foundskill.name.toLowerCase())
+                                        foundUser.allskills.splice(index,1)
+                                        await profileModel.updateOne({userID:authorId},{allskills:foundUser.allskills})
+                                   
+                                    }
+                                    }
+                                    
                                     await interaction.reply({content:`${userobject} has been unequipped successfully!`})
+                                
                                 }
                                 else{
                                     await interaction.reply({content:`you dont have anything called ${userobject} eqipped`})
@@ -77,7 +98,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                 if(foundObject){
                                     
                                         const index = foundUser.armourSuit.indexOf(foundObject)
-                                        foundUser.armourSuit.splice(index)
+                                        foundUser.armourSuit.splice(index,1)
                                     
                                     inventory.findOne({userID:authorId},async function(err,foundProfile){
                                         if(err){
@@ -106,7 +127,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                     for(let i=0; i<foundObject.skills.length;i++){
                                         const foundSkill = foundUser.passiveskills.find(skill => skill.name == foundObject.skills[i])
                                         const index = foundUser.passiveskills.indexOf(foundSkill)
-                                        foundUser.passiveskills.splice(index)
+                                        foundUser.passiveskills.splice(index,1)
                                     }
                                     await interaction.reply({content:`${userobject} has been unequipped successfully!`})
 
@@ -120,7 +141,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                 if(foundObject){
                                     
                                         const index = foundUser.items.indexOf(foundObject)
-                                        foundUser.items.splice(index)
+                                        foundUser.items.splice(index,1)
                                     
                                     inventory.findOne({userID:authorId},async function(err,foundProfile){
                                         if(err){
@@ -148,7 +169,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                     for(let i=0; i<foundObject.skills.length;i++){
                                         const foundSkill = foundUser.passiveskills.find(skill => skill.name == foundObject.skills[i])
                                         const index = foundUser.passiveskills.indexOf(foundSkill)
-                                        foundUser.passiveskills.splice(index)
+                                        foundUser.passiveskills.splice(index,1)
                                     }
                                     
                                     await interaction.reply({content:`${userobject} has been unequipped successfully!`})

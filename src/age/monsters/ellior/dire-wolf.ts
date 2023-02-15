@@ -1,10 +1,10 @@
 import { CommandInteraction, Emoji } from 'discord.js'
-import { Dropper } from '../dropper'
-import { direwolfClaw, direwolfHide } from '../items'
-import { emoji } from '../../lib/utils/emoji'
-import { bleeding } from '../effects/bleeding'
-import { MonsterEntity, ClassEntity } from '../classes'
-import generateXP from '../../utils/generateXP'
+import { Dropper } from '../../dropper'
+import { direwolfClaw, direwolfHide } from '../../items'
+import { emoji } from '../../../lib/utils/emoji'
+import { bleeding } from '../../effects/bleeding'
+import { MonsterEntity, ClassEntity } from '../../classes'
+import generateXP from '../../../utils/generateXP'
 
 export class DireWolf extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {

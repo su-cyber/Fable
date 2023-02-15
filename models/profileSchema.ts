@@ -20,8 +20,8 @@ const profileSchema = new mongoose.Schema({
     weapon: {type: Array},
     armourSuit: {type: Array},
     items:{type: Array},
-    weaponskills: {type:Array},
-    magicskills: {type:Array},
+    currentskills: {type:Array},
+    allskills:{type:Array},
     passiveskills:{type: Array},
     quest:{type: Boolean},
     quest_location:{type: String},
@@ -30,10 +30,13 @@ const profileSchema = new mongoose.Schema({
     quest_item:{type: String},
     encounter:{type: Array},
     main_quest:{type: String},
-    side_quest:{type: String},
-    completed_quests:{type: String},
+    side_quest:{type: Array},
+    completed_quests:{type: Array},
     main_quest_phase:{type: String},
-    side_quest_phase:{type: String}
+    side_quest_phase:{type: String},
+    kingdom:{type: String},
+    city_town:{type: String},
+    location:{type: String}
 });
 
 const model = mongoose.model('ProfileModels',profileSchema);

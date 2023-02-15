@@ -17,13 +17,11 @@ import { Collector, MessageButton, MessageEmbed } from 'discord.js'
 
 
 export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explore the world' })
-.addStringOption((option: SlashCommandStringOption) =>
-        option.setName('location').setDescription('location to explore').setRequired(true)
-    )
+
 .setDo(
     async (bot, interaction) => {
         const authorId = interaction.user.id
-        const location = interaction.options.getString('location').toLowerCase()
+        
         const author = await bot.users.fetch(authorId)
         const guildID = interaction.guildId;
         
@@ -37,53 +35,10 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
             }
             else{
                 if(res){
-                    const attacker = Warrior.create(author)
-        profileModel.findOne({userID:authorId},async function(err,foundUser) {
-            var userQuestLocation = foundUser.quest_location.toLowerCase()
-            if(err){
-                console.log(err);
-                
-            }
-            else{
-            
-                attacker.health=foundUser.health
-                attacker.mana=foundUser.mana
-                attacker.armor=foundUser.armour
-                attacker.magicPower=foundUser.magicPower
-                attacker.attackDamage=foundUser.attackDamage
-                attacker.evasion=foundUser.evasion
-                attacker.maxHealth=foundUser.health
-                attacker.passive_skills = foundUser.passiveskills
-                attacker.maxMana = foundUser.mana
-                attacker.speed = foundUser.speed
-                
-                inventory.findOne({userID:authorId},async function(err,foundProfile) {
-                    if(foundProfile.inventory.potions.length !=0){
-                        attacker.potions = []
-                        for(let i=0;i<foundProfile.inventory.potions.length;i++){
-                            
-                            attacker.potions.push(foundProfile.inventory.potions[i].name)
-                                    }
-
-                        
-                    }
-                    else{
-                        attacker.potions =[]
-                    }
-                })
-
-                if(foundUser.weapon.length === 0){
-                    attacker.skills=foundUser.magicskills
-                }
-                else{
                     
-                    attacker.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
-                }
-
-                
-                
-                
-            }
+        profileModel.findOne({userID:authorId},async function(err,foundUser) {
+           
+            const location = foundUser.location
 
             if(location === "ellior"){
                 
@@ -96,8 +51,8 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 if(pick === "flora"){
                     
                     await interaction.editReply({ content: '\u200b', components: [] })
-                    const flora = (await getRandomFlora())
-                    await interaction.editReply(`you found a ${flora.name}\n${flora.name} added to inventory!`)
+                    const flora = (await getRandomFlora(location))
+                    await interaction.editReply(`you found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
 
                     inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
                         if(err){
@@ -108,13 +63,13 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             const foundItem = foundUser.inventory.items.find(item => item.name === flora.name)
                             if (foundItem){
             
-                                foundItem.quantity+=1
+                                foundItem.quantity+=flora.quantity
                             }
                             else{
                                 const newItem = {
                                     name:flora.name,
                                     description:flora.description,
-                                    quantity:Number(1)
+                                    quantity:Number(flora.quantity)
                                 }
                                 foundUser.inventory.items.push(newItem)
                             }
@@ -125,12 +80,12 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 }
 
                 else if(pick === "monster"){
-                    await interaction.editReply({ components: [await monstersDropdown()] })
+                    await interaction.editReply({ components: [await monstersDropdown(location)] })
                     
                     bot.onComponent('select-menu__monsters', async componentInteraction => {
                         componentInteraction.deferUpdate()
                         await interaction.editReply({ content: '\u200b', components: [] })
-                        const monster = (await getMonsters())
+                        const monster = (await getMonsters(location))
                             .find(m => m.name === componentInteraction.values[0])
                             .create()
 
@@ -175,7 +130,8 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     await interaction.editReply({embeds:[acceptEmbed]})
                                     const encounter = {
                                         name: componentInteraction.values[0],
-                                        time : new Date()
+                                        time : new Date(),
+                                        location:foundUser.location
 
                                     }
                                     
@@ -248,40 +204,134 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                     })
                 }
                 }
-                
+                else if(location == "Castellan Fields"){
+                    await interaction.reply({ content: `searching ${location}...`})
+                    const pick = weightedRandom(["flora","monster"],[0.7,0.3])
+
+                    if(pick == "flora"){
+                        await interaction.editReply({ content: '\u200b', components: [] })
+                        const flora = (await getRandomFlora(location))
+                        await interaction.editReply(`you found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
     
-            else if(location === userQuestLocation){
-                profileModel.findOne({userID:authorId},async function (err,foundUser){
-                    if(foundUser.quest_quantity !=0){
-                        const monster = (await getMonsters())
-                        .find(m => m.name === foundUser.quest_mob)
-                        .create()
+                        inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                            if(err){
+                                console.log(err);
+                                
+                            }
+                            else{
+                                const foundItem = foundUser.inventory.items.find(item => item.name === flora.name)
+                                if (foundItem){
+                
+                                    foundItem.quantity+=flora.quantity
+                                }
+                                else{
+                                    const newItem = {
+                                        name:flora.name,
+                                        description:flora.description,
+                                        quantity:Number(flora.quantity)
+                                    }
+                                    foundUser.inventory.items.push(newItem)
+                                }
+                                await inventory.updateOne({userID:authorId},foundUser)
+                            }
+                            
+                        })
+                    }
+                    else if(pick == "monster"){
+                    
+                    
+                       
+                            await interaction.editReply({ content: '\u200b', components: [] })
+                            const monster = (await getRandomMonster(location))
+                            
+    
+                            
+                            foundUser.encounter = []
+                           
+                       
+                            let btnraw= new MessageActionRow().addComponents([
+                                new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Fight"),
+                                new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Run"),])
+    
+                                let d_btnraw = new MessageActionRow().addComponents([
+                                    new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Fight").setDisabled(true),
+                                    new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Run").setDisabled(true),
+                                ])
+    
+                                
+                            let fightEmbed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('ENCOUNTER')
+                            .setDescription(`🔎 you found a ${monster.name}!`)
         
-                
-                        if(attacker.speed >= monster.speed){
-                            await new PvEDuel_Quest({
-                                interaction,
-                                player1: attacker,
-                                player2: monster,
-                            }).start()
-                        }
-                        else{
-                            await new PvEDuel_Quest({
-                                interaction,
-                                player1: monster,
-                                player2: attacker,
-                            }).start()
-                        }
+                            let acceptEmbed = new MessageEmbed()
+                            .setColor('GREEN')
+                            .setTitle('ACCEPTED')
+                            .setDescription('You have decided to fight!\ncheck your private message')
+        
+                            let rejectEmbed = new MessageEmbed()
+                            .setColor('RED')
+                            .setTitle('RAN AWAY')
+                            .setDescription('You ran away!')
+                            
                         
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw]})
+                        let filter = i => i.user.id === authorId
+                            let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
+                    
+                            collector.on('collect',async (btn) => {
+                                if(btn.isButton()){
+                                    if(btn.customId === "btn_accept"){
+                                        await btn.deferUpdate().catch(e => {})
+                                        await interaction.editReply({embeds:[acceptEmbed]})
+                                        const encounter = {
+                                            name: monster.name,
+                                            time : new Date(),
+                                            location:foundUser.location
+    
+                                        }
+                                        
+                                        foundUser.encounter.push(encounter)
+                                        await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
+                                        interaction.user.send(`Use /fight to begin encounter`)
+    
+                                        
+                                   
+                                    collector.stop()
+                                        
+                                    }
+                                    else if(btn.customId === "btn_reject"){
+                                        await btn.deferUpdate().catch(e => {})
+                                        await interaction.editReply({embeds:[rejectEmbed]})
+                                         foundUser.encounter = []
+                                    
+                                        await profileModel.updateOne({userID:authorId},foundUser)
+    
+                                        collector.stop()
+                                    }
+    
+                                    
+                                    
+                                }
+                                  
+                    
+                       
+                       
+                        })
+    
+                        collector.on('end', () => {
+                            interaction.editReply({components: [d_btnraw]})
+                        })
+    
+                            
+                       
+                    }
+     
                 }
-                else{
-                    await interaction.deferReply()
-                    await interaction.editReply(`You have no active quest!`)
-                }
-                })
+
                 
     
-            }
+            
             else{
                 await interaction.deferReply()
                 await interaction.editReply(`cannot access ${location}`)
@@ -302,8 +352,8 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
     }
 )
 
-async function monstersDropdown() {
-    const monsters = await getMonsters()
+async function monstersDropdown(location:String) {
+    const monsters = await getMonsters(location)
 
     return new MessageActionRow().addComponents(
         new MessageSelectMenu()

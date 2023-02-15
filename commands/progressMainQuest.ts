@@ -95,8 +95,8 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                             await interaction.editReply({embeds:[acceptEmbed]})
                                             const encounter = {
                                                 name: 'BeerBuccsDuo',
-                                                time : new Date()
-        
+                                                time : new Date(),
+                                                location:foundUser.location
                                             }
                                             
                                             foundUser.encounter.push(encounter)
@@ -233,6 +233,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             }
 
                         else if(foundUser.main_quest_phase == "3"){
+                            await profileModel.updateOne({userID:authorId},{location:"The Guild Outpost"})
                             let fightEmbed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('New Beginnings')
