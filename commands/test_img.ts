@@ -11,14 +11,16 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
         const authorId = interaction.user.id
         const guildID = interaction.guildId;
 
-        let img = await loadImage("assets/AubeTown/Ghorgon.jpeg")
+    let img = await loadImage("assets/AubeTown/Ghorgon.jpeg")
         const src = new Canvas(400,400)
         let ctx = src.getContext("2d")
         ctx.drawImage(img,0,0)
-        ctx.fillText("Hello world", 50, 90);
-        src.saveAs("assets/AubeTown/test.jpeg")
-        const attachment = new MessageAttachment("assets/AubeTown/test.jpeg")
+        ctx.fillText(`${interaction.user.username}`, 50, 90);
+        const buffer = await src.toBuffer("jpeg")
+        const attachment = await new MessageAttachment(buffer)
         interaction.reply({files:[attachment]})
+        
+
         
         
         
