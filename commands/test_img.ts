@@ -15,7 +15,6 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
         const src = new canvas.Canvas(400,400)
         let ctx = src.getContext("2d")
         ctx.drawImage(img,0,0)
-        ctx.font = "50px serif";
         ctx.fillText("Hello world", 50, 90);
         src.saveAs("assets/AubeTown/test.jpeg")
         const attachment = new MessageAttachment("assets/AubeTown/test.jpeg")
