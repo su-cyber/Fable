@@ -1,7 +1,7 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
 import { Collector, MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu, MessageComponentInteraction,CacheType, MessageAttachment} from 'discord.js'
-import { loadImage,Canvas, } from 'canvas-constructor/skia'
+import { loadImage,Canvas, } from 'canvas'
 
 
 export default new MyCommandSlashBuilder({ name: 'img', description: 'testing img' })
@@ -12,16 +12,14 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
         const guildID = interaction.guildId;
 
     let img = await loadImage("assets/AubeTown/Ghorgon.jpeg")
-    const buffer = await new Canvas(300, 400)
-    .printImage(img, 0, 0, 300, 400)
-    .setColor('#FFAE23')
-    .setTextFont('28px Impact')
-    .setTextAlign('center')
-    .printText('Kitten!', 150, 370)
-    .pngAsync();
-
-    const attachment = new MessageAttachment(buffer)
-    interaction.reply({files:[attachment]})
+        const src = new Canvas(400,300)
+        let ctx = src.getContext("2d")
+        ctx.drawImage(img,0,0)
+        ctx.fillText(`${interaction.user.username}`, 50, 90);
+        const buffer = await src.toBuffer('image/jpeg')
+        const attachment = await new MessageAttachment(buffer)
+        interaction.reply({content:"NICE",files:[attachment]})
+        
 
         
         
