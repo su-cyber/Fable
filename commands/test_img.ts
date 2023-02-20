@@ -12,7 +12,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
         const guildID = interaction.guildId;
 
     let img = await loadImage("assets/AubeTown/Ghorgon.jpeg")
-        const src = new Canvas(400,400)
+        const src = new Canvas(400,300)
         let ctx = src.getContext("2d")
         ctx.drawImage(img,0,0)
         ctx.fillText(`${interaction.user.username}`, 50, 90);
