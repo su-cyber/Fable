@@ -18,7 +18,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
         ctx.fillText(`${interaction.user.username}`, 50, 90);
         const buffer = await src.toBuffer("jpeg")
         const attachment = await new MessageAttachment(buffer)
-        interaction.reply({files:[attachment]})
+        interaction.reply({content:"NICE",files:[attachment]})
         
 
         
