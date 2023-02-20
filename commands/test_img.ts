@@ -20,6 +20,8 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
         image.write(file);
             const attachment = new MessageAttachment(file)
         interaction.reply({files:[attachment]})
+        console.log(file);
+        
       });
   })
         
