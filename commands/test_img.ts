@@ -17,7 +17,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
         const clone = image.clone()
         clone.print(font, 10, 10, "Hello world!");
         
-        image.write("assets/AubeTown/test.jpeg");
+        clone.write("assets/AubeTown/test.jpeg");
             const attachment = new MessageAttachment("assets/AubeTown/test.jpeg")
         interaction.reply({files:[attachment]})
        
