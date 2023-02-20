@@ -8,7 +8,7 @@ import { steelArmour } from '../src/age/armour/steel_armour'
 import { healthPotion } from '../src/age/potions/healthPotion'
 import { DiscordAPIError, MessageActionRow, MessageSelectMenu, SelectMenuInteraction } from 'discord.js'
 import { Collector, MessageButton, MessageEmbed } from 'discord.js'
-import { BeerBuccsDuo } from '../src/age/monsters/BeerBuccsDuo'
+import { BeerBuccsDuo } from '../src/age/monsters/none/BeerBuccsDuo'
 import { MessageAttachment } from 'discord.js'
 
 

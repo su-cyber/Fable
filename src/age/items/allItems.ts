@@ -22,9 +22,10 @@ import { Radiantura_milk } from './radiantura_milk'
 import { steamShovel } from './steamShovel'
 import { guildTshirt } from './guildTshirt'
 import { salePoster } from './salePoster'
+import { treemickBranch } from './treemickBranch'
 
 export default [ goblinPouch, slimeBlob, direwolfHide,bloodhoundTooth,direwolfClaw,woodClub,
     woodAxe,ghoulSkull,chimeraFeather,basiliskScale,basiliskVenom,arachnidVenom,chimeraHorn,woodGolem_core,DryadJewel,Herbs.create(),
-    SunshadeWood.create(),Mushroom.create(),ArgentenumLeaves.create(),solarCorn,Radiantura_milk,steamShovel,guildTshirt,salePoster
+    SunshadeWood.create(),Mushroom.create(),ArgentenumLeaves.create(),solarCorn,Radiantura_milk,steamShovel,guildTshirt,salePoster,treemickBranch
 
 ]

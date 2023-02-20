@@ -1,8 +1,8 @@
 import { CommandInteraction } from 'discord.js'
-import { MonsterEntity, ClassEntity } from '../classes'
-import { Dropper } from '../dropper'
-import { goblinPouch } from '../items'
-import generateXP from '../../utils/generateXP'
+import { MonsterEntity, ClassEntity } from '../../classes'
+import { Dropper } from '../../dropper'
+import { goblinPouch } from '../../items'
+import generateXP from '../../../utils/generateXP'
 
 export class Goblin extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {

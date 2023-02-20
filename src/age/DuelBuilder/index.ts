@@ -3,12 +3,14 @@ import {
     CommandInteraction,
     InteractionCollector,
     MappedInteractionTypes,
+    Message,
     MessageActionRow,
     MessageButton,
     MessageComponentInteraction,
     MessageEmbed,
     MessageSelectMenu,
 } from 'discord.js'
+import { APIMessage } from 'discord-api-types/v9'
 import chunk from 'lodash.chunk'
 import { emoji } from '../../lib/utils/emoji'
 
@@ -25,6 +27,7 @@ import { Potion } from '../classes/potion'
 import shopPotions_lvl5 from '../potions/shopPotions_lvl5'
 import profileModel from '../../../models/profileSchema'
 import allPotions from '../potions/allPotions'
+import { EventEmitter } from 'stream'
 
 
 const lineBreak = '\n\u200b'
@@ -39,15 +42,15 @@ class DuelBuilder {
     interaction: CommandInteraction
     player1: Entity
     player2: Entity
+    skill_len:number
 
-    collector: InteractionCollector<MappedInteractionTypes['ACTION_ROW']>
-    collector_btn: InteractionCollector<MappedInteractionTypes['ACTION_ROW']>
-    collector_use: InteractionCollector<MappedInteractionTypes['ACTION_ROW']>
+    
     locker: { isLock: boolean; wait(): Promise<void>; lock(): void; unlock(): void }
     btn: MessageActionRow
     run: boolean
     useSelect: MessageActionRow
     potions: Potion[]
+    messageId: string
 
     constructor({
         interaction,
@@ -66,12 +69,14 @@ class DuelBuilder {
         this.scheduler = new Scheduler()
         this.logMessages = []
         this.interaction = interaction
+        this.messageId = null
         this.locker = getLocker()
         this.btn = new MessageActionRow().addComponents([
             new MessageButton().setCustomId("use_btn").setStyle("SUCCESS").setLabel("POTIONS"),
         ])
         this.run = false
         this.potions = this.attacker.potions
+        this.skill_len = this.attacker.skills.length
 
       
 
@@ -88,13 +93,13 @@ class DuelBuilder {
     createDuelComponent(skills: Skill[], disabled: boolean = false) {
         return new MessageActionRow().addComponents([
             new MessageSelectMenu()
-                .setCustomId('select-menu__skills')
+                .setCustomId(`${this.interaction.id}_selectMenuSkills`)
                 .setPlaceholder(`Select a skill ${this.attacker.name}`)
                 .addOptions(
                     skills.map(skill => ({
                         label: skill.name,
                         description: skill.description,
-                        value: skill.name,
+                        value: `${this.interaction.id}_${skill.name}`,
                     }))
                 )
                 .setDisabled(disabled),
@@ -210,12 +215,13 @@ class DuelBuilder {
     }
 
     async sendInfoMessage(skills: Skill[], disableComponent: boolean = false) {
-        await this.replyOrEdit({
+       const msg = await this.replyOrEdit({
             content: null,
             embeds: this.duelMessageEmbeds(),
             components: [this.createDuelComponent(skills, disableComponent),this.btn],
             
         })
+        this.messageId = msg.id
     }
 
     async replyOrEdit({
@@ -227,10 +233,11 @@ class DuelBuilder {
         embeds?: MessageEmbed[]
         components?: any
     }) {
-        
-             this.interaction.reply({ content, embeds, components }).catch(() => {
-                this.interaction.editReply({ content, embeds, components }).catch(() => null)
-            })
+        try {
+          return await this.interaction.reply({ content, embeds, components, fetchReply: true })
+        } catch {
+           return await this.interaction.editReply({ content, embeds, components })
+        }
          
          
         
@@ -272,6 +279,7 @@ class DuelBuilder {
         async function onCollect(collected: MessageComponentInteraction<CacheType> & { values: string[] }) {
             collected.deferUpdate().catch(() => null)
             const skillName = collected.values[0]
+            
             if(skillName == 'Run'){
                  this.addLogMessage(`${this.attacker.name} is trying to run away...`)
                  sleep(2)
@@ -291,47 +299,63 @@ class DuelBuilder {
                 await this.onSkillSelect(skillName)
             }
             
-
+            
             this.locker.unlock()
         }
 
-        
 
         const filter = (interaction: any) =>
             
-            interaction.customId === 'select-menu__skills' &&
-            interaction.user.id === this.attacker.id
+        (interaction.customId === 'run_btn' || interaction.customId === 'use_btn'|| interaction.customId === `${this.interaction.id}_selectMenuSkills` || interaction.customId === 'use_menu') &&
+        interaction.user.id === this.attacker.id && interaction.message.id === this.messageId
 
-        const filter_btn = (interaction: any) =>
-            
-        (interaction.customId === 'run_btn' || interaction.customId === 'use_btn') &&
-        interaction.user.id === this.attacker.id
-
-        const filter_use = (interaction: any) =>
-            
-        interaction.customId === 'use_menu' &&
-        interaction.user.id === this.attacker.id
-
-        this.collector_btn = this.interaction.channel.createMessageComponentCollector({ filter:filter_btn })
-        this.collector_use = this.interaction.channel.createMessageComponentCollector({ filter:filter_use })
-        this.collector = this.interaction.channel.createMessageComponentCollector({ filter })
+        
+        let collector = this.interaction.channel.createMessageComponentCollector({ filter })
 
        
-        this.collector.setMaxListeners(Infinity)
-        this.collector_btn.setMaxListeners(Infinity)
-        this.collector_use.setMaxListeners(Infinity)
+        // collector.setMaxListeners(Infinity)
+        
         
         const thisThis = this
 
-        this.collector.on('collect', onCollect.bind(thisThis))
-        this.collector_btn.on('collect', async i => {
-            i.deferUpdate().catch(() => null)
+        collector.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
             
-             if(i.customId === 'use_btn'){
+            collected.deferUpdate().catch(() => null)
+            if(collected.customId === `${this.interaction.id}_selectMenuSkills`){
+            if(collected.values[0].startsWith(this.interaction.id)){
+                console.log(`Interaction Message ID: ${collected.message.id}`)
+            console.log(`Interaction Message ID: ${this.messageId}`)
+                const skillName = collected.values[0].split('_')[1]
+
+                if(skillName == 'Run'){
+                     this.addLogMessage(`${this.attacker.name} is trying to run away...`)
+                     sleep(2)
+                    if(this.defender instanceof MonsterEntity){
+                        if(this.attacker.evasion > this.defender.run_chance){
+                            this.run = true
+                        }
+                        else{
+                            this.addLogMessage(`${this.attacker.name} couldnt run`)
+                        }
+                    }
+                    else{
+                        this.run = true
+                    }
+                }
+                else{
+                    await this.onSkillSelect(skillName)
+                }
+                
+                
+                this.locker.unlock()
+            }
+            
+            }
+             else if(collected.customId === 'use_btn'){
                 
                     let interaction = this.interaction
-                    let collector_use = this.collector_use
-                    inventory.findOne({userID:i.user.id},async function(err,foundUser){
+                   
+                    inventory.findOne({userID:collected.user.id},async function(err,foundUser){
                         const potions = foundUser.inventory.potions
                         let potions_filtered= []
                         
@@ -340,7 +364,7 @@ class DuelBuilder {
                         useSelect = new MessageActionRow().addComponents([
                             new MessageSelectMenu()
                             .setCustomId('use_menu')
-                                .setPlaceholder(`Select a potion ${i.user.username}`)
+                                .setPlaceholder(`Select a potion ${collected.user.username}`)
                                 .addOptions({
                                     
                                         label: 'None',
@@ -356,7 +380,7 @@ class DuelBuilder {
                         useSelect = new MessageActionRow().addComponents([
                             new MessageSelectMenu()
                             .setCustomId('use_menu')
-                                .setPlaceholder(`Select a potion ${i.user.username}`)
+                                .setPlaceholder(`Select a potion ${collected.user.username}`)
                                 .addOptions(
                                     potions.map(item => ({
                                         label: item.name.name,
@@ -374,41 +398,46 @@ class DuelBuilder {
                
                     
                 
-                collector_use.once("collect",async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
-                    collected.deferUpdate().catch(() => null)
-                    //insert potions code here
-                    const PotionName = collected.values[0]
-                    await thisThis.onPotionSelect(PotionName)
-                    
-                    
-                    thisThis.locker.unlock()
-                    
-                    if(PotionName == 'None'){
-    
-                    }
-                    else{
-                        const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
-                        foundPotion.quantity-=1
-                        if(foundPotion.quantity===0){
-                            const index = foundUser.inventory.potions.indexOf(foundPotion)
-                            foundUser.inventory.potions.splice(index)
-                        }
-                    }
-                        
-                        await inventory.updateOne({userID:i.user.id},foundUser)
-                    })
+                
                 })
     
                  
                 
  
             }
+            else if(collected.customId === 'use_menu'){
+                collected.deferUpdate().catch(() => null)
+                //insert potions code here
+                inventory.findOne({userID:collected.user.id},async function(err,foundUser){
+                const PotionName = collected.values[0]
+                await thisThis.onPotionSelect(PotionName)
+                
+                
+                thisThis.locker.unlock()
+                
+                if(PotionName == 'None'){
+
+                }
+                else{
+                    const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
+                    foundPotion.quantity-=1
+                    if(foundPotion.quantity===0){
+                        const index = foundUser.inventory.potions.indexOf(foundPotion)
+                        foundUser.inventory.potions.splice(index)
+                    }
+                }
+                    
+                    await inventory.updateOne({userID:collected.user.id},foundUser)
+            })
+        }
         })
        
 
         
         this.removeCollector = () => {
-            this.collector.removeListener('collect', onCollect.bind(thisThis))
+            collector.removeListener('collect',onCollect.bind(thisThis))
+            collector.stop()
+            console.log("removed");
             
         }
 

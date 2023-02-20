@@ -1,12 +1,12 @@
 import { CommandInteraction } from 'discord.js'
-import { Dropper } from '../dropper'
-import { chimeraFeather, chimeraHorn } from '../items'
-import { poisoning } from '../effects/poisoning'
-import { emoji } from '../../lib/utils/emoji'
-import { burning } from '../effects/burning'
-import { MonsterEntity, ClassEntity, Entity } from '../classes'
-import { anti_physical } from '../effects/anti-physical'
-import generateXP from '../../utils/generateXP'
+import { Dropper } from '../../dropper'
+import { chimeraFeather, chimeraHorn } from '../../items'
+import { poisoning } from '../../effects/poisoning'
+import { emoji } from '../../../lib/utils/emoji'
+import { burning } from '../../effects/burning'
+import { MonsterEntity, ClassEntity, Entity } from '../../classes'
+import { anti_physical } from '../../effects/anti-physical'
+import generateXP from '../../../utils/generateXP'
 
 
 export class Chimera extends MonsterEntity {

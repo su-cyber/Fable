@@ -32,7 +32,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
             }
             else{
                 if(res){
-                    if(interaction.guild == null){
+                    
                         const attacker = Warrior.create(author)
                         profileModel.findOne({userID:authorId},async function(err,foundUser) {
                             
@@ -69,8 +69,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                 })
                 
                                
-                                    attacker.skills=foundUser.currentskills.concat([{name: 'Run',
-                                    description: 'Run from the enemy',}])
+                                    attacker.skills=foundUser.currentskills
                                 
                                 
                                     
@@ -149,8 +148,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                         else{
                                             interaction.reply(`you responded too late, your encounter is lost`) 
                                             const authorID = interaction.user.id
-                                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
-                            
+                                   const data = await profileModel.findOne({userID:authorID},async function(err,foundUser) {
                                         if(err){
                                             console.log(err);
                                             
@@ -216,11 +214,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                         })
                 
                         
-                    }
-                    else{
-                        interaction.reply(`this command can be used only in DMs`)
-                    }
-                    
+                   
         
             }
 
@@ -252,7 +246,7 @@ async function monstersDropdown(location:String) {
 class PvEDuel extends DuelBuilder {
     player1: Entity
     player2: MonsterEntity
-
+    
     async beforeDuelStart() {
         super.beforeDuelStart()
         if(this.attacker instanceof MonsterEntity){
@@ -266,17 +260,20 @@ class PvEDuel extends DuelBuilder {
         
         
     }
+    
 
     async onSkillSelect(skillName: string) {
+        skillName = 'Basic attack'
         const skill = allskills.find(skill => skill.name === skillName)
 
         this.attacker.useSkill(this.attacker,this.defender,skill)
     }
-
+    
     
     
 
     async onTurn(skipTurn: boolean) {
+        console.log('Skip Turn: ', skipTurn)
         const isMonsterTurn = this.attacker instanceof MonsterEntity
 
         if (skipTurn) {
@@ -287,6 +284,10 @@ class PvEDuel extends DuelBuilder {
 
             return
         }
+        console.log('Attacker: ' + this.attacker.name)
+        console.log('Attacker ID: ' + this.attacker.id)
+        console.log('Interaction ID: ' + this.interaction?.id)
+        console.log(`Attacker Instance of MonsterEntity: ${this.attacker instanceof MonsterEntity}`)
 
         if (this.attacker instanceof MonsterEntity) {
             
@@ -294,18 +295,29 @@ class PvEDuel extends DuelBuilder {
             await this.sendInfoMessage(this.attacker.skills, true)
 
             this.attacker.useSkill(this.attacker,this.defender)
+            await sleep(1.5)
             
             
         } else {
+           
+            await this.sendInfoMessage(this.attacker.skills, true)
+            // this.deleteInfoMessages()
+            const max = this.skill_len
+            console.log("length of skills:",max);
             
-            await this.sendInfoMessage(this.attacker.skills)
+            const min = 0
+            const skillName = this.attacker.skills[Math.floor(Math.random() * max)].name
+            console.log(skillName);
+            
+            const skill = allskills.find(skill => skill.name === skillName)
+    
+            this.attacker.useSkill(this.attacker,this.defender,skill)
             await sleep(1.5)
-            this.deleteInfoMessages()
-            await this.locker.wait()
-            this.locker.lock()
+            
+            
         }
 
-        await this.sendInfoMessage(this.attacker.skills)
+        // await this.sendInfoMessage(this.attacker.skills)
         
     }
 
@@ -320,6 +332,13 @@ class PvEDuel extends DuelBuilder {
             else{
                 foundUser.encounter = []
                 await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
+                if(winner instanceof Entity){
+                    if(foundUser.quest_mob == loser.name && foundUser.quest_quantity>0){
+                        foundUser.quest_quantity -=1
+                        
+                        await profileModel.updateOne({userID:authorID},{quest_quantity:foundUser.quest_quantity})
+                    }
+                }
 
             }
         })

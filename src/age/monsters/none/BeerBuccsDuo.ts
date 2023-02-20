@@ -1,9 +1,9 @@
 import { CommandInteraction } from 'discord.js'
-import { MonsterEntity, ClassEntity } from '../classes'
-import { Dropper } from '../dropper'
-import { goblinPouch } from '../items'
-import generateXP from '../../utils/generateXP'
-import profileModel from '../../../models/profileSchema'
+import { MonsterEntity, ClassEntity } from '../../classes'
+import { Dropper } from '../../dropper'
+import { goblinPouch } from '../../items'
+import generateXP from '../../../utils/generateXP'
+import profileModel from '../../../../models/profileSchema'
 
 
 export class BeerBuccsDuo extends MonsterEntity {

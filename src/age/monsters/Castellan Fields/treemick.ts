@@ -3,6 +3,7 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import { slimeBlob} from '../../items'
 import generateXP from '../../../utils/generateXP'
+import { treemickBranch } from '../../items/treemickBranch'
 
 export class Treemick extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -13,8 +14,8 @@ export class Treemick extends MonsterEntity {
 
         await new Dropper([
             {
-                item: slimeBlob,
-                dropRate: 0.9,
+                item: treemickBranch,
+                dropRate: 0.8,
             },
         ]).sendDeathMessage(messages, interaction, this,killer)
     }

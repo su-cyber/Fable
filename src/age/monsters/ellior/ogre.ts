@@ -1,10 +1,10 @@
 import { CommandInteraction } from 'discord.js'
-import { Dropper } from '../dropper'
-import { woodClub } from '../items'
-import { percentOf, randint } from '../../utils'
+import { Dropper } from '../../dropper'
+import { woodClub } from '../../items'
+import { percentOf, randint } from '../../../utils'
 import range from 'lodash.range'
-import { MonsterEntity, ClassEntity } from '../classes'
-import generateXP from '../../utils/generateXP'
+import { MonsterEntity, ClassEntity } from '../../classes'
+import generateXP from '../../../utils/generateXP'
 
 export class Ogre extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {

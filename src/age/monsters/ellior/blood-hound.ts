@@ -1,11 +1,11 @@
 import { CommandInteraction } from 'discord.js'
 import sample from 'lodash.sample'
-import { Dropper } from '../dropper'
-import { bloodhoundTooth } from '../items'
-import { strength } from '../effects/strength'
-import { percentOf } from '../../utils/percentOf'
-import { MonsterEntity, ClassEntity, Entity } from '../classes'
-import generateXP from '../../utils/generateXP'
+import { Dropper } from '../../dropper'
+import { bloodhoundTooth } from '../../items'
+import { strength } from '../../effects/strength'
+import { percentOf } from '../../../utils/percentOf'
+import { MonsterEntity, ClassEntity, Entity } from '../../classes'
+import generateXP from '../../../utils/generateXP'
 
 export class BloodHound extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {

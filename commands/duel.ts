@@ -8,6 +8,7 @@ import { Mage } from '../src/age/heroes/mage'
 import profileModel from '../models/profileSchema'
 import allskills from '../src/age/heroes/skills'
 import { sleep } from '../src/utils'
+import inventory from '../models/InventorySchema'
 
 export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with a player' })
     .addUserOption((option: SlashCommandUserOption) =>
@@ -46,24 +47,36 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         
                                         
                                         attacker.health=foundUser.health
-                                        attacker.mana=foundUser.mana
-                                        attacker.armor=foundUser.armour
-                                        attacker.magicPower=foundUser.magicPower
-                                        attacker.attackDamage=foundUser.attackDamage
-                                        attacker.evasion=foundUser.evasion
-                                        attacker.maxHealth=foundUser.health
-                                        attacker.skills=foundUser.skills
-                                        attacker.passive_skills = foundUser.passiveskills
-                                        attacker.speed = foundUser.speed
-
-                                        if(foundUser.weapon.length === 0){
-                                            attacker.skills=foundUser.magicskills
-                                        }
-                                        else{
+                                attacker.mana=foundUser.mana
+                                attacker.armor=foundUser.armour
+                                attacker.magicPower=foundUser.magicPower
+                                attacker.attackDamage=foundUser.attackDamage
+                                attacker.evasion=foundUser.evasion
+                                attacker.maxHealth=foundUser.health
+                                attacker.passive_skills = foundUser.passiveskills
+                                attacker.maxMana = foundUser.mana
+                                attacker.speed = foundUser.speed
+                                
+                                inventory.findOne({userID:authorId},async function(err,foundProfile) {
+                                    if(foundProfile.inventory.potions.length !=0){
+                                        attacker.potions = []
+                                        for(let i=0;i<foundProfile.inventory.potions.length;i++){
                                             
-                                            attacker.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
-                                        }
-                          
+                                            attacker.potions.push(foundProfile.inventory.potions[i].name)
+                                                    }
+                
+                                        
+                                    }
+                                    else{
+                                        attacker.potions =[]
+                                    }
+                                })
+                
+                               
+                                    attacker.skills=foundUser.currentskills.concat([{name: 'Run',
+                                    description: 'Run from the enemy',}])
+                                
+                                
                                     }
                                 })
                                 profileModel.findOne({userID:opponentId},async function(err,foundUser) {
@@ -79,17 +92,28 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         defender.attackDamage=foundUser.attackDamage
                                         defender.evasion=foundUser.evasion
                                         defender.maxHealth=foundUser.health
-                                        defender.skills=foundUser.skills
                                         defender.passive_skills = foundUser.passiveskills
+                                        defender.maxMana = foundUser.mana
                                         defender.speed = foundUser.speed
-
-                                        if(foundUser.weapon.length === 0){
-                                            defender.skills=foundUser.magicskills
-                                        }
-                                        else{
-                                            
-                                            defender.skills=foundUser.weaponskills.concat(foundUser.magicskills,foundUser.weapon[0].skills)
-                                        }
+                                        
+                                        inventory.findOne({userID:authorId},async function(err,foundProfile) {
+                                            if(foundProfile.inventory.potions.length !=0){
+                                                defender.potions = []
+                                                for(let i=0;i<foundProfile.inventory.potions.length;i++){
+                                                    
+                                                    defender.potions.push(foundProfile.inventory.potions[i].name)
+                                                            }
+                        
+                                                
+                                            }
+                                            else{
+                                                defender.potions =[]
+                                            }
+                                        })
+                        
+                                       
+                                        defender.skills=foundUser.currentskills.concat([{name: 'Run',
+                                            description: 'Run from the enemy',}])
                                         
                                     }
                                 })

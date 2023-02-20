@@ -8,7 +8,7 @@ import { steelArmour } from '../src/age/armour/steel_armour'
 import { healthPotion } from '../src/age/potions/healthPotion'
 import { DiscordAPIError, MessageActionRow, MessageSelectMenu, SelectMenuInteraction } from 'discord.js'
 import { Collector, MessageButton, MessageEmbed } from 'discord.js'
-import { BeerBuccsDuo } from '../src/age/monsters/BeerBuccsDuo'
+import { BeerBuccsDuo } from '../src/age/monsters/none/BeerBuccsDuo'
 import { MessageAttachment } from 'discord.js'
 import Inventory from '../models/InventorySchema'
 import { solarCorn } from '../src/age/items/solarcornstalks'
@@ -17,6 +17,7 @@ import { Radiantura_milk } from '../src/age/items/radiantura_milk'
 import { salePoster } from '../src/age/items/salePoster'
 import { steamShovel } from '../src/age/items/steamShovel'
 import { guildTshirt } from '../src/age/items/guildTshirt'
+import { treemickBranch } from '../src/age/items/treemickBranch'
 
 
 export default new MyCommandSlashBuilder({ name: 'progresssidequest', description: 'progress your side quest' }).setDo(
@@ -267,7 +268,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                             .addFields([
                                                 {
                                                     name: `Current Objective:`,
-                                                    value:`press /progresssidequest in crofter's market again to go to the next shop**`
+                                                    value:`**press /progresssidequest in crofter's market again to go to the next shop**`
                                                 }
                                             ])
                                             .setDescription(`Shopkeeper:Fine! ${cost}🪙 is my last price.\nYou:Alright,pack them up.\n\n**You obtained Radiantura’s Milk X 5**\n**You obtained Argentenum Leaves X 5**`)
@@ -359,7 +360,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                             .addFields([
                                                 {
                                                     name: `Current Objective:`,
-                                                    value:`press /progresssidequest in Town Centre to give the ingredients to the merchant**`
+                                                    value:`**press /progresssidequest in Town Centre to give the ingredients to the merchant**`
                                                 }
                                             ])
                                             .setDescription(`Shopkeeper:You have a knack for negotiation huh? ${cost}🪙 is my final price.\nYou:Alright,pack them up.\n\n**You obtained Sale Poster X 1**\n**You obtained Steam Shovel X 1**\n**You obtained Guild Tshirt X 1**`)
@@ -535,6 +536,64 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 }
                             }
                         }
+                        else if(foundUser.side_quest[0] == "KS-TA-Q5"){
+                            if(foundUser.side_quest_phase == "1"){
+                                let quest_embed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`STUMPED!`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .addFields([
+                                    {
+                                        name: `Current Objective:`,
+                                        value:`**Go to Castellan Fields to hunt the Treemicks\nexplore the castellan fields to encounter treemicks**`
+                                    }
+                                ])
+                                .setDescription(`The local Solarii are having trouble cutting down Sunshade Trees in Castellan Fields, due to a wild group of Treemics that have mixed themselves among the leftover tree stumps. Whenever a person traverses near the tree stumps’, the Treemics attack them. Hunt Them down.\n\n**Bring 5 'Treemick's Branch' to Guild Outpost as proof**`)
+                            
+                                await interaction.reply({embeds:[quest_embed]})
+                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"2"})
+
+                            }
+                            else if(foundUser.side_quest_phase == "2"){
+                                if(foundUser.location == "Aube Town Guild Outpost"){
+                                    Inventory.findOne({userID:authorId},async function(err,userProfile){
+                                    const foundObject=userProfile.inventory.items.find(object => object.name.toLowerCase() === treemickBranch.name.toLowerCase())
+                                    if(foundObject){
+                                        if(foundObject.quantity >= 5){
+                                            let successembed = new MessageEmbed()
+                                                .setColor('RANDOM')
+                                                .setTitle(`STUMPED! - Quest Completed`)
+                                                .setAuthor({
+                                                    iconURL:interaction.user.displayAvatarURL(),
+                                                    name:interaction.user.tag
+                                                })
+                                                
+                                                .setDescription(`you show the Treemick's Branches to the Guild and they confirm the quest completion`)
+                                                interaction.reply({embeds:[successembed]})
+                                                foundUser.completed_quests.push("KS-TA-Q5")
+                                                foundUser.side_quest.splice(0,1)
+                                               
+                                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest})
+                                        
+                                        }
+                                        else{
+                                            interaction.reply(`you failed to bring enough proof`)
+                                        }
+                                    }
+                                    else{
+                                        interaction.reply(`you failed to bring any proof`)
+                                    }
+                                    })
+                                }
+                                else{
+                                    interaction.reply(`You are not in the guild outpost!`)
+                                }
+                            }
+                        }
+                        
                     })
                 }
             }

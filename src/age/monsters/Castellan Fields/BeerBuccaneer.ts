@@ -21,7 +21,7 @@ export class BeerBuccaneer extends MonsterEntity {
 
     static create() {
         return new BeerBuccaneer({
-            name: 'Beer Buccaneer',
+            name: 'BeerBuccaneer',
             spawnRate: 0.5,
             health: 30,
             mana:10,
