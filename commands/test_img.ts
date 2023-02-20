@@ -16,7 +16,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
         Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then((font) => {
         const clone = image.clone()
         clone.print(font, 10, 10, "Hello world!");
-        var file = "test_img." + image.getExtension();
+        let file = "C:/Users/Sumit Kundu/Age-2/assets/AubeTown/test_img." + image.getExtension();
         image.write(file);
             const attachment = new MessageAttachment(file)
         interaction.reply({files:[attachment]})
