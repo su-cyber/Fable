@@ -1,6 +1,7 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
 import { Collector, MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu, MessageComponentInteraction,CacheType} from 'discord.js'
+import { MessageAttachment } from 'discord.js'
 
 
 export default new MyCommandSlashBuilder({ name: 'locations', description: 'visit a location' })
@@ -93,39 +94,49 @@ let select =  new MessageActionRow().addComponents([
         
         await profileModel.updateOne({userID:authorId},{location:location})
         if(location == 'Castellan Fields'){
+            const attachment = new MessageAttachment('assets/AubeTown/Castellan_Fields.jpeg')
             let successembed = new MessageEmbed()
             .setColor('RANDOM')
             .setTitle('LOCATION REACHED')
+            .setImage('attachment://Castellan_Fields.jpeg')
             .setDescription(`you visited ${location}, a wide field outside aube town\n\nuse **/explore** to explore this location`)
-            await interaction.editReply({embeds:[successembed],components:[]})
+            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
         }
         else if(location == 'Badlands'){
+            const attachment = new MessageAttachment('assets/AubeTown/Badlands.jpg')
             let successembed = new MessageEmbed()
             .setColor('RANDOM')
             .setTitle('LOCATION REACHED')
-            .setDescription(`you visited ${location}, an abandoned castle in the outskirts\n\nuse **/explore** to explore this location`)
-            await interaction.editReply({embeds:[successembed],components:[]})
+            .setImage('attachment://Badlands.jpg')
+            .setDescription(`you visited ${location},the outskirts of aube town\n\nuse **/explore** to explore this location`)
+            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
         }
         else if(location == 'The Terrific Troll Tavern'){
+            const attachment = new MessageAttachment('assets/AubeTown/Terrific_Troll_Tavern.jpg')
             let successembed = new MessageEmbed()
             .setColor('RANDOM')
             .setTitle('LOCATION REACHED')
+            .setImage('attachment://Terrific_Troll_Tavern.jpg')
             .setDescription(`you visited ${location}, a simple tavern\n\nuse **/explore** to explore this location`)
-            await interaction.editReply({embeds:[successembed],components:[]})
+            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
         }
         else if(location == 'The Lager Estate'){
+            const attachment = new MessageAttachment('assets/AubeTown/Lager_Estate.jpg')
             let successembed = new MessageEmbed()
             .setColor('RANDOM')
             .setTitle('LOCATION REACHED')
+            .setImage('attachment://Lager_Estate.jpg')
             .setDescription(`you visited ${location}, the estate of lager family\n\nuse **/explore** to explore this location`)
-            await interaction.editReply({embeds:[successembed],components:[]})
+            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
         }
         else if(location == `Crofter's Market`){
+            const attachment = new MessageAttachment('assets/AubeTown/Crofters_Market.jpg')
             let successembed = new MessageEmbed()
             .setColor('RANDOM')
             .setTitle('LOCATION REACHED')
+            .setImage('attachment://Crofters_Market.jpg')
             .setDescription(`you visited ${location}, a simple shop\n\nuse **/explore** to explore this location\n\nuse**/shop** to access the shops\nuse **/buy** to buy something\nuse **/sell** to sell something`)
-            await interaction.editReply({embeds:[successembed],components:[]})
+            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
         }
         else if(location == 'Aube Town Guild Outpost'){
             let successembed = new MessageEmbed()
@@ -140,6 +151,15 @@ let select =  new MessageActionRow().addComponents([
             .setTitle('LOCATION REACHED')
             .setDescription(`you visited ${location}, an outpost for the guild\n\nuse **/explore** to explore this location`)
             await interaction.editReply({embeds:[successembed],components:[]})
+        }
+        else if(location == 'None'){
+            const attachment = new MessageAttachment('assets/AubeTown/Aube_Town.jpg')
+            let successembed = new MessageEmbed()
+            .setColor('RANDOM')
+            .setTitle('LOCATION REACHED')
+            .setImage('attachment://Aube_Town.jpg')
+            .setDescription(`you visited Aube Town, the first town of solarstrio\n\nuse **/explore** to explore this location`)
+            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
         }
         
         
