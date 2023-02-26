@@ -49,6 +49,33 @@ export class BeerBuccaneer extends MonsterEntity {
                             .run(damage => `**${defender.name}** lost ${damage} HP by Knife Stab`)
                     }
                 },
+                {
+                    cooldown: 0,
+                    name: 'Knife Stab',
+                    description: 'attacks with a knife',
+                    canEvade: true,
+                    type: 'physical',
+                    mana_cost: 0,
+                    use: (attacker, defender) =>{
+                        attacker.addLogMessage(`**${attacker.name}** used Knife Stab`)
+                        defender.takeDamage
+                            .physical(attacker.attackDamage)
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Knife Stab`)
+                    }
+                }, {
+                    cooldown: 0,
+                    name: 'Knife Stab',
+                    description: 'attacks with a knife',
+                    canEvade: true,
+                    type: 'physical',
+                    mana_cost: 0,
+                    use: (attacker, defender) =>{
+                        attacker.addLogMessage(`**${attacker.name}** used Knife Stab`)
+                        defender.takeDamage
+                            .physical(attacker.attackDamage)
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Knife Stab`)
+                    }
+                },
             ],
         })
     }
