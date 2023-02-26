@@ -49,32 +49,6 @@ export class Treemick extends MonsterEntity {
                             .physical(attacker.attackDamage)
                             .run(damage => `**${defender.name}** lost ${damage} HP by Wood Spike`)
                     }
-                }, {
-                    cooldown: 0,
-                    name: 'Wood Spike',
-                    description: 'attacks with a spike of wood',
-                    canEvade: true,
-                    type: 'physical',
-                    mana_cost: 0,
-                    use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Wood Spike`)
-                        defender.takeDamage
-                            .physical(attacker.attackDamage)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by Wood Spike`)
-                    }
-                }, {
-                    cooldown: 0,
-                    name: 'Wood Spike',
-                    description: 'attacks with a spike of wood',
-                    canEvade: true,
-                    type: 'physical',
-                    mana_cost: 0,
-                    use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Wood Spike`)
-                        defender.takeDamage
-                            .physical(attacker.attackDamage)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by Wood Spike`)
-                    }
                 },
             ],
         })

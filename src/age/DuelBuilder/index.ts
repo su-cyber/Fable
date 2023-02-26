@@ -1,6 +1,5 @@
 import {
     CacheType,
-    Collector,
     CommandInteraction,
     InteractionCollector,
     MappedInteractionTypes,
@@ -52,7 +51,6 @@ class DuelBuilder {
     useSelect: MessageActionRow
     potions: Potion[]
     messageId: string
-    collector: InteractionCollector<MappedInteractionTypes['ACTION_ROW']>
 
     constructor({
         interaction,
@@ -312,7 +310,7 @@ class DuelBuilder {
         interaction.user.id === this.attacker.id && interaction.message.id === this.messageId
 
         
-        this.collector = this.interaction.channel.createMessageComponentCollector({ filter ,dispose:true})
+        let collector = this.interaction.channel.createMessageComponentCollector({ filter })
 
        
         // collector.setMaxListeners(Infinity)
@@ -320,11 +318,13 @@ class DuelBuilder {
         
         const thisThis = this
 
-        this.collector.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+        collector.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
             
             collected.deferUpdate().catch(() => null)
             if(collected.customId === `${this.interaction.id}_selectMenuSkills`){
             if(collected.values[0].startsWith(this.interaction.id)){
+                console.log(`Interaction Message ID: ${collected.message.id}`)
+            console.log(`Interaction Message ID: ${this.messageId}`)
                 const skillName = collected.values[0].split('_')[1]
 
                 if(skillName == 'Run'){
@@ -348,8 +348,6 @@ class DuelBuilder {
                 
                 
                 this.locker.unlock()
-                
-                
             }
             
             }
@@ -437,9 +435,9 @@ class DuelBuilder {
 
         
         this.removeCollector = () => {
-            this.collector.removeListener('collect',onCollect.bind(thisThis))
-            this.collector.stop()
-        
+            collector.removeListener('collect',onCollect.bind(thisThis))
+            collector.stop()
+            console.log("removed");
             
         }
 
@@ -454,12 +452,8 @@ class DuelBuilder {
         await this.beforeDuelStart()
 
         while (!(this.player1.isDead() || this.player2.isDead()) && !this.run) {
-            this.collector.addListener('collector',()=>{
-                console.log("added");
-                
-            })
             const skipTurn = await this.scheduler.run(this.attacker, this.defender)
-            
+
             await this.onTurn(skipTurn)
 
             const a = this.attacker
@@ -469,10 +463,6 @@ class DuelBuilder {
             this.defender = a
 
             this.turn += 1
-            this.collector.removeListener('collect',()=>{
-                console.log("removed");
-                
-            })
         }
 
         this.removeCollector()
