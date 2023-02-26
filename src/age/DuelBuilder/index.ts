@@ -215,13 +215,12 @@ class DuelBuilder {
     }
 
     async sendInfoMessage(skills: Skill[], disableComponent: boolean = false) {
-       const msg = await this.replyOrEdit({
+       await this.replyOrEdit({
             content: null,
             embeds: this.duelMessageEmbeds(),
             components: [this.createDuelComponent(skills, disableComponent),this.btn],
             
         })
-        this.messageId = msg.id
     }
 
     async replyOrEdit({
@@ -234,9 +233,10 @@ class DuelBuilder {
         components?: any
     }) {
         try {
-          return await this.interaction.reply({ content, embeds, components, fetchReply: true })
+          await this.interaction.reply({ content, embeds, components, fetchReply: true })
         } catch {
-           return await this.interaction.editReply({ content, embeds, components })
+           await this.interaction.deleteReply()
+           await this.interaction.channel.send({ content, embeds, components })
         }
          
          
@@ -323,8 +323,7 @@ class DuelBuilder {
             collected.deferUpdate().catch(() => null)
             if(collected.customId === `${this.interaction.id}_selectMenuSkills`){
             if(collected.values[0].startsWith(this.interaction.id)){
-                console.log(`Interaction Message ID: ${collected.message.id}`)
-            console.log(`Interaction Message ID: ${this.messageId}`)
+                
                 const skillName = collected.values[0].split('_')[1]
 
                 if(skillName == 'Run'){

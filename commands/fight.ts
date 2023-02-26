@@ -284,11 +284,7 @@ class PvEDuel extends DuelBuilder {
 
             return
         }
-        console.log('Attacker: ' + this.attacker.name)
-        console.log('Attacker ID: ' + this.attacker.id)
-        console.log('Interaction ID: ' + this.interaction?.id)
-        console.log(`Attacker Instance of MonsterEntity: ${this.attacker instanceof MonsterEntity}`)
-
+        
         if (this.attacker instanceof MonsterEntity) {
             
            
@@ -303,7 +299,6 @@ class PvEDuel extends DuelBuilder {
             await this.sendInfoMessage(this.attacker.skills, true)
             // this.deleteInfoMessages()
             const max = this.skill_len
-            console.log("length of skills:",max);
             
             const min = 0
             const skillName = this.attacker.skills[Math.floor(Math.random() * max)].name
