@@ -311,7 +311,7 @@ class DuelBuilder {
         let collector = this.interaction.channel.createMessageCollector({ filter })
 
        
-        // collector.setMaxListeners(Infinity)
+        collector.setMaxListeners(Infinity)
         
         
         const thisThis = this
