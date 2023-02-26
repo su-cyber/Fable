@@ -322,6 +322,7 @@ class DuelBuilder {
                 
                 const skillName = thisThis.attacker.skills[0].name
                 await this.onSkillSelect(skillName)
+                
              }
              else if(i.customId === 'skill_2'){
                 const skillName = thisThis.attacker.skills[1].name
@@ -331,6 +332,7 @@ class DuelBuilder {
                 const skillName = thisThis.attacker.skills[2].name
                 await this.onSkillSelect(skillName)
              }
+             this.collector.stop()
             })
         this.collector_btn.on('collect', async i => {
             i.deferUpdate().catch(() => null)
