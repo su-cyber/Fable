@@ -346,7 +346,11 @@ class DuelBuilder {
                 
                 
                 this.locker.unlock()
-                collector.empty()
+                console.log(collector.eventNames())
+                console.log(collector.collected);
+                console.log(collector.listeners());
+                
+                
             }
             
             }
