@@ -304,8 +304,8 @@ class DuelBuilder {
         }
 
 
-        const filter = m =>
-        m.user.id === this.attacker.id
+        const filter = (m:Message)=>
+        m.author.id === this.attacker.id
 
         
         let collector = this.interaction.channel.createMessageCollector({ filter })
