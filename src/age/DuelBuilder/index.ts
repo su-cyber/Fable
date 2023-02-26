@@ -318,15 +318,17 @@ class DuelBuilder {
             i.deferUpdate().catch(() => null)
             
              if(i.customId === 'skill_1'){
-                const skillName = this.attacker.skills[0].name
+                console.log("called");
+                
+                const skillName = thisThis.attacker.skills[0].name
                 await this.onSkillSelect(skillName)
              }
              else if(i.customId === 'skill_2'){
-                const skillName = this.attacker.skills[1].name
+                const skillName = thisThis.attacker.skills[1].name
                 await this.onSkillSelect(skillName)
              }
              if(i.customId === 'skill_3'){
-                const skillName = this.attacker.skills[2].name
+                const skillName = thisThis.attacker.skills[2].name
                 await this.onSkillSelect(skillName)
              }
             })
