@@ -310,7 +310,7 @@ class DuelBuilder {
         interaction.user.id === this.attacker.id && interaction.message.id === this.messageId
 
         
-        let collector = this.interaction.channel.createMessageComponentCollector({ filter })
+        let collector = this.interaction.channel.createMessageComponentCollector({ filter ,dispose:true})
 
        
         // collector.setMaxListeners(Infinity)
@@ -346,9 +346,11 @@ class DuelBuilder {
                 
                 
                 this.locker.unlock()
-                console.log(collector.eventNames())
-                console.log(collector.collected);
-                console.log(collector.listeners('collect'));
+                
+               collector.removeListener('collect',() =>{
+                console.log("removed");
+                
+               })
                 
                 
             }
@@ -466,6 +468,7 @@ class DuelBuilder {
             this.defender = a
 
             this.turn += 1
+            
         }
 
         this.removeCollector()
