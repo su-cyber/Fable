@@ -304,20 +304,29 @@ class DuelBuilder {
         }
 
 
-        const filter = (m:Message)=>
-        m.author.id === this.attacker.id
+        const filter = (interaction: any) =>
+            
+        (interaction.customId === 'run_btn' || interaction.customId === 'use_btn'|| interaction.customId === `${this.interaction.id}_selectMenuSkills` || interaction.customId === 'use_menu') &&
+        interaction.user.id === this.attacker.id && interaction.message.id === this.messageId
 
         
-        let collector = this.interaction.channel.createMessageCollector({ filter })
+        let collector = this.interaction.channel.createMessageComponentCollector({ filter })
 
        
-        collector.setMaxListeners(Infinity)
+        // collector.setMaxListeners(Infinity)
         
         
         const thisThis = this
 
-        collector.on('collect',async m => {
-                const skillName = m.content
+        collector.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+            
+            collected.deferUpdate().catch(() => null)
+            if(collected.customId === `${this.interaction.id}_selectMenuSkills`){
+            if(collected.values[0].startsWith(this.interaction.id)){
+                console.log(`Interaction Message ID: ${collected.message.id}`)
+            console.log(`Interaction Message ID: ${this.messageId}`)
+                const skillName = collected.values[0].split('_')[1]
+
                 if(skillName == 'Run'){
                      this.addLogMessage(`${this.attacker.name} is trying to run away...`)
                      sleep(2)
@@ -339,7 +348,88 @@ class DuelBuilder {
                 
                 
                 this.locker.unlock()
+            }
             
+            }
+             else if(collected.customId === 'use_btn'){
+                
+                    let interaction = this.interaction
+                   
+                    inventory.findOne({userID:collected.user.id},async function(err,foundUser){
+                        const potions = foundUser.inventory.potions
+                        let potions_filtered= []
+                        
+                        let useSelect
+                    if(foundUser.inventory.potions.length === 0){
+                        useSelect = new MessageActionRow().addComponents([
+                            new MessageSelectMenu()
+                            .setCustomId('use_menu')
+                                .setPlaceholder(`Select a potion ${collected.user.username}`)
+                                .addOptions({
+                                    
+                                        label: 'None',
+                                        description: 'you are out of potions',
+                                        value: 'None',
+                                }
+                                )
+                                .setDisabled(false),
+                        ]) 
+                    }
+                    else{
+                        
+                        useSelect = new MessageActionRow().addComponents([
+                            new MessageSelectMenu()
+                            .setCustomId('use_menu')
+                                .setPlaceholder(`Select a potion ${collected.user.username}`)
+                                .addOptions(
+                                    potions.map(item => ({
+                                        label: item.name.name,
+                                        description: item.name.description,
+                                        value: item.name.name,
+                                    }))
+                                )
+                                .setDisabled(false),
+                        ])
+                    }
+               
+               
+                    interaction.editReply({components:[useSelect]})
+                
+               
+                    
+                
+                
+                })
+    
+                 
+                
+ 
+            }
+            else if(collected.customId === 'use_menu'){
+                collected.deferUpdate().catch(() => null)
+                //insert potions code here
+                inventory.findOne({userID:collected.user.id},async function(err,foundUser){
+                const PotionName = collected.values[0]
+                await thisThis.onPotionSelect(PotionName)
+                
+                
+                thisThis.locker.unlock()
+                
+                if(PotionName == 'None'){
+
+                }
+                else{
+                    const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
+                    foundPotion.quantity-=1
+                    if(foundPotion.quantity===0){
+                        const index = foundUser.inventory.potions.indexOf(foundPotion)
+                        foundUser.inventory.potions.splice(index)
+                    }
+                }
+                    
+                    await inventory.updateOne({userID:collected.user.id},foundUser)
+            })
+        }
         })
        
 
