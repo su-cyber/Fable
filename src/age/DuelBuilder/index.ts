@@ -332,7 +332,7 @@ class DuelBuilder {
                 const skillName = thisThis.attacker.skills[2].name
                 await this.onSkillSelect(skillName)
              }
-             this.collector.stop()
+             this.collector.empty()
             })
         this.collector_btn.on('collect', async i => {
             i.deferUpdate().catch(() => null)
