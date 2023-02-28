@@ -263,6 +263,7 @@ class PvEDuel extends DuelBuilder {
     
 
     async onSkillSelect(skillName: string) {
+        skillName = 'Basic attack'
         const skill = allskills.find(skill => skill.name === skillName)
 
         this.attacker.useSkill(this.attacker,this.defender,skill)
@@ -271,17 +272,17 @@ class PvEDuel extends DuelBuilder {
     
     
 
-    async onTurn() {
+    async onTurn(skipTurn: boolean) {
         const isMonsterTurn = this.attacker instanceof MonsterEntity
 
-        // if (skipTurn) {
-        //     if (isMonsterTurn) {
-        //         await sleep(1.5)
-        //         this.deleteInfoMessages()
-        //     }
+        if (skipTurn) {
+            if (isMonsterTurn) {
+                await sleep(1.5)
+                this.deleteInfoMessages()
+            }
 
-        //     return
-        // }
+            return
+        }
         
         if (this.attacker instanceof MonsterEntity) {
             
@@ -294,23 +295,18 @@ class PvEDuel extends DuelBuilder {
             
         } else {
            
-            // await this.sendInfoMessage(this.attacker.skills, true)
-            // // this.deleteInfoMessages()
-            // const max = this.skill_len
+            await this.sendInfoMessage(this.attacker.skills, true)
+            // this.deleteInfoMessages()
+            const max = this.skill_len
             
-            // const min = 0
-            // const skillName = this.attacker.skills[Math.floor(Math.random() * max)].name
-            // console.log(skillName);
+            const min = 0
+            const skillName = this.attacker.skills[Math.floor(Math.random() * max)].name
+            console.log(skillName);
             
-            // const skill = allskills.find(skill => skill.name === skillName)
+            const skill = allskills.find(skill => skill.name === skillName)
     
-            // this.attacker.useSkill(this.attacker,this.defender,skill)
-            // await sleep(1.5)
-            await this.sendInfoMessage(this.attacker.skills)
+            this.attacker.useSkill(this.attacker,this.defender,skill)
             await sleep(1.5)
-            this.deleteInfoMessages()
-            await this.locker.wait()
-            this.locker.lock()
             
             
         }
