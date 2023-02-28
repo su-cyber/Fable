@@ -235,7 +235,7 @@ class DuelBuilder {
         try {
           await this.interaction.reply({ content, embeds, components, fetchReply: true })
         } catch {
-           await this.interaction.editReply({ content, embeds, components })
+           await this.interaction.channel.send({ content, embeds, components })
         }
          
          
