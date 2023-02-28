@@ -271,7 +271,7 @@ class PvEDuel extends DuelBuilder {
     
     
 
-    async onTurn(skipTurn: boolean) {
+    async onTurn() {
         const isMonsterTurn = this.attacker instanceof MonsterEntity
 
         // if (skipTurn) {
