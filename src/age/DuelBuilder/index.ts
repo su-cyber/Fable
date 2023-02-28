@@ -235,7 +235,7 @@ class DuelBuilder {
         try {
           await this.interaction.reply({ content, embeds, components, fetchReply: true })
         } catch {
-           await this.interaction.channel.send({ content, embeds, components })
+           await this.interaction.editReply({ content, embeds, components })
         }
          
          
@@ -344,7 +344,7 @@ class DuelBuilder {
                     await this.onSkillSelect(skillName)
                 }
                 
-                
+                this.removeCollector()
                 this.locker.unlock()
             }
             
@@ -434,9 +434,7 @@ class DuelBuilder {
         
         this.removeCollector = () => {
             collector.removeListener('collect',onCollect.bind(thisThis))
-            collector.stop()
-            console.log("removed");
-            
+
         }
 
         this.player1.beforeDuelStart(this.player1, this.player2,this.interaction)
@@ -453,7 +451,7 @@ class DuelBuilder {
             const skipTurn = await this.scheduler.run(this.attacker, this.defender)
 
             await this.onTurn(skipTurn)
-
+            this.removeCollector()
             const a = this.attacker
             const b = this.defender
 

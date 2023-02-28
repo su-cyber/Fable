@@ -309,6 +309,7 @@ class PvEDuel extends DuelBuilder {
             // await sleep(1.5)
             await this.sendInfoMessage(this.attacker.skills)
             await sleep(1.5)
+            this.deleteInfoMessages()
             await this.locker.wait()
             this.locker.lock()
             
