@@ -306,7 +306,7 @@ class DuelBuilder {
         const filter = (interaction: any) =>
             
         (interaction.customId === 'run_btn' || interaction.customId === 'use_btn'|| interaction.customId === `${this.interaction.id}_selectMenuSkills` || interaction.customId === 'use_menu') &&
-        interaction.user.id === this.attacker.id && interaction.message.id === this.messageId
+        interaction.user.id === this.attacker.id
 
         
         let collector = this.interaction.channel.createMessageComponentCollector({ filter })
