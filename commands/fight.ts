@@ -273,7 +273,6 @@ class PvEDuel extends DuelBuilder {
     
 
     async onTurn(skipTurn: boolean) {
-        console.log('Skip Turn: ', skipTurn)
         const isMonsterTurn = this.attacker instanceof MonsterEntity
 
         if (skipTurn) {
@@ -296,18 +295,22 @@ class PvEDuel extends DuelBuilder {
             
         } else {
            
-            await this.sendInfoMessage(this.attacker.skills, true)
-            // this.deleteInfoMessages()
-            const max = this.skill_len
+            // await this.sendInfoMessage(this.attacker.skills, true)
+            // // this.deleteInfoMessages()
+            // const max = this.skill_len
             
-            const min = 0
-            const skillName = this.attacker.skills[Math.floor(Math.random() * max)].name
-            console.log(skillName);
+            // const min = 0
+            // const skillName = this.attacker.skills[Math.floor(Math.random() * max)].name
+            // console.log(skillName);
             
-            const skill = allskills.find(skill => skill.name === skillName)
+            // const skill = allskills.find(skill => skill.name === skillName)
     
-            this.attacker.useSkill(this.attacker,this.defender,skill)
+            // this.attacker.useSkill(this.attacker,this.defender,skill)
+            // await sleep(1.5)
+            await this.sendInfoMessage(this.attacker.skills)
             await sleep(1.5)
+            await this.locker.wait()
+            this.locker.lock()
             
             
         }
