@@ -463,7 +463,7 @@ class DuelBuilder {
         }
 
         this.removeCollector()
-        await this.interaction.deleteReply()
+
         
         
 
