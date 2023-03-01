@@ -47,6 +47,7 @@ export class Warrior extends ClassEntity {
                     description: 'Basic attack',
                     canEvade: true,
                     mana_cost: 0,
+                    damage:0,
                     type: 'physical',
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`**${attacker.name}** used Basic attack`)
@@ -61,6 +62,7 @@ export class Warrior extends ClassEntity {
                     description: 'Charge a powerful attack for 1 turn',
                     canEvade: true,
                     mana_cost: 0,
+                    damage:0,
                     type: 'physical',
                     use: (attacker, defender) => {
                         
@@ -85,6 +87,7 @@ export class Warrior extends ClassEntity {
                     description: 'Apply bleeding for 3 turns',
                     canEvade: true,
                     mana_cost: 0,
+                    damage:0,
                     type: 'physical',
                     use: (attacker, defender) => {
                         const deepCut = attacker.scheduler.task
@@ -113,6 +116,7 @@ export class Warrior extends ClassEntity {
                     name: 'Fireball',
                     description: 'Dealing damage and burning them for 3 turns',
                     canEvade: true,
+                    damage:0,
                     mana_cost: 20,
                     type: 'magical',
                     use: (attacker, defender) => {

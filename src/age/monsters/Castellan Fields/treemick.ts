@@ -41,6 +41,7 @@ export class Treemick extends MonsterEntity {
                     name: 'Wood Spike',
                     description: 'attacks with a spike of wood',
                     canEvade: true,
+                    damage:0,
                     type: 'physical',
                     mana_cost: 0,
                     use: (attacker, defender) =>{

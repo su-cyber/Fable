@@ -55,6 +55,7 @@ export class BloodHound extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     mana_cost: 0,
+                    damage:0,
                     use: (attacker, defender) =>
                         defender.takeDamage
                             .physical(attacker.attackDamage)
@@ -68,6 +69,7 @@ export class BloodHound extends MonsterEntity {
                     description: 'Increases attack damage for a short time',
                     canEvade: false,
                     type: 'self',
+                    damage:0,
                     mana_cost: 0,
                     use: (attacker, defender) => {
                         const bloodlust = attacker.scheduler.task

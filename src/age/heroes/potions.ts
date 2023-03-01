@@ -10,6 +10,7 @@ const potions = [
         description: 'Recovers 20 HP instantly',
         canEvade: false,
         mana_cost: 0,
+        damage:0,
         type: 'self',
         use: (attacker, defender) =>{
             attacker.health+=20
@@ -31,6 +32,7 @@ const potions = [
             description: 'Recovers 50 mana instantly',
             canEvade: false,
             mana_cost: 0,
+            damage:0,
             type: 'self',
             use: (attacker, defender) =>{
                 attacker.mana+=50
@@ -52,6 +54,7 @@ const potions = [
         description: 'no potions',
         canEvade: false,
         mana_cost: 0,
+        damage:0,
         type: 'self',
         use: (attacker, defender) =>{
             attacker.addLogMessage(`You are out of potions!`)

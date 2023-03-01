@@ -118,6 +118,7 @@ export class Dryad extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     mana_cost: 50,
+                    damage:0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`**${attacker.name}** used Wood Dragon`)
                         defender.takeDamage
@@ -132,6 +133,7 @@ export class Dryad extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     mana_cost: 40,
+                    damage:0,
                     use: (attacker, defender) => {
                         const devour = attacker.scheduler.task
                             .id('Dryad__devouring-roots')
@@ -165,6 +167,7 @@ export class Dryad extends MonsterEntity {
                     name: 'Hymn of Forest',
                     description: 'Increases attack damage for a short time',
                     canEvade: false,
+                    damage:0,
                     type: 'magical',
                     mana_cost: 80,
                     use: (attacker, defender) => {
@@ -186,6 +189,7 @@ export class Dryad extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     mana_cost: 60,
+                    damage:0,
                     use: (attacker, defender) => {
                         const n = randint(2, 5)
                        
@@ -210,6 +214,7 @@ export class Dryad extends MonsterEntity {
                     canEvade: false,
                     type: 'magical',
                     mana_cost: 30,
+                    damage:0,
                     use: (attacker, defender) => {
                         const floral_illusion = attacker.scheduler.task
                             .id('chimera__floral-illusion')

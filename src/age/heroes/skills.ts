@@ -11,6 +11,7 @@ const skills = [
         description: 'Basic attack',
         canEvade: true,
         mana_cost: 0,
+        damage:0,
         type: 'physical',
         use: (attacker, defender) =>{
             attacker.addLogMessage(`**${attacker.name}** used Basic attack`)
@@ -25,6 +26,7 @@ const skills = [
         description: 'Charge a powerful attack for 1 turn',
         canEvade: true,
         mana_cost: 0,
+        damage:40,
         type: 'physical',
         use: (attacker, defender) => {
             
@@ -33,7 +35,7 @@ const skills = [
                 .turnOf(attacker)
                 .skipTurn.run(() =>
                     defender.takeDamage
-                        .physical(attacker.attackDamage*2)
+                        .physical(attacker.attackDamage+40)
                         .run(damage => `**${defender.name}** lost ${damage} HP by Charged Attack`)
             
                 )
@@ -50,6 +52,7 @@ const skills = [
         canEvade: true,
         mana_cost: 0,
         type: 'physical',
+        damage:20,
         use: (attacker, defender) => {
             const deepCut = attacker.scheduler.task
                 .turns(3)
@@ -57,7 +60,7 @@ const skills = [
                 .end(() => defender.removeEffect(bleeding))
                 .run(() =>
                     defender.takeDamage
-                        .physical(attacker.attackDamage*0.5)
+                        .physical(attacker.attackDamage+20)
                         .run(
                             damage =>
                                 `**${defender.name}** lost ${damage} HP due to ${emoji.BLEED}`
@@ -79,6 +82,7 @@ const skills = [
         canEvade: true,
         mana_cost: 20,
         type: 'magical',
+        damage:100,
         use: (attacker, defender) => {
             const fireball = attacker.scheduler.task.all
                 .effect(burning)

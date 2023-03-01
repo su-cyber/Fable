@@ -55,6 +55,7 @@ export class Mage extends ClassEntity {
                     description: 'Basic Attack',
                     canEvade: true,
                     mana_cost: 0,
+                    damage:0,
                     type: 'physical',
                     use: (attacker, defender) =>
                         defender.takeDamage
@@ -68,6 +69,7 @@ export class Mage extends ClassEntity {
                     canEvade: true,
                     mana_cost: 20,
                     type: 'magical',
+                    damage:0,
                     use: (attacker, defender) => {
                         const fireball = attacker.scheduler.task.all
                             .effect(burning)

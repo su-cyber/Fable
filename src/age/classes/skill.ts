@@ -7,5 +7,6 @@ export type Skill = {
     canEvade: boolean
     type: string
     mana_cost: number
+    damage: number
     use: (attacker: Entity, defender: Entity) => string | string[] | void
 }

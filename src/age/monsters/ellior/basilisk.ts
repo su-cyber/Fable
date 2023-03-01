@@ -71,6 +71,7 @@ export class Basilisk extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     mana_cost: 0,
+                    damage:0,
                     use: (attacker, defender) => {
                         const poisonBreath = attacker.scheduler.task
                             .id('basilisk__poison')
@@ -98,6 +99,7 @@ export class Basilisk extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     mana_cost: 20,
+                    damage:0,
                     use: (attacker, defender) => {
                         const _paralyzed = attacker.scheduler.task
                             .id('basilisk__serpent-gaze')
@@ -120,6 +122,7 @@ export class Basilisk extends MonsterEntity {
                     description: 'Increases attack damage for a short time',
                     canEvade: true,
                     type: 'physical',
+                    damage:0,
                     mana_cost: 0,
                     use: (attacker, defender) => {
                         const lostedArmor = percentOf(0.15, defender.armor)
@@ -142,6 +145,7 @@ export class Basilisk extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     mana_cost: 0,
+                    damage:0,
                     use: (attacker, defender) => {
                         defender.takeDamage.physical(30).run(damage => {
                             const venomBite = attacker.scheduler.task

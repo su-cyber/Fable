@@ -42,6 +42,7 @@ export class Slime extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     mana_cost: 0,
+                    damage:0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`**${attacker.name}** used Dissolve`)
                         defender.takeDamage

@@ -5,6 +5,7 @@ const passive_skills = [
         description: '+5HP every turn',
         canEvade: false,
         mana_cost: 0,
+        damage:0,
         type: 'passive',
         use: (attacker, defender) => {
             const Regeneration = attacker.scheduler.task

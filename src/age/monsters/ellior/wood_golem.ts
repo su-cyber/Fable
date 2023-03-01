@@ -89,6 +89,7 @@ export class WoodGolem extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     mana_cost: 0,
+                    damage:0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`**${attacker.name}** used Titanic Smash`)
                         defender.takeDamage
@@ -102,6 +103,7 @@ export class WoodGolem extends MonsterEntity {
                     description: 'Increases attack damage for a short time',
                     canEvade: true,
                     type: 'magical',
+                    damage:0,
                     mana_cost: 30,
                     use: (attacker, defender) => {
                         const _paralyzed = attacker.scheduler.task
@@ -125,6 +127,7 @@ export class WoodGolem extends MonsterEntity {
                     description: 'Increases attack damage for a short time',
                     canEvade: true,
                     type: 'magical',
+                    damage:0,
                     mana_cost: 50,
                     use: (attacker, defender) => {
                         defender.evasion=defender.evasion-0.3*defender.evasion
@@ -146,6 +149,7 @@ export class WoodGolem extends MonsterEntity {
                     description: 'Increases attack damage for a short time',
                     canEvade: true,
                     type: 'magical',
+                    damage:0,
                     mana_cost: 80,
                     use: (attacker, defender) => {
                         defender.takeDamage.magical(200).run(damage => {
@@ -175,6 +179,7 @@ export class WoodGolem extends MonsterEntity {
                     description: 'Increases attack damage for a short time',
                     canEvade: false,
                     type: 'self',
+                    damage:0,
                     mana_cost: 0,
                     use: (attacker, defender) => {
                         const gainedArmor = percentOf(0.5, attacker.armor)

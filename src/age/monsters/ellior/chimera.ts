@@ -59,6 +59,7 @@ export class Chimera extends MonsterEntity {
                     description: 'Basic attack',
                     canEvade: true,
                     type: 'magical',
+                    damage:0,
                     mana_cost: 30,
                     use: (attacker, defender) => {
                         const fireBreath = attacker.scheduler.task
@@ -88,6 +89,7 @@ export class Chimera extends MonsterEntity {
                     description: 'Increases attack damage for a short time',
                     canEvade: true,
                     type: 'physical',
+                    damage:0,
                     mana_cost: 0,
                     use: (attacker, defender) => {
                         const venomSplash = attacker.scheduler.task
@@ -119,6 +121,7 @@ export class Chimera extends MonsterEntity {
                     description: 'attacker is unable to use physical attacks for 2 turns',
                     canEvade: false,
                     mana_cost: 0,
+                    damage:0,
                     use: (attacker, defender) => {
                         
                         const aerialCombat = attacker.scheduler.task
@@ -142,6 +145,7 @@ export class Chimera extends MonsterEntity {
                     description: 'Increases attack damage for a short time',
                     canEvade: true,
                     type: 'physical',
+                    damage:0,
                     mana_cost: 0,
                     use: (attacker, defender) => {
                         const madRam = attacker.scheduler.task

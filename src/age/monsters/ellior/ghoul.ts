@@ -42,6 +42,7 @@ export class Ghoul extends MonsterEntity {
                     description: 'Basic attack',
                     canEvade: true,
                     type: 'physical',
+                    damage:0,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`**${attacker.name}** used Claw attack`)
@@ -56,6 +57,7 @@ export class Ghoul extends MonsterEntity {
                     description: 'Increases attack damage for a short time',
                     canEvade: false,
                     type: 'physical',
+                    damage:0,
                     mana_cost: 0,
                     use: (attacker, defender) => {
                         const drainedArmor = percentOf(0.05, defender.armor)

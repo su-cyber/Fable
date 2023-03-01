@@ -42,6 +42,7 @@ export class Arachnids extends MonsterEntity {
                     cooldown: 0,
                     name: 'Poison Sting',
                     description: 'Basic attack',
+                    damage:0,
                     canEvade: true,
                     mana_cost: 0,
                     type: 'physical',

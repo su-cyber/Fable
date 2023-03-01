@@ -48,6 +48,7 @@ export class DireWolf extends MonsterEntity {
                     description: 'Basic attack',
                     canEvade: true,
                     type: 'physical',
+                    damage:0,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`**${attacker.name}** used Razor Bite`)
@@ -61,6 +62,7 @@ export class DireWolf extends MonsterEntity {
                     name: 'Wild reflex',
                     description: 'Increases attack damage for a short time',
                     canEvade: false,
+                    damage:0,
                     type: 'self',
                     mana_cost: 0,
                     use: (attacker, defender) => {
@@ -79,6 +81,7 @@ export class DireWolf extends MonsterEntity {
                     name: 'Mutilate',
                     description: 'Increases attack damage for a short time',
                     canEvade: true,
+                    damage:0,
                     type: 'physical',
                     mana_cost: 0,
                     use: (attacker, defender) => {
