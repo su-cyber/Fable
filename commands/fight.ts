@@ -308,7 +308,7 @@ class PvEDuel extends DuelBuilder {
             // await sleep(1.5)
             
             if(turn == 0 || turn==1){
-                for(let j=0;j<4;j++){
+                for(let j=0;j<this.attacker.skills.length-j;j++){
                     let val = allskills.find(skill => skill.name === this.attacker.skills[j].name)
                     this.attacker.skills.push(val)
                 }
