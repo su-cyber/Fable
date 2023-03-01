@@ -246,7 +246,7 @@ class DuelBuilder {
         this.logMessages.length = 0
     }
 
-    async onTurn(skipTurn: boolean) {}
+    async onTurn(skipTurn: boolean,turn: number) {}
 
     async onSkillSelect(skillName: string) {
         this.deleteInfoMessages()
@@ -451,7 +451,7 @@ class DuelBuilder {
             this.removeCollector()
             const skipTurn = await this.scheduler.run(this.attacker, this.defender)
 
-            await this.onTurn(skipTurn)
+            await this.onTurn(skipTurn,this.turn)
             
             const a = this.attacker
             const b = this.defender
