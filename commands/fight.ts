@@ -308,18 +308,21 @@ class PvEDuel extends DuelBuilder {
             // await sleep(1.5)
             
             if(turn == 0 || turn==1){
-                for(let j=0;j<this.attacker.skills.length-j;j++){
-                    let val = allskills.find(skill => skill.name === this.attacker.skills[j].name)
+                let skills = this.attacker.skills
+                this.attacker.skills=[]
+                for(let j=0;j<skills.length;j++){
+                    
+                    let val = allskills.find(skill => skill.name === skills[j].name)
                     this.attacker.skills.push(val)
                 }
             }
                 
             
             
-            let strongest = this.attacker.skills[4].damage
-            let strongest_type = this.attacker.skills[4].type
-            let strongest_name = this.attacker.skills[4].name
-            for(let i=4;i<this.attacker.skills.length;i++){
+            let strongest = this.attacker.skills[0].damage
+            let strongest_type = this.attacker.skills[0].type
+            let strongest_name = this.attacker.skills[0].name
+            for(let i=0;i<this.attacker.skills.length;i++){
                 if(this.attacker.skills[i].type=="physical"){
                     if(strongest_type=="physical"){
                         if(this.attacker.skills[i].damage+this.attacker.attackDamage>strongest+this.attacker.attackDamage
