@@ -319,7 +319,7 @@ class PvEDuel extends DuelBuilder {
             let strongest = this.attacker.skills[4].damage
             let strongest_type = this.attacker.skills[4].type
             let strongest_name = this.attacker.skills[4].name
-            for(let i=4;i<skills.length;i++){
+            for(let i=4;i<this.attacker.skills.length;i++){
                 if(this.attacker.skills[i].type=="physical"){
                     if(strongest_type=="physical"){
                         if(this.attacker.skills[i].damage+this.attacker.attackDamage>strongest+this.attacker.attackDamage
