@@ -228,6 +228,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
     }
 )
 
+let skills =[]
 async function monstersDropdown(location:String) {
     const monsters = await getMonsters(location)
 
@@ -271,8 +272,6 @@ class PvEDuel extends DuelBuilder {
     }
     
     
-    
-
     async onTurn(skipTurn: boolean,turn:number) {
         const isMonsterTurn = this.attacker instanceof MonsterEntity
 
@@ -307,14 +306,13 @@ class PvEDuel extends DuelBuilder {
     
             // this.attacker.useSkill(this.attacker,this.defender,skill)
             // await sleep(1.5)
-            let skills
-            if(turn==0 || turn ==1){
-                skills=[]
+            
+            
                 for(let j=0;j<this.attacker.skills.length;j++){
                     let val = allskills.find(skill => skill.name === this.attacker.skills[j].name)
                     skills.push(val)
                 }
-            }
+            
             
             let strongest = skills[0].damage
             let strongest_type = skills[0].type
