@@ -338,7 +338,7 @@ class PvEDuel extends DuelBuilder {
                     }
                     
                 }
-                else if(skills[i].type=="magical"){
+                else if(this.attacker.skills[i].type=="magical"){
                     if(strongest_type=="physical"){
                         if(this.attacker.skills[i].damage+this.attacker.magicPower>strongest+this.attacker.attackDamage){
                             strongest = this.attacker.skills[i].damage
