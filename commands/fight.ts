@@ -307,6 +307,7 @@ class PvEDuel extends DuelBuilder {
             
             
         } else {
+           console.log(this.speed);
            
             await this.sendInfoMessage(this.attacker.skills, true)
             // const max = this.skill_len
