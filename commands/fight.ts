@@ -309,7 +309,6 @@ class PvEDuel extends DuelBuilder {
             
             
         } else {
-           console.log(this.speed);
            
             await this.sendInfoMessage(this.attacker.skills, true)
             // const max = this.skill_len
@@ -412,11 +411,12 @@ class PvEDuel extends DuelBuilder {
             
         }
 
-        await this.sendInfoMessage(this.attacker.skills)
+        await this.sendInfoMessage(this.attacker.skills,true)
         
     }
 
     async onEnd(winner: Entity, loser: MonsterEntity) {
+    await this.sendInfoMessage(this.attacker.skills,true)
        const authorID = this.interaction.user.id
         profileModel.findOne({userID:authorID},async function(err,foundUser) {
             
