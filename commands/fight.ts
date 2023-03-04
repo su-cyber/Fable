@@ -412,7 +412,7 @@ class PvEDuel extends DuelBuilder {
             
         }
 
-        // await this.sendInfoMessage(this.attacker.skills)
+        await this.sendInfoMessage(this.attacker.skills)
         
     }
 
