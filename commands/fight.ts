@@ -21,9 +21,9 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
             option.setName('speed')
             .setDescription('set speed of simulation:1x,2x,4x')
             .setRequired(true)
-            .addChoice('1x',2.5)
-            .addChoice('2x',1.5)
-            .addChoice('4x',0.5)
+            .addChoice('1x',5.5)
+            .addChoice('2x',3.5)
+            .addChoice('4x',1.5)
 )
 .setDo(
     async (bot, interaction) => {
