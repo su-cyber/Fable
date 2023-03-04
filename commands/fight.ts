@@ -19,13 +19,11 @@ import { SlashCommandIntegerOption, SlashCommandUserOption } from '@discordjs/bu
 export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
             option.setName('speed')
-            .setDescription('set speed of simulation, 2x,4x')
+            .setDescription('set speed of simulation:1x,2x,4x')
             .setRequired(true)
-            .addChoices(
-                {name:'1x',value:2.5},
-                {name:'2x',value:1.5},
-                {name:'4x',value:0.5},
-                )
+            .addChoice('1x',2.5)
+            .addChoice('2x',1.5)
+            .addChoice('4x',0.5)
 )
 .setDo(
     async (bot, interaction) => {
