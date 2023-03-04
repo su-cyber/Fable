@@ -14,14 +14,29 @@ import inventory from '../models/InventorySchema'
 import { SlashCommandStringOption } from '@discordjs/builders'
 import specialModel from '../models/specialSchema'
 import sample from 'lodash.sample'
-
+import { SlashCommandIntegerOption, SlashCommandUserOption } from '@discordjs/builders'
 
 export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
+.addIntegerOption((option: SlashCommandIntegerOption) => 
+            option.setName('speed').setDescription('set speed of simulation, 2x,4x').setRequired(false)
+)
 .setDo(
     async (bot, interaction) => {
         const authorId = interaction.user.id
         const author = await bot.users.fetch(authorId)
         const guildID = interaction.guildId;
+        const userspeed = interaction.options.getInteger('speed')
+        let setspeed
+        if(userspeed == 2){
+            setspeed = 1.5
+        }
+        else if(userspeed == 4){
+            setspeed = 0.5
+        }
+        else{
+            setspeed = 2.5
+        }
+        
         
         
         
@@ -113,6 +128,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                             interaction,
                                             player1: attacker,
                                             player2: monster,
+                                            speed:setspeed,
                                         }).start()
                                         
                                     }
@@ -121,6 +137,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                             interaction,
                                             player1: monster,
                                             player2: attacker,
+                                            speed:setspeed
                                         }).start()
                                     }
                                                 }
@@ -248,6 +265,7 @@ async function monstersDropdown(location:String) {
 class PvEDuel extends DuelBuilder {
     player1: Entity
     player2: MonsterEntity
+    speed: number
     
     async beforeDuelStart() {
         super.beforeDuelStart()
@@ -277,7 +295,7 @@ class PvEDuel extends DuelBuilder {
 
         if (skipTurn) {
             if (isMonsterTurn) {
-                await sleep(1.5)
+                await sleep(this.speed)
                 this.deleteInfoMessages()
             }
 
@@ -290,7 +308,7 @@ class PvEDuel extends DuelBuilder {
             await this.sendInfoMessage(this.attacker.skills, true)
 
             this.attacker.useSkill(this.attacker,this.defender)
-            await sleep(1.5)
+            await sleep(this.speed)
             
             
         } else {
@@ -364,11 +382,11 @@ class PvEDuel extends DuelBuilder {
             if(this.attacker.mana>=skill.mana_cost){
                 if(this.attacker.mana>=2*skill.mana_cost){
                     this.attacker.useSkill(this.attacker,this.defender,skill)
-                    await sleep(1.5)
+                    await sleep(this.speed)
                 }
                 else{
                     this.attacker.useSkill(this.attacker,this.defender,skill)
-                    await sleep(1.5)
+                    await sleep(this.speed)
                     const index = this.attacker.skills.indexOf(skill)
                     this.attacker.skills.splice(index,1)
 
@@ -380,11 +398,11 @@ class PvEDuel extends DuelBuilder {
                 skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
                 if(skill){
                     this.attacker.useSkill(this.attacker,this.defender,skill)
-                    await sleep(1.5)
+                    await sleep(this.speed)
                 }
                 else{
                     this.attacker.useSkill(this.attacker,this.defender,sample(skills))
-                    await sleep(1.5)
+                    await sleep(this.speed)
                 }
                
                 

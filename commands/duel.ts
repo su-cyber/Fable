@@ -122,6 +122,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         interaction,
                                         player1: attacker,
                                         player2: defender,
+                                        speed:2.5
                                     }).start()
                                 }
                                 else{
@@ -129,6 +130,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         interaction,
                                         player1: defender,
                                         player2: attacker,
+                                        speed:2.5
                                     }).start()
                                 }
                                 
@@ -160,13 +162,14 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
 class PvPDuel extends DuelBuilder {
     player1: Entity
     player2: Entity
+    speed:number
 
     async onTurn(skipTurn: boolean) {
         const isMonsterTurn = this.attacker instanceof MonsterEntity
 
         if (skipTurn) {
             if (isMonsterTurn) {
-                await sleep(1.5)
+                await sleep(this.speed)
                 this.deleteInfoMessages()
             }
 
@@ -184,7 +187,7 @@ class PvPDuel extends DuelBuilder {
         } else {
             
             await this.sendInfoMessage(this.attacker.skills)
-            await sleep(1.5)
+            await sleep(this.speed)
             this.deleteInfoMessages()
             await this.locker.wait()
             this.locker.lock()

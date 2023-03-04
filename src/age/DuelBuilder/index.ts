@@ -56,10 +56,12 @@ class DuelBuilder {
         interaction,
         player1,
         player2,
+        speed
     }: {
         interaction: CommandInteraction
         player1: Entity
         player2: Entity
+        speed: number
     }) {
         this.turn = 0
         this.player1 = player1
@@ -77,6 +79,7 @@ class DuelBuilder {
         this.run = false
         this.potions = this.attacker.potions
         this.skill_len = this.attacker.skills.length
+       
 
       
 
@@ -463,7 +466,7 @@ class DuelBuilder {
         }
 
         this.removeCollector()
-        await this.interaction.deleteReply()
+        
         
         
 
