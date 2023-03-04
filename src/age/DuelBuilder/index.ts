@@ -43,6 +43,7 @@ class DuelBuilder {
     player1: Entity
     player2: Entity
     skill_len:number
+    speed:number
 
     
     locker: { isLock: boolean; wait(): Promise<void>; lock(): void; unlock(): void }
@@ -79,6 +80,7 @@ class DuelBuilder {
         this.run = false
         this.potions = this.attacker.potions
         this.skill_len = this.attacker.skills.length
+        this.speed = speed
        
 
       
@@ -284,7 +286,7 @@ class DuelBuilder {
             
             if(skillName == 'Run'){
                  this.addLogMessage(`${this.attacker.name} is trying to run away...`)
-                 sleep(2)
+                 await sleep(2)
                 if(this.defender instanceof MonsterEntity){
                     if(this.attacker.evasion > this.defender.run_chance){
                         this.run = true

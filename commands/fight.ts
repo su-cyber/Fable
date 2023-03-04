@@ -30,7 +30,9 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
         const authorId = interaction.user.id
         const author = await bot.users.fetch(authorId)
         const guildID = interaction.guildId;
-        const setspeed = interaction.options.getInteger('speed')*1000
+        const setspeed = interaction.options.getInteger('speed')
+        console.log(setspeed);
+        
         
         
         
