@@ -163,7 +163,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         .setDescription(`You are the newest recruit for the Empral Brigade, otherwise referred to as the “Horde” by different chapters of Knights across the Kingdoms. You are conscripts who are on your way over to the City of Vigia to assist the Sol-Crusaders. However, your long journey is cut short as a new Fragment is discovered near Aube Town and you are requested to wait until it has been sealed. During this time, the town is attacked by a band of Beer Buccaneers! You need to save yourself and the townsfolk under the absence of security.`)
                         
                         let classEmbed = new MessageEmbed()
-                        .setColor('RED')
+                        .setColor('BLURPLE')
                         .setTitle('CLASS SELECTION')
                         .setAuthor({
                             iconURL:interaction.user.displayAvatarURL(),
