@@ -198,18 +198,24 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         
                     
                     await interaction.reply({content: null,embeds:[classEmbed],components:[select_class]})
-                    const filter = (interaction: any) =>
+                    const filter_select = (interaction: any) =>
             
-                    (interaction.customId === 'select_class' || interaction.customId === 'btn_accept'|| interaction.customId === `btn_reject` || interaction.customId === 'select_element' ) &&
+                    (interaction.customId === 'select_class') &&
                     interaction.user.id === authorId
             
+                    const filter_btn = (interaction: any) =>
+            
+                    (interaction.customId === 'btn_accept'|| interaction.customId === `btn_reject`) &&
+                    interaction.user.id === authorId
                     
-                    let collector = this.interaction.channel.createMessageComponentCollector({ filter })
-                    collector.setMaxListeners(Infinity)
+                    let collector_select = this.interaction.channel.createMessageComponentCollector({ filter_select })
+                    let collector_btn = this.interaction.channel.createMessageComponentCollector({ filter_btn })
+                    collector_select.setMaxListeners(Infinity)
+                    collector_btn.setMaxListeners(Infinity)
                     let user_class
                     let user_elements =[]
                     let count = 0
-                    collector.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                    collector_select.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                            
                                 if(collected.customId == 'select_class'){
                                      user_class = collected.values[0]
@@ -233,9 +239,11 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     
                             //    }
                                
-                           
-                                else if(collected.customId === "btn_accept"){
-                                    await collected.deferUpdate().catch(e => {})
+                            })
+                            collector_btn.on('collect', async j => {
+                                j.deferUpdate().catch(() => null)
+                                if(j.customId === "btn_accept"){
+                                    
                                     await interaction.editReply({embeds:[acceptEmbed]})
                                     
                                     if(user_class == 'samurai'){
@@ -821,16 +829,18 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     }
                                     
                                
-                                collector.stop()
+                                collector_btn.stop()
                                     
                                 }
-                                else if(collected.customId === "btn_reject"){
-                                    await collected.deferUpdate().catch(e => {})
+                                else if(j.customId === "btn_reject"){
+                                    await j.deferUpdate().catch(e => {})
                                     await interaction.editReply({embeds:[rejectEmbed]})
     
-                                    collector.stop()
+                                    collector_btn.stop()
                                 }
     
+                            })
+                                
                                 
                                 
                             
@@ -838,9 +848,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                 
                    
                    
-                    })
+                    
     
-                    collector.on('end', () => {
+                    collector_btn.on('end', () => {
                         interaction.editReply({components: [d_btnraw]})
                     })
     
