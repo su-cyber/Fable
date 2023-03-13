@@ -7,14 +7,11 @@ const profileSchema = new mongoose.Schema({
     coins: {type: Number, default:100},
     xp:{type:Number,default:0},
     level:{type:Number,default:0},
-    class:{type:String},
-    elements:{type:Array},
     skill_points:{type:Number},
     vitality:{type:Number},
     health: {type:Number},
     magicPower: {type:Number},
     mana: {type:Number},
-    stamina:{type:Number},
     evasion: {type:Number},
     speed: {type:Number},
     magicResistance: {type:Number},
@@ -45,3 +42,4 @@ const profileSchema = new mongoose.Schema({
 const model = mongoose.model('ProfileModels',profileSchema);
 
 export default model;
+
