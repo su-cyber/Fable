@@ -72,6 +72,60 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 )
                                 .setDisabled(false),
                         ]) 
+
+                        let select_element =  new MessageActionRow().addComponents([
+                            new MessageSelectMenu()
+                            .setCustomId('select_element')
+                                .setPlaceholder(`Select your preferred element ${interaction.user.username}`)
+                                .addOptions({
+                                    
+                                    label: `Flame`,
+                                    description: `Element of fire`,
+                                    value: `flame`,
+                                },{
+                                    label: `Wave`,
+                                    description: `Element of water`,
+                                    value: `wave`,
+                                },{
+                                    label: `Light`,
+                                    description: `element of light`,
+                                    value: `light`,
+                                },{
+                                    label: `Volt`,
+                                    description: `element of lightning`,
+                                    value: `volt`,
+                                },
+                                {
+                                    label: `Frost`,
+                                    description: `Element of ice`,
+                                    value: `frost`,
+                                },{
+                                    label: `Terra`,
+                                    description: `element of earth`,
+                                    value: `terra`,
+                                },{
+                                    label: `Gale`,
+                                    description: `element of wind`,
+                                    value: `wind`,
+                                },{
+                                    label: `Alloy`,
+                                    description: `element of metal`,
+                                    value: `alloy`,
+                                },{
+                                    label: `Wild`,
+                                    description: `element of wind`,
+                                    value: `wild`,
+                                },{
+                                    label: `Bloom`,
+                                    description: `element of plants`,
+                                    value: `bloom`,
+                                },
+                                
+                                )
+                                .setDisabled(false),
+                        ])  
+             
+
                         let classEmbed = new MessageEmbed()
                         .setColor('BLURPLE')
                         .setTitle('CLASS SELECTION')
@@ -113,7 +167,33 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             name:interaction.user.tag
                         })
                         .setDescription('You cannot play the game without completing the tutorial')
-                        
+                        let elementEmbed1 = new MessageEmbed()
+                        .setColor('BLUE')
+                        .setTitle('ELEMENT SELECTION')
+                        .setAuthor({
+                            iconURL:interaction.user.displayAvatarURL(),
+                            name:interaction.user.tag
+                        })
+                        .setDescription('Select your first element out of the options')
+
+                        let elementEmbed2 = new MessageEmbed()
+                        .setColor('BLUE')
+                        .setTitle('ELEMENT SELECTION')
+                        .setAuthor({
+                            iconURL:interaction.user.displayAvatarURL(),
+                            name:interaction.user.tag
+                        })
+                        .setDescription('Select your second element out of the options')
+
+                        let elementEmbed3 = new MessageEmbed()
+                        .setColor('BLUE')
+                        .setTitle('ELEMENT SELECTION')
+                        .setAuthor({
+                            iconURL:interaction.user.displayAvatarURL(),
+                            name:interaction.user.tag
+                        })
+                        .setDescription('Select your third element out of the options')
+
                     
                     await interaction.reply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
                     let filter = i => i.user.id === authorId
@@ -231,11 +311,13 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                    
                    
                     })
+                    let user_elements =[]
+                    let count = 0
                     collector_select.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                            
                         if(collected.customId == 'select_class'){
                             let user_class = collected.values[0]
-                            await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
+                            await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
                             profileModel.findOne({userID:authorId},async (err,foundUser) => {
                                 
                                 if(user_class == 'samurai'){
@@ -304,6 +386,23 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
 
                                 await profileModel.updateOne({userID:authorId},foundUser)
                             })
+                            
+                        }
+                        else if(collected.customId == 'select_element'){
+                            user_elements.push(collected.values[0])
+                            count+=1
+                            if(count == 1){
+                                await interaction.editReply({content: null,embeds:[elementEmbed2],components:[select_element]})
+                            }
+                            else if(count == 2){
+                                await interaction.editReply({content: null,embeds:[elementEmbed3],components:[select_element]})
+                            }
+                            else if(count ==3){
+                                await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
+                            }
+                            console.log(count);
+                            console.log(user_elements);
+
                             
                         }
                         collector_select.stop()
