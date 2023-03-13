@@ -197,7 +197,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     
                     await interaction.reply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
                     let filter = i => i.user.id === authorId
-                    let filter_select = i => (i.customId === 'select_class') && i.user.id === authorId
+                    let filter_select = i => (i.customId === 'select_class' || i.customId === 'select_element') && i.user.id === authorId
                         let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                 
                         
