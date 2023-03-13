@@ -1,7 +1,7 @@
 {
     "license": "MIT",
     "scripts": {
-        "start": "node --max-old-space-size=4096 index.js",
+        "start": "ts-node main.ts",
         "test": "jest",
         "build": "tsc"
     },
