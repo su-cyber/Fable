@@ -206,10 +206,11 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     
                     let collector = this.interaction.channel.createMessageComponentCollector({ filter })
                     collector.setMaxListeners(Infinity)
+                    let user_class
+                    let user_elements =[]
+                    let count = 0
                     collector.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
-                            let user_class
-                            let user_elements =[]
-                            let count = 0
+                           
                                 if(collected.customId == 'select_class'){
                                      user_class = collected.values[0]
                                     await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
