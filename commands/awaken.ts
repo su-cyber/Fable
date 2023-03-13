@@ -227,6 +227,10 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     else if(count ==3){
                                         await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
                                     }
+                                    console.log(count);
+                                    console.log(user_elements);
+                                    
+                                    
                                }
                                
                            
