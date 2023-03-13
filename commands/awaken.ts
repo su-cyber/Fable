@@ -73,57 +73,57 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 .setDisabled(false),
                         ])  
 
-                        let select_element =  new MessageActionRow().addComponents([
-                            new MessageSelectMenu()
-                            .setCustomId('select_element')
-                                .setPlaceholder(`Select your preferred element ${interaction.user.username}`)
-                                .addOptions({
+                        // let select_element =  new MessageActionRow().addComponents([
+                        //     new MessageSelectMenu()
+                        //     .setCustomId('select_element')
+                        //         .setPlaceholder(`Select your preferred element ${interaction.user.username}`)
+                        //         .addOptions({
                                     
-                                    label: `Flame`,
-                                    description: `Element of fire`,
-                                    value: `flame`,
-                                },{
-                                    label: `Wave`,
-                                    description: `Element of water`,
-                                    value: `wave`,
-                                },{
-                                    label: `Light`,
-                                    description: `element of light`,
-                                    value: `light`,
-                                },{
-                                    label: `Volt`,
-                                    description: `element of lightning`,
-                                    value: `volt`,
-                                },
-                                {
-                                    label: `Frost`,
-                                    description: `Element of ice`,
-                                    value: `frost`,
-                                },{
-                                    label: `Terra`,
-                                    description: `element of earth`,
-                                    value: `terra`,
-                                },{
-                                    label: `Gale`,
-                                    description: `element of wind`,
-                                    value: `wind`,
-                                },{
-                                    label: `Alloy`,
-                                    description: `element of metal`,
-                                    value: `alloy`,
-                                },{
-                                    label: `Wild`,
-                                    description: `element of wind`,
-                                    value: `wild`,
-                                },{
-                                    label: `Bloom`,
-                                    description: `element of plants`,
-                                    value: `bloom`,
-                                },
+                        //             label: `Flame`,
+                        //             description: `Element of fire`,
+                        //             value: `flame`,
+                        //         },{
+                        //             label: `Wave`,
+                        //             description: `Element of water`,
+                        //             value: `wave`,
+                        //         },{
+                        //             label: `Light`,
+                        //             description: `element of light`,
+                        //             value: `light`,
+                        //         },{
+                        //             label: `Volt`,
+                        //             description: `element of lightning`,
+                        //             value: `volt`,
+                        //         },
+                        //         {
+                        //             label: `Frost`,
+                        //             description: `Element of ice`,
+                        //             value: `frost`,
+                        //         },{
+                        //             label: `Terra`,
+                        //             description: `element of earth`,
+                        //             value: `terra`,
+                        //         },{
+                        //             label: `Gale`,
+                        //             description: `element of wind`,
+                        //             value: `wind`,
+                        //         },{
+                        //             label: `Alloy`,
+                        //             description: `element of metal`,
+                        //             value: `alloy`,
+                        //         },{
+                        //             label: `Wild`,
+                        //             description: `element of wind`,
+                        //             value: `wild`,
+                        //         },{
+                        //             label: `Bloom`,
+                        //             description: `element of plants`,
+                        //             value: `bloom`,
+                        //         },
                                 
-                                )
-                                .setDisabled(false),
-                        ])  
+                        //         )
+                        //         .setDisabled(false),
+                        // ])  
              
                        
                         let elementEmbed1 = new MessageEmbed()
@@ -213,25 +213,25 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                            
                                 if(collected.customId == 'select_class'){
                                      user_class = collected.values[0]
-                                    await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
+                                    await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
                                 }
-                                else if(collected.customId == 'select_element'){
-                                    user_elements.push(collected.values[0])
-                                    count+=1
-                                    if(count == 1){
-                                        await interaction.editReply({content: null,embeds:[elementEmbed2],components:[select_element]})
-                                    }
-                                    else if(count == 2){
-                                        await interaction.editReply({content: null,embeds:[elementEmbed3],components:[select_element]})
-                                    }
-                                    else if(count ==3){
-                                        await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
-                                    }
-                                    console.log(count);
-                                    console.log(user_elements);
+                            //     else if(collected.customId == 'select_element'){
+                            //         user_elements.push(collected.values[0])
+                            //         count+=1
+                            //         if(count == 1){
+                            //             await interaction.editReply({content: null,embeds:[elementEmbed2],components:[select_element]})
+                            //         }
+                            //         else if(count == 2){
+                            //             await interaction.editReply({content: null,embeds:[elementEmbed3],components:[select_element]})
+                            //         }
+                            //         else if(count ==3){
+                            //             await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
+                            //         }
+                            //         console.log(count);
+                            //         console.log(user_elements);
                                     
                                     
-                               }
+                            //    }
                                
                            
                                 else if(collected.customId === "btn_accept"){
