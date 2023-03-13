@@ -242,9 +242,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         collector_select.stop()
                     })
     
-                    collector.on('end', () => {
-                        interaction.editReply({components: [d_btnraw]})
-                    })
+                    
     
     
                 })
