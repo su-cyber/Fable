@@ -245,7 +245,63 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.speed = 15
                                     foundUser.magicPower = 8
                                     foundUser.vitality = 8
+                                    foundUser.magicResistance = 6
                                 }
+                                else if(user_class == 'assassin'){
+                                    foundUser.class = 'Assassin'
+                                    foundUser.attackDamage = 20
+                                    foundUser.armour = 0
+                                    foundUser.speed = 20
+                                    foundUser.magicPower = 5
+                                    foundUser.vitality = 5
+                                    foundUser.magicResistance = 10
+                                }
+                                else if(user_class == 'sorceror'){
+                                    foundUser.class = 'Sorceror'
+                                    foundUser.attackDamage = 0
+                                    foundUser.armour = 5
+                                    foundUser.speed = 10
+                                    foundUser.magicPower = 20
+                                    foundUser.vitality = 8
+                                    foundUser.magicResistance = 15
+                                }
+                                else if(user_class == 'crusader'){
+                                    foundUser.class = 'Crusader'
+                                    foundUser.attackDamage = 20
+                                    foundUser.armour = 15
+                                    foundUser.speed = 10
+                                    foundUser.magicPower = 0
+                                    foundUser.vitality = 15
+                                    foundUser.magicResistance = 0
+                                }
+                                else if(user_class == 'soldier'){
+                                    foundUser.class = 'Soldier'
+                                    foundUser.attackDamage = 10
+                                    foundUser.armour = 10
+                                    foundUser.speed = 10
+                                    foundUser.magicPower = 10
+                                    foundUser.vitality = 10
+                                    foundUser.magicResistance = 10
+                                }
+                                else if(user_class == 'wanderer'){
+                                    foundUser.class = 'Wanderer'
+                                    foundUser.attackDamage = 10
+                                    foundUser.armour = 5
+                                    foundUser.speed = 15
+                                    foundUser.magicPower = 15
+                                    foundUser.vitality = 10
+                                    foundUser.magicResistance = 15
+                                }
+                                else if(user_class == 'knight'){
+                                    foundUser.class = 'Knight'
+                                    foundUser.attackDamage = 10
+                                    foundUser.armour = 15
+                                    foundUser.speed = 10
+                                    foundUser.magicPower = 10
+                                    foundUser.vitality = 10
+                                    foundUser.magicResistance = 5
+                                }
+
                                 await profileModel.updateOne({userID:authorId},foundUser)
                             })
                             
