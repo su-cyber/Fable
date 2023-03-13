@@ -236,7 +236,18 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         if(collected.customId == 'select_class'){
                             let user_class = collected.values[0]
                             await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
-                            console.log(user_class);
+                            profileModel.findOne({userID:authorId},async (err,foundUser) => {
+                                
+                                if(user_class == 'samurai'){
+                                    foundUser.class = 'Samurai'
+                                    foundUser.attackDamage = 15
+                                    foundUser.armour = 8
+                                    foundUser.speed = 15
+                                    foundUser.magicPower = 8
+                                    foundUser.vitality = 8
+                                }
+                                profileModel.updateOne({userID:authorId},foundUser)
+                            })
                             
                         }
                         collector_select.stop()
