@@ -391,8 +391,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         else if(collected.customId == 'select_element'){
                             user_elements.push(collected.values[0])
                             count+=1
-                            console.log(count);
-                            console.log(user_elements);
+                           
                             if(count == 1){
                                 await interaction.editReply({content: null,embeds:[elementEmbed2],components:[select_element]})
                             }
@@ -404,7 +403,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 collector_select.stop()
                             }
                            
-
+                            await profileModel.updateOne({userID:authorId},{elements:user_elements})
                             
                         }
                         
