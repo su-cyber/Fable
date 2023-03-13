@@ -219,7 +219,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                            
                                 if(collected.customId == 'select_class'){
                                      user_class = collected.values[0]
-                                     console.log(user_class);
+                                     
                                      
                                     await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
                                 }
