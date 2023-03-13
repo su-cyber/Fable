@@ -175,7 +175,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 )
                                 .setDisabled(false),
                         ])
-                          
+
                         let select_element_3 =  new MessageActionRow().addComponents([
                             new MessageSelectMenu()
                             .setCustomId('select_element3')
@@ -307,6 +307,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
             
                     
                     let collector = this.interaction.channel.createMessageComponentCollector({ filter })
+                    collector.setMaxListeners(Infinity)
                     collector.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                             let user_class
                             let user_elements =[]
