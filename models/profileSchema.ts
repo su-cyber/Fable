@@ -8,6 +8,8 @@ const profileSchema = new mongoose.Schema({
     xp:{type:Number,default:0},
     level:{type:Number,default:0},
     skill_points:{type:Number},
+    class:{type:String},
+    elements:{type:Array},
     vitality:{type:Number},
     health: {type:Number},
     magicPower: {type:Number},
