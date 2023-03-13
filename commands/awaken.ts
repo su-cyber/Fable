@@ -7,7 +7,6 @@ import { Sword } from '../src/age/weapons/sword'
 import { steelArmour } from '../src/age/armour/steel_armour'
 import { healthPotion } from '../src/age/potions/healthPotion'
 import { MessageActionRow, MessageSelectMenu, SelectMenuInteraction } from 'discord.js'
-import { MessageComponentInteraction,CacheType } from 'discord.js'
 import { Collector, MessageButton, MessageEmbed } from 'discord.js'
 import { steelSword } from '../src/age/weapons/steelSword'
 
@@ -32,46 +31,6 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Tutorial").setDisabled(true),
                             new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Cancel").setDisabled(true),
                         ])
-                        let select_class =  new MessageActionRow().addComponents([
-                            new MessageSelectMenu()
-                            .setCustomId('select_class')
-                                .setPlaceholder(`Select your preferred class ${interaction.user.username}`)
-                                .addOptions({
-                                    
-                                    label: `Samurai`,
-                                    description: `Bloodthirsty and slices like butter.`,
-                                    value: `samurai`,
-                                },{
-                                    label: `Crusader`,
-                                    description: `Will crush you with his hammer.`,
-                                    value: `crusader`,
-                                },{
-                                    label: `Soldier`,
-                                    description: `Proficient in all, master of none.`,
-                                    value: `soldier`,
-                                },{
-                                    label: `Sorcerer`,
-                                    description: `Ruins your day from a safe distance.`,
-                                    value: `sorcerer`,
-                                },
-                                {
-                                    label: `Wanderer`,
-                                    description: `Left their home to claim yours.`,
-                                    value: `wanderer`,
-                                },{
-                                    label: `Knight`,
-                                    description: `Very heavy, resilient and unyielding.`,
-                                    value: `knight`,
-                                },{
-                                    label: `Assassin`,
-                                    description: `Silent as a feather, fast as a knife.`,
-                                    value: `assassin`,
-                                },
-                                
-                                )
-                                .setDisabled(false),
-                        ])  
-                       
                         let ProceedEmbed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('TUTORIAL: New Beginings')
@@ -80,16 +39,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             name:interaction.user.tag
                         })
                         .setDescription(`You are the newest recruit for the Empral Brigade, otherwise referred to as the “Horde” by different chapters of Knights across the Kingdoms. You are conscripts who are on your way over to the City of Vigia to assist the Sol-Crusaders. However, your long journey is cut short as a new Fragment is discovered near Aube Town and you are requested to wait until it has been sealed. During this time, the town is attacked by a band of Beer Buccaneers! You need to save yourself and the townsfolk under the absence of security.`)
-                        
-                        let classEmbed = new MessageEmbed()
-                        .setColor('BLURPLE')
-                        .setTitle('CLASS SELECTION')
-                        .setAuthor({
-                            iconURL:interaction.user.displayAvatarURL(),
-                            name:interaction.user.tag
-                        })
-                        .setDescription('Select your class out of the options')
-                        
+    
                         let acceptEmbed = new MessageEmbed()
                         .setColor('GREEN')
                         .setTitle('TUTORIAL STARTED')
@@ -115,26 +65,14 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         .setDescription('You cannot play the game without completing the tutorial')
                         
                     
-                        await interaction.reply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
-                        const filter = (interaction: any) =>
+                    await interaction.reply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
+                    let filter = i => i.user.id === authorId
+                        let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                 
-                        (interaction.customId === 'select_class' || interaction.customId === 'btn_accept'|| interaction.customId === `btn_reject` || interaction.customId === 'select_element' ) &&
-                        interaction.user.id === authorId
-                
-                        
-                        let collector = this.interaction.channel.createMessageComponentCollector({ filter })
-                        collector.setMaxListeners(Infinity)
-                        let user_class = 'samurai'
-                        let user_elements =[]
-                        let count = 0
-                        collector.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
-                           
-                            // if(collected.customId == 'select_class'){
-                            //      user_class = collected.values[0]
-                            //     await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
-                            // }
-                                if(collected.customId === "btn_accept"){
-                                    await collected.deferUpdate().catch(e => {})
+                        collector.on('collect',async (btn) => {
+                            if(btn.isButton()){
+                                if(btn.customId === "btn_accept"){
+                                    await btn.deferUpdate().catch(e => {})
                                     await interaction.editReply({embeds:[acceptEmbed]})
                                     
                                     
@@ -145,8 +83,6 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         xp:205,
                                         level:1,
                                         skill_points:0,
-                                        class:user_class,
-                                        elements:user_elements,
                                         vitality:1,
                                         health: 100,
                                         magicPower: 5,
@@ -224,8 +160,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 collector.stop()
                                     
                                 }
-                                else if(collected.customId === "btn_reject"){
-                                    await collected.deferUpdate().catch(e => {})
+                                else if(btn.customId === "btn_reject"){
+                                    await btn.deferUpdate().catch(e => {})
                                     await interaction.editReply({embeds:[rejectEmbed]})
     
                                     collector.stop()
@@ -233,24 +169,24 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
     
                                 
                                 
-                            })
+                            }
                               
                 
-                            collector.on('end', () => {
-                                interaction.editReply({components: [d_btnraw]})
-                            })
+                   
                    
                     })
     
-                   
+                    collector.on('end', () => {
+                        interaction.editReply({components: [d_btnraw]})
+                    })
     
-                }
+    
                 })
                 
                
                
             }
-        )
+        })
         
 
-    
+    })
