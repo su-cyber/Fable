@@ -137,7 +137,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         xp:205,
                                         level:1,
                                         skill_points:0,
-                                        class:'Samurai',
+                                        class:'',
                                         elements:[],
                                         vitality:1,
                                         health: 100,
@@ -246,7 +246,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.magicPower = 8
                                     foundUser.vitality = 8
                                 }
-                                profileModel.updateOne({userID:authorId},foundUser)
+                                await profileModel.updateOne({userID:authorId},foundUser)
                             })
                             
                         }
