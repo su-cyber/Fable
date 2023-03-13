@@ -73,9 +73,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 .setDisabled(false),
                         ])  
 
-                        let select_element_1 =  new MessageActionRow().addComponents([
+                        let select_element =  new MessageActionRow().addComponents([
                             new MessageSelectMenu()
-                            .setCustomId('select_element1')
+                            .setCustomId('select_element')
                                 .setPlaceholder(`Select your preferred element ${interaction.user.username}`)
                                 .addOptions({
                                     
@@ -124,110 +124,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 )
                                 .setDisabled(false),
                         ])  
-                        let select_element_2 =  new MessageActionRow().addComponents([
-                            new MessageSelectMenu()
-                            .setCustomId('select_element2')
-                                .setPlaceholder(`Select your preferred element ${interaction.user.username}`)
-                                .addOptions({
-                                    
-                                    label: `Flame`,
-                                    description: `Element of fire`,
-                                    value: `flame`,
-                                },{
-                                    label: `Wave`,
-                                    description: `Element of water`,
-                                    value: `wave`,
-                                },{
-                                    label: `Light`,
-                                    description: `element of light`,
-                                    value: `light`,
-                                },{
-                                    label: `Volt`,
-                                    description: `element of lightning`,
-                                    value: `volt`,
-                                },
-                                {
-                                    label: `Frost`,
-                                    description: `Element of ice`,
-                                    value: `frost`,
-                                },{
-                                    label: `Terra`,
-                                    description: `element of earth`,
-                                    value: `terra`,
-                                },{
-                                    label: `Gale`,
-                                    description: `element of wind`,
-                                    value: `wind`,
-                                },{
-                                    label: `Alloy`,
-                                    description: `element of metal`,
-                                    value: `alloy`,
-                                },{
-                                    label: `Wild`,
-                                    description: `element of wind`,
-                                    value: `wild`,
-                                },{
-                                    label: `Bloom`,
-                                    description: `element of plants`,
-                                    value: `bloom`,
-                                },
-                                
-                                )
-                                .setDisabled(false),
-                        ])
-
-                        let select_element_3 =  new MessageActionRow().addComponents([
-                            new MessageSelectMenu()
-                            .setCustomId('select_element3')
-                                .setPlaceholder(`Select your preferred element ${interaction.user.username}`)
-                                .addOptions({
-                                    
-                                    label: `Flame`,
-                                    description: `Element of fire`,
-                                    value: `flame`,
-                                },{
-                                    label: `Wave`,
-                                    description: `Element of water`,
-                                    value: `wave`,
-                                },{
-                                    label: `Light`,
-                                    description: `element of light`,
-                                    value: `light`,
-                                },{
-                                    label: `Volt`,
-                                    description: `element of lightning`,
-                                    value: `volt`,
-                                },
-                                {
-                                    label: `Frost`,
-                                    description: `Element of ice`,
-                                    value: `frost`,
-                                },{
-                                    label: `Terra`,
-                                    description: `element of earth`,
-                                    value: `terra`,
-                                },{
-                                    label: `Gale`,
-                                    description: `element of wind`,
-                                    value: `wind`,
-                                },{
-                                    label: `Alloy`,
-                                    description: `element of metal`,
-                                    value: `alloy`,
-                                },{
-                                    label: `Wild`,
-                                    description: `element of wind`,
-                                    value: `wild`,
-                                },{
-                                    label: `Bloom`,
-                                    description: `element of plants`,
-                                    value: `bloom`,
-                                },
-                                
-                                )
-                                .setDisabled(false),
-                        ]) 
-
+             
+                       
                         let elementEmbed1 = new MessageEmbed()
                         .setColor('BLUE')
                         .setTitle('ELEMENT SELECTION')
@@ -302,7 +200,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     await interaction.reply({content: null,embeds:[classEmbed],components:[select_class]})
                     const filter = (interaction: any) =>
             
-                    (interaction.customId === 'select_class' || interaction.customId === 'btn_accept'|| interaction.customId === `btn_reject` || interaction.customId === 'select_element1' || interaction.customId === 'select_element2' || interaction.customId === 'select_element3') &&
+                    (interaction.customId === 'select_class' || interaction.customId === 'btn_accept'|| interaction.customId === `btn_reject` || interaction.customId === 'select_element' ) &&
                     interaction.user.id === authorId
             
                     
@@ -311,22 +209,26 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     collector.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                             let user_class
                             let user_elements =[]
+                            let count = 0
                                 if(collected.customId == 'select_class'){
                                      user_class = collected.values[0]
-                                    await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element_1]})
+                                    await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
                                 }
-                                else if(collected.customId == 'select_element1'){
+                                else if(collected.customId == 'select_element'){
                                     user_elements.push(collected.values[0])
-                                   await interaction.editReply({content: null,embeds:[elementEmbed2],components:[select_element_2]})
+                                    count+=1
+                                    if(count == 1){
+                                        await interaction.editReply({content: null,embeds:[elementEmbed2],components:[select_element]})
+                                    }
+                                    else if(count == 2){
+                                        await interaction.editReply({content: null,embeds:[elementEmbed3],components:[select_element]})
+                                    }
+                                    else if(count ==3){
+                                        await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
+                                    }
                                }
-                               else if(collected.customId == 'select_element2'){
-                                user_elements.push(collected.values[0])
-                               await interaction.editReply({content: null,embeds:[elementEmbed3],components:[select_element_3]})
-                           }
-                           else if(collected.customId == 'select_element3'){
-                            user_elements.push(collected.values[0])
-                           await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
-                       }
+                               
+                           
                                 else if(collected.customId === "btn_accept"){
                                     await collected.deferUpdate().catch(e => {})
                                     await interaction.editReply({embeds:[acceptEmbed]})
