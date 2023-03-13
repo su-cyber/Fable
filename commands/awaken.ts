@@ -401,13 +401,15 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             }
                             else if(count ==3){
                                 await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
+                                collector_select.stop()
                             }
                            
 
                             
                         }
-                        collector_select.stop()
+                        
                     })
+                    
     
                     
     
