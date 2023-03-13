@@ -83,6 +83,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         xp:205,
                                         level:1,
                                         skill_points:0,
+                                        class:'Samurai',
+                                        elements:[],
                                         vitality:1,
                                         health: 100,
                                         magicPower: 5,
