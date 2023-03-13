@@ -6,7 +6,7 @@ import { ghoulSkull } from '../src/age/items'
 import { Sword } from '../src/age/weapons/sword'
 import { steelArmour } from '../src/age/armour/steel_armour'
 import { healthPotion } from '../src/age/potions/healthPotion'
-import { MessageActionRow, MessageSelectMenu, SelectMenuInteraction } from 'discord.js'
+import { MessageActionRow, MessageSelectMenu, SelectMenuInteraction,CacheType,MessageComponentInteraction } from 'discord.js'
 import { Collector, MessageButton, MessageEmbed } from 'discord.js'
 import { steelSword } from '../src/age/weapons/steelSword'
 
@@ -31,6 +31,229 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Tutorial").setDisabled(true),
                             new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Cancel").setDisabled(true),
                         ])
+                        
+
+                        let select_class =  new MessageActionRow().addComponents([
+                            new MessageSelectMenu()
+                            .setCustomId('select_class')
+                                .setPlaceholder(`Select your preferred class ${interaction.user.username}`)
+                                .addOptions({
+                                    
+                                    label: `Samurai`,
+                                    description: `Bloodthirsty and slices like butter.`,
+                                    value: `samurai`,
+                                },{
+                                    label: `Crusader`,
+                                    description: `Will crush you with his hammer.`,
+                                    value: `crusader`,
+                                },{
+                                    label: `Soldier`,
+                                    description: `Proficient in all, master of none.`,
+                                    value: `soldier`,
+                                },{
+                                    label: `Sorcerer`,
+                                    description: `Ruins your day from a safe distance.`,
+                                    value: `sorcerer`,
+                                },
+                                {
+                                    label: `Wanderer`,
+                                    description: `Left their home to claim yours.`,
+                                    value: `wanderer`,
+                                },{
+                                    label: `Knight`,
+                                    description: `Very heavy, resilient and unyielding.`,
+                                    value: `knight`,
+                                },{
+                                    label: `Assassin`,
+                                    description: `Silent as a feather, fast as a knife.`,
+                                    value: `assassin`,
+                                },
+                                
+                                )
+                                .setDisabled(false),
+                        ])  
+
+                        let select_element_1 =  new MessageActionRow().addComponents([
+                            new MessageSelectMenu()
+                            .setCustomId('select_element1')
+                                .setPlaceholder(`Select your preferred element ${interaction.user.username}`)
+                                .addOptions({
+                                    
+                                    label: `Flame`,
+                                    description: `Element of fire`,
+                                    value: `flame`,
+                                },{
+                                    label: `Wave`,
+                                    description: `Element of water`,
+                                    value: `wave`,
+                                },{
+                                    label: `Light`,
+                                    description: `element of light`,
+                                    value: `light`,
+                                },{
+                                    label: `Volt`,
+                                    description: `element of lightning`,
+                                    value: `volt`,
+                                },
+                                {
+                                    label: `Frost`,
+                                    description: `Element of ice`,
+                                    value: `frost`,
+                                },{
+                                    label: `Terra`,
+                                    description: `element of earth`,
+                                    value: `terra`,
+                                },{
+                                    label: `Gale`,
+                                    description: `element of wind`,
+                                    value: `wind`,
+                                },{
+                                    label: `Alloy`,
+                                    description: `element of metal`,
+                                    value: `alloy`,
+                                },{
+                                    label: `Wild`,
+                                    description: `element of wind`,
+                                    value: `wild`,
+                                },{
+                                    label: `Bloom`,
+                                    description: `element of plants`,
+                                    value: `bloom`,
+                                },
+                                
+                                )
+                                .setDisabled(false),
+                        ])  
+                        let select_element_2 =  new MessageActionRow().addComponents([
+                            new MessageSelectMenu()
+                            .setCustomId('select_element2')
+                                .setPlaceholder(`Select your preferred element ${interaction.user.username}`)
+                                .addOptions({
+                                    
+                                    label: `Flame`,
+                                    description: `Element of fire`,
+                                    value: `flame`,
+                                },{
+                                    label: `Wave`,
+                                    description: `Element of water`,
+                                    value: `wave`,
+                                },{
+                                    label: `Light`,
+                                    description: `element of light`,
+                                    value: `light`,
+                                },{
+                                    label: `Volt`,
+                                    description: `element of lightning`,
+                                    value: `volt`,
+                                },
+                                {
+                                    label: `Frost`,
+                                    description: `Element of ice`,
+                                    value: `frost`,
+                                },{
+                                    label: `Terra`,
+                                    description: `element of earth`,
+                                    value: `terra`,
+                                },{
+                                    label: `Gale`,
+                                    description: `element of wind`,
+                                    value: `wind`,
+                                },{
+                                    label: `Alloy`,
+                                    description: `element of metal`,
+                                    value: `alloy`,
+                                },{
+                                    label: `Wild`,
+                                    description: `element of wind`,
+                                    value: `wild`,
+                                },{
+                                    label: `Bloom`,
+                                    description: `element of plants`,
+                                    value: `bloom`,
+                                },
+                                
+                                )
+                                .setDisabled(false),
+                        ])  
+                        let select_element_3 =  new MessageActionRow().addComponents([
+                            new MessageSelectMenu()
+                            .setCustomId('select_element3')
+                                .setPlaceholder(`Select your preferred element ${interaction.user.username}`)
+                                .addOptions({
+                                    
+                                    label: `Flame`,
+                                    description: `Element of fire`,
+                                    value: `flame`,
+                                },{
+                                    label: `Wave`,
+                                    description: `Element of water`,
+                                    value: `wave`,
+                                },{
+                                    label: `Light`,
+                                    description: `element of light`,
+                                    value: `light`,
+                                },{
+                                    label: `Volt`,
+                                    description: `element of lightning`,
+                                    value: `volt`,
+                                },
+                                {
+                                    label: `Frost`,
+                                    description: `Element of ice`,
+                                    value: `frost`,
+                                },{
+                                    label: `Terra`,
+                                    description: `element of earth`,
+                                    value: `terra`,
+                                },{
+                                    label: `Gale`,
+                                    description: `element of wind`,
+                                    value: `wind`,
+                                },{
+                                    label: `Alloy`,
+                                    description: `element of metal`,
+                                    value: `alloy`,
+                                },{
+                                    label: `Wild`,
+                                    description: `element of wind`,
+                                    value: `wild`,
+                                },{
+                                    label: `Bloom`,
+                                    description: `element of plants`,
+                                    value: `bloom`,
+                                },
+                                
+                                )
+                                .setDisabled(false),
+                        ]) 
+
+                        let elementEmbed1 = new MessageEmbed()
+                        .setColor('BLUE')
+                        .setTitle('ELEMENT SELECTION')
+                        .setAuthor({
+                            iconURL:interaction.user.displayAvatarURL(),
+                            name:interaction.user.tag
+                        })
+                        .setDescription('Select your first element out of the options')
+
+                        let elementEmbed2 = new MessageEmbed()
+                        .setColor('BLUE')
+                        .setTitle('ELEMENT SELECTION')
+                        .setAuthor({
+                            iconURL:interaction.user.displayAvatarURL(),
+                            name:interaction.user.tag
+                        })
+                        .setDescription('Select your second element out of the options')
+
+                        let elementEmbed3 = new MessageEmbed()
+                        .setColor('BLUE')
+                        .setTitle('ELEMENT SELECTION')
+                        .setAuthor({
+                            iconURL:interaction.user.displayAvatarURL(),
+                            name:interaction.user.tag
+                        })
+                        .setDescription('Select your third element out of the options')
+
                         let ProceedEmbed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('TUTORIAL: New Beginings')
@@ -39,7 +262,17 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             name:interaction.user.tag
                         })
                         .setDescription(`You are the newest recruit for the Empral Brigade, otherwise referred to as the “Horde” by different chapters of Knights across the Kingdoms. You are conscripts who are on your way over to the City of Vigia to assist the Sol-Crusaders. However, your long journey is cut short as a new Fragment is discovered near Aube Town and you are requested to wait until it has been sealed. During this time, the town is attacked by a band of Beer Buccaneers! You need to save yourself and the townsfolk under the absence of security.`)
-    
+                        
+                        let classEmbed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('CLASS SELECTION')
+                        .setAuthor({
+                            iconURL:interaction.user.displayAvatarURL(),
+                            name:interaction.user.tag
+                        })
+                        .setDescription('Select your class out of the options')
+                        
+                        
                         let acceptEmbed = new MessageEmbed()
                         .setColor('GREEN')
                         .setTitle('TUTORIAL STARTED')
@@ -65,103 +298,625 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         .setDescription('You cannot play the game without completing the tutorial')
                         
                     
-                    await interaction.reply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
-                    let filter = i => i.user.id === authorId
-                        let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
-                
-                        collector.on('collect',async (btn) => {
-                            if(btn.isButton()){
-                                if(btn.customId === "btn_accept"){
-                                    await btn.deferUpdate().catch(e => {})
+                    await interaction.reply({content: null,embeds:[classEmbed],components:[select_class]})
+                    const filter = (interaction: any) =>
+            
+                    (interaction.customId === 'select_class' || interaction.customId === 'btn_accept'|| interaction.customId === `btn_reject` || interaction.customId === 'select_element1' || interaction.customId === 'select_element2' || interaction.customId === 'select_element3') &&
+                    interaction.user.id === authorId
+            
+                    
+                    let collector = this.interaction.channel.createMessageComponentCollector({ filter })
+                    collector.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                            let user_class
+                            let user_elements =[]
+                                if(collected.customId == 'select_class'){
+                                     user_class = collected.values[0]
+                                    await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element_1]})
+                                }
+                                else if(collected.customId == 'select_element1'){
+                                    user_elements.push(collected.values[0])
+                                   await interaction.editReply({content: null,embeds:[elementEmbed2],components:[select_element_2]})
+                               }
+                               else if(collected.customId == 'select_element2'){
+                                user_elements.push(collected.values[0])
+                               await interaction.editReply({content: null,embeds:[elementEmbed3],components:[select_element_3]})
+                           }
+                           else if(collected.customId == 'select_element3'){
+                            user_elements.push(collected.values[0])
+                           await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
+                       }
+                                else if(collected.customId === "btn_accept"){
+                                    await collected.deferUpdate().catch(e => {})
                                     await interaction.editReply({embeds:[acceptEmbed]})
                                     
-                                    
-                                    let profile = await new profileModel({
+                                    if(user_class == 'samurai'){
+                                        let profile = await new profileModel({
+                                            userID: authorId,
+                                            serverID: guildID,
+                                            coins: 20000,
+                                            xp:0,
+                                            level:1,
+                                            class:'Samurai',
+                                            elements:user_elements,
+                                            skill_points:0,
+                                            vitality:8,
+                                            health: 100,
+                                            magicPower: 8,
+                                            mana: 50,
+                                            stamina:50,
+                                            evasion: 0.05,
+                                            speed: 15,
+                                            magicResistance: 6,
+                                            armour: 8,
+                                            attackDamage: 15,
+                                            weapon: [],
+                                            armourSuit:[],
+                                            items:[],
+                                            currentskills: [{
+                                                name: 'Basic attack',
+                                                description: 'Basic attack',
+                                            },{name: 'Charged Attack',
+                                            description: 'Charge a powerful attack for 1 turn'},{
+                                                name: 'Fireball',
+                                                description: 'Dealing damage and burning them for 3 turns',
+                                            }],
+                                            allskills:[{
+                                                name: 'Basic attack',
+                                                description: 'Basic attack',
+                                            },{name: 'Charged Attack',
+                                            description: 'Charge a powerful attack for 1 turn'},{
+                                                name: 'Fireball',
+                                                description: 'Dealing damage and burning them for 3 turns',
+                                            },],
+                                            passiveskills:[],
+                                            quest:false,
+                                            quest_location:'',
+                                            quest_mob:'',
+                                            quest_quantity:0,
+                                            quest_item:'',
+                                            encounter:[],
+                                            main_quest:"Tutorial",
+                                            side_quest:[],
+                                            completed_quests:[],
+                                            main_quest_phase:"1",
+                                            side_quest_phase:"",
+                                            kingdom:"solarstrio",
+                                            city_town:"aube",
+                                            location:"tutorial"
+                                            
+                                        })
+                                        profile.save();
+                        
+                                    let playerInventory = await new inventory({
                                         userID: authorId,
                                         serverID: guildID,
-                                        coins: 20000,
-                                        xp:205,
-                                        level:1,
-                                        skill_points:0,
-                                        vitality:1,
-                                        health: 100,
-                                        magicPower: 5,
-                                        mana: 50,
-                                        evasion: 0.05,
-                                        speed: 10,
-                                        magicResistance: 5,
-                                        armour: 5,
-                                        attackDamage: 10,
-                                        weapon: [],
-                                        armourSuit:[],
-                                        items:[],
-                                        currentskills: [{
-                                            name: 'Basic attack',
-                                            description: 'Basic attack',
-                                        },{name: 'Charged Attack',
-                                        description: 'Charge a powerful attack for 1 turn'},{
-                                            name: 'Fireball',
-                                            description: 'Dealing damage and burning them for 3 turns',
-                                        }],
-                                        allskills:[{
-                                            name: 'Basic attack',
-                                            description: 'Basic attack',
-                                        },{name: 'Charged Attack',
-                                        description: 'Charge a powerful attack for 1 turn'},{
-                                            name: 'Fireball',
-                                            description: 'Dealing damage and burning them for 3 turns',
-                                        },],
-                                        passiveskills:[],
-                                        quest:false,
-                                        quest_location:'',
-                                        quest_mob:'',
-                                        quest_quantity:0,
-                                        quest_item:'',
-                                        encounter:[],
-                                        main_quest:"Tutorial",
-                                        side_quest:[],
-                                        completed_quests:[],
-                                        main_quest_phase:"1",
-                                        side_quest_phase:"",
-                                        kingdom:"solarstrio",
-                                        city_town:"aube",
-                                        location:"tutorial"
-                                        
+                                        inventory: {
+                                            weapons:[{name: Sword,
+                                            quantity:Number(1)},{name: steelSword,
+                                                quantity:Number(1)}],
+                                            items:[{name:arachnidVenom.name,
+                                                description:arachnidVenom.description,
+                                                quantity:Number(2)
+                                            }, {name:ghoulSkull.name,
+                                                description:ghoulSkull.description,
+                                                quantity:Number(3)
+                        
+                                            }],
+                                            armour:[{name: steelArmour,
+                                                quantity:Number(1)}],
+                                            potions:[{
+                                                name: healthPotion,
+                                                quantity:Number(1)
+                                            }],
+                                        }
                                     })
-                                    profile.save();
-                    
-                                let playerInventory = await new inventory({
-                                    userID: authorId,
-                                    serverID: guildID,
-                                    inventory: {
-                                        weapons:[{name: Sword,
-                                        quantity:Number(1)},{name: steelSword,
-                                            quantity:Number(1)}],
-                                        items:[{name:arachnidVenom.name,
-                                            description:arachnidVenom.description,
-                                            quantity:Number(2)
-                                        }, {name:ghoulSkull.name,
-                                            description:ghoulSkull.description,
-                                            quantity:Number(3)
-                    
-                                        }],
-                                        armour:[{name: steelArmour,
-                                            quantity:Number(1)}],
-                                        potions:[{
-                                            name: healthPotion,
-                                            quantity:Number(1)
-                                        }],
+                                    playerInventory.save();
                                     }
-                                })
-                                playerInventory.save();
-    
+                                    else if(user_class == 'assassin'){
+                                        let profile = await new profileModel({
+                                            userID: authorId,
+                                            serverID: guildID,
+                                            coins: 20000,
+                                            xp:0,
+                                            level:1,
+                                            class:'Assassin',
+                                            elements:user_elements,
+                                            skill_points:0,
+                                            vitality:5,
+                                            health: 100,
+                                            magicPower: 5,
+                                            mana: 50,
+                                            stamina:50,
+                                            evasion: 0.05,
+                                            speed: 20,
+                                            magicResistance: 10,
+                                            armour: 0,
+                                            attackDamage: 20,
+                                            weapon: [],
+                                            armourSuit:[],
+                                            items:[],
+                                            currentskills: [{
+                                                name: 'Basic attack',
+                                                description: 'Basic attack',
+                                            },{name: 'Charged Attack',
+                                            description: 'Charge a powerful attack for 1 turn'},{
+                                                name: 'Fireball',
+                                                description: 'Dealing damage and burning them for 3 turns',
+                                            }],
+                                            allskills:[{
+                                                name: 'Basic attack',
+                                                description: 'Basic attack',
+                                            },{name: 'Charged Attack',
+                                            description: 'Charge a powerful attack for 1 turn'},{
+                                                name: 'Fireball',
+                                                description: 'Dealing damage and burning them for 3 turns',
+                                            },],
+                                            passiveskills:[],
+                                            quest:false,
+                                            quest_location:'',
+                                            quest_mob:'',
+                                            quest_quantity:0,
+                                            quest_item:'',
+                                            encounter:[],
+                                            main_quest:"Tutorial",
+                                            side_quest:[],
+                                            completed_quests:[],
+                                            main_quest_phase:"1",
+                                            side_quest_phase:"",
+                                            kingdom:"solarstrio",
+                                            city_town:"aube",
+                                            location:"tutorial"
+                                            
+                                        })
+                                        profile.save();
+                        
+                                    let playerInventory = await new inventory({
+                                        userID: authorId,
+                                        serverID: guildID,
+                                        inventory: {
+                                            weapons:[{name: Sword,
+                                            quantity:Number(1)},{name: steelSword,
+                                                quantity:Number(1)}],
+                                            items:[{name:arachnidVenom.name,
+                                                description:arachnidVenom.description,
+                                                quantity:Number(2)
+                                            }, {name:ghoulSkull.name,
+                                                description:ghoulSkull.description,
+                                                quantity:Number(3)
+                        
+                                            }],
+                                            armour:[{name: steelArmour,
+                                                quantity:Number(1)}],
+                                            potions:[{
+                                                name: healthPotion,
+                                                quantity:Number(1)
+                                            }],
+                                        }
+                                    })
+                                    playerInventory.save();
+                                    }
+                                    else if(user_class == 'sorceror'){
+                                        let profile = await new profileModel({
+                                            userID: authorId,
+                                            serverID: guildID,
+                                            coins: 20000,
+                                            xp:0,
+                                            level:1,
+                                            class:'Sorceror',
+                                            elements:user_elements,
+                                            skill_points:0,
+                                            vitality:8,
+                                            health: 100,
+                                            magicPower: 20,
+                                            mana: 50,
+                                            stamina:50,
+                                            evasion: 0.05,
+                                            speed: 10,
+                                            magicResistance: 15,
+                                            armour: 5,
+                                            attackDamage: 0,
+                                            weapon: [],
+                                            armourSuit:[],
+                                            items:[],
+                                            currentskills: [{
+                                                name: 'Basic attack',
+                                                description: 'Basic attack',
+                                            },{name: 'Charged Attack',
+                                            description: 'Charge a powerful attack for 1 turn'},{
+                                                name: 'Fireball',
+                                                description: 'Dealing damage and burning them for 3 turns',
+                                            }],
+                                            allskills:[{
+                                                name: 'Basic attack',
+                                                description: 'Basic attack',
+                                            },{name: 'Charged Attack',
+                                            description: 'Charge a powerful attack for 1 turn'},{
+                                                name: 'Fireball',
+                                                description: 'Dealing damage and burning them for 3 turns',
+                                            },],
+                                            passiveskills:[],
+                                            quest:false,
+                                            quest_location:'',
+                                            quest_mob:'',
+                                            quest_quantity:0,
+                                            quest_item:'',
+                                            encounter:[],
+                                            main_quest:"Tutorial",
+                                            side_quest:[],
+                                            completed_quests:[],
+                                            main_quest_phase:"1",
+                                            side_quest_phase:"",
+                                            kingdom:"solarstrio",
+                                            city_town:"aube",
+                                            location:"tutorial"
+                                            
+                                        })
+                                        profile.save();
+                        
+                                    let playerInventory = await new inventory({
+                                        userID: authorId,
+                                        serverID: guildID,
+                                        inventory: {
+                                            weapons:[{name: Sword,
+                                            quantity:Number(1)},{name: steelSword,
+                                                quantity:Number(1)}],
+                                            items:[{name:arachnidVenom.name,
+                                                description:arachnidVenom.description,
+                                                quantity:Number(2)
+                                            }, {name:ghoulSkull.name,
+                                                description:ghoulSkull.description,
+                                                quantity:Number(3)
+                        
+                                            }],
+                                            armour:[{name: steelArmour,
+                                                quantity:Number(1)}],
+                                            potions:[{
+                                                name: healthPotion,
+                                                quantity:Number(1)
+                                            }],
+                                        }
+                                    })
+                                    playerInventory.save();
+                                    }
+                                    else if(user_class == 'crusader'){
+                                        let profile = await new profileModel({
+                                            userID: authorId,
+                                            serverID: guildID,
+                                            coins: 20000,
+                                            xp:0,
+                                            level:1,
+                                            class:'Crusader',
+                                            elements:user_elements,
+                                            skill_points:0,
+                                            vitality:15,
+                                            health: 100,
+                                            magicPower: 0,
+                                            mana: 50,
+                                            stamina:50,
+                                            evasion: 0.05,
+                                            speed: 10,
+                                            magicResistance: 0,
+                                            armour: 15,
+                                            attackDamage: 20,
+                                            weapon: [],
+                                            armourSuit:[],
+                                            items:[],
+                                            currentskills: [{
+                                                name: 'Basic attack',
+                                                description: 'Basic attack',
+                                            },{name: 'Charged Attack',
+                                            description: 'Charge a powerful attack for 1 turn'},{
+                                                name: 'Fireball',
+                                                description: 'Dealing damage and burning them for 3 turns',
+                                            }],
+                                            allskills:[{
+                                                name: 'Basic attack',
+                                                description: 'Basic attack',
+                                            },{name: 'Charged Attack',
+                                            description: 'Charge a powerful attack for 1 turn'},{
+                                                name: 'Fireball',
+                                                description: 'Dealing damage and burning them for 3 turns',
+                                            },],
+                                            passiveskills:[],
+                                            quest:false,
+                                            quest_location:'',
+                                            quest_mob:'',
+                                            quest_quantity:0,
+                                            quest_item:'',
+                                            encounter:[],
+                                            main_quest:"Tutorial",
+                                            side_quest:[],
+                                            completed_quests:[],
+                                            main_quest_phase:"1",
+                                            side_quest_phase:"",
+                                            kingdom:"solarstrio",
+                                            city_town:"aube",
+                                            location:"tutorial"
+                                            
+                                        })
+                                        profile.save();
+                        
+                                    let playerInventory = await new inventory({
+                                        userID: authorId,
+                                        serverID: guildID,
+                                        inventory: {
+                                            weapons:[{name: Sword,
+                                            quantity:Number(1)},{name: steelSword,
+                                                quantity:Number(1)}],
+                                            items:[{name:arachnidVenom.name,
+                                                description:arachnidVenom.description,
+                                                quantity:Number(2)
+                                            }, {name:ghoulSkull.name,
+                                                description:ghoulSkull.description,
+                                                quantity:Number(3)
+                        
+                                            }],
+                                            armour:[{name: steelArmour,
+                                                quantity:Number(1)}],
+                                            potions:[{
+                                                name: healthPotion,
+                                                quantity:Number(1)
+                                            }],
+                                        }
+                                    })
+                                    playerInventory.save();
+                                    }
+                                    else if(user_class == 'soldier'){
+                                        let profile = await new profileModel({
+                                            userID: authorId,
+                                            serverID: guildID,
+                                            coins: 20000,
+                                            xp:0,
+                                            level:1,
+                                            class:'Soldier',
+                                            elements:user_elements,
+                                            skill_points:0,
+                                            vitality:10,
+                                            health: 100,
+                                            magicPower: 10,
+                                            mana: 50,
+                                            stamina:50,
+                                            evasion: 0.05,
+                                            speed: 10,
+                                            magicResistance: 10,
+                                            armour: 10,
+                                            attackDamage: 10,
+                                            weapon: [],
+                                            armourSuit:[],
+                                            items:[],
+                                            currentskills: [{
+                                                name: 'Basic attack',
+                                                description: 'Basic attack',
+                                            },{name: 'Charged Attack',
+                                            description: 'Charge a powerful attack for 1 turn'},{
+                                                name: 'Fireball',
+                                                description: 'Dealing damage and burning them for 3 turns',
+                                            }],
+                                            allskills:[{
+                                                name: 'Basic attack',
+                                                description: 'Basic attack',
+                                            },{name: 'Charged Attack',
+                                            description: 'Charge a powerful attack for 1 turn'},{
+                                                name: 'Fireball',
+                                                description: 'Dealing damage and burning them for 3 turns',
+                                            },],
+                                            passiveskills:[],
+                                            quest:false,
+                                            quest_location:'',
+                                            quest_mob:'',
+                                            quest_quantity:0,
+                                            quest_item:'',
+                                            encounter:[],
+                                            main_quest:"Tutorial",
+                                            side_quest:[],
+                                            completed_quests:[],
+                                            main_quest_phase:"1",
+                                            side_quest_phase:"",
+                                            kingdom:"solarstrio",
+                                            city_town:"aube",
+                                            location:"tutorial"
+                                            
+                                        })
+                                        profile.save();
+                        
+                                    let playerInventory = await new inventory({
+                                        userID: authorId,
+                                        serverID: guildID,
+                                        inventory: {
+                                            weapons:[{name: Sword,
+                                            quantity:Number(1)},{name: steelSword,
+                                                quantity:Number(1)}],
+                                            items:[{name:arachnidVenom.name,
+                                                description:arachnidVenom.description,
+                                                quantity:Number(2)
+                                            }, {name:ghoulSkull.name,
+                                                description:ghoulSkull.description,
+                                                quantity:Number(3)
+                        
+                                            }],
+                                            armour:[{name: steelArmour,
+                                                quantity:Number(1)}],
+                                            potions:[{
+                                                name: healthPotion,
+                                                quantity:Number(1)
+                                            }],
+                                        }
+                                    })
+                                    playerInventory.save();
+                                    }
+                                    else if(user_class == 'wanderer'){
+                                        let profile = await new profileModel({
+                                            userID: authorId,
+                                            serverID: guildID,
+                                            coins: 20000,
+                                            xp:0,
+                                            level:1,
+                                            class:'wanderer',
+                                            elements:user_elements,
+                                            skill_points:0,
+                                            vitality:10,
+                                            health: 100,
+                                            magicPower: 10,
+                                            mana: 50,
+                                            stamina:50,
+                                            evasion: 0.05,
+                                            speed: 15,
+                                            magicResistance: 10,
+                                            armour: 5,
+                                            attackDamage: 10,
+                                            weapon: [],
+                                            armourSuit:[],
+                                            items:[],
+                                            currentskills: [{
+                                                name: 'Basic attack',
+                                                description: 'Basic attack',
+                                            },{name: 'Charged Attack',
+                                            description: 'Charge a powerful attack for 1 turn'},{
+                                                name: 'Fireball',
+                                                description: 'Dealing damage and burning them for 3 turns',
+                                            }],
+                                            allskills:[{
+                                                name: 'Basic attack',
+                                                description: 'Basic attack',
+                                            },{name: 'Charged Attack',
+                                            description: 'Charge a powerful attack for 1 turn'},{
+                                                name: 'Fireball',
+                                                description: 'Dealing damage and burning them for 3 turns',
+                                            },],
+                                            passiveskills:[],
+                                            quest:false,
+                                            quest_location:'',
+                                            quest_mob:'',
+                                            quest_quantity:0,
+                                            quest_item:'',
+                                            encounter:[],
+                                            main_quest:"Tutorial",
+                                            side_quest:[],
+                                            completed_quests:[],
+                                            main_quest_phase:"1",
+                                            side_quest_phase:"",
+                                            kingdom:"solarstrio",
+                                            city_town:"aube",
+                                            location:"tutorial"
+                                            
+                                        })
+                                        profile.save();
+                        
+                                    let playerInventory = await new inventory({
+                                        userID: authorId,
+                                        serverID: guildID,
+                                        inventory: {
+                                            weapons:[{name: Sword,
+                                            quantity:Number(1)},{name: steelSword,
+                                                quantity:Number(1)}],
+                                            items:[{name:arachnidVenom.name,
+                                                description:arachnidVenom.description,
+                                                quantity:Number(2)
+                                            }, {name:ghoulSkull.name,
+                                                description:ghoulSkull.description,
+                                                quantity:Number(3)
+                        
+                                            }],
+                                            armour:[{name: steelArmour,
+                                                quantity:Number(1)}],
+                                            potions:[{
+                                                name: healthPotion,
+                                                quantity:Number(1)
+                                            }],
+                                        }
+                                    })
+                                    playerInventory.save();
+                                    }
+                                    else if(user_class == 'knight'){
+                                        let profile = await new profileModel({
+                                            userID: authorId,
+                                            serverID: guildID,
+                                            coins: 20000,
+                                            xp:0,
+                                            level:1,
+                                            class:'Knight',
+                                            elements:user_elements,
+                                            skill_points:0,
+                                            vitality:10,
+                                            health: 100,
+                                            magicPower: 10,
+                                            mana: 50,
+                                            stamina:50,
+                                            evasion: 0.05,
+                                            speed: 10,
+                                            magicResistance: 5,
+                                            armour: 15,
+                                            attackDamage: 10,
+                                            weapon: [],
+                                            armourSuit:[],
+                                            items:[],
+                                            currentskills: [{
+                                                name: 'Basic attack',
+                                                description: 'Basic attack',
+                                            },{name: 'Charged Attack',
+                                            description: 'Charge a powerful attack for 1 turn'},{
+                                                name: 'Fireball',
+                                                description: 'Dealing damage and burning them for 3 turns',
+                                            }],
+                                            allskills:[{
+                                                name: 'Basic attack',
+                                                description: 'Basic attack',
+                                            },{name: 'Charged Attack',
+                                            description: 'Charge a powerful attack for 1 turn'},{
+                                                name: 'Fireball',
+                                                description: 'Dealing damage and burning them for 3 turns',
+                                            },],
+                                            passiveskills:[],
+                                            quest:false,
+                                            quest_location:'',
+                                            quest_mob:'',
+                                            quest_quantity:0,
+                                            quest_item:'',
+                                            encounter:[],
+                                            main_quest:"Tutorial",
+                                            side_quest:[],
+                                            completed_quests:[],
+                                            main_quest_phase:"1",
+                                            side_quest_phase:"",
+                                            kingdom:"solarstrio",
+                                            city_town:"aube",
+                                            location:"tutorial"
+                                            
+                                        })
+                                        profile.save();
+                        
+                                    let playerInventory = await new inventory({
+                                        userID: authorId,
+                                        serverID: guildID,
+                                        inventory: {
+                                            weapons:[{name: Sword,
+                                            quantity:Number(1)},{name: steelSword,
+                                                quantity:Number(1)}],
+                                            items:[{name:arachnidVenom.name,
+                                                description:arachnidVenom.description,
+                                                quantity:Number(2)
+                                            }, {name:ghoulSkull.name,
+                                                description:ghoulSkull.description,
+                                                quantity:Number(3)
+                        
+                                            }],
+                                            armour:[{name: steelArmour,
+                                                quantity:Number(1)}],
+                                            potions:[{
+                                                name: healthPotion,
+                                                quantity:Number(1)
+                                            }],
+                                        }
+                                    })
+                                    playerInventory.save();
+                                    }
                                     
                                
                                 collector.stop()
                                     
                                 }
-                                else if(btn.customId === "btn_reject"){
-                                    await btn.deferUpdate().catch(e => {})
+                                else if(collected.customId === "btn_reject"){
+                                    await collected.deferUpdate().catch(e => {})
                                     await interaction.editReply({embeds:[rejectEmbed]})
     
                                     collector.stop()
@@ -169,7 +924,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
     
                                 
                                 
-                            }
+                            
                               
                 
                    
