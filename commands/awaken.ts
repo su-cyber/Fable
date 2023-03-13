@@ -9,6 +9,7 @@ import { healthPotion } from '../src/age/potions/healthPotion'
 import { MessageActionRow, MessageSelectMenu, SelectMenuInteraction } from 'discord.js'
 import { Collector, MessageButton, MessageEmbed } from 'discord.js'
 import { steelSword } from '../src/age/weapons/steelSword'
+import { MessageComponentInteraction,CacheType } from 'discord.js'
 
 export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken to your story' }).setDo(
     async (bot, interaction) => {
@@ -31,6 +32,55 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Tutorial").setDisabled(true),
                             new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Cancel").setDisabled(true),
                         ])
+
+                        let select_class =  new MessageActionRow().addComponents([
+                            new MessageSelectMenu()
+                            .setCustomId('select_class')
+                                .setPlaceholder(`Select your preferred class ${interaction.user.username}`)
+                                .addOptions({
+                                    
+                                    label: `Samurai`,
+                                    description: `Bloodthirsty and slices like butter.`,
+                                    value: `samurai`,
+                                },{
+                                    label: `Crusader`,
+                                    description: `Will crush you with his hammer.`,
+                                    value: `crusader`,
+                                },{
+                                    label: `Soldier`,
+                                    description: `Proficient in all, master of none.`,
+                                    value: `soldier`,
+                                },{
+                                    label: `Sorcerer`,
+                                    description: `Ruins your day from a safe distance.`,
+                                    value: `sorcerer`,
+                                },
+                                {
+                                    label: `Wanderer`,
+                                    description: `Left their home to claim yours.`,
+                                    value: `wanderer`,
+                                },{
+                                    label: `Knight`,
+                                    description: `Very heavy, resilient and unyielding.`,
+                                    value: `knight`,
+                                },{
+                                    label: `Assassin`,
+                                    description: `Silent as a feather, fast as a knife.`,
+                                    value: `assassin`,
+                                },
+                                
+                                )
+                                .setDisabled(false),
+                        ]) 
+                        let classEmbed = new MessageEmbed()
+                        .setColor('BLURPLE')
+                        .setTitle('CLASS SELECTION')
+                        .setAuthor({
+                            iconURL:interaction.user.displayAvatarURL(),
+                            name:interaction.user.tag
+                        })
+                        .setDescription('Select your class out of the options')
+                        
                         let ProceedEmbed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('TUTORIAL: New Beginings')
@@ -67,13 +117,17 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     
                     await interaction.reply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
                     let filter = i => i.user.id === authorId
+                    let filter_select = i => (i.customId === 'select_class') && i.user.id === authorId
                         let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
+                
+                        
+                        let collector_select = await interaction.channel.createMessageComponentCollector({filter: filter_select})
                 
                         collector.on('collect',async (btn) => {
                             if(btn.isButton()){
                                 if(btn.customId === "btn_accept"){
                                     await btn.deferUpdate().catch(e => {})
-                                    await interaction.editReply({embeds:[acceptEmbed]})
+                                    await interaction.editReply({embeds:[classEmbed],components:[select_class]})
                                     
                                     
                                     let profile = await new profileModel({
@@ -176,6 +230,16 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                 
                    
                    
+                    })
+                    collector_select.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                           
+                        if(collected.customId == 'select_class'){
+                            let user_class = collected.values[0]
+                            await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
+                            console.log(user_class);
+                            
+                        }
+                        collector_select.stop()
                     })
     
                     collector.on('end', () => {
