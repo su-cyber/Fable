@@ -72,56 +72,50 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 )
                                 .setDisabled(false),
                         ]) 
-
+                        let elements = [{
+                            name:"Flame",
+                            description:`Element of fire`
+                        },{
+                            name:"Wave",
+                            description:`Element of water`
+                        },{
+                            name:"Light",
+                            description:`Element of light`
+                        },{
+                            name:"Frost",
+                            description:`Element of ice`
+                        },{
+                            name:"Volt",
+                            description:`Element of lightning`
+                        },{
+                            name:"Terra",
+                            description:`Element of earth`
+                        },{
+                            name:"Flame",
+                            description:`Element of fire`
+                        },{
+                            name:"Gale",
+                            description:`Element of wind`
+                        },{
+                            name:"Bloom",
+                            description:`Element of plants`
+                        },{
+                            name:"Alloy",
+                            description:`Element of metals`
+                        }]
                         let select_element =  new MessageActionRow().addComponents([
                             new MessageSelectMenu()
                             .setCustomId('select_element')
                                 .setPlaceholder(`Select your preferred element ${interaction.user.username}`)
-                                .addOptions({
+                                .addOptions(
+                                    elements.map(element => ({
+                                        label: element.name,
+                                        description: element.description,
+                                        value: element.name,
+                                    }))
                                     
-                                    label: `Flame`,
-                                    description: `Element of fire`,
-                                    value: `flame`,
-                                },{
-                                    label: `Wave`,
-                                    description: `Element of water`,
-                                    value: `wave`,
-                                },{
-                                    label: `Light`,
-                                    description: `element of light`,
-                                    value: `light`,
-                                },{
-                                    label: `Volt`,
-                                    description: `element of lightning`,
-                                    value: `volt`,
-                                },
-                                {
-                                    label: `Frost`,
-                                    description: `Element of ice`,
-                                    value: `frost`,
-                                },{
-                                    label: `Terra`,
-                                    description: `element of earth`,
-                                    value: `terra`,
-                                },{
-                                    label: `Gale`,
-                                    description: `element of wind`,
-                                    value: `wind`,
-                                },{
-                                    label: `Alloy`,
-                                    description: `element of metal`,
-                                    value: `alloy`,
-                                },{
-                                    label: `Wild`,
-                                    description: `element of wind`,
-                                    value: `wild`,
-                                },{
-                                    label: `Bloom`,
-                                    description: `element of plants`,
-                                    value: `bloom`,
-                                },
                                 
-                                )
+                                 )
                                 .setDisabled(false),
                         ])  
              
@@ -394,9 +388,15 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                            
                             if(count == 1){
                                 await interaction.editReply({content: null,embeds:[elementEmbed2],components:[select_element]})
+                                const foundElement=elements.find(object => object.name === collected.values[0])
+                                const index = elements.indexOf(foundElement)
+                                                    elements.splice(index,1)
                             }
                             else if(count == 2){
                                 await interaction.editReply({content: null,embeds:[elementEmbed3],components:[select_element]})
+                                const foundElement=elements.find(object => object.name === collected.values[0])
+                                const index = elements.indexOf(foundElement)
+                                                    elements.splice(index,1)
                             }
                             else if(count ==3){
                                 await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
