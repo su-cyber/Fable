@@ -73,34 +73,34 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 .setDisabled(false),
                         ]) 
                         let elements = [{
-                            name:"Flame",
+                            name:"flame",
                             description:`Element of fire`
                         },{
-                            name:"Wave",
+                            name:"fave",
                             description:`Element of water`
                         },{
-                            name:"Light",
+                            name:"light",
                             description:`Element of light`
                         },{
-                            name:"Frost",
+                            name:"frost",
                             description:`Element of ice`
                         },{
-                            name:"Volt",
+                            name:"volt",
                             description:`Element of lightning`
                         },{
-                            name:"Terra",
+                            name:"terra",
                             description:`Element of earth`
                         },{
-                            name:"Flame",
+                            name:"flame",
                             description:`Element of fire`
                         },{
-                            name:"Gale",
+                            name:"gale",
                             description:`Element of wind`
                         },{
-                            name:"Bloom",
+                            name:"bloom",
                             description:`Element of plants`
                         },{
-                            name:"Alloy",
+                            name:"alloy",
                             description:`Element of metals`
                         }]
                         let select_element =  new MessageActionRow().addComponents([
