@@ -387,7 +387,22 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             count+=1
                             const foundElement=elements.find(object => object.name === collected.values[0])
                             const index = elements.indexOf(foundElement)
-                                                elements.splice(index,1)
+                            elements.splice(index,1)
+                            select_element =  new MessageActionRow().addComponents([
+                                new MessageSelectMenu()
+                                .setCustomId('select_element')
+                                    .setPlaceholder(`Select your preferred element ${interaction.user.username}`)
+                                    .addOptions(
+                                        elements.map(element => ({
+                                            label: element.name,
+                                            description: element.description,
+                                            value: element.name,
+                                        }))
+                                        
+                                    
+                                     )
+                                    .setDisabled(false),
+                            ])  
                            
                             if(count == 1){
                                 await interaction.editReply({content: null,embeds:[elementEmbed2],components:[select_element]})
