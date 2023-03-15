@@ -426,8 +426,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     if(foundUser.class =="" || foundUser.elements.length !=3){
                                         await interaction.editReply({content: null,embeds:[errorEmbed],components:[]})
                                         console.log(foundUser.class,foundUser.elements);
-                                        await profileModel.deleteOne({userID:authorId})
-                                        await inventory.deleteOne({userID:authorId})
+                                        // await profileModel.deleteOne({userID:authorId})
+                                        // await inventory.deleteOne({userID:authorId})
                                     }
                                     else{
                                         await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
