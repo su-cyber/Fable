@@ -386,7 +386,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.magicResistance = 5
                                 }
 
-                                await profileModel.updateOne({userID:authorId},foundUser)
+                                await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance})
                                 await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
                             })
                             
@@ -426,8 +426,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     if(foundUser.class =="" || foundUser.elements.length !=3){
                                         await interaction.editReply({content: null,embeds:[errorEmbed],components:[]})
                                         console.log(foundUser.class,foundUser.elements);
-                                        // await profileModel.deleteOne({userID:authorId})
-                                        // await inventory.deleteOne({userID:authorId})
+                                        await profileModel.deleteOne({userID:authorId})
+                                        await inventory.deleteOne({userID:authorId})
                                     }
                                     else{
                                         await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
