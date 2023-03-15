@@ -44,6 +44,7 @@ class Bot extends Client {
                 const command = this.commands.get(interaction.commandName) as MyCommandSlashBuilder
 
                 if (command) {
+                    
                     await command.do(this, interaction)
                     const userID=interaction.user.id
                     profileSchema.exists({userID:userID},async function(err,res){

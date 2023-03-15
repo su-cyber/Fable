@@ -393,6 +393,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         }
                         else if(collected.customId == 'select_element'){
                             user_elements.push(collected.values[0])
+                            await profileModel.updateOne({userID:authorId},{elements:user_elements})
                             count+=1
                             const foundElement=elements.find(object => object.name === collected.values[0])
                             const index = elements.indexOf(foundElement)
@@ -425,11 +426,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     if(foundUser.class =="" || foundUser.elements.length !=3){
                                         await interaction.editReply({content: null,embeds:[errorEmbed],components:[]})
                                         console.log(foundUser.class,foundUser.elements);
-        
-                                        
-                                        
-                                        await profileModel.remove({userID:authorId})
-                                        await inventory.remove({userID:authorId})
+                                        await profileModel.deleteOne({userID:authorId})
+                                        await inventory.deleteOne({userID:authorId})
                                     }
                                     else{
                                         await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
@@ -440,7 +438,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 collector_select.stop()
                             }
                            
-                            await profileModel.updateOne({userID:authorId},{elements:user_elements})
+                           
                             
                         }
                         
