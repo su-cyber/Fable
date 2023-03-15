@@ -10,6 +10,7 @@ import { MessageActionRow, MessageSelectMenu, SelectMenuInteraction } from 'disc
 import { Collector, MessageButton, MessageEmbed } from 'discord.js'
 import { steelSword } from '../src/age/weapons/steelSword'
 import { MessageComponentInteraction,CacheType } from 'discord.js'
+import { sleep } from '../src/utils'
 
 export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken to your story' }).setDo(
     async (bot, interaction) => {
@@ -387,7 +388,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 }
 
                                 await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance})
-                                await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
+                                console.log(foundUser.class);
+                                await sleep(2)
+                                interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
                             })
                             
                         }
