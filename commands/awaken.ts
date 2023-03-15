@@ -320,7 +320,6 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                            
                         if(collected.customId == 'select_class'){
                             let user_class = collected.values[0]
-                            await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
                             profileModel.findOne({userID:authorId},async (err,foundUser) => {
                                 
                                 if(user_class == 'samurai'){
@@ -388,6 +387,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 }
 
                                 await profileModel.updateOne({userID:authorId},foundUser)
+                                await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
                             })
                             
                         }
