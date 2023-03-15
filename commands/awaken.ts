@@ -421,12 +421,16 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 await interaction.editReply({content: null,embeds:[elementEmbed3],components:[select_element]})
                             }
                             else if(count ==3){
-                                if(foundUser.class =="" || foundUser.elements.length !=3){
-                                    await interaction.editReply({content: null,embeds:[errorEmbed],components:[]})
-                                }
-                                else{
-                                    await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
-                                }
+                                profileModel.findOne({userID:authorId},async (err,foundUser) => {
+                                    if(foundUser.class =="" || foundUser.elements.length !=3){
+                                        await interaction.editReply({content: null,embeds:[errorEmbed],components:[]})
+                                        await profileModel.remove({foundUser})
+                                    }
+                                    else{
+                                        await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
+                                    }
+                                })
+                               
                                
                                 collector_select.stop()
                             }
