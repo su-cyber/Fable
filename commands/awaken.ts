@@ -189,7 +189,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         .setDescription('Select your third element out of the options')
 
                         let errorEmbed = new MessageEmbed()
-                        .setColor('BLUE')
+                        .setColor('RED')
                         .setTitle('ERROR')
                         .setAuthor({
                             iconURL:interaction.user.displayAvatarURL(),
@@ -424,7 +424,12 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 profileModel.findOne({userID:authorId},async (err,foundUser) => {
                                     if(foundUser.class =="" || foundUser.elements.length !=3){
                                         await interaction.editReply({content: null,embeds:[errorEmbed],components:[]})
-                                        await profileModel.remove({foundUser})
+                                        console.log(foundUser.class,foundUser.elements);
+        
+                                        
+                                        
+                                        await profileModel.remove({userID:authorId})
+                                        await inventory.remove({userID:authorId})
                                     }
                                     else{
                                         await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
