@@ -48,9 +48,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     description: `Will crush you with his hammer.`,
                                     value: `crusader`,
                                 },{
-                                    label: `Sorcerer`,
+                                    label: `Sorceror`,
                                     description: `Ruins your day from a safe distance.`,
-                                    value: `sorcerer`,
+                                    value: `sorceror`,
                                 },
                                 {
                                     label: `Wanderer`,
