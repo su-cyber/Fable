@@ -48,10 +48,6 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     description: `Will crush you with his hammer.`,
                                     value: `crusader`,
                                 },{
-                                    label: `Soldier`,
-                                    description: `Proficient in all, master of none.`,
-                                    value: `soldier`,
-                                },{
                                     label: `Sorcerer`,
                                     description: `Ruins your day from a safe distance.`,
                                     value: `sorcerer`,
@@ -75,34 +71,34 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         ]) 
                         
                         const elements = [{
-                            name:`flame`,
+                            name:`Flame`,
                             description:`Element of fire`
                         },{
-                            name:`wave`,
+                            name:`Wave`,
                             description:`Element of water`
                         },{
-                            name:`light`,
+                            name:`Light`,
                             description:`Element of light`
                         },{
-                            name:`frost`,
+                            name:`Frost`,
                             description:`Element of ice`
                         },{
-                            name:`volt`,
+                            name:`Volt`,
                             description:`Element of lightning`
                         },{
-                            name:`terra`,
+                            name:`Terra`,
                             description:`Element of earth`
                         },{
-                            name:`venom`,
+                            name:`Venom`,
                             description:`Element of poison`
                         },{
-                            name:`gale`,
+                            name:`Gale`,
                             description:`Element of wind`
                         },{
-                            name:`bloom`,
+                            name:`Bloom`,
                             description:`Element of plants`
                         },{
-                            name:`alloy`,
+                            name:`Alloy`,
                             description:`Element of metals`
                         }]
                         let select_element =  new MessageActionRow().addComponents([
@@ -169,25 +165,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             iconURL:interaction.user.displayAvatarURL(),
                             name:interaction.user.tag
                         })
-                        .setDescription('Select your first element out of the options')
+                        .setDescription('Select your preferred element out of the options')
 
-                        let elementEmbed2 = new MessageEmbed()
-                        .setColor('BLUE')
-                        .setTitle('ELEMENT SELECTION')
-                        .setAuthor({
-                            iconURL:interaction.user.displayAvatarURL(),
-                            name:interaction.user.tag
-                        })
-                        .setDescription('Select your second element out of the options')
-
-                        let elementEmbed3 = new MessageEmbed()
-                        .setColor('BLUE')
-                        .setTitle('ELEMENT SELECTION')
-                        .setAuthor({
-                            iconURL:interaction.user.displayAvatarURL(),
-                            name:interaction.user.tag
-                        })
-                        .setDescription('Select your third element out of the options')
+                    
 
                         let errorEmbed = new MessageEmbed()
                         .setColor('RED')
@@ -201,11 +181,12 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     
                     await interaction.reply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
                     let filter = i => i.user.id === authorId
-                    let filter_select = i => (i.customId === 'select_class' || i.customId === 'select_element') && i.user.id === authorId
+                    let filter_select_class = i => (i.customId === 'select_class') && i.user.id === authorId
+                    let filter_select_element = i => (i.customId === 'select_element') && i.user.id === authorId
                         let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
-                
+                        let collector_select_element = await interaction.channel.createMessageComponentCollector({filter: filter_select_element,time : 1000 * 120})
                         
-                        let collector_select = await interaction.channel.createMessageComponentCollector({filter: filter_select})
+                        let collector_select_class = await interaction.channel.createMessageComponentCollector({filter: filter_select_class})
                 
                         collector.on('collect',async (btn) => {
                             if(btn.isButton()){
@@ -317,7 +298,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     })
                     let user_elements =[]
                     let count = 0
-                    collector_select.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                    collector_select_class.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                            
                         if(collected.customId == 'select_class'){
                             let user_class = collected.values[0]
@@ -359,15 +340,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.vitality = 15
                                     foundUser.magicResistance = 0
                                 }
-                                else if(user_class == 'soldier'){
-                                    foundUser.class = 'Soldier'
-                                    foundUser.attackDamage = 10
-                                    foundUser.armour = 10
-                                    foundUser.speed = 10
-                                    foundUser.magicPower = 10
-                                    foundUser.vitality = 10
-                                    foundUser.magicResistance = 10
-                                }
+                                
                                 else if(user_class == 'wanderer'){
                                     foundUser.class = 'Wanderer'
                                     foundUser.attackDamage = 10
@@ -390,54 +363,34 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance})
                                 await sleep(2)
                                 interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
+                                collector_select_class.stop()
                             })
                             
                         }
-                        else if(collected.customId == 'select_element'){
-                            user_elements.push(collected.values[0])
-                            await profileModel.updateOne({userID:authorId},{elements:user_elements})
-                            count+=1
-                            const foundElement=elements.find(object => object.name === collected.values[0])
-                            const index = elements.indexOf(foundElement)
-                            elements.splice(index,1)
-                            select_element =  new MessageActionRow().addComponents([
-                                new MessageSelectMenu()
-                                .setCustomId('select_element')
-                                    .setPlaceholder(`Select your preferred element ${interaction.user.username}`)
-                                    .addOptions(
-                                        elements.map(element => ({
-                                            label: element.name,
-                                            description: element.description,
-                                            value: element.name,
-                                        }))
-                                        
-                                    
-                                     )
-                                    .setDisabled(false),
-                            ])  
-                           
-                            if(count == 1){
-                                await interaction.editReply({content: null,embeds:[elementEmbed2],components:[select_element]})
+                    })
+                        collector_select_element.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                            if(collected.customId == 'select_element'){
+                                user_elements.push(collected.values[0])
+                                await profileModel.updateOne({userID:authorId},{elements:user_elements})
+                                
+                  
+                                    profileModel.findOne({userID:authorId},async (err,foundUser) => {
+                                        if(foundUser.class =="" || foundUser.elements.length !=1){
+                                            await interaction.editReply({content: null,embeds:[errorEmbed],components:[]})
+                                            await profileModel.deleteOne({userID:authorId})
+                                            await inventory.deleteOne({userID:authorId})
+                                        }
+                                        else{
+                                            await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
+                                        }
+                                    })
+                                   
+                                   
+                                    collector_select_element.stop()
+                                
+                        
 
-                            }
-                            else if(count == 2){
-                                await interaction.editReply({content: null,embeds:[elementEmbed3],components:[select_element]})
-                            }
-                            else if(count ==3){
-                                profileModel.findOne({userID:authorId},async (err,foundUser) => {
-                                    if(foundUser.class =="" || foundUser.elements.length !=3){
-                                        await interaction.editReply({content: null,embeds:[errorEmbed],components:[]})
-                                        await profileModel.deleteOne({userID:authorId})
-                                        await inventory.deleteOne({userID:authorId})
-                                    }
-                                    else{
-                                        await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
-                                    }
-                                })
-                               
-                               
-                                collector_select.stop()
-                            }
+                       
                            
                            
                             
