@@ -100,7 +100,7 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                     foundUser.allskills.push(newskill)
                                                 }
                                                 foundUser.skill_tree.class+=1
-                                                foundUser.skill_tree.status-=1
+                                                
                                                 acceptembed = new MessageEmbed()
                                             .setColor('RANDOM')
                                             .setTitle('SKILL CHOSEN')
@@ -145,6 +145,7 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                 .setDescription(`you chose ${option3.name}`)
                                                
                                             }
+                                            foundUser.skill_tree.status-=1
                                             await profileModel.updateOne({userID:authorId},{currentskills:foundUser.currentskills,allskills:foundUser.allskills,skill_tree:foundUser.skill_tree})
                                             await interaction.editReply({embeds:[acceptembed],components:[]})
                                             collector_select.stop()
