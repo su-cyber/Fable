@@ -2,6 +2,7 @@ import { GuildMember } from 'discord.js'
 import { emoji } from '../../lib/utils/emoji'
 import { calculate, ClassEntity } from '../classes'
 import { bleeding } from '../effects/bleeding'
+import { blind } from '../effects/blind'
 import { burning } from '../effects/burning'
 
 const skills = [
@@ -11,9 +12,17 @@ const skills = [
         description: 'Basic attack',
         canEvade: true,
         mana_cost: 0,
-        damage:0,
+        damage:150,
         type: 'physical',
         use: (attacker, defender) =>{
+            const basic = attacker.scheduler.task.all
+            .effect(blind)
+            .turns(2)
+            .end(() => defender.removeEffect(blind))
+            .run(() =>
+            {}
+            )
+        defender.applyEffect(basic)
             attacker.addLogMessage(`**${attacker.name}** used Basic attack`)
             defender.takeDamage
                 .physical(attacker.attackDamage)

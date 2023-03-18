@@ -11,6 +11,8 @@ import { illusion } from '../effects/illusion'
 import { CommandInteraction } from 'discord.js'
 import passive_skills from '../heroes/passive_skills'
 import { Potion } from './potion'
+import { blind } from '../effects/blind'
+import { weightedRandom } from '../../utils'
 
 // prettier-ignore
 export type EntityProps = {
@@ -212,6 +214,18 @@ export class Entity {
                 attacker.addLogMessage('physical attacks have been disabled!')
             }
         }
+        else if(attacker.hasEffect(blind)){
+            const chance = weightedRandom([true,false],[0.5,0.5])
+            if(chance == true){
+                this.addLogMessage(`${attacker.name} missed the attack due to blindness!`)
+            }
+            else{
+                const text = skill.use(this, defender)
+                if (text) {
+                    this.addLogMessage(...(Array.isArray(text) ? text : [text]))
+            }
+            }
+        }
         else if(attacker.hasEffect(anti_magic)){
             if(skill.type!='magical'){
                 const text = skill.use(this, defender)
@@ -230,8 +244,10 @@ export class Entity {
                     this.addLogMessage(...(Array.isArray(text) ? text : [text]))
             
         }
+        
             
         }
+        
         else {
             const text = skill.use(this, defender)
                 if (text) {
