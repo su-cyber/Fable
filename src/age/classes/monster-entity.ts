@@ -7,6 +7,8 @@ import { Skill } from './skill'
 import { anti_physical } from '../effects/anti-physical'
 import { anti_magic } from '../effects/anti-magic'
 import { illusion } from '../effects/illusion'
+import { blind } from '../effects/blind'
+import { weightedRandom } from '../../utils'
 
 export class MonsterEntity extends Entity {
     spawnRate: number
@@ -64,6 +66,18 @@ export class MonsterEntity extends Entity {
             }
                 else{
                     attacker.addLogMessage('magical attacks have been disabled!')
+                }
+            }
+            else if(attacker.hasEffect(blind)){
+                const chance = weightedRandom([true,false],[0.5,0.5])
+                if(chance == true){
+                    this.addLogMessage(`${attacker.name} missed the attack due to blindness!`)
+                }
+                else{
+                    const text = skill.use(this, defender)
+                    if (text) {
+                        this.addLogMessage(...(Array.isArray(text) ? text : [text]))
+                }
                 }
             }
             else if(attacker.hasEffect(illusion)){

@@ -17,7 +17,7 @@ const skills = [
         use: (attacker, defender) =>{
             const basic = attacker.scheduler.task.all
             .effect(blind)
-            .turns(2)
+            .turns(4)
             .end(() => defender.removeEffect(blind))
             .run(() =>
             {}
@@ -25,7 +25,7 @@ const skills = [
         defender.applyEffect(basic)
             attacker.addLogMessage(`**${attacker.name}** used Basic attack`)
             defender.takeDamage
-                .physical(attacker.attackDamage)
+                .physical(attacker.attackDamage+20)
                 .run(damage => `**${defender.name}** lost ${damage} HP by Basic Attack`)
         }
     },
