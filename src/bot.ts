@@ -62,10 +62,27 @@ class Bot extends Client {
                                         }
                                         foundUser.health = getHealth(i,foundUser.vitality+1)
                                         let levelupEmbed= new MessageEmbed()
-                                                    .setColor('RANDOM')
-                                                    .setTitle('LEVEL UP!')
-                                                    .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour health has increased to ${foundUser.health}HP`)
+                                                        .setColor('RANDOM')
+                                                        .setTitle('LEVEL UP!')
+                                                        .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour health has increased to ${foundUser.health}HP`)
+                                            
+                                        if(i%3==0){
+                                            foundUser.skill_tree.status+=1
+                                            levelupEmbed= new MessageEmbed()
+                                                        .setColor('RANDOM')
+                                                        .setTitle('LEVEL UP!')
+                                                        .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour health has increased to ${foundUser.health}HP\n\nYou can now learn a new skill! use /learnskill`)
+                                            
+                                        }
+                                        else{
+                                            levelupEmbed= new MessageEmbed()
+                                                        .setColor('RANDOM')
+                                                        .setTitle('LEVEL UP!')
+                                                        .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour health has increased to ${foundUser.health}HP`)
+                                            
                                         
+                                        }
+                                       
                                         await sleep(2)
                                         await interaction.channel.send({embeds:[levelupEmbed]})
                                         foundUser.level=foundUser.level+1

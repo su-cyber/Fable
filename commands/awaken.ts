@@ -199,11 +199,17 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         userID: authorId,
                                         serverID: guildID,
                                         coins: 20000,
-                                        xp:205,
+                                        xp:0,
                                         level:1,
                                         skill_points:0,
                                         class:'',
                                         elements:[],
+                                        skill_tree:{
+                                            physical:0,
+                                            magical:1,
+                                            class:1,
+                                            status:1
+                                        },
                                         vitality:1,
                                         health: 100,
                                         magicPower: 5,
@@ -312,6 +318,14 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.magicPower = 8
                                     foundUser.vitality = 8
                                     foundUser.magicResistance = 6
+                                    foundUser.currentskills = [{
+                                        name: 'Shattering Kick',
+                                        description: 'A powerful kick that deals low damage to the opponent',
+                                    }]
+                                    foundUser.allskills = [{
+                                        name: 'Shattering Kick',
+                                        description: 'A powerful kick that deals low damage to the opponent',
+                                    }]
                                 }
                                 else if(user_class == 'assassin'){
                                     foundUser.class = 'Assassin'

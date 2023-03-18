@@ -6,7 +6,7 @@ import { MonsterEntity, Entity } from '../src/age/classes'
 import { Warrior } from '../src/age/heroes/warrior'
 import { Mage } from '../src/age/heroes/mage'
 import profileModel from '../models/profileSchema'
-import allskills from '../src/age/heroes/skills'
+import allskills from '../src/age/skills/skills'
 import { sleep } from '../src/utils'
 import inventory from '../models/InventorySchema'
 

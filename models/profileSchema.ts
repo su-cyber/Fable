@@ -10,6 +10,7 @@ const profileSchema = new mongoose.Schema({
     skill_points:{type:Number},
     class:{type:String},
     elements:{type:Array},
+    skill_tree:{type:Object},
     vitality:{type:Number},
     health: {type:Number},
     magicPower: {type:Number},
