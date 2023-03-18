@@ -13,6 +13,7 @@ import passive_skills from '../heroes/passive_skills'
 import { Potion } from './potion'
 import { blind } from '../effects/blind'
 import { weightedRandom } from '../../utils'
+import { stun } from '../effects/stun'
 
 // prettier-ignore
 export type EntityProps = {
@@ -218,6 +219,19 @@ export class Entity {
             const chance = weightedRandom([true,false],[0.5,0.5])
             if(chance == true){
                 this.addLogMessage(`${attacker.name} missed the attack due to blindness!`)
+            }
+            else{
+                const text = skill.use(this, defender)
+                if (text) {
+                    this.addLogMessage(...(Array.isArray(text) ? text : [text]))
+            }
+            }
+        }
+        else if(attacker.hasEffect(stun)){
+            const chance = weightedRandom([true,false],[0.5,0.5])
+            if(chance == true){
+                this.addLogMessage(`${attacker.name} could'nt attack due to being stunned!`)
+                attacker.mana+=skill.mana_cost
             }
             else{
                 const text = skill.use(this, defender)

@@ -4,6 +4,7 @@ import { calculate, ClassEntity } from '../classes'
 import { bleeding } from '../effects/bleeding'
 import { blind } from '../effects/blind'
 import { burning } from '../effects/burning'
+import { stun } from '../effects/stun'
 
 const skills = [
     {
@@ -16,13 +17,16 @@ const skills = [
         type: 'physical',
         use: (attacker, defender) =>{
             const basic = attacker.scheduler.task.all
-            .effect(blind)
+            .effect(stun)
             .turns(4)
-            .end(() => defender.removeEffect(blind))
+            .end(() => defender.removeEffect(stun))
             .run(() =>
             {}
             )
-        defender.applyEffect(basic)
+        if(defender.effects.length == 0){
+            defender.applyEffect(basic)
+        }
+        
             attacker.addLogMessage(`**${attacker.name}** used Basic attack`)
             defender.takeDamage
                 .physical(attacker.attackDamage+20)

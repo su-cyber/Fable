@@ -42,7 +42,7 @@ export class BeerBuccaneer extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     damage:0,
-                    mana_cost: 0,
+                    mana_cost: 5,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`**${attacker.name}** used Knife Stab`)
                         defender.takeDamage

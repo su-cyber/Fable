@@ -9,6 +9,7 @@ import { anti_magic } from '../effects/anti-magic'
 import { illusion } from '../effects/illusion'
 import { blind } from '../effects/blind'
 import { weightedRandom } from '../../utils'
+import { stun } from '../effects/stun'
 
 export class MonsterEntity extends Entity {
     spawnRate: number
@@ -72,6 +73,19 @@ export class MonsterEntity extends Entity {
                 const chance = weightedRandom([true,false],[0.5,0.5])
                 if(chance == true){
                     this.addLogMessage(`${attacker.name} missed the attack due to blindness!`)
+                }
+                else{
+                    const text = skill.use(this, defender)
+                    if (text) {
+                        this.addLogMessage(...(Array.isArray(text) ? text : [text]))
+                }
+                }
+            }
+            else if(attacker.hasEffect(stun)){
+                const chance = weightedRandom([true,false],[0.5,0.5])
+                if(chance == true){
+                    this.addLogMessage(`${attacker.name} could'nt attack due to being stunned!`)
+                    attacker.mana+=skill.mana_cost
                 }
                 else{
                     const text = skill.use(this, defender)
