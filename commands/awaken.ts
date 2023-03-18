@@ -208,7 +208,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                             physical:0,
                                             magical:1,
                                             class:1,
-                                            status:1
+                                            status:0
                                         },
                                         vitality:1,
                                         health: 100,
@@ -222,22 +222,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         weapon: [],
                                         armourSuit:[],
                                         items:[],
-                                        currentskills: [{
-                                            name: 'Basic attack',
-                                            description: 'Basic attack',
-                                        },{name: 'Charged Attack',
-                                        description: 'Charge a powerful attack for 1 turn'},{
-                                            name: 'Fireball',
-                                            description: 'Dealing damage and burning them for 3 turns',
-                                        }],
-                                        allskills:[{
-                                            name: 'Basic attack',
-                                            description: 'Basic attack',
-                                        },{name: 'Charged Attack',
-                                        description: 'Charge a powerful attack for 1 turn'},{
-                                            name: 'Fireball',
-                                            description: 'Dealing damage and burning them for 3 turns',
-                                        },],
+                                        currentskills: [],
+                                        allskills:[],
                                         passiveskills:[],
                                         quest:false,
                                         quest_location:'',

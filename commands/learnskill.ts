@@ -44,7 +44,10 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                     .setColor('RANDOM')
                                     .setTitle('LEARN SKILL')
                                     .setDescription(`Select a skill to learn:\n\nSkill 1: **${option1.name}**\nDescription:${option1.description}\n\nSkill 2: **${option2.name}**\nDescription:${option2.description}\n\nSkill 3: **${option3.name}**\nDescription:${option3.description}`)
-
+                                    let acceptembed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('SELECT LOCATION')
+                                    .setDescription(``)
                                     let btn_cancel = new MessageActionRow().addComponents([
                                         new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
                                     
@@ -83,7 +86,7 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                         collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                                             collected.deferUpdate().catch(() => null)
                                             const choice = collected.values[0]
-
+                                            
                                             if(choice == option1.name){
                                                 const newskill = {
                                                     name:option1.name,
@@ -98,6 +101,11 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                 }
                                                 foundUser.skill_tree.class+=1
                                                 foundUser.skill_tree.status-=1
+                                                acceptembed = new MessageEmbed()
+                                            .setColor('RANDOM')
+                                            .setTitle('SKILL CHOSEN')
+                                            .setDescription(`you chose ${option1.name}`)
+
                                             }
                                             else if(choice == option2.name){
                                                 const newskill = {
@@ -112,6 +120,10 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                     foundUser.allskills.push(newskill)
                                                 }
                                                 foundUser.skill_tree.physical+=2
+                                                acceptembed = new MessageEmbed()
+                                                .setColor('RANDOM')
+                                                .setTitle('SKILL CHOSEN')
+                                                .setDescription(`you chose ${option2.name}`)
                                                
                                             }
                                             else if(choice == option3.name){
@@ -127,9 +139,14 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                     foundUser.allskills.push(newskill)
                                                 }
                                                 foundUser.skill_tree.magical+=2
+                                                acceptembed = new MessageEmbed()
+                                                .setColor('RANDOM')
+                                                .setTitle('SKILL CHOSEN')
+                                                .setDescription(`you chose ${option3.name}`)
                                                
                                             }
                                             await profileModel.updateOne({userID:authorId},{currentskills:foundUser.currentskills,allskills:foundUser.allskills,skill_tree:foundUser.skill_tree})
+                                            await interaction.editReply({embeds:[acceptembed],components:[]})
                                             collector_select.stop()
                                         })
 
