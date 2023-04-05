@@ -87,6 +87,7 @@ class Bot extends Client {
                                         await interaction.channel.send({embeds:[levelupEmbed]})
                                         foundUser.level=foundUser.level+1
                                         foundUser.vitality=foundUser.vitality+1
+                                        foundUser.mana+=1
                                         if(foundUser.level === 2){
                                             foundUser.skill_points += 5
                                         }

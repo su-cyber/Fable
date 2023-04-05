@@ -143,11 +143,11 @@ class DuelBuilder {
                         ${lineBreak.repeat(1)}
                         **${wrapText(this.player1.name, 20)}**${p1Effects ? `\n${p1Effects}` : ''}
                         ${emoji.HEALTH_POTION} ${p1.health}/${p1.maxHealth} HP
-                        ${emoji.MANA_POTION} 0/${p1.maxMana} MP
+                        ${emoji.MANA_POTION} 0/${p1.maxMana} AP
     
                         **${wrapText(this.player2.name, 20)}**${p2Effects ? `\n${p2Effects}` : ''}
                         ${emoji.HEALTH_POTION} ${p2.health}/${p2.maxHealth} HP
-                        ${emoji.MANA_POTION} ${p2.mana}/${p2.maxMana} MP
+                        ${emoji.MANA_POTION} ${p2.mana}/${p2.maxMana} AP
                         ${lineBreak.repeat(2)}${messages.length ? `**LOG: 📋**\n\n${messages}` : ''}
                     `)
                     ),
@@ -163,11 +163,11 @@ class DuelBuilder {
                         ${lineBreak.repeat(1)}
                         **${wrapText(this.player1.name, 20)}**${p1Effects ? `\n${p1Effects}` : ''}
                         ${emoji.HEALTH_POTION} ${p1.health}/${p1.maxHealth} HP
-                        ${emoji.MANA_POTION} ${p1.mana}/${p1.maxMana} MP
+                        ${emoji.MANA_POTION} ${p1.mana}/${p1.maxMana} AP
     
                         **${wrapText(this.player2.name, 20)}**${p2Effects ? `\n${p2Effects}` : ''}
                         ${emoji.HEALTH_POTION} ${p2.health}/${p2.maxHealth} HP
-                        ${emoji.MANA_POTION} 0/${p2.maxMana} MP
+                        ${emoji.MANA_POTION} 0/${p2.maxMana} AP
                         ${lineBreak.repeat(2)}${messages.length ? `**LOG: 📋**\n\n${messages}` : ''}
                     `)
                     ),
@@ -183,7 +183,7 @@ class DuelBuilder {
                         ${lineBreak.repeat(1)}
                         **${wrapText(this.player1.name, 20)}**${p1Effects ? `\n${p1Effects}` : ''}
                         ${emoji.HEALTH_POTION} ${p1.health}/${p1.maxHealth} HP
-                        ${emoji.MANA_POTION} 0/${p1.maxMana} MP
+                        ${emoji.MANA_POTION} 0/${p1.maxMana} AP
     
                         **${wrapText(this.player2.name, 20)}**${p2Effects ? `\n${p2Effects}` : ''}
                         ${emoji.HEALTH_POTION} ${p2.health}/${p2.maxHealth} HP
@@ -203,11 +203,11 @@ class DuelBuilder {
                     ${lineBreak.repeat(1)}
                     **${wrapText(this.player1.name, 20)}**${p1Effects ? `\n${p1Effects}` : ''}
                     ${emoji.HEALTH_POTION} ${p1.health}/${p1.maxHealth} HP
-                    ${emoji.MANA_POTION} ${p1.mana}/${p1.maxMana} MP
+                    ${emoji.MANA_POTION} ${p1.mana}/${p1.maxMana} AP
 
                     **${wrapText(this.player2.name, 20)}**${p2Effects ? `\n${p2Effects}` : ''}
                     ${emoji.HEALTH_POTION} ${p2.health}/${p2.maxHealth} HP
-                    ${emoji.MANA_POTION} ${p2.mana}/${p2.maxMana} MP
+                    ${emoji.MANA_POTION} ${p2.mana}/${p2.maxMana} AP
                     ${lineBreak.repeat(2)}${messages.length ? `**LOG: 📋**\n\n${messages}` : ''}
                 `)
                 ),

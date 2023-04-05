@@ -13,8 +13,15 @@ import wave_tree from './wave_tree'
 import frost_tree from './frost_tree'
 import gale_tree from './gale_tree'
 import alloy_tree from './alloy_tree'
+import bloom_tree from './bloom_tree'
+import terra_tree from './terra_tree'
 import venom_tree from './venom_tree'
+import assassin_tree from './assassin_tree'
+import paladin_tree from './paladin_tree'
+import sorceror_tree from './sorceror_tree'
+import crusader_tree from './crusader_tree'
+import wanderer_tree from './wanderer_tree'
 
-const skills = flame_tree.concat(light_tree,samurai_tree,volt_tree,wave_tree,frost_tree,gale_tree,alloy_tree)
+const skills = flame_tree.concat(light_tree,samurai_tree,volt_tree,wave_tree,frost_tree,gale_tree,alloy_tree,bloom_tree,terra_tree,venom_tree,assassin_tree,wanderer_tree,sorceror_tree,paladin_tree,crusader_tree)
 
 export default skills

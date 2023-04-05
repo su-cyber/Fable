@@ -8,66 +8,66 @@ import { stun } from '../effects/stun'
 
 const venom_tree=[
     {
-        name: 'Razor Kick',
+        name: 'Poison Claw',
         cooldown: 0,
-        description: `A swift and powerful kick that unleashes a slash of wind to strike the enemy.`,
+        description: `A skill that unleashes a deadly claw infused with poisonous venom that damages the enemy.`,
         canEvade: true,
         mana_cost: 1,
         damage:20,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Razor Kick`)
+            attacker.addLogMessage(`**${attacker.name}** used Poison Claw`)
             defender.takeDamage
                 .physical(attacker.attackDamage+20)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a sharp wind slash`)
+                .run(damage => `**${defender.name}** lost ${damage} HP by a poisonous claw attack`)
         }
     },{
-        name: 'Mighty Breath',
+        name: 'Poison Gas',
         cooldown: 0,
-        description: 'A skill that allows the user to exhale a strong burst of wind to deal damage to the enemy.',
+        description: 'A skill that releases a toxic gas that damages enemies within a certain radius.',
         canEvade: true,
         mana_cost: 1,
         damage:20,
         type: 'magical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Mighty Breath`)
+            attacker.addLogMessage(`**${attacker.name}** used Poison Gas`)
             defender.takeDamage
                 .magical(attacker.magicPower+20)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a strong burst of wind`)
+                .run(damage => `**${defender.name}** lost ${damage} HP by breathing in toxic gas`)
         }
     },{
-        name: 'Tempest Fist',
+        name: 'Toxic Serpent Bite',
         cooldown: 0,
-        description: `A punch that creates a sharp whirlwind around the user's arm, dealing damage to enemies.`,
+        description: `A skill that summons a venomous serpent that bites the enemy with toxic fangs to deal damage.`,
         canEvade: true,
         mana_cost: 3,
         damage:45,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Tempest Fist`)
+            attacker.addLogMessage(`**${attacker.name}** used Toxic Serpent Bite`)
             defender.takeDamage
                 .physical(attacker.attackDamage+45)
-                .run(damage => `**${attacker.name}** covers their arm by a sharp whirlwind and punches **${defender.name}** causing ${damage} damage`)
+                .run(damage => `**${attacker.name}** uleaashes a venomous serpent upon **${defender.name}** causing ${damage} damage`)
         }
     },{
-        name: 'Wind Palm',
+        name: 'Toxic Meltdown',
         cooldown: 0,
-        description: 'A hand strike that releases a gust of wind, sending enemies flying backwards.',
+        description: `A skill that allows the user to exhale a strong burst of corrosive gas that melts enemy's skin to deal damage.`,
         canEvade: true,
         mana_cost: 1,
         damage:45,
         type: 'magical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Wind Palm`)
+            attacker.addLogMessage(`**${attacker.name}** used Toxic Meltdow`)
             defender.takeDamage
                 .magical(attacker.magicPower+45)
-                .run(damage => `**${defender.name}** lost ${damage} HP  by a strong gust of wind`)
+                .run(damage => `**${defender.name}** lost ${damage} HP by a burst of corrosive gas`)
         }
     },
     {
         cooldown: 0,
-        name: 'Armor of Sky',
-        description: 'A skill that creates a protective shield of wind around the user.',
+        name: 'Armor of Toxicity',
+        description: 'A skill that creates a protective shield of sludge around the user.',
         canEvade: false,
         type: 'self',
         damage:0,
@@ -78,8 +78,8 @@ const venom_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Armor of Sky`,
-                `A protective shield of wind appears around **${attacker.name}** and increases defenses by 1.5x`
+                `**${attacker.name}** used Armor of Toxicity`,
+                `A protective shield of sludge appears around **${attacker.name}** and increases defenses by 1.5x`
             )
             
            
@@ -87,8 +87,8 @@ const venom_tree=[
     },
     {
         cooldown: 0,
-        name: 'Breath of Life',
-        description: `A skill that summons a healing wind that rapidly restores the user's health.`,
+        name: 'Antidote Aura',
+        description: `A skill that summons a healing toxic cloud that rapidly restores the user's health.`,
         canEvade: false,
         type: 'self',
         damage:0,
@@ -98,39 +98,39 @@ const venom_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Breath of Life`,
-                ` **${attacker.name}** summons a healing wind and heals by 100HP`
+                `**${attacker.name}** used Antidote Aura`,
+                ` **${attacker.name}** absorbs sunlight and heals by 100HP`
             )
             
            
         },
     },{
-        name: 'Windwalk Strike',
+        name: 'Venom Strike',
         cooldown: 0,
-        description: `A skill that allows the user to run in the sky and deliver a swift strike to the enemy.`,
+        description: `A skill that allows the user to envelope their fists in poison and strike the enemy.`,
         canEvade: true,
         mana_cost: 8,
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Windwalk Strike`)
+            attacker.addLogMessage(`**${attacker.name}** used Venom Strike`)
             defender.takeDamage
                 .physical(attacker.attackDamage+65)
-                .run(damage => `**${attacker.name}** runs towards the sky and strikes **${defender.name}** from above causing ${damage} damage`)
+                .run(damage => `**${attacker.name}** covers their fist in poison and punches **${defender.name}** causing ${damage} damage`)
         }
     },{
-        name: 'Sonic Scythe',
+        name: 'Acid Spray',
         cooldown: 0,
-        description: 'A sharp blade of wind that slashes through enemies with incredible speed.',
+        description: 'A skill that sprays a potent acid that can melt through armor and inflict heavy damage.',
         canEvade: true,
         mana_cost: 8,
         damage:65,
         type: 'magical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Sonic Scythe`)
+            attacker.addLogMessage(`**${attacker.name}** used Acid Spray`)
             defender.takeDamage
                 .magical(attacker.magicPower+65)
-                .run(damage => `**${attacker.name}** unleashes a sharp blade of wind on **${defender.name}** causing ${damage} damage`)
+                .run(damage => `**${attacker.name}** sprays a potent acid at **${defender.name}** causing ${damage} damage`)
         }
     },
 ]

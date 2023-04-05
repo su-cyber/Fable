@@ -65,6 +65,39 @@ const samurai_tree=[
             .physical(attacker.attackDamage+40)
             .run(damage => `**${defender.name}** lost ${damage} HP by a deadly arrow shot to the vitals\n**${defender.name}** is bleeding!`)
         }
+    },{
+        name: 'Cyclone Slash',
+        cooldown: 0,
+        description: 'A spinning sword attack that hits the opponent for moderate damage.',
+        canEvade: true,
+        mana_cost: 6,
+        damage:65,
+        type: 'physical',
+        use: (attacker, defender) =>{
+            attacker.addLogMessage(`**${attacker.name}** used Cyclone Slash`)
+            defender.takeDamage
+                .physical(attacker.attackDamage+65)
+                .run(damage => `**${defender.name}** lost ${damage} HP by a spinning sword strike`)
+        }
+    },{
+        cooldown: 0,
+        name: `Ki Restoration`,
+        description: `Channel your life energy to restore stamina and spyr.`,
+        canEvade: false,
+        type: 'self',
+        damage:0,
+        mana_cost: 6,
+        use: (attacker, defender) => {
+            attacker.mana = attacker.mana+10
+
+
+            attacker.addLogMessage(
+                `**${attacker.name}** used Ki Restoration`,
+                `**${attacker.name}** channels their life energy and restores 10 AP`
+            )
+            
+           
+        },
     },
 ]
 

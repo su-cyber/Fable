@@ -57,9 +57,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     description: `Left their home to claim yours.`,
                                     value: `wanderer`,
                                 },{
-                                    label: `Knight`,
+                                    label: `Paladin`,
                                     description: `Very heavy, resilient and unyielding.`,
-                                    value: `knight`,
+                                    value: `paladin`,
                                 },{
                                     label: `Assassin`,
                                     description: `Silent as a feather, fast as a knife.`,
@@ -213,7 +213,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         vitality:1,
                                         health: 100,
                                         magicPower: 5,
-                                        mana: 50,
+                                        mana: 0,
                                         evasion: 0.05,
                                         speed: 10,
                                         magicResistance: 5,
@@ -321,6 +321,14 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.magicPower = 5
                                     foundUser.vitality = 5
                                     foundUser.magicResistance = 10
+                                    foundUser.currentskills = [{
+                                        name: 'Vanishing Strike',
+                                        description: 'The assassin disappears and reappears behind their target, dealing low damage.',
+                                    }]
+                                    foundUser.allskills = [{
+                                        name: 'Vanishing Strike',
+                                        description: 'The assassin disappears and reappears behind their target, dealing low damage.',
+                                    }]
                                 }
                                 else if(user_class == 'sorceror'){
                                     foundUser.class = 'Sorceror'
@@ -330,6 +338,14 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.magicPower = 20
                                     foundUser.vitality = 8
                                     foundUser.magicResistance = 15
+                                    foundUser.currentskills = [{
+                                        name: 'Force Push',
+                                        description: 'Pushes the enemy away from the Sorcerer, dealing low damage.',
+                                    }]
+                                    foundUser.allskills = [{
+                                        name: 'Force Push',
+                                        description: 'Pushes the enemy away from the Sorcerer, dealing low damage.',
+                                    }]
                                 }
                                 else if(user_class == 'crusader'){
                                     foundUser.class = 'Crusader'
@@ -339,6 +355,14 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.magicPower = 0
                                     foundUser.vitality = 15
                                     foundUser.magicResistance = 0
+                                    foundUser.currentskills = [{
+                                        name: 'Sprint Bash',
+                                        description: 'The Crusader sprints into the enemy, pushing them to the ground.',
+                                    }]
+                                    foundUser.allskills = [{
+                                        name: 'Sprint Bash',
+                                        description: 'The Crusader sprints into the enemy, pushing them to the ground.',
+                                    }]
                                 }
                                 
                                 else if(user_class == 'wanderer'){
@@ -349,15 +373,31 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.magicPower = 15
                                     foundUser.vitality = 10
                                     foundUser.magicResistance = 15
+                                    foundUser.currentskills = [{
+                                        name: 'Scissor Kick',
+                                        description: 'The Wanderer kicks the target with a powerful scissor kick, dealing low damage.',
+                                    }]
+                                    foundUser.allskills = [{
+                                        name: 'Scissor Kick',
+                                        description: 'The Wanderer kicks the target with a powerful scissor kick, dealing low damage.',
+                                    }]
                                 }
-                                else if(user_class == 'knight'){
-                                    foundUser.class = 'Knight'
+                                else if(user_class == 'paladin'){
+                                    foundUser.class = 'Paladin'
                                     foundUser.attackDamage = 10
                                     foundUser.armour = 15
                                     foundUser.speed = 10
                                     foundUser.magicPower = 10
                                     foundUser.vitality = 10
                                     foundUser.magicResistance = 5
+                                    foundUser.currentskills = [{
+                                        name: 'Authority Thrust',
+                                        description: 'The Paladin thrusts their spear forward, dealing low damage to the enemy.',
+                                    }]
+                                    foundUser.allskills = [{
+                                        name: 'Authority Thrust',
+                                        description: 'The Paladin thrusts their spear forward, dealing low damage to the enemy.',
+                                    }]
                                 }
 
                                 await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance,currentskills:foundUser.currentskills,allskills:foundUser.allskills})
