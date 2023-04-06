@@ -14,7 +14,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     let img = await loadImage("assets/AubeTown/statscreen.png")
    
     registerFont('fonts/DellaRespira.ttf', { family: 'DellaRespira' })
-        const src = new Canvas(1280,720)
+        const src = new Canvas(1920,800)
         let ctx = src.getContext("2d")
         ctx.drawImage(img,0,0)
         ctx.font = '12px "serif"'
