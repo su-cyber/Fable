@@ -45,8 +45,25 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                 if(res){
                     profileModel.findOne({userID:authorId},async function(err,foundUser){
                         if(foundUser.skill_tree.status){
+                            let class_tree
                             if(foundUser.class == "Samurai"){
-                                let class_tree = samurai_tree
+                                class_tree = samurai_tree
+                            }
+                            else if(foundUser.class == "Sorceror"){
+                                class_tree = sorceror_tree
+                            }
+                            else if(foundUser.class == "Paladin"){
+                                class_tree = paladin_tree
+                            }
+                            else if(foundUser.class == "Crusader"){
+                                class_tree = crusader_tree
+                            }
+                            else if(foundUser.class == "Wanderer"){
+                                class_tree = wanderer_tree
+                            }
+                            else if(foundUser.class == "Assassin"){
+                                class_tree = assassin_tree
+                            }
                                 let element_tree
                                 if(foundUser.elements[0] == "Flame"){
                                     element_tree = flame_tree
@@ -154,6 +171,25 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                             .setDisabled(false),
                                                     ])
                                                 }
+                                                else if(option3 == class_tree[0]){
+                                                    skillEmbed = new MessageEmbed()
+                                                        .setColor('RANDOM')
+                                                        .setTitle('LEARN SKILL')
+                                                        .setDescription(`Select a skill to learn:\n\nSkill 1: MAX\n\nSkill 2: **${option2.name}**\nDescription:${option2.description}\n\nSkill 3: MAX`)
+                                                    
+                                                    select =  new MessageActionRow().addComponents([
+                                                        new MessageSelectMenu()
+                                                        .setCustomId('select')
+                                                            .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
+                                                            .addOptions({
+                                                                label: option2.name,
+                                                                description: option2.description,
+                                                                value: option2.name,
+                                                            }
+                                                            )
+                                                            .setDisabled(false),
+                                                    ])
+                                                }
                                                 else{
                                                     skillEmbed = new MessageEmbed()
                                                         .setColor('RANDOM')
@@ -193,6 +229,25 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                                 label: option1.name,
                                                                 description: option1.description,
                                                                 value: option1.name,
+                                                            }
+                                                            )
+                                                            .setDisabled(false),
+                                                    ])
+                                                }
+                                                else if(option1 == class_tree[0]){
+                                                    skillEmbed = new MessageEmbed()
+                                                        .setColor('RANDOM')
+                                                        .setTitle('LEARN SKILL')
+                                                        .setDescription(`Select a skill to learn:\n\nSkill 1:MAX\n\nSkill 2: MAX\n\nSkill 3: **${option3.name}**\nDescription:${option3.description}`)
+                                                    
+                                                    select =  new MessageActionRow().addComponents([
+                                                        new MessageSelectMenu()
+                                                        .setCustomId('select')
+                                                            .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
+                                                            .addOptions({
+                                                                label: option3.name,
+                                                                description: option3.description,
+                                                                value: option3.name,
                                                             }
                                                             )
                                                             .setDisabled(false),
@@ -241,6 +296,25 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                             )
                                                             .setDisabled(false),
                                                     ])
+                                                }
+                                                else if(option2 == class_tree[0]){
+                                                    skillEmbed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('LEARN SKILL')
+                                                    .setDescription(`Select a skill to learn:\n\nSkill 1: **${option1.name}**\nDescription:${option1.description}\n\nSkill 2: MAX\n\nSkill 3: MAX`)
+                                                
+                                                select =  new MessageActionRow().addComponents([
+                                                    new MessageSelectMenu()
+                                                    .setCustomId('select')
+                                                        .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
+                                                        .addOptions({
+                                                            label: option1.name,
+                                                            description: option1.description,
+                                                            value: option1.name,
+                                                        }
+                                                        )
+                                                        .setDisabled(false),
+                                                ])
                                                 }
                                                 else{
                                                      skillEmbed = new MessageEmbed()
@@ -359,7 +433,7 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                             await interaction.editReply({embeds:[delembed],components:[]})
                                             collector_cancel.stop()
                                         })
-                            }
+                            
                         }
                         else{
                             interaction.reply(`you cannot learn any skill right now`)
