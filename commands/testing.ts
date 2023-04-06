@@ -16,7 +16,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     registerFont('fonts/DellaRespira.ttf', { family: 'DellaRespira' })
         const src = new Canvas(1300,700)
         let ctx = src.getContext("2d")
-        ctx.drawImage(img,0,0,1300,700)
+        ctx.drawImage(img,0,0)
         ctx.font = '12px "serif"'
         ctx.fillText(`${interaction.user.username}`, 50, 90);
         const buffer = await src.toBuffer('image/png')
