@@ -128,15 +128,15 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                 .addOptions({
                                                     
                                                     label: option1.name,
-                                                    description: option1.description,
+                                                    description: "",
                                                     value: option1.name,
                                                 },{
                                                     label: option2.name,
-                                                    description: option2.description,
+                                                    description:  "",
                                                     value: option2.name,
                                                 },{
                                                     label: option3.name,
-                                                    description: option3.description,
+                                                    description:  "",
                                                     value: option3.name,
                                                 }
                                                 )
@@ -202,11 +202,11 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                             .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
                                                             .addOptions({
                                                                 label: option2.name,
-                                                                description: option2.description,
+                                                                description:  "",
                                                                 value: option2.name,
                                                             },{
                                                                 label: option3.name,
-                                                                description: option3.description,
+                                                                description:  "",
                                                                 value: option3.name,
                                                             }
                                                             )
@@ -227,7 +227,7 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                             .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
                                                             .addOptions({
                                                                 label: option1.name,
-                                                                description: option1.description,
+                                                                description:  "",
                                                                 value: option1.name,
                                                             }
                                                             )
@@ -246,7 +246,7 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                             .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
                                                             .addOptions({
                                                                 label: option3.name,
-                                                                description: option3.description,
+                                                                description:  "",
                                                                 value: option3.name,
                                                             }
                                                             )
@@ -265,11 +265,11 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                             .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
                                                             .addOptions({
                                                                 label: option1.name,
-                                                                description: option1.description,
+                                                                description:  "",
                                                                 value: option1.name,
                                                             },{
                                                                 label: option3.name,
-                                                                description: option3.description,
+                                                                description:  "",
                                                                 value: option3.name,
                                                             }
                                                             )
@@ -290,7 +290,7 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                             .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
                                                             .addOptions({
                                                                 label: option2.name,
-                                                                description: option2.description,
+                                                                description:  "",
                                                                 value: option2.name,
                                                             }
                                                             )
@@ -309,7 +309,7 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                         .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
                                                         .addOptions({
                                                             label: option1.name,
-                                                            description: option1.description,
+                                                            description:  "",
                                                             value: option1.name,
                                                         }
                                                         )
@@ -328,11 +328,11 @@ export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'lea
                                                             .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
                                                             .addOptions({
                                                                 label: option1.name,
-                                                                description: option1.description,
+                                                                description:  "",
                                                                 value: option1.name,
                                                             },{
                                                                 label: option2.name,
-                                                                description: option2.description,
+                                                                description:  "",
                                                                 value: option2.name,
                                                             }
                                                             )

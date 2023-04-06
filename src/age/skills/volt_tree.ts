@@ -10,7 +10,7 @@ const volt_tree=[
     {
         name: 'Surging Kick',
         cooldown: 0,
-        description: `A skill that charges up the user's leg with lightning energy.`,
+        description: `A skill that charges up the user's leg with lightning energy, allowing them to deliver a powerful electrical kick.`,
         canEvade: true,
         mana_cost: 1,
         damage:20,
