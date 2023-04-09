@@ -12,9 +12,24 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
         const authorId = interaction.user.id
         const guildID = interaction.guildId;
 
-    let img = await loadImage("assets/Statscreen/paladin_stat.png")
+    let img 
    const name = interaction.user.username
    profileModel.findOne({userID:authorId},async function(err,foundUser){
+    if(foundUser.class == "Samurai"){
+        img = await loadImage("assets/Statscreen/samurai_stat.png")
+    }
+    else if(foundUser.class == "Assassin"){
+        img = await loadImage("assets/Statscreen/assassin_stat.png")
+    }
+    else if(foundUser.class == "Wanderer"){
+        img = await loadImage("assets/Statscreen/wanderer_stat.png")
+    }
+    else if(foundUser.class == "Sorceror"){
+        img = await loadImage("assets/Statscreen/sorceror_stat.png")
+    }
+    else if(foundUser.class == "Paladin"){
+        img = await loadImage("assets/Statscreen/paladin_stat.png")
+    }
     const level = foundUser.level
     const sp = foundUser.skill_points
     const vigour = foundUser.attackDamage
