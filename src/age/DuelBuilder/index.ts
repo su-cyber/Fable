@@ -223,7 +223,7 @@ class DuelBuilder {
        await this.replyOrEdit({
             content: null,
             embeds: this.duelMessageEmbeds(),
-            components: [this.createDuelComponent(skills, disableComponent),this.btn],
+            components: [],
             
         })
     }
