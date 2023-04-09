@@ -35,6 +35,7 @@ export class BeerBuccsDuo extends MonsterEntity {
             magicPower: 0,
             armor: 2,
             speed: 5,
+            element:"wave",
             magicResistance: 1,
             run_chance: 100,
             passive_skills:[],

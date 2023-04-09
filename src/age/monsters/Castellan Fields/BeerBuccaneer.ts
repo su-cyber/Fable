@@ -14,7 +14,7 @@ export class BeerBuccaneer extends MonsterEntity {
         await new Dropper([
             {
                 item: slimeBlob,
-                dropRate: 0.9,
+                dropRate: 0,
             },
         ]).sendDeathMessage(messages, interaction, this,killer)
     }
@@ -23,16 +23,17 @@ export class BeerBuccaneer extends MonsterEntity {
         return new BeerBuccaneer({
             name: 'BeerBuccaneer',
             spawnRate: 0.5,
-            health: 30,
-            mana:10,
+            health: 50,
+            mana:0,
             xp: generateXP(5,15),
             evasion: 0.05,
-            attackDamage: 3,
+            attackDamage: 5,
             magicPower: 0,
             run_chance: 0.02,
-            armor: 0,
+            armor: 1,
             speed: 5,
-            magicResistance: 0,
+            element:"wave",
+            magicResistance: 1,
             passive_skills:[],
             skills: [
                 {

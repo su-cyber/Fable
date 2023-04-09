@@ -39,6 +39,7 @@ export class DireWolf extends MonsterEntity {
             speed: 15,
             run_chance: 0.3,
             armor: 4,
+            element:"venom",
             magicResistance: 2,
             passive_skills:[],
             skills: [

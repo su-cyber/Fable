@@ -17,12 +17,14 @@ export class MonsterEntity extends Entity {
     lastSkill: Skill
     xp: number
     run_chance: number
+    element: string
 
     constructor(
         props: Omit<EntityProps, 'id'> & {
             spawnRate: number
             xp: number
             run_chance: number
+            element: string
         }
     ) {
         const { spawnRate, ...rest } = props
@@ -84,7 +86,7 @@ export class MonsterEntity extends Entity {
             else if(attacker.hasEffect(stun)){
                 const chance = weightedRandom([true,false],[0.5,0.5])
                 if(chance == true){
-                    this.addLogMessage(`${attacker.name} could'nt attack due to being stunned!`)
+                    this.addLogMessage(`${attacker.name} couldn't attack due to being stunned!`)
                     attacker.mana+=skill.mana_cost
                 }
                 else{

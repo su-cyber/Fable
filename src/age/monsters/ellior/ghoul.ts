@@ -33,6 +33,7 @@ export class Ghoul extends MonsterEntity {
             armor: 5,
             speed: 5,
             magicResistance: 3,
+            element:"ruin",
             run_chance: 0.03,
             passive_skills:[],
             skills: [

@@ -49,6 +49,7 @@ export class Chimera extends MonsterEntity {
             magicPower: 20,
             armor: 20,
             speed: 5,
+            element:"flame",
             run_chance: 0.5,
             magicResistance: 30,
             passive_skills:[],

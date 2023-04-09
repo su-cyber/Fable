@@ -33,6 +33,7 @@ export class Treemick extends MonsterEntity {
             run_chance: 0.02,
             armor: 0,
             speed: 5,
+            element:"bloom",
             magicResistance: 0,
             passive_skills:[],
             skills: [

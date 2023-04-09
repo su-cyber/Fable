@@ -33,6 +33,7 @@ export class Goblin extends MonsterEntity {
             speed: 5,
             magicResistance: 1,
             run_chance: 0.02,
+            element:"venom",
             passive_skills:[],
             skills: [
                 {

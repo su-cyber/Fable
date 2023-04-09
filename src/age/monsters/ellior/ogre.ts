@@ -34,6 +34,7 @@ export class Ogre extends MonsterEntity {
             armor: 12,
             speed: 5,
             run_chance: 0.2,
+            element:"venom",
             magicResistance: 4,
             passive_skills:[],
             skills: [

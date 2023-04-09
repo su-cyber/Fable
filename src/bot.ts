@@ -79,7 +79,7 @@ class Bot extends Client {
                                                         .setColor('RANDOM')
                                                         .setTitle('LEVEL UP!')
                                                         .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour health has increased to ${foundUser.health}HP`)
-                                            
+                                            foundUser.mana+=1
                                         
                                         }
                                        
@@ -87,7 +87,7 @@ class Bot extends Client {
                                         await interaction.channel.send({embeds:[levelupEmbed]})
                                         foundUser.level=foundUser.level+1
                                         foundUser.vitality=foundUser.vitality+1
-                                        foundUser.mana+=1
+                                        
                                         if(foundUser.level === 2){
                                             foundUser.skill_points += 5
                                         }

@@ -16,9 +16,46 @@ const flame_tree=[
         damage:20,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 0.5
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 2
+            }
+            else if(defender.element == "gale"){
+                mod  = 2
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 0.5
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Flame Whip`)
             defender.takeDamage
-                .physical(attacker.attackDamage+20)
+                .physical((attacker.attackDamage+20)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by being hit with a Flaming Whip`)
         }
     },{
@@ -30,9 +67,47 @@ const flame_tree=[
         damage:20,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 0.5
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 2
+            }
+            else if(defender.element == "gale"){
+                mod  = 2
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 0.5
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
+            
             attacker.addLogMessage(`**${attacker.name}** used Flare Breath`)
             defender.takeDamage
-                .magical(attacker.magicPower+20)
+                .magical((attacker.magicPower+20)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a burst of flames`)
         }
     },{
@@ -44,9 +119,46 @@ const flame_tree=[
         damage:45,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 0.5
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 2
+            }
+            else if(defender.element == "gale"){
+                mod  = 2
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 0.5
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Erupting Fist`)
             defender.takeDamage
-                .physical(attacker.attackDamage+45)
+                .physical((attacker.attackDamage+45)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by the explosive fists of **${attacker.name}**`)
         }
     },{
@@ -58,9 +170,46 @@ const flame_tree=[
         damage:45,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 0.5
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 2
+            }
+            else if(defender.element == "gale"){
+                mod  = 2
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 0.5
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Scattering Flame Bullet`)
             defender.takeDamage
-                .magical(attacker.magicPower+45)
+                .magical((attacker.magicPower+45)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a barrage of flame projectiles`)
         }
     },
@@ -113,9 +262,46 @@ const flame_tree=[
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 0.5
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 2
+            }
+            else if(defender.element == "gale"){
+                mod  = 2
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 0.5
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Searing Slash`)
             defender.takeDamage
-                .physical(attacker.attackDamage+65)
+                .physical((attacker.attackDamage+65)*mod)
                 .run(damage => `**${attacker.name}** imbues their weapon in flames and attacks **${defender.name}** causing ${damage} damage`)
         }
     },{
@@ -127,9 +313,46 @@ const flame_tree=[
         damage:65,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 0.5
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 2
+            }
+            else if(defender.element == "gale"){
+                mod  = 2
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 0.5
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Flame Tornado`)
             defender.takeDamage
-                .magical(attacker.magicPower+65)
+                .magical((attacker.magicPower+65)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a flaming tornado`)
         }
     },

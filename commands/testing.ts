@@ -2,7 +2,7 @@ import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
 import { Collector, MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu, MessageComponentInteraction,CacheType, MessageAttachment} from 'discord.js'
 import { loadImage,Canvas,registerFont } from 'canvas'
-import { endianness } from 'os'
+
 
 
 export default new MyCommandSlashBuilder({ name: 'img', description: 'testing img' })

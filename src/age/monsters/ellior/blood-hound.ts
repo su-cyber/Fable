@@ -45,6 +45,7 @@ export class BloodHound extends MonsterEntity {
             speed: 5,
             run_chance: 0.07,
             armor: 3,
+            element:"wave",
             magicResistance: 5,
             passive_skills:[],
             skills: [

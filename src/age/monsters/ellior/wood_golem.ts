@@ -80,6 +80,7 @@ export class WoodGolem extends MonsterEntity {
             speed: 5,
             run_chance: 1,
             magicResistance: 65,
+            element:"bloom",
             passive_skills:[],
             skills: [
                 {

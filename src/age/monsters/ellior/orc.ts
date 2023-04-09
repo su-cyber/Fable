@@ -32,6 +32,7 @@ export class Orc extends MonsterEntity {
             magicPower: 0,
             armor: 10,
             speed: 5,
+            element:"venom",
             run_chance: 0.2,
             magicResistance: 6,
             passive_skills:[],
