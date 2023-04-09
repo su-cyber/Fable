@@ -35,13 +35,13 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillStyle = "brown"
     ctx.fillText(`${level}`, 1046, 118);
     ctx.font = '30px "serif"'
-    ctx.fillText(`${sp}`, 893, 155);
+    ctx.fillText(`${sp}`, 893, 157);
     ctx.fillText(`${faith}`, 935, 226);
     ctx.fillText(`${vigour}`, 737, 295);
-    ctx.fillText(`${arcana}`, 737, 523);
-    ctx.fillText(`${agility}`, 935, 590);
+    ctx.fillText(`${arcana}`, 737, 525);
+    ctx.fillText(`${agility}`, 935, 591);
     ctx.fillText(`${durability}`, 1093, 294);
-    ctx.fillText(`${knowledge}`, 1093, 523);
+    ctx.fillText(`${knowledge}`, 1093, 525);
     const buffer = await src.toBuffer('image/png')
     const attachment = await new MessageAttachment(buffer)
     interaction.reply({files:[attachment]})
