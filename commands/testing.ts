@@ -22,18 +22,22 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     const knowledge = foundUser.magicResistance
     const durability = foundUser.armour
     const agility = foundUser.speed
-   })
+
     registerFont('fonts/DellaRespira.ttf', { family: 'DellaRespira' })
-        const src = new Canvas(1300,700)
-        let ctx = src.getContext("2d")
-        ctx.drawImage(img,0,0)
-        ctx.font = '12px "serif"'
-        ctx.fillStyle = "yellow"
-        ctx.fillText(`${name}'s Diary`, 65, 112);
-        const buffer = await src.toBuffer('image/png')
-        const attachment = await new MessageAttachment(buffer)
-        interaction.reply({files:[attachment]})
-        
+    const src = new Canvas(1300,700)
+    let ctx = src.getContext("2d")
+    ctx.drawImage(img,0,0)
+    ctx.font = '22px "serif"'
+    ctx.fillStyle = "yellow"
+    ctx.fillText(`${name}'s Diary`, 126, 111);
+    ctx.fillStyle = "black"
+    ctx.fillText(`${level}`, 1057, 104);
+    const buffer = await src.toBuffer('image/png')
+    const attachment = await new MessageAttachment(buffer)
+    interaction.reply({files:[attachment]})
+    
+   })
+   
 
         
         
