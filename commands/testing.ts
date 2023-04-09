@@ -40,8 +40,8 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${vigour}`, 737, 295);
     ctx.fillText(`${arcana}`, 737, 525);
     ctx.fillText(`${agility}`, 935, 591);
-    ctx.fillText(`${durability}`, 1093, 294);
-    ctx.fillText(`${knowledge}`, 1093, 525);
+    ctx.fillText(`${durability}`, 1125, 294);
+    ctx.fillText(`${knowledge}`, 1125, 525);
     const buffer = await src.toBuffer('image/png')
     const attachment = await new MessageAttachment(buffer)
     interaction.reply({files:[attachment]})
