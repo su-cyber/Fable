@@ -29,9 +29,10 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.drawImage(img,0,0)
     ctx.font = '22px "serif"'
     ctx.fillStyle = "yellow"
-    ctx.fillText(`${name}'s Diary`, 126, 111);
+    ctx.fillText(`${name}'s Diary`, 120, 120);
+    ctx.font = '32px "serif"'
     ctx.fillStyle = "black"
-    ctx.fillText(`${level}`, 1057, 104);
+    ctx.fillText(`${level}`, 1046, 118);
     const buffer = await src.toBuffer('image/png')
     const attachment = await new MessageAttachment(buffer)
     interaction.reply({files:[attachment]})
