@@ -30,6 +30,9 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     else if(foundUser.class == "Paladin"){
         img = await loadImage("assets/Statscreen/paladin_stat.png")
     }
+    else if(foundUser.class == "Crusader"){
+        img = await loadImage("assets/Statscreen/crusader_stat.png")
+    }
     const level = foundUser.level
     const sp = foundUser.skill_points
     const vigour = foundUser.attackDamage
