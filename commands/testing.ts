@@ -11,14 +11,25 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
         const authorId = interaction.user.id
         const guildID = interaction.guildId;
 
-    let img = await loadImage("assets/AubeTown/statscreen.png")
-   
+    let img = await loadImage("assets/Statscreen/paladin_stat.png")
+   const name = interaction.user.username
+   profileModel.findOne({userID:authorId},async function(err,foundUser){
+    const level = foundUser.level
+    const sp = foundUser.skill_points
+    const vigour = foundUser.attackDamage
+    const arcana = foundUser.magicPower
+    const faith = foundUser.vitality
+    const knowledge = foundUser.magicResistance
+    const durability = foundUser.armour
+    const agility = foundUser.speed
+   })
     registerFont('fonts/DellaRespira.ttf', { family: 'DellaRespira' })
         const src = new Canvas(1300,700)
         let ctx = src.getContext("2d")
         ctx.drawImage(img,0,0)
         ctx.font = '12px "serif"'
-        ctx.fillText(`${interaction.user.username}`, 50, 90);
+        ctx.fillStyle = "yellow"
+        ctx.fillText(`${name}'s Diary`, 65, 112);
         const buffer = await src.toBuffer('image/png')
         const attachment = await new MessageAttachment(buffer)
         interaction.reply({files:[attachment]})
