@@ -2,6 +2,7 @@ import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
 import { Collector, MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu, MessageComponentInteraction,CacheType, MessageAttachment} from 'discord.js'
 import { loadImage,Canvas,registerFont } from 'canvas'
+import { endianness } from 'os'
 
 
 export default new MyCommandSlashBuilder({ name: 'img', description: 'testing img' })
@@ -34,8 +35,13 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillStyle = "brown"
     ctx.fillText(`${level}`, 1046, 118);
     ctx.font = '30px "serif"'
-    ctx.fillText(`${sp}`, 893, 151);
+    ctx.fillText(`${sp}`, 893, 153);
     ctx.fillText(`${faith}`, 935, 226);
+    ctx.fillText(`${vigour}`, 737, 295);
+    ctx.fillText(`${arcana}`, 723, 521);
+    ctx.fillText(`${agility}`, 935, 588);
+    ctx.fillText(`${durability}`, 1084, 294);
+    ctx.fillText(`${knowledge}`, 1084, 521);
     const buffer = await src.toBuffer('image/png')
     const attachment = await new MessageAttachment(buffer)
     interaction.reply({files:[attachment]})
