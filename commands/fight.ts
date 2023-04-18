@@ -109,7 +109,36 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                     
                                     
                             if(foundUser.encounter.length != 0){
-                               const timestamp = new Date()
+                               if(foundUser.location == "tutorial"){
+                                if(foundUser.location == foundUser.encounter[0].location){
+                                    const monster = await (await getMonsters(foundUser.location))
+                                .find(m => m.name === foundUser.encounter[0].name)
+                                .create()
+                    
+                    if(attacker.speed >= monster.speed){
+                        await new PvEDuel({
+                            interaction,
+                            player1: attacker,
+                            player2: monster,
+                            speed:setspeed,
+                        }).start()
+                        
+                    }
+                    else{
+                        await new PvEDuel({
+                            interaction,
+                            player1: monster,
+                            player2: attacker,
+                            speed:setspeed
+                        }).start()
+                    }
+                                }
+                                else{
+                                    interaction.reply(`you are not in ${foundUser.encounter[0].location} where you encountered ${foundUser.encounter[0].name}`)
+                                }
+                               }
+                               else{
+                                const timestamp = new Date()
                 
                                 if(foundUser.encounter[0].time.getMonth() == timestamp.getMonth()){
                                     if(foundUser.encounter[0].time.getDay() == timestamp.getDay()){
@@ -209,6 +238,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                         }
                                     })
                                 }
+                               }
                 
                             }
                             else{

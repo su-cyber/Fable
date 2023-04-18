@@ -16,9 +16,46 @@ const terra_tree=[
         damage:20,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 2
+            }
+            else if(defender.element == "light"){
+                mod  = 1
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 1
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 2
+            }
+            else if(defender.element == "draco"){
+                mod  = 1
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Stone Fist`)
             defender.takeDamage
-                .physical(attacker.attackDamage+20)
+                .physical((attacker.attackDamage+20)*mod)
                 .run(damage => `**${attacker.name}** covers their arm with rocks and punches **${defender.name}** causing ${damage} damage`)
         }
     },{
@@ -30,9 +67,46 @@ const terra_tree=[
         damage:20,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 2
+            }
+            else if(defender.element == "light"){
+                mod  = 1
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 1
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 2
+            }
+            else if(defender.element == "draco"){
+                mod  = 1
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Mud Shower`)
             defender.takeDamage
-                .magical(attacker.magicPower+20)
+                .magical((attacker.magicPower+20)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a torrent of mud`)
         }
     },{
@@ -44,9 +118,46 @@ const terra_tree=[
         damage:45,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 2
+            }
+            else if(defender.element == "light"){
+                mod  = 1
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 1
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 2
+            }
+            else if(defender.element == "draco"){
+                mod  = 1
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Tremor Kick`)
             defender.takeDamage
-                .physical(attacker.attackDamage+45)
+                .physical((attacker.attackDamage+45)*mod)
                 .run(damage => `**${attacker.name}** kicks the ground causing a tremor doing ${damage} damage`)
         }
     },{
@@ -58,9 +169,46 @@ const terra_tree=[
         damage:45,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 2
+            }
+            else if(defender.element == "light"){
+                mod  = 1
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 1
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 2
+            }
+            else if(defender.element == "draco"){
+                mod  = 1
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Scorching Sands`)
             defender.takeDamage
-                .magical(attacker.magicPower+45)
+                .magical((attacker.magicPower+45)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a scorching wave of sand`)
         }
     },
@@ -113,9 +261,46 @@ const terra_tree=[
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 2
+            }
+            else if(defender.element == "light"){
+                mod  = 1
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 1
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 2
+            }
+            else if(defender.element == "draco"){
+                mod  = 1
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Mudslide Tackle`)
             defender.takeDamage
-                .physical(attacker.attackDamage+65)
+                .physical((attacker.attackDamage+65)*mod)
                 .run(damage => `**${defender.name}** gets knocked down by a powerful tackle causing ${damage} damage`)
         }
     },{
@@ -127,9 +312,46 @@ const terra_tree=[
         damage:65,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 2
+            }
+            else if(defender.element == "light"){
+                mod  = 1
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 1
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 2
+            }
+            else if(defender.element == "draco"){
+                mod  = 1
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Gem Barrage`)
             defender.takeDamage
-                .magical(attacker.magicPower+65)
+                .magical((attacker.magicPower+65)*mod)
                 .run(damage => `**${attacker.name}** unleashes a barrage of sharp rock spikes at **${defender.name}** causing ${damage} damage`)
         }
     },

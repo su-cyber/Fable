@@ -16,9 +16,46 @@ const light_tree=[
         damage:20,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 2
+            }
+            else if(defender.element == "light"){
+                mod  = 1
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 1
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 1
+            }
+            else if(defender.element == "alloy"){
+                mod  = 0.5
+            }
+            else if(defender.element == "venom"){
+                mod  = 2
+            }
+            else if(defender.element == "draco"){
+                mod  = 2
+            }
+            else if(defender.element == "ruin"){
+                mod  = 2
+            }
             attacker.addLogMessage(`**${attacker.name}** used Vanishing Foot`)
             defender.takeDamage
-                .physical(attacker.attackDamage+20)
+                .physical((attacker.attackDamage+20)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a kick at light speed`)
         }
     },{
@@ -30,9 +67,46 @@ const light_tree=[
         damage:20,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 2
+            }
+            else if(defender.element == "light"){
+                mod  = 1
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 1
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 1
+            }
+            else if(defender.element == "alloy"){
+                mod  = 0.5
+            }
+            else if(defender.element == "venom"){
+                mod  = 2
+            }
+            else if(defender.element == "draco"){
+                mod  = 2
+            }
+            else if(defender.element == "ruin"){
+                mod  = 2
+            }
             attacker.addLogMessage(`**${attacker.name}** used Jewels of Light`)
             defender.takeDamage
-                .magical(attacker.magicPower+20)
+                .magical((attacker.magicPower+20)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a rain of radiant beams of light`)
         }
     },{
@@ -44,9 +118,46 @@ const light_tree=[
         damage:45,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 2
+            }
+            else if(defender.element == "light"){
+                mod  = 1
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 1
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 1
+            }
+            else if(defender.element == "alloy"){
+                mod  = 0.5
+            }
+            else if(defender.element == "venom"){
+                mod  = 2
+            }
+            else if(defender.element == "draco"){
+                mod  = 2
+            }
+            else if(defender.element == "ruin"){
+                mod  = 2
+            }
             attacker.addLogMessage(`**${attacker.name}** used Shooting Star`)
             defender.takeDamage
-                .physical(attacker.attackDamage+45)
+                .physical((attacker.attackDamage+45)*mod)
                 .run(damage => `**${attacker.name}** crashed down imbued with light on **${defender.name}** and caused ${damage} damage`)
         }
     },{
@@ -58,9 +169,46 @@ const light_tree=[
         damage:45,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 2
+            }
+            else if(defender.element == "light"){
+                mod  = 1
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 1
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 1
+            }
+            else if(defender.element == "alloy"){
+                mod  = 0.5
+            }
+            else if(defender.element == "venom"){
+                mod  = 2
+            }
+            else if(defender.element == "draco"){
+                mod  = 2
+            }
+            else if(defender.element == "ruin"){
+                mod  = 2
+            }
             attacker.addLogMessage(`**${attacker.name}** used Scattering Moonlight Chakrams`)
             defender.takeDamage
-                .magical(attacker.magicPower+45)
+                .magical((attacker.magicPower+45)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by light chakrams projectiles`)
         }
     },
@@ -113,9 +261,46 @@ const light_tree=[
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 2
+            }
+            else if(defender.element == "light"){
+                mod  = 1
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 1
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 1
+            }
+            else if(defender.element == "alloy"){
+                mod  = 0.5
+            }
+            else if(defender.element == "venom"){
+                mod  = 2
+            }
+            else if(defender.element == "draco"){
+                mod  = 2
+            }
+            else if(defender.element == "ruin"){
+                mod  = 2
+            }
             attacker.addLogMessage(`**${attacker.name}** used Barrage of Light`)
             defender.takeDamage
-                .physical(attacker.attackDamage+65)
+                .physical((attacker.attackDamage+65)*mod)
                 .run(damage => `**${defender.name}** lost ${damage}HP by a barrage of blinding light punches`)
         }
     },{
@@ -127,9 +312,46 @@ const light_tree=[
         damage:65,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 2
+            }
+            else if(defender.element == "light"){
+                mod  = 1
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 1
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 1
+            }
+            else if(defender.element == "alloy"){
+                mod  = 0.5
+            }
+            else if(defender.element == "venom"){
+                mod  = 2
+            }
+            else if(defender.element == "draco"){
+                mod  = 2
+            }
+            else if(defender.element == "ruin"){
+                mod  = 2
+            }
             attacker.addLogMessage(`**${attacker.name}** used Dazzling Beam`)
             defender.takeDamage
-                .magical(attacker.magicPower+65)
+                .magical((attacker.magicPower+65)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a beam of concentrated light`)
         }
     },

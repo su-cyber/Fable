@@ -16,9 +16,46 @@ const venom_tree=[
         damage:20,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 1
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 1
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 2
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Poison Claw`)
             defender.takeDamage
-                .physical(attacker.attackDamage+20)
+                .physical((attacker.attackDamage+20)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a poisonous claw attack`)
         }
     },{
@@ -30,9 +67,46 @@ const venom_tree=[
         damage:20,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 1
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 1
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 2
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Poison Gas`)
             defender.takeDamage
-                .magical(attacker.magicPower+20)
+                .magical((attacker.magicPower+20)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by breathing in toxic gas`)
         }
     },{
@@ -44,9 +118,46 @@ const venom_tree=[
         damage:45,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 1
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 1
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 2
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Toxic Serpent Bite`)
             defender.takeDamage
-                .physical(attacker.attackDamage+45)
+                .physical((attacker.attackDamage+45)*mod)
                 .run(damage => `**${attacker.name}** uleaashes a venomous serpent upon **${defender.name}** causing ${damage} damage`)
         }
     },{
@@ -58,9 +169,46 @@ const venom_tree=[
         damage:45,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 1
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 1
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 2
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Toxic Meltdow`)
             defender.takeDamage
-                .magical(attacker.magicPower+45)
+                .magical((attacker.magicPower+45)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a burst of corrosive gas`)
         }
     },
@@ -113,9 +261,46 @@ const venom_tree=[
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 1
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 1
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 2
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Venom Strike`)
             defender.takeDamage
-                .physical(attacker.attackDamage+65)
+                .physical((attacker.attackDamage+65)*mod)
                 .run(damage => `**${attacker.name}** covers their fist in poison and punches **${defender.name}** causing ${damage} damage`)
         }
     },{
@@ -127,9 +312,46 @@ const venom_tree=[
         damage:65,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 1
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 1
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 2
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Acid Spray`)
             defender.takeDamage
-                .magical(attacker.magicPower+65)
+                .magical((attacker.magicPower+65)*mod)
                 .run(damage => `**${attacker.name}** sprays a potent acid at **${defender.name}** causing ${damage} damage`)
         }
     },

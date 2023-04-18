@@ -16,9 +16,46 @@ const alloy_tree=[
         damage:20,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 0.5
+            }
+            else if(defender.element == "light"){
+                mod  = 2
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 2
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 1
+            }
+            else if(defender.element == "terra"){
+                mod  = 2
+            }
+            else if(defender.element == "alloy"){
+                mod  = 0.5
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 1
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Metal Bash`)
             defender.takeDamage
-                .physical(attacker.attackDamage+20)
+                .physical((attacker.attackDamage+20)*mod)
                 .run(damage => `**${attacker.name}** covers themselves in metal and bashes **${defender.name}** causing ${damage} damage`)
         }
     },{
@@ -30,9 +67,46 @@ const alloy_tree=[
         damage:20,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 0.5
+            }
+            else if(defender.element == "light"){
+                mod  = 2
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 2
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 1
+            }
+            else if(defender.element == "terra"){
+                mod  = 2
+            }
+            else if(defender.element == "alloy"){
+                mod  = 0.5
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 1
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Steel Spike`)
             defender.takeDamage
-                .magical(attacker.magicPower+20)
+                .magical((attacker.magicPower+20)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a barrage of steel spikes`)
         }
     },{
@@ -44,9 +118,46 @@ const alloy_tree=[
         damage:45,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 0.5
+            }
+            else if(defender.element == "light"){
+                mod  = 2
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 2
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 1
+            }
+            else if(defender.element == "terra"){
+                mod  = 2
+            }
+            else if(defender.element == "alloy"){
+                mod  = 0.5
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 1
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Brass Knuckle`)
             defender.takeDamage
-                .physical(attacker.attackDamage+45)
+                .physical((attacker.attackDamage+45)*mod)
                 .run(damage => `**${attacker.name}** enhances their fists with brass knuckles and punches **${defender.name}** causing ${damage} damage`)
         }
     },{
@@ -58,9 +169,46 @@ const alloy_tree=[
         damage:45,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 0.5
+            }
+            else if(defender.element == "light"){
+                mod  = 2
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 2
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 1
+            }
+            else if(defender.element == "terra"){
+                mod  = 2
+            }
+            else if(defender.element == "alloy"){
+                mod  = 0.5
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 1
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Bullet Machinegun`)
             defender.takeDamage
-                .magical(attacker.magicPower+45)
+                .magical((attacker.magicPower+45)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP  by a barrage of metal bullets`)
         }
     },
@@ -113,9 +261,46 @@ const alloy_tree=[
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 0.5
+            }
+            else if(defender.element == "light"){
+                mod  = 2
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 2
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 1
+            }
+            else if(defender.element == "terra"){
+                mod  = 2
+            }
+            else if(defender.element == "alloy"){
+                mod  = 0.5
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 1
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Wire Slam`)
             defender.takeDamage
-                .physical(attacker.attackDamage+65)
+                .physical((attacker.attackDamage+65)*mod)
                 .run(damage => `**${attacker.name}** binds **${defender.name}** with metal wires and slams them causing ${damage} damage`)
         }
     },{
@@ -127,9 +312,46 @@ const alloy_tree=[
         damage:65,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 0.5
+            }
+            else if(defender.element == "light"){
+                mod  = 2
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 2
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 1
+            }
+            else if(defender.element == "terra"){
+                mod  = 2
+            }
+            else if(defender.element == "alloy"){
+                mod  = 0.5
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 1
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Spiraling Iron Bolts`)
             defender.takeDamage
-                .magical(attacker.magicPower+65)
+                .magical((attacker.magicPower+65)*mod)
                 .run(damage => `**${attacker.name}** shoots spiralling bolts of iron on **${defender.name}** causing ${damage} damage`)
         }
     },

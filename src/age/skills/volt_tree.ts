@@ -16,9 +16,46 @@ const volt_tree=[
         damage:20,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 1
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 2
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 2
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 0.5
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Surging Kick`)
             defender.takeDamage
-                .physical(attacker.attackDamage+20)
+                .physical((attacker.attackDamage+20)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a lightning charged kick`)
         }
     },{
@@ -30,9 +67,46 @@ const volt_tree=[
         damage:20,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 1
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 2
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 2
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 0.5
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Thunderclap`)
             defender.takeDamage
-                .magical(attacker.magicPower+20)
+                .magical((attacker.magicPower+20)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a shockwave of lightning`)
         }
     },{
@@ -44,9 +118,46 @@ const volt_tree=[
         damage:45,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 1
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 2
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 2
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 0.5
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Plasma Fist`)
             defender.takeDamage
-                .physical(attacker.attackDamage+45)
+                .physical((attacker.attackDamage+45)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by the plasma charged fists of **${attacker.name}**`)
         }
     },{
@@ -58,9 +169,46 @@ const volt_tree=[
         damage:45,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 1
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 2
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 2
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 0.5
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Chain Lightning`)
             defender.takeDamage
-                .magical(attacker.magicPower+45)
+                .magical((attacker.magicPower+45)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP  by a barrage of lightning projectiles`)
         }
     },
@@ -73,6 +221,7 @@ const volt_tree=[
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
+            
             attacker.armor = 1.5*attacker.armor
             attacker.magicResistance = 1.5*attacker.magicResistance
 
@@ -113,9 +262,46 @@ const volt_tree=[
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 1
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 2
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 2
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 0.5
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Piercing Bolt`)
             defender.takeDamage
-                .physical(attacker.attackDamage+65)
+                .physical((attacker.attackDamage+65)*mod)
                 .run(damage => `**${attacker.name}** shoots a piercing bolt of lightning on **${defender.name}** causing ${damage} damage`)
         }
     },{
@@ -127,9 +313,46 @@ const volt_tree=[
         damage:65,
         type: 'magical',
         use: (attacker, defender) =>{
+            let mod
+            if(defender.element == "flame"){
+                mod  = 1
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 0.5
+            }
+            else if(defender.element == "wave"){
+                mod  = 2
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 2
+            }
+            else if(defender.element == "bloom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "terra"){
+                mod  = 0.5
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
             attacker.addLogMessage(`**${attacker.name}** used Heavy Thunder`)
             defender.takeDamage
-                .magical(attacker.magicPower+65)
+                .magical((attacker.magicPower+65)*mod)
                 .run(damage => `**${attacker.name}** unleashes a massive bolt of lightning on **${defender.name}** causing ${damage} damage`)
         }
     },

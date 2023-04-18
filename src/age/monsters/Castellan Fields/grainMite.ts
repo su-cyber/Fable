@@ -3,55 +3,55 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import { slimeBlob} from '../../items'
 import generateXP from '../../../utils/generateXP'
+import { grainmiteTooth } from '../../items/grainmiteTeeth'
 
-export class BeerBuccaneer extends MonsterEntity {
+export class grainMite extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Beer Buccaneer ran away as you were about to finish it'],
-            withDropMessages: ['The Beer Buccaneer dropped something'],
+            withoutDropMessages: ['The Grain Mite ran away as you were about to finish it'],
+            withDropMessages: ['The Grain Mite seems to have dropped something'],
         }
 
         await new Dropper([
             {
-                item: slimeBlob,
-                dropRate: 0,
+                item: grainmiteTooth,
+                dropRate: 0.7,
             },
         ]).sendDeathMessage(messages, interaction, this,killer)
     }
 
     static create() {
-        return new BeerBuccaneer({
-            name: 'BeerBuccaneer',
-            spawnRate: 0.5,
-            health: 50,
+        return new grainMite({
+            name: 'Grain Mite',
+            spawnRate: 0.3,
+            health: 30,
             mana:0,
             xp: generateXP(5,15),
-            evasion: 0.05,
-            attackDamage: 5,
+            evasion: 0.03,
+            attackDamage: 15,
             magicPower: 0,
             run_chance: 0.02,
-            armor: 2,
-            speed: 5,
-            element:"wave",
+            armor: 1,
+            speed: 8,
+            element:"wild",
             magicResistance: 2,
             passive_skills:[],
             skills: [
                 {
                     cooldown: 0,
-                    name: 'Knife Stab',
-                    description: 'attacks with a knife',
+                    name: 'Cracker Bite',
+                    description: 'A powerful bite attack',
                     canEvade: true,
+                    damage:0,
                     type: 'physical',
-                    damage:15,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Knife Stab`)
+                        attacker.addLogMessage(`**${attacker.name}** used Cracker Bite`)
                         defender.takeDamage
                             .physical(attacker.attackDamage)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by Knife Stab`)
+                            .run(damage => `**${defender.name}** lost ${damage} HP by a deadly bite`)
                     }
                 },
-               
             ],
         })
     }

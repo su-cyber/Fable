@@ -15,7 +15,7 @@ export class Treemick extends MonsterEntity {
         await new Dropper([
             {
                 item: treemickBranch,
-                dropRate: 0.8,
+                dropRate: 0.9,
             },
         ]).sendDeathMessage(messages, interaction, this,killer)
     }
@@ -25,16 +25,16 @@ export class Treemick extends MonsterEntity {
             name: 'Treemick',
             spawnRate: 0.5,
             health: 30,
-            mana:10,
+            mana:0,
             xp: generateXP(5,15),
             evasion: 0.05,
             attackDamage: 3,
             magicPower: 0,
             run_chance: 0.02,
-            armor: 0,
+            armor: 1,
             speed: 5,
             element:"bloom",
-            magicResistance: 0,
+            magicResistance: 1,
             passive_skills:[],
             skills: [
                 {
