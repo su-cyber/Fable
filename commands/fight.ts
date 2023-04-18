@@ -146,7 +146,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                             if((timestamp.getMinutes() - foundUser.encounter[0].time.getMinutes()) < 2){
                                                 if(foundUser.location == foundUser.encounter[0].location){
                                                     const monster = await (await getMonsters(foundUser.location))
-                                                .find(m => m.name === foundUser.encounter[0].name)
+                                                .find(m => m.name === foundUser.encounter[0])
                                                 .create()
                                     
                                     if(attacker.speed >= monster.speed){
