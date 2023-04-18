@@ -76,7 +76,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                         
                                         foundProfile.weapon.push(foundObject.name)
                                         foundProfile.attackDamage+=foundObject.name.damage
-                                        if(foundObject.skills.length == 0){
+                                        if(foundObject.name.skills.length == 0){
                                             await interaction.reply({content:`${userobject} has been equipped successfully!`})
                                  
                                         }
