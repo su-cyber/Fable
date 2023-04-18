@@ -7,9 +7,6 @@ export const Sword = new Weapon({
     damage:15,
     type:'melee',
     cost:300,
-    skills: [{
-        name: 'Deep cut',
-        description: 'Apply bleeding for 3 turns',
-    }]
+    skills: []
 
 })
