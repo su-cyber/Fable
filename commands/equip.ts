@@ -55,36 +55,35 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                     else{
 
                                     }
-                                    if(foundProfile.currentskills.length<4){
-                                        foundProfile.currentskills.push(foundObject.name.skills[0])
-                                        await profileModel.updateOne({userID:authorId},{currentskills:foundProfile.currentskills})
-                                        
-                                        foundProfile.weapon.push(foundObject.name)
-                                        foundProfile.attackDamage+=foundObject.name.damage
+                                    
+                                       
                                         if(foundObject.name.skills.length == 0){
+                                            
                                             await interaction.reply({content:`${userobject} has been equipped successfully!`})
                                  
                                         }
                                         else{
-                                            await interaction.reply({content:`${userobject} has been equipped successfully!\n${foundObject.skills[0].name} has been added to your skill cycle!`})
+                                            if(foundProfile.currentskills.length<4){
+                                                foundProfile.currentskills.push(foundObject.name.skills[0])
+                                                foundProfile.allskills.push(foundObject.name.skills[0])
+                                                await profileModel.updateOne({userID:authorId},{currentskills:foundProfile.currentskills,allskills:foundProfile.allskills})
+                                                foundProfile.weapon.push(foundObject.name)
+                                                foundProfile.attackDamage+=foundObject.name.damage
+                                                await interaction.reply({content:`${userobject} has been equipped successfully!\n${foundObject.name.skills[0].name} has been added to your skill cycle!`})
+                                                }
+                                                else{
+                                                    foundProfile.allskills.push(foundObject.name.skills[0])
+                                                    await profileModel.updateOne({userID:authorId},{allskills:foundProfile.allskills})
+                                                    
+                                                    foundProfile.weapon.push(foundObject.name)
+                                                    foundProfile.attackDamage+=foundObject.name.damage
+                                                    await interaction.reply({content:`${userobject} has been equipped successfully!\n${foundObject.name.skills[0].name} has been added to your skill list!`})
+                                                }
+                                            
                                  
                                         }
-                                           }
-                                    else{
-                                        foundProfile.allskills.push(foundObject.name.skills[0])
-                                        await profileModel.updateOne({userID:authorId},{allskills:foundProfile.allskills})
-                                        
-                                        foundProfile.weapon.push(foundObject.name)
-                                        foundProfile.attackDamage+=foundObject.name.damage
-                                        if(foundObject.name.skills.length == 0){
-                                            await interaction.reply({content:`${userobject} has been equipped successfully!`})
-                                 
-                                        }
-                                        else{
-                                            await interaction.reply({content:`${userobject} has been equipped successfully!\n${foundObject.skills[0].name} has been added to your skill list!`})
-                                 
-                                        }
-                                    }
+                                           
+                                   
                                                
                                             }
                                             
