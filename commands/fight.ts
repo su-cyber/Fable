@@ -362,14 +362,14 @@ class PvEDuel extends DuelBuilder {
                 }
             }
             if(turn == 0 || turn==1){
-                let skill = allskills.find(skill => skill.type === "buff")
+                let skill = this.attacker.skills.find(skill => skill.type === "buff")
                 if(skill){
                     this.attacker.useSkill(this.attacker,this.defender,skill)
                     await sleep(this.speed)
                 }
             }
             else if(this.attacker.health <= 0.5*this.attacker.maxHealth){
-                let skill = allskills.find(skill => skill.type === "heal")
+                let skill = this.attacker.skills.find(skill => skill.type === "heal")
                 if(skill){
                     if(skill.mana_cost<=this.attacker.mana){
                         this.attacker.useSkill(this.attacker,this.defender,skill)

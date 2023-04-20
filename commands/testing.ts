@@ -48,7 +48,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.drawImage(img,0,0)
     ctx.font = '22px "serif"'
     ctx.fillStyle = "yellow"
-    ctx.fillText(`${name}'s Diary`, 120, 120);
+    ctx.fillText(`${name}'s Diary`, 120, 100);
     ctx.font = '38px "serif"'
     ctx.fillStyle = "brown"
     ctx.fillText(`${level}`, 1046, 118);
