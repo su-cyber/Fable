@@ -217,7 +217,7 @@ const frost_tree=[
         name: 'Armor of Ice',
         description: 'A skill that creates a protective shield of ice around the user.',
         canEvade: false,
-        type: 'self',
+        type: 'buff',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -238,11 +238,16 @@ const frost_tree=[
         name: `Winter's Embrace`,
         description: `A skill that summons a healing snowfall that rapidly restores the user's health.`,
         canEvade: false,
-        type: 'self',
+        type: 'heal',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
-            attacker.health = attacker.health+100
+            if(attacker.health+100 > attacker.maxHealth){
+                attacker.health = attacker.maxHealth
+            }
+            else{
+                attacker.health = attacker.health+100
+            }
 
 
             attacker.addLogMessage(

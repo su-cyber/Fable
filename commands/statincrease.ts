@@ -124,7 +124,6 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                     }
                     else{
                         foundUser.magicPower += 5*Number(num)
-                        foundUser.mana += 100*Number(num)
                         foundUser.skill_points -= Number(num)
                     
                         let successembed = new MessageEmbed()

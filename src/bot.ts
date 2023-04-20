@@ -60,7 +60,7 @@ class Bot extends Client {
                                         else{
                                             sp = 3
                                         }
-                                        foundUser.health = getHealth(i,foundUser.vitality+1)
+                                        
                                         let levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')
                                                         .setTitle('LEVEL UP!')
@@ -86,7 +86,6 @@ class Bot extends Client {
                                         await sleep(2)
                                         await interaction.channel.send({embeds:[levelupEmbed]})
                                         foundUser.level=foundUser.level+1
-                                        foundUser.vitality=foundUser.vitality+1
                                         
                                         if(foundUser.level === 2){
                                             foundUser.skill_points += 5

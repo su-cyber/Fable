@@ -217,7 +217,7 @@ const bloom_tree=[
         name: 'Armor of Wood',
         description: 'A skill that creates a protective shield of wood around the user.',
         canEvade: false,
-        type: 'self',
+        type: 'buff',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -238,11 +238,16 @@ const bloom_tree=[
         name: 'Photosynthesis',
         description: `A skill that rapidly restores the user's health by absorbing energy from the sun.`,
         canEvade: false,
-        type: 'self',
+        type: 'heal',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
-            attacker.health = attacker.health+100
+            if(attacker.health+100 > attacker.maxHealth){
+                attacker.health = attacker.maxHealth
+            }
+            else{
+                attacker.health = attacker.health+100
+            }
 
 
             attacker.addLogMessage(

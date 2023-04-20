@@ -218,7 +218,7 @@ const flame_tree=[
         name: 'Armor of Flames',
         description: 'A skill that creates a protective shield of fire around the user.',
         canEvade: false,
-        type: 'self',
+        type: 'buff',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -239,11 +239,16 @@ const flame_tree=[
         name: 'Fusion Blue Flames',
         description: 'A skill that merges two different types of flames to create a healing effect.',
         canEvade: false,
-        type: 'self',
+        type: 'heal',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
-            attacker.health = attacker.health+100
+            if(attacker.health+100 > attacker.maxHealth){
+                attacker.health = attacker.maxHealth
+            }
+            else{
+                attacker.health = attacker.health+100
+            }
 
 
             attacker.addLogMessage(

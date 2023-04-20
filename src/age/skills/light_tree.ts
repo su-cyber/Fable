@@ -217,7 +217,7 @@ const light_tree=[
         name: 'Armor of Light',
         description: 'A skill that creates a protective shield of light around the user.',
         canEvade: false,
-        type: 'self',
+        type: 'buff',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -238,12 +238,16 @@ const light_tree=[
         name: `Sun's Embrace`,
         description: 'A skill that lets the user bask in the healing warmth of the sun, restoring their health.',
         canEvade: false,
-        type: 'self',
+        type: 'heal',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
-            attacker.health = attacker.health+100
-
+            if(attacker.health+100 > attacker.maxHealth){
+                attacker.health = attacker.maxHealth
+            }
+            else{
+                attacker.health = attacker.health+100
+            }
 
             attacker.addLogMessage(
                 `**${attacker.name}** used Sun's Embrace`,

@@ -217,7 +217,7 @@ const gale_tree=[
         name: 'Armor of Sky',
         description: 'A skill that creates a protective shield of wind around the user.',
         canEvade: false,
-        type: 'self',
+        type: 'buff',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -239,11 +239,16 @@ const gale_tree=[
         name: 'Breath of Life',
         description: `A skill that summons a healing wind that rapidly restores the user's health.`,
         canEvade: false,
-        type: 'self',
+        type: 'heal',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
-            attacker.health = attacker.health+100
+            if(attacker.health+100 > attacker.maxHealth){
+                attacker.health = attacker.maxHealth
+            }
+            else{
+                attacker.health = attacker.health+100
+            }
 
 
             attacker.addLogMessage(

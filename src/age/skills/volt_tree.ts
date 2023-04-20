@@ -217,7 +217,7 @@ const volt_tree=[
         name: 'Armor of Lightning',
         description: 'A skill that creates a protective shield of lightning around the user.',
         canEvade: false,
-        type: 'self',
+        type: 'buff',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -239,11 +239,16 @@ const volt_tree=[
         name: 'Parabolic Recharge',
         description: 'A skill that allows the user to rapidly replenish their health by absorbing electricity from the environment.',
         canEvade: false,
-        type: 'self',
+        type: 'heal',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
-            attacker.health = attacker.health+100
+            if(attacker.health+100 > attacker.maxHealth){
+                attacker.health = attacker.maxHealth
+            }
+            else{
+                attacker.health = attacker.health+100
+            }
 
 
             attacker.addLogMessage(

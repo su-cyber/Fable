@@ -217,7 +217,7 @@ const venom_tree=[
         name: 'Armor of Toxicity',
         description: 'A skill that creates a protective shield of sludge around the user.',
         canEvade: false,
-        type: 'self',
+        type: 'buff',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -238,11 +238,16 @@ const venom_tree=[
         name: 'Antidote Aura',
         description: `A skill that summons a healing toxic cloud that rapidly restores the user's health.`,
         canEvade: false,
-        type: 'self',
+        type: 'heal',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
-            attacker.health = attacker.health+100
+            if(attacker.health+100 > attacker.maxHealth){
+                attacker.health = attacker.maxHealth
+            }
+            else{
+                attacker.health = attacker.health+100
+            }
 
 
             attacker.addLogMessage(

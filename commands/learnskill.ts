@@ -29,7 +29,7 @@ import alloy_tree from '../src/age/skills/alloy_tree'
 import gale_tree from '../src/age/skills/gale_tree'
 import terra_tree from '../src/age/skills/terra_tree'
 
-export default new MyCommandSlashBuilder({ name: 'learnskill', description: 'learn a new skill' })
+export default new MyCommandSlashBuilder({ name: 'learnnewskill', description: 'learn a new skill' })
 
 .setDo(
     async (bot, interaction) => {

@@ -217,7 +217,7 @@ const alloy_tree=[
         name: 'Armor of Steel',
         description: 'A skill that creates a protective shield of steel around the user.',
         canEvade: false,
-        type: 'self',
+        type: 'buff',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -238,11 +238,17 @@ const alloy_tree=[
         name: 'Mineral Absorption',
         description: `A skill that allows the user to absorb minerals from the earth that rapidly restores the user's health.`,
         canEvade: false,
-        type: 'self',
+        type: 'heal',
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
-            attacker.health = attacker.health+100
+            if(attacker.health+100 > attacker.maxHealth){
+                attacker.health = attacker.maxHealth
+            }
+            else{
+                attacker.health = attacker.health+100
+            }
+            
 
 
             attacker.addLogMessage(
