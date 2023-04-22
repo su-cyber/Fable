@@ -2,7 +2,7 @@ import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import { DuelBuilder } from '../src/age/DuelBuilder'
 import { sleep, weightedRandom } from '../src/utils'
 import { getMonsters } from '../src/age/monsters'
-import { MessageActionRow, MessageSelectMenu, SelectMenuInteraction } from 'discord.js'
+import { Interaction, MessageActionRow, MessageSelectMenu, SelectMenuInteraction } from 'discord.js'
 import { Warrior } from '../src/age/heroes/warrior'
 import { MonsterEntity, Entity } from '../src/age/classes'
 import { getRandomMonster } from '../src/age/monsters'
@@ -628,7 +628,7 @@ export class PvEDuel extends DuelBuilder {
             else{
                 foundUser.encounter = []
                 await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
-                if(winner instanceof Entity){
+                if(winner.id == authorID){
                     await profileModel.updateOne({userID:authorID},{health:winner.health})
                     if(foundUser.quest_mob == loser.name && foundUser.quest_quantity>0){
                         foundUser.quest_quantity -=1
@@ -636,13 +636,16 @@ export class PvEDuel extends DuelBuilder {
                         await profileModel.updateOne({userID:authorID},{quest_quantity:foundUser.quest_quantity})
                     }
                 }
-                if(loser instanceof Entity){
+                else{
                     foundUser.location = "None"
                     foundUser.dungeon.status = false
                     foundUser.dungeon.name = ""
                     foundUser.dungeon.step = 0
                     await profileModel.updateOne({userID:authorID},{health:loser.maxHealth,location:foundUser.location,dungeon:foundUser.dungeon})
+                
                 }
+                
+                    
 
             }
         })
