@@ -50,7 +50,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setColor('RED')
                         .setTitle('STEP #1')
                         .setDescription(`you found 5 bottles of backbreaker!\nBackBreaker x 5 added to inventory!`)
-                        await interaction.editReply({embeds:[stepembed],components:[]})
+                        await interaction.reply({embeds:[stepembed],components:[]})
 
                         inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
                             if(err){
