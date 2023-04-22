@@ -353,7 +353,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setDescription('You decided to retreat!')
                             
                         
-                        await interaction.editReply({content: null,embeds:[dungeonEmbed],components:[btnraw]})
+                        await interaction.reply({content: null,embeds:[dungeonEmbed],components:[btnraw]})
                         let filter = i => i.user.id === authorId
                             let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                     
