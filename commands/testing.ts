@@ -41,6 +41,19 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     const knowledge = foundUser.magicResistance
     const durability = foundUser.armour
     const agility = foundUser.speed
+    const health = foundUser.health
+    const money = foundUser.coins
+    const weapon = foundUser.weapon[0].name
+    const armour = foundUser.armourSuit[0].name
+    const location = foundUser.location
+    const mainquest = foundUser.main_quest
+    if(foundUser.side_quest.length == 0){
+        const side_quest = "None"
+    }
+    else{
+        const side_quest = foundUser.side_quest[0]
+    }
+    
 
     registerFont('fonts/DellaRespira.ttf', { family: 'DellaRespira' })
     const src = new Canvas(1300,700)
@@ -48,7 +61,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.drawImage(img,0,0)
     ctx.font = '22px "serif"'
     ctx.fillStyle = "yellow"
-    ctx.fillText(`${name}'s Diary`, 120, 100);
+    ctx.fillText(`${name}'s Diary`, 120, 110);
     ctx.font = '38px "serif"'
     ctx.fillStyle = "brown"
     ctx.fillText(`${level}`, 1046, 118);
