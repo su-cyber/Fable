@@ -340,7 +340,8 @@ export class PvEDuel extends DuelBuilder {
             await sleep(this.speed)
             
             
-        } else {
+        } 
+        else {
            
             await this.sendInfoMessage(this.attacker.skills, true)
             // const max = this.skill_len
@@ -467,7 +468,7 @@ export class PvEDuel extends DuelBuilder {
         
     }
 
-    async onEnd(winner: Entity, loser: MonsterEntity) {
+    async onEnd(winner: any, loser: any) {
     await this.sendInfoMessage(this.attacker.skills,true)
        const authorID = this.interaction.user.id
        

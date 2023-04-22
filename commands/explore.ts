@@ -328,7 +328,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                     }
      
                 }
-                else if(foundUser.location = "Abandoned Castle"){
+                else if(location == "Abandoned Castle"){
                     let btnraw= new MessageActionRow().addComponents([
                         new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Enter"),
                         new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Cancel"),])
@@ -395,13 +395,13 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             interaction.editReply({components: [d_btnraw]})
                         })
                 }
+                
 
                 
     
             
             else{
-                await interaction.deferReply()
-                await interaction.editReply(`cannot access ${location}`)
+               await interaction.reply(`you are not in a particular location!`)
             }
          
         })
