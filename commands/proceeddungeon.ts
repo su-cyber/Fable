@@ -95,7 +95,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 attacker.attackDamage=foundUser.attackDamage
                                 attacker.evasion=foundUser.evasion
                                 attacker.maxHealth=foundUser.health
-                                attacker.element = foundUser.element[0]
+                                attacker.element = foundUser.elements[0]
                                 attacker.passive_skills = foundUser.passiveskills
                                 attacker.maxMana = foundUser.mana
                                 attacker.speed = foundUser.speed
@@ -133,7 +133,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                     attacker.magicPower=foundUser.magicPower
                                     attacker.attackDamage=foundUser.attackDamage
                                     attacker.evasion=foundUser.evasion
-                                    attacker.element = foundUser.element[0]
+                                    attacker.element = foundUser.elements[0]
                                     attacker.maxHealth=foundUser.health
                                     attacker.passive_skills = foundUser.passiveskills
                                     attacker.maxMana = foundUser.mana
@@ -258,7 +258,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 attacker.attackDamage=foundUser.attackDamage
                                 attacker.evasion=foundUser.evasion
                                 attacker.maxHealth=foundUser.health
-                                attacker.element = foundUser.element[0]
+                                attacker.element = foundUser.elements[0]
                                 attacker.passive_skills = foundUser.passiveskills
                                 attacker.maxMana = foundUser.mana
                                 attacker.speed = foundUser.speed
@@ -297,7 +297,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                     attacker.attackDamage=foundUser.attackDamage
                                     attacker.evasion=foundUser.evasion
                                     attacker.maxHealth=foundUser.health
-                                    attacker.element = foundUser.element[0]
+                                    attacker.element = foundUser.elements[0]
                                     attacker.passive_skills = foundUser.passiveskills
                                     attacker.maxMana = foundUser.mana
                                     attacker.speed = foundUser.speed
@@ -403,7 +403,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                     attacker.magicPower=foundUser.magicPower
                                     attacker.attackDamage=foundUser.attackDamage
                                     attacker.evasion=foundUser.evasion
-                                    attacker.element = foundUser.element[0]
+                                    attacker.element = foundUser.elements[0]
                                     attacker.maxHealth=foundUser.health
                                     attacker.passive_skills = foundUser.passiveskills
                                     attacker.maxMana = foundUser.mana
@@ -529,7 +529,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                     attacker.attackDamage=foundUser.attackDamage
                                     attacker.evasion=foundUser.evasion
                                     attacker.maxHealth=foundUser.health
-                                    attacker.element = foundUser.element[0]
+                                    attacker.element = foundUser.elements[0]
                                     attacker.passive_skills = foundUser.passiveskills
                                     attacker.maxMana = foundUser.mana
                                     attacker.speed = foundUser.speed
@@ -634,7 +634,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                     attacker.attackDamage=foundUser.attackDamage
                                     attacker.evasion=foundUser.evasion
                                     attacker.maxHealth=foundUser.health
-                                    attacker.element = foundUser.element[0]
+                                    attacker.element = foundUser.elements[0]
                                     attacker.passive_skills = foundUser.passiveskills
                                     attacker.maxMana = foundUser.mana
                                     attacker.speed = foundUser.speed
