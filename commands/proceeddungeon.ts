@@ -18,6 +18,9 @@ import { backBreaker } from '../src/age/items/backbreaker'
 import { BeerBuccaneer2 } from '../src/age/monsters/Castellan Fields/BeerBuccaneer2'
 import { PvEDuel } from './fight'
 import { BeerBuccaneer1 } from '../src/age/monsters/Castellan Fields/BeerBuccaneer1'
+import { crookcutlass } from '../src/age/weapons/crook\'scutlass'
+import getHealth from '../src/utils/getHealth'
+import { captainCrook } from '../src/age/Dungeon-Boss/captainCrook'
 
 
 export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 'Move in the Dungeon' })
@@ -71,7 +74,10 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                     }
                                     foundUser.inventory.items.push(newItem)
                                 }
+                                
                                 await inventory.updateOne({userID:authorId},foundUser)
+                                foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
                             }
                             
                         })
@@ -80,7 +86,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         
                         const attacker = Warrior.create(author)
                         const monster = BeerBuccaneer2.create()
-                        await interaction.reply(`You encountered a ${monster.name}!\nStarting Combat...`)
+                        await interaction.reply(`You encountered a ${monster.name}!`)
                         await sleep(1.5)
                         attacker.health=foundUser.health
                                 attacker.mana=foundUser.mana
@@ -89,6 +95,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 attacker.attackDamage=foundUser.attackDamage
                                 attacker.evasion=foundUser.evasion
                                 attacker.maxHealth=foundUser.health
+                                attacker.element = foundUser.element[0]
                                 attacker.passive_skills = foundUser.passiveskills
                                 attacker.maxMana = foundUser.mana
                                 attacker.speed = foundUser.speed
@@ -110,13 +117,15 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 speed:2
                             }).start()
                         }
+                        foundUser.dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
                     }
                     else if(dungeon.step == 3){
                         const pick = weightedRandom(["En1","En2","En3","En4","En5"],[0.5,0.2,0.2,0.09,0.01])
                         if(pick == "En1"){
                             const attacker = Warrior.create(author)
                             const monster = BeerBuccaneer1.create()
-                            await interaction.reply(`You encountered a ${monster.name}!\nStarting Combat...`)
+                            await interaction.reply(`You encountered a ${monster.name}!`)
                             await sleep(1.5)
                             attacker.health=foundUser.health
                                     attacker.mana=foundUser.mana
@@ -124,6 +133,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                     attacker.magicPower=foundUser.magicPower
                                     attacker.attackDamage=foundUser.attackDamage
                                     attacker.evasion=foundUser.evasion
+                                    attacker.element = foundUser.element[0]
                                     attacker.maxHealth=foundUser.health
                                     attacker.passive_skills = foundUser.passiveskills
                                     attacker.maxMana = foundUser.mana
@@ -146,12 +156,511 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                     speed:2
                                 }).start()
                             }
-
+                            foundUser.dungeon.step+=1
+                             await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
                         }
                         else if(pick == "En2"){
-
+                            let stepembed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('STEP #3')
+                        .setDescription(`you stepped into a room with Broken Glass!\nYou lost 10% of your health!`)
+                        await interaction.reply({embeds:[stepembed],components:[]})
+                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
                         }
+                        else if(pick == "En3"){
+                            let stepembed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('STEP #3')
+                        .setDescription(`you stepped into a Slippery Floor!\nYou lost 10% of your health!`)
+                        await interaction.reply({embeds:[stepembed],components:[]})
+                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        }
+                        else if(pick == "En4"){
+                            let stepembed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('STEP #3')
+                        .setDescription(`you found a stash of Money!\nYou recieved 1000 coins!`)
+                        await interaction.reply({embeds:[stepembed],components:[]})
+                        await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+1000})
+                        foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+
+                      
+                        }
+                        else if(pick == "En5"){
+                            let stepembed = new MessageEmbed()
+                            .setColor('RED')
+                            .setTitle('STEP #3')
+                            .setDescription(`you found yourself wandering into the weapon room!\nCapn. Crook's Cutlass x 1 added to inventory!`)
+                            await interaction.reply({embeds:[stepembed],components:[]})
+    
+                            inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                                if(err){
+                                    console.log(err);
+                                    
+                                }
+                                else{
+                                    const foundItem = foundUser.inventory.weapons.find(item => item.name.name === crookcutlass.name)
+                                    if (foundItem){
+                    
+                                        foundItem.quantity+=1
+                                    }
+                                    else{
+                                        const newItem = {
+                                            name:crookcutlass,
+                                            description:crookcutlass.description,
+                                            quantity:Number(1)
+                                        }
+                                        foundUser.inventory.weapons.push(newItem)
+                                    }
+                                    await inventory.updateOne({userID:authorId},foundUser)
+                                }
+                                
+                            })
+                            foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        }
+                        
+                        
                     }
+                    else if(dungeon.step == 4){
+                        let stepembed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('STEP #4')
+                        .setDescription(`you walked into a hamock room!\nYou recovered 50% HP!`)
+                        let health
+                        if(foundUser.health + 0.5*foundUser.health > getHealth(foundUser.level,foundUser.vitality)){
+                            health = getHealth(foundUser.level,foundUser.vitality)
+                        }
+                        else{
+                            health = foundUser.health + 0.5*foundUser.health
+                        }
+                        await interaction.reply({embeds:[stepembed],components:[]})
+                        await profileModel.updateOne({userID:authorId},{health:health})
+                        foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+
+                    }
+                    else if(dungeon.step == 5){
+                        
+                        const attacker = Warrior.create(author)
+                        const monster = BeerBuccaneer2.create()
+                        await interaction.reply(`You encountered a ${monster.name}!`)
+                        await sleep(1.5)
+                        attacker.health=foundUser.health
+                                attacker.mana=foundUser.mana
+                                attacker.armor=foundUser.armour
+                                attacker.magicPower=foundUser.magicPower
+                                attacker.attackDamage=foundUser.attackDamage
+                                attacker.evasion=foundUser.evasion
+                                attacker.maxHealth=foundUser.health
+                                attacker.element = foundUser.element[0]
+                                attacker.passive_skills = foundUser.passiveskills
+                                attacker.maxMana = foundUser.mana
+                                attacker.speed = foundUser.speed
+                                attacker.skills=foundUser.currentskills
+                        if(attacker.speed >= monster.speed){
+                            await new PvEDuel({
+                                interaction,
+                                player1: attacker,
+                                player2: monster,
+                                speed:2,
+                            }).start()
+                            
+                        }
+                        else{
+                            await new PvEDuel({
+                                interaction,
+                                player1: monster,
+                                player2: attacker,
+                                speed:2
+                            }).start()
+                        }
+                        foundUser.dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                    }
+                    else if(dungeon.step == 6){
+                        const pick = weightedRandom(["En1","En2","En3","En4","En5"],[0.5,0.2,0.2,0.09,0.01])
+                        if(pick == "En1"){
+                            const attacker = Warrior.create(author)
+                            const monster = BeerBuccaneer1.create()
+                            await interaction.reply(`You encountered a ${monster.name}!`)
+                            await sleep(1.5)
+                            attacker.health=foundUser.health
+                                    attacker.mana=foundUser.mana
+                                    attacker.armor=foundUser.armour
+                                    attacker.magicPower=foundUser.magicPower
+                                    attacker.attackDamage=foundUser.attackDamage
+                                    attacker.evasion=foundUser.evasion
+                                    attacker.maxHealth=foundUser.health
+                                    attacker.element = foundUser.element[0]
+                                    attacker.passive_skills = foundUser.passiveskills
+                                    attacker.maxMana = foundUser.mana
+                                    attacker.speed = foundUser.speed
+                                    attacker.skills=foundUser.currentskills
+                            if(attacker.speed >= monster.speed){
+                                await new PvEDuel({
+                                    interaction,
+                                    player1: attacker,
+                                    player2: monster,
+                                    speed:2,
+                                }).start()
+                                
+                            }
+                            else{
+                                await new PvEDuel({
+                                    interaction,
+                                    player1: monster,
+                                    player2: attacker,
+                                    speed:2
+                                }).start()
+                            }
+                            foundUser.dungeon.step+=1
+                             await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        }
+                        else if(pick == "En2"){
+                            let stepembed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('STEP #3')
+                        .setDescription(`you stepped into a room with Broken Glass!\nYou lost 10% of your health!`)
+                        await interaction.reply({embeds:[stepembed],components:[]})
+                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        }
+                        else if(pick == "En3"){
+                            let stepembed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('STEP #3')
+                        .setDescription(`you stepped into a Slippery Floor!\nYou lost 10% of your health!`)
+                        await interaction.reply({embeds:[stepembed],components:[]})
+                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        }
+                        else if(pick == "En4"){
+                            let stepembed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('STEP #3')
+                        .setDescription(`you found a stash of Money!\nYou recieved 1000 coins!`)
+                        await interaction.reply({embeds:[stepembed],components:[]})
+                        await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+1000})
+                        foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+
+                      
+                        }
+                        else if(pick == "En5"){
+                            let stepembed = new MessageEmbed()
+                            .setColor('RED')
+                            .setTitle('STEP #3')
+                            .setDescription(`you found yourself wandering into the weapon room!\nCapn. Crook's Cutlass x 1 added to inventory!`)
+                            await interaction.reply({embeds:[stepembed],components:[]})
+    
+                            inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                                if(err){
+                                    console.log(err);
+                                    
+                                }
+                                else{
+                                    const foundItem = foundUser.inventory.weapons.find(item => item.name.name === crookcutlass.name)
+                                    if (foundItem){
+                    
+                                        foundItem.quantity+=1
+                                    }
+                                    else{
+                                        const newItem = {
+                                            name:crookcutlass,
+                                            description:crookcutlass.description,
+                                            quantity:Number(1)
+                                        }
+                                        foundUser.inventory.weapons.push(newItem)
+                                    }
+                                    await inventory.updateOne({userID:authorId},foundUser)
+                                }
+                                
+                            })
+                            foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        }
+                        
+                        
+                    }
+                    else if(dungeon.step == 7){
+                        const pick = weightedRandom(["En1","En2","En3","En4","En5"],[0.5,0.2,0.2,0.09,0.01])
+                        if(pick == "En1"){
+                            const attacker = Warrior.create(author)
+                            const monster = BeerBuccaneer1.create()
+                            await interaction.reply(`You encountered a ${monster.name}!`)
+                            await sleep(1.5)
+                            attacker.health=foundUser.health
+                                    attacker.mana=foundUser.mana
+                                    attacker.armor=foundUser.armour
+                                    attacker.magicPower=foundUser.magicPower
+                                    attacker.attackDamage=foundUser.attackDamage
+                                    attacker.evasion=foundUser.evasion
+                                    attacker.element = foundUser.element[0]
+                                    attacker.maxHealth=foundUser.health
+                                    attacker.passive_skills = foundUser.passiveskills
+                                    attacker.maxMana = foundUser.mana
+                                    attacker.speed = foundUser.speed
+                                    attacker.skills=foundUser.currentskills
+                            if(attacker.speed >= monster.speed){
+                                await new PvEDuel({
+                                    interaction,
+                                    player1: attacker,
+                                    player2: monster,
+                                    speed:2,
+                                }).start()
+                                
+                            }
+                            else{
+                                await new PvEDuel({
+                                    interaction,
+                                    player1: monster,
+                                    player2: attacker,
+                                    speed:2
+                                }).start()
+                            }
+                            foundUser.dungeon.step+=1
+                             await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        }
+                        else if(pick == "En2"){
+                            let stepembed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('STEP #3')
+                        .setDescription(`you stepped into a room with Broken Glass!\nYou lost 10% of your health!`)
+                        await interaction.reply({embeds:[stepembed],components:[]})
+                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        }
+                        else if(pick == "En3"){
+                            let stepembed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('STEP #3')
+                        .setDescription(`you stepped into a Slippery Floor!\nYou lost 10% of your health!`)
+                        await interaction.reply({embeds:[stepembed],components:[]})
+                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        }
+                        else if(pick == "En4"){
+                            let stepembed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('STEP #3')
+                        .setDescription(`you found a stash of Money!\nYou recieved 1000 coins!`)
+                        await interaction.reply({embeds:[stepembed],components:[]})
+                        await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+1000})
+                        foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+
+                      
+                        }
+                        else if(pick == "En5"){
+                            let stepembed = new MessageEmbed()
+                            .setColor('RED')
+                            .setTitle('STEP #3')
+                            .setDescription(`you found yourself wandering into the weapon room!\nCapn. Crook's Cutlass x 1 added to inventory!`)
+                            await interaction.reply({embeds:[stepembed],components:[]})
+    
+                            inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                                if(err){
+                                    console.log(err);
+                                    
+                                }
+                                else{
+                                    const foundItem = foundUser.inventory.weapons.find(item => item.name.name === crookcutlass.name)
+                                    if (foundItem){
+                    
+                                        foundItem.quantity+=1
+                                    }
+                                    else{
+                                        const newItem = {
+                                            name:crookcutlass,
+                                            description:crookcutlass.description,
+                                            quantity:Number(1)
+                                        }
+                                        foundUser.inventory.weapons.push(newItem)
+                                    }
+                                    await inventory.updateOne({userID:authorId},foundUser)
+                                }
+                                
+                            })
+                            foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        }
+                        
+                        
+                    }
+                    else if(dungeon.step == 8){
+                        let stepembed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('STEP #4')
+                        .setDescription(`you walked into a hamock room!\nYou recovered 50% HP!`)
+                        let health
+                        if(foundUser.health + 0.5*foundUser.health > getHealth(foundUser.level,foundUser.vitality)){
+                            health = getHealth(foundUser.level,foundUser.vitality)
+                        }
+                        else{
+                            health = foundUser.health + 0.5*foundUser.health
+                        }
+                        await interaction.reply({embeds:[stepembed],components:[]})
+                        await profileModel.updateOne({userID:authorId},{health:health})
+                        foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+
+                    }
+                    else if(dungeon.step == 9){
+                        const pick = weightedRandom(["En1","En2","En3","En4","En5"],[0.5,0.2,0.2,0.09,0.01])
+                        if(pick == "En1"){
+                            const attacker = Warrior.create(author)
+                            const monster = BeerBuccaneer1.create()
+                            await interaction.reply(`You encountered a ${monster.name}!`)
+                            await sleep(1.5)
+                            attacker.health=foundUser.health
+                                    attacker.mana=foundUser.mana
+                                    attacker.armor=foundUser.armour
+                                    attacker.magicPower=foundUser.magicPower
+                                    attacker.attackDamage=foundUser.attackDamage
+                                    attacker.evasion=foundUser.evasion
+                                    attacker.maxHealth=foundUser.health
+                                    attacker.element = foundUser.element[0]
+                                    attacker.passive_skills = foundUser.passiveskills
+                                    attacker.maxMana = foundUser.mana
+                                    attacker.speed = foundUser.speed
+                                    attacker.skills=foundUser.currentskills
+                            if(attacker.speed >= monster.speed){
+                                await new PvEDuel({
+                                    interaction,
+                                    player1: attacker,
+                                    player2: monster,
+                                    speed:2,
+                                }).start()
+                                
+                            }
+                            else{
+                                await new PvEDuel({
+                                    interaction,
+                                    player1: monster,
+                                    player2: attacker,
+                                    speed:2
+                                }).start()
+                            }
+                            foundUser.dungeon.step+=1
+                             await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        }
+                        else if(pick == "En2"){
+                            let stepembed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('STEP #3')
+                        .setDescription(`you stepped into a room with Broken Glass!\nYou lost 10% of your health!`)
+                        await interaction.reply({embeds:[stepembed],components:[]})
+                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        }
+                        else if(pick == "En3"){
+                            let stepembed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('STEP #3')
+                        .setDescription(`you stepped into a Slippery Floor!\nYou lost 10% of your health!`)
+                        await interaction.reply({embeds:[stepembed],components:[]})
+                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        }
+                        else if(pick == "En4"){
+                            let stepembed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('STEP #3')
+                        .setDescription(`you found a stash of Money!\nYou recieved 1000 coins!`)
+                        await interaction.reply({embeds:[stepembed],components:[]})
+                        await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+1000})
+                        foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+
+                      
+                        }
+                        else if(pick == "En5"){
+                            let stepembed = new MessageEmbed()
+                            .setColor('RED')
+                            .setTitle('STEP #3')
+                            .setDescription(`you found yourself wandering into the weapon room!\nCapn. Crook's Cutlass x 1 added to inventory!`)
+                            await interaction.reply({embeds:[stepembed],components:[]})
+    
+                            inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                                if(err){
+                                    console.log(err);
+                                    
+                                }
+                                else{
+                                    const foundItem = foundUser.inventory.weapons.find(item => item.name.name === crookcutlass.name)
+                                    if (foundItem){
+                    
+                                        foundItem.quantity+=1
+                                    }
+                                    else{
+                                        const newItem = {
+                                            name:crookcutlass,
+                                            description:crookcutlass.description,
+                                            quantity:Number(1)
+                                        }
+                                        foundUser.inventory.weapons.push(newItem)
+                                    }
+                                    await inventory.updateOne({userID:authorId},foundUser)
+                                }
+                                
+                            })
+                            foundUser.dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        }
+                        
+                        
+                    }
+                    else if(dungeon.step == 10){
+                        const attacker = Warrior.create(author)
+                            const monster = captainCrook.create()
+                            await interaction.reply(`You encountered ${monster.name}!`)
+                            await sleep(1.5)
+                            attacker.health=foundUser.health
+                                    attacker.mana=foundUser.mana
+                                    attacker.armor=foundUser.armour
+                                    attacker.magicPower=foundUser.magicPower
+                                    attacker.attackDamage=foundUser.attackDamage
+                                    attacker.evasion=foundUser.evasion
+                                    attacker.maxHealth=foundUser.health
+                                    attacker.element = foundUser.element[0]
+                                    attacker.passive_skills = foundUser.passiveskills
+                                    attacker.maxMana = foundUser.mana
+                                    attacker.speed = foundUser.speed
+                                    attacker.skills=foundUser.currentskills
+                            if(attacker.speed >= monster.speed){
+                                await new PvEDuel({
+                                    interaction,
+                                    player1: attacker,
+                                    player2: monster,
+                                    speed:2,
+                                }).start()
+                                
+                            }
+                            else{
+                                await new PvEDuel({
+                                    interaction,
+                                    player1: monster,
+                                    player2: attacker,
+                                    speed:2
+                                }).start()
+                            }
+                            foundUser.dungeon.step+=1
+                             await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        
+                    }
+                    
                  
                 }
             }

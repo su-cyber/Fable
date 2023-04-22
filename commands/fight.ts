@@ -15,6 +15,7 @@ import { SlashCommandStringOption } from '@discordjs/builders'
 import specialModel from '../models/specialSchema'
 import sample from 'lodash.sample'
 import { SlashCommandIntegerOption, SlashCommandUserOption } from '@discordjs/builders'
+import getHealth from '../src/utils/getHealth'
 
 export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
@@ -60,8 +61,9 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                 attacker.armor=foundUser.armour
                                 attacker.magicPower=foundUser.magicPower
                                 attacker.attackDamage=foundUser.attackDamage
+                                attacker.element = foundUser.element[0]
                                 attacker.evasion=foundUser.evasion
-                                attacker.maxHealth=foundUser.health
+                                attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
                                 attacker.passive_skills = foundUser.passiveskills
                                 attacker.maxMana = foundUser.mana
                                 attacker.speed = foundUser.speed

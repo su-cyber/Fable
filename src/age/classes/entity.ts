@@ -37,6 +37,7 @@ export class Entity {
     name: string
     health: number
     maxHealth: number
+    element: string
     attackDamage: number
     mana : number
     maxMana : number
