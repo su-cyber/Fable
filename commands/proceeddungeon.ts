@@ -76,8 +76,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 }
                                 
                                 await inventory.updateOne({userID:authorId},foundUser)
-                                foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                                dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                             }
                             
                         })
@@ -117,8 +117,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 speed:2
                             }).start()
                         }
-                        foundUser.dungeon.step+=1
-                        await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                     }
                     else if(dungeon.step == 3){
                         const pick = weightedRandom(["En1","En2","En3","En4","En5"],[0.5,0.2,0.2,0.09,0.01])
@@ -156,8 +156,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                     speed:2
                                 }).start()
                             }
-                            foundUser.dungeon.step+=1
-                             await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                            dungeon.step+=1
+                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En2"){
                             let stepembed = new MessageEmbed()
@@ -166,8 +166,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setDescription(`you stepped into a room with Broken Glass!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
-                        foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En3"){
                             let stepembed = new MessageEmbed()
@@ -176,8 +176,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setDescription(`you stepped into a Slippery Floor!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
-                        foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En4"){
                             let stepembed = new MessageEmbed()
@@ -186,8 +186,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setDescription(`you found a stash of Money!\nYou recieved 1000 coins!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+1000})
-                        foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
 
                       
                         }
@@ -221,8 +221,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 }
                                 
                             })
-                            foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                            dungeon.step+=1
+                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         
                         
@@ -241,8 +241,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         }
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{health:health})
-                        foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
 
                     }
                     else if(dungeon.step == 5){
@@ -280,8 +280,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 speed:2
                             }).start()
                         }
-                        foundUser.dungeon.step+=1
-                        await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                     }
                     else if(dungeon.step == 6){
                         const pick = weightedRandom(["En1","En2","En3","En4","En5"],[0.5,0.2,0.2,0.09,0.01])
@@ -319,8 +319,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                     speed:2
                                 }).start()
                             }
-                            foundUser.dungeon.step+=1
-                             await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                            dungeon.step+=1
+                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En2"){
                             let stepembed = new MessageEmbed()
@@ -329,8 +329,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setDescription(`you stepped into a room with Broken Glass!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
-                        foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En3"){
                             let stepembed = new MessageEmbed()
@@ -339,8 +339,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setDescription(`you stepped into a Slippery Floor!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
-                        foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En4"){
                             let stepembed = new MessageEmbed()
@@ -349,8 +349,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setDescription(`you found a stash of Money!\nYou recieved 1000 coins!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+1000})
-                        foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
 
                       
                         }
@@ -384,8 +384,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 }
                                 
                             })
-                            foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                            dungeon.step+=1
+                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         
                         
@@ -426,8 +426,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                     speed:2
                                 }).start()
                             }
-                            foundUser.dungeon.step+=1
-                             await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                            dungeon.step+=1
+                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En2"){
                             let stepembed = new MessageEmbed()
@@ -436,8 +436,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setDescription(`you stepped into a room with Broken Glass!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
-                        foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En3"){
                             let stepembed = new MessageEmbed()
@@ -446,8 +446,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setDescription(`you stepped into a Slippery Floor!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
-                        foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En4"){
                             let stepembed = new MessageEmbed()
@@ -456,9 +456,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setDescription(`you found a stash of Money!\nYou recieved 1000 coins!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+1000})
-                        foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
-
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                       
                         }
                         else if(pick == "En5"){
@@ -491,8 +490,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 }
                                 
                             })
-                            foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                            dungeon.step+=1
+                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         
                         
@@ -511,9 +510,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         }
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{health:health})
-                        foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
-
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                     }
                     else if(dungeon.step == 9){
                         const pick = weightedRandom(["En1","En2","En3","En4","En5"],[0.5,0.2,0.2,0.09,0.01])
@@ -551,8 +549,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                     speed:2
                                 }).start()
                             }
-                            foundUser.dungeon.step+=1
-                             await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                            dungeon.step+=1
+                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En2"){
                             let stepembed = new MessageEmbed()
@@ -561,8 +559,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setDescription(`you stepped into a room with Broken Glass!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
-                        foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En3"){
                             let stepembed = new MessageEmbed()
@@ -571,8 +569,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setDescription(`you stepped into a Slippery Floor!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
-                        foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En4"){
                             let stepembed = new MessageEmbed()
@@ -581,10 +579,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setDescription(`you found a stash of Money!\nYou recieved 1000 coins!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+1000})
-                        foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
-
-                      
+                        dungeon.step+=1
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En5"){
                             let stepembed = new MessageEmbed()
@@ -616,8 +612,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 }
                                 
                             })
-                            foundUser.dungeon.step+=1
-                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                            dungeon.step+=1
+                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         
                         
@@ -656,8 +652,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                     speed:2
                                 }).start()
                             }
-                            foundUser.dungeon.step+=1
-                             await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                            dungeon.step+=1
+                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         
                     }
                     

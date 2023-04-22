@@ -488,7 +488,7 @@ export class PvEDuel extends DuelBuilder {
                         await profileModel.updateOne({userID:authorID},{quest_quantity:foundUser.quest_quantity})
                     }
                 }
-                else{
+                if(loser instanceof Entity){
                     foundUser.location = "None"
                     foundUser.dungeon.status = false
                     foundUser.dungeon.name = ""

@@ -185,7 +185,7 @@ class DuelBuilder {
                         ${emoji.HEALTH_POTION} ${p1.health}/${p1.maxHealth} HP
                         ${emoji.MANA_POTION} 0/${p1.maxMana} AP
     
-                        **${wrapText(this.player2.name, 20)}**${p2Effects ? `\n${p2Effects}` : ''}
+                        **${wrapText(this.player2.name, 30)}**${p2Effects ? `\n${p2Effects}` : ''}
                         ${emoji.HEALTH_POTION} ${p2.health}/${p2.maxHealth} HP
                         ${emoji.MANA_POTION} 0/${p2.maxMana} MP
                         ${lineBreak.repeat(2)}${messages.length ? `**LOG: 📋**\n\n${messages}` : ''}
