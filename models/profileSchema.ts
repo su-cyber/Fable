@@ -39,7 +39,9 @@ const profileSchema = new mongoose.Schema({
     side_quest_phase:{type: String},
     kingdom:{type: String},
     city_town:{type: String},
-    location:{type: String}
+    location:{type: String},
+    dungeon:{type: Object},
+    completed_dungeons:{type: Array}
 });
 
 const model = mongoose.model('ProfileModels',profileSchema);

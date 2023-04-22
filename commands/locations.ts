@@ -72,6 +72,10 @@ let select =  new MessageActionRow().addComponents([
                 label: `Town Centre`,
                 description: `the centre of the town`,
                 value: `Town Centre`,
+            },{
+                label: `Abandoned Castle`,
+                description: `an abandoned castle`,
+                value: `Abandoned Castle`,
             },
             
             )
@@ -150,6 +154,13 @@ let select =  new MessageActionRow().addComponents([
             .setColor('RANDOM')
             .setTitle('LOCATION REACHED')
             .setDescription(`you visited ${location}, an outpost for the guild\n\nuse **/explore** to explore this location`)
+            await interaction.editReply({embeds:[successembed],components:[]})
+        }
+        else if(location == 'Abandoned Castle'){
+            let successembed = new MessageEmbed()
+            .setColor('RANDOM')
+            .setTitle('LOCATION REACHED')
+            .setDescription(`you visited ${location}, an abanoned castle in the outskirts\n\nuse **/explore** to explore this location`)
             await interaction.editReply({embeds:[successembed],components:[]})
         }
         else if(location == 'None'){

@@ -238,7 +238,13 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         side_quest_phase:"",
                                         kingdom:"solarstrio",
                                         city_town:"aube",
-                                        location:"tutorial"
+                                        location:"tutorial",
+                                        dungeon:{
+                                            status:false,
+                                            name:"",
+                                            step:0
+                                        },
+                                        completed_dungeons:[]
                                         
                                     })
                                     profile.save();

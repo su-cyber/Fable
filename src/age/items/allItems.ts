@@ -26,10 +26,11 @@ import { treemickBranch } from './treemickBranch'
 import { silkBlob } from './silkblob'
 import { dronerAcid } from './dronerAcid'
 import { RayleighFlower } from '../flora/Castellan Fields/rayleighFlower'
+import { backBreaker } from './backbreaker'
 
 export default [ goblinPouch, slimeBlob, direwolfHide,bloodhoundTooth,direwolfClaw,woodClub,
     woodAxe,ghoulSkull,chimeraFeather,basiliskScale,basiliskVenom,arachnidVenom,chimeraHorn,woodGolem_core,DryadJewel,Herbs.create(),
     SunshadeWood.create(),Mushroom.create(),ArgentenumLeaves.create(),solarCorn,Radiantura_milk,steamShovel,guildTshirt,salePoster,treemickBranch,silkBlob,
-    dronerAcid,RayleighFlower.create()
+    dronerAcid,RayleighFlower.create(),backBreaker
 
 ]

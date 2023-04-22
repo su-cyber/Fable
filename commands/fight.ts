@@ -31,7 +31,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
         const author = await bot.users.fetch(authorId)
         const guildID = interaction.guildId;
         const setspeed = interaction.options.getInteger('speed')
-        console.log(setspeed);
+        
         
         
         
@@ -289,7 +289,7 @@ async function monstersDropdown(location:String) {
     )
 }
 
-class PvEDuel extends DuelBuilder {
+export class PvEDuel extends DuelBuilder {
     player1: Entity
     player2: MonsterEntity
     speed: number
@@ -468,6 +468,7 @@ class PvEDuel extends DuelBuilder {
     async onEnd(winner: Entity, loser: MonsterEntity) {
     await this.sendInfoMessage(this.attacker.skills,true)
        const authorID = this.interaction.user.id
+       
         profileModel.findOne({userID:authorID},async function(err,foundUser) {
             
             if(err){
@@ -478,6 +479,7 @@ class PvEDuel extends DuelBuilder {
                 foundUser.encounter = []
                 await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
                 if(winner instanceof Entity){
+                    await profileModel.updateOne({userID:authorID},{health:winner.health})
                     if(foundUser.quest_mob == loser.name && foundUser.quest_quantity>0){
                         foundUser.quest_quantity -=1
                         

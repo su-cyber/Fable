@@ -4,7 +4,7 @@ import { Dropper } from '../../dropper'
 import { slimeBlob} from '../../items'
 import generateXP from '../../../utils/generateXP'
 
-export class BeerBuccaneer extends MonsterEntity {
+export class BeerBuccaneer2 extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
             withoutDropMessages: ['The Beer Buccaneer ran away as you were about to finish it'],
@@ -20,20 +20,20 @@ export class BeerBuccaneer extends MonsterEntity {
     }
 
     static create() {
-        return new BeerBuccaneer({
-            name: 'BeerBuccaneer',
+        return new BeerBuccaneer2({
+            name: 'BeerBuccaneer [Lvl 2]',
             spawnRate: 0.5,
             health: 50,
             mana:0,
             xp: generateXP(5,15),
             evasion: 0.05,
-            attackDamage: 5,
+            attackDamage: 10,
             magicPower: 0,
             run_chance: 0.02,
-            armor: 2,
+            armor: 3,
             speed: 5,
             element:"wave",
-            magicResistance: 2,
+            magicResistance: 3,
             passive_skills:[],
             skills: [
                 {
