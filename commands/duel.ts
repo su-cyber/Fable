@@ -10,6 +10,7 @@ import allskills from '../src/age/skills/skills'
 import { sleep } from '../src/utils'
 import inventory from '../models/InventorySchema'
 import { PvEDuel } from './fight'
+import getHealth from '../src/utils/getHealth'
 
 export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with a player' })
     .addUserOption((option: SlashCommandUserOption) =>
@@ -47,13 +48,13 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                     else{
                                         
                                         
-                                        attacker.health=foundUser.health
+                                attacker.health=foundUser.health
                                 attacker.mana=foundUser.mana
                                 attacker.armor=foundUser.armour
                                 attacker.magicPower=foundUser.magicPower
                                 attacker.attackDamage=foundUser.attackDamage
                                 attacker.evasion=foundUser.evasion
-                                attacker.maxHealth=foundUser.health
+                                attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
                                 attacker.passive_skills = foundUser.passiveskills
                                 attacker.maxMana = foundUser.mana
                                 attacker.speed = foundUser.speed
@@ -74,8 +75,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                 })
                 
                                
-                                    attacker.skills=foundUser.currentskills.concat([{name: 'Run',
-                                    description: 'Run from the enemy',}])
+                                    attacker.skills=foundUser.currentskills
                                 
                                 
                                     }
@@ -92,7 +92,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         defender.magicPower=foundUser.magicPower
                                         defender.attackDamage=foundUser.attackDamage
                                         defender.evasion=foundUser.evasion
-                                        defender.maxHealth=foundUser.health
+                                        defender.maxHealth=getHealth(foundUser.level,foundUser.vitality)
                                         defender.passive_skills = foundUser.passiveskills
                                         defender.maxMana = foundUser.mana
                                         defender.speed = foundUser.speed
@@ -113,8 +113,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         })
                         
                                        
-                                        defender.skills=foundUser.currentskills.concat([{name: 'Run',
-                                            description: 'Run from the enemy',}])
+                                        defender.skills=foundUser.currentskills
                                         
                                     }
                                 })
