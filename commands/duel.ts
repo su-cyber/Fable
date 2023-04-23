@@ -52,6 +52,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                 attacker.mana=foundUser.mana
                                 attacker.armor=foundUser.armour
                                 attacker.magicPower=foundUser.magicPower
+                                attacker.element = foundUser.elements[0]
                                 attacker.attackDamage=foundUser.attackDamage
                                 attacker.evasion=foundUser.evasion
                                 attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
@@ -90,6 +91,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         defender.mana=foundUser.mana
                                         defender.armor=foundUser.armour
                                         defender.magicPower=foundUser.magicPower
+                                        defender.element = foundUser.elements[0]
                                         defender.attackDamage=foundUser.attackDamage
                                         defender.evasion=foundUser.evasion
                                         defender.maxHealth=getHealth(foundUser.level,foundUser.vitality)
