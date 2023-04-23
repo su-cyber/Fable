@@ -8,9 +8,8 @@ const passive_skills = [
         damage:0,
         type: 'passive',
         use: (attacker, defender) => {
-            const Regeneration = attacker.scheduler.task
+            const Regeneration = attacker.scheduler.task.all
                 .turns(1000)
-                
                 .end(() => {})
                 .run(() =>{
                     attacker.health += 5
