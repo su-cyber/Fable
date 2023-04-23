@@ -672,14 +672,15 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                     .setColor('RED')
                                     .setTitle('DUNGEON-END')
                                     .setDescription(`you finally reached the treasure room! You found many valuable items and decided to keep them\nYou found Treasure x 1!\n5000 coins added!`)
-                                   
+                                    await interaction.reply({embeds:[stepembed],components:[]})
+                                    await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+5000})
                                 }
                                 else{
                                     stepembed = new MessageEmbed()
                                     .setColor('RED')
                                     .setTitle('DUNGEON-END')
                                     .setDescription(`you finally reached the treasure room! You found many valuable items and decided to keep them\nCapn. Crook's Cutlass x 1 added to inventory!`)
-                                   
+                                    await interaction.reply({embeds:[stepembed],components:[]})
                                     const newItem = {
                                         name:crookcutlass,
                                         description:crookcutlass.description,
@@ -691,7 +692,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                             }
                             
                         })
-                        await interaction.reply({embeds:[stepembed],components:[]})
+                        
                         dungeon.step = 0
                         dungeon.name = ""
                         dungeon.status = false
