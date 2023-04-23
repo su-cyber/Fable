@@ -9,6 +9,7 @@ import profileModel from '../models/profileSchema'
 import allskills from '../src/age/skills/skills'
 import { sleep } from '../src/utils'
 import inventory from '../models/InventorySchema'
+import { PvEDuel } from './fight'
 
 export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with a player' })
     .addUserOption((option: SlashCommandUserOption) =>
@@ -118,7 +119,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                     }
                                 })
                                 if(attacker.speed>= defender.speed){
-                                    await new PvPDuel({
+                                    await new PvEDuel({
                                         interaction,
                                         player1: attacker,
                                         player2: defender,
@@ -126,7 +127,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                     }).start()
                                 }
                                 else{
-                                    await new PvPDuel({
+                                    await new PvEDuel({
                                         interaction,
                                         player1: defender,
                                         player2: attacker,
