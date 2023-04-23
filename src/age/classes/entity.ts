@@ -281,15 +281,7 @@ export class Entity {
 
     beforeDuelStart(you: Entity, opponent: Entity, interaction: CommandInteraction) {
         
-        if(you.passive_skills.length !=0){
-            let i
-            for(i=0;i<you.passive_skills.length;i++){
-                const passive_skill = passive_skills.find(skill => skill.name === you.passive_skills[i].name)
-                you.useSkill(you,opponent,passive_skill)
-                
-                
-            } 
-        }
+        
         
     }
 

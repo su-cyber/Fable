@@ -369,6 +369,16 @@ export class PvEDuel extends DuelBuilder {
                     let val = allskills.find(skill => skill.name === skills[j].name)
                     this.attacker.skills.push(val)
                 }
+
+                if(this.attacker.passive_skills.length !=0){
+                    let i
+                    for(i=0;i<this.attacker.passive_skills.length;i++){
+                        const passive_skill = passive_skills.find(skill => skill.name === this.attacker.passive_skills[i].name)
+                        this.attacker.useSkill(this.attacker,this.defender,passive_skill)
+                        
+                        
+                    } 
+                }
             }
             if(turn == 0 || turn==1){
                 let skill = this.attacker.skills.find(skill => skill.type === "buff")

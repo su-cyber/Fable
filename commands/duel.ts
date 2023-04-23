@@ -12,6 +12,7 @@ import inventory from '../models/InventorySchema'
 import { PvEDuel } from './fight'
 import getHealth from '../src/utils/getHealth'
 import sample from 'lodash.sample'
+import passive_skills from '../src/age/heroes/passive_skills'
 
 export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with a player' })
     .addUserOption((option: SlashCommandUserOption) =>
@@ -121,7 +122,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                     }
                                 })
                                 if(attacker.speed>= defender.speed){
-                                    await new PvEDuel({
+                                    await new PvPDuel({
                                         interaction,
                                         player1: attacker,
                                         player2: defender,
@@ -129,7 +130,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                     }).start()
                                 }
                                 else{
-                                    await new PvEDuel({
+                                    await new PvPDuel({
                                         interaction,
                                         player1: defender,
                                         player2: attacker,
@@ -211,6 +212,15 @@ class PvPDuel extends DuelBuilder {
                     
                     let val = allskills.find(skill => skill.name === skills[j].name)
                     this.attacker.skills.push(val)
+                }
+                if(this.attacker.passive_skills.length !=0){
+                    let i
+                    for(i=0;i<this.attacker.passive_skills.length;i++){
+                        const passive_skill = passive_skills.find(skill => skill.name === this.attacker.passive_skills[i].name)
+                        this.attacker.useSkill(this.attacker,this.defender,passive_skill)
+                        
+                        
+                    } 
                 }
             }
             if(turn == 0 || turn==1){
