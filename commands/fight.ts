@@ -46,7 +46,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
             }
             else{
                 if(res){
-                    
+                    if(interaction.guild == null){
                         const attacker = Warrior.create(author)
                         profileModel.findOne({userID:authorId},async function(err,foundUser) {
                             
@@ -259,6 +259,12 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                        
                         
                         })
+                    }
+                    else{
+                        interaction.reply(`Dungeons can be explored only in DMs`)
+                    }
+                    
+                      
                 
                         
                    

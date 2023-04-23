@@ -165,7 +165,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setTitle('STEP #3')
                         .setDescription(`you stepped into a room with Broken Glass!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
-                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        await profileModel.updateOne({userID:authorId},{health:Math.round(foundUser.health-0.1*foundUser.health)})
                         dungeon.step+=1
                         await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
@@ -175,7 +175,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setTitle('STEP #3')
                         .setDescription(`you stepped into a Slippery Floor!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
-                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        await profileModel.updateOne({userID:authorId},{health:Math.round(foundUser.health-0.1*foundUser.health)})
                         dungeon.step+=1
                         await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
@@ -237,7 +237,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                             health = getHealth(foundUser.level,foundUser.vitality)
                         }
                         else{
-                            health = foundUser.health + 0.5*foundUser.health
+                            health = Math.round(foundUser.health + 0.5*foundUser.health)
                         }
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{health:health})
@@ -325,27 +325,27 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         else if(pick == "En2"){
                             let stepembed = new MessageEmbed()
                         .setColor('RED')
-                        .setTitle('STEP #3')
+                        .setTitle('STEP #6')
                         .setDescription(`you stepped into a room with Broken Glass!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
-                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        await profileModel.updateOne({userID:authorId},{health:Math.round(foundUser.health-0.1*foundUser.health)})
                         dungeon.step+=1
                         await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En3"){
                             let stepembed = new MessageEmbed()
                         .setColor('RED')
-                        .setTitle('STEP #3')
+                        .setTitle('STEP #6')
                         .setDescription(`you stepped into a Slippery Floor!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
-                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        await profileModel.updateOne({userID:authorId},{health:Math.round(foundUser.health-0.1*foundUser.health)})
                         dungeon.step+=1
                         await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En4"){
                             let stepembed = new MessageEmbed()
                         .setColor('RED')
-                        .setTitle('STEP #3')
+                        .setTitle('STEP #6')
                         .setDescription(`you found a stash of Money!\nYou recieved 1000 coins!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+1000})
@@ -357,7 +357,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         else if(pick == "En5"){
                             let stepembed = new MessageEmbed()
                             .setColor('RED')
-                            .setTitle('STEP #3')
+                            .setTitle('STEP #6')
                             .setDescription(`you found yourself wandering into the weapon room!\nCapn. Crook's Cutlass x 1 added to inventory!`)
                             await interaction.reply({embeds:[stepembed],components:[]})
     
@@ -432,10 +432,10 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         else if(pick == "En2"){
                             let stepembed = new MessageEmbed()
                         .setColor('RED')
-                        .setTitle('STEP #3')
+                        .setTitle('STEP #7')
                         .setDescription(`you stepped into a room with Broken Glass!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
-                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        await profileModel.updateOne({userID:authorId},{health:Math.round(foundUser.health-0.1*foundUser.health)})
                         dungeon.step+=1
                         await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
@@ -445,14 +445,14 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         .setTitle('STEP #3')
                         .setDescription(`you stepped into a Slippery Floor!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
-                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        await profileModel.updateOne({userID:authorId},{health:Math.round(foundUser.health-0.1*foundUser.health)})
                         dungeon.step+=1
                         await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En4"){
                             let stepembed = new MessageEmbed()
                         .setColor('RED')
-                        .setTitle('STEP #3')
+                        .setTitle('STEP #7')
                         .setDescription(`you found a stash of Money!\nYou recieved 1000 coins!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+1000})
@@ -463,7 +463,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         else if(pick == "En5"){
                             let stepembed = new MessageEmbed()
                             .setColor('RED')
-                            .setTitle('STEP #3')
+                            .setTitle('STEP #7')
                             .setDescription(`you found yourself wandering into the weapon room!\nCapn. Crook's Cutlass x 1 added to inventory!`)
                             await interaction.reply({embeds:[stepembed],components:[]})
     
@@ -499,14 +499,14 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                     else if(dungeon.step == 8){
                         let stepembed = new MessageEmbed()
                         .setColor('RED')
-                        .setTitle('STEP #4')
+                        .setTitle('STEP #8')
                         .setDescription(`you walked into a hamock room!\nYou recovered 50% HP!`)
                         let health
                         if(foundUser.health + 0.5*foundUser.health > getHealth(foundUser.level,foundUser.vitality)){
                             health = getHealth(foundUser.level,foundUser.vitality)
                         }
                         else{
-                            health = foundUser.health + 0.5*foundUser.health
+                            health = Math.round(foundUser.health + 0.5*foundUser.health)
                         }
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{health:health})
@@ -555,27 +555,27 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         else if(pick == "En2"){
                             let stepembed = new MessageEmbed()
                         .setColor('RED')
-                        .setTitle('STEP #3')
+                        .setTitle('STEP #9')
                         .setDescription(`you stepped into a room with Broken Glass!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
-                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        await profileModel.updateOne({userID:authorId},{health:Math.round(foundUser.health-0.1*foundUser.health)})
                         dungeon.step+=1
                         await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En3"){
                             let stepembed = new MessageEmbed()
                         .setColor('RED')
-                        .setTitle('STEP #3')
+                        .setTitle('STEP #9')
                         .setDescription(`you stepped into a Slippery Floor!\nYou lost 10% of your health!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
-                        await profileModel.updateOne({userID:authorId},{health:foundUser.health-0.1*foundUser.health})
+                        await profileModel.updateOne({userID:authorId},{health:Math.round(foundUser.health-0.1*foundUser.health)})
                         dungeon.step+=1
                         await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         }
                         else if(pick == "En4"){
                             let stepembed = new MessageEmbed()
                         .setColor('RED')
-                        .setTitle('STEP #3')
+                        .setTitle('STEP #9')
                         .setDescription(`you found a stash of Money!\nYou recieved 1000 coins!`)
                         await interaction.reply({embeds:[stepembed],components:[]})
                         await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+1000})
@@ -585,7 +585,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         else if(pick == "En5"){
                             let stepembed = new MessageEmbed()
                             .setColor('RED')
-                            .setTitle('STEP #3')
+                            .setTitle('STEP #9')
                             .setDescription(`you found yourself wandering into the weapon room!\nCapn. Crook's Cutlass x 1 added to inventory!`)
                             await interaction.reply({embeds:[stepembed],components:[]})
     
@@ -655,6 +655,49 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                             dungeon.step+=1
                             await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                         
+                    }
+                    else if(dungeon.step == 11){
+                        
+                        let stepembed 
+                        inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                            if(err){
+                                console.log(err);
+                                
+                            }
+                            else{
+                                const foundItem = foundUser.inventory.weapons.find(item => item.name.name === crookcutlass.name)
+                                if (foundItem){
+                
+                                     stepembed = new MessageEmbed()
+                                    .setColor('RED')
+                                    .setTitle('DUNGEON-END')
+                                    .setDescription(`you finally reached the treasure room! You found many valuable items and decided to keep them\nYou found Treasure x 1!\n5000 coins added!`)
+                                   
+                                }
+                                else{
+                                    stepembed = new MessageEmbed()
+                                    .setColor('RED')
+                                    .setTitle('DUNGEON-END')
+                                    .setDescription(`you finally reached the treasure room! You found many valuable items and decided to keep them\nCapn. Crook's Cutlass x 1 added to inventory!`)
+                                   
+                                    const newItem = {
+                                        name:crookcutlass,
+                                        description:crookcutlass.description,
+                                        quantity:Number(1)
+                                    }
+                                    foundUser.inventory.weapons.push(newItem)
+                                }
+                                await inventory.updateOne({userID:authorId},foundUser)
+                            }
+                            
+                        })
+                        await interaction.reply({embeds:[stepembed],components:[]})
+                        dungeon.step = 0
+                        dungeon.name = ""
+                        dungeon.status = false
+                        foundUser.completed_dungeons.push("Abandoned Castle")
+                        await profileModel.updateOne({userID:authorId},{dungeon:dungeon,completed_dungeons:foundUser.completed_dungeons})
+
                     }
                     
                  

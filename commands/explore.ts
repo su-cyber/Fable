@@ -37,7 +37,10 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 if(res){
                     
         profileModel.findOne({userID:authorId},async function(err,foundUser) {
-           
+           if(foundUser.dungeon.status){
+            interaction.reply(`You cannot use this command inside a dungeon!`)
+           }
+           else{
             const location = foundUser.location
 
             if(location === "ellior"){
@@ -329,71 +332,77 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
      
                 }
                 else if(location == "Abandoned Castle"){
-                    let btnraw= new MessageActionRow().addComponents([
-                        new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Enter"),
-                        new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Cancel"),])
-
-                        let d_btnraw = new MessageActionRow().addComponents([
-                            new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Enter").setDisabled(true),
-                            new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Cancel").setDisabled(true),
-                        ])
-                    let dungeonEmbed = new MessageEmbed()
-                            .setColor('RANDOM')
-                            .setTitle('ENCOUNTER')
-                            .setDescription(`You are about to enter a dungeon!\nDo you wish to proceed?`)
-        
-                            let acceptEmbed = new MessageEmbed()
-                            .setColor('GREEN')
-                            .setTitle('ACCEPTED')
-                            .setDescription('You have decided to enter!\npress /proceeddungeon in DMs to move forward')
-        
-                            let rejectEmbed = new MessageEmbed()
-                            .setColor('RED')
-                            .setTitle('RETREAT')
-                            .setDescription('You decided to retreat!')
+                    if(foundUser.completed_dungeons.includes("Abandoned Castle")){
+                        interaction.reply(`You have already cleared this dungeon!`)
+                    }
+                    else{
+                        let btnraw= new MessageActionRow().addComponents([
+                            new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Enter"),
+                            new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Cancel"),])
+    
+                            let d_btnraw = new MessageActionRow().addComponents([
+                                new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Enter").setDisabled(true),
+                                new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Cancel").setDisabled(true),
+                            ])
+                        let dungeonEmbed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle('ENCOUNTER')
+                                .setDescription(`You are about to enter a dungeon!\nDo you wish to proceed?`)
+            
+                                let acceptEmbed = new MessageEmbed()
+                                .setColor('GREEN')
+                                .setTitle('ACCEPTED')
+                                .setDescription('You have decided to enter!\npress /proceeddungeon in DMs to move forward')
+            
+                                let rejectEmbed = new MessageEmbed()
+                                .setColor('RED')
+                                .setTitle('RETREAT')
+                                .setDescription('You decided to retreat!')
+                                
                             
+                            await interaction.reply({content: null,embeds:[dungeonEmbed],components:[btnraw]})
+                            let filter = i => i.user.id === authorId
+                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                         
-                        await interaction.reply({content: null,embeds:[dungeonEmbed],components:[btnraw]})
-                        let filter = i => i.user.id === authorId
-                            let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
-                    
-                            collector.on('collect',async (btn) => {
-                                if(btn.isButton()){
-                                    if(btn.customId === "btn_accept"){
-                                        await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[acceptEmbed]})
-                                        foundUser.dungeon.status = true
-                                        foundUser.dungeon.name = "Abandoned Castle"
-                                        foundUser.dungeon.step = 1 
-                                        await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
-                                        interaction.user.send(`You are now inside a dungeon!\npress /proceeddungeon to move forward`)
-    
-                                        
-                                   
-                                    collector.stop()
-                                        
-                                    }
-                                    else if(btn.customId === "btn_reject"){
-                                        await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[rejectEmbed]})
-
-                                    
-    
+                                collector.on('collect',async (btn) => {
+                                    if(btn.isButton()){
+                                        if(btn.customId === "btn_accept"){
+                                            await btn.deferUpdate().catch(e => {})
+                                            await interaction.editReply({embeds:[acceptEmbed]})
+                                            foundUser.dungeon.status = true
+                                            foundUser.dungeon.name = "Abandoned Castle"
+                                            foundUser.dungeon.step = 1 
+                                            await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                                            interaction.user.send(`You are now inside a dungeon!\npress /proceeddungeon to move forward`)
+        
+                                            
+                                       
                                         collector.stop()
+                                            
+                                        }
+                                        else if(btn.customId === "btn_reject"){
+                                            await btn.deferUpdate().catch(e => {})
+                                            await interaction.editReply({embeds:[rejectEmbed]})
+    
+                                        
+        
+                                            collector.stop()
+                                        }
+        
+                                        
+                                        
                                     }
-    
-                                    
-                                    
-                                }
-                                  
+                                      
+                        
+                           
+                           
+                            })
+        
+                            collector.on('end', () => {
+                                interaction.editReply({components: [d_btnraw]})
+                            })
+                    }
                     
-                       
-                       
-                        })
-    
-                        collector.on('end', () => {
-                            interaction.editReply({components: [d_btnraw]})
-                        })
                 }
                 
 
@@ -403,6 +412,8 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
             else{
                await interaction.reply(`you are not in a particular location!`)
             }
+           }
+            
          
         })
 
