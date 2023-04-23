@@ -200,7 +200,7 @@ export class Entity {
         if(attacker.mana>=skill.mana_cost){
         attacker.mana=attacker.mana-skill.mana_cost
         if (skill.canEvade && this.oponent.evade()) {
-            return this.addLogMessage(`**${this.name}** used ${skill.name} but ${this.oponent.name} evaded`)
+            return this.addLogMessage(`${this.name} used ${skill.name} but ${this.oponent.name} evaded`)
         }
         else{
 
