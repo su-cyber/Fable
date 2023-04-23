@@ -61,7 +61,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                 attacker.armor=foundUser.armour
                                 attacker.magicPower=foundUser.magicPower
                                 attacker.attackDamage=foundUser.attackDamage
-                                attacker.element = foundUser.elements[0]
+                                attacker.element = foundUser.elements[0].toLowerCase()
                                 attacker.evasion=foundUser.evasion
                                 attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
                                 attacker.passive_skills = foundUser.passiveskills
