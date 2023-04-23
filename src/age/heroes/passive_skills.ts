@@ -1,3 +1,5 @@
+import getHealth from "../../utils/getHealth"
+
 const passive_skills = [
     {
         cooldown: 0,
@@ -13,6 +15,9 @@ const passive_skills = [
                 .end(() => {})
                 .run(() =>{
                     attacker.health += 5
+                    if(attacker.health > attacker.maxHealth){
+                        attacker.health = attacker.maxHealth
+                    }
                     attacker.addLogMessage(`${attacker.name} recovered 5 HP`)
                 }
                     
