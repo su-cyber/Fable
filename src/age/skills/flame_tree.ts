@@ -104,6 +104,9 @@ const flame_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            console.log(mod);
+            console.log(defender.element);
+            
             
             attacker.addLogMessage(`**${attacker.name}** used Flare Breath`)
             defender.takeDamage
