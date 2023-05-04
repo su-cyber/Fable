@@ -749,7 +749,8 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                  }
                                  else{
                                      foundUser.encounter = []
-                                     await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
+                                     foundUser.energy=-1
+                                     await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter,energy:foundUser.energy})
                                      if(winner.id == authorID){
                                          await profileModel.updateOne({userID:authorID},{health:winner.health})
                                          if(foundUser.quest_mob == loser.name && foundUser.quest_quantity>0){
