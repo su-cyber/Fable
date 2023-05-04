@@ -10,6 +10,7 @@ import { DiscordAPIError, MessageActionRow, MessageSelectMenu, SelectMenuInterac
 import { Collector, MessageButton, MessageEmbed } from 'discord.js'
 import { BeerBuccsDuo } from '../src/age/monsters/tutorial/BeerBuccsDuo'
 import { MessageAttachment } from 'discord.js'
+import { PvEDuel } from './fight'
 
 
 export default new MyCommandSlashBuilder({ name: 'progressmainquest', description: 'progress your main quest progress' }).setDo(
@@ -273,3 +274,49 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
 
 
     })
+    class PvEDuel_SQuest extends PvEDuel {
+        player1: any
+        player2: any
+    
+        
+        async onEnd(winner: any, loser: any) {
+            await this.sendInfoMessage(this.attacker.skills,true)
+            const authorID = this.interaction.user.id
+            
+             profileModel.findOne({userID:authorID},async function(err,foundUser) {
+                 
+                 if(err){
+                     console.log(err);
+                     
+                 }
+                 else{
+                     foundUser.encounter = []
+                     await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
+                     if(winner.id == authorID){
+                         await profileModel.updateOne({userID:authorID},{health:winner.health})
+                         if(foundUser.quest_mob == loser.name && foundUser.quest_quantity>0){
+                             foundUser.quest_quantity -=1
+                             
+                             await profileModel.updateOne({userID:authorID},{quest_quantity:foundUser.quest_quantity})
+                         }
+                     }
+                     else{
+                         foundUser.location = "None"
+                         foundUser.dungeon.status = false
+                         foundUser.dungeon.name = ""
+                         foundUser.dungeon.step = 0
+
+                         
+                         await profileModel.updateOne({userID:authorID},{health:loser.maxHealth,location:foundUser.location,dungeon:foundUser.dungeon,main_quest_phase:foundUser.main_quest_phase-1})
+                     
+                     }
+                     
+                         
+     
+                 }
+             })
+             await loser.onDeath(this.interaction, winner)
+            
+        }
+    
+    }

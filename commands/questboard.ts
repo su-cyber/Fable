@@ -45,20 +45,17 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
                                 .setTitle('Feed the Radiantura')
                                 .setDescription(`Quest 2`)
 
+                                
+
                                 let Quest_embed_3 = new MessageEmbed()
                                 .setColor('RANDOM')
-                                .setTitle('The Missing Cattle')
+                                .setTitle('The Crofter’s Market')
                                 .setDescription(`Quest 3`)
 
                                 let Quest_embed_4 = new MessageEmbed()
                                 .setColor('RANDOM')
-                                .setTitle('The Crofter’s Market')
-                                .setDescription(`Quest 4`)
-
-                                let Quest_embed_5 = new MessageEmbed()
-                                .setColor('RANDOM')
                                 .setTitle('Stumped!')
-                                .setDescription(`Quest 5`)
+                                .setDescription(`Quest 4`)
 
                             
                                 
@@ -69,7 +66,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
         
     ])
     let filtered_menu = []
-    let board = [Quest_embed_1,Quest_embed_2,Quest_embed_3,Quest_embed_4,Quest_embed_5]
+    let board = [Quest_embed_1,Quest_embed_2,Quest_embed_3,Quest_embed_4]
     shuffleArray(board)
     let board_copy = []
     for(let i=0;i<board.length;i++){

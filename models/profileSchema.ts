@@ -7,6 +7,7 @@ const profileSchema = new mongoose.Schema({
     coins: {type: Number, default:100},
     xp:{type:Number,default:0},
     level:{type:Number,default:0},
+    energy:{type:Number},
     skill_points:{type:Number},
     class:{type:String},
     elements:{type:Array},
