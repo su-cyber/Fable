@@ -47,15 +47,14 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
             else{
                 if(res){
                     if(interaction.guild == null){
-                        const attacker = Warrior.create(author)
-                        profileModel.findOne({userID:authorId},async function(err,foundUser) {
-                            
-                            if(err){
-                                console.log(err);
-                                
+                        profileModel.findOne({userID:authorId},async function(err,foundUser){
+                            if(foundUser.energy <= 0){
+                                interaction.reply(`you cannot fight as you dont have any energy left`)
+                                foundUser.encounter = []
+                                await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
                             }
                             else{
-                            
+                                const attacker = Warrior.create(author)
                                 attacker.health=foundUser.health
                                 attacker.mana=foundUser.mana
                                 attacker.armor=foundUser.armour
@@ -94,7 +93,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                 
                                 
                                 
-                            }
+                            
                 
                            
                                 
@@ -258,10 +257,12 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                     
                        
                         
+                        
+                            }
                         })
                     }
                     else{
-                        interaction.reply(`Dungeons can be explored only in DMs`)
+                        interaction.reply(`You can only fight in DMs`)
                     }
                     
                       
@@ -643,7 +644,7 @@ export class PvEDuel extends DuelBuilder {
             }
             else{
                 foundUser.encounter = []
-                foundUser.energy=-1
+                foundUser.energy-=1
                 await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter,energy:foundUser.energy})
                 if(winner.id == authorID){
                     await profileModel.updateOne({userID:authorID},{health:winner.health})
