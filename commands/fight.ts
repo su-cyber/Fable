@@ -659,7 +659,7 @@ export class PvEDuel extends DuelBuilder {
                     foundUser.dungeon.status = false
                     foundUser.dungeon.name = ""
                     foundUser.dungeon.step = 0
-                    await profileModel.updateOne({userID:authorID},{health:loser.maxHealth,location:foundUser.location,dungeon:foundUser.dungeon})
+                    await profileModel.updateOne({userID:authorID},{health:Math.round(0.1*loser.maxHealth),location:foundUser.location,dungeon:foundUser.dungeon})
                 
                 }
                 
