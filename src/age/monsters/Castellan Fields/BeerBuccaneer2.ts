@@ -3,6 +3,7 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import { slimeBlob} from '../../items'
 import generateXP from '../../../utils/generateXP'
+import { backBreaker } from '../../items/backbreaker'
 
 export class BeerBuccaneer2 extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -13,8 +14,8 @@ export class BeerBuccaneer2 extends MonsterEntity {
 
         await new Dropper([
             {
-                item: slimeBlob,
-                dropRate: 0,
+                item: backBreaker,
+                dropRate: 0.3,
             },
         ]).sendDeathMessage(messages, interaction, this,killer)
     }

@@ -3,53 +3,54 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import { slimeBlob} from '../../items'
 import generateXP from '../../../utils/generateXP'
-import { silkBlob } from '../../items/silkblob'
+import { treemickBranch } from '../../items/treemickBranch'
+import { thornbackShell } from '../../items/thornback_shell'
 
-export class mudCrawler extends MonsterEntity {
+export class Thornback extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Mud Crawler slipped away as you were about to finish it'],
-            withDropMessages: ['The Mud Crawler seems to have dropped something'],
+            withoutDropMessages: ['The Treemick ran away as you were about to finish it'],
+            withDropMessages: ['The Treemick dropped something'],
         }
 
         await new Dropper([
             {
-                item: silkBlob,
-                dropRate: 0.25,
+                item: thornbackShell,
+                dropRate: 0.15,
             },
         ]).sendDeathMessage(messages, interaction, this,killer)
     }
 
     static create() {
-        return new mudCrawler({
-            name: 'Mud Crawler',
-            spawnRate: 0.3,
+        return new Thornback({
+            name: 'Thornback',
+            spawnRate: 0.5,
             health: 30,
             mana:0,
             xp: generateXP(5,15),
-            evasion: 0.03,
-            attackDamage: 10,
+            evasion: 0.05,
+            attackDamage: 3,
             magicPower: 0,
             run_chance: 0.02,
             armor: 1,
             speed: 5,
-            element:"wave",
-            magicResistance: 2,
+            element:"bloom",
+            magicResistance: 1,
             passive_skills:[],
             skills: [
                 {
                     cooldown: 0,
-                    name: 'Slip Bite',
-                    description: 'A quick bite attack',
+                    name: 'Spiked Charge',
+                    description: `charges with the spikes on it's back`,
                     canEvade: true,
                     damage:0,
                     type: 'physical',
-                    mana_cost: 0,
+                    mana_cost: 15,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Slip Bite`)
+                        attacker.addLogMessage(`**${attacker.name}** used Spiked Charge`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by a sharp bite`)
+                            .physical(attacker.attackDamage + 15)
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Spiked Charge`)
                     }
                 },
             ],

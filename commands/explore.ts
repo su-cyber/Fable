@@ -42,178 +42,178 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
            }
            else{
             const location = foundUser.location
-
-            if(location === "ellior"){
-                
-                await interaction.reply({ content: `searching ${location}...`})
+            const city_town = foundUser.city_town
+            if(foundUser.kingdom == "solarstrio"){
+                if(city_town == "ellior"){
+                    await interaction.reply({ content: `searching ${city_town}...`})
                 
     
 
-                const pick = weightedRandom(["flora","monster","spren"],[0.1,0.8,0.1])
-
-                if(pick === "flora"){
-                    
-                    await interaction.editReply({ content: '\u200b', components: [] })
-                    const flora = (await getRandomFlora(location))
-                    await interaction.editReply(`you found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
-
-                    inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
-                        if(err){
-                            console.log(err);
-                            
-                        }
-                        else{
-                            const foundItem = foundUser.inventory.items.find(item => item.name === flora.name)
-                            if (foundItem){
-            
-                                foundItem.quantity+=flora.quantity
+                    const pick = weightedRandom(["flora","monster","spren"],[0.1,0.8,0.1])
+    
+                    if(pick === "flora"){
+                        
+                        await interaction.editReply({ content: '\u200b', components: [] })
+                        const flora = (await getRandomFlora(city_town))
+                        await interaction.editReply(`you found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
+    
+                        inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                            if(err){
+                                console.log(err);
+                                
                             }
                             else{
-                                const newItem = {
-                                    name:flora.name,
-                                    description:flora.description,
-                                    quantity:Number(flora.quantity)
+                                const foundItem = foundUser.inventory.items.find(item => item.name === flora.name)
+                                if (foundItem){
+                
+                                    foundItem.quantity+=flora.quantity
                                 }
-                                foundUser.inventory.items.push(newItem)
+                                else{
+                                    const newItem = {
+                                        name:flora.name,
+                                        description:flora.description,
+                                        quantity:Number(flora.quantity)
+                                    }
+                                    foundUser.inventory.items.push(newItem)
+                                }
+                                await inventory.updateOne({userID:authorId},foundUser)
                             }
-                            await inventory.updateOne({userID:authorId},foundUser)
-                        }
+                            
+                        })
+                    }
+    
+                    else if(pick === "monster"){
+                        await interaction.editReply({ components: [await monstersDropdown(location)] })
                         
-                    })
-                }
-
-                else if(pick === "monster"){
-                    await interaction.editReply({ components: [await monstersDropdown(location)] })
-                    
-                    bot.onComponent('select-menu__monsters', async componentInteraction => {
-                        componentInteraction.deferUpdate()
-                        await interaction.editReply({ content: '\u200b', components: [] })
-                        const monster = (await getMonsters(location))
-                            .find(m => m.name === componentInteraction.values[0])
-                            .create()
-
-                        
-                        foundUser.encounter = []
+                        bot.onComponent('select-menu__monsters', async componentInteraction => {
+                            componentInteraction.deferUpdate()
+                            await interaction.editReply({ content: '\u200b', components: [] })
+                            const monster = (await getMonsters(city_town))
+                                .find(m => m.name === componentInteraction.values[0])
+                                .create()
+    
+                            
+                            foundUser.encounter = []
+                           
                        
-                   
-                        let btnraw= new MessageActionRow().addComponents([
-                            new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Fight"),
-                            new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Run"),])
-
-                            let d_btnraw = new MessageActionRow().addComponents([
-                                new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Fight").setDisabled(true),
-                                new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Run").setDisabled(true),
-                            ])
-
+                            let btnraw= new MessageActionRow().addComponents([
+                                new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Fight"),
+                                new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Run"),])
+    
+                                let d_btnraw = new MessageActionRow().addComponents([
+                                    new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Fight").setDisabled(true),
+                                    new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Run").setDisabled(true),
+                                ])
+    
+                                
+                            let fightEmbed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('ENCOUNTER')
+                            .setDescription(`🔎 you found a ${monster.name}!`)
+        
+                            let acceptEmbed = new MessageEmbed()
+                            .setColor('GREEN')
+                            .setTitle('ACCEPTED')
+                            .setDescription('You have decided to fight!\ncheck your private message')
+        
+                            let rejectEmbed = new MessageEmbed()
+                            .setColor('RED')
+                            .setTitle('RAN AWAY')
+                            .setDescription('You ran away!')
                             
-                        let fightEmbed = new MessageEmbed()
-                        .setColor('RANDOM')
-                        .setTitle('ENCOUNTER')
-                        .setDescription(`🔎 you found a ${monster.name}!`)
-    
-                        let acceptEmbed = new MessageEmbed()
-                        .setColor('GREEN')
-                        .setTitle('ACCEPTED')
-                        .setDescription('You have decided to fight!\ncheck your private message')
-    
-                        let rejectEmbed = new MessageEmbed()
-                        .setColor('RED')
-                        .setTitle('RAN AWAY')
-                        .setDescription('You ran away!')
                         
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw]})
+                        let filter = i => i.user.id === authorId
+                            let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                     
-                    await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw]})
-                    let filter = i => i.user.id === authorId
-                        let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
-                
-                        collector.on('collect',async (btn) => {
-                            if(btn.isButton()){
-                                if(btn.customId === "btn_accept"){
-                                    await btn.deferUpdate().catch(e => {})
-                                    await interaction.editReply({embeds:[acceptEmbed]})
-                                    const encounter = {
-                                        name: componentInteraction.values[0],
-                                        time : new Date(),
-                                        location:foundUser.location
-
-                                    }
-                                    
-                                    foundUser.encounter.push(encounter)
-                                    await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
-                                    interaction.user.send(`Use /fight to begin encounter`)
-
-                                    
-                               
-                                collector.stop()
-                                    
-                                }
-                                else if(btn.customId === "btn_reject"){
-                                    await btn.deferUpdate().catch(e => {})
-                                    await interaction.editReply({embeds:[rejectEmbed]})
-                                     foundUser.encounter = []
-                                
-                                    await profileModel.updateOne({userID:authorId},foundUser)
-
+                            collector.on('collect',async (btn) => {
+                                if(btn.isButton()){
+                                    if(btn.customId === "btn_accept"){
+                                        await btn.deferUpdate().catch(e => {})
+                                        await interaction.editReply({embeds:[acceptEmbed]})
+                                        const encounter = {
+                                            name: componentInteraction.values[0],
+                                            time : new Date(),
+                                            location:foundUser.location
+    
+                                        }
+                                        
+                                        foundUser.encounter.push(encounter)
+                                        await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
+                                        interaction.user.send(`Use /fight to begin encounter`)
+    
+                                        
+                                   
                                     collector.stop()
+                                        
+                                    }
+                                    else if(btn.customId === "btn_reject"){
+                                        await btn.deferUpdate().catch(e => {})
+                                        await interaction.editReply({embeds:[rejectEmbed]})
+                                         foundUser.encounter = []
+                                    
+                                        await profileModel.updateOne({userID:authorId},foundUser)
+    
+                                        collector.stop()
+                                    }
+    
+                                    
+                                    
                                 }
-
-                                
+                                  
+                    
+                       
+                       
+                        })
+    
+                        collector.on('end', () => {
+                            interaction.editReply({components: [d_btnraw]})
+                        })
+    
+                            
+                        })
+                    }
+                    else if(pick === "spren"){
+                        const spren = weightedRandom(["fireSpren","windSpren","waterSpren"],[0.3,0.4,0.3])
+                        specialModel.exists({Spren:spren},async function(err,res){
+                            if(res){
+                                specialModel.findOne({Spren:spren},async function(err,found){
+                                    interaction.editReply(`${spren} has already been claimed in the world\nclaimed by: ${found.owner}`)
+                                })
                                 
                             }
-                              
-                
-                   
-                   
-                    })
-
-                    collector.on('end', () => {
-                        interaction.editReply({components: [d_btnraw]})
-                    })
-
-                        
-                    })
-                }
-                else if(pick === "spren"){
-                    const spren = weightedRandom(["fireSpren","windSpren","waterSpren"],[0.3,0.4,0.3])
-                    specialModel.exists({Spren:spren},async function(err,res){
-                        if(res){
-                            specialModel.findOne({Spren:spren},async function(err,found){
-                                interaction.editReply(`${spren} has already been claimed in the world\nclaimed by: ${found.owner}`)
-                            })
-                            
-                        }
-                        else{
-                                specialModel.exists({userID:authorId},async function(err,res){
-                                    if(res){
-                                        interaction.editReply(`you already possess a spren!`)
-                                    }
-                                    else{
-                                        interaction.editReply(`congrats! you found a ${spren}`)
-                                        let special = await new specialModel({
-                                            userID: authorId,
-                                            serverID: guildID,
-                                            Spren: spren,
-                                            owner: interaction.user.username
-                                            
-                                        })
-                                        special.save();
-                                    }
-
-                                })
+                            else{
+                                    specialModel.exists({userID:authorId},async function(err,res){
+                                        if(res){
+                                            interaction.editReply(`you already possess a spren!`)
+                                        }
+                                        else{
+                                            interaction.editReply(`congrats! you found a ${spren}`)
+                                            let special = await new specialModel({
+                                                userID: authorId,
+                                                serverID: guildID,
+                                                Spren: spren,
+                                                owner: interaction.user.username
+                                                
+                                            })
+                                            special.save();
+                                        }
+    
+                                    })
+                                       
                                    
-                               
-                          
-                        }
-                    })
+                              
+                            }
+                        })
+                    }
                 }
-                }
-                else if(location == "Castellan Fields"){
-                    await interaction.reply({ content: `searching ${location}...`})
+                else if(city_town == "Castellan Fields"){
+                    await interaction.reply({ content: `searching ${city_town}...`})
                     const pick = weightedRandom(["flora","monster"],[0,1])
 
                     if(pick == "flora"){
                         await interaction.editReply({ content: '\u200b', components: [] })
-                        const flora = (await getRandomFlora(location))
+                        const flora = (await getRandomFlora(city_town))
                         await interaction.editReply(`you found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
     
                         inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
@@ -245,7 +245,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                     
                        
                             await interaction.editReply({ content: '\u200b', components: [] })
-                            const monster = (await getRandomMonster(location))
+                            const monster = (await getRandomMonster(city_town))
                             
     
                             
@@ -331,87 +331,219 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                     }
      
                 }
-                else if(location == "Abandoned Castle"){
-                    if(foundUser.completed_dungeons.includes("Abandoned Castle")){
-                        interaction.reply(`You have already cleared this dungeon!`)
-                    }
-                    else{
-                        let btnraw= new MessageActionRow().addComponents([
-                            new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Enter"),
-                            new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Cancel"),])
+                else if(city_town == "Sunshade Forest"){
+                    await interaction.reply({ content: `searching ${city_town}...`})
+                    const pick = weightedRandom(["flora","monster"],[0,1])
+
+                    if(pick == "flora"){
+                        await interaction.editReply({ content: '\u200b', components: [] })
+                        const flora = (await getRandomFlora(city_town))
+                        await interaction.editReply(`you found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
     
-                            let d_btnraw = new MessageActionRow().addComponents([
-                                new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Enter").setDisabled(true),
-                                new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Cancel").setDisabled(true),
-                            ])
-                        let dungeonEmbed = new MessageEmbed()
-                                .setColor('RANDOM')
-                                .setTitle('ENCOUNTER')
-                                .setDescription(`You are about to enter a dungeon!\nDo you wish to proceed?`)
-            
-                                let acceptEmbed = new MessageEmbed()
-                                .setColor('GREEN')
-                                .setTitle('ACCEPTED')
-                                .setDescription('You have decided to enter!\npress /proceeddungeon in DMs to move forward')
-            
-                                let rejectEmbed = new MessageEmbed()
-                                .setColor('RED')
-                                .setTitle('RETREAT')
-                                .setDescription('You decided to retreat!')
+                        inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                            if(err){
+                                console.log(err);
                                 
+                            }
+                            else{
+                                const foundItem = foundUser.inventory.items.find(item => item.name === flora.name)
+                                if (foundItem){
+                
+                                    foundItem.quantity+=flora.quantity
+                                }
+                                else{
+                                    const newItem = {
+                                        name:flora.name,
+                                        description:flora.description,
+                                        quantity:Number(flora.quantity)
+                                    }
+                                    foundUser.inventory.items.push(newItem)
+                                }
+                                await inventory.updateOne({userID:authorId},foundUser)
+                            }
                             
-                            await interaction.reply({content: null,embeds:[dungeonEmbed],components:[btnraw]})
-                            let filter = i => i.user.id === authorId
-                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
-                        
-                                collector.on('collect',async (btn) => {
-                                    if(btn.isButton()){
-                                        if(btn.customId === "btn_accept"){
-                                            await btn.deferUpdate().catch(e => {})
-                                            await interaction.editReply({embeds:[acceptEmbed]})
-                                            foundUser.dungeon.status = true
-                                            foundUser.dungeon.name = "Abandoned Castle"
-                                            foundUser.dungeon.step = 1 
-                                            await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
-                                            interaction.user.send(`You are now inside a dungeon!\npress /proceeddungeon to move forward`)
+                        })
+                    }
+                    else if(pick == "monster"){
+                    
+                    
+                       
+                            await interaction.editReply({ content: '\u200b', components: [] })
+                            const monster = (await getRandomMonster(city_town))
+                            
+    
+                            
+                            foundUser.encounter = []
+                           
+                       
+                            let btnraw= new MessageActionRow().addComponents([
+                                new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Fight"),
+                                new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Run"),])
+    
+                                let d_btnraw = new MessageActionRow().addComponents([
+                                    new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Fight").setDisabled(true),
+                                    new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Run").setDisabled(true),
+                                ])
+    
+                                
+                            let fightEmbed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('ENCOUNTER')
+                            .setDescription(`🔎 you found a ${monster.name}!`)
         
-                                            
-                                       
-                                        collector.stop()
-                                            
+                            let acceptEmbed = new MessageEmbed()
+                            .setColor('GREEN')
+                            .setTitle('ACCEPTED')
+                            .setDescription('You have decided to fight!\ncheck your private message')
+        
+                            let rejectEmbed = new MessageEmbed()
+                            .setColor('RED')
+                            .setTitle('RAN AWAY')
+                            .setDescription('You ran away!')
+                            
+                        
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw]})
+                        let filter = i => i.user.id === authorId
+                            let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
+                    
+                            collector.on('collect',async (btn) => {
+                                if(btn.isButton()){
+                                    if(btn.customId === "btn_accept"){
+                                        await btn.deferUpdate().catch(e => {})
+                                        await interaction.editReply({embeds:[acceptEmbed]})
+                                        const encounter = {
+                                            name: monster.name,
+                                            time : new Date(),
+                                            location:foundUser.location
+    
                                         }
-                                        else if(btn.customId === "btn_reject"){
-                                            await btn.deferUpdate().catch(e => {})
-                                            await interaction.editReply({embeds:[rejectEmbed]})
+                                        
+                                        foundUser.encounter.push(encounter)
+                                        await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
+                                        interaction.user.send(`Use /fight to begin encounter`)
     
                                         
-        
-                                            collector.stop()
-                                        }
-        
-                                        
+                                   
+                                    collector.stop()
                                         
                                     }
-                                      
-                        
-                           
-                           
-                            })
-        
-                            collector.on('end', () => {
-                                interaction.editReply({components: [d_btnraw]})
-                            })
-                    }
+                                    else if(btn.customId === "btn_reject"){
+                                        await btn.deferUpdate().catch(e => {})
+                                        await interaction.editReply({embeds:[rejectEmbed]})
+                                         foundUser.encounter = []
+                                    
+                                        await profileModel.updateOne({userID:authorId},foundUser)
+    
+                                        collector.stop()
+                                    }
+    
+                                    
+                                    
+                                }
+                                  
                     
+                       
+                       
+                        })
+    
+                        collector.on('end', () => {
+                            interaction.editReply({components: [d_btnraw]})
+                        })
+    
+                            
+                       
+                    }
+     
                 }
+                else if(city_town == "aube"){
+                     if(location == "Abandoned Castle"){
+                        if(foundUser.completed_dungeons.includes("Abandoned Castle")){
+                            interaction.reply(`You have already cleared this dungeon!`)
+                        }
+                        else{
+                            let btnraw= new MessageActionRow().addComponents([
+                                new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Enter"),
+                                new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Cancel"),])
+        
+                                let d_btnraw = new MessageActionRow().addComponents([
+                                    new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Enter").setDisabled(true),
+                                    new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Cancel").setDisabled(true),
+                                ])
+                            let dungeonEmbed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('ENCOUNTER')
+                                    .setDescription(`You are about to enter a dungeon!\nDo you wish to proceed?`)
+                
+                                    let acceptEmbed = new MessageEmbed()
+                                    .setColor('GREEN')
+                                    .setTitle('ACCEPTED')
+                                    .setDescription('You have decided to enter!\npress /proceeddungeon in DMs to move forward')
+                
+                                    let rejectEmbed = new MessageEmbed()
+                                    .setColor('RED')
+                                    .setTitle('RETREAT')
+                                    .setDescription('You decided to retreat!')
+                                    
+                                
+                                await interaction.reply({content: null,embeds:[dungeonEmbed],components:[btnraw]})
+                                let filter = i => i.user.id === authorId
+                                    let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
+                            
+                                    collector.on('collect',async (btn) => {
+                                        if(btn.isButton()){
+                                            if(btn.customId === "btn_accept"){
+                                                await btn.deferUpdate().catch(e => {})
+                                                await interaction.editReply({embeds:[acceptEmbed]})
+                                                foundUser.dungeon.status = true
+                                                foundUser.dungeon.name = "Abandoned Castle"
+                                                foundUser.dungeon.step = 1 
+                                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                                                interaction.user.send(`You are now inside a dungeon!\npress /proceeddungeon to move forward`)
+            
+                                                
+                                           
+                                            collector.stop()
+                                                
+                                            }
+                                            else if(btn.customId === "btn_reject"){
+                                                await btn.deferUpdate().catch(e => {})
+                                                await interaction.editReply({embeds:[rejectEmbed]})
+        
+                                            
+            
+                                                collector.stop()
+                                            }
+            
+                                            
+                                            
+                                        }
+                                          
+                            
+                               
+                               
+                                })
+            
+                                collector.on('end', () => {
+                                    interaction.editReply({components: [d_btnraw]})
+                                })
+                        }
+                        
+                    }
+                    else{
+                        await interaction.reply(`you are not in a particular location!`)
+                     }
+
+                }
+            }
+          
+                
+                
                 
 
                 
     
             
-            else{
-               await interaction.reply(`you are not in a particular location!`)
-            }
+            
            }
             
          

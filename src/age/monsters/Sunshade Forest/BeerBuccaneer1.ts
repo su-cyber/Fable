@@ -3,35 +3,34 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import { slimeBlob} from '../../items'
 import generateXP from '../../../utils/generateXP'
-import { silkBlob } from '../../items/silkblob'
 
-export class mudCrawler extends MonsterEntity {
+export class BeerBuccaneer1 extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Mud Crawler slipped away as you were about to finish it'],
-            withDropMessages: ['The Mud Crawler seems to have dropped something'],
+            withoutDropMessages: ['The Beer Buccaneer ran away as you were about to finish it'],
+            withDropMessages: ['The Beer Buccaneer dropped something'],
         }
 
         await new Dropper([
             {
-                item: silkBlob,
-                dropRate: 0.25,
+                item: slimeBlob,
+                dropRate: 0,
             },
         ]).sendDeathMessage(messages, interaction, this,killer)
     }
 
     static create() {
-        return new mudCrawler({
-            name: 'Mud Crawler',
-            spawnRate: 0.3,
-            health: 30,
+        return new BeerBuccaneer1({
+            name: 'BeerBuccaneer [Lvl 1]',
+            spawnRate: 0.5,
+            health: 50,
             mana:0,
             xp: generateXP(5,15),
-            evasion: 0.03,
-            attackDamage: 10,
+            evasion: 0.05,
+            attackDamage: 5,
             magicPower: 0,
             run_chance: 0.02,
-            armor: 1,
+            armor: 2,
             speed: 5,
             element:"wave",
             magicResistance: 2,
@@ -39,19 +38,20 @@ export class mudCrawler extends MonsterEntity {
             skills: [
                 {
                     cooldown: 0,
-                    name: 'Slip Bite',
-                    description: 'A quick bite attack',
+                    name: 'Knife Stab',
+                    description: 'attacks with a knife',
                     canEvade: true,
-                    damage:0,
                     type: 'physical',
+                    damage:15,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Slip Bite`)
+                        attacker.addLogMessage(`**${attacker.name}** used Knife Stab`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by a sharp bite`)
+                            .physical(attacker.attackDamage+15)
+                            .run(damage => `**${defender.name}** lost ${damage} HP by Knife Stab`)
                     }
                 },
+               
             ],
         })
     }

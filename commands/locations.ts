@@ -46,15 +46,6 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
             .setCustomId('select')
                 .setPlaceholder(`Select a location ${interaction.user.username}`)
                 .addOptions({
-                    
-                    label: `Castellan Fields`,
-                    description: `A field near aube town`,
-                    value: `Castellan Fields`,
-                },{
-                    label: `Badlands`,
-                    description: `outskirts`,
-                    value: `Badlands`,
-                },{
                     label: `The Terrific Troll Tavern`,
                     description: `a simple tavern`,
                     value: `The Terrific Troll Tavern`,
@@ -100,25 +91,8 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
             const location = collected.values[0]
             
             await profileModel.updateOne({userID:authorId},{location:location})
-            if(location == 'Castellan Fields'){
-                const attachment = new MessageAttachment('assets/AubeTown/Castellan_Fields.jpeg')
-                let successembed = new MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle('LOCATION REACHED')
-                .setImage('attachment://Castellan_Fields.jpeg')
-                .setDescription(`you visited ${location}, a wide field outside aube town\n\nuse **/explore** to explore this location`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
-            }
-            else if(location == 'Badlands'){
-                const attachment = new MessageAttachment('assets/AubeTown/Badlands.jpg')
-                let successembed = new MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle('LOCATION REACHED')
-                .setImage('attachment://Badlands.jpg')
-                .setDescription(`you visited ${location},the outskirts of aube town\n\nuse **/explore** to explore this location`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
-            }
-            else if(location == 'The Terrific Troll Tavern'){
+           
+            if(location == 'The Terrific Troll Tavern'){
                 const attachment = new MessageAttachment('assets/AubeTown/Terrific_Troll_Tavern.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -166,15 +140,7 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
                 .setDescription(`you visited ${location}, an abanoned castle in the outskirts\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[]})
             }
-            else if(location == 'None'){
-                const attachment = new MessageAttachment('assets/AubeTown/Aube_Town.jpg')
-                let successembed = new MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle('LOCATION REACHED')
-                .setImage('attachment://Aube_Town.jpg')
-                .setDescription(`you visited Aube Town, the first town of solarstrio\n\nuse **/explore** to explore this location`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
-            }
+           
             
             
     
@@ -196,7 +162,16 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
     
     
     
-                                }
+        }
+        else if(city_town == "Castellan Fields"){
+            interaction.reply(`The place you are in is an explorable location in it's own! `)
+        }
+        else if(city_town == "Sunshade Forest"){
+            interaction.reply(`The place you are in is an explorable location in it's own! `)
+        }
+        else if(city_town == "Sunshade Forest"){
+            interaction.reply(`The place you are in is an explorable location in it's own! `)
+        }
                             }
                            }
                  

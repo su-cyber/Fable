@@ -308,6 +308,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.attackDamage = 15
                                     foundUser.armour = 8
                                     foundUser.speed = 15
+                                    foundUser.health = 80
                                     foundUser.magicPower = 8
                                     foundUser.vitality = 8
                                     foundUser.magicResistance = 6
@@ -325,6 +326,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.attackDamage = 20
                                     foundUser.armour = 0
                                     foundUser.speed = 20
+                                    foundUser.health = 50
                                     foundUser.magicPower = 5
                                     foundUser.vitality = 5
                                     foundUser.magicResistance = 10
@@ -342,6 +344,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.attackDamage = 0
                                     foundUser.armour = 5
                                     foundUser.speed = 10
+                                    foundUser.health = 80
                                     foundUser.magicPower = 20
                                     foundUser.vitality = 8
                                     foundUser.magicResistance = 15
@@ -361,6 +364,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.speed = 10
                                     foundUser.magicPower = 0
                                     foundUser.vitality = 15
+                                    foundUser.health = 150
                                     foundUser.magicResistance = 0
                                     foundUser.currentskills = [{
                                         name: 'Sprint Bash',
@@ -378,6 +382,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.armour = 5
                                     foundUser.speed = 15
                                     foundUser.magicPower = 15
+                                    foundUser.health = 100
                                     foundUser.vitality = 10
                                     foundUser.magicResistance = 15
                                     foundUser.currentskills = [{
@@ -396,6 +401,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.speed = 10
                                     foundUser.magicPower = 10
                                     foundUser.vitality = 10
+                                    foundUser.health = 100
                                     foundUser.magicResistance = 5
                                     foundUser.currentskills = [{
                                         name: 'Authority Thrust',

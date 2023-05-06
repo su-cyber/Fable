@@ -15,7 +15,7 @@ export class grainMite extends MonsterEntity {
         await new Dropper([
             {
                 item: grainmiteTooth,
-                dropRate: 0.7,
+                dropRate: 0.8,
             },
         ]).sendDeathMessage(messages, interaction, this,killer)
     }
