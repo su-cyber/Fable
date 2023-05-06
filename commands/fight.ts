@@ -146,7 +146,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                         if(foundUser.encounter[0].time.getHours() == timestamp.getHours()){
                                             if((timestamp.getMinutes() - foundUser.encounter[0].time.getMinutes()) < 2){
                                                 if(foundUser.location == foundUser.encounter[0].location || foundUser.city_town == foundUser.encounter[0].location){
-                                                    const monster = (await getMonsters(foundUser.location)).map(fn => fn.create())
+                                                    const monster = (await getMonsters(foundUser.encounter[0].location)).map(fn => fn.create())
                                                 .find(m => m.name === foundUser.encounter[0].name)
                                                 
                                     
