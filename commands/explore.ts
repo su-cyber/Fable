@@ -134,7 +134,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         const encounter = {
                                             name: componentInteraction.values[0],
                                             time : new Date(),
-                                            location:foundUser.location
+                                            location:foundUser.city_town
     
                                         }
                                         
@@ -290,7 +290,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         const encounter = {
                                             name: monster.name,
                                             time : new Date(),
-                                            location:foundUser.location
+                                            location:foundUser.city_town
     
                                         }
                                         
@@ -414,7 +414,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         const encounter = {
                                             name: monster.name,
                                             time : new Date(),
-                                            location:foundUser.location
+                                            location:foundUser.city_town
     
                                         }
                                         
