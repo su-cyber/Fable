@@ -4,7 +4,7 @@ import { Collector, MessageActionRow, MessageButton, MessageEmbed, MessageSelect
 import { MessageAttachment } from 'discord.js'
 
 
-export default new MyCommandSlashBuilder({ name: 'locations', description: 'visit a location' })
+export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel to a place' })
 
 .setDo(
     async (bot, interaction) => {
