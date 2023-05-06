@@ -630,7 +630,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                         value:`**press /progresssidequest in the town centre to proceed**`
                                     }
                                 ])
-                                .setDescription(` You find out that the Tavern’s consignment of Backbreaker is being stolen by the driver, as he drives off to the Castellan Fields instead of the way of the Tavern.You follow the Stagecoach escaping into the Castellan Fields. By following the Stagecoach, you see the driver stop by the gate of the Abandoned Castle and use a key to get inside it.\n\n**You must report this back!**`)
+                                .setDescription(` You find out that the Tavern’s consignment of Backbreaker is being stolen by the driver, as he drives off to the Abandoned castle instead of the way of the Tavern.By following the Stagecoach, you see the driver stop by the gate of the Abandoned Castle and use a key to get inside it.\n\n**You must report this back!**`)
                             
                                 await interaction.reply({embeds:[quest_embed]})
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"3"})
@@ -705,7 +705,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 })
                                 .addFields([
                                     {
-                                        name: `Current Objective:`,
+                                        name: `Quest Completed!`,
                                         value:`**Clear the dungeon in the Abandoned Castle and press /progresssidequest in towncentre**`
                                     }
                                 ])
