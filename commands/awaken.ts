@@ -245,7 +245,10 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                             name:"",
                                             step:0
                                         },
-                                        completed_dungeons:[]
+                                        completed_dungeons:[],
+                                        guild:"None",
+                                        guild_class:"None",
+                                        guild_rank:"None"
                                         
                                     })
                                     profile.save();

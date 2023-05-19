@@ -42,7 +42,11 @@ const profileSchema = new mongoose.Schema({
     city_town:{type: String},
     location:{type: String},
     dungeon:{type: Object},
-    completed_dungeons:{type: Array}
+    completed_dungeons:{type: Array},
+    guild:{type: String},
+    guild_rank:{type: String},
+    merit:{type: Number},
+    guild_class:{type: String}
 });
 
 const model = mongoose.model('ProfileModels',profileSchema);
