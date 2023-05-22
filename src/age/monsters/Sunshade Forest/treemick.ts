@@ -1,7 +1,6 @@
 import { CommandInteraction } from 'discord.js'
 import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
-import { slimeBlob} from '../../items'
 import generateXP from '../../../utils/generateXP'
 import { treemickBranch } from '../../items/treemickBranch'
 
@@ -23,6 +22,7 @@ export class Treemick extends MonsterEntity {
     static create() {
         return new Treemick({
             name: 'Treemick',
+            description:`Small stump like monsters who attack with wood splinters protruding from their bodies`,
             spawnRate: 0.5,
             health: 30,
             mana:0,

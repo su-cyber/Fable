@@ -18,6 +18,7 @@ export class MonsterEntity extends Entity {
     xp: number
     run_chance: number
     element: string
+    description: string
 
     constructor(
         props: Omit<EntityProps, 'id'> & {
@@ -25,6 +26,7 @@ export class MonsterEntity extends Entity {
             xp: number
             run_chance: number
             element: string
+            description: string
         }
     ) {
         const { spawnRate, ...rest } = props
@@ -39,8 +41,8 @@ export class MonsterEntity extends Entity {
         return skill
     }
 
-    useSkill(attacker:Entity,defender: Entity) {
-        const skill = this.chooseSkill(defender)
+    useSkill(attacker:Entity,defender: Entity,Skill:Skill) {
+        const skill = Skill
         if(attacker.mana>=skill.mana_cost){
             attacker.mana=attacker.mana-skill.mana_cost
             if (skill.canEvade && this.oponent.evade()) {

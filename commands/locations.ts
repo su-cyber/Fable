@@ -169,9 +169,7 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
         else if(city_town == "Sunshade Forest"){
             interaction.reply(`The place you are in is an explorable location in it's own! `)
         }
-        else if(city_town == "Sunshade Forest"){
-            interaction.reply(`The place you are in is an explorable location in it's own! `)
-        }
+        
         else if(city_town == "Zorya"){
     
                                     let embed = new MessageEmbed()
@@ -339,6 +337,22 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
     
     
         }
+        else if(city_town == "ellior"){
+            interaction.reply(`The place you are in is an explorable location in it's own! `)
+        }
+        else if(city_town == "Dragon's Den"){
+            interaction.reply(`The place you are in is an explorable location in it's own! `)
+        }
+        else if(city_town == "Zephyr Mountain"){
+            interaction.reply(`The place you are in is an explorable location in it's own! `)
+        }
+        else if(city_town == "orld husk"){
+            interaction.reply(`The place you are in is an explorable location in it's own! `)
+        }
+        else if(city_town == "Sunstone Mines"){
+            interaction.reply(`The place you are in is an explorable location in it's own! `)
+        }
+        
                             }
                            }
                  

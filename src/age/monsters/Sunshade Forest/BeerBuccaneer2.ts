@@ -1,7 +1,7 @@
 import { CommandInteraction } from 'discord.js'
 import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
-import { slimeBlob} from '../../items'
+import { backBreaker } from '../../items/backbreaker'
 import generateXP from '../../../utils/generateXP'
 
 export class BeerBuccaneer2 extends MonsterEntity {
@@ -13,8 +13,8 @@ export class BeerBuccaneer2 extends MonsterEntity {
 
         await new Dropper([
             {
-                item: slimeBlob,
-                dropRate: 0,
+                item: backBreaker,
+                dropRate: 0.3,
             },
         ]).sendDeathMessage(messages, interaction, this,killer)
     }
@@ -22,6 +22,7 @@ export class BeerBuccaneer2 extends MonsterEntity {
     static create() {
         return new BeerBuccaneer2({
             name: 'BeerBuccaneer [Lvl 2]',
+            description:`Local pirates who are engaged in the theivery of Backbreaker around Aube Town`,
             spawnRate: 0.5,
             health: 50,
             mana:0,

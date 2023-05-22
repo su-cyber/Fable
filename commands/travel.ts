@@ -797,7 +797,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             
             
             if(location == 'aube'){
-                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
                 const attachment = new MessageAttachment('assets/AubeTown/Aube_Town.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -847,23 +847,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Tethys'){
-                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                
                 const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
                 let successembed = new MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle('LOCATION REACHED')
+                .setColor('RED')
+                .setTitle('ERROR!')
                 .setImage('attachment://tethys_main.jpg')
-                .setDescription(`you visited ${location},The Stateship of Tethys\n\nuse **/explore** to explore this location`)
+                .setDescription(`The road to state of Tethys is currently Blocked!\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Gloaming'){
-                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                
                 const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
                 let successembed = new MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle('LOCATION REACHED')
+                .setColor('RED')
+                .setTitle('ERROR!')
                 .setImage('attachment://tethys_main.jpg')
-                .setDescription(`you visited ${location}\n\nuse **/explore** to explore this location`)
+                .setDescription(`The road to the capital state of Gloaming is currently Blocked!\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'orld husk'){
@@ -877,15 +877,970 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Werfall'){
-                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                
                 const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://tethys_main.jpg')
-                .setDescription(`you visited ${location},The Township of werfall\n\nuse **/explore** to explore this location`)
+                .setDescription(`The road to the township of Werfall is currently Blocked!\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
+            
+            
+            
+    
+            
+            collector_select.stop()
+        })
+    
+        collector_cancel.on('collect', async j => {
+            j.deferUpdate().catch(() => null)
+    
+            let delembed = new MessageEmbed()
+            .setColor('RANDOM')
+            .setTitle('CANCELLED')
+            .setDescription(`location visit cancelled!`)
+            
+            await interaction.editReply({embeds:[delembed],components:[]})
+            collector_cancel.stop()
+        })
+    
+    
+    
+            }
+            else if(city_town == "ellior"){
+                                    let embed
+                                    let mount = "none"
+                                    if(mount == "none"){
+                                        embed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('SELECT PLACE')
+                                    .setDescription(`choose a place to travel from Aube Town`)
+                                    .addFields([
+                                        {
+                                            name: `Stateship of Zorya`,
+                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Dragon’s Den`,
+                                            value:`**Travelled on Foot**\n**Description**:The den of an ancient Dragon\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Sunstone Mines`,
+                                            value:`**Travelled on Foot**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Zephyr Mountain`,
+                                            value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Orld Tree’s Husk`,
+                                            value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                        },
+                                       
+                                    ])
+                                    
+                                    }
+                                    else{
+                                        embed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('SELECT PLACE')
+                                    .setDescription(`choose a place to travel from Aube Town`)
+                                    .addFields([
+                                        {
+                                            name: `Stateship of Zorya`,
+                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Dragon’s Den`,
+                                            value:`**Travelled on Mount**\n**Description**:The den of an ancient Dragon\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Sunstone Mines`,
+                                            value:`**Travelled on Mount**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Zephyr Mountain`,
+                                            value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Orld Tree’s Husk`,
+                                            value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                        },
+                                       
+                                    ])
+
+                                    }
+                                    
+                               
+    
+    
+    let btn_cancel = new MessageActionRow().addComponents([
+        new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
+    
+    let select =  new MessageActionRow().addComponents([
+            new MessageSelectMenu()
+            .setCustomId('select')
+                .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                .addOptions({
+                    label: `Stateship of Zorya`,
+                    description: `The great state of Zorya`,
+                    value: `Zorya`,
+                },{
+                    label: `Dragon’s Den`,
+                    description: `The den of an ancient Dragon`,
+                    value: `Dragon’s Den`,
+                },
+                {
+                    label: `Sunstone Mines`,
+                    description: `A minefield where sunstones are mined`,
+                    value: `Sunstone Mines`,
+                },
+                {
+                    label: `Zephyr Mountain`,
+                    description: `The great mountains of Zephyr range`,
+                    value: `Zephyr Mountain`,
+                },
+                {
+                    label: `Orld Tree’s Husk`,
+                    description: `The husk of the orld tree`,
+                    value: `orld husk`,
+                },
+                )
+                .setDisabled(false),
+        ])  
+        let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+        let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
+        let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
+        let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
+    
+        collector_select.setMaxListeners(Infinity)
+        collector_cancel.setMaxListeners(Infinity)
+    
+    
+        await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})
+    
+        collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+            collected.deferUpdate().catch(() => null)
+            const location = collected.values[0]
+            
+            
+            if(location == 'Zorya'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://zorya_main.jpg')
+                .setDescription(`you visited ${location},The great stateship of zorya\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'ellior'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/ellior_forest.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://ellior_forest.jpg')
+                .setDescription(`you visited ${location},The enchanted forest of Ellior\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'Zephyr Mountain'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://zephyr_mountain.jpg')
+                .setDescription(`you visited ${location},The great mountains of Zephyr range\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'Sunstone Mines'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/sunstone_mines.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://sunstone_mines.jpg')
+                .setDescription(`you visited ${location},The minefield where sunstones are mined\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'orld husk'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://orld_husk.jpg')
+                .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            
+            
+            
+            
+    
+            
+            collector_select.stop()
+        })
+    
+        collector_cancel.on('collect', async j => {
+            j.deferUpdate().catch(() => null)
+    
+            let delembed = new MessageEmbed()
+            .setColor('RANDOM')
+            .setTitle('CANCELLED')
+            .setDescription(`location visit cancelled!`)
+            
+            await interaction.editReply({embeds:[delembed],components:[]})
+            collector_cancel.stop()
+        })
+    
+    
+    
+            }
+            else if(city_town == "Dragon's Den"){
+                                    let embed
+                                    let mount = "none"
+                                    if(mount == "none"){
+                                        embed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('SELECT PLACE')
+                                    .setDescription(`choose a place to travel from Aube Town`)
+                                    .addFields([
+                                        {
+                                            name: `Stateship of Zorya`,
+                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Ellior Forest`,
+                                            value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Sunstone Mines`,
+                                            value:`**Travelled on Foot**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Zephyr Mountain`,
+                                            value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Orld Tree’s Husk`,
+                                            value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                        },
+                                       
+                                    ])
+                                    
+                                    }
+                                    else{
+                                        embed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('SELECT PLACE')
+                                    .setDescription(`choose a place to travel from Aube Town`)
+                                    .addFields([
+                                        {
+                                            name: `Stateship of Zorya`,
+                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Ellior Forest`,
+                                            value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Sunstone Mines`,
+                                            value:`**Travelled on Mount**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Zephyr Mountain`,
+                                            value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Orld Tree’s Husk`,
+                                            value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                        },
+                                       
+                                    ])
+
+                                    }
+                                    
+                               
+    
+    
+    let btn_cancel = new MessageActionRow().addComponents([
+        new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
+    
+    let select =  new MessageActionRow().addComponents([
+            new MessageSelectMenu()
+            .setCustomId('select')
+                .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                .addOptions({
+                    label: `Stateship of Zorya`,
+                    description: `The great state of Zorya`,
+                    value: `Zorya`,
+                },{
+                    label: `Ellior Forest`,
+                    description: `the enchanted forest of ellior`,
+                    value: `ellior`,
+                },
+                {
+                    label: `Sunstone Mines`,
+                    description: `A minefield where sunstones are mined`,
+                    value: `Sunstone Mines`,
+                },
+                {
+                    label: `Zephyr Mountain`,
+                    description: `The great mountains of Zephyr range`,
+                    value: `Zephyr Mountain`,
+                },
+                {
+                    label: `Orld Tree’s Husk`,
+                    description: `The husk of the orld tree`,
+                    value: `orld husk`,
+                },
+                )
+                .setDisabled(false),
+        ])  
+        let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+        let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
+        let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
+        let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
+    
+        collector_select.setMaxListeners(Infinity)
+        collector_cancel.setMaxListeners(Infinity)
+    
+    
+        await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})
+    
+        collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+            collected.deferUpdate().catch(() => null)
+            const location = collected.values[0]
+            
+            
+            if(location == 'Zorya'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://zorya_main.jpg')
+                .setDescription(`you visited ${location},The great stateship of zorya\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'ellior'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/ellior_forest.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://ellior_forest.jpg')
+                .setDescription(`you visited ${location},The enchanted forest of Ellior\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'Zephyr Mountain'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://zephyr_mountain.jpg')
+                .setDescription(`you visited ${location},The great mountains of Zephyr range\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'Sunstone Mines'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/sunstone_mines.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://sunstone_mines.jpg')
+                .setDescription(`you visited ${location},The minefield where sunstones are mined\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'orld husk'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://orld_husk.jpg')
+                .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            
+            
+            
+            
+    
+            
+            collector_select.stop()
+        })
+    
+        collector_cancel.on('collect', async j => {
+            j.deferUpdate().catch(() => null)
+    
+            let delembed = new MessageEmbed()
+            .setColor('RANDOM')
+            .setTitle('CANCELLED')
+            .setDescription(`location visit cancelled!`)
+            
+            await interaction.editReply({embeds:[delembed],components:[]})
+            collector_cancel.stop()
+        })
+    
+    
+    
+            }
+            else if(city_town == "Sunstone Mines"){
+                                    let embed
+                                    let mount = "none"
+                                    if(mount == "none"){
+                                        embed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('SELECT PLACE')
+                                    .setDescription(`choose a place to travel from Aube Town`)
+                                    .addFields([
+                                        {
+                                            name: `Stateship of Zorya`,
+                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Ellior Forest`,
+                                            value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Dragon's Den`,
+                                            value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Zephyr Mountain`,
+                                            value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Orld Tree’s Husk`,
+                                            value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                        },
+                                       
+                                    ])
+                                    
+                                    }
+                                    else{
+                                        embed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('SELECT PLACE')
+                                    .setDescription(`choose a place to travel from Aube Town`)
+                                    .addFields([
+                                        {
+                                            name: `Stateship of Zorya`,
+                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Ellior Forest`,
+                                            value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Dragon's Den`,
+                                            value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Zephyr Mountain`,
+                                            value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Orld Tree’s Husk`,
+                                            value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                        },
+                                       
+                                    ])
+
+                                    }
+                                    
+                               
+    
+    
+    let btn_cancel = new MessageActionRow().addComponents([
+        new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
+    
+    let select =  new MessageActionRow().addComponents([
+            new MessageSelectMenu()
+            .setCustomId('select')
+                .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                .addOptions({
+                    label: `Stateship of Zorya`,
+                    description: `The great state of Zorya`,
+                    value: `Zorya`,
+                },{
+                    label: `Ellior Forest`,
+                    description: `the enchanted forest of ellior`,
+                    value: `ellior`,
+                },
+                {
+                    label: `Dragon's Den`,
+                    description: `A minefield where sunstones are mined`,
+                    value: `Dragon's Den`,
+                },
+                {
+                    label: `Zephyr Mountain`,
+                    description: `The great mountains of Zephyr range`,
+                    value: `Zephyr Mountain`,
+                },
+                {
+                    label: `Orld Tree’s Husk`,
+                    description: `The husk of the orld tree`,
+                    value: `orld husk`,
+                },
+                )
+                .setDisabled(false),
+        ])  
+        let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+        let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
+        let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
+        let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
+    
+        collector_select.setMaxListeners(Infinity)
+        collector_cancel.setMaxListeners(Infinity)
+    
+    
+        await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})
+    
+        collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+            collected.deferUpdate().catch(() => null)
+            const location = collected.values[0]
+            
+            
+            if(location == 'Zorya'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://zorya_main.jpg')
+                .setDescription(`you visited ${location},The great stateship of zorya\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'Dragon’s Den'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/dragon_den.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://dragon_den.jpg')
+                .setDescription(`you visited ${location},The den of an ancient Dragon\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'Zephyr Mountain'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://zephyr_mountain.jpg')
+                .setDescription(`you visited ${location},The great mountains of Zephyr range\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'ellior'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/ellior_forest.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://ellior_forest.jpg')
+                .setDescription(`you visited ${location},The enchanted forest of Ellior\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'orld husk'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://orld_husk.jpg')
+                .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            
+            
+            
+            
+    
+            
+            collector_select.stop()
+        })
+    
+        collector_cancel.on('collect', async j => {
+            j.deferUpdate().catch(() => null)
+    
+            let delembed = new MessageEmbed()
+            .setColor('RANDOM')
+            .setTitle('CANCELLED')
+            .setDescription(`location visit cancelled!`)
+            
+            await interaction.editReply({embeds:[delembed],components:[]})
+            collector_cancel.stop()
+        })
+    
+    
+    
+            }
+            else if(city_town == "Zephyr Mountain"){
+                                    let embed
+                                    let mount = "none"
+                                    if(mount == "none"){
+                                        embed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('SELECT PLACE')
+                                    .setDescription(`choose a place to travel from Aube Town`)
+                                    .addFields([
+                                        {
+                                            name: `Stateship of Zorya`,
+                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Ellior Forest`,
+                                            value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Dragon's Den`,
+                                            value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Sunstone Mines`,
+                                            value:`**Travelled on Foot**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Orld Tree’s Husk`,
+                                            value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                        },
+                                       
+                                    ])
+                                    
+                                    }
+                                    else{
+                                        embed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('SELECT PLACE')
+                                    .setDescription(`choose a place to travel from Aube Town`)
+                                    .addFields([
+                                        {
+                                            name: `Stateship of Zorya`,
+                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Ellior Forest`,
+                                            value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Dragon's Den`,
+                                            value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Sunstone Mines`,
+                                            value:`**Travelled on Mount**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Orld Tree’s Husk`,
+                                            value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                        },
+                                       
+                                    ])
+
+                                    }
+                                    
+                               
+    
+    
+    let btn_cancel = new MessageActionRow().addComponents([
+        new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
+    
+    let select =  new MessageActionRow().addComponents([
+            new MessageSelectMenu()
+            .setCustomId('select')
+                .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                .addOptions({
+                    label: `Stateship of Zorya`,
+                    description: `The great state of Zorya`,
+                    value: `Zorya`,
+                },{
+                    label: `Ellior Forest`,
+                    description: `the enchanted forest of ellior`,
+                    value: `ellior`,
+                },
+                {
+                    label: `Dragon's Den`,
+                    description: `A minefield where sunstones are mined`,
+                    value: `Dragon's Den`,
+                },
+                {
+                    label: `Sunstone Mines`,
+                    description: `The great mountains of Zephyr range`,
+                    value: `Sunstone Mines`,
+                },
+                {
+                    label: `Orld Tree’s Husk`,
+                    description: `The husk of the orld tree`,
+                    value: `orld husk`,
+                },
+                )
+                .setDisabled(false),
+        ])  
+        let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+        let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
+        let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
+        let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
+    
+        collector_select.setMaxListeners(Infinity)
+        collector_cancel.setMaxListeners(Infinity)
+    
+    
+        await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})
+    
+        collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+            collected.deferUpdate().catch(() => null)
+            const location = collected.values[0]
+            
+            
+            if(location == 'Zorya'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://zorya_main.jpg')
+                .setDescription(`you visited ${location},The great stateship of zorya\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'Dragon’s Den'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/dragon_den.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://dragon_den.jpg')
+                .setDescription(`you visited ${location},The den of an ancient Dragon\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'Sunstone Mines'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/sunstone_mines.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://sunstone_mines.jpg')
+                .setDescription(`you visited ${location},The minefield where sunstones are mined\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'ellior'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/ellior_forest.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://ellior_forest.jpg')
+                .setDescription(`you visited ${location},The enchanted forest of Ellior\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'orld husk'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://orld_husk.jpg')
+                .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            
+            
+            
+            
+    
+            
+            collector_select.stop()
+        })
+    
+        collector_cancel.on('collect', async j => {
+            j.deferUpdate().catch(() => null)
+    
+            let delembed = new MessageEmbed()
+            .setColor('RANDOM')
+            .setTitle('CANCELLED')
+            .setDescription(`location visit cancelled!`)
+            
+            await interaction.editReply({embeds:[delembed],components:[]})
+            collector_cancel.stop()
+        })
+    
+    
+    
+            }
+            else if(city_town == "orld husk"){
+                                    let embed
+                                    let mount = "none"
+                                    if(mount == "none"){
+                                        embed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('SELECT PLACE')
+                                    .setDescription(`choose a place to travel from Aube Town`)
+                                    .addFields([
+                                        {
+                                            name: `Stateship of Zorya`,
+                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Ellior Forest`,
+                                            value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Dragon's Den`,
+                                            value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Sunstone Mines`,
+                                            value:`**Travelled on Foot**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Zephyr Mountain`,
+                                            value:`**Travelled on Foot**\n**Description**:The great mountains of the Zephyr range\n**Cost**:0 🪙`
+                                        },
+                                       
+                                    ])
+                                    
+                                    }
+                                    else{
+                                        embed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('SELECT PLACE')
+                                    .setDescription(`choose a place to travel from Aube Town`)
+                                    .addFields([
+                                        {
+                                            name: `Stateship of Zorya`,
+                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Ellior Forest`,
+                                            value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Dragon's Den`,
+                                            value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Sunstone Mines`,
+                                            value:`**Travelled on Mount**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙`
+                                        },
+                                        {
+                                            name: `Zephyr Mountain`,
+                                            value:`**Travelled on Mount**\n**Description**:The great mountains of the Zephyr range\n**Cost**:0 🪙`
+                                        },
+                                       
+                                    ])
+
+                                    }
+                                    
+                               
+    
+    
+    let btn_cancel = new MessageActionRow().addComponents([
+        new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
+    
+    let select =  new MessageActionRow().addComponents([
+            new MessageSelectMenu()
+            .setCustomId('select')
+                .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                .addOptions({
+                    label: `Stateship of Zorya`,
+                    description: `The great state of Zorya`,
+                    value: `Zorya`,
+                },{
+                    label: `Ellior Forest`,
+                    description: `the enchanted forest of ellior`,
+                    value: `ellior`,
+                },
+                {
+                    label: `Dragon's Den`,
+                    description: `A minefield where sunstones are mined`,
+                    value: `Dragon's Den`,
+                },
+                {
+                    label: `Sunstone Mines`,
+                    description: `The great mountains of Zephyr range`,
+                    value: `Sunstone Mines`,
+                },
+                {
+                    label: `Zephyr Mountain`,
+                    description: `The husk of the orld tree`,
+                    value: `Zephyr Mountain`,
+                },
+                )
+                .setDisabled(false),
+        ])  
+        let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+        let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
+        let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
+        let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
+    
+        collector_select.setMaxListeners(Infinity)
+        collector_cancel.setMaxListeners(Infinity)
+    
+    
+        await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})
+    
+        collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+            collected.deferUpdate().catch(() => null)
+            const location = collected.values[0]
+            
+            
+            if(location == 'Zorya'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://zorya_main.jpg')
+                .setDescription(`you visited ${location},The great stateship of zorya\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'Dragon’s Den'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/dragon_den.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://dragon_den.jpg')
+                .setDescription(`you visited ${location},The den of an ancient Dragon\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'Sunstone Mines'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/sunstone_mines.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://sunstone_mines.jpg')
+                .setDescription(`you visited ${location},The minefield where sunstones are mined\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'ellior'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/ellior_forest.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://ellior_forest.jpg')
+                .setDescription(`you visited ${location},The enchanted forest of Ellior\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'Zephyr Mountain'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://zephyr_mountain.jpg')
+                .setDescription(`you visited ${location},The great mountains of Zephyr range\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            
             
             
             

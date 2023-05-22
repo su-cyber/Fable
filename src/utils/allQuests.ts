@@ -18,7 +18,7 @@ const allQuests = [{
     quest_id:"KS-TA-SQ4"
 
 },{
-    name:"Stolen Consignments:",
+    name:"Stolen Consignments",
     description:"find what is happening to his consignments",
     quest_id:"KS-TA-SQ5"
 

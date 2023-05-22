@@ -274,7 +274,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
 
 
     })
-    class PvEDuel_SQuest extends PvEDuel {
+    class PvEDuel_MQuest extends PvEDuel {
         player1: any
         player2: any
     

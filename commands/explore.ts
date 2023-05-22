@@ -14,6 +14,7 @@ import inventory from '../models/InventorySchema'
 import { SlashCommandStringOption } from '@discordjs/builders'
 import specialModel from '../models/specialSchema'
 import { Collector, MessageButton, MessageEmbed } from 'discord.js'
+import { MessageAttachment } from 'discord.js'
 
 
 export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explore the world' })
@@ -46,13 +47,9 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
             if(foundUser.kingdom == "solarstrio"){
                 if(city_town == "ellior"){
                     await interaction.reply({ content: `searching ${city_town}...`})
-                
-    
+                    const pick = weightedRandom(["flora","monster"],[0,1])
 
-                    const pick = weightedRandom(["flora","monster","spren"],[0.1,0.8,0.1])
-    
-                    if(pick === "flora"){
-                        
+                    if(pick == "flora"){
                         await interaction.editReply({ content: '\u200b', components: [] })
                         const flora = (await getRandomFlora(city_town))
                         await interaction.editReply(`you found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
@@ -81,16 +78,13 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             
                         })
                     }
-    
-                    else if(pick === "monster"){
-                        await interaction.editReply({ components: [await monstersDropdown(location)] })
-                        
-                        bot.onComponent('select-menu__monsters', async componentInteraction => {
-                            componentInteraction.deferUpdate()
+                    else if(pick == "monster"){
+                    
+                    
+                       
                             await interaction.editReply({ content: '\u200b', components: [] })
-                            const monster = (await getMonsters(city_town))
-                                .find(m => m.name === componentInteraction.values[0])
-                                .create()
+                            const monster = (await getRandomMonster(city_town))
+                            
     
                             
                             foundUser.encounter = []
@@ -109,7 +103,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             let fightEmbed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('ENCOUNTER')
-                            .setDescription(`🔎 you found a ${monster.name}!`)
+                            .setDescription(`🔎 you found a ${monster.name}!\nDescription:${monster.description}`)
         
                             let acceptEmbed = new MessageEmbed()
                             .setColor('GREEN')
@@ -132,7 +126,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         await btn.deferUpdate().catch(e => {})
                                         await interaction.editReply({embeds:[acceptEmbed]})
                                         const encounter = {
-                                            name: componentInteraction.values[0],
+                                            name: monster.name,
                                             time : new Date(),
                                             location:foundUser.city_town
     
@@ -171,41 +165,9 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         })
     
                             
-                        })
+                       
                     }
-                    else if(pick === "spren"){
-                        const spren = weightedRandom(["fireSpren","windSpren","waterSpren"],[0.3,0.4,0.3])
-                        specialModel.exists({Spren:spren},async function(err,res){
-                            if(res){
-                                specialModel.findOne({Spren:spren},async function(err,found){
-                                    interaction.editReply(`${spren} has already been claimed in the world\nclaimed by: ${found.owner}`)
-                                })
-                                
-                            }
-                            else{
-                                    specialModel.exists({userID:authorId},async function(err,res){
-                                        if(res){
-                                            interaction.editReply(`you already possess a spren!`)
-                                        }
-                                        else{
-                                            interaction.editReply(`congrats! you found a ${spren}`)
-                                            let special = await new specialModel({
-                                                userID: authorId,
-                                                serverID: guildID,
-                                                Spren: spren,
-                                                owner: interaction.user.username
-                                                
-                                            })
-                                            special.save();
-                                        }
-    
-                                    })
-                                       
-                                   
-                              
-                            }
-                        })
-                    }
+     
                 }
                 else if(city_town == "Castellan Fields"){
                     await interaction.reply({ content: `searching ${city_town}...`})
@@ -265,7 +227,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             let fightEmbed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('ENCOUNTER')
-                            .setDescription(`🔎 you found a ${monster.name}!`)
+                            .setDescription(`🔎 you found a ${monster.name}!\nDescription:${monster.description}`)
         
                             let acceptEmbed = new MessageEmbed()
                             .setColor('GREEN')
@@ -389,7 +351,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             let fightEmbed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('ENCOUNTER')
-                            .setDescription(`🔎 you found a ${monster.name}!`)
+                            .setDescription(`🔎 you found a ${monster.name}!\nDescription:${monster.description}`)
         
                             let acceptEmbed = new MessageEmbed()
                             .setColor('GREEN')
@@ -529,10 +491,147 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         }
                         
                     }
+                    else if(location == "None"){
+                const attachment = new MessageAttachment('assets/AubeTown/Aube_Town.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(`Now Exploring ${city_town}...`)
+                .setImage('attachment://Aube_Town.jpg')
+                .setDescription(`you visited ${location}, The township of aube\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            
+                    }
                     else{
                         await interaction.reply(`you are not in a particular location!`)
                      }
 
+                }
+                else if(city_town == "Zorya"){
+                    if(location == 'Guild District'){
+                        const attachment = new MessageAttachment('assets/Zorya/guild_district.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`Now Exploring ${location}...`)
+                        .setImage('attachment://guild_district.jpg')
+                        .setDescription(`you visited ${location},The home to all guilds and the guild colosseum\n\nuse **/explore** to explore this location`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Guild Office'){
+                        const attachment = new MessageAttachment('assets/Zorya/guild_office.jpg')
+                        let successembed
+                        if(foundUser.guild == "None"){
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle(`Now Exploring ${location}...`)
+                            .setImage('attachment://guild_office.jpg')
+                            .setDescription(`you visited a random ${location} but were restricted entry by the Guards\n\nuse **/explore** to explore this location`)
+                             
+                        }
+                        else{
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle(`Now Exploring ${location}...`)
+                            .setImage('attachment://guild_office.jpg')
+                            .setDescription(`you visited ${foundUser.guild}'s ${location}, The main office in Solarstrio\n\nuse **/explore** to explore this location`)
+                             
+                        }
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == `Auriga Sails Company`){
+                        const attachment = new MessageAttachment('assets/Zorya/auriga_company.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`Now Exploring ${location}...`)
+                        .setImage('attachment://auriga_company.jpg')
+                        .setDescription(`you visited ${location},the famous Auriga ship company run by earl Auriga\n\nuse **/explore** to explore this location\n\nuse**/shop** to access the shops\nuse **/buy** to buy something\nuse **/sell** to sell something`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Astro Avenue'){
+                        const attachment = new MessageAttachment('assets/Zorya/astro_avenue.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`Now Exploring ${location}...`)
+                        .setImage('attachment://astro_avenue.jpg')
+                        .setDescription(`you visited ${location},home to many foreign goods not found in Solarstrio\n\nuse **/explore** to explore this location`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Golden Terminal'){
+                        const attachment = new MessageAttachment('assets/Zorya/golden_terminal.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`Now Exploring ${location}...`)
+                        .setImage('attachment://golden_terminal.jpg')
+                        .setDescription(`you visited ${location},A famous station for Quarantrain\n\nuse **/explore** to explore this location`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Castle of Chariots'){
+                        const attachment = new MessageAttachment('assets/Zorya/castle_chariots.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`Now Exploring ${location}...`)
+                        .setImage('attachment://castle_chariots.jpg')
+                        .setDescription(`you visited ${location},The stunning castle of Earl Auriga\n\nuse **/explore** to explore this location`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Siewelle Port'){
+                        const attachment = new MessageAttachment('assets/Zorya/siewelle_port.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`Now Exploring ${location}...`)
+                        .setImage('attachment://siewelle_port.jpg')
+                        .setDescription(`you visited ${location},The Port which serves as the main market of Zorya\n\nuse **/explore** to explore this location`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == "None"){
+                const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(`Now Exploring ${city_town}...`)
+                .setImage('attachment://zorya_main.jpg')
+                .setDescription(`you visited ${location},The great stateship of zorya\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            
+                    }
+                }
+                else if(city_town == "Zephyr Mountain"){
+                const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                let embed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(`Now Exploring ${city_town}...`)
+                .setImage('attachment://zephyr_mountain.jpg')
+                .setDescription(`you visited ${location},The great mountains of Zephyr range\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[embed],components:[],files:[attachment]})
+        
+                }
+                else if(city_town == "Sunstone Mines"){
+                const attachment = new MessageAttachment('assets/Zorya/sunstone_mines.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(`Now Exploring ${city_town}...`)
+                .setImage('attachment://sunstone_mines.jpg')
+                .setDescription(`you visited ${location},The minefield where sunstones are mined\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            
+                }
+                else if(city_town == "Dragon's Den"){
+                const attachment = new MessageAttachment('assets/Zorya/dragon_den.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(`Now Exploring ${city_town}...`)
+                .setImage('attachment://dragon_den.jpg')
+                .setDescription(`you visited ${location},The den of an ancient Dragon\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            
+                }
+                else if(city_town == "orld husk"){
+                const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(`Now Exploring ${city_town}...`)
+                .setImage('attachment://orld_husk.jpg')
+                .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            
                 }
             }
           
@@ -578,99 +677,7 @@ async function monstersDropdown(location:String) {
     )
 }
 
-class PvEDuel extends DuelBuilder {
-    player1: Entity
-    player2: MonsterEntity
-
-    async beforeDuelStart() {
-        super.beforeDuelStart()
-        if(this.attacker instanceof MonsterEntity){
-            await this.replyOrEdit({ content: `🔎 Found a ${this.player1.name}!` })
-        }
-        else{
-            await this.replyOrEdit({ content: `🔎 Found a ${this.player2.name}!` })
-        }
-       
-        await sleep(1.2)
-        
-        
-    }
-
-    async onSkillSelect(skillName: string) {
-        const skill = allskills.find(skill => skill.name === skillName)
-
-        this.attacker.useSkill(this.attacker,this.defender,skill)
-    }
-
-    
-    
-
-    async onTurn(skipTurn: boolean,turn:number) {
-        const isMonsterTurn = this.attacker instanceof MonsterEntity
-
-        if (skipTurn) {
-            if (isMonsterTurn) {
-                await sleep(1.5)
-                this.deleteInfoMessages()
-            }
-
-            return
-        }
-
-        if (this.attacker instanceof MonsterEntity) {
-            
-           
-            await this.sendInfoMessage(this.attacker.skills, true)
-
-            this.attacker.useSkill(this.attacker,this.defender)
-            
-            
-        } else {
-            
-            await this.sendInfoMessage(this.attacker.skills)
-            await sleep(1.5)
-            this.deleteInfoMessages()
-            await this.locker.wait()
-            this.locker.lock()
-        }
-
-        await this.sendInfoMessage(this.attacker.skills)
-        
-    }
-
-    async onEnd(winner: Entity, loser: MonsterEntity) {
-        await loser.onDeath(this.interaction, winner)
-        
-    }
-
-    
-}
 
 
-class PvEDuel_Quest extends PvEDuel {
-    player1: Entity
-    player2: MonsterEntity
 
-    
-    async onEnd(winner: Entity, loser: MonsterEntity) {
-        const authorId = this.interaction.user.id
-        profileModel.findOne({userID:authorId},async function(err,foundUser){
-        if(winner.name != foundUser.quest_mob){
-            
-            
-                const finalValue = foundUser.quest_quantity - 1
-                await profileModel.updateOne({userID:authorId},{quest_quantity: finalValue})
-                if(finalValue === 0){
-                    
-                    await profileModel.updateOne({userID:authorId},{quest: false})
-                }
 
-           
-            
-        }
-    })
-        await loser.onDeath(this.interaction, winner)
-        
-    }
-
-}

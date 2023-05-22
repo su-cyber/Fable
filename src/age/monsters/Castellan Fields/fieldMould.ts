@@ -22,6 +22,7 @@ export class fieldMould extends MonsterEntity {
     static create() {
         return new fieldMould({
             name: 'Field Mould',
+            description:`A fungus that usually grows upon dead crops and has poisonous spores. They are hostile to any living creature that approaches them, they are immobile and their spores are not fatal. Any living thing killed by their spores become a host for new molds`,
             spawnRate: 0.2,
             health: 30,
             mana:0,

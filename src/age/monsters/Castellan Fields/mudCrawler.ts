@@ -1,7 +1,6 @@
 import { CommandInteraction } from 'discord.js'
 import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
-import { slimeBlob} from '../../items'
 import generateXP from '../../../utils/generateXP'
 import { silkBlob } from '../../items/silkblob'
 
@@ -23,6 +22,7 @@ export class mudCrawler extends MonsterEntity {
     static create() {
         return new mudCrawler({
             name: 'Mud Crawler',
+            description:`Worm like creatures with sharp teeths who blend in the mud and attack their prey. They often mark their hunting grounds with threads of silk produced from their salivary glands, although this silk is of low grade, it still fetches a decent price.`,
             spawnRate: 0.3,
             health: 30,
             mana:0,

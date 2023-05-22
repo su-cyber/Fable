@@ -1,7 +1,6 @@
 import { CommandInteraction } from 'discord.js'
 import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
-import { slimeBlob} from '../../items'
 import generateXP from '../../../utils/generateXP'
 import { grainmiteTooth } from '../../items/grainmiteTeeth'
 
@@ -23,6 +22,7 @@ export class grainMite extends MonsterEntity {
     static create() {
         return new grainMite({
             name: 'Grain Mite',
+            description:`Common rodents in crop fields known for destroying crops and lay waste on godowns in swarms. They have sharp claws and teeths strong enough to crack the hardest grains and nuts.`,
             spawnRate: 0.3,
             health: 30,
             mana:0,

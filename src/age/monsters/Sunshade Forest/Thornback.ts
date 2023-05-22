@@ -1,7 +1,6 @@
 import { CommandInteraction } from 'discord.js'
 import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
-import { slimeBlob} from '../../items'
 import generateXP from '../../../utils/generateXP'
 import { treemickBranch } from '../../items/treemickBranch'
 import { thornbackShell } from '../../items/thornback_shell'
@@ -25,6 +24,7 @@ export class Thornback extends MonsterEntity {
         return new Thornback({
             name: 'Thornback',
             spawnRate: 0.5,
+            description:`A large, armored reptile covered in sharp thorns. The Thornback is slow-moving but extremely powerful. Its attack is a charge with its heavy, spiked tail. Its drop is a Thornback shell, which can be crafted into sturdy armor.`,
             health: 30,
             mana:0,
             xp: generateXP(5,15),
