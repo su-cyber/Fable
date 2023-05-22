@@ -1,7 +1,6 @@
 import { CommandInteraction } from 'discord.js'
 import { MonsterEntity, ClassEntity } from '../classes'
 import { Dropper } from '../dropper'
-import { slimeBlob} from '../items'
 import generateXP from '../../utils/generateXP'
 import { goldenTelescope } from '../items/goldenTelescope'
 
@@ -23,6 +22,7 @@ export class captainCrook extends MonsterEntity {
     static create() {
         return new captainCrook({
             name: 'Captain Crook',
+            description:`the leader of Beer Buccaneers`,
             spawnRate: 0.5,
             health: 50,
             mana:0,

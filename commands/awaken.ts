@@ -1,8 +1,6 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
 import inventory from '../models/InventorySchema'
-import { arachnidVenom } from '../src/age/items'
-import { ghoulSkull } from '../src/age/items'
 import { Sword } from '../src/age/weapons/sword'
 import { steelArmour } from '../src/age/armour/steel_armour'
 import { healthPotion } from '../src/age/potions/healthPotion'
@@ -260,14 +258,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         weapons:[{name: Sword,
                                         quantity:Number(1)},{name: steelSword,
                                             quantity:Number(1)}],
-                                        items:[{name:arachnidVenom.name,
-                                            description:arachnidVenom.description,
-                                            quantity:Number(2)
-                                        }, {name:ghoulSkull.name,
-                                            description:ghoulSkull.description,
-                                            quantity:Number(3)
-                    
-                                        }],
+                                        items:[],
                                         armour:[{name: steelArmour,
                                             quantity:Number(1)}],
                                         potions:[{

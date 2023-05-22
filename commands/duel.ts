@@ -182,13 +182,7 @@ class PvPDuel extends DuelBuilder {
         }
         
         if (this.attacker instanceof MonsterEntity) {
-            
-           
-            await this.sendInfoMessage(this.attacker.skills, true)
 
-            this.attacker.useSkill(this.attacker,this.defender)
-            await sleep(this.speed)
-            
             
         } 
         else {

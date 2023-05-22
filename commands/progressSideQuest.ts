@@ -1,8 +1,6 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
 import inventory from '../models/InventorySchema'
-import { arachnidVenom } from '../src/age/items'
-import { ghoulSkull } from '../src/age/items'
 import { Sword } from '../src/age/weapons/sword'
 import { steelArmour } from '../src/age/armour/steel_armour'
 import { healthPotion } from '../src/age/potions/healthPotion'

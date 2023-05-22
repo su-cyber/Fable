@@ -1,9 +1,9 @@
 import { CommandInteraction } from 'discord.js'
 import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
-import { goblinPouch } from '../../items'
 import generateXP from '../../../utils/generateXP'
 import profileModel from '../../../../models/profileSchema'
+import { backBreaker } from '../../items/backbreaker'
 
 
 export class BeerBuccsDuo extends MonsterEntity {
@@ -17,7 +17,7 @@ export class BeerBuccsDuo extends MonsterEntity {
 
         await new Dropper([
             {
-                item: goblinPouch,
+                item: backBreaker,
                 dropRate: 0,
             },
         ]).sendDeathMessage(messages, interaction, this,killer)
@@ -26,6 +26,7 @@ export class BeerBuccsDuo extends MonsterEntity {
     static create() {
         return new BeerBuccsDuo({
             name: 'Beer Buccuneers Duo',
+            description:`a duo of Beer Buccaneers`,
             spawnRate: 0.4,
             health: 30,
             evasion: 0.05,
