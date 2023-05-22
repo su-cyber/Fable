@@ -5,7 +5,6 @@ import { SlashCommandIntegerOption, SlashCommandUserOption } from '@discordjs/bu
 import { SlashCommandStringOption } from '@discordjs/builders'
 import shopWeapons_lvl5 from '../src/age/weapons/shopWeapons_lvl5'
 import { Channel, Collector, Message, MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu } from 'discord.js'
-import shopItems_lvl5 from '../src/age/items/shopItems_lvl5'
 import allItems from '../src/age/items/allItems'
 
 
