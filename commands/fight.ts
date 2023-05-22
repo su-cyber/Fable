@@ -392,7 +392,7 @@ export class PvEDuel extends DuelBuilder {
                     }
                     
                 }
-                let skill = allskills.find(skill => skill.name === strongest_name)
+                let skill = this.attacker.skills.find(skill => skill.name === strongest_name)
                 if(this.attacker.mana>=skill.mana_cost){
                     if(this.attacker.mana>=2*skill.mana_cost){
                         this.attacker.useSkill(this.attacker,this.defender,skill)
@@ -475,7 +475,7 @@ export class PvEDuel extends DuelBuilder {
                         }
                         
                     }
-                    let skill = allskills.find(skill => skill.name === strongest_name)
+                    let skill = this.attacker.skills.find(skill => skill.name === strongest_name)
                     if(this.attacker.mana>=skill.mana_cost){
                         if(this.attacker.mana>=2*skill.mana_cost){
                             this.attacker.useSkill(this.attacker,this.defender,skill)
@@ -550,7 +550,7 @@ export class PvEDuel extends DuelBuilder {
                     }
                     
                 }
-                let skill = allskills.find(skill => skill.name === strongest_name)
+                let skill = this.attacker.skills.find(skill => skill.name === strongest_name)
                 if(this.attacker.mana>=skill.mana_cost){
                     if(this.attacker.mana>=2*skill.mana_cost){
                         this.attacker.useSkill(this.attacker,this.defender,skill)
