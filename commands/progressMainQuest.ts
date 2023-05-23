@@ -13,6 +13,7 @@ import { sleep, weightedRandom } from '../src/utils'
 import { starHound } from '../src/age/monsters/ellior/Starhound'
 import { Warrior } from '../src/age/heroes/warrior'
 import getHealth from '../src/utils/getHealth'
+import { Dave } from '../src/age/npc enemies/guildDraft_Dave'
 
 
 export default new MyCommandSlashBuilder({ name: 'progressmainquest', description: 'progress your main quest progress' }).setDo(
@@ -420,7 +421,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                     if(btn.isButton()){
                                         if(btn.customId === "btn_accept"){
                                             await btn.deferUpdate().catch(e => {})
-                                            await interaction.editReply({embeds:[acceptEmbed]})
+                                            await interaction.editReply({embeds:[acceptEmbed],components:[]})
                             
                                             
                                             await profileModel.updateOne({userID:interaction.user.id},{main_quest_phase:"3"})
@@ -550,6 +551,106 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                         
 
                     }
+                    else if(foundUser.main_quest_phase == "4"){
+                        if(foundUser.location == "Guild District"){
+                            let btnraw= new MessageActionRow().addComponents([
+                                new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Fight")])
+                               
+    
+                                let d_btnraw = new MessageActionRow().addComponents([
+                                    new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Fight").setDisabled(true),
+                                   
+                                ])
+                            let questEmbed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('A New Road')
+                    .setAuthor({
+                        iconURL:interaction.user.displayAvatarURL(),
+                        name:interaction.user.tag
+                    })
+                    .addFields([
+                        {
+                            name: `Current Objective:`,
+                            value:`**Proeed to fight your opponent**`
+                        }
+                    ])
+                    
+                    
+                    .setDescription(`It is time for the final round. The round where you must fight another participant who has made it as far as you. Before the fights start though, there is a short announcement where the Vice-Masters of the many guilds around the world enter the colosseum and take a seat. They would choose the best candidates and offer them a position in their own guild. Of course losers would not get picked.With a loud blow of a horn, your opponent approaches you from the opposite side of the arena.You ready your weapons and brace yourself for the fight `)
+                    await interaction.reply({content: null,embeds:[questEmbed],components:[btnraw]})
+                   
+                    
+                        
+                    
+                   
+                    
+                    let filter = i => i.user.id === authorId
+                        let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
+                
+                        collector.on('collect',async (btn) => {
+                            if(btn.isButton()){
+                                if(btn.customId === "btn_accept"){
+                                    await btn.deferUpdate().catch(e => {})
+                                    
+                                    const attacker = Warrior.create(author)
+                                    const monster = Dave.create()
+                                    attacker.health=foundUser.health
+                                            attacker.mana=foundUser.mana
+                                            attacker.armor=foundUser.armour
+                                            attacker.magicPower=foundUser.magicPower
+                                            attacker.attackDamage=foundUser.attackDamage
+                                            attacker.evasion=foundUser.evasion
+                                            attacker.element = foundUser.elements[0]
+                                            attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                            attacker.passive_skills = foundUser.passiveskills
+                                            attacker.maxMana = foundUser.mana
+                                            attacker.speed = foundUser.speed
+                                            attacker.skills=foundUser.currentskills
+                                    if(attacker.speed >= monster.speed){
+                                        await new PvEDuel_MQuest({
+                                            interaction,
+                                            player1: attacker,
+                                            player2: monster,
+                                            speed:2,
+                                        }).start()
+                                        
+                                    }
+                                    else{
+                                        await new PvEDuel_MQuest({
+                                            interaction,
+                                            player1: monster,
+                                            player2: attacker,
+                                            speed:2
+                                        }).start()
+                                    }
+                                    
+                                    await profileModel.updateOne({userID:interaction.user.id},{main_quest_phase:5})
+                                    
+                               
+                                collector.stop()
+                                    
+                                }
+                               
+
+                                
+                                
+                            }
+
+                            collector.on('end', () => {
+                                interaction.editReply({components: [d_btnraw]})
+                            })
+                        })
+                    
+                    
+
+                        }
+                        else{
+                            interaction.reply(`You are not in the Guild District, please go to the Guild District to continue!`)
+                   
+                        }
+                    
+
+                }
                     }
 
                        
@@ -603,7 +704,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                          foundUser.dungeon.step = 0
 
                          
-                         await profileModel.updateOne({userID:authorID},{health:loser.maxHealth,location:foundUser.location,dungeon:foundUser.dungeon,main_quest_phase:foundUser.main_quest_phase-1})
+                         await profileModel.updateOne({userID:authorID},{health:Math.round(0.1*loser.maxHealth),location:foundUser.location,dungeon:foundUser.dungeon,main_quest_phase:foundUser.main_quest_phase-1})
                      
                      }
                      

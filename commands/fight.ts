@@ -306,10 +306,10 @@ export class PvEDuel extends DuelBuilder {
     async beforeDuelStart() {
         super.beforeDuelStart()
         if(this.attacker instanceof MonsterEntity){
-            await this.replyOrEdit({ content: `starting combat with ${this.player1.name}!` })
+            await this.replyOrEdit({ content: `starting combat with ${this.player1.name}!`,components:[],embeds:[]})
         }
         else{
-            await this.replyOrEdit({ content: `starting combat with ${this.player2.name}!` })
+            await this.replyOrEdit({ content: `starting combat with ${this.player2.name}!`,components:[],embeds:[] })
         }
        
         await sleep(1.2)

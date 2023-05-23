@@ -21,7 +21,7 @@ export class Warrior extends ClassEntity {
     ) {
        
         const text = `
-            **${killed.name} Barely escapes from the jaws of death and wakes up in a safe spot with critical health.
+            **${killed.name} Barely escapes from the jaws of death and wakes up in a safe spot with critical health.**
         `
 
         await interaction.channel.send(removeIndentation(text))

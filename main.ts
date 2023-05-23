@@ -4,7 +4,7 @@ import profileModel from './models/profileSchema'
 
  
 
-setInterval(give_energy,10000);
+setInterval(give_energy,1000*60);
 
 new Bot({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.DIRECT_MESSAGE_REACTIONS],partials: ['CHANNEL'] }).run()
 
