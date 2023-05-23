@@ -103,7 +103,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             let fightEmbed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('ENCOUNTER')
-                            .setDescription(`🔎 you found a ${monster.name}!\nDescription:${monster.description}`)
+                            .setDescription(`🔎 you found a ${monster.name}!\n\nDescription:${monster.description}`)
         
                             let acceptEmbed = new MessageEmbed()
                             .setColor('GREEN')
@@ -433,12 +433,12 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 ])
                             let dungeonEmbed = new MessageEmbed()
                                     .setColor('RANDOM')
-                                    .setTitle('ENCOUNTER')
-                                    .setDescription(`You are about to enter a dungeon!\nDo you wish to proceed?`)
+                                    .setTitle(`Exploring ${location}...`)
+                                    .setDescription(`As you approach the Abandoned Castle, a sense of mystery and melancholy washes over you. Its imposing silhouette stands as a testament to a bygone era, where echoes of battles and whispers of forgotten tales linger in the air. The weathered stones bear the weight of history, each crack and crevice whispering secrets lost to time. The once-majestic architecture now wears a cloak of solitude, the windows like empty eyes that have seen the passage of ages.\n\nYou are about to enter a dungeon!\nDo you wish to proceed?`)
                 
                                     let acceptEmbed = new MessageEmbed()
                                     .setColor('GREEN')
-                                    .setTitle('ACCEPTED')
+                                    .setTitle('ENTERED DUNGEON')
                                     .setDescription('You have decided to enter!\npress /proceeddungeon in DMs to move forward')
                 
                                     let rejectEmbed = new MessageEmbed()
@@ -498,13 +498,64 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setTitle(`Now Exploring ${city_town}...`)
                 .setImage('attachment://Aube_Town.jpg')
                 .setDescription(`you visited ${location}, The township of aube\n\nuse **/explore** to explore this location`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
             
+                    }
+                    else if(location == 'Town Centre'){
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`Exploring ${location}...`)
+                        .setDescription(`As you walk around the town center of Aube, a whimsical world unfolds before your eyes. Vibrant market stalls adorned with colorful banners beckon you closer, while the air buzzes with laughter and music, as the tightly-knit community of residents and travelers alike gather joyfully to partake in enchanting events and lively festivals.`)
+                        await interaction.reply({embeds:[successembed],components:[]})
+                    }
+                    else if(location == 'Aube Town Guild Outpost'){
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`Exploring ${location}...`)
+                        .setDescription(`As your gaze lands upon the Guild Outpost nestled in Aube Town, you witness a bustling hub where Guild Rangers diligently assist the locals, providing support in tasks and safeguarding them from both mythical creatures and nefarious bandits with unwavering dedication.`)
+                        await interaction.reply({embeds:[successembed],components:[]})
+                    }
+                    else if(location == `Crofter's Market`){
+                        const attachment = new MessageAttachment('assets/AubeTown/Crofters_Market.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`Exploring ${location}...`)
+                        .setImage('attachment://Crofters_Market.jpg')
+                        .setDescription(`You step into the lively market of Aube, immersing yourself in a whirlwind of sights and sounds. The air is filled with the scent of exotic spices, echoing laughter, and the clinking of coins. Crofters proudly display their diverse array of goods, from gleaming weapons to intricate suits of armor, each telling a tale of craftsmanship and adventure. It's a bustling hub of vibrant colors, where the spirit of commerce dances in the air, captivating your senses and igniting your imagination.`)
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == `The Lager Estate`){
+                        const attachment = new MessageAttachment('assets/AubeTown/Lager_Estate.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`Exploring ${location}...`)
+                        .setImage('attachment://Lager_Estate.jpg')
+                        .setDescription(`As you venture into the hallowed grounds of the Lager Estate, the air becomes infused with a symphony of aromatic delights. The Lager family's brewers, steeped in tradition, meticulously brew the legendary "Backbreaker Beer" using Solarcorn, infusing it with the essence of the sun. The estate exudes an aura of mastery and craftsmanship, captivating your senses with tantalizing scents and promising an unforgettable journey into the world of exquisite flavors.`)
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == `The Terrific Troll Tavern`){
+                        const attachment = new MessageAttachment('assets/AubeTown/Terrific_Troll_Tavern.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`Exploring ${location}...`)
+                        .setImage('attachment://Terrific_Troll_Tavern.jpg')
+                        .setDescription(`You step through the entrance of the Terrific Troll Tavern, instantly enveloped in a warm embrace of camaraderie and understanding. The air is thick with laughter and whispers of shared stories, as patrons from all walks of life gather to find respite from their burdens. The flickering candlelight dances upon the worn wooden tables, casting a comforting glow that seems to invite confessions and healing. In this haven of solace, you find yourself welcomed into a community where vulnerability is celebrated and burdens are lightened through the power of shared experiences.`)
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else{
                         await interaction.reply(`you are not in a particular location!`)
                      }
 
+                }
+                else if(city_town == "Badlands"){
+            
+                const attachment = new MessageAttachment('assets/AubeTown/Badlands.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://Badlands.jpg')
+                .setDescription(`You venture into the Badlands, where the merciless sun beats down upon your weary shoulders, each step an arduous journey across the treacherous desert expanse. The air is a stifling furnace, the relentless heat mirroring the challenges that await. The land is strewn with rocky outcrops and shifting sands, a harsh reminder of the unforgiving nature of this desolate realm. As you navigate through this wasteland, the secrets of the Badlands whisper in the wind, urging caution and resilience. In this land of extreme adversity, you become a solitary figure, forever humbled by the power and fragility of life.\n\nuse **/explore** to explore this location`)
+                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(city_town == "Zorya"){
                     if(location == 'Guild District'){
@@ -514,7 +565,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setTitle(`Now Exploring ${location}...`)
                         .setImage('attachment://guild_district.jpg')
                         .setDescription(`you visited ${location},The home to all guilds and the guild colosseum\n\nuse **/explore** to explore this location`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Guild Office'){
                         const attachment = new MessageAttachment('assets/Zorya/guild_office.jpg')
@@ -535,7 +586,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setDescription(`you visited ${foundUser.guild}'s ${location}, The main office in Solarstrio\n\nuse **/explore** to explore this location`)
                              
                         }
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == `Auriga Sails Company`){
                         const attachment = new MessageAttachment('assets/Zorya/auriga_company.jpg')
@@ -544,7 +595,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setTitle(`Now Exploring ${location}...`)
                         .setImage('attachment://auriga_company.jpg')
                         .setDescription(`you visited ${location},the famous Auriga ship company run by earl Auriga\n\nuse **/explore** to explore this location\n\nuse**/shop** to access the shops\nuse **/buy** to buy something\nuse **/sell** to sell something`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Astro Avenue'){
                         const attachment = new MessageAttachment('assets/Zorya/astro_avenue.jpg')
@@ -553,7 +604,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setTitle(`Now Exploring ${location}...`)
                         .setImage('attachment://astro_avenue.jpg')
                         .setDescription(`you visited ${location},home to many foreign goods not found in Solarstrio\n\nuse **/explore** to explore this location`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Golden Terminal'){
                         const attachment = new MessageAttachment('assets/Zorya/golden_terminal.jpg')
@@ -562,7 +613,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setTitle(`Now Exploring ${location}...`)
                         .setImage('attachment://golden_terminal.jpg')
                         .setDescription(`you visited ${location},A famous station for Quarantrain\n\nuse **/explore** to explore this location`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Castle of Chariots'){
                         const attachment = new MessageAttachment('assets/Zorya/castle_chariots.jpg')
@@ -571,7 +622,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setTitle(`Now Exploring ${location}...`)
                         .setImage('attachment://castle_chariots.jpg')
                         .setDescription(`you visited ${location},The stunning castle of Earl Auriga\n\nuse **/explore** to explore this location`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Siewelle Port'){
                         const attachment = new MessageAttachment('assets/Zorya/siewelle_port.jpg')
@@ -580,7 +631,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setTitle(`Now Exploring ${location}...`)
                         .setImage('attachment://siewelle_port.jpg')
                         .setDescription(`you visited ${location},The Port which serves as the main market of Zorya\n\nuse **/explore** to explore this location`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == "None"){
                 const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
@@ -589,7 +640,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setTitle(`Now Exploring ${city_town}...`)
                 .setImage('attachment://zorya_main.jpg')
                 .setDescription(`you visited ${location},The great stateship of zorya\n\nuse **/explore** to explore this location`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
             
                     }
                 }
@@ -600,7 +651,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setTitle(`Now Exploring ${city_town}...`)
                 .setImage('attachment://zephyr_mountain.jpg')
                 .setDescription(`you visited ${location},The great mountains of Zephyr range\n\nuse **/explore** to explore this location`)
-                await interaction.editReply({embeds:[embed],components:[],files:[attachment]})
+                await interaction.reply({embeds:[embed],components:[],files:[attachment]})
         
                 }
                 else if(city_town == "Sunstone Mines"){
@@ -610,7 +661,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setTitle(`Now Exploring ${city_town}...`)
                 .setImage('attachment://sunstone_mines.jpg')
                 .setDescription(`you visited ${location},The minefield where sunstones are mined\n\nuse **/explore** to explore this location`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
             
                 }
                 else if(city_town == "Dragon's Den"){
@@ -620,7 +671,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setTitle(`Now Exploring ${city_town}...`)
                 .setImage('attachment://dragon_den.jpg')
                 .setDescription(`you visited ${location},The den of an ancient Dragon\n\nuse **/explore** to explore this location`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
             
                 }
                 else if(city_town == "orld husk"){
@@ -630,7 +681,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setTitle(`Now Exploring ${city_town}...`)
                 .setImage('attachment://orld_husk.jpg')
                 .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\nuse **/explore** to explore this location`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
             
                 }
             }

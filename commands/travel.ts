@@ -63,19 +63,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Castellan Fields`,
-                                            value:`**Travelled on Mount**\n**Description**:a field outside aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:a field outside aube town\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunshade Forest`,
-                                            value:`**Travelled on Mount**\n**Description**:a forest outside aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:a forest outside aube town\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `The Badlands`,
-                                            value:`**Travelled on Mount**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `State of Zorya`,
-                                            value:`**Travelled on Mount**\n**Description**:The Great stateship of Zorya\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The Great stateship of Zorya\n**Cost**:0 🪙\n`
                                         }
                                     ])
 
@@ -135,7 +135,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Castellan_Fields.jpeg')
-                .setDescription(`you visited ${location}, a wide field outside aube town\n\nuse **/explore** to explore this location`)
+                .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Badlands'){
@@ -145,7 +145,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Badlands.jpg')
-                .setDescription(`you visited ${location},the outskirts of aube town\n\nuse **/explore** to explore this location`)
+                .setDescription(`As your gaze falls upon the Badlands in Aube Town, you behold a scorching desert realm where relentless heat engulfs the treacherous landscape, concealing untold secrets and lurking death at every precarious step, warning you of the unforgiving nature of this desolate domain.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Sunshade Forest'){
@@ -155,7 +155,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Badlands.jpg')
-                .setDescription(`you visited ${location},a forest outside aube town\n\nuse **/explore** to explore this location`)
+                .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Zorya'){
@@ -202,15 +202,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Aube Town`,
-                                            value:`**Travelled on Foot**\n**Description**:The township of aube\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunshade Forest`,
-                                            value:`**Travelled on Foot**\n**Description**:a forest outside aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:a forest outside aube town\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `The Badlands`,
-                                            value:`**Travelled on Foot**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙\n`
                                         },
                                        
                                     ])
@@ -224,15 +224,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Aube Town`,
-                                            value:`**Travelled on Mount**\n**Description**:The township of aube\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunshade Forest`,
-                                            value:`**Travelled on Mount**\n**Description**:a forest outside aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:a forest outside aube town\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `The Badlands`,
-                                            value:`**Travelled on Mount**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙\n`
                                         },
                                         
                                     ])
@@ -299,7 +299,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Badlands.jpg')
-                .setDescription(`you visited ${location},the outskirts of aube town\n\nuse **/explore** to explore this location`)
+                .setDescription(`As your gaze falls upon the Badlands in Aube Town, you behold a scorching desert realm where relentless heat engulfs the treacherous landscape, concealing untold secrets and lurking death at every precarious step, warning you of the unforgiving nature of this desolate domain.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Sunshade Forest'){
@@ -309,7 +309,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Badlands.jpg')
-                .setDescription(`you visited ${location},a forest outside aube town\n\nuse **/explore** to explore this location`)
+                .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             
@@ -347,15 +347,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Aube Town`,
-                                            value:`**Travelled on Foot**\n**Description**:The township of aube\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Castellan Fields`,
-                                            value:`**Travelled on Foot**\n**Description**:a field outside aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:a field outside aube town\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `The Badlands`,
-                                            value:`**Travelled on Foot**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙\n`
                                         },
                                        
                                     ])
@@ -369,15 +369,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Aube Town`,
-                                            value:`**Travelled on Mount**\n**Description**:The township of aube\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Castellan Fields`,
-                                            value:`**Travelled on Mount**\n**Description**:a field outside aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:a field outside aube town\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `The Badlands`,
-                                            value:`**Travelled on Mount**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙\n`
                                         },
                                         
                                     ])
@@ -444,7 +444,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Badlands.jpg')
-                .setDescription(`you visited ${location},the outskirts of aube town\n\nuse **/explore** to explore this location`)
+                .setDescription(`As your gaze falls upon the Badlands in Aube Town, you behold a scorching desert realm where relentless heat engulfs the treacherous landscape, concealing untold secrets and lurking death at every precarious step, warning you of the unforgiving nature of this desolate domain.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Castellan Fields'){
@@ -454,7 +454,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Castellan_Fields.jpeg')
-                .setDescription(`you visited ${location},a field outside aube town\n\nuse **/explore** to explore this location`)
+                .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             
@@ -492,15 +492,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Aube Town`,
-                                            value:`**Travelled on Foot**\n**Description**:The township of aube\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Castellan Fields`,
-                                            value:`**Travelled on Foot**\n**Description**:a field outside aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:a field outside aube town\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunshade Forest`,
-                                            value:`**Travelled on Foot**\n**Description**:a forrest outside aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:a forrest outside aube town\n**Cost**:0 🪙\n`
                                         },
                                        
                                     ])
@@ -514,15 +514,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Aube Town`,
-                                            value:`**Travelled on Mount**\n**Description**:The township of aube\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Castellan Fields`,
-                                            value:`**Travelled on Mount**\n**Description**:a field outside aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:a field outside aube town\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunshade Forest`,
-                                            value:`**Travelled on Mount**\n**Description**:a forest outside aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:a forest outside aube town\n**Cost**:0 🪙\n`
                                         },
                                         
                                     ])
@@ -589,7 +589,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Badlands.jpg')
-                .setDescription(`you visited ${location},a forest outside aube town\n\nuse **/explore** to explore this location`)
+                .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Castellan Fields'){
@@ -599,7 +599,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Castellan_Fields.jpeg')
-                .setDescription(`you visited ${location},a field outside aube town\n\nuse **/explore** to explore this location`)
+                .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             
@@ -637,35 +637,35 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Ellior Forest`,
-                                            value:`**Travelled on Foot**\n**Description**:The enchanting Forest of Ellior\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The enchanting Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Dragon’s Den`,
-                                            value:`**Travelled on Foot**\n**Description**:The Den of an Ancient Dragon\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The Den of an Ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunstone Mines`,
-                                            value:`**Travelled on Foot**\n**Description**:The minefield where sunstones are mined\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The minefield where sunstones are mined\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Township of Aube`,
-                                            value:`**Travelled on Stage Coach**\n**Description**:The township of Aube\n**Cost**:100 🪙`
+                                            value:`**Travelled on Stage Coach**\n**Description**:The township of Aube\n**Cost**:100 🪙\n`
                                         },
                                         {
                                             name: `Zephyr Mountain`,
-                                            value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `State of Tethys`,
-                                            value:`**Travelled on Stage Coach**\n**Description**:The Stateship of Tethys\n**Cost**:300 🪙`
+                                            value:`**Travelled on Stage Coach**\n**Description**:The Stateship of Tethys\n**Cost**:300 🪙\n`
                                         },
                                         {
                                             name: `Capital State of Gloaming`,
-                                            value:`**Travelled on Stage Coach**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:200 🪙`
+                                            value:`**Travelled on Stage Coach**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:200 🪙\n`
                                         },
                                         {
                                             name: `Orld Tree’s Husk`,
-                                            value:`**Travelled on Foot**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Township of Werfall`,
@@ -683,39 +683,39 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Ellior Forest`,
-                                            value:`**Travelled on Mount**\n**Description**:The enchanting Forest of Ellior\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The enchanting Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Dragon’s Den`,
-                                            value:`**Travelled on Mount**\n**Description**:The Den of an Ancient Dragon\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The Den of an Ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunstone Mines`,
-                                            value:`**Travelled on Mount**\n**Description**:The minefield where sunstones are mined\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The minefield where sunstones are mined\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Township of Aube`,
-                                            value:`**Travelled on Mount**\n**Description**:The township of Aube\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The township of Aube\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Zephyr Mountain`,
-                                            value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `State of Tethys`,
-                                            value:`**Travelled on Mount**\n**Description**:The Stateship of Tethys\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The Stateship of Tethys\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Capital State of Gloaming`,
-                                            value:`**Travelled on Mount**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Orld Tree’s Husk`,
-                                            value:`**Travelled on Mount**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Township of Werfall`,
-                                            value:`**Travelled on Mount**\n**Description**:The Township of Werfall\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The Township of Werfall\n**Cost**:0 🪙\n`
                                         },
                                        
                                         
@@ -920,19 +920,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Dragon’s Den`,
-                                            value:`**Travelled on Foot**\n**Description**:The den of an ancient Dragon\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunstone Mines`,
-                                            value:`**Travelled on Foot**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Zephyr Mountain`,
-                                            value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Orld Tree’s Husk`,
@@ -950,23 +950,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Dragon’s Den`,
-                                            value:`**Travelled on Mount**\n**Description**:The den of an ancient Dragon\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunstone Mines`,
-                                            value:`**Travelled on Mount**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Zephyr Mountain`,
-                                            value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Orld Tree’s Husk`,
-                                            value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
                                         },
                                        
                                     ])
@@ -1111,23 +1111,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
-                                            value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunstone Mines`,
-                                            value:`**Travelled on Foot**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Zephyr Mountain`,
-                                            value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Orld Tree’s Husk`,
-                                            value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
                                         },
                                        
                                     ])
@@ -1141,19 +1141,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
-                                            value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunstone Mines`,
-                                            value:`**Travelled on Mount**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Zephyr Mountain`,
-                                            value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Orld Tree’s Husk`,
@@ -1302,23 +1302,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
-                                            value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Dragon's Den`,
-                                            value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Zephyr Mountain`,
-                                            value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Orld Tree’s Husk`,
-                                            value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
                                         },
                                        
                                     ])
@@ -1332,23 +1332,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
-                                            value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Dragon's Den`,
-                                            value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Zephyr Mountain`,
-                                            value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Orld Tree’s Husk`,
-                                            value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
                                         },
                                        
                                     ])
@@ -1493,19 +1493,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
-                                            value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Dragon's Den`,
-                                            value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunstone Mines`,
-                                            value:`**Travelled on Foot**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Orld Tree’s Husk`,
@@ -1523,19 +1523,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
-                                            value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Dragon's Den`,
-                                            value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunstone Mines`,
-                                            value:`**Travelled on Mount**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Orld Tree’s Husk`,
@@ -1684,19 +1684,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
-                                            value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Dragon's Den`,
-                                            value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunstone Mines`,
-                                            value:`**Travelled on Foot**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Zephyr Mountain`,
@@ -1714,19 +1714,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
-                                            value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Dragon's Den`,
-                                            value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunstone Mines`,
-                                            value:`**Travelled on Mount**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙`
+                                            value:`**Travelled on Mount**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Zephyr Mountain`,

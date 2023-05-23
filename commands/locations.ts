@@ -33,7 +33,32 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
                                     .setColor('RANDOM')
                                     .setTitle('SELECT LOCATION')
                                     .setDescription(`Choose a a location to visit in ${city_town}`)
-                                    
+                                    .addFields([
+                                        {
+                                            name: `The Terrific Troll Tavern`,
+                                            value:`**Description**:a simple tavern\n`
+                                        },
+                                        {
+                                            name: `The Lager Estate`,
+                                            value:`**Description**:Home to the famous Lager Family and their legendary Backbreaker Beer.\n`
+                                        },
+                                        {
+                                            name: `Crofter's Market`,
+                                            value:`**Description**:The Crofter’s Market is a place for craftsmanship to find new homes.\n`
+                                        },
+                                        {
+                                            name: `Aube Town Guild Outpost`,
+                                            value:`**Description**:The Guild Outpost is home to the unwavering and dedicated Guild Rangers.\n`
+                                        },
+                                        {
+                                            name: `Town Centre`,
+                                            value:`**Description**:The Town Center is a place of importance, gathering and sometimes entertainment.\n`
+                                        },
+                                        {
+                                            name: `Abandoned Castle`,
+                                            value:`**Description**:an abandoned castle.\n`
+                                        }
+                                    ])
                                     
                                
     
@@ -51,20 +76,20 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
                     value: `The Terrific Troll Tavern`,
                 },{
                     label: `The Lager Estate`,
-                    description: `the estate of the lager family`,
+                    description: `Home to the famous Lager Family and their legendary Backbreaker Beer.`,
                     value: `The Lager Estate`,
                 },
                 {
                     label: `Crofter's Market`,
-                    description: `the local market`,
+                    description: `The Crofter’s Market is a place for craftsmanship to find new homes.`,
                     value: `Crofter's Market`,
                 },{
                     label: `Aube Town Guild Outpost`,
-                    description: `an outpost for the guild`,
+                    description: `The Guild Outpost is home to the unwavering and dedicated Guild Rangers.`,
                     value: `Aube Town Guild Outpost`,
                 },{
                     label: `Town Centre`,
-                    description: `the centre of the town`,
+                    description: `The Town Center is a place of importance, gathering and sometimes entertainment.`,
                     value: `Town Centre`,
                 },{
                     label: `Abandoned Castle`,
@@ -98,7 +123,7 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Terrific_Troll_Tavern.jpg')
-                .setDescription(`you visited ${location}, a simple tavern\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you cast your gaze upon the Terrific Troll Tavern in Aube Town, you witness a haven where both the burdened find solace, and the troubled find empathy, as laughter intertwines with heartfelt tales, creating an atmosphere that embraces both escapism and catharsis.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'The Lager Estate'){
@@ -107,7 +132,7 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Lager_Estate.jpg')
-                .setDescription(`you visited ${location}, the estate of lager family\n\nuse **/explore** to explore this location`)
+                .setDescription(`As your eyes wander across the Lager Estate in Aube Town, you witness the renowned Lager family's brewers diligently crafting the legendary "Backbreaker Beer" using Solarcorn, a golden elixir that glows with the sun's essence, immersing you in a realm of tantalizing tastes and its twisted aftermath.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == `Crofter's Market`){
@@ -116,28 +141,28 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Crofters_Market.jpg')
-                .setDescription(`you visited ${location}, a simple shop\n\nuse **/explore** to explore this location\n\nuse**/shop** to access the shops\nuse **/buy** to buy something\nuse **/sell** to sell something`)
+                .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\nuse **/explore** to explore this location\n\nuse**/shop** to access the shops\nuse **/buy** to buy something\nuse **/sell** to sell something`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Aube Town Guild Outpost'){
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
-                .setDescription(`you visited ${location}, an outpost for the guild\n\nuse **/explore** to explore this location`)
+                .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of magical beasts and bandits, while the air hums with a sense of shared purpose and safety\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[]})
             }
             else if(location == 'Town Centre'){
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
-                .setDescription(`you visited ${location}, an outpost for the guild\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[]})
             }
             else if(location == 'Abandoned Castle'){
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
-                .setDescription(`you visited ${location}, an abanoned castle in the outskirts\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[]})
             }
            

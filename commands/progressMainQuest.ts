@@ -9,6 +9,10 @@ import { Collector, MessageButton, MessageEmbed } from 'discord.js'
 import { BeerBuccsDuo } from '../src/age/monsters/tutorial/BeerBuccsDuo'
 import { MessageAttachment } from 'discord.js'
 import { PvEDuel } from './fight'
+import { sleep, weightedRandom } from '../src/utils'
+import { starHound } from '../src/age/monsters/ellior/Starhound'
+import { Warrior } from '../src/age/heroes/warrior'
+import getHealth from '../src/utils/getHealth'
 
 
 export default new MyCommandSlashBuilder({ name: 'progressmainquest', description: 'progress your main quest progress' }).setDo(
@@ -17,6 +21,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
         
         const authorId = interaction.user.id;
         const guildID = interaction.guildId;
+        const author = await bot.users.fetch(authorId)
 
         profileModel.exists({userID: authorId},async function(err,res){
             if(err){
@@ -176,7 +181,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                         value:`**Press "/progressmainquest" to continue**`
                                     }
                                 ])
-                                .setDescription(' You wake up in the tiny guild outpost within Aube Town. You were told that the Ghorgon had escaped from a nearby Fragment, but it was killed by the Vice-Master of {x} Guild. He is also the one who saved your life.\n The Vice Master further said that he was impressed by you, and wants to give you a letter of recommendation to receive the “Guild Hunter License”. Usually you would need to pay a big fee to even register as a Guild Ranger (Guild member not belonging to any prominent guild who’s only involved in Defense or Research). One needs to have the Guild Hunter License to secure higher tiers of quests that involve fighting within fragments, explorations and other high-profile quests. All year, people from around the world complete low-tier quests to raise their merit in order to receive a letter of recommendation. With enough merit and a letter of recommendation, the aspiring ranger can take part in the Guild Carnival and join a guild!')
+                                .setDescription('You wake up in the tiny guild outpost within Aube Town. You were told that the Ghorgon had escaped from a nearby Fragment, but it was killed by the Vice-Master of {x} Guild. He is also the one who saved your life.\n The Vice Master further said that he was impressed by you, and wants to give you a letter of recommendation to receive the “Guild Hunter License”. Usually you would need to pay a big fee to even register as a Guild Ranger (Guild member not belonging to any prominent guild who’s only involved in Defense or Research). One needs to have the Guild Hunter License to secure higher tiers of quests that involve fighting within fragments, explorations and other high-profile quests. All year, people from around the world complete low-tier quests to raise their merit in order to receive a letter of recommendation. With enough merit and a letter of recommendation, the aspiring ranger can take part in the Guild Carnival and join a guild!')
             
                                 let rejectEmbed = new MessageEmbed()
                                 .setColor('RED')
@@ -232,7 +237,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             }
 
                         else if(foundUser.main_quest_phase == "3"){
-                            await profileModel.updateOne({userID:authorId},{location:"The Guild Outpost"})
+                            await profileModel.updateOne({userID:authorId},{location:"The Guild Outpost",main_quest_phase:"4"})
                             let fightEmbed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('New Beginnings')
@@ -253,7 +258,299 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             await interaction.reply({content: null,embeds:[fightEmbed]})
 
                         }
+                        else if(foundUser.main_quest_phase == "4"){
+                           if(foundUser.location == "Aube Town Guild Outpost"){
+                            if(foundUser.completed_quests.includes("KS-TA-SQ1") && foundUser.completed_quests.includes("KS-TA-SQ2") && foundUser.completed_quests.includes("KS-TA-SQ3") && foundUser.completed_quests.includes("KS-TA-SQ4") && foundUser.completed_quests.includes("KS-TA-SQ5")){
+                                let fightEmbed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle('New Beginnings - COMPLETED')
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .addFields([
+                                    {
+                                        name: `Current Objective:`,
+                                        value:`**Use "/travel" command to travel to Zorya and proceed the main quest**`
+                                    },{
+                                        name:`Rewards:`,
+                                        value:`**Obtained:**Title - "Hero of Aube"`
+                                    }
+                                ])
+                                
+                                
+                                .setDescription(`You have proved yourself to the people of Aube and earned their praises even ridding them of the leader of Beer Buccaneers which is an outstanding feat in itself which lead to the mayor awarding you a new title!.As you go inside the guild outpost to meet the "vice-Master" who saved your life, to your dismay he is nowehere to be found however, you recieve a letter of recommendation along with a symbol branded into the envelope from the receptionist.\n\nYou try to analyse the symbol as it seems familiar to you but you can't remember.You are now all set to go to Zorya to participate in the Annual Guild Draft!`)
+            
+                                await interaction.reply({content: null,embeds:[fightEmbed]})
+                                foundUser.completed_quests.push("Tutorial")
+                                await profileModel.updateOne({userID:authorId},{current_title:"Hero of Aube",main_quest_phase:"1",completed_quests:foundUser.completed_quests,main_quest:"KS-ZS-MQ1"})
+                            }
+                            else{
+                                interaction.reply(`you have not completed all the quests in Aube, please check the Questboard`)
+                            }
+                            
+                           }
+                           else{
+                            interaction.reply(`You are not in the guild outpost, please go to the outpost to continue!`)
+                           }
+                            
+
                         }
+                        }
+                        else if(foundUser.main_quest == "KS-ZS-MQ1"){
+                            if(foundUser.main_quest_phase == "1"){
+                                if(foundUser.city_town == "Zorya"){
+                                    let questEmbed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('A New Road')
+                            .setAuthor({
+                                iconURL:interaction.user.displayAvatarURL(),
+                                name:interaction.user.tag
+                            })
+                            .addFields([
+                                {
+                                    name: `Current Objective:`,
+                                    value:`**Go to the Guild District and use "/progressmainquest" command to continue**`
+                                }
+                            ])
+                            
+                            
+                            .setDescription(`After bidding your farewells, you finally make it to the State of Zorya. You have one goal, to get to the Colosseum in the Guild District and participate in the annual Guild Draft using your letter of recommendation!.`)
+                            
+                            
+                            await interaction.reply({content: null,embeds:[questEmbed]})
+                            await profileModel.updateOne({userID:authorId},{main_quest_phase:"2"})
+
+                                }
+                                else{
+                                    interaction.reply(`You are not in Zorya, please travel to Zorya to continue!`)
+                           
+                                }
+                            }
+                            else if(foundUser.main_quest_phase == "2"){
+                                if(foundUser.location == "Guild District"){
+                                    let btnraw= new MessageActionRow().addComponents([
+                                        new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Proceed")])
+                                       
+            
+                                        let d_btnraw = new MessageActionRow().addComponents([
+                                            new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Proceed").setDisabled(true),
+                                           
+                                        ])
+                                    let questEmbed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('A New Road')
+                            .setAuthor({
+                                iconURL:interaction.user.displayAvatarURL(),
+                                name:interaction.user.tag
+                            })
+                            .addFields([
+                                {
+                                    name: `Current Objective:`,
+                                    value:`**Proceed to Test your might**`
+                                }
+                            ])
+                            
+                            
+                            .setDescription(`You gaze upon the towering Colosseum above you standing in all it's glory emanating the might of it's long history of legends who reigned in it's Arenas.You approach the guild official at the gate and show him your letter of recommendation, upon looking at it his expression changed to that of surprise before welcoming you politely inside the gates while explaining that the draft will take place in 3 rounds, the nature of which will be revealed on spot.He takes you to the area where the first selection round is scheduled.\n\nThe first round is held in the Colosseum’s courtyard. There are many participants here who have lined up to test their strength in front of the Revealing Tablet, a magical tablet which reacts to one's spyr and glows with an intensity proportional to one's strength.After waiting for a while,you are called upon to keep your hand on the revealing tablet,proceed to test your might.  `)
+                            await interaction.reply({content: null,embeds:[questEmbed],components:[btnraw]})
+                           
+                            let acceptEmbed
+                            if(foundUser.level < 5){
+                                acceptEmbed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle('A New Road')
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .addFields([
+                                    {
+                                        name: `Current Objective:`,
+                                        value:`**Press /progressmainquest to continue to round 2**`
+                                    }
+                                ])
+                                
+                                
+                                .setDescription(`As you touch the magic stone on the revealing tablet,it begins to glow in a faint light.The crowd looks disappointed,many even mocking you behind your back some outright started laughing seeing your poor performance,“This person sucks, I can’t believe someone like him/her managed to get a letter of recommendation.” was the common consensus.You feel dejected and quitely move back pondering if you are even cut out for it.`)
+                            }
+                            else if(foundUser.level == 5){
+                                acceptEmbed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle('A New Road')
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .addFields([
+                                    {
+                                        name: `Current Objective:`,
+                                        value:`**Press /progressmainquest to continue to round 2**`
+                                    }
+                                ])
+                                
+                                
+                                .setDescription(`As you touch the magic stone on the revealing tablet,it begins to glow in a bright light.The crowd is quite impressed as it an above average glow,. “Not bad at all, that was good.” was the common consensus.You feel confident enough to take on whatever awaits you in next round.`)
+                            }
+                            else{
+                                acceptEmbed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle('A New Road')
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .addFields([
+                                    {
+                                        name: `Current Objective:`,
+                                        value:`**Press /progressmainquest to continue to round 2**`
+                                    }
+                                ])
+                                
+                                
+                                .setDescription(`As you touch the magic stone on the revealing tablet,it begins to glow in a blinding bright light covering the entire courtyard.The crowd is terrified with many having a look of utter surprise and horror on their faces seeing your might.“I can’t believe a person of this caliber is participating this year! I don’t think I have a chance.” was the common consensus.You are surprised by your own strength and feel very confident for the next round.`)
+                            
+                            }
+                           
+                            
+                            let filter = i => i.user.id === authorId
+                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
+                        
+                                collector.on('collect',async (btn) => {
+                                    if(btn.isButton()){
+                                        if(btn.customId === "btn_accept"){
+                                            await btn.deferUpdate().catch(e => {})
+                                            await interaction.editReply({embeds:[acceptEmbed]})
+                            
+                                            
+                                            await profileModel.updateOne({userID:interaction.user.id},{main_quest_phase:"3"})
+                                            
+                                       
+                                        collector.stop()
+                                            
+                                        }
+                                       
+        
+                                        
+                                        
+                                    }
+
+                                    collector.on('end', () => {
+                                        interaction.editReply({components: [d_btnraw]})
+                                    })
+                                })
+                            
+                            
+
+                                }
+                                else{
+                                    interaction.reply(`You are not in the Guild District, please go to the Guild District to continue!`)
+                           
+                                }
+                            
+
+                        }
+                        else if(foundUser.main_quest_phase == "3"){
+                            if(foundUser.location == "Guild District"){
+                                let btnraw= new MessageActionRow().addComponents([
+                                    new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Fight")])
+                                   
+        
+                                    let d_btnraw = new MessageActionRow().addComponents([
+                                        new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Fight").setDisabled(true),
+                                       
+                                    ])
+                                let questEmbed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('A New Road')
+                        .setAuthor({
+                            iconURL:interaction.user.displayAvatarURL(),
+                            name:interaction.user.tag
+                        })
+                        .addFields([
+                            {
+                                name: `Current Objective:`,
+                                value:`**Proeed to fight the Starhound**`
+                            }
+                        ])
+                        
+                        
+                        .setDescription(`For your second round, you are called into the Colosseum’s inner ring and are asked to fight a Magical Beast, as part of your job as a Guild Ranger will be to fight and subdue Magical Beasts.You look at the cage placed before you hidden with a cover, you can sense the bloodlust radiating from the beast inside the cage. The cover is lifted and the audience burst with excitement at the look of a Starhound, a ferocious hunter from the depths of the forest of Ellior.You ready your weapon as you prepare to fight it.`)
+                        await interaction.reply({content: null,embeds:[questEmbed],components:[btnraw]})
+                       
+                        
+                            
+                        
+                       
+                        
+                        let filter = i => i.user.id === authorId
+                            let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
+                    
+                            collector.on('collect',async (btn) => {
+                                if(btn.isButton()){
+                                    if(btn.customId === "btn_accept"){
+                                        await btn.deferUpdate().catch(e => {})
+                                        
+                                        const attacker = Warrior.create(author)
+                                        const monster = starHound.create()
+                                        attacker.health=foundUser.health
+                                                attacker.mana=foundUser.mana
+                                                attacker.armor=foundUser.armour
+                                                attacker.magicPower=foundUser.magicPower
+                                                attacker.attackDamage=foundUser.attackDamage
+                                                attacker.evasion=foundUser.evasion
+                                                attacker.element = foundUser.elements[0]
+                                                attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                attacker.passive_skills = foundUser.passiveskills
+                                                attacker.maxMana = foundUser.mana
+                                                attacker.speed = foundUser.speed
+                                                attacker.skills=foundUser.currentskills
+                                        if(attacker.speed >= monster.speed){
+                                            await new PvEDuel_MQuest({
+                                                interaction,
+                                                player1: attacker,
+                                                player2: monster,
+                                                speed:2,
+                                            }).start()
+                                            
+                                        }
+                                        else{
+                                            await new PvEDuel_MQuest({
+                                                interaction,
+                                                player1: monster,
+                                                player2: attacker,
+                                                speed:2
+                                            }).start()
+                                        }
+                                        
+                                        await profileModel.updateOne({userID:interaction.user.id},{main_quest_phase:4})
+                                        
+                                   
+                                    collector.stop()
+                                        
+                                    }
+                                   
+    
+                                    
+                                    
+                                }
+
+                                collector.on('end', () => {
+                                    interaction.editReply({components: [d_btnraw]})
+                                })
+                            })
+                        
+                        
+
+                            }
+                            else{
+                                interaction.reply(`You are not in the Guild District, please go to the Guild District to continue!`)
+                       
+                            }
+                        
+
+                    }
+                    }
 
                        
                         else{
