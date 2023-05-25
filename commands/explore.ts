@@ -639,7 +639,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setColor('RANDOM')
                 .setTitle(`Now Exploring ${city_town}...`)
                 .setImage('attachment://zorya_main.jpg')
-                .setDescription(`you visited ${location},The great stateship of zorya\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you explore the Stateship of Zorya, your senses are dazzled by a symphony of modernity. Copper-hued buildings rise majestically, adorned with intricate astrolabes that catch the sunlight, casting a mesmerizing glow. The city pulsates with energy as bustling streets and vibrant markets beckon you to indulge in their wares. High above, airships grace the sky, their sleek forms sailing amidst the clouds, a testament to human ingenuity and adventure. In the Stateship of Zorya, the fusion of progress and innovation embraces you, inviting you to revel in the marvels of this thriving metropolis.\n\nuse **/explore** to explore this location`)
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
             
                     }

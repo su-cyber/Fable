@@ -36,7 +36,7 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
                                     .addFields([
                                         {
                                             name: `The Terrific Troll Tavern`,
-                                            value:`**Description**:a simple tavern\n`
+                                            value:`**Description**:The Terrific Troll Tavern is a place of the rumors of halls and chatter of inns\n`
                                         },
                                         {
                                             name: `The Lager Estate`,
@@ -56,7 +56,7 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
                                         },
                                         {
                                             name: `Abandoned Castle`,
-                                            value:`**Description**:an abandoned castle.\n`
+                                            value:`**Description**:An important architecture of the past, that has since become irrelevant\n`
                                         }
                                     ])
                                     
@@ -72,7 +72,7 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
                 .setPlaceholder(`Select a location ${interaction.user.username}`)
                 .addOptions({
                     label: `The Terrific Troll Tavern`,
-                    description: `a simple tavern`,
+                    description: `The Terrific Troll Tavern is a place of the rumors of halls and chatter of inns`,
                     value: `The Terrific Troll Tavern`,
                 },{
                     label: `The Lager Estate`,
@@ -93,7 +93,7 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
                     value: `Town Centre`,
                 },{
                     label: `Abandoned Castle`,
-                    description: `an abandoned castle`,
+                    description: `An important architecture of the past, that has since become irrelevant`,
                     value: `Abandoned Castle`,
                 },
                 

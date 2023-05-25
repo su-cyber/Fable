@@ -50,7 +50,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         },
                                         {
                                             name: `State of Zorya`,
-                                            value:`**Travelled on StageCoach**\n**Description**:The Great stateship of Zorya\n**Cost**:100 🪙`
+                                            value:`**Travelled on StageCoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:100 🪙`
                                         }
                                     ])
                                     
@@ -75,7 +75,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         },
                                         {
                                             name: `State of Zorya`,
-                                            value:`**Travelled on Mount**\n**Description**:The Great stateship of Zorya\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.a\n**Cost**:0 🪙\n`
                                         }
                                     ])
 
@@ -106,7 +106,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `The Badlands`,
                 },{
                     label: `State of Zorya`,
-                    description: `The Great stateship of Zorya`,
+                    description: `One of the largest Stateships in Solarstrio, where progress meets modernity.`,
                     value: `Zorya`,
                 }
                 )
@@ -165,7 +165,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://zorya_main.jpg')
-                .setDescription(`you visited ${location},The great stateship of zorya\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             
@@ -920,7 +920,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Dragon’s Den`,
@@ -950,7 +950,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Dragon’s Den`,
@@ -985,7 +985,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Stateship of Zorya`,
-                    description: `The great state of Zorya`,
+                    description: `One of the largest Stateships in Solarstrio, where progress meets modernity.`,
                     value: `Zorya`,
                 },{
                     label: `Dragon’s Den`,
@@ -1033,7 +1033,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://zorya_main.jpg')
-                .setDescription(`you visited ${location},The great stateship of zorya\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'ellior'){
@@ -1111,7 +1111,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
@@ -1141,7 +1141,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
@@ -1176,7 +1176,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Stateship of Zorya`,
-                    description: `The great state of Zorya`,
+                    description: `One of the largest Stateships in Solarstrio, where progress meets modernity.`,
                     value: `Zorya`,
                 },{
                     label: `Ellior Forest`,
@@ -1224,7 +1224,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://zorya_main.jpg')
-                .setDescription(`you visited ${location},The great stateship of zorya\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'ellior'){
@@ -1302,7 +1302,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
@@ -1332,7 +1332,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
@@ -1367,7 +1367,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Stateship of Zorya`,
-                    description: `The great state of Zorya`,
+                    description: `One of the largest Stateships in Solarstrio, where progress meets modernity.`,
                     value: `Zorya`,
                 },{
                     label: `Ellior Forest`,
@@ -1415,7 +1415,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://zorya_main.jpg')
-                .setDescription(`you visited ${location},The great stateship of zorya\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Dragon’s Den'){
@@ -1493,7 +1493,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
@@ -1523,7 +1523,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
@@ -1558,7 +1558,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Stateship of Zorya`,
-                    description: `The great state of Zorya`,
+                    description: `One of the largest Stateships in Solarstrio, where progress meets modernity.`,
                     value: `Zorya`,
                 },{
                     label: `Ellior Forest`,
@@ -1606,7 +1606,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://zorya_main.jpg')
-                .setDescription(`you visited ${location},The great stateship of zorya\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Dragon’s Den'){
@@ -1684,7 +1684,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Foot**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
@@ -1714,7 +1714,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Mount**\n**Description**:The stateship of zorya\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Ellior Forest`,
@@ -1749,7 +1749,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Stateship of Zorya`,
-                    description: `The great state of Zorya`,
+                    description: `One of the largest Stateships in Solarstrio, where progress meets modernity.`,
                     value: `Zorya`,
                 },{
                     label: `Ellior Forest`,
@@ -1797,7 +1797,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://zorya_main.jpg')
-                .setDescription(`you visited ${location},The great stateship of zorya\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Dragon’s Den'){
