@@ -110,8 +110,6 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
     let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
 
 
-    collector_btn.setMaxListeners(Infinity)
-    collector_select.setMaxListeners(Infinity)
     let count = 0
     collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
         collected.deferUpdate().catch(() => null)

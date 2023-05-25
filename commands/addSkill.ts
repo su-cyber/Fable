@@ -14,7 +14,6 @@ export default new MyCommandSlashBuilder({ name: 'switchskill', description: 'ad
         
         
         const authorId = interaction.user.id;
-        const guildID = interaction.guildId;
         const userSkill = interaction.options.getString('skill').toLowerCase()
 
         profileModel.exists({userID:authorId},async function(err,res){
@@ -87,8 +86,7 @@ export default new MyCommandSlashBuilder({ name: 'switchskill', description: 'ad
         let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
         let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
     
-        collector_select.setMaxListeners(Infinity)
-        collector_cancel.setMaxListeners(Infinity)
+        
     
 
         await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})

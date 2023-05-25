@@ -344,8 +344,7 @@ export default new MyCommandSlashBuilder({ name: 'learnnewskill', description: '
                                         let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
                                         let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
                                     
-                                        collector_select.setMaxListeners(Infinity)
-                                        collector_cancel.setMaxListeners(Infinity)
+                                        
                                     
                                     
                                         

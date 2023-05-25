@@ -16,7 +16,6 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
     .setDo(
     async (bot, interaction) => {
         const authorId = interaction.user.id;
-        const guildID = interaction.guildId;
         const userType = interaction.options.getString('type').toLowerCase()
         const userobject = interaction.options.getString('object').toLowerCase()
 

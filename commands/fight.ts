@@ -2,7 +2,6 @@ import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import { DuelBuilder } from '../src/age/DuelBuilder'
 import { sleep } from '../src/utils'
 import { getMonsters } from '../src/age/monsters'
-import {MessageActionRow, MessageSelectMenu} from 'discord.js'
 import { Warrior } from '../src/age/heroes/warrior'
 import { MonsterEntity, Entity } from '../src/age/classes'
 import profileModel from '../models/profileSchema'
@@ -134,88 +133,34 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                 }
                                }
                                else{
-                                const timestamp = new Date()
+                                const timestamp = Date.now()
                 
-                                if(foundUser.encounter[0].time.getMonth() == timestamp.getMonth()){
-                                    if(foundUser.encounter[0].time.getDay() == timestamp.getDay()){
-                                        if(foundUser.encounter[0].time.getHours() == timestamp.getHours()){
-                                            if((timestamp.getMinutes() - foundUser.encounter[0].time.getMinutes()) < 2){
-                                                if(foundUser.location == foundUser.encounter[0].location || foundUser.city_town == foundUser.encounter[0].location){
-                                                    const monster = (await getMonsters(foundUser.encounter[0].location)).map(fn => fn.create())
-                                                .find(m => m.name === foundUser.encounter[0].name)
-                                                
+                                if(timestamp - foundUser.encounter[0].time <= 2*60*1000){
+                                    if(foundUser.location == foundUser.encounter[0].location || foundUser.city_town == foundUser.encounter[0].location){
+                                        const monster = (await getMonsters(foundUser.encounter[0].location)).map(fn => fn.create())
+                                    .find(m => m.name === foundUser.encounter[0].name)
                                     
-                                    if(attacker.speed >= monster.speed){
-                                        await new PvEDuel({
-                                            interaction,
-                                            player1: attacker,
-                                            player2: monster,
-                                            speed:setspeed,
-                                        }).start()
-                                        
+                        
+                        if(attacker.speed >= monster.speed){
+                            await new PvEDuel({
+                                interaction,
+                                player1: attacker,
+                                player2: monster,
+                                speed:setspeed,
+                            }).start()
+                            
+                        }
+                        else{
+                            await new PvEDuel({
+                                interaction,
+                                player1: monster,
+                                player2: attacker,
+                                speed:setspeed
+                            }).start()
+                        }
                                     }
                                     else{
-                                        await new PvEDuel({
-                                            interaction,
-                                            player1: monster,
-                                            player2: attacker,
-                                            speed:setspeed
-                                        }).start()
-                                    }
-                                                }
-                                                else{
-                                                    interaction.reply(`you are not in ${foundUser.encounter[0].location} where you encountered ${foundUser.encounter[0].name}`)
-                                                }
-                                                
-                                            }
-                                            else{
-                                                interaction.reply(`you responded too late, your encounter is lost`)
-                                                const authorID = interaction.user.id
-                                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
-                            
-                                        if(err){
-                                            console.log(err);
-                                            
-                                        }
-                                        else{
-                                            foundUser.encounter = []
-                                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
-                            
-                                        }
-                                    })
-                                            }
-                                        }
-                                        else{
-                                            interaction.reply(`you responded too late, your encounter is lost`) 
-                                            const authorID = interaction.user.id
-                                   const data = await profileModel.findOne({userID:authorID},async function(err,foundUser) {
-                                        if(err){
-                                            console.log(err);
-                                            
-                                        }
-                                        else{
-                                            foundUser.encounter = []
-                                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
-                            
-                                        }
-                                    })
-                                        }
-                                    }
-                                    else{
-                                        interaction.reply(`you responded too late, your encounter is lost`) 
-                                        const authorID = interaction.user.id
-                                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
-                            
-                                        if(err){
-                                            console.log(err);
-                                            
-                                        }
-                                        else{
-                                            foundUser.encounter = []
-                                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
-                            
-                                        }
-                                    })
+                                        interaction.reply(`you are not in ${foundUser.encounter[0].location} where you encountered ${foundUser.encounter[0].name}`)
                                     }
                                 }
                                 else{
@@ -277,21 +222,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
 )
 
 let skills =[]
-async function monstersDropdown(location:String) {
-    const monsters = await getMonsters(location)
 
-    return new MessageActionRow().addComponents(
-        new MessageSelectMenu()
-            .setCustomId('select-menu__monsters')
-            .setPlaceholder('Select a monster')
-            .addOptions(
-                monsters.map(m => ({
-                    label: m.name,
-                    value: m.name,
-                }))
-            )
-    )
-}
 
 export class PvEDuel extends DuelBuilder {
     player1: any

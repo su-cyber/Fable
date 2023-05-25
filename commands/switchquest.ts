@@ -61,8 +61,7 @@ export default new MyCommandSlashBuilder({ name: 'switchquests', description: 's
                             let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
                             let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
                         
-                            collector_select.setMaxListeners(Infinity)
-                            collector_cancel.setMaxListeners(Infinity)
+                            
                         
                     
                             await interaction.reply({content: null,embeds:[embed],components:[switch_quest,btn_cancel]})

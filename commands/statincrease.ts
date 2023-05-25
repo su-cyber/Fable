@@ -9,8 +9,6 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
         
         
         const authorId = interaction.user.id;
-        const guildID = interaction.guildId;
-
     let embed = new MessageEmbed()
     .setColor('RANDOM')
     .setTitle('STAT INVEST')
@@ -67,9 +65,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
     let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
     let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
 
-    collector_btn.setMaxListeners(Infinity)
-    collector_select.setMaxListeners(Infinity)
-    collector_cancel.setMaxListeners(Infinity)
+    
 
     collector_btn.on('collect', async i => {
         i.deferUpdate().catch(() => null)

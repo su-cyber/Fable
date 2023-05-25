@@ -16,8 +16,6 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
     async (bot, interaction) => {
         const authorId = interaction.user.id
         
-        const author = await bot.users.fetch(authorId)
-        const guildID = interaction.guildId;
         
         
         
@@ -120,7 +118,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         await interaction.editReply({embeds:[acceptEmbed]})
                                         const encounter = {
                                             name: monster.name,
-                                            time : new Date(),
+                                            time : Date.now(),
                                             location:foundUser.city_town
     
                                         }
@@ -244,7 +242,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         await interaction.editReply({embeds:[acceptEmbed]})
                                         const encounter = {
                                             name: monster.name,
-                                            time : new Date(),
+                                            time : Date.now(),
                                             location:foundUser.city_town
     
                                         }
@@ -368,7 +366,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         await interaction.editReply({embeds:[acceptEmbed]})
                                         const encounter = {
                                             name: monster.name,
-                                            time : new Date(),
+                                            time : Date.now(),
                                             location:foundUser.city_town
     
                                         }

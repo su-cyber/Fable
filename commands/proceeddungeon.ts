@@ -20,7 +20,6 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
         const authorId = interaction.user.id
         
         const author = await bot.users.fetch(authorId)
-        const guildID = interaction.guildId;
         
         
         
