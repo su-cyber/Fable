@@ -14,6 +14,7 @@ import { starHound } from '../src/age/monsters/ellior/Starhound'
 import { Warrior } from '../src/age/heroes/warrior'
 import getHealth from '../src/utils/getHealth'
 import { Dave } from '../src/age/npc enemies/guildDraft_Dave'
+import sample from 'lodash.sample'
 
 
 export default new MyCommandSlashBuilder({ name: 'progressmainquest', description: 'progress your main quest progress' }).setDo(
@@ -284,7 +285,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
             
                                 await interaction.reply({content: null,embeds:[fightEmbed]})
                                 foundUser.completed_quests.push("Tutorial")
-                                await profileModel.updateOne({userID:authorId},{current_title:"Hero of Aube",main_quest_phase:"1",completed_quests:foundUser.completed_quests,main_quest:"KS-ZS-MQ1"})
+                                await profileModel.updateOne({userID:authorId},{current_title:"Hero of Aube",titles:foundUser.titles.push("Hero of Aube"),main_quest_phase:"1",completed_quests:foundUser.completed_quests,main_quest:"KS-ZS-MQ1"})
                             }
                             else{
                                 interaction.reply(`you have not completed all the quests in Aube, please check the Questboard`)
@@ -471,7 +472,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                         .addFields([
                             {
                                 name: `Current Objective:`,
-                                value:`**Proeed to fight the Starhound**`
+                                value:`**Proceed to fight the Starhound**`
                             }
                         ])
                         
@@ -561,7 +562,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                     new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Fight").setDisabled(true),
                                    
                                 ])
-                            let questEmbed = new MessageEmbed()
+                    let questEmbed = new MessageEmbed()
                     .setColor('RANDOM')
                     .setTitle('A New Road')
                     .setAuthor({
@@ -571,7 +572,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                     .addFields([
                         {
                             name: `Current Objective:`,
-                            value:`**Proeed to fight your opponent**`
+                            value:`**Proceed to fight your opponent**`
                         }
                     ])
                     
@@ -650,6 +651,32 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                         }
                     
 
+                }
+                else if(foundUser.main_quest_phase == "5"){
+                    if(foundUser.location == "Guild District"){
+                        const guild = sample(["Chimaera","Belenus","Tetsuryū","Fenris","Gleipnir","Hammerfaust","Eisenherz","Maledictus","Blackfin","Suncrest"])
+                        let questEmbed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('A New Road')
+                        .setAuthor({
+                            iconURL:interaction.user.displayAvatarURL(),
+                            name:interaction.user.tag
+                        })
+                        .addFields([
+                            {
+                                name: `Current Objective:`,
+                                value:`**Visit your Guild Office to recieve further instructions**`
+                            }
+                        ])
+                        
+                        
+                        .setDescription(`The crowd is in awe of your fighting prowess and bursts in an encouraging shout that echoed throughout the colosseum.Seeing your performance,${guild} Guild has chosen to recruit you into their ranks.`)
+                        await profileModel.updateOne({userID:interaction.user.id},{main_quest_phase:6,guild:guild,guild_class:"E",guild_rank:"Ranger"})
+                    }
+                    else{
+                        interaction.reply(`You are not in the Guild District, please go to the Guild District to continue!`)
+                    }
+                    
                 }
                     }
 

@@ -1,12 +1,12 @@
-import { Client, Intents, PartialDMChannel } from 'discord.js'
+import { Client, Intents, PartialDMChannel,Options } from 'discord.js'
 import { Bot } from './src/bot'
 import profileModel from './models/profileSchema'
 
  
 
-setInterval(give_energy,1000*3600);
+//setInterval(give_energy,1000*3600);
 
-new Bot({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.DIRECT_MESSAGE_REACTIONS],partials: ['CHANNEL'] }).run()
+new Bot({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.DIRECT_MESSAGE_REACTIONS],partials: ['CHANNEL'],makeCache:Options.cacheWithLimits(Options.defaultMakeCacheSettings),sweepers: Options.defaultSweeperSettings}).run()
 
 async function give_energy(){
     await profileModel.updateMany({energy:{$lt:25}},{$inc:{energy:1}})
