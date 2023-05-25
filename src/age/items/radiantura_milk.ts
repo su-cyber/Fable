@@ -1,4 +1,4 @@
-import { emoji } from '../../lib/utils/emoji'
+
 import { Item } from '../item'
 
 export const Radiantura_milk = new Item({

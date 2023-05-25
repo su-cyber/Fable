@@ -18,7 +18,6 @@ import { getCommandsFromFolder } from './lib/utils/getCommandsFromFolder'
 import { SlashCommandBuilder } from '@discordjs/builders'
 import mongoose from "mongoose"
 import { sleep } from './utils'
-import getHealth from './utils/getHealth'
 
 type InteractionFn = (interaction: MessageComponentInteraction & { values: string[] }) => Promise<void>
 

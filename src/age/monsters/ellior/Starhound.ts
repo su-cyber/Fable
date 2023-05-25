@@ -2,7 +2,6 @@ import { CommandInteraction } from 'discord.js'
 import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
-import { backBreaker } from '../../items/backbreaker'
 import { starHound_tooth } from '../../items/starHound_tooth'
 
 export class starHound extends MonsterEntity {

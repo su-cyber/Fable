@@ -1,7 +1,6 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
-import inventory from '../models/InventorySchema'
-import { Collector, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
+import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 
 export default new MyCommandSlashBuilder({ name: 'quest', description: 'get a quest' }).setDo(
     async (bot, interaction) => {

@@ -1,7 +1,6 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
 import inventory from '../models/InventorySchema'
-import { SlashCommandUserOption } from '@discordjs/builders'
 import { SlashCommandStringOption } from '@discordjs/builders'
 
 

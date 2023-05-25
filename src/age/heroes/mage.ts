@@ -1,4 +1,4 @@
-import { GuildMember, User } from 'discord.js'
+import {User } from 'discord.js'
 import { ClassEntity } from '../classes'
 import { burning } from '../effects/burning'
 import { CommandInteraction } from 'discord.js'

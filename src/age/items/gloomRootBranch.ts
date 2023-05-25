@@ -1,4 +1,4 @@
-import { emoji } from '../../lib/utils/emoji'
+
 import { Item } from '../item'
 
 export const gloomRoot_branch = new Item({

@@ -1,10 +1,4 @@
-import { GuildMember } from 'discord.js'
-import { emoji } from '../../lib/utils/emoji'
-import { calculate, ClassEntity } from '../classes'
-import { bleeding } from '../effects/bleeding'
-import { blind } from '../effects/blind'
-import { burning } from '../effects/burning'
-import { stun } from '../effects/stun'
+
 import flame_tree from './flame_tree'
 import light_tree from './light_tree'
 import samurai_tree from './samurai_tree'

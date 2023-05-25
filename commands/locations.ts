@@ -1,6 +1,6 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
-import { Collector, MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu, MessageComponentInteraction,CacheType} from 'discord.js'
+import { MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu, MessageComponentInteraction,CacheType} from 'discord.js'
 import { MessageAttachment } from 'discord.js'
 
 
@@ -9,7 +9,6 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
 .setDo(
     async (bot, interaction) => {
         const authorId = interaction.user.id
-        const guildID = interaction.guildId;
 
         profileModel.exists({userID: authorId},async function(err,res){
             if(err){

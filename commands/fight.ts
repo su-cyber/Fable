@@ -1,20 +1,16 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import { DuelBuilder } from '../src/age/DuelBuilder'
-import { sleep, weightedRandom } from '../src/utils'
+import { sleep } from '../src/utils'
 import { getMonsters } from '../src/age/monsters'
-import { Interaction, MessageActionRow, MessageSelectMenu, SelectMenuInteraction } from 'discord.js'
+import {MessageActionRow, MessageSelectMenu} from 'discord.js'
 import { Warrior } from '../src/age/heroes/warrior'
 import { MonsterEntity, Entity } from '../src/age/classes'
-import { getRandomMonster } from '../src/age/monsters'
-import { getRandomFlora } from '../src/age/flora'
 import profileModel from '../models/profileSchema'
 import allskills from '../src/age/skills/skills'
 import passive_skills from '../src/age/heroes/passive_skills'
 import inventory from '../models/InventorySchema'
-import { SlashCommandStringOption } from '@discordjs/builders'
-import specialModel from '../models/specialSchema'
 import sample from 'lodash.sample'
-import { SlashCommandIntegerOption, SlashCommandUserOption } from '@discordjs/builders'
+import { SlashCommandIntegerOption} from '@discordjs/builders'
 import getHealth from '../src/utils/getHealth'
 
 export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
@@ -30,7 +26,6 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
     async (bot, interaction) => {
         const authorId = interaction.user.id
         const author = await bot.users.fetch(authorId)
-        const guildID = interaction.guildId;
         const setspeed = interaction.options.getInteger('speed')
         
         

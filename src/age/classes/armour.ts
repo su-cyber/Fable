@@ -1,5 +1,4 @@
-import { Entity } from './entity'
-import { Skill } from './skill'
+
 
  type TypeArmour = {
     id: string

@@ -3,8 +3,6 @@ import profileModel from '../models/profileSchema'
 import inventory from '../models/InventorySchema'
 import { SlashCommandIntegerOption, SlashCommandUserOption } from '@discordjs/builders'
 import { SlashCommandStringOption } from '@discordjs/builders'
-import shopWeapons_lvl5 from '../src/age/weapons/shopWeapons_lvl5'
-import { Channel, Collector, Message, MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu } from 'discord.js'
 import allItems from '../src/age/items/allItems'
 
 

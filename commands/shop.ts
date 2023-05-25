@@ -1,15 +1,6 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
-import inventory from '../models/InventorySchema'
-import { SlashCommandUserOption } from '@discordjs/builders'
-import { SlashCommandStringOption } from '@discordjs/builders'
-import allWeapons from '../src/age/weapons/allWeapons'
-import shopWeapons_lvl5 from '../src/age/weapons/shopWeapons_lvl5'
-import { Client, Collector, Message, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
-import shopArmour_lvl5 from '../src/age/armour/shopArmour_lvl5'
-import shopPotions_lvl5 from '../src/age/potions/shopPotions_lvl5'
-import shopWeapons_lvl10 from '../src/age/weapons/shopWeapons_lvl10'
-import { IncomingMessage } from 'http'
+import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 import aubeTownShop from '../src/age/shops/aubeTownShop'
 
 export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access the Shop' })

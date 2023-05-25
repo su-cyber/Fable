@@ -1,6 +1,5 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
-import inventory from '../models/InventorySchema'
 import { MessageEmbed } from 'discord.js'
 import xpFormulate from '../src/utils/XPformulate'
 

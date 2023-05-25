@@ -5,7 +5,6 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'open
     async (bot, interaction) => {
 
         const authorId = interaction.user.id;
-        const guildID = interaction.guildId;
 
         inventory.exists({userID:authorId},async function(err,res){
             if(err){

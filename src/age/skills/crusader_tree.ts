@@ -1,10 +1,4 @@
-import { GuildMember } from 'discord.js'
-import { emoji } from '../../lib/utils/emoji'
-import { calculate, ClassEntity } from '../classes'
-import { bleeding } from '../effects/bleeding'
-import { blind } from '../effects/blind'
-import { burning } from '../effects/burning'
-import { stun } from '../effects/stun'
+
 
 const crusader_tree=[
     {

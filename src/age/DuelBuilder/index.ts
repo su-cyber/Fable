@@ -1,33 +1,24 @@
 import {
     CacheType,
     CommandInteraction,
-    InteractionCollector,
-    MappedInteractionTypes,
-    Message,
     MessageActionRow,
     MessageButton,
     MessageComponentInteraction,
     MessageEmbed,
     MessageSelectMenu,
 } from 'discord.js'
-import { APIMessage } from 'discord-api-types/v9'
 import chunk from 'lodash.chunk'
 import { emoji } from '../../lib/utils/emoji'
 
 import { getLocker, sleep } from '../../utils'
 import { removeIndentation } from '../../utils/removeIndentation'
-import { wrapText } from '../../utils/wrapText'
 import { MonsterEntity, Skill } from '../classes'
 import { Entity } from '../classes/entity'
 import { Scheduler } from './scheduler'
-import allItems from '../items/allItems'
 import potions from '../heroes/potions'
 import inventory from '../../../models/InventorySchema'
 import { Potion } from '../classes/potion'
-import shopPotions_lvl5 from '../potions/shopPotions_lvl5'
 import profileModel from '../../../models/profileSchema'
-import allPotions from '../potions/allPotions'
-import { EventEmitter } from 'stream'
 
 
 const lineBreak = '\n\u200b'

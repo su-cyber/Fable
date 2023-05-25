@@ -1,5 +1,4 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
-import inventory from '../models/InventorySchema'
 import profileModel from '../models/profileSchema'
 
 export default new MyCommandSlashBuilder({ name: 'listskills', description: 'list all your skills' }).setDo(

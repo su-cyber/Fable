@@ -2,7 +2,6 @@ import { CommandInteraction } from 'discord.js'
 import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
-import { backBreaker } from '../../items/backbreaker'
 import { gloomRoot_branch } from '../../items/gloomRootBranch'
 
 export class gloomRoot extends MonsterEntity {

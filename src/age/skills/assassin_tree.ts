@@ -1,11 +1,7 @@
-import { GuildMember } from 'discord.js'
+
 import { emoji } from '../../lib/utils/emoji'
-import { calculate, ClassEntity } from '../classes'
-import { bleeding } from '../effects/bleeding'
-import { blind } from '../effects/blind'
-import { burning } from '../effects/burning'
 import { poisoning } from '../effects/poisoning'
-import { stun } from '../effects/stun'
+
 
 const assassin_tree=[
     {

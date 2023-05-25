@@ -11,7 +11,6 @@ import {
 } from 'discord.js'
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
-import { Embed } from '@discordjs/builders'
 import allQuests from '../src/utils/allQuests'
 
 export default new MyCommandSlashBuilder({ name: 'questboard', description: 'select a quest' })
@@ -19,7 +18,6 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
 .setDo(
     async (bot, interaction) => {
         const authorId = interaction.user.id
-        const guildID = interaction.guildId;
 
         profileModel.exists({userID: authorId},async function(err,res){
             if(err){

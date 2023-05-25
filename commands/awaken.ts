@@ -4,11 +4,11 @@ import inventory from '../models/InventorySchema'
 import { Sword } from '../src/age/weapons/sword'
 import { steelArmour } from '../src/age/armour/steel_armour'
 import { healthPotion } from '../src/age/potions/healthPotion'
-import { MessageActionRow, MessageSelectMenu, SelectMenuInteraction } from 'discord.js'
-import { Collector, MessageButton, MessageEmbed } from 'discord.js'
+import { MessageActionRow, MessageSelectMenu} from 'discord.js'
+import { MessageButton, MessageEmbed } from 'discord.js'
 import { steelSword } from '../src/age/weapons/steelSword'
 import { MessageComponentInteraction,CacheType } from 'discord.js'
-import { sleep } from '../src/utils'
+
 
 export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken to your story' }).setDo(
     async (bot, interaction) => {

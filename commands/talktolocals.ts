@@ -1,5 +1,4 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
-import inventory from '../models/InventorySchema'
 import profileModel from '../models/profileSchema'
 import {MessageEmbed} from 'discord.js'
 import sample from 'lodash.sample'

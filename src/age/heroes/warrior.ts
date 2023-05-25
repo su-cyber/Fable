@@ -1,12 +1,12 @@
-import { GuildMember, User } from 'discord.js'
+import {  User } from 'discord.js'
 import { emoji } from '../../lib/utils/emoji'
-import { calculate, ClassEntity } from '../classes'
+import { ClassEntity } from '../classes'
 import { bleeding } from '../effects/bleeding'
 import { burning } from '../effects/burning'
 import { CommandInteraction } from 'discord.js'
 import { removeIndentation } from '../../utils'
 import { Entity } from '../classes/entity'
-import passive_skills from './passive_skills'
+
 
 export class Warrior extends ClassEntity {
 

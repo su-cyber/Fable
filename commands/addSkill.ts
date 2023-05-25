@@ -1,9 +1,8 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
-import inventory from '../models/InventorySchema'
 import profileModel from '../models/profileSchema'
 import { SlashCommandStringOption } from '@discordjs/builders'
-import { Collector, MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu, MessageComponentInteraction,CacheType} from 'discord.js'
-import { replace } from 'lodash'
+import { MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu, MessageComponentInteraction,CacheType} from 'discord.js'
+
 
 
 export default new MyCommandSlashBuilder({ name: 'switchskill', description: 'add a skill to your skill cycle' })

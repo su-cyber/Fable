@@ -1,11 +1,8 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
 import inventory from '../models/InventorySchema'
-import { SlashCommandIntegerOption, SlashCommandUserOption } from '@discordjs/builders'
+import { SlashCommandIntegerOption} from '@discordjs/builders'
 import { SlashCommandStringOption } from '@discordjs/builders'
-import { Channel, Collector, Message, MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu } from 'discord.js'
-import shopArmour_lvl5 from '../src/age/armour/shopArmour_lvl5'
-import shopPotions_lvl5 from '../src/age/potions/shopPotions_lvl5'
 import aubeTownShop from '../src/age/shops/aubeTownShop'
 
 
@@ -22,7 +19,6 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
     .setDo(
     async (bot, interaction) => {
         const authorId = interaction.user.id;
-        const guildID = interaction.guildId;
         const userType = interaction.options.getString('type').toLowerCase()
         const userobject = interaction.options.getString('object').toLowerCase()
         const userQuantity = interaction.options.getInteger('quantity')

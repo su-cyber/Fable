@@ -1,4 +1,4 @@
-import { GuildMember, User } from 'discord.js'
+import { User } from 'discord.js'
 import { Entity, EntityProps } from './entity'
 
 type Props = Omit<EntityProps, 'id' | 'name'> & {
