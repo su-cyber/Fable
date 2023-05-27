@@ -70,34 +70,34 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         ]) 
                         
                         const elements = [{
-                            name:`Flame`,
+                            name:`Flame 🔥`,
                             description:`Element of fire`
                         },{
-                            name:`Wave`,
+                            name:`Wave 🌊`,
                             description:`Element of water`
                         },{
-                            name:`Light`,
+                            name:`Light ✨`,
                             description:`Element of light`
                         },{
-                            name:`Frost`,
+                            name:`Frost ❄️`,
                             description:`Element of ice`
                         },{
-                            name:`Volt`,
+                            name:`Volt ⚡`,
                             description:`Element of lightning`
                         },{
-                            name:`Terra`,
+                            name:`Terra 🪨`,
                             description:`Element of earth`
                         },{
-                            name:`Venom`,
+                            name:`Venom ☠️`,
                             description:`Element of poison`
                         },{
-                            name:`Gale`,
+                            name:`Gale 💨`,
                             description:`Element of wind`
                         },{
-                            name:`Bloom`,
+                            name:`Bloom 🍁`,
                             description:`Element of plants`
                         },{
-                            name:`Alloy`,
+                            name:`Alloy ⚙️`,
                             description:`Element of metals`
                         }]
                         let select_element =  new MessageActionRow().addComponents([
@@ -411,7 +411,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 }
 
                                 await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance,currentskills:foundUser.currentskills,allskills:foundUser.allskills})
-                                
+                                await interaction.editReply({ content: '\u200b', components: [] })
                                 await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
                                 collector_select_class.stop()
                                 
