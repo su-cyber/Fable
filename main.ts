@@ -36,7 +36,7 @@ new Bot({ intents: [
       },
       makeCache: Options.cacheWithLimits({
         ...Options.defaultMakeCacheSettings,
-        // store 50 messages per channel
+        // store 20 messages per channel
         MessageManager: 20,
         GuildMemberManager: 20,
         GuildInviteManager: 10,

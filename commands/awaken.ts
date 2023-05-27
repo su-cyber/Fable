@@ -282,7 +282,12 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
     
                                     collector.stop()
                                 }
-    
+                                
+                                collector.on("end",async(btn) => {
+                                    await interaction.editReply({components:[d_btnraw]})
+                                })
+
+                                
                                 
                                 
                             }
@@ -410,7 +415,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 }
 
                                 await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance,currentskills:foundUser.currentskills,allskills:foundUser.allskills})
-                                interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
+                                await interaction.deferReply()
+                                await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
                                 collector_select_class.stop()
                                 
                                 
@@ -431,6 +437,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                             await inventory.deleteOne({userID:authorId})
                                         }
                                         else{
+                                            await interaction.deferReply()
                                             await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
                                         }
                                     })
