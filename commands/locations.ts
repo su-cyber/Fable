@@ -19,7 +19,7 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
                 if(res){
                     profileModel.findOne({userID:authorId},async function(err,foundUser) {
                         if(foundUser.dungeon.status){
-                            interaction.reply(`You cannot use this command inside a dungeon!`)
+                            interaction.reply({content:`You cannot use this command inside a dungeon!`,ephemeral:true})
                            }
                            else{
                             const kingdom = foundUser.kingdom
@@ -186,10 +186,10 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
     
         }
         else if(city_town == "Castellan Fields"){
-            interaction.reply(`The place you are in is an explorable location in it's own! `)
+            interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
         }
         else if(city_town == "Sunshade Forest"){
-            interaction.reply(`The place you are in is an explorable location in it's own! `)
+            interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
         }
         
         else if(city_town == "Zorya"){
@@ -360,19 +360,19 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
     
         }
         else if(city_town == "ellior"){
-            interaction.reply(`The place you are in is an explorable location in it's own! `)
+            interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
         }
         else if(city_town == "Dragon's Den"){
-            interaction.reply(`The place you are in is an explorable location in it's own! `)
+            interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
         }
         else if(city_town == "Zephyr Mountain"){
-            interaction.reply(`The place you are in is an explorable location in it's own! `)
+            interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
         }
         else if(city_town == "orld husk"){
-            interaction.reply(`The place you are in is an explorable location in it's own! `)
+            interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
         }
         else if(city_town == "Sunstone Mines"){
-            interaction.reply(`The place you are in is an explorable location in it's own! `)
+            interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
         }
         
                             }
@@ -382,7 +382,7 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
 
                 }
                 else{
-                    interaction.reply(`it seems you have not awakened yet!`)
+                    interaction.reply({content:`it seems you have not awakened yet!`,ephemeral:true})
                 }
             }
         })

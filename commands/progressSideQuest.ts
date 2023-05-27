@@ -79,12 +79,12 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                             await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest})
                                         }
                                         else{
-                                            interaction.reply(`You have not gathered the required materials!`)
+                                            interaction.reply({content:`You have not gathered the required materials!`,ephemeral:true})
                                         }
                                     }
                                     
                                     else{
-                                        interaction.reply(`You have not gathered the required materials!`)
+                                        interaction.reply({content:`You have not gathered the required materials!`,ephemeral:true})
                                     }
                                 })
                                
@@ -157,7 +157,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
     
                                 }
                                 else{
-                                    interaction.reply(`you are not in Lager Estate!`)
+                                    interaction.reply({content:`you are not in Lager Estate!`,ephemeral:true})
                                 }
              
                             }
@@ -195,19 +195,19 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                           
                                             }
                                             else{
-                                                interaction.reply(`you do not have the required number of solarcorn stalks!`)
+                                                interaction.reply({content:`you do not have the required number of solarcorn stalks!`,ephemeral:true})
                                             }
                                             
                                         }
                                         else{
-                                            interaction.reply(`you do not have the Solarcorn stalks!`)
+                                            interaction.reply({content:`you do not have the Solarcorn stalks!`,ephemeral:true})
                                         }
                                  
                                     })
                                     
                                 }
                                 else{
-                                    interaction.reply(`you are not in Castellan Fields!`)
+                                    interaction.reply({content:`you are not in Castellan Fields!`,ephemeral:true})
                                 }
                             }
                         }
@@ -321,7 +321,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
 
                                 }
                                 else{
-                                    interaction.reply(`you are not in Crofter's Market`)
+                                    interaction.reply({content:`you are not in Crofter's Market`,ephemeral:true})
                                 }
                             }
                             else if(foundUser.side_quest_phase == "3"){
@@ -427,7 +427,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
 
                                 }
                                 else{
-                                    interaction.reply(`you are not in Crofter's Market`)
+                                    interaction.reply({content:`you are not in Crofter's Market`,ephemeral:true})
                                 }
                             }
                             else if(foundUser.side_quest_phase == "4"){
@@ -520,13 +520,13 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest})
                                         }
                                         else{
-                                            interaction.reply(`You do not have the required ingredients`)
+                                            interaction.reply({content:`You do not have the required ingredients`,ephemeral:true})
                                         }
                                     })
 
                                 }
                                 else{
-                                    interaction.reply(`you are not in Town Centre!`)
+                                    interaction.reply({content:`you are not in Town Centre!`,ephemeral:true})
                                 }
                             }
                         }
@@ -574,16 +574,16 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                         
                                         }
                                         else{
-                                            interaction.reply(`you failed to bring enough proof`)
+                                            interaction.reply({content:`you failed to bring enough proof`,ephemeral:true})
                                         }
                                     }
                                     else{
-                                        interaction.reply(`you failed to bring any proof`)
+                                        interaction.reply({content:`you failed to bring any proof`,ephemeral:true})
                                     }
                                     })
                                 }
                                 else{
-                                    interaction.reply(`You are not in the guild outpost!`)
+                                    interaction.reply({content:`You are not in the guild outpost!`,ephemeral:true})
                                 }
                             }
                         }
@@ -629,7 +629,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"3"})
                                 }
                                 else{
-                                    interaction.reply(`You are not in the lager estate!`)
+                                    interaction.reply({content:`You are not in the lager estate!`,ephemeral:true})
                                 }
                                 
 
@@ -655,7 +655,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"4"})
                                 }
                                 else{
-                                    interaction.reply(`You are not in the town centre!`)
+                                    interaction.reply({content:`You are not in the town centre!`,ephemeral:true})
                                 }
                                 
 
@@ -681,7 +681,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"5"})
                                 }
                                 else{
-                                    interaction.reply(`You are not in the town centre!`)
+                                    interaction.reply({content:`You are not in the town centre!`,ephemeral:true})
                                 }
                                 
 
@@ -711,12 +711,12 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                      
                                     }
                                     else{
-                                        interaction.reply(`You have not cleared the dungeon yet!`)
+                                        interaction.reply({content:`You have not cleared the dungeon yet!`,ephemeral:true})
                                     }
                                     
                                 }
                                 else{
-                                    interaction.reply(`You are not in the town centre!`)
+                                    interaction.reply({content:`You are not in the town centre!`,ephemeral:true})
                                 }
                                 
 

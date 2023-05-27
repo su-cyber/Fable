@@ -85,7 +85,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
         }
     }
     if(board.length == 0){
-        interaction.reply(`You have completed all the quests!`)
+        interaction.reply({content:`You have completed all the quests!`,ephemeral:true})
     }
     else{
         let select =  new MessageActionRow().addComponents([
@@ -180,13 +180,13 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
   
      }
                             else{
-                                interaction.reply(`you are not in a guild outpost!`)
+                                interaction.reply({content:`you are not in a guild outpost!`,ephemeral:true})
                             }
                         }
                     })
                 }
                 else{
-                    interaction.reply(`it seems you have not awakened yet!`)
+                    interaction.reply({content:`it seems you have not awakened yet!`,ephemeral:true})
                 }
             }
         })

@@ -48,7 +48,7 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'Know you
                 })
             }
             else{
-                await interaction.reply("it seems you are not an awakened yet!")
+                await interaction.reply({content:"it seems you are not an awakened yet!",ephemeral:true})
             }
         })
 

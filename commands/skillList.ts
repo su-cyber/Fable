@@ -33,7 +33,7 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
                     })
                 }
                 else{
-                    await interaction.reply({content:"you are not awakened yet!"})
+                    await interaction.reply({content:"you are not awakened yet!",ephemeral:true})
                 }
             }
         })

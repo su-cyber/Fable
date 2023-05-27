@@ -138,7 +138,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                         
                             }
                             else{
-                                interaction.reply({content:"it seems that the user you selected is not an awakened yet!"})
+                                interaction.reply({content:"it seems that the user you selected is not an awakened yet!",ephemeral:true})
                             }
                         }
                     })
@@ -146,7 +146,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                     
                 }
                 else{
-                    interaction.reply({content:"it seems that you are not an awakened yet!"})
+                    interaction.reply({content:"it seems that you are not an awakened yet!",ephemeral:true})
                 }
             }
 

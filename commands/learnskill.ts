@@ -430,13 +430,13 @@ export default new MyCommandSlashBuilder({ name: 'learnnewskill', description: '
                             
                         }
                         else{
-                            interaction.reply(`you cannot learn any skill right now`)
+                            interaction.reply({content:`you cannot learn any skill right now`,ephemeral:true})
                         }
                     })
                 
                 }
                 else{
-                    interaction.reply(`it seems you haven't awakened yet!`)
+                    interaction.reply({content:`it seems you haven't awakened yet!`,ephemeral:true})
                 }
             }
         })

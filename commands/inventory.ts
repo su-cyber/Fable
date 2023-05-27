@@ -37,7 +37,7 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'open
                     })
                 }
                 else{
-                    await interaction.reply({content:"you are not awakened yet!"})
+                    await interaction.reply({content:"you are not awakened yet!",ephemeral:true})
                 }
             }
         })

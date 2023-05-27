@@ -70,7 +70,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                 
                                             }
                                             else{
-                                                interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
+                                                interaction.reply({content:`you dont have ${userQuantity} ${userobject}(s) to sell`,ephemeral:true})
                                             }
                                            
                                             await inventory.updateOne({userID:authorId},userProfile)
@@ -114,7 +114,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                 
                                             }
                                             else{
-                                                interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
+                                                interaction.reply({content:`you dont have ${userQuantity} ${userobject}(s) to sell`,ephemeral:true})
                                             }
                                            
                                             await inventory.updateOne({userID:authorId},userProfile)
@@ -158,7 +158,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                 
                                             }
                                             else{
-                                                interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
+                                                interaction.reply({content:`you dont have ${userQuantity} ${userobject}(s) to sell`,ephemeral:true})
                                             }
                                            
                                             await inventory.updateOne({userID:authorId},userProfile)
@@ -200,7 +200,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                 
                                             }
                                             else{
-                                                interaction.reply(`you dont have ${userQuantity} ${userobject}(s) to sell`)
+                                                interaction.reply({content:`you dont have ${userQuantity} ${userobject}(s) to sell`,ephemeral:true})
                                             }
                                            
                                             await inventory.updateOne({userID:authorId},userProfile)
@@ -210,11 +210,11 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                 
                             }
                             else{
-                                interaction.reply("invalid type")
+                                interaction.reply({content:"invalid type",ephemeral:true})
                             }
                         }
                         else{
-                            interaction.reply(`you are not in a location where you can sell!`)
+                            interaction.reply({content:`you are not in a location where you can sell!`,ephemeral:true})
                         }
                     })
                     
@@ -224,7 +224,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
 
                 }
                 else{
-                    interaction.reply("it seems you are not an awakened yet!")
+                    interaction.reply({content:"it seems you are not an awakened yet!",ephemeral:true})
                 }
             }
         })

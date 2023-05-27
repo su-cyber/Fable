@@ -20,7 +20,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
         
         profileModel.exists({userID: authorId},async function(err,res){
             if(res){
-               await interaction.reply({content:"You have already begun your journey!"});
+               await interaction.reply({content:"You have already begun your journey!",ephemeral:true});
             }
             else{
                 profileModel.findOne({userID:authorId}, async function(err,foundUser) {

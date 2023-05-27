@@ -30,7 +30,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                     
         profileModel.findOne({userID:authorId},async function(err,foundUser) {
            if(foundUser.dungeon.status){
-            interaction.reply(`You cannot use this command inside a dungeon!`)
+            interaction.reply({content:`You cannot use this command inside a dungeon!`,ephemeral:true})
            }
            else{
             const location = foundUser.location
@@ -534,7 +534,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else{
-                        await interaction.reply(`you are not in a particular location!`)
+                        await interaction.reply({content:`you are not in a particular location!`,ephemeral:true})
                      }
 
                 }
@@ -695,7 +695,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
             }
 
             else {
-                    interaction.reply({content:"it seems that you are not an awakened yet!"})
+                    interaction.reply({content:"it seems that you are not an awakened yet!",ephemeral:true})
                 }
             }
         })

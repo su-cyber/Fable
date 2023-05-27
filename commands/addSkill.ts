@@ -28,7 +28,7 @@ export default new MyCommandSlashBuilder({ name: 'switchskill', description: 'ad
                         const foundcurrent = foundUser.currentskills.find(skill => skill.name.toLowerCase() === userSkill)
                         if(foundskill){
                             if(foundcurrent){
-                                interaction.reply(`${foundcurrent.name} already exists in your skill cycle`)
+                                interaction.reply({content:`${foundcurrent.name} already exists in your skill cycle`,ephemeral:true})
                             }
                             else{
                                 if(foundUser.currentskills.length<4){
@@ -134,7 +134,7 @@ export default new MyCommandSlashBuilder({ name: 'switchskill', description: 'ad
                             
                         }
                         else{
-                            interaction.reply(`you dont have any skill named ${userSkill}`)
+                            interaction.reply({content:`you dont have any skill named ${userSkill}`,ephemeral:true})
                         }
 
 
@@ -143,7 +143,7 @@ export default new MyCommandSlashBuilder({ name: 'switchskill', description: 'ad
 
                 }
                 else{
-                    await interaction.reply({content:"you are not awakened yet!"})
+                    await interaction.reply({content:"you are not awakened yet!",ephemeral:true})
                 }
             }
     })

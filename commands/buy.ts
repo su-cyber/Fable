@@ -45,7 +45,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                     }
                                     else{
                                         if(userProfile.coins<foundObject.cost*userQuantity){
-                                            interaction.reply("you dont have enough coins!")
+                                            interaction.reply({content:"you dont have enough coins!",ephemeral:true})
                                         }
                                         else{
                                             userProfile.coins-=foundObject.cost*userQuantity
@@ -96,7 +96,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                 
                             }
                             else{
-                                await interaction.reply(`no object called ${userobject} was found in the shop`)
+                                await interaction.reply({content:`no object called ${userobject} was found in the shop`,ephemeral:true})
                             }
                         }
                         else if(userType === "item"){
@@ -109,7 +109,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                     }
                                     else{
                                         if(userProfile.coins<foundObject.cost*userQuantity){
-                                            interaction.reply("you dont have enough coins!")
+                                            interaction.reply({content:"you dont have enough coins!",ephemeral:true})
                                         }
                                         else{
                                             userProfile.coins-=foundObject.cost*userQuantity
@@ -160,7 +160,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                 
                             }
                             else{
-                                await interaction.reply(`no object called ${userobject} was found in the shop`)
+                                await interaction.reply({content:`no object called ${userobject} was found in the shop`,ephemeral:true})
                             }
                         }
                         else if(userType === "armour") {
@@ -173,7 +173,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                     }
                                     else{
                                         if(userProfile.coins<foundObject.cost*userQuantity){
-                                            interaction.reply("you dont have enough coins!")
+                                            interaction.reply({content:"you dont have enough coins!",ephemeral:true})
                                         }
                                         else{
                                             userProfile.coins-=foundObject.cost*userQuantity
@@ -224,7 +224,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                 
                             }
                             else{
-                                await interaction.reply(`no object called ${userobject} was found in the shop`)
+                                await interaction.reply({content:`no object called ${userobject} was found in the shop`,ephemeral:true})
                             }
                         }
     
@@ -289,19 +289,19 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                 
                             }
                             else{
-                                await interaction.reply(`no object called ${userobject} was found in the shop`)
+                                await interaction.reply({content:`no object called ${userobject} was found in the shop`,ephemeral:true})
                             }
                         }
                     }
                 
                     else{
-                        interaction.reply(`You are not in a shop!`)
+                        interaction.reply({content:`You are not in a shop!`,ephemeral:true})
                     }
                 })
   
                 }
                 else{
-                    await interaction.reply("it seems you are not an awakened yet")
+                    await interaction.reply({content:"it seems you are not an awakened yet",ephemeral:true})
                 }
             }
         })

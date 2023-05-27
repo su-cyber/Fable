@@ -37,7 +37,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
             const dungeon = foundUser.dungeon
             if(dungeon.status == true){
                 if(foundUser.energy <= 0){
-                    interaction.reply(`you cannot move as you dont have any energy left`)
+                    interaction.reply({content:`you cannot move as you dont have any energy left`,ephemeral:true})
                 }
                 else{
                     if(dungeon.name === "Abandoned Castle"){
@@ -701,12 +701,12 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                 
             }
             else{
-                interaction.reply(`You are not inside a dungeon!`)
+                interaction.reply({content:`You are not inside a dungeon!`,ephemeral:true})
             }
         })
     }
     else{
-        interaction.reply('it seems you are not awakened yet!')
+        interaction.reply({content:'it seems you are not awakened yet!',ephemeral:true})
     }
 }
         })

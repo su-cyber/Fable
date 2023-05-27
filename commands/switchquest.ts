@@ -21,7 +21,7 @@ export default new MyCommandSlashBuilder({ name: 'switchquests', description: 's
                     profileModel.findOne({userID:authorId},async function(err,foundUser) {
                         if(foundUser.side_quest.length != 0){
                             if(foundUser.side_quest_phase>1){
-                                interaction.reply(`you cannot change side quests when you have one ongoing`)
+                                interaction.reply({content:`you cannot change side quests when you have one ongoing`,ephemeral:true})
                             }
                             else{
                                 let current_quests = []
@@ -101,13 +101,13 @@ export default new MyCommandSlashBuilder({ name: 'switchquests', description: 's
                         }
                         }
                         else{
-                            interaction.reply(`you have no side quests!`)
+                            interaction.reply({content:`you have no side quests!`,ephemeral:true})
                         }
                      
                 })
                 }
                 else{
-                    interaction.reply(`it seemes you have not awakened yet!`)
+                    interaction.reply({content:`it seemes you have not awakened yet!`,ephemeral:true})
                 }
             }
         })

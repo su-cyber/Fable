@@ -282,12 +282,12 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 await profileModel.updateOne({userID:authorId},{current_title:"Hero of Aube",titles:foundUser.titles.push("Hero of Aube"),main_quest_phase:"1",completed_quests:foundUser.completed_quests,main_quest:"KS-ZS-MQ1"})
                             }
                             else{
-                                interaction.reply(`you have not completed all the quests in Aube, please check the Questboard`)
+                                interaction.reply({content:`you have not completed all the quests in Aube, please check the Questboard`,ephemeral:true})
                             }
                             
                            }
                            else{
-                            interaction.reply(`You are not in the guild outpost, please go to the outpost to continue!`)
+                            interaction.reply({content:`You are not in the guild outpost, please go to the outpost to continue!`,ephemeral:true})
                            }
                             
 
@@ -319,7 +319,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
 
                                 }
                                 else{
-                                    interaction.reply(`You are not in Zorya, please travel to Zorya to continue!`)
+                                    interaction.reply({content:`You are not in Zorya, please travel to Zorya to continue!`,ephemeral:true})
                            
                                 }
                             }
@@ -440,7 +440,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
 
                                 }
                                 else{
-                                    interaction.reply(`You are not in the Guild District, please go to the Guild District to continue!`)
+                                    interaction.reply({content:`You are not in the Guild District, please go to the Guild District to continue!`,ephemeral:true})
                            
                                 }
                             
@@ -540,7 +540,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
 
                             }
                             else{
-                                interaction.reply(`You are not in the Guild District, please go to the Guild District to continue!`)
+                                interaction.reply({content:`You are not in the Guild District, please go to the Guild District to continue!`,ephemeral:true})
                        
                             }
                         
@@ -640,7 +640,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
 
                         }
                         else{
-                            interaction.reply(`You are not in the Guild District, please go to the Guild District to continue!`)
+                            interaction.reply({content:`You are not in the Guild District, please go to the Guild District to continue!`,ephemeral:true})
                    
                         }
                     
@@ -668,7 +668,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                         await profileModel.updateOne({userID:interaction.user.id},{main_quest_phase:6,guild:guild,guild_class:"E",guild_rank:"Ranger"})
                     }
                     else{
-                        interaction.reply(`You are not in the Guild District, please go to the Guild District to continue!`)
+                        interaction.reply({content:`You are not in the Guild District, please go to the Guild District to continue!`,ephemeral:true})
                     }
                     
                 }
@@ -676,7 +676,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
 
                        
                         else{
-                            interaction.reply("you currently have no ongoing main quest")
+                            interaction.reply({content:"you currently have no ongoing main quest",ephemeral:true})
                         }
 
                     })
@@ -684,7 +684,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
 
                 }
                 else{
-                    interaction.reply(`you have not awakened yet!`)
+                    interaction.reply({content:`you have not awakened yet!`,ephemeral:true})
                 }
             }
         })

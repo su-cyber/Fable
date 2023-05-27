@@ -88,7 +88,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                             
                                             else{
                                                 
-                                                interaction.reply("you already have a weapon equipped!")
+                                                interaction.reply({content:"you already have a weapon equipped!",ephemeral:true})
                                             }
                                            
                                         await profileModel.updateOne({userID:authorId},foundProfile)
@@ -99,7 +99,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                     
                                 }
                                 else{
-                                    await interaction.reply({content:`you dont own anything called ${userobject}`})
+                                    await interaction.reply({content:`you dont own anything called ${userobject}`,ephemeral:true})
                                 }
                             }
                             else if(userType === "armour"){
@@ -125,7 +125,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                             }
                                             else{
                                                 
-                                                interaction.reply("you already have an armour equipped!")
+                                                interaction.reply({content:"you already have an armour equipped!",ephemeral:true})
                                             }
                                         await profileModel.updateOne({userID:authorId},foundProfile)
                                         }
@@ -134,7 +134,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                     
                                 }
                                 else{
-                                    await interaction.reply({content:`you dont own anything called ${userobject}`})
+                                    await interaction.reply({content:`you dont own anything called ${userobject}`,ephemeral:true})
                                 }
                             }
                     
@@ -161,7 +161,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                 }
                                                 else{
                                                     
-                                                    interaction.reply("you cannot have more than 3 items eqipped!")
+                                                    interaction.reply({content:"you cannot have more than 3 items eqipped!",ephemeral:true})
                                                 }
                                             await profileModel.updateOne({userID:authorId},foundProfile)
                                             }
@@ -169,17 +169,17 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                         })
                                     }
                                     else{
-                                        interaction.reply("this item cannot be equipped")
+                                        interaction.reply({content:"this item cannot be equipped",ephemeral:true})
                                     }
 
                                 }
                                 else{
-                                    await interaction.reply({content:`you dont own anything called ${userobject}`})
+                                    await interaction.reply({content:`you dont own anything called ${userobject}`,ephemeral:true})
                                 }
                     
                             }
                             else{
-                                interaction.reply("invalid type")
+                                interaction.reply({content:"invalid type",ephemeral:true})
                             }
                            
                         }
@@ -188,7 +188,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                     })
                 }
                 else{
-                    await interaction.reply({content:"you have not awakened yet!"})
+                    await interaction.reply({content:"you have not awakened yet!",ephemeral:true})
                 }
             }
         })

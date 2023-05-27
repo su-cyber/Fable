@@ -43,7 +43,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                     if(interaction.guild == null){
                         profileModel.findOne({userID:authorId},async function(err,foundUser){
                             if(foundUser.energy <= 0){
-                                interaction.reply(`you cannot fight as you dont have any energy left`)
+                                interaction.reply({content:`you cannot fight as you dont have any energy left`,ephemeral:true})
                                 foundUser.encounter = []
                                 await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
                             }
@@ -129,7 +129,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                     }
                                 }
                                 else{
-                                    interaction.reply(`you are not in ${foundUser.encounter[0].location} where you encountered ${foundUser.encounter[0].name}`)
+                                    interaction.reply({content:`you are not in ${foundUser.encounter[0].location} where you encountered ${foundUser.encounter[0].name}`,ephemeral:true})
                                 }
                                }
                                else{
@@ -164,7 +164,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                     }
                                 }
                                 else{
-                                    interaction.reply(`you responded too late, your encounter is lost`)
+                                    interaction.reply({content:`you responded too late, your encounter is lost`,ephemeral:true})
                                     const authorID = interaction.user.id
                                     profileModel.findOne({userID:authorID},async function(err,foundUser) {
                             
@@ -183,7 +183,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                 
                             }
                             else{
-                                await interaction.reply(`you have not encountered anything!`)
+                                await interaction.reply({content:`you have not encountered anything!`,ephemeral:true})
                                 
                                 
                             }

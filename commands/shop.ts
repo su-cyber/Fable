@@ -192,7 +192,7 @@ else if(foundUser.location == "some other shop"){
 
 }
 else{
-    interaction.reply(`you are not in a location where you can access a shop`)
+    interaction.reply({content:`you are not in a location where you can access a shop`,ephemeral:true})
 }
 
 

@@ -89,7 +89,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                 
                                 }
                                 else{
-                                    await interaction.reply({content:`you dont have anything called ${userobject} eqipped`})
+                                    await interaction.reply({content:`you dont have anything called ${userobject} eqipped`,ephemeral:true})
                                 }
                             }
                             else if(userType === "armour"){
@@ -132,7 +132,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
 
                                 }
                                 else{
-                                    await interaction.reply({content:`you dont have anything called ${userobject} eqipped`})
+                                    await interaction.reply({content:`you dont have anything called ${userobject} eqipped`,ephemeral:true})
                                 }
                             }
                             else if(userType === "item"){
@@ -174,11 +174,11 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                     await interaction.reply({content:`${userobject} has been unequipped successfully!`})
                                 }
                                 else{
-                                    await interaction.reply({content:`you dont have anything called ${userobject} eqipped`})
+                                    await interaction.reply({content:`you dont have anything called ${userobject} eqipped`,ephemeral:true})
                                 }
                             }
                             else{
-                                interaction.reply("invalid type")
+                                interaction.reply({content:"invalid type",ephemeral:true})
                             }
                            
                         }
@@ -188,7 +188,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
 
                 }
                 else{
-                    await interaction.reply({content:"you have not awakened yet!"})
+                    await interaction.reply({content:"you have not awakened yet!",ephemeral:true})
                 }
             }
         })

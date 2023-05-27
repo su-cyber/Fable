@@ -20,7 +20,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 if(res){
                     profileModel.findOne({userID:authorId},async function(err,foundUser) {
                         if(foundUser.dungeon.status){
-                            interaction.reply(`You cannot use this command inside a dungeon!`)
+                            interaction.reply({content:`You cannot use this command inside a dungeon!`,ephemeral:true})
                            }
                            else{
                             const kingdom = foundUser.kingdom
@@ -1856,7 +1856,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
 
                 }
                 else{
-                    interaction.reply(`it seems you have not awakened yet!`)
+                    interaction.reply({content:`it seems you have not awakened yet!`,ephemeral:true})
                 }
             }
         })

@@ -23,7 +23,7 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                         }
                         else{
                             if(foundUser.dungeon.status){
-                                    interaction.reply(`You cannot use this command inside a dungeon!`)
+                                    interaction.reply({content:`You cannot use this command inside a dungeon!`,ephemeral:true})
                                    }
                                    else{
                                     let dialogue
@@ -199,7 +199,7 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                     })
                 }
                 else{
-                    await interaction.reply({content:"you are not awakened yet!"})
+                    await interaction.reply({content:"you are not awakened yet!",ephemeral:true})
                 }
             }
         })
