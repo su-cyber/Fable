@@ -233,7 +233,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             }
 
                         else if(foundUser.main_quest_phase == "3"){
-                            await profileModel.updateOne({userID:authorId},{location:"The Guild Outpost",main_quest_phase:"4"})
+                            
                             let fightEmbed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('New Beginnings')
@@ -252,7 +252,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             .setDescription(`finish all of the quests within Aube Town and meet this “Vice-Master” back in the Guild Outpost.`)
         
                             await interaction.reply({content: null,embeds:[fightEmbed]})
-
+                            await profileModel.updateOne({userID:authorId},{location:"The Guild Outpost",main_quest_phase:"4"})
                         }
                         else if(foundUser.main_quest_phase == "4"){
                            if(foundUser.location == "Aube Town Guild Outpost"){
