@@ -8,6 +8,7 @@ import { MessageActionRow, MessageSelectMenu} from 'discord.js'
 import { MessageButton, MessageEmbed } from 'discord.js'
 import { steelSword } from '../src/age/weapons/steelSword'
 import { MessageComponentInteraction,CacheType } from 'discord.js'
+import { sleep } from '../src/utils'
 
 
 export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken to your story' }).setDo(
@@ -176,7 +177,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         })
                         .setDescription('an error was encountered while creating your profile! kindly /awaken again')
 
-                    await interaction.deferReply()
+                   await interaction.deferReply()
                     await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
                     let filter = i => i.user.id === authorId
                     let filter_select_class = i => (i.customId === 'select_class') && i.user.id === authorId
@@ -270,16 +271,11 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     }
                                 })
                                 playerInventory.save();
-    
-                                    
-                               
-                                collector.stop()
-                                    
+                                    collector.stop()
                                 }
                                 else if(btn.customId === "btn_reject"){
                                     await btn.deferUpdate().catch(e => {})
-                                    await interaction.editReply({embeds:[rejectEmbed]})
-    
+                                    await interaction.editReply({embeds:[rejectEmbed],components:[]})
                                     collector.stop()
                                 }
                                 
@@ -288,7 +284,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 })
 
                                 
-                                
+                         
                                 
                             }
                               
