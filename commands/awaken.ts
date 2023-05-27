@@ -176,8 +176,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         })
                         .setDescription('an error was encountered while creating your profile! kindly /awaken again')
 
-                    const msg_before = await interaction.deferReply({fetchReply:true})
-                    await interaction.reply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
+                    await interaction.deferReply()
+                    await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
                     let filter = i => i.user.id === authorId
                     let filter_select_class = i => (i.customId === 'select_class') && i.user.id === authorId
                     let filter_select_element = i => (i.customId === 'select_element') && i.user.id === authorId
