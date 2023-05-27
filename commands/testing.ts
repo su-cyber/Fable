@@ -43,8 +43,6 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     const agility = foundUser.speed
     const health = foundUser.health
     const money = foundUser.coins
-    const weapon = foundUser.weapon[0].name
-    const armour = foundUser.armourSuit[0].name
     const location = foundUser.location
     const mainquest = foundUser.main_quest
     if(foundUser.side_quest.length == 0){
