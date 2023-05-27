@@ -176,7 +176,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         })
                         .setDescription('an error was encountered while creating your profile! kindly /awaken again')
 
-                    
+                    const msg_before = await interaction.deferReply({fetchReply:true})
                     await interaction.reply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
                     let filter = i => i.user.id === authorId
                     let filter_select_class = i => (i.customId === 'select_class') && i.user.id === authorId
@@ -415,7 +415,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 }
 
                                 await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance,currentskills:foundUser.currentskills,allskills:foundUser.allskills})
-                                await interaction.deferReply()
+                                
                                 await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
                                 collector_select_class.stop()
                                 
@@ -437,7 +437,6 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                             await inventory.deleteOne({userID:authorId})
                                         }
                                         else{
-                                            await interaction.deferReply()
                                             await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
                                         }
                                     })
