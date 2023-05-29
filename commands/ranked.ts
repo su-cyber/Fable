@@ -62,12 +62,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                             .setTitle('RANKED BATTLE')
                                             .setDescription(`Found a match with ${opponent.username}\n\nInitiating Combat...`)
 
-                                            let OppmatchEmbed = new MessageEmbed()
-                                            .setColor('RANDOM')
-                                            .setTitle('RANKED BATTLE')
-                                            .setDescription(`Found a match with ${author.username}\n\nInitiating Combat...`)
                                         interaction.editReply({embeds:[matchEmbed]})
-                                        opponent.dmChannel.send({embeds:[OppmatchEmbed]})
                                         await sleep(2)
                     profileModel.exists({userID: opponentId},async function(err,result){
 
