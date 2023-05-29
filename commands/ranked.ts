@@ -85,7 +85,8 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                         
                                     }
                                     else{
-                                        
+                                console.log(foundUser.element);
+                                
                                 attacker.health=foundUser.health
                                 attacker.mana=foundUser.mana
                                 attacker.armor=foundUser.armour
@@ -157,8 +158,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                         
                                     }
                                 })
-                                console.log(attacker.skills);
-                                console.log(defender.skills);
+                                
                                 
                                 if(attacker.speed>= defender.speed){
                                     await new PvPDuel({
