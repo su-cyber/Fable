@@ -533,7 +533,6 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
             }
         
             async onEnd(winner: Entity, loser: Entity) {
-                (await bot.users.fetch(opponentId)).dmChannel.send({embeds:this.duelMessageEmbeds()})
                 if(winner.id == opponentId){
                     (await bot.users.fetch(opponentId)).dmChannel.send(`You won the battle against ${loser.name}!`);
                     (await bot.users.fetch(authorId)).dmChannel.send(`You lost the battle against ${winner.name}!`)
