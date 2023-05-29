@@ -62,7 +62,12 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                             .setTitle('RANKED BATTLE')
                                             .setDescription(`Found a match with ${opponent.username}\n\nInitiating Combat...`)
 
+                                            let OppmatchEmbed = new MessageEmbed()
+                                            .setColor('RANDOM')
+                                            .setTitle('RANKED BATTLE')
+                                            .setDescription(`Found a match with ${author.username}\n\nInitiating Combat...`)
                                         interaction.editReply({embeds:[matchEmbed]})
+                                        opponent.dmChannel.send({embeds:[OppmatchEmbed]})
                                         await sleep(2)
                     profileModel.exists({userID: opponentId},async function(err,result){
 
@@ -152,6 +157,9 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                         
                                     }
                                 })
+                                console.log(attacker.skills);
+                                console.log(defender.skills);
+                                
                                 if(attacker.speed>= defender.speed){
                                     await new PvPDuel({
                                         interaction,
@@ -528,6 +536,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
             }
         
             async onEnd(winner: Entity, loser: Entity) {
+                (await bot.users.fetch(opponentId)).dmChannel.send({embeds:this.duelMessageEmbeds()})
                 if(winner.id == opponentId){
                     (await bot.users.fetch(opponentId)).dmChannel.send(`You won the battle against ${loser.name}!`);
                     (await bot.users.fetch(authorId)).dmChannel.send(`You lost the battle against ${winner.name}!`)
