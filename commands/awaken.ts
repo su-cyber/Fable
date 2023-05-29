@@ -418,9 +418,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     }]
                                 }
 
-                                await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance,currentskills:foundUser.currentskills,allskills:foundUser.allskills})
-                                
+                               
                                 await interaction.editReply({content: null,embeds:[elementEmbed1],components:[btnele]})
+                                await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance,currentskills:foundUser.currentskills,allskills:foundUser.allskills})
                                 
                                 
                                 collector_select_class.on("end",async(btn) => {
