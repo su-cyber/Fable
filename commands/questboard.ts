@@ -180,7 +180,11 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
   
      }
      else if(location == "Guild Office"){
-        let Quest_embed_1 = new MessageEmbed()
+        if(foundUser.guild == "None"){
+            interaction.reply({content:`You are not a Guild Member yet, you cannot access the questboard!`,ephemeral:true})
+        }
+        else{
+let Quest_embed_1 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('Heirloom Missing')
                                 .setDescription(`The player is hired by a wealthy citizen of Zorya to find their missing astrolabe. The astrolabe is a family heirloom that is believed to bring good fortune to its owner. The player must search the city and interview locals to find out where the astrolabe may have ended up\n\nRequired Guild Class: **E**\nRecommended Level: **Lvl 6**`)
@@ -325,6 +329,8 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
     
     })
     }
+        }
+        
 
      }
                             else{

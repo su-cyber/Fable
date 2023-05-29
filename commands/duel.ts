@@ -46,7 +46,6 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                     }
                                     else{
                                         
-                                        
                                 attacker.health=foundUser.health
                                 attacker.mana=foundUser.mana
                                 attacker.armor=foundUser.armour
