@@ -37,23 +37,32 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                         }
                         else{
                             if(result){
-                                interaction.reply(`already in queue!`)
+                                interaction.reply({content:`You are already in Queue!`,ephemeral:true})
                             }
                             else{
-                                let Embed = new MessageEmbed()
+                                let queueEmbed = new MessageEmbed()
                                 .setColor('RANDOM')
-                                .setTitle('Ranked Queue...')
+                                .setTitle('RANKED BATTLE')
                                 .setDescription(`Looking for a match..`)
+
+                                
                     
-                                interaction.reply({embeds:[Embed]})
+                                interaction.reply({embeds:[queueEmbed]})
+                                await sleep(2)
                                 queueModel.findOne({floor:1},async function(err,foundOpponent){
                                     if(foundOpponent){
+                                        
                                         opponentId = foundOpponent.userID
                                         await queueModel.deleteOne({userID:opponentId})
 
                                         const author = await bot.users.fetch(authorId)
                                         const opponent = await bot.users.fetch(opponentId)
-
+                                        let matchEmbed = new MessageEmbed()
+                                            .setColor('RANDOM')
+                                            .setTitle('RANKED BATTLE')
+                                            .setDescription(`Found a match with ${opponent.username}\n\nInitiating Combat...`)
+                                        interaction.editReply({embeds:[matchEmbed]})
+                                        await sleep(1)
                     profileModel.exists({userID: opponentId},async function(err,result){
 
                         if(err){
@@ -507,8 +516,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
             async beforeDuelStart() {
                 super.beforeDuelStart()
         
-                await this.replyOrEdit({ content: `initiating duel with ${this.player2.name}!` })
-                await sleep(1.2)
+                
                 
                 
             }
@@ -519,7 +527,17 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
             }
         
             async onEnd(winner: Entity, loser: Entity) {
-                (await bot.users.fetch(opponentId)).dmChannel.send(`Battle over!`)
+                
+                if(winner.id == opponentId){
+                    (await bot.users.fetch(opponentId)).dmChannel.send(`You won the battle against ${loser.name}!`);
+                    (await bot.users.fetch(authorId)).dmChannel.send(`You lost the battle against ${winner.name}!`)
+                    
+                }
+                else{
+                    (await bot.users.fetch(authorId)).dmChannel.send(`You won the battle against ${loser.name}!`);
+                    (await bot.users.fetch(opponentId)).dmChannel.send(`You lost the battle against ${winner.name}!`)
+                }
+                
             }
         }
     })

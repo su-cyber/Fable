@@ -72,35 +72,45 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         ]) 
                         
                         const elements = [{
-                            name:`Flame 🔥`,
-                            description:`Element of fire`
+                            name:`Flame`,
+                            description:`Element of fire`,
+                            emoji:'🔥'
                         },{
-                            name:`Wave 🌊`,
-                            description:`Element of water`
+                            name:`Wave`,
+                            description:`Element of water`,
+                            emoji:'🌊'
                         },{
-                            name:`Light ✨`,
-                            description:`Element of light`
+                            name:`Light`,
+                            description:`Element of light`,
+                            emoji:'✨'
                         },{
-                            name:`Frost ❄️`,
-                            description:`Element of ice`
+                            name:`Frost`,
+                            description:`Element of ice`,
+                            emoji:'❄️'
                         },{
-                            name:`Volt ⚡`,
-                            description:`Element of lightning`
+                            name:`Volt`,
+                            description:`Element of lightning`,
+                            emoji:'⚡'
                         },{
-                            name:`Terra 🪨`,
-                            description:`Element of earth`
+                            name:`Terra`,
+                            description:`Element of earth`,
+                            emoji:'🪨'
                         },{
-                            name:`Venom ☠️`,
-                            description:`Element of poison`
+                            name:`Venom`,
+                            description:`Element of poison`,
+                            emoji:'☠️'
                         },{
-                            name:`Gale 💨`,
-                            description:`Element of wind`
+                            name:`Gale`,
+                            description:`Element of wind`,
+                            emoji:'💨'
                         },{
-                            name:`Bloom 🍁`,
-                            description:`Element of plants`
+                            name:`Bloom`,
+                            description:`Element of plants`,
+                            emoji:'🍁'
                         },{
-                            name:`Alloy ⚙️`,
-                            description:`Element of metals`
+                            name:`Alloy`,
+                            description:`Element of metals`,
+                            emoji:'⚙️'
                         }]
                         let select_element =  new MessageActionRow().addComponents([
                             new MessageSelectMenu()
@@ -108,9 +118,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 .setPlaceholder(`Select your preferred element ${interaction.user.username}`)
                                 .addOptions(
                                     elements.map(element => ({
-                                        label: element.name,
+                                        label: `${element.name} ${element.emoji}`,
                                         description: element.description,
-                                        value: element.name,
+                                        value: `${element.name}`,
                                     }))
                                     
                                 
