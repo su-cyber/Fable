@@ -284,7 +284,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 else if(btn.customId == "btn_element"){
                                     await btn.deferUpdate().catch(e => {})
                                     await interaction.editReply({embeds:[elementEmbed1],components:[select_element]})
-                                    collector.stop()
+                                    
                                 }
                                 
                                 collector.on("end",async(btn) => {
@@ -305,7 +305,6 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     collector_select_class.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                            
                         if(collected.customId == 'select_class'){
-                            await interaction.editReply({ content: '\u200b', components: [] })
                             let user_class = collected.values[0]
                             profileModel.findOne({userID:authorId},async (err,foundUser) => {
                                 
@@ -422,7 +421,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance,currentskills:foundUser.currentskills,allskills:foundUser.allskills})
                                 
                                 await interaction.editReply({content: null,embeds:[elementEmbed1],components:[btnele]})
-                                collector_select_class.stop()
+                                
                                 
                                 collector_select_class.on("end",async(btn) => {
                                     await interaction.editReply({components:[d_btnraw]})
@@ -450,7 +449,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     })
                                    
                                    
-                                    collector_select_element.stop()
+                                    
                                 
                         
                                     collector_select_element.on("end",async(btn) => {
