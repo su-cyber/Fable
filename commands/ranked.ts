@@ -68,15 +68,11 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                             .setDescription(`Found a match with ${author.username}\n\nInitiating Combat...`)
                                         interaction.editReply({embeds:[matchEmbed]})
                                         opponent.dmChannel.send({embeds:[OppmatchEmbed]})
-                                        await sleep(2)
-                    profileModel.exists({userID: opponentId},async function(err,result){
+                                        await sleep(1)
+              
 
-                        if(err){
-                            console.log(err);
-                            
-                        }
-                        else{
-                            if(result){
+
+
                                 const attacker = Warrior.create(author)
                                 const defender = Warrior.create(opponent)
                                 profileModel.findOne({userID:authorId},async function(err,foundUser) {
@@ -85,7 +81,6 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                         
                                     }
                                     else{
-                                console.log(foundUser.element);
                                 
                                 attacker.health=foundUser.health
                                 attacker.mana=foundUser.mana
@@ -178,12 +173,6 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                 }
                                 
                         
-                            }
-                            else{
-                                interaction.reply({content:"it seems that the user you selected is not an awakened yet!",ephemeral:true})
-                            }
-                        }
-                    })
                                     }
                                     else{
                                         let queue = new queueModel({
