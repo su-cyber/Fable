@@ -182,14 +182,16 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                     `Luciana: “There are some people who claim that Earl Auriga used his power as an Earl to amass wealth, but in reality Earl Auriga had always owned Auriga Sails Company and only after making his business a success, did he ever run for the position of Earl. He even passed the ownership of the company to his sister after becoming the Earl. Personally I think Earl Auriga is the reason Zorya has become as it is today, and people with such opinions should just keep their mouths shut.”`,
                                                     `Edgar: “The Castle of Chariots…man what a magnificent work of art. I would love to visit it once and take a tour but it isn’t just open to anyone. That is why I have become an Adventurer. Maybe one day I would be big enough for Earl Auriga to personally request me. What a sight that would be.”`
                                                 ])
-                                                dialogueembed = new MessageEmbed()
+                                                
+                                                
+                                            }
+                                            
+                                        }
+                                    }
+                                    dialogueembed = new MessageEmbed()
                                                     .setColor('RANDOM')
                                                     .setTitle('Dialogue Initiated!')
                                                     .setDescription(`${dialogue}\n`)
-                                                
-                                            }
-                                        }
-                                    }
                                    
                                     await interaction.reply({embeds:[dialogueembed]});
                                    }
