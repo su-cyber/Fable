@@ -28,9 +28,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Tutorial"),
                         new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Cancel"),])
                         
-                        let btnele= new MessageActionRow().addComponents([
-                            new MessageButton().setCustomId("btn_element").setStyle("PRIMARY").setLabel("Select Element"),
-                            ])
+                        
         
                         let d_btnraw = new MessageActionRow().addComponents([
                             new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Tutorial").setDisabled(true),
@@ -281,11 +279,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     await interaction.editReply({embeds:[rejectEmbed],components:[]})
                                     collector.stop()
                                 }
-                                else if(btn.customId == "btn_element"){
-                                    await btn.deferUpdate().catch(e => {})
-                                    await interaction.editReply({embeds:[elementEmbed1],components:[select_element]})
-                                    
-                                }
+                               
                                 
                                 collector.on("end",async(btn) => {
                                     await interaction.editReply({components:[d_btnraw]})
@@ -418,24 +412,27 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     }]
                                 }
 
-                                await collected.deferUpdate().catch(e => {})
-                                await interaction.editReply({content: null,embeds:[elementEmbed1],components:[btnele]})
+                               await collected.deferUpdate().catch(e => {})
+                                await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
                                 await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance,currentskills:foundUser.currentskills,allskills:foundUser.allskills})
                                 
                                 
-                                collector_select_class.on("end",async(btn) => {
-                                    await interaction.editReply({components:[d_btnraw]})
-                                })
+                               
                                 
                             })
                             
                         }
                     })
+                    collector_select_class.on("end",async(btn) => {
+                        await interaction.editReply({components:[d_btnraw]})
+                    })
                         collector_select_element.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                             if(collected.customId == 'select_element'){
                                 user_elements.push(collected.values[0])
                                 await profileModel.updateOne({userID:authorId},{elements:user_elements})
-                                
+                                collector.stop()
+                                collector_select_class.stop()
+                                collector_select_element.stop()
                   
                                     profileModel.findOne({userID:authorId},async (err,foundUser) => {
                                         if(foundUser.class =="" || foundUser.elements.length !=1){
@@ -452,15 +449,16 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     
                                 
                         
-                                    collector_select_element.on("end",async(btn) => {
-                                        await interaction.editReply({components:[d_btnraw]})
-                                    })
+                                    
                        
                            
                            
                             
                         }
                         
+                    })
+                    collector_select_element.on("end",async(btn) => {
+                        await interaction.editReply({components:[d_btnraw]})
                     })
                     
     
