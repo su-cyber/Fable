@@ -488,7 +488,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setColor('RANDOM')
                 .setTitle(`Now Exploring ${city_town}...`)
                 .setImage('attachment://Aube_Town.jpg')
-                .setDescription(`you visited ${location}, The township of aube\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you wander through the charming streets of Aube Town, a sense of serenity embraces you. The warm glow of the rising sun bathes the quaint buildings, casting long shadows that dance upon the cobblestones. The town awakens with a gentle buzz of activity, as locals exchange friendly greetings and prepare for the day ahead. From the inviting aroma of freshly baked goods wafting from the local dairy to the cheerful chatter echoing from the town center, every corner reveals the tight-knit community that thrives in this idyllic haven. In Aube Town, you feel a sense of belonging and discover the simple joys of life in a place where the dawn brings not just a new day, but a promise of camaraderie and the embrace of a vibrant community.`)
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
             
                     }
@@ -555,7 +555,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setColor('RANDOM')
                         .setTitle(`Now Exploring ${location}...`)
                         .setImage('attachment://guild_district.jpg')
-                        .setDescription(`you visited ${location},The home to all guilds and the guild colosseum\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you wander through the Guild District of the Stateship of Zorya, the air crackles with an electrifying energy. The streets are alive with the bustling branches of diverse guilds, each one a gateway to a world of specialized skills and knowledge. Guild rangers, with unwavering dedication, traverse these thoroughfares, their presence a testament to their commitment to protecting the common-folk and venturing into the depths of danger. Amidst this vibrant tapestry, you find yourself drawn towards the grand Colosseum at the heart of the district, where roads converge and stories unfold. In the Guild District, a realm of expertise and bravery intertwines, igniting your curiosity and fueling your imagination.`)
                         await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Guild Office'){
@@ -585,7 +585,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setColor('RANDOM')
                         .setTitle(`Now Exploring ${location}...`)
                         .setImage('attachment://auriga_company.jpg')
-                        .setDescription(`you visited ${location},the famous Auriga ship company run by earl Auriga\n\nuse **/explore** to explore this location\n\nuse**/shop** to access the shops\nuse **/buy** to buy something\nuse **/sell** to sell something`)
+                        .setDescription(`As you enter the Auriga Sails Company, the air crackles with the scent of timber and the symphony of skilled craftsmanship. The workshop is a hive of activity, with master shipwrights meticulously shaping the sturdiest airships ever known to grace the skies. Your eyes widen in awe as you witness their artistry, knowing that their expertise has given birth to the legendary Golden Dutchman Fleet—the world's largest fleet of merchant ships, each owned by the wealthiest of merchant families. In this realm of nautical marvels, you become immersed in a world where dreams take flight and the boundless horizons of adventure beckon.`)
                         await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Astro Avenue'){
@@ -594,7 +594,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setColor('RANDOM')
                         .setTitle(`Now Exploring ${location}...`)
                         .setImage('attachment://astro_avenue.jpg')
-                        .setDescription(`you visited ${location},home to many foreign goods not found in Solarstrio\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you stroll down the bustling Astro Avenue, a symphony of colors and melodies fills the air. Vibrant storefronts adorned with whimsical displays compete for your attention, while street performers captivate with their dazzling acts. The aroma of delectable treats wafts through the lively crowd, tempting your taste buds. Everywhere you turn, there's a new delight to discover, making each step along Astro Avenue a thrilling adventure.`)
                         await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Golden Terminal'){
@@ -603,7 +603,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setColor('RANDOM')
                         .setTitle(`Now Exploring ${location}...`)
                         .setImage('attachment://golden_terminal.jpg')
-                        .setDescription(`you visited ${location},A famous station for Quarantrain\n\nuse **/explore** to explore this location`)
+                        .setDescription(` As you step into the Golden Terminal, the gleam of copper architecture surrounds you, casting a warm and inviting glow. The air hums with anticipation as crowds of citizens and travelers converge, their eyes filled with wanderlust. The bustling atmosphere embraces you, echoing the excitement of those embarking on new adventures. Your gaze is drawn to the majestic Steam Train, standing proud on the platform, its billowing plumes of steam whispering tales of distant lands. In this vibrant hub of exploration, you become a part of a tapestry of dreams, ready to embark on a journey that will weave unforgettable memories into the fabric of your soul.`)
                         await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Castle of Chariots'){
@@ -612,7 +612,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setColor('RANDOM')
                         .setTitle(`Now Exploring ${location}...`)
                         .setImage('attachment://castle_chariots.jpg')
-                        .setDescription(`you visited ${location},The stunning castle of Earl Auriga\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you step into the grand Castle of Chariots, a sense of awe washes over you. The halls echo with whispers of history, and every corner is adorned with regal splendor. You find yourself captivated by the intricate tapestries and the ornate craftsmanship that adorns the walls. The air is filled with an air of authority and purpose, a testament to Earl Auriga's vigilant guardianship over the state. In this fortress of power and grace, you walk in the footsteps of legends, feeling a deep reverence for the responsibilities and secrets held within these ancient walls.`)
                         await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Siewelle Port'){
@@ -621,7 +621,16 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setColor('RANDOM')
                         .setTitle(`Now Exploring ${location}...`)
                         .setImage('attachment://siewelle_port.jpg')
-                        .setDescription(`you visited ${location},The Port which serves as the main market of Zorya\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you step into the vibrant Siewelle Port, the symphony of maritime activity envelops you. The air is thick with the scent of saltwater and the sound of creaking ships. Your gaze dances from one pier to another, captivated by the bustling docks and the constant flow of goods being loaded and unloaded. The colossal sea gates stand like silent guardians, their imposing presence a testament to the port's significance. The air is filled with a sense of adventure and possibility as you envision the far-reaching destinations these ships will embark upon. In the Siewelle Port, you become a part of the bustling trade and seafaring dreams, igniting your own wanderlust and stoking the fires of your imagination.`)
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Black Market'){
+                        const attachment = new MessageAttachment('assets/Zorya/black_market.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`Now Exploring ${location}...`)
+                        .setImage('attachment://black_market.jpg')
+                        .setDescription(`As you venture into the concealed depths of the Black Market, a shroud of secrecy envelops you. Dimly lit stalls line the labyrinthine corridors, revealing a treasure trove of forbidden wonders. The air crackles with whispered negotiations and the scent of intrigue. Your heart races as you feast your eyes on rare artifacts and experimental weapons, each whispering tales of untold power and peril. In this clandestine realm, the allure of the forbidden intertwines with the thrill of the unknown, beckoning you to immerse yourself in a world where shadows hold hidden treasures and the line between legality and chaos blurs.`)
                         await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == "None"){
@@ -641,7 +650,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setColor('RANDOM')
                 .setTitle(`Now Exploring ${city_town}...`)
                 .setImage('attachment://zephyr_mountain.jpg')
-                .setDescription(`you visited ${location},The great mountains of Zephyr range\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you embark on the journey to explore Zephyr Mountain, a sense of awe washes over you. The air grows crisper, and the surroundings transform into a realm of rugged beauty. Towering cliffs and cascading waterfalls paint a breathtaking backdrop, while the distant echo of wind whispers tales of ancient secrets. With each step, the terrain becomes more challenging, urging you to push beyond your limits. Yet, as you ascend the mountain's slopes, a sense of accomplishment fills your being, knowing that you are conquering nature's formidable playground. From the summit, you witness a panorama of majestic landscapes, a testament to the boundless wonders that await those who dare to venture into the heart of Zephyr Mountain.`)
                 await interaction.reply({embeds:[embed],components:[],files:[attachment]})
         
                 }
@@ -651,7 +660,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setColor('RANDOM')
                 .setTitle(`Now Exploring ${city_town}...`)
                 .setImage('attachment://sunstone_mines.jpg')
-                .setDescription(`you visited ${location},The minefield where sunstones are mined\n\nuse **/explore** to explore this location`)
+                .setDescription(` As you descend into the depths of the Sunstone Mines, a captivating spectacle unfolds before your eyes. The air hums with anticipation as workers skillfully extract the precious Sunstone, its ethereal glow casting an otherworldly radiance upon the cavernous walls. Each step reveals the intricate web of tunnels, alive with the industrious activity that powers the Kingdom of Solarstrio. The mesmerizing beauty of the Sunstone and the sheer magnitude of its importance in fueling progress fill you with a sense of awe and wonder. In the Sunstone Mines, you witness the heartbeat of a kingdom, where the harmony of natural beauty and technological innovation intertwine to shape the future.`)
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
             
                 }
@@ -661,7 +670,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setColor('RANDOM')
                 .setTitle(`Now Exploring ${city_town}...`)
                 .setImage('attachment://dragon_den.jpg')
-                .setDescription(`you visited ${location},The den of an ancient Dragon\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you cautiously step into the foreboding depths of the Dragon's Den, an ancient presence lingers in the air. The cavernous expanse resonates with a sense of both awe and danger, as if the very walls hold whispered secrets of untold wealth and unspoken perils. Your gaze is drawn to the remnants of a fallen Greater Dragon, its skeletal remains a haunting reminder of the power that once commanded this domain. Every step forward is accompanied by a mix of fascination and unease, as you navigate the treacherous path in search of the legendary treasures rumored to be concealed within. In the Dragon's Den, you become an intrepid explorer, venturing into the heart of the unknown, ready to face the mysteries and dangers that lie in wait.`)
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
             
                 }

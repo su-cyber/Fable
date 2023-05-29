@@ -38,7 +38,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Castellan Fields`,
-                                            value:`**Travelled on Foot**\n**Description**:a field outside aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙`
                                         },
                                         {
                                             name: `Sunshade Forest`,
@@ -46,7 +46,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         },
                                         {
                                             name: `The Badlands`,
-                                            value:`**Travelled on Foot**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙`
+                                            value:`**Travelled on Foot**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙`
                                         },
                                         {
                                             name: `State of Zorya`,
@@ -63,15 +63,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     .addFields([
                                         {
                                             name: `Castellan Fields`,
-                                            value:`**Travelled on Mount**\n**Description**:a field outside aube town\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunshade Forest`,
-                                            value:`**Travelled on Mount**\n**Description**:a forest outside aube town\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `The Badlands`,
-                                            value:`**Travelled on Mount**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `State of Zorya`,
@@ -93,16 +93,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Castellan Fields`,
-                    description: `a field outside aube town`,
+                    description: `The famous golden hued fields of Aube.`,
                     value: `Castellan Fields`,
                 },{
                     label: `Sunshade Forest`,
-                    description: `a forest outside aube town`,
+                    description: `A treacherous place for travelers and explorers alike.`,
                     value: `Sunshade Forest`,
                 },
                 {
                     label: `The Badlands`,
-                    description: `the outskirts of aube town`,
+                    description: `Face the crippling heat, with nothing to find in it.`,
                     value: `The Badlands`,
                 },{
                     label: `State of Zorya`,
@@ -205,11 +205,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         },
                                         {
                                             name: `Sunshade Forest`,
-                                            value:`**Travelled on Foot**\n**Description**:a forest outside aube town\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Foot**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `The Badlands`,
-                                            value:`**Travelled on Foot**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Foot**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
                                         },
                                        
                                     ])
@@ -227,11 +227,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         },
                                         {
                                             name: `Sunshade Forest`,
-                                            value:`**Travelled on Mount**\n**Description**:a forest outside aube town\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `The Badlands`,
-                                            value:`**Travelled on Mount**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
                                         },
                                         
                                     ])
@@ -254,12 +254,12 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `aube`,
                 },{
                     label: `Sunshade Forest`,
-                    description: `a forest outside aube town`,
+                    description: `A treacherous place for travelers and explorers alike.`,
                     value: `Sunshade Forest`,
                 },
                 {
                     label: `The Badlands`,
-                    description: `the outskirts of aube town`,
+                    description: ` Face the crippling heat, with nothing to find in it.`,
                     value: `The Badlands`,
                 },
                 )
@@ -287,7 +287,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Aube_Town.jpg')
-                .setDescription(`you visited ${location}, The township of aube\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Badlands'){
@@ -349,11 +349,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         },
                                         {
                                             name: `Castellan Fields`,
-                                            value:`**Travelled on Foot**\n**Description**:a field outside aube town\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Foot**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `The Badlands`,
-                                            value:`**Travelled on Foot**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Foot**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
                                         },
                                        
                                     ])
@@ -371,11 +371,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         },
                                         {
                                             name: `Castellan Fields`,
-                                            value:`**Travelled on Mount**\n**Description**:a field outside aube town\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `The Badlands`,
-                                            value:`**Travelled on Mount**\n**Description**:the outskirts of aube town\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
                                         },
                                         
                                     ])
@@ -398,12 +398,12 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `aube`,
                 },{
                     label: `Castellan Fields`,
-                    description: `a field outside aube town`,
+                    description: `The famous golden hued fields of Aube.`,
                     value: `Castellan Fields`,
                 },
                 {
                     label: `The Badlands`,
-                    description: `the outskirts of aube town`,
+                    description: ` Face the crippling heat, with nothing to find in it.`,
                     value: `The Badlands`,
                 },
                 )
@@ -430,7 +430,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Aube_Town.jpg')
-                .setDescription(`you visited ${location}, The township of aube\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Badlands'){
@@ -492,11 +492,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         },
                                         {
                                             name: `Castellan Fields`,
-                                            value:`**Travelled on Foot**\n**Description**:a field outside aube town\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Foot**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunshade Forest`,
-                                            value:`**Travelled on Foot**\n**Description**:a forrest outside aube town\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Foot**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
                                         },
                                        
                                     ])
@@ -514,11 +514,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         },
                                         {
                                             name: `Castellan Fields`,
-                                            value:`**Travelled on Mount**\n**Description**:a field outside aube town\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙\n`
                                         },
                                         {
                                             name: `Sunshade Forest`,
-                                            value:`**Travelled on Mount**\n**Description**:a forest outside aube town\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
                                         },
                                         
                                     ])
@@ -541,7 +541,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `aube`,
                 },{
                     label: `Castellan Fields`,
-                    description: `a field outside aube town`,
+                    description: `The famous golden hued fields of Aube.`,
                     value: `Castellan Fields`,
                 },
                 {
@@ -574,7 +574,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Aube_Town.jpg')
-                .setDescription(`you visited ${location}, The township of aube\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Sunshade Forest'){
@@ -796,7 +796,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://Aube_Town.jpg')
-                .setDescription(`you visited ${location}, The township of aube\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'ellior'){
@@ -806,7 +806,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://ellior_forest.jpg')
-                .setDescription(`you visited ${location},The enchanted forest of Ellior\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Dragon’s Den'){
@@ -816,7 +816,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://dragon_den.jpg')
-                .setDescription(`you visited ${location},The den of an ancient Dragon\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Sunstone Mines'){
@@ -826,7 +826,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://sunstone_mines.jpg')
-                .setDescription(`you visited ${location},The minefield where sunstones are mined\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Zephyr Mountain'){
@@ -836,7 +836,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://zephyr_mountain.jpg')
-                .setDescription(`you visited ${location},The great mountains of Zephyr range\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Tethys'){
@@ -1037,6 +1037,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setDescription(`you visited ${location},The enchanted forest of Ellior\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
+            else if(location == 'Dragon’s Den'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/dragon_den.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://dragon_den.jpg')
+                .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
             else if(location == 'Zephyr Mountain'){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                 const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
@@ -1044,7 +1054,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://zephyr_mountain.jpg')
-                .setDescription(`you visited ${location},The great mountains of Zephyr range\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Sunstone Mines'){
@@ -1054,7 +1064,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://sunstone_mines.jpg')
-                .setDescription(`you visited ${location},The minefield where sunstones are mined\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'orld husk'){
@@ -1223,7 +1233,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://ellior_forest.jpg')
-                .setDescription(`you visited ${location},The enchanted forest of Ellior\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Zephyr Mountain'){
@@ -1233,7 +1243,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://zephyr_mountain.jpg')
-                .setDescription(`you visited ${location},The great mountains of Zephyr range\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Sunstone Mines'){
@@ -1243,7 +1253,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://sunstone_mines.jpg')
-                .setDescription(`you visited ${location},The minefield where sunstones are mined\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'orld husk'){
@@ -1412,7 +1422,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://dragon_den.jpg')
-                .setDescription(`you visited ${location},The den of an ancient Dragon\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Zephyr Mountain'){
@@ -1422,7 +1432,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://zephyr_mountain.jpg')
-                .setDescription(`you visited ${location},The great mountains of Zephyr range\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'ellior'){
@@ -1432,7 +1442,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://ellior_forest.jpg')
-                .setDescription(`you visited ${location},The enchanted forest of Ellior\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'orld husk'){
@@ -1602,7 +1612,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://dragon_den.jpg')
-                .setDescription(`you visited ${location},The den of an ancient Dragon\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Sunstone Mines'){
@@ -1612,7 +1622,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://sunstone_mines.jpg')
-                .setDescription(`you visited ${location},The minefield where sunstones are mined\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'ellior'){
@@ -1622,7 +1632,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://ellior_forest.jpg')
-                .setDescription(`you visited ${location},The enchanted forest of Ellior\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'orld husk'){
@@ -1791,7 +1801,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://dragon_den.jpg')
-                .setDescription(`you visited ${location},The den of an ancient Dragon\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Sunstone Mines'){
@@ -1801,7 +1811,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://sunstone_mines.jpg')
-                .setDescription(`you visited ${location},The minefield where sunstones are mined\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'ellior'){
@@ -1811,7 +1821,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://ellior_forest.jpg')
-                .setDescription(`you visited ${location},The enchanted forest of Ellior\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Zephyr Mountain'){
@@ -1821,7 +1831,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://zephyr_mountain.jpg')
-                .setDescription(`you visited ${location},The great mountains of Zephyr range\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             

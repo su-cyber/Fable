@@ -22,5 +22,15 @@ const allQuests = [{
     description:"find what is happening to his consignments",
     quest_id:"KS-TA-SQ5"
 
+},{
+    name:"Heirloom Missing",
+    description:"find the missing Heirloom",
+    quest_id:"KS-ZS-SQ1"
+
+},{
+    name:"Lost Bussiness",
+    description:"investigate the shop owner's troubles",
+    quest_id:"KS-ZS-SQ2"
+
 }]
 export default allQuests

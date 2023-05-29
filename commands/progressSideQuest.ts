@@ -722,6 +722,48 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
 
                             }
                         }
+                        else if(foundUser.side_quest[0] == "KS-ZS-SQ1"){
+                            if(foundUser.side_quest_phase == "1"){
+                                let quest_embed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`Heirloom Missing`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .addFields([
+                                    {
+                                        name: `Current Objective:`,
+                                        value:`**press /progresssidequest in Various locations of Zorya to investigate further**`
+                                    }
+                                ])
+                                .setDescription(`The player is hired by a wealthy citizen of Zorya to find their missing astrolabe. The astrolabe is a family heirloom that is believed to bring good fortune to its owner. The player must search the city and interview locals to find out where the astrolabe may have ended up.\n\n**Talk to the locals around the city to investigate further**`)
+                            
+                                await interaction.reply({embeds:[quest_embed]})
+                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"2"})
+
+                            }
+                            else if(foundUser.side_quest_phase == "2"){
+                                let quest_embed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`Heirloom Missing`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .addFields([
+                                    {
+                                        name: `Current Objective:`,
+                                        value:`**press /progresssidequest in Various locations of Zorya to investigate further**`
+                                    }
+                                ])
+                                .setDescription(`The player is hired by a wealthy citizen of Zorya to find their missing astrolabe. The astrolabe is a family heirloom that is believed to bring good fortune to its owner. The player must search the city and interview locals to find out where the astrolabe may have ended up.\n\n**Talk to the locals around the city to investigate further**`)
+                            
+                                await interaction.reply({embeds:[quest_embed]})
+                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"2"})
+
+                            }
+                        }
                        
                         
                     })

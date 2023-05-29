@@ -664,8 +664,9 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                         ])
                         
                         
-                        .setDescription(`The crowd is in awe of your fighting prowess and bursts in an encouraging shout that echoed throughout the colosseum.Seeing your performance,${guild} Guild has chosen to recruit you into their ranks.`)
+                        .setDescription(`The crowd is in awe of your fighting prowess and bursts in an encouraging roar that echoed throughout the colosseum.Seeing your performance,${guild} Guild has chosen to recruit you into their ranks.`)
                         await profileModel.updateOne({userID:interaction.user.id},{main_quest_phase:6,guild:guild,guild_class:"E",guild_rank:"Ranger"})
+                        await interaction.reply({embeds:[questEmbed]})
                     }
                     else{
                         interaction.reply({content:`You are not in the Guild District, please go to the Guild District to continue!`,ephemeral:true})
