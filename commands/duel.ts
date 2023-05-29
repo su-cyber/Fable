@@ -39,7 +39,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                             if(result){
                                 const attacker = Warrior.create(author)
                                 const defender = Warrior.create(opponent)
-                                profileModel.findOne({userID:authorId},async function(err,foundUser) {
+                                await profileModel.findOne({userID:authorId},async function(err,foundUser) {
                                     if(err){
                                         console.log(err);
                                         
@@ -79,7 +79,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                 
                                     }
                                 })
-                                profileModel.findOne({userID:opponentId},async function(err,foundUser) {
+                                await profileModel.findOne({userID:opponentId},async function(err,foundUser) {
                                     if(err){
                                         console.log(err);
                                         
