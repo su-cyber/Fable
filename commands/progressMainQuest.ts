@@ -648,7 +648,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                 }
                 else if(foundUser.main_quest_phase == "5"){
                     if(foundUser.location == "Guild District"){
-                        const guild = sample(["Chimaera","Belenus","Tetsuryū","Fenris","Gleipnir","Hammerfaust","Eisenherz","Maledictus","Blackfin","Suncrest"])
+                        const guild = sample(["Chimaera","Belenus","Tetsuryu","Fenris","Gleipnir","Hammerfaust","Eisenherz","Maledictus","Blackfin","Suncrest"])
                         let questEmbed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('A New Road')

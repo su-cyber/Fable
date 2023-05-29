@@ -840,34 +840,34 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 if(foundUser.location == "Black Market"){
                                     let dialogue
                                     if(foundUser.guild == "Chimaera"){
-                                        dialogue = `“This thief really did give you a run for his money haha! Here, take him, I don’t want to be known for completing such quests anyway. You owe me one now by the way.”`
+                                        dialogue = `**Vash: **“This thief really did give you a run for his money haha! Here, take him, I don’t want to be known for completing such quests anyway. You owe me one now by the way.”`
                                     }
                                     else if(foundUser.guild == "Belenus"){
-                                        dialogue = `“I apologize for coming in between your endeavors. This person just ran into me and injured themselves. I truly hope they are at least breathing. Please take care of them.”`
+                                        dialogue = `**Gylbart: **“I apologize for coming in between your endeavors. This person just ran into me and injured themselves. I truly hope they are at least breathing. Please take care of them.”`
                                     }
-                                    else if(foundUser.guild == "Tetsuryū"){
-                                        dialogue = `“It is truly hard to believe that such a weakling like him had you sweating. I think you should reevaluate your place in this business fellow Ranger. Here, take him.”`
+                                    else if(foundUser.guild == "Tetsuryu"){
+                                        dialogue = `**Zavyr: **“It is truly hard to believe that such a weakling like him had you sweating. I think you should reevaluate your place in this business fellow Ranger. Here, take him.”`
                                     }
                                     else if(foundUser.guild == "Fenris"){
-                                        dialogue = `“I saw this man scurrying like a roach so I stepped on him hahaha! Here, take him. Also…do you mind if I take his shoes?”`
+                                        dialogue = `**Ayden: **“I saw this man scurrying like a roach so I stepped on him hahaha! Here, take him. Also…do you mind if I take his shoes?”`
                                     }
                                     else if(foundUser.guild == "Gleipnir"){
-                                        dialogue = `“Oi Rival! Long time no see. Did ya see this thief? He basically ran to me and got himself caught! What do you mean, he was yours to catch? Ah…I apologize for butting in. Here, take him!”`
+                                        dialogue = `**Valefor: **“Oi Rival! Long time no see. Did ya see this thief? He basically ran to me and got himself caught! What do you mean, he was yours to catch? Ah…I apologize for butting in. Here, take him!”`
                                     }
                                     else if(foundUser.guild == "Hammerfaust"){
-                                        dialogue = `*whispers* “Are you seriously struggling with a thug? Just pretend we don’t know each other and take him.”`
+                                        dialogue = `**Ashlei:** *whispers* “Are you seriously struggling with a thug? Just pretend we don’t know each other and take him.”`
                                     }
                                     else if(foundUser.guild == "Eisenherz"){
-                                        dialogue = `“Oh! Hey there friend! Look at this chump. He just ran into me and the bottle of rare whiskey I just purchased got ruined. Of course I beat him up. Hopefully he is still breathing though. Anyway, I’ll be off. Don’t want the Vice-Master to find out I was drinking again.”`
+                                        dialogue = `**Json: **“Oh! Hey there friend! Look at this chump. He just ran into me and the bottle of rare whiskey I just purchased got ruined. Of course I beat him up. Hopefully he is still breathing though. Anyway, I’ll be off. Don’t want the Vice-Master to find out I was drinking again.”`
                                     }
                                     else if(foundUser.guild == "Maledictus"){
-                                        dialogue = `“What did I tell you about being prepared Ranger? I recommend you carry a throwable knife in the future so you can avoid situations like this. Luckily I had them on me so I caught him for you. Here you go.”`
+                                        dialogue = `**Elbert: **“What did I tell you about being prepared Ranger? I recommend you carry a throwable knife in the future so you can avoid situations like this. Luckily I had them on me so I caught him for you. Here you go.”`
                                     }
                                     else if(foundUser.guild == "Suncrest"){
-                                        dialogue = `“I was just here purchasing something when I saw you chase this thief. I hope I didn’t cause you an inconvenience. As Rangers, we need to look out for each other. Here, please take him away.”`
+                                        dialogue = `**Avani: **“I was just here purchasing something when I saw you chase this thief. I hope I didn’t cause you an inconvenience. As Rangers, we need to look out for each other. Here, please take him away.”`
                                     }
                                     else if(foundUser.guild == "Blackfin"){
-                                        dialogue = ` “Sorry for barging in your business but I couldn’t stop myself. You are doing good work helping other people. I like it. It is our duty to better the lives of other people, so let us continue doing it. Here, he is yours. I hope we can work together in the future.”`
+                                        dialogue = `**Yoel: **“Sorry for barging in your business but I couldn’t stop myself. You are doing good work helping other people. I like it. It is our duty to better the lives of other people, so let us continue doing it. Here, he is yours. I hope we can work together in the future.”`
                                     }
 
                                     let quest_embed = new MessageEmbed()
@@ -933,7 +933,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                             value:`**some shit**`
                                         }
                                     ])
-                                    .setDescription(`how you ended up being owed a favor by the thieving siblings as soon as you held the Astrolabe. Perhaps there is something about them that is just hard to explain.`)
+                                    .setDescription(`You bring back the Astrolabe to the wealthy citizen who hired you to find it. He is ecstatic since you brought it back and pays you well for your troubles. In the moment you think how Butch got lucky in the sense that he got caught by you, who spared him, and how you ended up being owed a favor by the thieving siblings as soon as you held the Astrolabe. Perhaps there is something about them that is just hard to explain.`)
                                 
                                 await interaction.reply({embeds:[quest_embed]})
                                 foundUser.completed_quests.push("KS-ZS-SQ1")

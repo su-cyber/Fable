@@ -185,7 +185,7 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                 dialogueembed = new MessageEmbed()
                                                     .setColor('RANDOM')
                                                     .setTitle('Dialogue Initiated!')
-                                                    .setDescription(`${dialogue}`)
+                                                    .setDescription(`${dialogue}\n`)
                                                 
                                             }
                                         }
