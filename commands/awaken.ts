@@ -303,7 +303,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     let user_elements =[]
                     let count = 0
                     collector_select_class.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
-                           
+                        
                         if(collected.customId == 'select_class'){
                             let user_class = collected.values[0]
                             profileModel.findOne({userID:authorId},async (err,foundUser) => {
@@ -418,7 +418,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     }]
                                 }
 
-                               
+                                await collected.deferUpdate().catch(e => {})
                                 await interaction.editReply({content: null,embeds:[elementEmbed1],components:[btnele]})
                                 await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance,currentskills:foundUser.currentskills,allskills:foundUser.allskills})
                                 
