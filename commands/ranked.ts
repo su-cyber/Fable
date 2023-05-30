@@ -53,7 +53,6 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                         
                                         opponentId = foundOpponent.userID
                                         await queueModel.deleteOne({userID:opponentId})
-
                                         const author = await bot.users.fetch(authorId)
                                         const opponent = await bot.users.fetch(opponentId)
                                         let matchEmbed = new MessageEmbed()
@@ -65,6 +64,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                             .setColor('RANDOM')
                                             .setTitle('RANKED BATTLE')
                                             .setDescription(`Found a match with ${author.username}\n\nInitiating Combat...`)
+                                        await sleep(2)
                                         interaction.editReply({embeds:[matchEmbed]})
                                         opponent.dmChannel.send({embeds:[OppmatchEmbed]})
                                        
@@ -74,6 +74,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
 
                                 const attacker = await Warrior.create(author)
                                 const defender = await Warrior.create(opponent)
+                                await sleep(2)
                                 profileModel.findOne({userID:interaction.user.id},async function(err,foundUser) {
                                     if(err){
                                         console.log(err);
