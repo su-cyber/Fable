@@ -47,7 +47,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                 
                     
                                 interaction.reply({embeds:[queueEmbed]})
-                                await sleep(2)
+                                
                                 queueModel.findOne({floor:1},async function(err,foundOpponent){
                                     if(foundOpponent){
                                         
@@ -67,7 +67,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                             .setDescription(`Found a match with ${author.username}\n\nInitiating Combat...`)
                                         interaction.editReply({embeds:[matchEmbed]})
                                         opponent.dmChannel.send({embeds:[OppmatchEmbed]})
-                                        await sleep(1)
+                                       
               
 
 
