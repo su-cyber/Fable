@@ -183,7 +183,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                         })
                                         queue.save()
 
-                                        setTimeout(deleteQueue,30*1000)
+                                        
                                     }
                                 })
                                 
