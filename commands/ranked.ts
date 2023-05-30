@@ -72,8 +72,8 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
 
 
 
-                                const attacker = Warrior.create(author)
-                                const defender = Warrior.create(opponent)
+                                const attacker = await Warrior.create(author)
+                                const defender = await Warrior.create(opponent)
                                 profileModel.findOne({userID:interaction.user.id},async function(err,foundUser) {
                                     if(err){
                                         console.log(err);
