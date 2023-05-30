@@ -181,7 +181,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                             floor:1
                                         })
                                         queue.save()
-
+                                        setTimeout(deleteQueue,10000)
                                         
                                     }
                                 })
@@ -546,6 +546,8 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
             await queueModel.deleteOne({userID:authorId})
             interaction.editReply(`Timeout!`)
         }
+
+        
     })
 
     
