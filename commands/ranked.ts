@@ -64,7 +64,6 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                             .setColor('RANDOM')
                                             .setTitle('RANKED BATTLE')
                                             .setDescription(`Found a match with ${author.username}\n\nInitiating Combat...`)
-                                        await sleep(2)
                                         interaction.editReply({embeds:[matchEmbed]})
                                         opponent.dmChannel.send({embeds:[OppmatchEmbed]})
                                        
@@ -74,7 +73,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
 
                                 const attacker = await Warrior.create(author)
                                 const defender = await Warrior.create(opponent)
-                                await sleep(2)
+                                
                                 profileModel.findOne({userID:interaction.user.id},async function(err,foundUser) {
                                     if(err){
                                         console.log(err);
@@ -156,19 +155,21 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                 
                                 
                                 if(attacker.speed>= defender.speed){
+                                    await sleep(2)
                                     await new PvPDuel({
                                         interaction,
                                         player1: attacker,
                                         player2: defender,
-                                        speed:2.5
+                                        speed:2
                                     }).start()
                                 }
                                 else{
+                                    await sleep(2)
                                     await new PvPDuel({
                                         interaction,
                                         player1: defender,
                                         player2: attacker,
-                                        speed:2.5
+                                        speed:2
                                     }).start()
                                 }
                                 
