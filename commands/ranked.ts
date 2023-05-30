@@ -45,9 +45,10 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                 .setDescription(`Looking for a match..`)
 
                                 
-                    
-                                interaction.reply({embeds:[queueEmbed]})
                                 
+                                interaction.reply({embeds:[queueEmbed]})
+                                let opp = await queueModel.find({floor:1})
+                                console.log(opp)
                                 queueModel.findOne({floor:1},async function(err,foundOpponent){
                                     if(foundOpponent){
                                         
@@ -181,7 +182,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                             floor:1
                                         })
                                         queue.save()
-                                        setTimeout(deleteQueue,10000)
+                                        setTimeout(deleteQueue,1000*60*5)
                                         
                                     }
                                 })
@@ -544,7 +545,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
         }
         async function deleteQueue() {
             await queueModel.deleteOne({userID:authorId})
-            interaction.editReply(`Timeout!`)
+            interaction.editReply({content:`Seems like noone is available to battle in your floor right now,please try again later`,embeds:[]})
         }
 
         
