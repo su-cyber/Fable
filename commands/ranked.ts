@@ -12,8 +12,7 @@ import sample from 'lodash.sample'
 import passive_skills from '../src/age/heroes/passive_skills'
 import { MessageEmbed } from 'discord.js'
 import queueModel from '../models/queueSchema'
-import lobbyModel from '../models/lobbySchema'
-import mongoose from 'mongoose'
+
 
 export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel with a player' })
     
@@ -75,7 +74,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
 
                                 const attacker = Warrior.create(author)
                                 const defender = Warrior.create(opponent)
-                                profileModel.findOne({userID:authorId},async function(err,foundUser) {
+                                profileModel.findOne({userID:interaction.user.id},async function(err,foundUser) {
                                     if(err){
                                         console.log(err);
                                         
