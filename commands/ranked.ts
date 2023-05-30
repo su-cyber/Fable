@@ -47,12 +47,11 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                 
                                 
                                 interaction.reply({embeds:[queueEmbed]})
-                                let opp = await queueModel.find({floor:1})
-                                console.log(opp)
-                                queueModel.findOne({floor:1},async function(err,foundOpponent){
-                                    if(foundOpponent){
-                                        
-                                        opponentId = foundOpponent.userID
+                                let opponentList = await queueModel.find({floor:1})
+                                
+                                
+                                    if(opponentList.length != 0){
+                                        opponentId = sample(opponentList).userID
                                         await queueModel.deleteOne({userID:opponentId})
                                         const author = await bot.users.fetch(authorId)
                                         const opponent = await bot.users.fetch(opponentId)
@@ -185,7 +184,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                                         setTimeout(deleteQueue,1000*60*5)
                                         
                                     }
-                                })
+                                
                                 
                                 
                                 
