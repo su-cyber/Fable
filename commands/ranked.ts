@@ -48,11 +48,10 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                     
                                 interaction.reply({embeds:[queueEmbed]})
                                 
-                                queueModel.find({floor:1},async function(err,foundOpponent){
+                                queueModel.findOne({floor:1},async function(err,foundOpponent){
                                     if(foundOpponent){
-                                        console.log(foundOpponent);
                                         
-                                        opponentId = sample(foundOpponent).userID
+                                        opponentId = foundOpponent.userID
                                         await queueModel.deleteOne({userID:opponentId})
                                         const author = await bot.users.fetch(authorId)
                                         const opponent = await bot.users.fetch(opponentId)
