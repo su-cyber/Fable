@@ -424,7 +424,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
 
                                await collected.deferUpdate().catch(e => {})
                                 await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
-                                await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance,currentskills:foundUser.currentskills,allskills:foundUser.allskills})
+                                await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance,currentskills:foundUser.currentskills,allskills:foundUser.allskills,health:foundUser.health})
                                 
                                 
                                

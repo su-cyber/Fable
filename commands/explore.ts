@@ -1,5 +1,5 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
-import { weightedRandom } from '../src/utils'
+import { sleep, weightedRandom } from '../src/utils'
 import { getMonsters } from '../src/age/monsters'
 import { MessageActionRow, MessageSelectMenu} from 'discord.js'
 import { getRandomMonster } from '../src/age/monsters'
@@ -37,7 +37,14 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
             const city_town = foundUser.city_town
             if(foundUser.kingdom == "solarstrio"){
                 if(city_town == "ellior"){
-                    await interaction.reply({ content: `searching ${city_town}...`})
+                const attachment = new MessageAttachment('assets/Zorya/ellior_forest.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(`Now Exploring ${city_town}...`)
+                .setImage('attachment://ellior_forest.jpg')
+                .setDescription(`As you venture into the haunting embrace of the Ellior Forest, an unsettling chill creeps up your spine. The dense canopy above casts an oppressive gloom, obscuring the path ahead. Every rustle of leaves and hushed whisper of the wind sends shivers down your spine, as if the very air carries a sense of foreboding. Shadows dance among the gnarled trees, playing tricks on your mind. Every step forward is fraught with trepidation, for within this sinister realm, evil lurks at every corner, and the line between reality and nightmares blurs.`)
+                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                await sleep(2)
                     const pick = weightedRandom(["flora","monster"],[0,1])
 
                     if(pick == "flora"){
@@ -161,7 +168,14 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
      
                 }
                 else if(city_town == "Castellan Fields"){
-                    await interaction.reply({ content: `searching ${city_town}...`})
+                const attachment = new MessageAttachment('assets/AubeTown/Castellan_Fields.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(`Now Exploring ${city_town}...`)
+                .setImage('attachment://Castellan_Fields.jpg')
+                .setDescription(`You step onto the Castellan Fields, feeling the earth beneath your feet and the gentle breeze whispering through the golden grains. The air is alive with the symphony of hard work as resilient crofters sow seeds and tend to their crops, their determination transforming mere dust into bountiful treasures. In this sea of golden splendor, you become part of a timeless cycle of growth and abundance, where the sweat of the crofters turns the humble soil into infinite prosperity.`)
+                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                await sleep(2)
                     const pick = weightedRandom(["flora","monster"],[0,1])
 
                     if(pick == "flora"){
@@ -285,7 +299,14 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
      
                 }
                 else if(city_town == "Sunshade Forest"){
-                    await interaction.reply({ content: `searching ${city_town}...`})
+                const attachment = new MessageAttachment('assets/AubeTown/sunshade_forest.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(`Now Exploring ${city_town}...`)
+                .setImage('attachment://sunshade_forest.jpg')
+                .setDescription(`As you step into the Sunshade Forest, an otherworldly hush blankets the air, shrouding the surroundings in an ominous darkness. The drought-tolerant Sunshade Trees loom overhead, their broad silver leaves reflecting scant rays of sunlight, casting a surreal glow. Each step brings a sense of trepidation, for this forest holds secrets and hidden perils. Shadows dance and whispers echo, reminding you to tread cautiously, as the beauty of the Sunshade Forest conceals the lurking dangers that lie within its enigmatic depths.`)
+                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                await sleep(2)
                     const pick = weightedRandom(["flora","monster"],[0,1])
 
                     if(pick == "flora"){
@@ -318,9 +339,6 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         })
                     }
                     else if(pick == "monster"){
-                    
-                    
-                       
                             await interaction.editReply({ content: '\u200b', components: [] })
                             const monster = (await getRandomMonster(city_town))
                             
@@ -672,7 +690,127 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setImage('attachment://dragon_den.jpg')
                 .setDescription(`As you cautiously step into the foreboding depths of the Dragon's Den, an ancient presence lingers in the air. The cavernous expanse resonates with a sense of both awe and danger, as if the very walls hold whispered secrets of untold wealth and unspoken perils. Your gaze is drawn to the remnants of a fallen Greater Dragon, its skeletal remains a haunting reminder of the power that once commanded this domain. Every step forward is accompanied by a mix of fascination and unease, as you navigate the treacherous path in search of the legendary treasures rumored to be concealed within. In the Dragon's Den, you become an intrepid explorer, venturing into the heart of the unknown, ready to face the mysteries and dangers that lie in wait.`)
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
-            
+                await sleep(2)
+                    const pick = weightedRandom(["flora","monster"],[0,1])
+
+                    if(pick == "flora"){
+                        await interaction.editReply({ content: '\u200b', components: [] })
+                        const flora = (await getRandomFlora(city_town))
+                        await interaction.editReply(`you found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
+    
+                        inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                            if(err){
+                                console.log(err);
+                                
+                            }
+                            else{
+                                const foundItem = foundUser.inventory.items.find(item => item.name === flora.name)
+                                if (foundItem){
+                
+                                    foundItem.quantity+=flora.quantity
+                                }
+                                else{
+                                    const newItem = {
+                                        name:flora.name,
+                                        description:flora.description,
+                                        quantity:Number(flora.quantity)
+                                    }
+                                    foundUser.inventory.items.push(newItem)
+                                }
+                                await inventory.updateOne({userID:authorId},foundUser)
+                            }
+                            
+                        })
+                    }
+                    else if(pick == "monster"){
+                    
+                    
+                       
+                            await interaction.editReply({ content: '\u200b', components: [] })
+                            const monster = (await getRandomMonster(city_town))
+                            
+    
+                            
+                            foundUser.encounter = []
+                           
+                       
+                            let btnraw= new MessageActionRow().addComponents([
+                                new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Fight"),
+                                new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Run"),])
+    
+                                let d_btnraw = new MessageActionRow().addComponents([
+                                    new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Fight").setDisabled(true),
+                                    new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Run").setDisabled(true),
+                                ])
+    
+                                
+                            let fightEmbed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('ENCOUNTER')
+                            .setDescription(`🔎 you found a ${monster.name}!\nDescription:${monster.description}`)
+        
+                            let acceptEmbed = new MessageEmbed()
+                            .setColor('GREEN')
+                            .setTitle('ACCEPTED')
+                            .setDescription('You have decided to fight!\ncheck your private message')
+        
+                            let rejectEmbed = new MessageEmbed()
+                            .setColor('RED')
+                            .setTitle('RAN AWAY')
+                            .setDescription('You ran away!')
+                            
+                        
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw]})
+                        let filter = i => i.user.id === authorId
+                            let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
+                    
+                            collector.on('collect',async (btn) => {
+                                if(btn.isButton()){
+                                    if(btn.customId === "btn_accept"){
+                                        await btn.deferUpdate().catch(e => {})
+                                        await interaction.editReply({embeds:[acceptEmbed]})
+                                        const encounter = {
+                                            name: monster.name,
+                                            time : Date.now(),
+                                            location:foundUser.city_town
+    
+                                        }
+                                        
+                                        foundUser.encounter.push(encounter)
+                                        await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
+                                        interaction.user.send(`Use /fight to begin encounter`)
+    
+                                        
+                                   
+                                    collector.stop()
+                                        
+                                    }
+                                    else if(btn.customId === "btn_reject"){
+                                        await btn.deferUpdate().catch(e => {})
+                                        await interaction.editReply({embeds:[rejectEmbed]})
+                                         foundUser.encounter = []
+                                    
+                                        await profileModel.updateOne({userID:authorId},foundUser)
+    
+                                        collector.stop()
+                                    }
+    
+                                    
+                                    
+                                }
+                                  
+                    
+                       
+                       
+                        })
+    
+                        collector.on('end', () => {
+                            interaction.editReply({components: [d_btnraw]})
+                        })
+    
+                            
+                       
+                    }
                 }
                 else if(city_town == "orld husk"){
                 const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')

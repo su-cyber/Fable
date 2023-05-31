@@ -98,6 +98,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                     await interaction.editReply({embeds:[successembed],components:[]})
                                     collector_select.stop()
                                     collector_btn.stop()
+                                    collector_cancel.stop()
                                     }
                                     
                                    
@@ -113,6 +114,8 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                     .setDescription(`stat investment cancelled!`)
                                     
                                     await interaction.editReply({embeds:[delembed],components:[]})
+                                    collector_select.stop()
+                                    collector_btn.stop()
                                     collector_cancel.stop()
                                 })
                             } 
@@ -138,6 +141,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                     
                                     collector_select.stop()
                                     collector_btn.stop()
+                                    collector_cancel.stop()
                                         
                                     }
                                    
@@ -151,6 +155,8 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                     .setDescription(`stat investment cancelled!`)
                                     
                                     await interaction.editReply({embeds:[delembed],components:[]})
+                                    collector_select.stop()
+                                    collector_btn.stop()
                                     collector_cancel.stop()
                                     
                                 })
@@ -178,6 +184,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                     
                                     collector_select.stop()
                                     collector_btn.stop()
+                                    collector_cancel.stop()
                                     }
                                     
                                     
@@ -191,6 +198,8 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                     .setDescription(`stat investment cancelled!`)
                                     
                                     await interaction.editReply({embeds:[delembed],components:[]})
+                                    collector_select.stop()
+                                    collector_btn.stop()
                                     collector_cancel.stop()
                                 })
                             } 
@@ -217,6 +226,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                 
                                 collector_select.stop()
                                 collector_btn.stop()
+                                collector_cancel.stop()
                                     }
                                     
                                 })
@@ -229,6 +239,8 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                     .setDescription(`stat investment cancelled!`)
                                     
                                     await interaction.editReply({embeds:[delembed],components:[]})
+                                    collector_select.stop()
+                                    collector_btn.stop()
                                     collector_cancel.stop()
                                 })
                             } 
@@ -256,6 +268,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                     
                                     collector_select.stop()
                                     collector_btn.stop()
+                                    collector_cancel.stop()
                                         
                                     }
                                    
@@ -270,6 +283,8 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                     .setDescription(`stat investment cancelled!`)
                                     
                                     await interaction.editReply({embeds:[delembed],components:[]})
+                                    collector_select.stop()
+                                    collector_btn.stop()
                                     collector_cancel.stop()
                                 })
                             }

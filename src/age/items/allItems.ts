@@ -19,9 +19,14 @@ import { shadowCat_tuft } from './shadowCat_tuft'
 import { glowingEssence } from './glowingEssence'
 import { starHound_tooth } from './starHound_tooth'
 import { gloomRoot_branch } from './gloomRootBranch'
+import { crystalShard } from './crystalShard'
+import { gildedScale } from './GildedScale'
+import { solidifiedMagma } from './solidifiedMagma'
+import { emberScale } from './Emberscale'
 
 export default [,Herbs.create(),
     SunshadeWood.create(),Mushroom.create(),ArgentenumLeaves.create(),solarCorn,Radiantura_milk,steamShovel,guildTshirt,salePoster,treemickBranch,silkBlob,
-    dronerAcid,RayleighFlower.create(),backBreaker,RayleighFlower.create(),buzzHoney,thornbackShell,shadowCat_tuft,glowingEssence,starHound_tooth,gloomRoot_branch
+    dronerAcid,RayleighFlower.create(),backBreaker,RayleighFlower.create(),buzzHoney,thornbackShell,shadowCat_tuft,glowingEssence,starHound_tooth,gloomRoot_branch,
+    crystalShard,gildedScale,solidifiedMagma,emberScale
 
 ]
