@@ -816,7 +816,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://dragon_den.jpg')
-                .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the ominous Dragon Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Sunstone Mines'){
@@ -1044,7 +1044,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://dragon_den.jpg')
-                .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the ominous Dragon Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Zephyr Mountain'){
@@ -1101,7 +1101,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
     
     
             }
-            else if(city_town == "Dragon's Den"){
+            else if(city_town == "Dragon Den"){
                                     let embed
                                     let mount = "none"
                                     if(mount == "none"){
@@ -1308,7 +1308,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon's Den`,
+                                            name: `Dragon Den`,
                                             value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -1338,7 +1338,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon's Den`,
+                                            name: `Dragon Den`,
                                             value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -1374,9 +1374,9 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `ellior`,
                 },
                 {
-                    label: `Dragon's Den`,
+                    label: `Dragon Den`,
                     description: `A minefield where sunstones are mined`,
-                    value: `Dragon's Den`,
+                    value: `Dragon Den`,
                 },
                 {
                     label: `Zephyr Mountain`,
@@ -1422,7 +1422,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://dragon_den.jpg')
-                .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the ominous Dragon Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Zephyr Mountain'){
@@ -1497,7 +1497,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon's Den`,
+                                            name: `Dragon Den`,
                                             value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -1527,7 +1527,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon's Den`,
+                                            name: `Dragon Den`,
                                             value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -1563,9 +1563,9 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `ellior`,
                 },
                 {
-                    label: `Dragon's Den`,
+                    label: `Dragon Den`,
                     description: `A minefield where sunstones are mined`,
-                    value: `Dragon's Den`,
+                    value: `Dragon Den`,
                 },
                 {
                     label: `Sunstone Mines`,
@@ -1612,7 +1612,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://dragon_den.jpg')
-                .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the ominous Dragon Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Sunstone Mines'){
@@ -1687,7 +1687,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon's Den`,
+                                            name: `Dragon Den`,
                                             value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -1717,7 +1717,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon's Den`,
+                                            name: `Dragon Den`,
                                             value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -1753,9 +1753,9 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `ellior`,
                 },
                 {
-                    label: `Dragon's Den`,
+                    label: `Dragon Den`,
                     description: `A minefield where sunstones are mined`,
-                    value: `Dragon's Den`,
+                    value: `Dragon Den`,
                 },
                 {
                     label: `Sunstone Mines`,
@@ -1801,7 +1801,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://dragon_den.jpg')
-                .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the ominous Dragon Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Sunstone Mines'){
