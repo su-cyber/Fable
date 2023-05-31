@@ -168,11 +168,11 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
      
                 }
                 else if(city_town == "Castellan Fields"){
-                const attachment = new MessageAttachment('assets/AubeTown/Castellan_Fields.jpg')
+                const attachment = new MessageAttachment('assets/AubeTown/Castellan_Fields.jpeg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle(`Now Exploring ${city_town}...`)
-                .setImage('attachment://Castellan_Fields.jpg')
+                .setImage('attachment://Castellan_Fields.jpeg')
                 .setDescription(`You step onto the Castellan Fields, feeling the earth beneath your feet and the gentle breeze whispering through the golden grains. The air is alive with the symphony of hard work as resilient crofters sow seeds and tend to their crops, their determination transforming mere dust into bountiful treasures. In this sea of golden splendor, you become part of a timeless cycle of growth and abundance, where the sweat of the crofters turns the humble soil into infinite prosperity.`)
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                 await sleep(2)
@@ -689,6 +689,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setTitle(`Now Exploring ${city_town}...`)
                 .setImage('attachment://dragon_den.jpg')
                 .setDescription(`As you cautiously step into the foreboding depths of the Dragon's Den, an ancient presence lingers in the air. The cavernous expanse resonates with a sense of both awe and danger, as if the very walls hold whispered secrets of untold wealth and unspoken perils. Your gaze is drawn to the remnants of a fallen Greater Dragon, its skeletal remains a haunting reminder of the power that once commanded this domain. Every step forward is accompanied by a mix of fascination and unease, as you navigate the treacherous path in search of the legendary treasures rumored to be concealed within. In the Dragon's Den, you become an intrepid explorer, venturing into the heart of the unknown, ready to face the mysteries and dangers that lie in wait.`)
+                await interaction.deferReply()
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                 await sleep(2)
                     const pick = weightedRandom(["flora","monster"],[0,1])
