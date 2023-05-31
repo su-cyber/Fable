@@ -375,7 +375,7 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
         else if(city_town == "ellior"){
             interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
         }
-        else if(city_town == "Dragon Den"){
+        else if(city_town == "Dragon's Den"){
             interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
         }
         else if(city_town == "Zephyr Mountain"){

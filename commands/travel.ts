@@ -635,7 +635,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Foot**\n**Description**:The enchanting Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon’s Den`,
+                                            name: `Dragon's Den`,
                                             value:`**Travelled on Foot**\n**Description**:The Den of an Ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -659,7 +659,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Stage Coach**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:200 🪙\n`
                                         },
                                         {
-                                            name: `Orld Tree’s Husk`,
+                                            name: `Orld Tree's Husk`,
                                             value:`**Travelled on Foot**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -681,7 +681,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Mount**\n**Description**:The enchanting Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon’s Den`,
+                                            name: `Dragon's Den`,
                                             value:`**Travelled on Mount**\n**Description**:The Den of an Ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -705,7 +705,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Mount**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Orld Tree’s Husk`,
+                                            name: `Orld Tree's Husk`,
                                             value:`**Travelled on Mount**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -738,9 +738,9 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `ellior`,
                 },
                 {
-                    label: `Dragon’s Den`,
+                    label: `Dragon's Den`,
                     description: `The den of an ancient dragon`,
-                    value: `Dragon’s Den`,
+                    value: `Dragon's Den`,
                 },
                 {
                     label: `Sunstone Mines`,
@@ -763,7 +763,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `Gloaming`,
                 },
                 {
-                    label: `Orld Tree’s Husk`,
+                    label: `Orld Tree's Husk`,
                     description: `The Husk of the ancient Orld Tree`,
                     value: `orld husk`,
                 },
@@ -809,14 +809,14 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
-            else if(location == 'Dragon’s Den'){
+            else if(location == `Dragon's Den`){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                 const attachment = new MessageAttachment('assets/Zorya/dragon_den.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://dragon_den.jpg')
-                .setDescription(`As you enter the ominous Dragon Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Sunstone Mines'){
@@ -916,7 +916,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon’s Den`,
+                                            name: `Dragon's Den`,
                                             value:`**Travelled on Foot**\n**Description**:The den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -928,7 +928,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Orld Tree’s Husk`,
+                                            name: `Orld Tree's Husk`,
                                             value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
                                         },
                                        
@@ -946,7 +946,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Mount**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon’s Den`,
+                                            name: `Dragon's Den`,
                                             value:`**Travelled on Mount**\n**Description**:The den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -958,7 +958,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Orld Tree’s Husk`,
+                                            name: `Orld Tree's Husk`,
                                             value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
                                         },
                                        
@@ -981,9 +981,9 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     description: `One of the largest Stateships in Solarstrio, where progress meets modernity.`,
                     value: `Zorya`,
                 },{
-                    label: `Dragon’s Den`,
+                    label: `Dragon's Den`,
                     description: `The den of an ancient Dragon`,
-                    value: `Dragon’s Den`,
+                    value: `Dragon's Den`,
                 },
                 {
                     label: `Sunstone Mines`,
@@ -996,7 +996,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `Zephyr Mountain`,
                 },
                 {
-                    label: `Orld Tree’s Husk`,
+                    label: `Orld Tree's Husk`,
                     description: `The husk of the orld tree`,
                     value: `orld husk`,
                 },
@@ -1037,14 +1037,14 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setDescription(`you visited ${location},The enchanted forest of Ellior\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
-            else if(location == 'Dragon’s Den'){
+            else if(location == `Dragon's Den`){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                 const attachment = new MessageAttachment('assets/Zorya/dragon_den.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://dragon_den.jpg')
-                .setDescription(`As you enter the ominous Dragon Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Zephyr Mountain'){
@@ -1101,7 +1101,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
     
     
             }
-            else if(city_town == "Dragon Den"){
+            else if(city_town == "Dragon's Den"){
                                     let embed
                                     let mount = "none"
                                     if(mount == "none"){
@@ -1127,7 +1127,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Orld Tree’s Husk`,
+                                            name: `Orld Tree's Husk`,
                                             value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
                                         },
                                        
@@ -1157,7 +1157,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Orld Tree’s Husk`,
+                                            name: `Orld Tree's Husk`,
                                             value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
                                         },
                                        
@@ -1195,7 +1195,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `Zephyr Mountain`,
                 },
                 {
-                    label: `Orld Tree’s Husk`,
+                    label: `Orld Tree's Husk`,
                     description: `The husk of the orld tree`,
                     value: `orld husk`,
                 },
@@ -1308,7 +1308,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon Den`,
+                                            name: `Dragon's Den`,
                                             value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -1316,7 +1316,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Orld Tree’s Husk`,
+                                            name: `Orld Tree's Husk`,
                                             value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
                                         },
                                        
@@ -1338,7 +1338,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon Den`,
+                                            name: `Dragon's Den`,
                                             value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -1346,7 +1346,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Orld Tree’s Husk`,
+                                            name: `Orld Tree's Husk`,
                                             value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
                                         },
                                        
@@ -1374,9 +1374,9 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `ellior`,
                 },
                 {
-                    label: `Dragon Den`,
+                    label: `Dragon's Den`,
                     description: `A minefield where sunstones are mined`,
-                    value: `Dragon Den`,
+                    value: `Dragon's Den`,
                 },
                 {
                     label: `Zephyr Mountain`,
@@ -1384,7 +1384,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `Zephyr Mountain`,
                 },
                 {
-                    label: `Orld Tree’s Husk`,
+                    label: `Orld Tree's Husk`,
                     description: `The husk of the orld tree`,
                     value: `orld husk`,
                 },
@@ -1415,14 +1415,14 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
-            else if(location == 'Dragon’s Den'){
+            else if(location == `Dragon's Den`){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                 const attachment = new MessageAttachment('assets/Zorya/dragon_den.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://dragon_den.jpg')
-                .setDescription(`As you enter the ominous Dragon Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Zephyr Mountain'){
@@ -1497,7 +1497,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon Den`,
+                                            name: `Dragon's Den`,
                                             value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -1505,7 +1505,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Foot**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Orld Tree’s Husk`,
+                                            name: `Orld Tree's Husk`,
                                             value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
                                         },
                                        
@@ -1527,7 +1527,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon Den`,
+                                            name: `Dragon's Den`,
                                             value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -1535,7 +1535,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Mount**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Orld Tree’s Husk`,
+                                            name: `Orld Tree's Husk`,
                                             value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
                                         },
                                        
@@ -1563,9 +1563,9 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `ellior`,
                 },
                 {
-                    label: `Dragon Den`,
+                    label: `Dragon's Den`,
                     description: `A minefield where sunstones are mined`,
-                    value: `Dragon Den`,
+                    value: `Dragon's Den`,
                 },
                 {
                     label: `Sunstone Mines`,
@@ -1573,7 +1573,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `Sunstone Mines`,
                 },
                 {
-                    label: `Orld Tree’s Husk`,
+                    label: `Orld Tree's Husk`,
                     description: `The husk of the orld tree`,
                     value: `orld husk`,
                 },
@@ -1605,14 +1605,14 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
-            else if(location == 'Dragon’s Den'){
+            else if(location == `Dragon's Den`){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                 const attachment = new MessageAttachment('assets/Zorya/dragon_den.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://dragon_den.jpg')
-                .setDescription(`As you enter the ominous Dragon Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Sunstone Mines'){
@@ -1687,7 +1687,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon Den`,
+                                            name: `Dragon's Den`,
                                             value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -1717,7 +1717,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                         },
                                         {
-                                            name: `Dragon Den`,
+                                            name: `Dragon's Den`,
                                             value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                         },
                                         {
@@ -1753,9 +1753,9 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     value: `ellior`,
                 },
                 {
-                    label: `Dragon Den`,
+                    label: `Dragon's Den`,
                     description: `A minefield where sunstones are mined`,
-                    value: `Dragon Den`,
+                    value: `Dragon's Den`,
                 },
                 {
                     label: `Sunstone Mines`,
@@ -1794,14 +1794,14 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
-            else if(location == 'Dragon’s Den'){
+            else if(location == `Dragon's Den`){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                 const attachment = new MessageAttachment('assets/Zorya/dragon_den.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://dragon_den.jpg')
-                .setDescription(`As you enter the ominous Dragon Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Sunstone Mines'){

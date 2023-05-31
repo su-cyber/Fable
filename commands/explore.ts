@@ -682,7 +682,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
             
                 }
-                else if(city_town == "Dragon Den"){
+                else if(city_town == "Dragon's Den"){
                 const attachment = new MessageAttachment('assets/Zorya/dragon_den.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
