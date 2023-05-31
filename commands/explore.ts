@@ -689,7 +689,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setTitle(`Now Exploring ${city_town}...`)
                 .setImage('attachment://dragon_den.jpg')
                 .setDescription(`As you cautiously step into the foreboding depths of the Dragon's Den, an ancient presence lingers in the air. The cavernous expanse resonates with a sense of both awe and danger, as if the very walls hold whispered secrets of untold wealth and unspoken perils. Your gaze is drawn to the remnants of a fallen Greater Dragon, its skeletal remains a haunting reminder of the power that once commanded this domain. Every step forward is accompanied by a mix of fascination and unease, as you navigate the treacherous path in search of the legendary treasures rumored to be concealed within. In the Dragon's Den, you become an intrepid explorer, venturing into the heart of the unknown, ready to face the mysteries and dangers that lie in wait.`)
-                await interaction.deferReply()
+
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                 await sleep(2)
                     const pick = weightedRandom(["flora","monster"],[0,1])
