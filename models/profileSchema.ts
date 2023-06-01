@@ -24,6 +24,7 @@ const profileSchema = new mongoose.Schema({
     weapon: {type: Array},
     armourSuit: {type: Array},
     items:{type: Array},
+    status_effects:{type: Object},
     currentskills: {type:Array},
     allskills:{type:Array},
     passiveskills:{type: Array},

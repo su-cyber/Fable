@@ -234,6 +234,11 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         weapon: [],
                                         armourSuit:[],
                                         items:[],
+                                        status_effects:{
+                                            status:[],
+                                            value:[],
+                                            turns:0
+                                        },
                                         currentskills: [],
                                         allskills:[],
                                         passiveskills:[],

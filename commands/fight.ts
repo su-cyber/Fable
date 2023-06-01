@@ -807,9 +807,26 @@ export class PvEDuel extends DuelBuilder {
                 
             }
             else{
+                let i
                 foundUser.encounter = []
                 foundUser.energy-=1
-                await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter,energy:foundUser.energy})
+                if(foundUser.status_effects.status.length != 0){
+                    foundUser.status_effects.turns-=1
+                if(foundUser.status_effects.turns==0){
+                    for(i=0;i<foundUser.status_effects.status.length;i++){
+                        if(foundUser.status_effects.status[i] == "Attack"){
+                            foundUser.attackDamage-=foundUser.status_effects.value[i]
+                        }
+                    }
+                    foundUser.status_effects.status = []
+                    foundUser.status_effects.value = []
+                }
+                }
+                
+                
+
+                
+                await profileModel.updateOne({userID:authorID},foundUser)
                 if(winner.id == authorID){
                     await profileModel.updateOne({userID:authorID},{health:winner.health})
                     if(foundUser.quest_mob == loser.name && foundUser.quest_quantity>0){
