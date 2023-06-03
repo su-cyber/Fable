@@ -4,6 +4,7 @@ import inventory from '../models/InventorySchema'
 import { SlashCommandStringOption } from '@discordjs/builders'
 import allItems from '../src/age/items/allItems'
 import getHealth from '../src/utils/getHealth'
+import { log } from 'console'
 
 
 
@@ -77,7 +78,13 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                                         else if(foundProfile.status_effects.status[i] == "Armour"){
                                                             foundProfile.armour+=foundProfile.status_effects.value[i]
                                                         }
+                                                        else{
+                                                            console.log("not called");
+                                                            
                                                         }
+                                                        }
+                                                    console.log(foundProfile.status_effects);
+                                                    
                                                     interaction.reply({content:`${foundObject.name.use_string}`})
                                                     }
                                                 }
