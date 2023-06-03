@@ -67,14 +67,14 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                                     foundProfile.status_effects.status = foundObject.name.status
                                                     foundProfile.status_effects.value = foundObject.name.value
                                                     foundProfile.status_effects.turns = foundObject.name.turns
-                                                    for(i=0;i<foundUser.status_effects.status.length;i++){
-                                                        if(foundUser.status_effects.status[i] == "Attack"){
+                                                    for(i=0;i<foundProfile.status_effects.status.length;i++){
+                                                        if(foundProfile.status_effects.status[i] == "Attack"){
                                                             foundProfile.attackDamage+=foundProfile.status_effects.value[i]
                                                         }
-                                                        else if(foundUser.status_effects.status[i] == "Speed"){
+                                                        else if(foundProfile.status_effects.status[i] == "Speed"){
                                                             foundProfile.speed+=foundProfile.status_effects.value[i]
                                                         }
-                                                        else if(foundUser.status_effects.status[i] == "Armour"){
+                                                        else if(foundProfile.status_effects.status[i] == "Armour"){
                                                             foundProfile.armour+=foundProfile.status_effects.value[i]
                                                         }
                                                         }
