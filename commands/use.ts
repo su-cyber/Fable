@@ -71,6 +71,12 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                                         if(foundUser.status_effects.status[i] == "Attack"){
                                                             foundProfile.attackDamage+=foundProfile.status_effects.value[i]
                                                         }
+                                                        else if(foundUser.status_effects.status[i] == "Speed"){
+                                                            foundProfile.speed+=foundProfile.status_effects.value[i]
+                                                        }
+                                                        else if(foundUser.status_effects.status[i] == "Armour"){
+                                                            foundProfile.armour+=foundProfile.status_effects.value[i]
+                                                        }
                                                         }
                                                     interaction.reply({content:`${foundObject.name.use_string}`})
                                                     }
@@ -97,7 +103,7 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                 const foundObject = foundUser.inventory.items.find(object => object.name.toLowerCase() === userobject)
                                 if(foundObject){
                                     const foundItem = allItems.find(item => item.name.toLowerCase() === userobject)
-                                    if(foundItem.type === "equipable"){
+                                    if(foundItem.type === "usable"){
                                         profileModel.findOne({userID:authorId},async function(err,foundProfile){
                                             if(err){
                                                 console.log(err);
