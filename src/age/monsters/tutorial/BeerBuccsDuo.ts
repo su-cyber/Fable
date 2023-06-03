@@ -50,10 +50,10 @@ export class BeerBuccsDuo extends MonsterEntity {
                     damage:0,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Knife stab`)
+                        attacker.addLogMessage(`${attacker.name} used Knife stab`)
                         defender.takeDamage
                             .physical(attacker.attackDamage)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by Knife stab`)
+                            .run(damage => `${defender.name} lost ${damage} HP by Knife stab`)
                     }
                 },
             ],

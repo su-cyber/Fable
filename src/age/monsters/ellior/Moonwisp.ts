@@ -46,10 +46,10 @@ export class Moonwisp extends MonsterEntity {
                     damage:15,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Wisp Illusion`)
+                        attacker.addLogMessage(`${attacker.name} used Wisp Illusion`)
                         defender.takeDamage
                             .magical(attacker.attackDamage+15)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by Wisp Illusion`)
+                            .run(damage => `${defender.name} lost ${damage} HP by Wisp Illusion`)
                     }
                 },
                

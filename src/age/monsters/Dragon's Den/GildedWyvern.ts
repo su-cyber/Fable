@@ -46,10 +46,10 @@ export class Gildedwyvern extends MonsterEntity {
                     damage:55,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Gilded Flame`)
+                        attacker.addLogMessage(`${attacker.name} used Gilded Flame`)
                         defender.takeDamage
                             .physical(attacker.attackDamage+55)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by a burst of flames`)
+                            .run(damage => `${defender.name} lost ${damage} HP by a burst of flames`)
                     }
                 },
                 {
@@ -61,10 +61,10 @@ export class Gildedwyvern extends MonsterEntity {
                     damage:35,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Razor Slash`)
+                        attacker.addLogMessage(`${attacker.name} used Razor Slash`)
                         defender.takeDamage
                             .physical(attacker.attackDamage+35)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by getting slashed by the Wyvern's sharp claws`)
+                            .run(damage => `${defender.name} lost ${damage} HP by getting slashed by the Wyvern's sharp claws`)
                     }
                 },
                

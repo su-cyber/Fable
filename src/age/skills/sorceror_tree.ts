@@ -10,10 +10,10 @@ const sorceror_tree=[
         damage:15,
         type: 'magical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Force Push`)
+            attacker.addLogMessage(`${attacker.name} used Force Push`)
             defender.takeDamage
                 .magical(attacker.magicPower+15)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a magic thrust`)
+                .run(damage => `${defender.name} lost ${damage} HP by a magic thrust`)
         }
     },{
         name: 'Arcane Shot',
@@ -24,10 +24,10 @@ const sorceror_tree=[
         damage:25,
         type: 'magical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Arcane Shot`)
+            attacker.addLogMessage(`${attacker.name} used Arcane Shot`)
             defender.takeDamage
                 .magical(attacker.magicPower+25)
-                .run(damage => `**${defender.name}** lost ${damage} HP by being hit by a strong magical shot`)
+                .run(damage => `${defender.name} lost ${damage} HP by being hit by a strong magical shot`)
         }
     },{
         name: 'Spyr Missile Barrage',
@@ -40,11 +40,11 @@ const sorceror_tree=[
         use: (attacker, defender) =>{
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Spyr Missile Barrage`
+                `${attacker.name} used Spyr Missile Barrage`
             )
             defender.takeDamage
             .magical(attacker.magicPower+40)
-            .run(damage => `**${defender.name}** lost ${damage} HP by a barrage of magic missiles`)
+            .run(damage => `${defender.name} lost ${damage} HP by a barrage of magic missiles`)
         }
     },{
         name: `Shadow Magenum`,
@@ -55,10 +55,10 @@ const sorceror_tree=[
         damage:65,
         type: 'magical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Shadow Magenum`)
+            attacker.addLogMessage(`${attacker.name} used Shadow Magenum`)
             defender.takeDamage
                 .magical(attacker.magicPower+65)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a sudden magical attack`)
+                .run(damage => `${defender.name} lost ${damage} HP by a sudden magical attack`)
         }
     },{
         cooldown: 0,
@@ -79,8 +79,8 @@ const sorceror_tree=[
                             )
 
                         defender.applyEffect(curse)
-                        attacker.addLogMessage(`**${attacker.name}** used Crippling Curse`,
-                        `**${attacker.name}** placed a curse on **${defender.name}** weakening them`
+                        attacker.addLogMessage(`${attacker.name} used Crippling Curse`,
+                        `${attacker.name} placed a curse on ${defender.name} weakening them`
                         )
             
 

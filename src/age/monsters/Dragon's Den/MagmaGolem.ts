@@ -46,10 +46,10 @@ export class MagmaGolem extends MonsterEntity {
                     damage:65,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Magma Beam`)
+                        attacker.addLogMessage(`${attacker.name} used Magma Beam`)
                         defender.takeDamage
                             .magical(attacker.attackDamage+65)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by burning in hot magma`)
+                            .run(damage => `${defender.name} lost ${damage} HP by burning in hot magma`)
                     }
                 },
                 {
@@ -61,10 +61,10 @@ export class MagmaGolem extends MonsterEntity {
                     damage:45,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Fiery Fist`)
+                        attacker.addLogMessage(`${attacker.name} used Fiery Fist`)
                         defender.takeDamage
                             .physical(attacker.attackDamage+45)
-                            .run(damage => `**${attacker.name}** covers it's arm with scorching flames and punches **${defender.name}** causing ${damage} damage`)
+                            .run(damage => `${attacker.name} covers it's arm with scorching flames and punches ${defender.name} causing ${damage} damage`)
                     }
                 },
                 {
@@ -76,10 +76,10 @@ export class MagmaGolem extends MonsterEntity {
                     damage:25,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Wreaking Ball`)
+                        attacker.addLogMessage(`${attacker.name} used Wreaking Ball`)
                         defender.takeDamage
                             .physical(attacker.attackDamage+25)
-                            .run(damage => `**${attacker.name}** hurls burning rocks at **${defender.name}** causing ${damage} damage`)
+                            .run(damage => `${attacker.name} hurls burning rocks at ${defender.name} causing ${damage} damage`)
                     }
                 },
                

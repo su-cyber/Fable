@@ -47,10 +47,10 @@ const wave_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Jet Punch`)
+            attacker.addLogMessage(`${attacker.name} used Jet Punch`)
             defender.takeDamage
                 .physical((attacker.attackDamage+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a hydro propelled punch`)
+                .run(damage => `${defender.name} lost ${damage} HP by a hydro propelled punch`)
         }
     },{
         name: 'Aqua Bullets',
@@ -98,10 +98,10 @@ const wave_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Aqua Bullets`)
+            attacker.addLogMessage(`${attacker.name} used Aqua Bullets`)
             defender.takeDamage
                 .magical((attacker.magicPower+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a stream of water bullets`)
+                .run(damage => `${defender.name} lost ${damage} HP by a stream of water bullets`)
         }
     },{
         name: 'Dive Bomb',
@@ -149,10 +149,10 @@ const wave_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Dive Bomb`)
+            attacker.addLogMessage(`${attacker.name} used Dive Bomb`)
             defender.takeDamage
                 .physical((attacker.attackDamage+45)*mod)
-                .run(damage => `**${attacker.name}** crashes down on the ground unleasing a wave on **${defender.name}** and causing ${damage} damage`)
+                .run(damage => `${attacker.name} crashes down on the ground unleasing a wave on ${defender.name} and causing ${damage} damage`)
         }
     },{
         name: 'Water Blast',
@@ -200,10 +200,10 @@ const wave_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Water Blast`)
+            attacker.addLogMessage(`${attacker.name} used Water Blast`)
             defender.takeDamage
                 .magical((attacker.magicPower+45)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP  by a powerful blast of water`)
+                .run(damage => `${defender.name} lost ${damage} HP  by a powerful blast of water`)
         }
     },
     {
@@ -220,8 +220,8 @@ const wave_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Armor of Lightning`,
-                `A protective shield of waves appears around **${attacker.name}** and increases defenses by 1.5x`
+                `${attacker.name} used Armor of Lightning`,
+                `A protective shield of waves appears around ${attacker.name} and increases defenses by 1.5x`
             )
             
            
@@ -245,8 +245,8 @@ const wave_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Sanative Rain`,
-                ` **${attacker.name}** summons a healing rain and heals by 100HP`
+                `${attacker.name} used Sanative Rain`,
+                ` ${attacker.name} summons a healing rain and heals by 100HP`
             )
             
            
@@ -297,10 +297,10 @@ const wave_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Surging Strikes`)
+            attacker.addLogMessage(`${attacker.name} used Surging Strikes`)
             defender.takeDamage
                 .physical((attacker.attackDamage+65)*mod)
-                .run(damage => `**${attacker.name}** strikes **${defender.name}** with a flurry of water strikes causing ${damage} damage`)
+                .run(damage => `${attacker.name} strikes ${defender.name} with a flurry of water strikes causing ${damage} damage`)
         }
     },{
         name: 'Whirlpool Envelope',
@@ -348,10 +348,10 @@ const wave_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Whirlpool Envelope`)
+            attacker.addLogMessage(`${attacker.name} used Whirlpool Envelope`)
             defender.takeDamage
                 .magical((attacker.magicPower+65)*mod)
-                .run(damage => `**${attacker.name}** unleashes a massive whirlpool on **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} unleashes a massive whirlpool on ${defender.name} causing ${damage} damage`)
         }
     },
 ]

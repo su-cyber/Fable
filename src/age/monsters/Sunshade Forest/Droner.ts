@@ -50,10 +50,10 @@ export class Droner extends MonsterEntity {
                     type: 'physical',
                     mana_cost: 0,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Acid Sting`)
+                        attacker.addLogMessage(`${attacker.name} used Acid Sting`)
                         defender.takeDamage
                             .physical(attacker.attackDamage)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by getting stung by the Droner`)
+                            .run(damage => `${defender.name} lost ${damage} HP by getting stung by the Droner`)
                     }
                 },
             ],

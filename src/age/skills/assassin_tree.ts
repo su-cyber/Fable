@@ -13,10 +13,10 @@ const assassin_tree=[
         damage:15,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Vanishing Strike`)
+            attacker.addLogMessage(`${attacker.name} used Vanishing Strike`)
             defender.takeDamage
                 .physical(attacker.attackDamage+15)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a sudden strike from behind`)
+                .run(damage => `${defender.name} lost ${damage} HP by a sudden strike from behind`)
         }
     },{
         name: 'Chain of Shadows',
@@ -27,10 +27,10 @@ const assassin_tree=[
         damage:25,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Chain of Shadows`)
+            attacker.addLogMessage(`${attacker.name} used Chain of Shadows`)
             defender.takeDamage
                 .physical(attacker.attackDamage+25)
-                .run(damage => `**${defender.name}** is striked with chains and looses ${damage} HP`)
+                .run(damage => `${defender.name} is striked with chains and looses ${damage} HP`)
         }
     },{
         name: 'Venomous Serpent',
@@ -50,17 +50,17 @@ const assassin_tree=[
                         .physical(10)
                         .run(
                             damage =>
-                                `**${defender.name}** lost ${damage} HP due to ${emoji.POISON}`
+                                `${defender.name} lost ${damage} HP due to ${emoji.POISON}`
                         )
                 )
 
             defender.applyEffect(VenomousSerpent)
             attacker.addLogMessage(
-                `**${attacker.name}** used Venomous Serpent`
+                `${attacker.name} used Venomous Serpent`
             )
             defender.takeDamage
             .physical(attacker.attackDamage+40)
-            .run(damage => `**${defender.name}** lost ${damage} HP by a deadly poison dart\n**${defender.name}** is poisoned!`)
+            .run(damage => `${defender.name} lost ${damage} HP by a deadly poison dart\n${defender.name} is poisoned!`)
         }
     },{
         name: `Whirling Tempest`,
@@ -71,10 +71,10 @@ const assassin_tree=[
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Whirling Tempest`)
+            attacker.addLogMessage(`${attacker.name} used Whirling Tempest`)
             defender.takeDamage
                 .physical(attacker.attackDamage+65)
-                .run(damage => `**${defender.name}** is striked and woundup in chains and looses ${damage} HP`)
+                .run(damage => `${defender.name} is striked and woundup in chains and looses ${damage} HP`)
         }
     },{
         cooldown: 0,
@@ -90,12 +90,12 @@ const assassin_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Blood Moon Rising`,
-                `**${attacker.name}** steals 50HP from **${defender.name}**`
+                `${attacker.name} used Blood Moon Rising`,
+                `${attacker.name} steals 50HP from ${defender.name}`
             )
             defender.takeDamage
                 .physical(attacker.attackDamage+25)
-                .run(damage => `**${defender.name}** lost ${damage} HP from the burst of energy`)
+                .run(damage => `${defender.name} lost ${damage} HP from the burst of energy`)
         
             
            

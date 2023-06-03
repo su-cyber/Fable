@@ -47,10 +47,10 @@ const alloy_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Metal Bash`)
+            attacker.addLogMessage(`${attacker.name} used Metal Bash`)
             defender.takeDamage
                 .physical((attacker.attackDamage+20)*mod)
-                .run(damage => `**${attacker.name}** covers themselves in metal and bashes **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} covers themselves in metal and bashes ${defender.name} causing ${damage} damage`)
         }
     },{
         name: 'Steel Spike',
@@ -98,10 +98,10 @@ const alloy_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Steel Spike`)
+            attacker.addLogMessage(`${attacker.name} used Steel Spike`)
             defender.takeDamage
                 .magical((attacker.magicPower+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a barrage of steel spikes`)
+                .run(damage => `${defender.name} lost ${damage} HP by a barrage of steel spikes`)
         }
     },{
         name: 'Brass Knuckle',
@@ -149,10 +149,10 @@ const alloy_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Brass Knuckle`)
+            attacker.addLogMessage(`${attacker.name} used Brass Knuckle`)
             defender.takeDamage
                 .physical((attacker.attackDamage+45)*mod)
-                .run(damage => `**${attacker.name}** enhances their fists with brass knuckles and punches **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} enhances their fists with brass knuckles and punches ${defender.name} causing ${damage} damage`)
         }
     },{
         name: 'Bullet Machinegun',
@@ -200,10 +200,10 @@ const alloy_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Bullet Machinegun`)
+            attacker.addLogMessage(`${attacker.name} used Bullet Machinegun`)
             defender.takeDamage
                 .magical((attacker.magicPower+45)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP  by a barrage of metal bullets`)
+                .run(damage => `${defender.name} lost ${damage} HP  by a barrage of metal bullets`)
         }
     },
     {
@@ -220,8 +220,8 @@ const alloy_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Armor of Sky`,
-                `A protective shield of steel appears around **${attacker.name}** and increases defenses by 1.5x`
+                `${attacker.name} used Armor of Sky`,
+                `A protective shield of steel appears around ${attacker.name} and increases defenses by 1.5x`
             )
             
            
@@ -246,8 +246,8 @@ const alloy_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Mineral Absorption`,
-                ` **${attacker.name}**absorbs minerals from the ground and heals by 100HP`
+                `${attacker.name} used Mineral Absorption`,
+                ` ${attacker.name}absorbs minerals from the ground and heals by 100HP`
             )
             
            
@@ -298,10 +298,10 @@ const alloy_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Wire Slam`)
+            attacker.addLogMessage(`${attacker.name} used Wire Slam`)
             defender.takeDamage
                 .physical((attacker.attackDamage+65)*mod)
-                .run(damage => `**${attacker.name}** binds **${defender.name}** with metal wires and slams them causing ${damage} damage`)
+                .run(damage => `${attacker.name} binds ${defender.name} with metal wires and slams them causing ${damage} damage`)
         }
     },{
         name: 'Spiraling Iron Bolts',
@@ -349,10 +349,10 @@ const alloy_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Spiraling Iron Bolts`)
+            attacker.addLogMessage(`${attacker.name} used Spiraling Iron Bolts`)
             defender.takeDamage
                 .magical((attacker.magicPower+65)*mod)
-                .run(damage => `**${attacker.name}** shoots spiralling bolts of iron on **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} shoots spiralling bolts of iron on ${defender.name} causing ${damage} damage`)
         }
     },
 ]

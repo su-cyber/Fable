@@ -47,10 +47,10 @@ const flame_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Flame Whip`)
+            attacker.addLogMessage(`${attacker.name} used Flame Whip`)
             defender.takeDamage
                 .physical((attacker.attackDamage+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by being hit with a Flaming Whip`)
+                .run(damage => `${defender.name} lost ${damage} HP by being hit with a Flaming Whip`)
         }
     },{
         name: 'Flare Breath',
@@ -102,10 +102,10 @@ const flame_tree=[
             console.log(defender.element);
             
             
-            attacker.addLogMessage(`**${attacker.name}** used Flare Breath`)
+            attacker.addLogMessage(`${attacker.name} used Flare Breath`)
             defender.takeDamage
                 .magical((attacker.magicPower+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a burst of flames`)
+                .run(damage => `${defender.name} lost ${damage} HP by a burst of flames`)
         }
     },{
         name: 'Erupting Fist',
@@ -153,10 +153,10 @@ const flame_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Erupting Fist`)
+            attacker.addLogMessage(`${attacker.name} used Erupting Fist`)
             defender.takeDamage
                 .physical((attacker.attackDamage+45)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by the explosive fists of **${attacker.name}**`)
+                .run(damage => `${defender.name} lost ${damage} HP by the explosive fists of ${attacker.name}`)
         }
     },{
         name: 'Scattering Flame Bullet',
@@ -204,10 +204,10 @@ const flame_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Scattering Flame Bullet`)
+            attacker.addLogMessage(`${attacker.name} used Scattering Flame Bullet`)
             defender.takeDamage
                 .magical((attacker.magicPower+45)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a barrage of flame projectiles`)
+                .run(damage => `${defender.name} lost ${damage} HP by a barrage of flame projectiles`)
         }
     },
     {
@@ -224,8 +224,8 @@ const flame_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Armor of Flames`,
-                `A protective shield of flames appears around **${attacker.name}** and increases defenses by 1.5x`
+                `${attacker.name} used Armor of Flames`,
+                `A protective shield of flames appears around ${attacker.name} and increases defenses by 1.5x`
             )
             
            
@@ -249,8 +249,8 @@ const flame_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Fusion Blue Flames`,
-                `Blue flames covers **${attacker.name}** and heals them by 100HP`
+                `${attacker.name} used Fusion Blue Flames`,
+                `Blue flames covers ${attacker.name} and heals them by 100HP`
             )
             
            
@@ -301,10 +301,10 @@ const flame_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Searing Slash`)
+            attacker.addLogMessage(`${attacker.name} used Searing Slash`)
             defender.takeDamage
                 .physical((attacker.attackDamage+65)*mod)
-                .run(damage => `**${attacker.name}** imbues their weapon in flames and attacks **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} imbues their weapon in flames and attacks ${defender.name} causing ${damage} damage`)
         }
     },{
         name: 'Flame Tornado',
@@ -352,10 +352,10 @@ const flame_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Flame Tornado`)
+            attacker.addLogMessage(`${attacker.name} used Flame Tornado`)
             defender.takeDamage
                 .magical((attacker.magicPower+65)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a flaming tornado`)
+                .run(damage => `${defender.name} lost ${damage} HP by a flaming tornado`)
         }
     },
 ]

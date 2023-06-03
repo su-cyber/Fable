@@ -47,10 +47,10 @@ const gale_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Razor Kick`)
+            attacker.addLogMessage(`${attacker.name} used Razor Kick`)
             defender.takeDamage
                 .physical((attacker.attackDamage+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a sharp wind slash`)
+                .run(damage => `${defender.name} lost ${damage} HP by a sharp wind slash`)
         }
     },{
         name: 'Mighty Breath',
@@ -98,10 +98,10 @@ const gale_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Mighty Breath`)
+            attacker.addLogMessage(`${attacker.name} used Mighty Breath`)
             defender.takeDamage
                 .magical((attacker.magicPower+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a strong burst of wind`)
+                .run(damage => `${defender.name} lost ${damage} HP by a strong burst of wind`)
         }
     },{
         name: 'Tempest Fist',
@@ -149,10 +149,10 @@ const gale_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Tempest Fist`)
+            attacker.addLogMessage(`${attacker.name} used Tempest Fist`)
             defender.takeDamage
                 .physical((attacker.attackDamage+45)*mod)
-                .run(damage => `**${attacker.name}** covers their arm by a sharp whirlwind and punches **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} covers their arm by a sharp whirlwind and punches ${defender.name} causing ${damage} damage`)
         }
     },{
         name: 'Wind Palm',
@@ -200,10 +200,10 @@ const gale_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Wind Palm`)
+            attacker.addLogMessage(`${attacker.name} used Wind Palm`)
             defender.takeDamage
                 .magical((attacker.magicPower+45)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP  by a strong gust of wind`)
+                .run(damage => `${defender.name} lost ${damage} HP  by a strong gust of wind`)
         }
     },
     {
@@ -221,8 +221,8 @@ const gale_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Armor of Sky`,
-                `A protective shield of wind appears around **${attacker.name}** and increases defenses by 1.5x`
+                `${attacker.name} used Armor of Sky`,
+                `A protective shield of wind appears around ${attacker.name} and increases defenses by 1.5x`
             )
             
            
@@ -246,8 +246,8 @@ const gale_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Breath of Life`,
-                ` **${attacker.name}** summons a healing wind and heals by 100HP`
+                `${attacker.name} used Breath of Life`,
+                ` ${attacker.name} summons a healing wind and heals by 100HP`
             )
             
            
@@ -298,10 +298,10 @@ const gale_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Windwalk Strike`)
+            attacker.addLogMessage(`${attacker.name} used Windwalk Strike`)
             defender.takeDamage
                 .physical((attacker.attackDamage+65)*mod)
-                .run(damage => `**${attacker.name}** runs towards the sky and strikes **${defender.name}** from above causing ${damage} damage`)
+                .run(damage => `${attacker.name} runs towards the sky and strikes ${defender.name} from above causing ${damage} damage`)
         }
     },{
         name: 'Sonic Scythe',
@@ -349,10 +349,10 @@ const gale_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Sonic Scythe`)
+            attacker.addLogMessage(`${attacker.name} used Sonic Scythe`)
             defender.takeDamage
                 .magical((attacker.magicPower+65)*mod)
-                .run(damage => `**${attacker.name}** unleashes a sharp blade of wind on **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} unleashes a sharp blade of wind on ${defender.name} causing ${damage} damage`)
         }
     },
 ]

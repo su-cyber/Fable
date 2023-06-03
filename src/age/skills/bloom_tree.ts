@@ -47,10 +47,10 @@ const bloom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Splinter Burst`)
+            attacker.addLogMessage(`${attacker.name} used Splinter Burst`)
             defender.takeDamage
                 .physical((attacker.attackDamage+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a barrage of sharp wood splinters`)
+                .run(damage => `${defender.name} lost ${damage} HP by a barrage of sharp wood splinters`)
         }
     },{
         name: 'Spore Spread',
@@ -98,10 +98,10 @@ const bloom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Spore Spread`)
+            attacker.addLogMessage(`${attacker.name} used Spore Spread`)
             defender.takeDamage
                 .magical((attacker.magicPower+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by poisonous spores`)
+                .run(damage => `${defender.name} lost ${damage} HP by poisonous spores`)
         }
     },{
         name: 'Lumber Smack',
@@ -149,10 +149,10 @@ const bloom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Lumber Smack`)
+            attacker.addLogMessage(`${attacker.name} used Lumber Smack`)
             defender.takeDamage
                 .physical((attacker.attackDamage+45)*mod)
-                .run(damage => `**${attacker.name}** covers their arm by thick wood and punches **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} covers their arm by thick wood and punches ${defender.name} causing ${damage} damage`)
         }
     },{
         name: 'Sap Blast',
@@ -200,10 +200,10 @@ const bloom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Sap Blast`)
+            attacker.addLogMessage(`${attacker.name} used Sap Blast`)
             defender.takeDamage
                 .magical((attacker.magicPower+45)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a blast of sticky sap`)
+                .run(damage => `${defender.name} lost ${damage} HP by a blast of sticky sap`)
         }
     },
     {
@@ -220,8 +220,8 @@ const bloom_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Armor of Wood`,
-                `A protective shield of wood appears around **${attacker.name}** and increases defenses by 1.5x`
+                `${attacker.name} used Armor of Wood`,
+                `A protective shield of wood appears around ${attacker.name} and increases defenses by 1.5x`
             )
             
            
@@ -245,8 +245,8 @@ const bloom_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Photosynthesis`,
-                `**${attacker.name}** absorbs sunlight and heals by 100HP`
+                `${attacker.name} used Photosynthesis`,
+                `${attacker.name} absorbs sunlight and heals by 100HP`
             )
             
            
@@ -297,10 +297,10 @@ const bloom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Root Slam`)
+            attacker.addLogMessage(`${attacker.name} used Root Slam`)
             defender.takeDamage
                 .physical((attacker.attackDamage+65)*mod)
-                .run(damage => `**${defender.name}** gets bound by roots and slammed into the ground causing ${damage} damage`)
+                .run(damage => `${defender.name} gets bound by roots and slammed into the ground causing ${damage} damage`)
         }
     },{
         name: 'Spiked Wooden Ball',
@@ -348,10 +348,10 @@ const bloom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Spiked Wooden Ball`)
+            attacker.addLogMessage(`${attacker.name} used Spiked Wooden Ball`)
             defender.takeDamage
                 .magical((attacker.magicPower+65)*mod)
-                .run(damage => `**${attacker.name}** unleashes a huge spiked wooden ball at **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} unleashes a huge spiked wooden ball at ${defender.name} causing ${damage} damage`)
         }
     },
 ]

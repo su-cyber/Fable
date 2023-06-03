@@ -46,10 +46,10 @@ export class fieldMould extends MonsterEntity {
                     type: 'physical',
                     mana_cost: 0,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Toxic Spores`)
+                        attacker.addLogMessage(`${attacker.name} used Toxic Spores`)
                         defender.takeDamage
                             .physical(attacker.attackDamage)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by beathing in some of the toxic spores.`)
+                            .run(damage => `${defender.name} lost ${damage} HP by beathing in some of the toxic spores.`)
                     }
                 },
             ],

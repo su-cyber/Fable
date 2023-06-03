@@ -47,10 +47,10 @@ const venom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Poison Claw`)
+            attacker.addLogMessage(`${attacker.name} used Poison Claw`)
             defender.takeDamage
                 .physical((attacker.attackDamage+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a poisonous claw attack`)
+                .run(damage => `${defender.name} lost ${damage} HP by a poisonous claw attack`)
         }
     },{
         name: 'Poison Gas',
@@ -98,10 +98,10 @@ const venom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Poison Gas`)
+            attacker.addLogMessage(`${attacker.name} used Poison Gas`)
             defender.takeDamage
                 .magical((attacker.magicPower+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by breathing in toxic gas`)
+                .run(damage => `${defender.name} lost ${damage} HP by breathing in toxic gas`)
         }
     },{
         name: 'Toxic Serpent Bite',
@@ -149,10 +149,10 @@ const venom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Toxic Serpent Bite`)
+            attacker.addLogMessage(`${attacker.name} used Toxic Serpent Bite`)
             defender.takeDamage
                 .physical((attacker.attackDamage+45)*mod)
-                .run(damage => `**${attacker.name}** uleaashes a venomous serpent upon **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} uleaashes a venomous serpent upon ${defender.name} causing ${damage} damage`)
         }
     },{
         name: 'Toxic Meltdown',
@@ -200,10 +200,10 @@ const venom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Toxic Meltdow`)
+            attacker.addLogMessage(`${attacker.name} used Toxic Meltdow`)
             defender.takeDamage
                 .magical((attacker.magicPower+45)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a burst of corrosive gas`)
+                .run(damage => `${defender.name} lost ${damage} HP by a burst of corrosive gas`)
         }
     },
     {
@@ -220,8 +220,8 @@ const venom_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Armor of Toxicity`,
-                `A protective shield of sludge appears around **${attacker.name}** and increases defenses by 1.5x`
+                `${attacker.name} used Armor of Toxicity`,
+                `A protective shield of sludge appears around ${attacker.name} and increases defenses by 1.5x`
             )
             
            
@@ -245,8 +245,8 @@ const venom_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Antidote Aura`,
-                ` **${attacker.name}** absorbs sunlight and heals by 100HP`
+                `${attacker.name} used Antidote Aura`,
+                ` ${attacker.name} absorbs sunlight and heals by 100HP`
             )
             
            
@@ -297,10 +297,10 @@ const venom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Venom Strike`)
+            attacker.addLogMessage(`${attacker.name} used Venom Strike`)
             defender.takeDamage
                 .physical((attacker.attackDamage+65)*mod)
-                .run(damage => `**${attacker.name}** covers their fist in poison and punches **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} covers their fist in poison and punches ${defender.name} causing ${damage} damage`)
         }
     },{
         name: 'Acid Spray',
@@ -348,10 +348,10 @@ const venom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Acid Spray`)
+            attacker.addLogMessage(`${attacker.name} used Acid Spray`)
             defender.takeDamage
                 .magical((attacker.magicPower+65)*mod)
-                .run(damage => `**${attacker.name}** sprays a potent acid at **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} sprays a potent acid at ${defender.name} causing ${damage} damage`)
         }
     },
 ]

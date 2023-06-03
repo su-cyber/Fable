@@ -48,10 +48,10 @@ const frost_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Frost Touch`)
+            attacker.addLogMessage(`${attacker.name} used Frost Touch`)
             defender.takeDamage
                 .physical((attacker.attackDamage+20)*mod)
-                .run(damage => `**${defender.name}** froze in place and lost ${damage} HP`)
+                .run(damage => `${defender.name} froze in place and lost ${damage} HP`)
     }
 },{
         name: 'Iced Shards',
@@ -99,10 +99,10 @@ const frost_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Iced Shards`)
+            attacker.addLogMessage(`${attacker.name} used Iced Shards`)
             defender.takeDamage
                 .magical((attacker.magicPower+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a barrage of icy projectiles`)
+                .run(damage => `${defender.name} lost ${damage} HP by a barrage of icy projectiles`)
         }
     },{
         name: 'Frost Bite',
@@ -150,10 +150,10 @@ const frost_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Frost Bite`)
+            attacker.addLogMessage(`${attacker.name} used Frost Bite`)
             defender.takeDamage
                 .physical((attacker.attackDamage+45)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a freezing cold attack`)
+                .run(damage => `${defender.name} lost ${damage} HP by a freezing cold attack`)
         }
     },{
         name: 'Chilling Wind',
@@ -201,10 +201,10 @@ const frost_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Chilling Wind`)
+            attacker.addLogMessage(`${attacker.name} used Chilling Wind`)
             defender.takeDamage
                 .magical((attacker.magicPower+45)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP  by a blast of icy wind`)
+                .run(damage => `${defender.name} lost ${damage} HP  by a blast of icy wind`)
         }
     },
     {
@@ -221,8 +221,8 @@ const frost_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Armor of Lightning`,
-                `A protective shield of ice appears around **${attacker.name}** and increases defenses by 1.5x`
+                `${attacker.name} used Armor of Lightning`,
+                `A protective shield of ice appears around ${attacker.name} and increases defenses by 1.5x`
             )
             
            
@@ -246,8 +246,8 @@ const frost_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Winter's Embrace`,
-                `**${attacker.name}** summons a healing snowfall and heals by 100HP`
+                `${attacker.name} used Winter's Embrace`,
+                `${attacker.name} summons a healing snowfall and heals by 100HP`
             )
             
            
@@ -261,10 +261,10 @@ const frost_tree=[
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Glacial Lance`)
+            attacker.addLogMessage(`${attacker.name} used Glacial Lance`)
             defender.takeDamage
                 .physical(attacker.attackDamage+65)
-                .run(damage => `**${attacker.name}** unleashes a massive ice spear on **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} unleashes a massive ice spear on ${defender.name} causing ${damage} damage`)
         }
     },{
         name: 'Ice Scatter Shot',
@@ -312,10 +312,10 @@ const frost_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Ice Scatter Shot`)
+            attacker.addLogMessage(`${attacker.name} used Ice Scatter Shot`)
             defender.takeDamage
                 .magical((attacker.magicPower+65)*mod)
-                .run(damage => `**${attacker.name}** shoots a barrage of icy projectiles on **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} shoots a barrage of icy projectiles on ${defender.name} causing ${damage} damage`)
         }
     },
 ]

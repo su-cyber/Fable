@@ -10,10 +10,10 @@ const crusader_tree=[
         damage:15,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Sprint Bash`)
+            attacker.addLogMessage(`${attacker.name} used Sprint Bash`)
             defender.takeDamage
                 .physical(attacker.attackDamage+15)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a powerful tackle`)
+                .run(damage => `${defender.name} lost ${damage} HP by a powerful tackle`)
         }
     },{
         name: 'Skullcrusher',
@@ -24,10 +24,10 @@ const crusader_tree=[
         damage:25,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Skullcrusher`)
+            attacker.addLogMessage(`${attacker.name} used Skullcrusher`)
             defender.takeDamage
                 .physical(attacker.attackDamage+25)
-                .run(damage => `**${defender.name}** lost ${damage} HP by being smashed by a hammer strike`)
+                .run(damage => `${defender.name} lost ${damage} HP by being smashed by a hammer strike`)
         }
     },{
         name: 'Axe of the North',
@@ -40,11 +40,11 @@ const crusader_tree=[
         use: (attacker, defender) =>{
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Axe of the North`
+                `${attacker.name} used Axe of the North`
             )
             defender.takeDamage
             .physical(attacker.attackDamage+40)
-            .run(damage => `**${defender.name}** lost ${damage} HP by gettig stuck an Axe attack`)
+            .run(damage => `${defender.name} lost ${damage} HP by gettig stuck an Axe attack`)
         }
     },{
         name: `Crushing Blow`,
@@ -55,10 +55,10 @@ const crusader_tree=[
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Crushing Blow`)
+            attacker.addLogMessage(`${attacker.name} used Crushing Blow`)
             defender.takeDamage
                 .physical(attacker.attackDamage+65)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a powerful blow from a hammer`)
+                .run(damage => `${defender.name} lost ${damage} HP by a powerful blow from a hammer`)
         }
     },{
         cooldown: 0,
@@ -71,8 +71,8 @@ const crusader_tree=[
         use: (attacker, defender) => {
             attacker.health = attacker.health+100
             defender.attackDamage = defender.attackDamage-10
-                        attacker.addLogMessage(`**${attacker.name}** used Blood Ale`,
-                        `**${attacker.name}** drinks their enemy's blood and heals by 100HP as well as lowering his opponent's vigour`
+                        attacker.addLogMessage(`${attacker.name} used Blood Ale`,
+                        `${attacker.name} drinks their enemy's blood and heals by 100HP as well as lowering his opponent's vigour`
                         )
                        
            

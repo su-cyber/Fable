@@ -46,10 +46,10 @@ export class Treemick extends MonsterEntity {
                     type: 'physical',
                     mana_cost: 0,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`**${attacker.name}** used Wood Spike`)
+                        attacker.addLogMessage(`${attacker.name} used Wood Spike`)
                         defender.takeDamage
                             .physical(attacker.attackDamage)
-                            .run(damage => `**${defender.name}** lost ${damage} HP by Wood Spike`)
+                            .run(damage => `${defender.name} lost ${damage} HP by Wood Spike`)
                     }
                 },
             ],

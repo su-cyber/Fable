@@ -10,10 +10,10 @@ const wanderer_tree=[
         damage:15,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Scissor Kick`)
+            attacker.addLogMessage(`${attacker.name} used Scissor Kick`)
             defender.takeDamage
                 .physical(attacker.attackDamage+15)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a scissor kick`)
+                .run(damage => `${defender.name} lost ${damage} HP by a scissor kick`)
         }
     },{
         name: 'Venomous Strike',
@@ -24,10 +24,10 @@ const wanderer_tree=[
         damage:25,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Venomous Strike`)
+            attacker.addLogMessage(`${attacker.name} used Venomous Strike`)
             defender.takeDamage
                 .physical(attacker.attackDamage+25)
-                .run(damage => `**${defender.name}** lost ${damage} HP by being hit by a Katar laced with venom`)
+                .run(damage => `${defender.name} lost ${damage} HP by being hit by a Katar laced with venom`)
         }
     },{
         name: 'Beast Trap Takedown',
@@ -40,11 +40,11 @@ const wanderer_tree=[
         use: (attacker, defender) =>{
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Beast Trap Takedown`
+                `${attacker.name} used Beast Trap Takedown`
             )
             defender.takeDamage
             .physical(attacker.attackDamage+40)
-            .run(damage => `**${defender.name}** lost ${damage} HP by gettig stuck in a beast trap`)
+            .run(damage => `${defender.name} lost ${damage} HP by gettig stuck in a beast trap`)
         }
     },{
         name: `Fist of the Alpha`,
@@ -55,10 +55,10 @@ const wanderer_tree=[
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Fist of the Alpha`)
+            attacker.addLogMessage(`${attacker.name} used Fist of the Alpha`)
             defender.takeDamage
                 .physical(attacker.attackDamage+65)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a powerful punch`)
+                .run(damage => `${defender.name} lost ${damage} HP by a powerful punch`)
         }
     },{
         cooldown: 0,
@@ -83,8 +83,8 @@ const wanderer_tree=[
                             )
 
                         defender.applyEffect(invisible)
-                        attacker.addLogMessage(`**${attacker.name}** used Chameleon Cloak`,
-                        `**${attacker.name}** turned invisible!`
+                        attacker.addLogMessage(`${attacker.name} used Chameleon Cloak`,
+                        `${attacker.name} turned invisible!`
                         )
            
         },

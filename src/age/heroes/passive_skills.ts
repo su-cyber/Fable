@@ -26,8 +26,8 @@ const passive_skills = [
             defender.applyEffect(Regeneration)
 
             attacker.addLogMessage(
-                `**${attacker.name}** has passive skill Regeneration`,
-                `**${attacker.name}** will recover 5HP every turn`
+                `${attacker.name} has passive skill Regeneration`,
+                `${attacker.name} will recover 5HP every turn`
             )
         },
     },
@@ -45,7 +45,7 @@ const passive_skills = [
                 attacker.magicResistance = 1.5*attacker.magicResistance
 
                 attacker.addLogMessage(
-                    `**${attacker.name}** Has Fire Resistance`,
+                    `${attacker.name} Has Fire Resistance`,
                     `Flame type enemies will have 50% less effect`
                 )
             }
@@ -71,7 +71,7 @@ const passive_skills = [
                 .run(() =>{
                 defender.takeDamage
                 .physical(10)
-                .run(damage => `**${defender.name}** lost ${damage} HP by the attacks of the Goblins`)
+                .run(damage => `${defender.name} lost ${damage} HP by the attacks of the Goblins`)
                 }
                     
                 )
@@ -79,8 +79,8 @@ const passive_skills = [
             defender.applyEffect(goblinSummon)
 
             attacker.addLogMessage(
-                `**${attacker.name}** blew the Goblin Whistle`,
-                `**${attacker.name}** A group of goblins were summoned to do ${attacker.name}'s bidding`
+                `${attacker.name} blew the Goblin Whistle`,
+                `A group of goblins were summoned to do ${attacker.name}'s bidding`
             )
         },
     },

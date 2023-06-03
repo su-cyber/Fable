@@ -47,10 +47,10 @@ const light_tree=[
             else if(defender.element == "ruin"){
                 mod  = 2
             }
-            attacker.addLogMessage(`**${attacker.name}** used Vanishing Foot`)
+            attacker.addLogMessage(`${attacker.name} used Vanishing Foot`)
             defender.takeDamage
                 .physical((attacker.attackDamage+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a kick at light speed`)
+                .run(damage => `${defender.name} lost ${damage} HP by a kick at light speed`)
         }
     },{
         name: 'Jewels of Light',
@@ -98,10 +98,10 @@ const light_tree=[
             else if(defender.element == "ruin"){
                 mod  = 2
             }
-            attacker.addLogMessage(`**${attacker.name}** used Jewels of Light`)
+            attacker.addLogMessage(`${attacker.name} used Jewels of Light`)
             defender.takeDamage
                 .magical((attacker.magicPower+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a rain of radiant beams of light`)
+                .run(damage => `${defender.name} lost ${damage} HP by a rain of radiant beams of light`)
         }
     },{
         name: 'Shooting Star',
@@ -149,10 +149,10 @@ const light_tree=[
             else if(defender.element == "ruin"){
                 mod  = 2
             }
-            attacker.addLogMessage(`**${attacker.name}** used Shooting Star`)
+            attacker.addLogMessage(`${attacker.name} used Shooting Star`)
             defender.takeDamage
                 .physical((attacker.attackDamage+45)*mod)
-                .run(damage => `**${attacker.name}** crashed down imbued with light on **${defender.name}** and caused ${damage} damage`)
+                .run(damage => `${attacker.name} crashed down imbued with light on ${defender.name} and caused ${damage} damage`)
         }
     },{
         name: 'Moonlight Chakrams',
@@ -200,10 +200,10 @@ const light_tree=[
             else if(defender.element == "ruin"){
                 mod  = 2
             }
-            attacker.addLogMessage(`**${attacker.name}** used Scattering Moonlight Chakrams`)
+            attacker.addLogMessage(`${attacker.name} used Scattering Moonlight Chakrams`)
             defender.takeDamage
                 .magical((attacker.magicPower+45)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by light chakrams projectiles`)
+                .run(damage => `${defender.name} lost ${damage} HP by light chakrams projectiles`)
         }
     },
     {
@@ -220,8 +220,8 @@ const light_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Armor of Light`,
-                `A protective shield of light appears around **${attacker.name}** and increases defenses by 1.5x`
+                `${attacker.name} used Armor of Light`,
+                `A protective shield of light appears around ${attacker.name} and increases defenses by 1.5x`
             )
             
            
@@ -244,8 +244,8 @@ const light_tree=[
             }
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Sun's Embrace`,
-                `Sunlight covers **${attacker.name}** and heals them by 100HP`
+                `${attacker.name} used Sun's Embrace`,
+                `Sunlight covers ${attacker.name} and heals them by 100HP`
             )
             
            
@@ -296,10 +296,10 @@ const light_tree=[
             else if(defender.element == "ruin"){
                 mod  = 2
             }
-            attacker.addLogMessage(`**${attacker.name}** used Barrage of Light`)
+            attacker.addLogMessage(`${attacker.name} used Barrage of Light`)
             defender.takeDamage
                 .physical((attacker.attackDamage+65)*mod)
-                .run(damage => `**${defender.name}** lost ${damage}HP by a barrage of blinding light punches`)
+                .run(damage => `${defender.name} lost ${damage}HP by a barrage of blinding light punches`)
         }
     },{
         name: 'Dazzling Beam',
@@ -347,10 +347,10 @@ const light_tree=[
             else if(defender.element == "ruin"){
                 mod  = 2
             }
-            attacker.addLogMessage(`**${attacker.name}** used Dazzling Beam`)
+            attacker.addLogMessage(`${attacker.name} used Dazzling Beam`)
             defender.takeDamage
                 .magical((attacker.magicPower+65)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a beam of concentrated light`)
+                .run(damage => `${defender.name} lost ${damage} HP by a beam of concentrated light`)
         }
     },
 ]

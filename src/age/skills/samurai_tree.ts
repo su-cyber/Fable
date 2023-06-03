@@ -13,10 +13,10 @@ const samurai_tree=[
         damage:15,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Shattering Kick`)
+            attacker.addLogMessage(`${attacker.name} used Shattering Kick`)
             defender.takeDamage
                 .physical(attacker.attackDamage+15)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a powerful kick`)
+                .run(damage => `${defender.name} lost ${damage} HP by a powerful kick`)
         }
     },{
         name: 'Flashing Blade',
@@ -27,10 +27,10 @@ const samurai_tree=[
         damage:25,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Flashing Blade`)
+            attacker.addLogMessage(`${attacker.name} used Flashing Blade`)
             defender.takeDamage
                 .physical(attacker.attackDamage+25)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a swift sword strike`)
+                .run(damage => `${defender.name} lost ${damage} HP by a swift sword strike`)
         }
     },{
         name: 'Predator Shot',
@@ -50,17 +50,17 @@ const samurai_tree=[
                         .physical(10)
                         .run(
                             damage =>
-                                `**${defender.name}** lost ${damage} HP due to ${emoji.BLEED}`
+                                `${defender.name} lost ${damage} HP due to ${emoji.BLEED}`
                         )
                 )
 
             defender.applyEffect(predatorShot)
             attacker.addLogMessage(
-                `**${attacker.name}** used Predator Shot`
+                `${attacker.name} used Predator Shot`
             )
             defender.takeDamage
             .physical(attacker.attackDamage+40)
-            .run(damage => `**${defender.name}** lost ${damage} HP by a deadly arrow shot to the vitals\n**${defender.name}** is bleeding!`)
+            .run(damage => `${defender.name} lost ${damage} HP by a deadly arrow shot to the vitals\n${defender.name} is bleeding!`)
         }
     },{
         name: 'Cyclone Slash',
@@ -71,10 +71,10 @@ const samurai_tree=[
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Cyclone Slash`)
+            attacker.addLogMessage(`${attacker.name} used Cyclone Slash`)
             defender.takeDamage
                 .physical(attacker.attackDamage+65)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a spinning sword strike`)
+                .run(damage => `${defender.name} lost ${damage} HP by a spinning sword strike`)
         }
     },{
         cooldown: 0,
@@ -89,8 +89,8 @@ const samurai_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Ki Restoration`,
-                `**${attacker.name}** channels their life energy and restores 10 AP`
+                `${attacker.name} used Ki Restoration`,
+                `${attacker.name} channels their life energy and restores 10 AP`
             )
             
            

@@ -47,10 +47,10 @@ const terra_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Stone Fist`)
+            attacker.addLogMessage(`${attacker.name} used Stone Fist`)
             defender.takeDamage
                 .physical((attacker.attackDamage+20)*mod)
-                .run(damage => `**${attacker.name}** covers their arm with rocks and punches **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} covers their arm with rocks and punches ${defender.name} causing ${damage} damage`)
         }
     },{
         name: 'Mud Shower',
@@ -98,10 +98,10 @@ const terra_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Mud Shower`)
+            attacker.addLogMessage(`${attacker.name} used Mud Shower`)
             defender.takeDamage
                 .magical((attacker.magicPower+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a torrent of mud`)
+                .run(damage => `${defender.name} lost ${damage} HP by a torrent of mud`)
         }
     },{
         name: 'Tremor Kick',
@@ -149,10 +149,10 @@ const terra_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Tremor Kick`)
+            attacker.addLogMessage(`${attacker.name} used Tremor Kick`)
             defender.takeDamage
                 .physical((attacker.attackDamage+45)*mod)
-                .run(damage => `**${attacker.name}** kicks the ground causing a tremor doing ${damage} damage`)
+                .run(damage => `${attacker.name} kicks the ground causing a tremor doing ${damage} damage`)
         }
     },{
         name: 'Scorching Sands',
@@ -200,10 +200,10 @@ const terra_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Scorching Sands`)
+            attacker.addLogMessage(`${attacker.name} used Scorching Sands`)
             defender.takeDamage
                 .magical((attacker.magicPower+45)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a scorching wave of sand`)
+                .run(damage => `${defender.name} lost ${damage} HP by a scorching wave of sand`)
         }
     },
     {
@@ -220,8 +220,8 @@ const terra_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Armor of Rock`,
-                `A protective shield made of rocks appear around **${attacker.name}** and increases defenses by 1.5x`
+                `${attacker.name} used Armor of Rock`,
+                `A protective shield made of rocks appear around ${attacker.name} and increases defenses by 1.5x`
             )
             
            
@@ -245,8 +245,8 @@ const terra_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Parching Skin`,
-                ` **${attacker.name}** covers themselves with sand and heals by 100HP`
+                `${attacker.name} used Parching Skin`,
+                ` ${attacker.name} covers themselves with sand and heals by 100HP`
             )
             
            
@@ -297,10 +297,10 @@ const terra_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Mudslide Tackle`)
+            attacker.addLogMessage(`${attacker.name} used Mudslide Tackle`)
             defender.takeDamage
                 .physical((attacker.attackDamage+65)*mod)
-                .run(damage => `**${defender.name}** gets knocked down by a powerful tackle causing ${damage} damage`)
+                .run(damage => `${defender.name} gets knocked down by a powerful tackle causing ${damage} damage`)
         }
     },{
         name: 'Stalactite Rush',
@@ -348,10 +348,10 @@ const terra_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Gem Barrage`)
+            attacker.addLogMessage(`${attacker.name} used Gem Barrage`)
             defender.takeDamage
                 .magical((attacker.magicPower+65)*mod)
-                .run(damage => `**${attacker.name}** unleashes a barrage of sharp rock spikes at **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} unleashes a barrage of sharp rock spikes at ${defender.name} causing ${damage} damage`)
         }
     },
 ]

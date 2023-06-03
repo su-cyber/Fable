@@ -47,10 +47,10 @@ const volt_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Surging Kick`)
+            attacker.addLogMessage(`${attacker.name} used Surging Kick`)
             defender.takeDamage
                 .physical((attacker.attackDamage+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a lightning charged kick`)
+                .run(damage => `${defender.name} lost ${damage} HP by a lightning charged kick`)
         }
     },{
         name: 'Thunderclap',
@@ -98,10 +98,10 @@ const volt_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Thunderclap`)
+            attacker.addLogMessage(`${attacker.name} used Thunderclap`)
             defender.takeDamage
                 .magical((attacker.magicPower+20)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a shockwave of lightning`)
+                .run(damage => `${defender.name} lost ${damage} HP by a shockwave of lightning`)
         }
     },{
         name: 'Plasma Fist',
@@ -149,10 +149,10 @@ const volt_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Plasma Fist`)
+            attacker.addLogMessage(`${attacker.name} used Plasma Fist`)
             defender.takeDamage
                 .physical((attacker.attackDamage+45)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP by the plasma charged fists of **${attacker.name}**`)
+                .run(damage => `${defender.name} lost ${damage} HP by the plasma charged fists of ${attacker.name}`)
         }
     },{
         name: 'Chain Lightning',
@@ -200,10 +200,10 @@ const volt_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Chain Lightning`)
+            attacker.addLogMessage(`${attacker.name} used Chain Lightning`)
             defender.takeDamage
                 .magical((attacker.magicPower+45)*mod)
-                .run(damage => `**${defender.name}** lost ${damage} HP  by a barrage of lightning projectiles`)
+                .run(damage => `${defender.name} lost ${damage} HP  by a barrage of lightning projectiles`)
         }
     },
     {
@@ -221,8 +221,8 @@ const volt_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Armor of Lightning`,
-                `A protective shield of lightning appears around **${attacker.name}** and increases defenses by 1.5x`
+                `${attacker.name} used Armor of Lightning`,
+                `A protective shield of lightning appears around ${attacker.name} and increases defenses by 1.5x`
             )
             
            
@@ -246,8 +246,8 @@ const volt_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Parabolic Recharge`,
-                ` **${attacker.name}** absorbs statitc electricity from the surrounding and heals by 100HP`
+                `${attacker.name} used Parabolic Recharge`,
+                ` ${attacker.name} absorbs statitc electricity from the surrounding and heals by 100HP`
             )
             
            
@@ -298,10 +298,10 @@ const volt_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Piercing Bolt`)
+            attacker.addLogMessage(`${attacker.name} used Piercing Bolt`)
             defender.takeDamage
                 .physical((attacker.attackDamage+65)*mod)
-                .run(damage => `**${attacker.name}** shoots a piercing bolt of lightning on **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} shoots a piercing bolt of lightning on ${defender.name} causing ${damage} damage`)
         }
     },{
         name: 'Heavy Thunder',
@@ -349,10 +349,10 @@ const volt_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
-            attacker.addLogMessage(`**${attacker.name}** used Heavy Thunder`)
+            attacker.addLogMessage(`${attacker.name} used Heavy Thunder`)
             defender.takeDamage
                 .magical((attacker.magicPower+65)*mod)
-                .run(damage => `**${attacker.name}** unleashes a massive bolt of lightning on **${defender.name}** causing ${damage} damage`)
+                .run(damage => `${attacker.name} unleashes a massive bolt of lightning on ${defender.name} causing ${damage} damage`)
         }
     },
 ]

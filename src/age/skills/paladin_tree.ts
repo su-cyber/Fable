@@ -10,10 +10,10 @@ const paladin_tree=[
         damage:15,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Authority Thrust`)
+            attacker.addLogMessage(`${attacker.name} used Authority Thrust`)
             defender.takeDamage
                 .physical(attacker.attackDamage+15)
-                .run(damage => `**${defender.name}** lost ${damage} HP by a spear thrust`)
+                .run(damage => `${defender.name} lost ${damage} HP by a spear thrust`)
         }
     },{
         name: 'Rampaging Charge',
@@ -24,10 +24,10 @@ const paladin_tree=[
         damage:25,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Rampaging Charge`)
+            attacker.addLogMessage(`${attacker.name} used Rampaging Charge`)
             defender.takeDamage
                 .physical(attacker.attackDamage+25)
-                .run(damage => `**${defender.name}** lost ${damage} HP by being hit by a strong charged tackle`)
+                .run(damage => `${defender.name} lost ${damage} HP by being hit by a strong charged tackle`)
         }
     },{
         name: 'Solar Cleave',
@@ -40,11 +40,11 @@ const paladin_tree=[
         use: (attacker, defender) =>{
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Solar Cleave`
+                `${attacker.name} used Solar Cleave`
             )
             defender.takeDamage
             .physical(attacker.attackDamage+40)
-            .run(damage => `**${defender.name}** lost ${damage} HP by a deadly lance attack`)
+            .run(damage => `${defender.name} lost ${damage} HP by a deadly lance attack`)
         }
     },{
         name: `Lion's Impale`,
@@ -55,10 +55,10 @@ const paladin_tree=[
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
-            attacker.addLogMessage(`**${attacker.name}** used Lion's Impale`)
+            attacker.addLogMessage(`${attacker.name} used Lion's Impale`)
             defender.takeDamage
                 .physical(attacker.attackDamage+65)
-                .run(damage => `**${defender.name}** lost ${damage} HP by being impaled by spear`)
+                .run(damage => `${defender.name} lost ${damage} HP by being impaled by spear`)
         }
     },{
         cooldown: 0,
@@ -73,8 +73,8 @@ const paladin_tree=[
 
 
             attacker.addLogMessage(
-                `**${attacker.name}** used Divine Foundation`,
-                `**${attacker.name}** reduced the vigour of **${defender.name}**`
+                `${attacker.name} used Divine Foundation`,
+                `${attacker.name} reduced the vigour of ${defender.name}`
             )
             
            
