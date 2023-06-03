@@ -38,7 +38,7 @@ const passive_skills = [
         canEvade: false,
         type: 'buff',
         damage:0,
-        mana_cost: 6,
+        mana_cost: 0,
         use: (attacker, defender) => {
             if(defender.element == "Flame"){
                 attacker.armor = 1.5*attacker.armor
