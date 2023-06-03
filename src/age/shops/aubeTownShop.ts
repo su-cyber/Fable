@@ -5,12 +5,13 @@ import { Spear } from "../weapons/spear";
 import { healthPotion } from "../potions/healthPotion";
 import { adrenalineShot } from "../potions/adrenalineShot";
 import { shadowViel } from "../items/shadowViel";
+import { solBracelet } from "../items/solBracelet";
 
 
 const aubeTownShop = {
     weapons: [Sword,steelSword,Spear],
     armour: [steelArmour],
-    items: [shadowViel],
+    items: [shadowViel,solBracelet],
     potions: [healthPotion,adrenalineShot]
 }
 
