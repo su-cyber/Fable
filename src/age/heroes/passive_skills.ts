@@ -36,7 +36,7 @@ const passive_skills = [
         name: 'Flame Resistance',
         description: 'protection against flame element.',
         canEvade: false,
-        type: 'buff',
+        type: 'passive',
         damage:0,
         mana_cost: 0,
         use: (attacker, defender) => {
@@ -55,6 +55,33 @@ const passive_skills = [
            
             
            
+        },
+    },{
+        cooldown: 0,
+        name: 'Goblin Summon',
+        description: 'every turn, goblin gang does some damage',
+        canEvade: false,
+        mana_cost: 0,
+        damage:0,
+        type: 'passive',
+        use: (attacker, defender) => {
+            const goblinSummon = attacker.scheduler.task.all
+                .turns(100)
+                .end(() => {})
+                .run(() =>{
+                defender.takeDamage
+                .physical(10)
+                .run(damage => `**${defender.name}** lost ${damage} HP by the attacks of the Goblins`)
+                }
+                    
+                )
+
+            defender.applyEffect(goblinSummon)
+
+            attacker.addLogMessage(
+                `**${attacker.name}** blew the Goblin Whistle`,
+                `**${attacker.name}** A group of goblins were summoned to do ${attacker.name}'s bidding`
+            )
         },
     },
 
