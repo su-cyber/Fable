@@ -40,7 +40,7 @@ const passive_skills = [
         damage:0,
         mana_cost: 0,
         use: (attacker, defender) => {
-            if(defender.element == "Flame"){
+            if(defender.element == "flame"){
                 attacker.armor = 1.5*attacker.armor
                 attacker.magicResistance = 1.5*attacker.magicResistance
 
