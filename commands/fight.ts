@@ -341,7 +341,7 @@ export class PvEDuel extends DuelBuilder {
                         await sleep(this.speed)
                     }
                     else{
-                        this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                        this.attacker.useSkill(this.attacker,this.defender,sample(this.attacker.skills))
                         await sleep(this.speed)
                     }
                    

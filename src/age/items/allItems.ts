@@ -27,5 +27,5 @@ import { shadowViel } from './shadowViel'
 
 export default [Herbs.create(),
     SunshadeWood.create(),Mushroom.create(),ArgentenumLeaves.create(),solarCorn,Radiantura_milk,steamShovel,guildTshirt,salePoster,treemickBranch,silkBlob,
-    dronerAcid,RayleighFlower.create(),backBreaker,RayleighFlower.create(),buzzHoney,thornbackShell,shadowCat_tuft,glowingEssence,starHound_tooth,gloomRoot_branch,
+    dronerAcid,RayleighFlower.create(),backBreaker,buzzHoney,thornbackShell,shadowCat_tuft,glowingEssence,starHound_tooth,gloomRoot_branch,
     crystalShard,gildedScale,solidifiedMagma,emberScale,shadowViel]
