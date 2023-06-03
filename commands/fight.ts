@@ -817,6 +817,18 @@ export class PvEDuel extends DuelBuilder {
                         if(foundUser.status_effects.status[i] == "Attack"){
                             foundUser.attackDamage-=foundUser.status_effects.value[i]
                         }
+                        else if(foundUser.status_effects.status[i] == "Speed"){
+                            foundUser.speed-=foundUser.status_effects.value[i]
+                        }
+                        else if(foundUser.status_effects.status[i] == "Armour"){
+                            foundUser.armour-=foundUser.status_effects.value[i]
+                        }
+                        else if(foundUser.status_effects.status[i] == "Evasion-percent"){
+                            foundUser.evasion=foundUser.evasion/(1+foundUser.status_effects.value[i])
+                        }
+                        else if(foundUser.status_effects.status[i] == "Evasion"){
+                            foundUser.evasion-=foundUser.status_effects.value[i]
+                        }
                     }
                     foundUser.status_effects.status = []
                     foundUser.status_effects.value = []

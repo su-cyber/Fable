@@ -14,7 +14,11 @@ export class Mushroom extends Flora{
     cost:200,
     fake_name:"",
     skills:[],
-    quantity:2
+    quantity:2,
+    status:[],
+    value:[],
+    turns:0,
+    use_string:""
 
         })
     }

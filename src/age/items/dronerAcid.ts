@@ -8,5 +8,9 @@ export const dronerAcid = new Item({
     emoji: "🧪",
     cost:200,
     type:"none",
-    skills:[]
+    skills:[],
+    status:[],
+    value:[],
+    turns:0,
+    use_string:""
 })

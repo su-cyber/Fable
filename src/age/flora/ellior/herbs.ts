@@ -14,7 +14,11 @@ export class Herbs extends Flora{
     cost:500,
     fake_name:"",
     skills:[],
-    quantity:1
+    quantity:1,
+    status:[],
+    value:[],
+    turns:0,
+    use_string:""
 
         })
     }

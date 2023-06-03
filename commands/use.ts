@@ -50,7 +50,7 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                             if(foundProfile.status_effects.status.length == 0){
                                                 foundObject.quantity-=1
                                                 if(foundObject.quantity===0){
-                                                    const index = foundUser.inventory.armour.indexOf(foundObject)
+                                                    const index = foundUser.inventory.potions.indexOf(foundObject)
                                                     foundUser.inventory.potions.splice(index,1)
                                                 }
                                                 if(foundObject.name.status[0] == "Heal"){
@@ -78,10 +78,7 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                                         else if(foundProfile.status_effects.status[i] == "Armour"){
                                                             foundProfile.armour+=foundProfile.status_effects.value[i]
                                                         }
-                                                        else{
-                                                            console.log("not called");
-                                                            
-                                                        }
+                                                        
                                                         }
                                                     console.log(foundProfile.status_effects);
                                                     
@@ -89,7 +86,7 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                                     }
                                                 }
                                             else{
-                                                interaction.reply({content:`you already have an active potion status effect!`,ephemeral:true})
+                                                interaction.reply({content:`you already have an active status effect!`,ephemeral:true})
                                             }
                                             
                                            
@@ -117,27 +114,63 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                                 
                                             }
                                             else{
-                                                if(foundProfile.items.length <= 3){
+                                                if(foundProfile.status_effects.status.length == 0){
                                                     foundObject.quantity-=1
-                                        if(foundObject.quantity===0){
-                                            const index = foundUser.inventory.items.indexOf(foundObject)
-                                            foundUser.inventory.items.splice(index,1)
-                                        }
-                                                    foundProfile.items.push(foundItem)
-                                                    foundProfile.passiveskills = foundProfile.passiveskills.concat(foundItem.skills)
-                                                    await interaction.reply({content:`${userobject} has been equipped successfully!`})
-                                                }
+                                                    if(foundObject.quantity===0){
+                                                        const index = foundUser.inventory.items.indexOf(foundObject)
+                                                        foundUser.inventory.items.splice(index,1)
+                                                    }
+                                                    if(foundItem.status[0] == "Heal"){
+                                                        interaction.reply({content:`${foundItem.use_string}`})
+                                                        if(foundProfile.health+foundItem.value[0] > getHealth(foundProfile.level,foundProfile.vitality)){
+                                                            foundProfile.health = getHealth(foundProfile.level,foundProfile.vitality)
+                                                        }
+                                                        else{
+                                                            foundProfile.health = foundProfile.health+foundItem.value[0]
+                                                        }
+                                                        
+                                                    }
+                                                    else{
+                                                        let i
+                                                        foundProfile.status_effects.status = foundItem.status
+                                                        foundProfile.status_effects.value = foundItem.value
+                                                        foundProfile.status_effects.turns = foundItem.turns
+                                                        for(i=0;i<foundProfile.status_effects.status.length;i++){
+                                                            if(foundProfile.status_effects.status[i] == "Attack"){
+                                                                foundProfile.attackDamage+=foundProfile.status_effects.value[i]
+                                                            }
+                                                            else if(foundProfile.status_effects.status[i] == "Speed"){
+                                                                foundProfile.speed+=foundProfile.status_effects.value[i]
+                                                            }
+                                                            else if(foundProfile.status_effects.status[i] == "Armour"){
+                                                                foundProfile.armour+=foundProfile.status_effects.value[i]
+                                                            }
+                                                            else if(foundProfile.status_effects.status[i] == "Evasion-percent"){
+                                                                foundProfile.evasion+=foundProfile.status_effects.value[i]*foundProfile.evasion
+                                                            }
+                                                            else if(foundProfile.status_effects.status[i] == "Evasion"){
+                                                                foundProfile.evasion+=foundProfile.status_effects.value[i]
+                                                            }
+                                                            
+                                                            }
+                                                        console.log(foundProfile.status_effects);
+                                                        
+                                                        interaction.reply({content:`${foundItem.use_string}`})
+                                                        }
+                                                    }
                                                 else{
-                                                    
-                                                    interaction.reply({content:"you cannot have more than 3 items eqipped!",ephemeral:true})
+                                                    interaction.reply({content:`you already have an active status effect!`,ephemeral:true})
                                                 }
+                                                
+                                               
                                             await profileModel.updateOne({userID:authorId},foundProfile)
+                                            await inventory.updateOne({userID:authorId},foundUser)
                                             }
                                             
                                         })
                                     }
                                     else{
-                                        interaction.reply({content:"this item cannot be equipped",ephemeral:true})
+                                        interaction.reply({content:"this item is not Usable!",ephemeral:true})
                                     }
 
                                 }

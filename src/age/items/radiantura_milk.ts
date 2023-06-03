@@ -8,5 +8,9 @@ export const Radiantura_milk = new Item({
     emoji: "",
     cost:100,
     type:"none",
-    skills:[]
+    skills:[],
+    status:[],
+    value:[],
+    turns:0,
+    use_string:""
 })

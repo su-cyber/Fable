@@ -14,7 +14,12 @@ export class SunshadeWood extends Flora{
     cost:500,
     fake_name:"Castellan Sunshade",
     skills:[],
-    quantity:5
+    quantity:5,
+    status:[],
+    value:[],
+    turns:0,
+    use_string:""
+
 
         })
     }

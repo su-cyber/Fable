@@ -14,7 +14,11 @@ export class ArgentenumLeaves extends Flora{
     cost:100,
     fake_name:"Castellan Sunshade",
     skills:[],
-    quantity:1
+    quantity:1,
+    status:[],
+    value:[],
+    turns:0,
+    use_string:""
 
         })
     }

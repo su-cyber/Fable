@@ -7,5 +7,9 @@ export const buzzHoney = new Item({
     emoji: "🍯",
     cost:400,
     type:"none",
-    skills:[]
+    skills:[],
+    status:[],
+    value:[],
+    turns:0,
+    use_string:""
 })

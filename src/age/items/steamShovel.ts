@@ -8,5 +8,9 @@ export const steamShovel = new Item({
     emoji: "",
     cost:300,
     type:"none",
-    skills:[]
+    skills:[],
+    status:[],
+    value:[],
+    turns:0,
+    use_string:""
 })

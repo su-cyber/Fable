@@ -8,6 +8,10 @@ type TypeFlora = {
     fake_name: string
     skills: object[]
     quantity:number
+    status: string[]
+    value: number[]
+    turns: number
+    use_string: string
     
 }
 
@@ -21,6 +25,10 @@ class Flora {
     fake_name: string
     skills: object[]
     quantity:number
+    status: string[]
+    value: number[]
+    turns: number
+    use_string: string
 
     constructor(props: TypeFlora) {
         Object.assign(this, props)

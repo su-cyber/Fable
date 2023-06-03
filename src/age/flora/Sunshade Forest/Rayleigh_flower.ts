@@ -14,7 +14,11 @@ export class Rayleigh extends Flora{
     cost:500,
     fake_name:"Rayleigh Flower",
     skills:[],
-    quantity:2
+    quantity:2,
+    status:[],
+    value:[],
+    turns:0,
+    use_string:""
 
         })
     }

@@ -8,5 +8,9 @@ export const guildTshirt = new Item({
     emoji: "",
     cost:150,
     type:"none",
-    skills:[]
+    skills:[],
+    status:[],
+    value:[],
+    turns:0,
+    use_string:""
 })

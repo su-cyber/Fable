@@ -8,5 +8,9 @@ export const salePoster = new Item({
     emoji: "",
     cost:50,
     type:"none",
-    skills:[]
+    skills:[],
+    status:[],
+    value:[],
+    turns:0,
+    use_string:""
 })

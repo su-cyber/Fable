@@ -7,5 +7,9 @@ export const crystalShard = new Item({
     emoji: "💎",
     cost:800,
     type:"none",
-    skills:[]
+    skills:[],
+    status:[],
+    value:[],
+    turns:0,
+    use_string:""
 })
