@@ -30,7 +30,33 @@ const passive_skills = [
                 `**${attacker.name}** will recover 5HP every turn`
             )
         },
-    }
+    },
+    {
+        cooldown: 0,
+        name: 'Flame Resistance',
+        description: 'protection against flame element.',
+        canEvade: false,
+        type: 'buff',
+        damage:0,
+        mana_cost: 6,
+        use: (attacker, defender) => {
+            if(defender.element == "Flame"){
+                attacker.armor = 1.5*attacker.armor
+                attacker.magicResistance = 1.5*attacker.magicResistance
+
+                attacker.addLogMessage(
+                    `**${attacker.name}** Has Fire Resistance`,
+                    `Flame type enemies will have 50% less effect`
+                )
+            }
+            
+
+
+           
+            
+           
+        },
+    },
 
 ]
 

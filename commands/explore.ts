@@ -114,7 +114,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setDescription('You ran away!')
                             
                         
-                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw]})
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[]})
                         let filter = i => i.user.id === authorId
                             let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                     
@@ -245,7 +245,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setDescription('You ran away!')
                             
                         
-                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw]})
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[]})
                         let filter = i => i.user.id === authorId
                             let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                     
@@ -373,7 +373,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setDescription('You ran away!')
                             
                         
-                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw]})
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[]})
                         let filter = i => i.user.id === authorId
                             let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                     
@@ -761,7 +761,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setDescription('You ran away!')
                             
                         
-                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw]})
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[]})
                         let filter = i => i.user.id === authorId
                             let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                     

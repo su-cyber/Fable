@@ -142,7 +142,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                 const foundObject = foundUser.inventory.items.find(object => object.name.toLowerCase() === userobject)
                                 if(foundObject){
                                     const foundItem = allItems.find(item => item.name.toLowerCase() === userobject)
-                                    if(foundItem.type === "equipable"){
+                                    if(foundItem.type === "equippable"){
                                         profileModel.findOne({userID:authorId},async function(err,foundProfile){
                                             if(err){
                                                 console.log(err);

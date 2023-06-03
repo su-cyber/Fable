@@ -24,8 +24,9 @@ import { gildedScale } from './GildedScale'
 import { solidifiedMagma } from './solidifiedMagma'
 import { emberScale } from './Emberscale'
 import { shadowViel } from './shadowViel'
+import { solBracelet } from './solBracelet'
 
 export default [Herbs.create(),
     SunshadeWood.create(),Mushroom.create(),ArgentenumLeaves.create(),solarCorn,Radiantura_milk,steamShovel,guildTshirt,salePoster,treemickBranch,silkBlob,
     dronerAcid,RayleighFlower.create(),backBreaker,buzzHoney,thornbackShell,shadowCat_tuft,glowingEssence,starHound_tooth,gloomRoot_branch,
-    crystalShard,gildedScale,solidifiedMagma,emberScale,shadowViel]
+    crystalShard,gildedScale,solidifiedMagma,emberScale,shadowViel,solBracelet]
