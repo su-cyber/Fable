@@ -11,6 +11,7 @@ import inventory from '../models/InventorySchema'
 import sample from 'lodash.sample'
 import { SlashCommandIntegerOption} from '@discordjs/builders'
 import getHealth from '../src/utils/getHealth'
+import { Interaction, MessageEmbed } from 'discord.js'
 
 export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
@@ -24,7 +25,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
 .setDo(
     async (bot, interaction) => {
         const authorId = interaction.user.id
-        const author = await bot.users.fetch(authorId)
+        var author = await bot.users.fetch(authorId)
         const setspeed = interaction.options.getInteger('speed')
         
         
@@ -840,11 +841,21 @@ export class PvEDuel extends DuelBuilder {
                 
                 await profileModel.updateOne({userID:authorID},foundUser)
                 if(winner.id == authorID){
+                    
                     await profileModel.updateOne({userID:authorID},{health:winner.health})
                     if(foundUser.quest_mob == loser.name && foundUser.quest_quantity>0){
                         foundUser.quest_quantity -=1
-                        
-                        await profileModel.updateOne({userID:authorID},{quest_quantity:foundUser.quest_quantity})
+                        if(foundUser.quest_quantity == 0){
+                            let huntEmbed = new MessageEmbed()
+                            .setColor('GREEN')
+                            .setTitle('HUNT COMPLETED')
+                            .setDescription('You have Successfully Completed the Hunting Contract!')
+
+                            this.interaction.user.send({embeds:[huntEmbed]})
+                            foundUser.quest_mob = "None"
+                            
+                        }
+                        await profileModel.updateOne({userID:authorID},{quest_quantity:foundUser.quest_quantity,quest_mob:foundUser.quest_mob})
                     }
                 }
                 else{

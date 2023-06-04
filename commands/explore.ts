@@ -132,7 +132,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         
                                         foundUser.encounter.push(encounter)
                                         await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
-                                        interaction.user.send(`Use /fight to begin encounter`)
+                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`})})
     
                                         
                                    
@@ -263,7 +263,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         
                                         foundUser.encounter.push(encounter)
                                         await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
-                                        interaction.user.send(`Use /fight to begin encounter`)
+                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`})})
     
                                         
                                    
@@ -391,7 +391,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         
                                         foundUser.encounter.push(encounter)
                                         await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
-                                        interaction.user.send(`Use /fight to begin encounter`)
+                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`})})
     
                                         
                                    
@@ -779,7 +779,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         
                                         foundUser.encounter.push(encounter)
                                         await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
-                                        interaction.user.send(`Use /fight to begin encounter`)
+                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`})})
     
                                         
                                    
