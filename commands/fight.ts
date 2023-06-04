@@ -800,7 +800,7 @@ export class PvEDuel extends DuelBuilder {
     async onEnd(winner: any, loser: any) {
     await this.sendInfoMessage(this.attacker.skills,true)
        const authorID = this.interaction.user.id
-       
+       var user = this.interaction.user
         profileModel.findOne({userID:authorID},async function(err,foundUser) {
             
             if(err){
@@ -851,7 +851,7 @@ export class PvEDuel extends DuelBuilder {
                             .setTitle('HUNT COMPLETED')
                             .setDescription('You have Successfully Completed the Hunting Contract!')
 
-                            this.interaction.user.send({embeds:[huntEmbed]})
+                            await user.send({embeds:[huntEmbed]})
                             foundUser.quest_mob = "None"
                             
                         }
