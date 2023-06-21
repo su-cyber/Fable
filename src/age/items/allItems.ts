@@ -1,7 +1,7 @@
 
-import { Herbs } from '../flora/ellior/herbs'
+import { Chorusbloom } from '../flora/ellior/Chorusbloom'
 import { SunshadeWood } from '../flora/Sunshade Forest/sunshade_wood'
-import { Mushroom } from '../flora/ellior/mushroom'
+import { Dreamlily } from '../flora/ellior/Dreamlily'
 import { ArgentenumLeaves } from '../flora/Sunshade Forest/argentenum_leaves'
 import { solarCorn } from './solarcornstalks'
 import { Radiantura_milk } from './radiantura_milk'
@@ -26,8 +26,9 @@ import { emberScale } from './Emberscale'
 import { shadowViel } from './shadowViel'
 import { solBracelet } from './solBracelet'
 import { goblinWhistle } from './goblinWhistle'
+import { Glimmerroot } from '../flora/ellior/Glimmerroot'
 
-export default [Herbs.create(),
-    SunshadeWood.create(),Mushroom.create(),ArgentenumLeaves.create(),solarCorn,Radiantura_milk,steamShovel,guildTshirt,salePoster,treemickBranch,silkBlob,
+export default [Chorusbloom.create(),
+    SunshadeWood.create(),Dreamlily.create(),ArgentenumLeaves.create(),solarCorn,Radiantura_milk,steamShovel,guildTshirt,salePoster,treemickBranch,silkBlob,
     dronerAcid,RayleighFlower.create(),backBreaker,buzzHoney,thornbackShell,shadowCat_tuft,glowingEssence,starHound_tooth,gloomRoot_branch,
-    crystalShard,gildedScale,solidifiedMagma,emberScale,shadowViel,solBracelet,goblinWhistle]
+    crystalShard,gildedScale,solidifiedMagma,emberScale,shadowViel,solBracelet,goblinWhistle,Glimmerroot.create()]
