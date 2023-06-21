@@ -24,7 +24,7 @@ export class BeerBuccaneer1 extends MonsterEntity {
             name: 'BeerBuccaneer [Lvl 1]',
             description:`Local pirates who are engaged in the theivery of Backbreaker around Aube Town`,
             spawnRate: 0.5,
-            health: 50,
+            health: 25,
             mana:0,
             xp: generateXP(5,15),
             evasion: 0.05,

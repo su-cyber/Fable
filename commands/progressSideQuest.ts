@@ -967,8 +967,33 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                      
                                  }
                                  else{
+                                    let i
                                      foundUser.encounter = []
                                      foundUser.energy-=1
+                                     if(foundUser.status_effects.status.length != 0){
+                                        foundUser.status_effects.turns-=1
+                                    if(foundUser.status_effects.turns==0){
+                                        for(i=0;i<foundUser.status_effects.status.length;i++){
+                                            if(foundUser.status_effects.status[i] == "Attack"){
+                                                foundUser.attackDamage-=foundUser.status_effects.value[i]
+                                            }
+                                            else if(foundUser.status_effects.status[i] == "Speed"){
+                                                foundUser.speed-=foundUser.status_effects.value[i]
+                                            }
+                                            else if(foundUser.status_effects.status[i] == "Armour"){
+                                                foundUser.armour-=foundUser.status_effects.value[i]
+                                            }
+                                            else if(foundUser.status_effects.status[i] == "Evasion-percent"){
+                                                foundUser.evasion=foundUser.evasion/(1+foundUser.status_effects.value[i])
+                                            }
+                                            else if(foundUser.status_effects.status[i] == "Evasion"){
+                                                foundUser.evasion-=foundUser.status_effects.value[i]
+                                            }
+                                        }
+                                        foundUser.status_effects.status = []
+                                        foundUser.status_effects.value = []
+                                    }
+                                    }
                                      await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter,energy:foundUser.energy})
                                      if(winner.id == authorID){
                                          await profileModel.updateOne({userID:authorID},{health:winner.health})
