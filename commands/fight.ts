@@ -307,7 +307,7 @@ export class PvEDuel extends DuelBuilder {
                     let mod = calculateModifier(val.element,this.defender.element)
                     skill_dmg = skill_dmg * mod
                     damage_order.push(skill_dmg)
-                    damage_order.sort()
+                    damage_order.sort(function(a,b){return a - b})
                     const index = damage_order.indexOf(skill_dmg)
                     this.attacker.skills.splice(index,0,val)
                     
@@ -354,7 +354,7 @@ export class PvEDuel extends DuelBuilder {
                     let mod = calculateModifier(val.element,this.defender.element)
                     skill_dmg = skill_dmg * mod
                     damage_order.push(skill_dmg)
-                    damage_order.sort()
+                    damage_order.sort(function(a,b){return a - b})
                     const index = damage_order.indexOf(skill_dmg)
                     this.attacker.skills.splice(index,0,val)
                     
@@ -393,7 +393,7 @@ export class PvEDuel extends DuelBuilder {
                 let mod = calculateModifier(val.element,this.defender.element)
                 skill_dmg = skill_dmg * mod
                 damage_order.push(skill_dmg)
-                damage_order.sort()
+                damage_order.sort(function(a,b){return a - b})
                 const index = damage_order.indexOf(skill_dmg)
                 this.attacker.skills.splice(index,0,val)
                 
@@ -448,7 +448,7 @@ export class PvEDuel extends DuelBuilder {
                     let mod = calculateModifier(val.element,this.defender.element)
                     skill_dmg = skill_dmg * mod
                     damage_order.push(skill_dmg)
-                    damage_order.sort()
+                    damage_order.sort(function(a,b){return a - b})
                     const index = damage_order.indexOf(skill_dmg)
                     this.attacker.skills.splice(index,0,val)
                     
@@ -522,7 +522,7 @@ export class PvEDuel extends DuelBuilder {
                     let mod = calculateModifier(val.element,this.defender.element)
                     skill_dmg = skill_dmg * mod
                     damage_order.push(skill_dmg)
-                    damage_order.sort()
+                    damage_order.sort(function(a,b){return a - b})
                     const index = damage_order.indexOf(skill_dmg)
                     this.attacker.skills.splice(index,0,val)
                     
@@ -561,7 +561,7 @@ export class PvEDuel extends DuelBuilder {
                     let mod = calculateModifier(val.element,this.defender.element)
                     skill_dmg = skill_dmg * mod
                     damage_order.push(skill_dmg)
-                    damage_order.sort()
+                    damage_order.sort(function(a,b){return a - b})
                     const index = damage_order.indexOf(skill_dmg)
                     this.attacker.skills.splice(index,0,val)
                     
@@ -586,7 +586,7 @@ export class PvEDuel extends DuelBuilder {
             
             
             
-            console.log(damage_order.reverse());
+            console.log(damage_order);
             console.log(this.attacker.skills);
             
             
