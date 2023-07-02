@@ -586,8 +586,7 @@ export class PvEDuel extends DuelBuilder {
             
             
             
-            console.log(damage_order);
-            console.log(this.attacker.skills);
+        
             
             
             
