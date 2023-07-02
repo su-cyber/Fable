@@ -586,7 +586,10 @@ export class PvEDuel extends DuelBuilder {
             
             
             
-
+            console.log(damage_order.reverse());
+            console.log(this.attacker.skills);
+            
+            
             
             
         }
@@ -707,7 +710,7 @@ class PvEDuel_Quest extends PvEDuel {
 function calculateModifier(skill_element: string,defender_element: string){
     let mod
     if(skill_element == null){
-
+        mod = 1
     }
 else if(skill_element == "flame"){
         

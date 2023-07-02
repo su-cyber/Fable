@@ -200,13 +200,14 @@ class PvPDuel extends DuelBuilder {
             if(turn == 0 || turn==1){
                 let skills = this.attacker.skills
                 this.attacker.skills=[]
+                damage_order = []
                 for(let j=0;j<skills.length;j++){
                     
                     let val = allskills.find(skill => skill.name === skills[j].name)
                     if(val.type == "physical"){
                         skill_dmg = calculate.physicalDamage(val.damage+this.attacker.attackDamage,this.defender.armor)
                     }
-                    else if(this.attacker.skills[0].type == "magical"){
+                    else if(val.type == "magical"){
                         skill_dmg = calculate.magicDamage(val.damage+this.attacker.magicPower,this.defender.magicResistance)
                     }
                     
@@ -273,13 +274,14 @@ class PvPDuel extends DuelBuilder {
                 else{
                 skills = this.attacker.skills
                 this.attacker.skills=[]
+                damage_order = []
                 for(let j=0;j<skills.length;j++){
                     
                     let val = allskills.find(skill => skill.name === skills[j].name)
                     if(val.type == "physical"){
                         skill_dmg = calculate.physicalDamage(val.damage+this.attacker.attackDamage,this.defender.armor)
                     }
-                    else if(this.attacker.skills[0].type == "magical"){
+                    else if(val.type == "magical"){
                         skill_dmg = calculate.magicDamage(val.damage+this.attacker.magicPower,this.defender.magicResistance)
                     }
                     
@@ -311,13 +313,14 @@ class PvPDuel extends DuelBuilder {
             else{
                 skills = this.attacker.skills
                 this.attacker.skills=[]
+                damage_order = []
                 for(let j=0;j<skills.length;j++){
                     
                     let val = allskills.find(skill => skill.name === skills[j].name)
                     if(val.type == "physical"){
                         skill_dmg = calculate.physicalDamage(val.damage+this.attacker.attackDamage,this.defender.armor)
                     }
-                    else if(this.attacker.skills[0].type == "magical"){
+                    else if(val.type == "magical"){
                         skill_dmg = calculate.magicDamage(val.damage+this.attacker.magicPower,this.defender.magicResistance)
                     }
                     
@@ -347,11 +350,7 @@ class PvPDuel extends DuelBuilder {
             }
                 
             
-            
-            
-
-            
-            
+              
         }
 
         await this.sendInfoMessage(this.attacker.skills,true)
@@ -380,7 +379,7 @@ class PvPDuel extends DuelBuilder {
 function calculateModifier(skill_element: string,defender_element: string){
     let mod
     if(skill_element == null){
-
+        mod = 1
     }
 else if(skill_element == "flame"){
         
