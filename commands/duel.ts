@@ -10,6 +10,7 @@ import inventory from '../models/InventorySchema'
 import getHealth from '../src/utils/getHealth'
 import sample from 'lodash.sample'
 import passive_skills from '../src/age/heroes/passive_skills'
+import { calculate } from '../src/age/classes'
 
 export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with a player' })
     .addUserOption((option: SlashCommandUserOption) =>
@@ -159,6 +160,8 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
         
     })
     let skills =[]
+    let skill_dmg = 0
+    let damage_order = []
 
 class PvPDuel extends DuelBuilder {
     player1: Entity
@@ -182,7 +185,6 @@ class PvPDuel extends DuelBuilder {
             
         } 
         else {
-           
             await this.sendInfoMessage(this.attacker.skills, true)
             // const max = this.skill_len
             
@@ -201,8 +203,26 @@ class PvPDuel extends DuelBuilder {
                 for(let j=0;j<skills.length;j++){
                     
                     let val = allskills.find(skill => skill.name === skills[j].name)
-                    this.attacker.skills.push(val)
+                    if(val.type == "physical"){
+                        skill_dmg = calculate.physicalDamage(val.damage+this.attacker.attackDamage,this.defender.armor)
+                    }
+                    else if(this.attacker.skills[0].type == "magical"){
+                        skill_dmg = calculate.magicDamage(val.damage+this.attacker.magicPower,this.defender.magicResistance)
+                    }
+                    
+                    let mod = calculateModifier(val.element,this.defender.element)
+                    skill_dmg = skill_dmg * mod
+                    damage_order.push(skill_dmg)
+                    damage_order.sort()
+                    const index = damage_order.indexOf(skill_dmg)
+                    this.attacker.skills.splice(index,0,val)
+                    
+                    
+
                 }
+                this.attacker.skills.reverse()
+                  
+
                 if(this.attacker.passive_skills.length !=0){
                     let i
                     for(i=0;i<this.attacker.passive_skills.length;i++){
@@ -220,77 +240,25 @@ class PvPDuel extends DuelBuilder {
                     await sleep(this.speed)
                 }
                 else{
-                    let strongest = this.attacker.skills[0].damage
-                let strongest_type = this.attacker.skills[0].type
-                let strongest_name = this.attacker.skills[0].name
-                for(let i=0;i<this.attacker.skills.length;i++){
-                    if(this.attacker.skills[i].type=="physical"){
-                        if(strongest_type=="physical"){
-                            if(this.attacker.skills[i].damage+this.attacker.attackDamage>strongest+this.attacker.attackDamage
-                                ){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
-                            }
-                        }
-                        if(strongest_type=="magical"){
-                            if(this.attacker.skills[i].damage+this.attacker.attackDamage>strongest+this.attacker.magicPower){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
-                            }
-                        }
-                        
-                    }
-                    else if(this.attacker.skills[i].type=="magical"){
-                        if(strongest_type=="physical"){
-                            if(this.attacker.skills[i].damage+this.attacker.magicPower>strongest+this.attacker.attackDamage){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
-                            }
-                        }
-                        if(strongest_type=="magical"){
-                            if(this.attacker.skills[i].damage+this.attacker.magicPower>strongest+this.attacker.magicPower){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
-                            }
-                        }
-                        
-                    }
                     
-                }
-                let skill = allskills.find(skill => skill.name === strongest_name)
-                if(this.attacker.mana>=skill.mana_cost){
-                    if(this.attacker.mana>=2*skill.mana_cost){
-                        this.attacker.useSkill(this.attacker,this.defender,skill)
-                        await sleep(this.speed)
-                    }
-                    else{
-                        this.attacker.useSkill(this.attacker,this.defender,skill)
-                        await sleep(this.speed)
-                        const index = this.attacker.skills.indexOf(skill)
-                        this.attacker.skills.splice(index,1)
-    
-                    }
-                   
-                }
-                else{
-    
-                    skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
-                    if(skill){
-                        this.attacker.useSkill(this.attacker,this.defender,skill)
-                        await sleep(this.speed)
-                    }
-                    else{
-                        this.attacker.useSkill(this.attacker,this.defender,sample(skills))
-                        await sleep(this.speed)
-                    }
-                   
                     
-    
-                }
+                        
+            
+                            skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                            if(skill){
+                                this.attacker.useSkill(this.attacker,this.defender,skill)
+                                await sleep(this.speed)
+                            }
+                            else{
+                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                                await sleep(this.speed)
+                            }
+                           
+                            
+            
+                        
+                    
+
                 }
             }
             else if(this.attacker.health <= 0.5*this.attacker.maxHealth){
@@ -303,152 +271,78 @@ class PvPDuel extends DuelBuilder {
                    
                 }
                 else{
-                    let strongest = this.attacker.skills[0].damage
-                    let strongest_type = this.attacker.skills[0].type
-                    let strongest_name = this.attacker.skills[0].name
-                    for(let i=0;i<this.attacker.skills.length;i++){
-                        if(this.attacker.skills[i].type=="physical"){
-                            if(strongest_type=="physical"){
-                                if(this.attacker.skills[i].damage+this.attacker.attackDamage>strongest+this.attacker.attackDamage
-                                    ){
-                                    strongest = this.attacker.skills[i].damage
-                                    strongest_name = this.attacker.skills[i].name
-                                    strongest_type = this.attacker.skills[i].type
-                                }
-                            }
-                            if(strongest_type=="magical"){
-                                if(this.attacker.skills[i].damage+this.attacker.attackDamage>strongest+this.attacker.magicPower){
-                                    strongest = this.attacker.skills[i].damage
-                                    strongest_name = this.attacker.skills[i].name
-                                    strongest_type = this.attacker.skills[i].type
-                                }
-                            }
-                            
-                        }
-                        else if(this.attacker.skills[i].type=="magical"){
-                            if(strongest_type=="physical"){
-                                if(this.attacker.skills[i].damage+this.attacker.magicPower>strongest+this.attacker.attackDamage){
-                                    strongest = this.attacker.skills[i].damage
-                                    strongest_name = this.attacker.skills[i].name
-                                    strongest_type = this.attacker.skills[i].type
-                                }
-                            }
-                            if(strongest_type=="magical"){
-                                if(this.attacker.skills[i].damage+this.attacker.magicPower>strongest+this.attacker.magicPower){
-                                    strongest = this.attacker.skills[i].damage
-                                    strongest_name = this.attacker.skills[i].name
-                                    strongest_type = this.attacker.skills[i].type
-                                }
-                            }
-                            
-                        }
-                        
+                skills = this.attacker.skills
+                this.attacker.skills=[]
+                for(let j=0;j<skills.length;j++){
+                    
+                    let val = allskills.find(skill => skill.name === skills[j].name)
+                    if(val.type == "physical"){
+                        skill_dmg = calculate.physicalDamage(val.damage+this.attacker.attackDamage,this.defender.armor)
                     }
-                    let skill = allskills.find(skill => skill.name === strongest_name)
-                    if(this.attacker.mana>=skill.mana_cost){
-                        if(this.attacker.mana>=2*skill.mana_cost){
-                            this.attacker.useSkill(this.attacker,this.defender,skill)
-                            await sleep(this.speed)
-                        }
-                        else{
-                            this.attacker.useSkill(this.attacker,this.defender,skill)
-                            await sleep(this.speed)
-                            const index = this.attacker.skills.indexOf(skill)
-                            this.attacker.skills.splice(index,1)
-        
-                        }
-                       
+                    else if(this.attacker.skills[0].type == "magical"){
+                        skill_dmg = calculate.magicDamage(val.damage+this.attacker.magicPower,this.defender.magicResistance)
                     }
-                    else{
-        
-                        skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
-                        if(skill){
-                            this.attacker.useSkill(this.attacker,this.defender,skill)
-                            await sleep(this.speed)
-                        }
-                        else{
-                            this.attacker.useSkill(this.attacker,this.defender,sample(skills))
-                            await sleep(this.speed)
-                        }
-                       
-                        
-        
-                    }
+                    
+                    let mod = calculateModifier(val.element,this.defender.element)
+                    skill_dmg = skill_dmg * mod
+                    damage_order.push(skill_dmg)
+                    damage_order.sort()
+                    const index = damage_order.indexOf(skill_dmg)
+                    this.attacker.skills.splice(index,0,val)
+                    
+                    
+
+                }
+                this.attacker.skills.reverse()
+                  
+                    skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                            if(skill){
+                                this.attacker.useSkill(this.attacker,this.defender,skill)
+                                await sleep(this.speed)
+                            }
+                            else{
+                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                                await sleep(this.speed)
+                            }
+                           
                    
                 }
             }
             else{
-                let strongest = this.attacker.skills[0].damage
-                let strongest_type = this.attacker.skills[0].type
-                let strongest_name = this.attacker.skills[0].name
-                for(let i=0;i<this.attacker.skills.length;i++){
-                    if(this.attacker.skills[i].type=="physical"){
-                        if(strongest_type=="physical"){
-                            if(this.attacker.skills[i].damage+this.attacker.attackDamage>strongest+this.attacker.attackDamage
-                                ){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
-                            }
-                        }
-                        if(strongest_type=="magical"){
-                            if(this.attacker.skills[i].damage+this.attacker.attackDamage>strongest+this.attacker.magicPower){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
-                            }
-                        }
-                        
+                skills = this.attacker.skills
+                this.attacker.skills=[]
+                for(let j=0;j<skills.length;j++){
+                    
+                    let val = allskills.find(skill => skill.name === skills[j].name)
+                    if(val.type == "physical"){
+                        skill_dmg = calculate.physicalDamage(val.damage+this.attacker.attackDamage,this.defender.armor)
                     }
-                    else if(this.attacker.skills[i].type=="magical"){
-                        if(strongest_type=="physical"){
-                            if(this.attacker.skills[i].damage+this.attacker.magicPower>strongest+this.attacker.attackDamage){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
-                            }
-                        }
-                        if(strongest_type=="magical"){
-                            if(this.attacker.skills[i].damage+this.attacker.magicPower>strongest+this.attacker.magicPower){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
-                            }
-                        }
-                        
+                    else if(this.attacker.skills[0].type == "magical"){
+                        skill_dmg = calculate.magicDamage(val.damage+this.attacker.magicPower,this.defender.magicResistance)
                     }
                     
-                }
-                let skill = allskills.find(skill => skill.name === strongest_name)
-                if(this.attacker.mana>=skill.mana_cost){
-                    if(this.attacker.mana>=2*skill.mana_cost){
-                        this.attacker.useSkill(this.attacker,this.defender,skill)
-                        await sleep(this.speed)
-                    }
-                    else{
-                        this.attacker.useSkill(this.attacker,this.defender,skill)
-                        await sleep(this.speed)
-                        const index = this.attacker.skills.indexOf(skill)
-                        this.attacker.skills.splice(index,1)
-    
-                    }
-                   
-                }
-                else{
-    
-                    skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
-                    if(skill){
-                        this.attacker.useSkill(this.attacker,this.defender,skill)
-                        await sleep(this.speed)
-                    }
-                    else{
-                        this.attacker.useSkill(this.attacker,this.defender,sample(skills))
-                        await sleep(this.speed)
-                    }
-                   
+                    let mod = calculateModifier(val.element,this.defender.element)
+                    skill_dmg = skill_dmg * mod
+                    damage_order.push(skill_dmg)
+                    damage_order.sort()
+                    const index = damage_order.indexOf(skill_dmg)
+                    this.attacker.skills.splice(index,0,val)
                     
-    
+                    
+
                 }
+                this.attacker.skills.reverse()
+                  
+                let skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                            if(skill){
+                                this.attacker.useSkill(this.attacker,this.defender,skill)
+                                await sleep(this.speed)
+                            }
+                            else{
+                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                                await sleep(this.speed)
+                            }
+                           
                
             }
                 
@@ -481,4 +375,396 @@ class PvPDuel extends DuelBuilder {
     async onEnd(winner: Entity, loser: Entity) {
         await this.interaction.channel.send(`🏆 **${winner.name}** won!`)
     }
+}
+
+function calculateModifier(skill_element: string,defender_element: string){
+    let mod
+    if(skill_element == null){
+
+    }
+else if(skill_element == "flame"){
+        
+if(defender_element == "flame"){
+mod  = 0.5
+}
+else if(defender_element == "light"){
+mod  = 0.5
+}
+else if(defender_element == "volt"){
+mod  = 1
+}
+else if(defender_element == "wave"){
+mod  = 0.5
+}
+else if(defender_element == "frost"){
+mod  = 2
+}
+else if(defender_element == "gale"){
+mod  = 2
+}
+else if(defender_element == "bloom"){
+mod  = 2
+}
+else if(defender_element == "terra"){
+mod  = 0.5
+}
+else if(defender_element == "alloy"){
+mod  = 2
+}
+else if(defender_element == "venom"){
+mod  = 1
+}
+else if(defender_element == "draco"){
+mod  = 0.5
+}
+else if(defender_element == "ruin"){
+mod  = 1
+}
+}
+else if(skill_element == "alloy"){
+if(defender_element == "flame"){
+    mod  = 0.5
+}
+else if(defender_element == "light"){
+    mod  = 2
+}
+else if(defender_element == "volt"){
+    mod  = 0.5
+}
+else if(defender_element == "wave"){
+    mod  = 0.5
+}
+else if(defender_element == "frost"){
+    mod  = 2
+}
+else if(defender_element == "gale"){
+    mod  = 1
+}
+else if(defender_element == "bloom"){
+    mod  = 1
+}
+else if(defender_element == "terra"){
+    mod  = 2
+}
+else if(defender_element == "alloy"){
+    mod  = 0.5
+}
+else if(defender_element == "venom"){
+    mod  = 1
+}
+else if(defender_element == "draco"){
+    mod  = 1
+}
+else if(defender_element == "ruin"){
+    mod  = 1
+}
+}
+else if(skill_element == "bloom"){
+    if(defender_element == "flame"){
+        mod  = 0.5
+    }
+    else if(defender_element == "light"){
+        mod  = 1
+    }
+    else if(defender_element == "volt"){
+        mod  = 1
+    }
+    else if(defender_element == "wave"){
+        mod  = 2
+    }
+    else if(defender_element == "frost"){
+        mod  = 0.5
+    }
+    else if(defender_element == "gale"){
+        mod  = 0.5
+    }
+    else if(defender_element == "bloom"){
+        mod  = 0.5
+    }
+    else if(defender_element == "terra"){
+        mod  = 2
+    }
+    else if(defender_element == "alloy"){
+        mod  = 0.5
+    }
+    else if(defender_element == "venom"){
+        mod  = 0.5
+    }
+    else if(defender_element == "draco"){
+        mod  = 0.5
+    }
+    else if(defender_element == "ruin"){
+        mod  = 1
+    }
+}
+else if(skill_element == "frost"){
+    if(defender_element == "flame"){
+        mod  = 0.5
+    }
+    else if(defender_element == "light"){
+        mod  = 1
+    }
+    else if(defender_element == "volt"){
+        mod  = 1
+    }
+    else if(defender_element == "wave"){
+        mod  = 2
+    }
+    else if(defender_element == "frost"){
+        mod  = 0.5
+    }
+    else if(defender_element == "gale"){
+        mod  = 2
+    }
+    else if(defender_element == "bloom"){
+        mod  = 2
+    }
+    else if(defender_element == "terra"){
+        mod  = 1
+    }
+    else if(defender_element == "alloy"){
+        mod  = 0.5
+    }
+    else if(defender_element == "venom"){
+        mod  = 2
+    }
+    else if(defender_element == "draco"){
+        mod  = 2
+    }
+    else if(defender_element == "ruin"){
+        mod  = 1
+    }
+}
+else if(skill_element == "gale"){
+    if(defender_element == "flame"){
+        mod  = 0.5
+    }
+    else if(defender_element == "light"){
+        mod  = 1
+    }
+    else if(defender_element == "volt"){
+        mod  = 0.5
+    }
+    else if(defender_element == "wave"){
+        mod  = 1
+    }
+    else if(defender_element == "frost"){
+        mod  = 0.5
+    }
+    else if(defender_element == "gale"){
+        mod  = 0.5
+    }
+    else if(defender_element == "bloom"){
+        mod  = 2
+    }
+    else if(defender_element == "terra"){
+        mod  = 1
+    }
+    else if(defender_element == "alloy"){
+        mod  = 0.5
+    }
+    else if(defender_element == "venom"){
+        mod  = 1
+    }
+    else if(defender_element == "draco"){
+        mod  = 0.5
+    }
+    else if(defender_element == "ruin"){
+        mod  = 1
+    }
+}
+else if(skill_element == "light"){
+    if(defender_element == "flame"){
+        mod  = 2
+    }
+    else if(defender_element == "light"){
+        mod  = 1
+    }
+    else if(defender_element == "volt"){
+        mod  = 1
+    }
+    else if(defender_element == "wave"){
+        mod  = 1
+    }
+    else if(defender_element == "frost"){
+        mod  = 1
+    }
+    else if(defender_element == "gale"){
+        mod  = 1
+    }
+    else if(defender_element == "bloom"){
+        mod  = 0.5
+    }
+    else if(defender_element == "terra"){
+        mod  = 1
+    }
+    else if(defender_element == "alloy"){
+        mod  = 0.5
+    }
+    else if(defender_element == "venom"){
+        mod  = 2
+    }
+    else if(defender_element == "draco"){
+        mod  = 2
+    }
+    else if(defender_element == "ruin"){
+        mod  = 2
+    }
+}
+else if(skill_element == "venom"){
+    if(defender_element == "flame"){
+        mod  = 1
+    }
+    else if(defender_element == "light"){
+        mod  = 0.5
+    }
+    else if(defender_element == "volt"){
+        mod  = 1
+    }
+    else if(defender_element == "wave"){
+        mod  = 1
+    }
+    else if(defender_element == "frost"){
+        mod  = 1
+    }
+    else if(defender_element == "gale"){
+        mod  = 1
+    }
+    else if(defender_element == "bloom"){
+        mod  = 2
+    }
+    else if(defender_element == "terra"){
+        mod  = 2
+    }
+    else if(defender_element == "alloy"){
+        mod  = 2
+    }
+    else if(defender_element == "venom"){
+        mod  = 0.5
+    }
+    else if(defender_element == "draco"){
+        mod  = 0.5
+    }
+    else if(defender_element == "ruin"){
+        mod  = 1
+    }
+}
+else if(skill_element == "terra"){
+    if(defender_element == "flame"){
+        mod  = 2
+    }
+    else if(defender_element == "light"){
+        mod  = 1
+    }
+    else if(defender_element == "volt"){
+        mod  = 0.5
+    }
+    else if(defender_element == "wave"){
+        mod  = 0.5
+    }
+    else if(defender_element == "frost"){
+        mod  = 1
+    }
+    else if(defender_element == "gale"){
+        mod  = 1
+    }
+    else if(defender_element == "bloom"){
+        mod  = 0.5
+    }
+    else if(defender_element == "terra"){
+        mod  = 1
+    }
+    else if(defender_element == "alloy"){
+        mod  = 2
+    }
+    else if(defender_element == "venom"){
+        mod  = 2
+    }
+    else if(defender_element == "draco"){
+        mod  = 1
+    }
+    else if(defender_element == "ruin"){
+        mod  = 1
+    }
+}
+else if(skill_element == "volt"){
+    if(defender_element == "flame"){
+        mod  = 1
+    }
+    else if(defender_element == "light"){
+        mod  = 0.5
+    }
+    else if(defender_element == "volt"){
+        mod  = 0.5
+    }
+    else if(defender_element == "wave"){
+        mod  = 2
+    }
+    else if(defender_element == "frost"){
+        mod  = 1
+    }
+    else if(defender_element == "gale"){
+        mod  = 2
+    }
+    else if(defender_element == "bloom"){
+        mod  = 0.5
+    }
+    else if(defender_element == "terra"){
+        mod  = 0.5
+    }
+    else if(defender_element == "alloy"){
+        mod  = 2
+    }
+    else if(defender_element == "venom"){
+        mod  = 1
+    }
+    else if(defender_element == "draco"){
+        mod  = 0.5
+    }
+    else if(defender_element == "ruin"){
+        mod  = 1
+    }
+}
+else if(skill_element == "wave"){
+    if(defender_element == "flame"){
+        mod  = 2
+    }
+    else if(defender_element == "light"){
+        mod  = 1
+    }
+    else if(defender_element == "volt"){
+        mod  = 1
+    }
+    else if(defender_element == "wave"){
+        mod  = 0.5
+    }
+    else if(defender_element == "frost"){
+        mod  = 0.5
+    }
+    else if(defender_element == "gale"){
+        mod  = 1
+    }
+    else if(defender_element == "bloom"){
+        mod  = 0.5
+    }
+    else if(defender_element == "terra"){
+        mod  = 2
+    }
+    else if(defender_element == "alloy"){
+        mod  = 2
+    }
+    else if(defender_element == "venom"){
+        mod  = 1
+    }
+    else if(defender_element == "draco"){
+        mod  = 0.5
+    }
+    else if(defender_element == "ruin"){
+        mod  = 1
+    }
+}
+else{
+    mod = 1
+}
+return mod
 }
