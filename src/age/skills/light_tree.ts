@@ -8,6 +8,7 @@ const light_tree=[
         canEvade: true,
         mana_cost: 1,
         damage:20,
+        element:"light",
         type: 'physical',
         use: (attacker, defender) =>{
             let mod
@@ -60,6 +61,7 @@ const light_tree=[
         mana_cost: 1,
         damage:20,
         type: 'magical',
+        element:"light",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -111,6 +113,7 @@ const light_tree=[
         mana_cost: 3,
         damage:45,
         type: 'physical',
+        element:"light",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -162,6 +165,7 @@ const light_tree=[
         mana_cost: 1,
         damage:45,
         type: 'magical',
+        element:"light",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -212,6 +216,7 @@ const light_tree=[
         description: 'A skill that creates a protective shield of light around the user.',
         canEvade: false,
         type: 'buff',
+        element:"light",
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -234,6 +239,7 @@ const light_tree=[
         canEvade: false,
         type: 'heal',
         damage:0,
+        element:"light",
         mana_cost: 6,
         use: (attacker, defender) => {
             if(attacker.health+100 > attacker.maxHealth){
@@ -258,6 +264,7 @@ const light_tree=[
         mana_cost: 8,
         damage:65,
         type: 'physical',
+        element:"light",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -309,6 +316,7 @@ const light_tree=[
         mana_cost: 8,
         damage:65,
         type: 'magical',
+        element:"light",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){

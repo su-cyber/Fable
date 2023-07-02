@@ -8,6 +8,7 @@ const paladin_tree=[
         canEvade: true,
         mana_cost: 0,
         damage:15,
+        element:"normal",
         type: 'physical',
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Authority Thrust`)
@@ -20,6 +21,7 @@ const paladin_tree=[
         cooldown: 0,
         description: 'The Paladin charges into the enemy, dealing low damage.',
         canEvade: true,
+        element:"normal",
         mana_cost: 2,
         damage:25,
         type: 'physical',
@@ -36,6 +38,7 @@ const paladin_tree=[
         canEvade: true,
         mana_cost:3,
         damage:40,
+        element:"normal",
         type: 'physical',
         use: (attacker, defender) =>{
 
@@ -52,6 +55,7 @@ const paladin_tree=[
         description: 'The Paladin stabs the enemy with their spear, dealing moderate damage and temporarily stunning them.',
         canEvade: true,
         mana_cost: 6,
+        element:"normal",
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
@@ -68,6 +72,7 @@ const paladin_tree=[
         type: 'self',
         damage:0,
         mana_cost: 6,
+        element:"normal",
         use: (attacker, defender) => {
             defender.attackDamage = defender.attackDamage-10
 

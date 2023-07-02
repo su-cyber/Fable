@@ -43,6 +43,7 @@ export class Gildedwyvern extends MonsterEntity {
                     description: `Breathes jet of flames`,
                     canEvade: true,
                     type: 'physical',
+                    element:"normal",
                     damage:55,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
@@ -58,6 +59,7 @@ export class Gildedwyvern extends MonsterEntity {
                     description: `Slashes the enemy with it's sharp talons`,
                     canEvade: true,
                     type: 'physical',
+                    element:"normal",
                     damage:35,
                     mana_cost: 0,
                     use: (attacker, defender) =>{

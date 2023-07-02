@@ -44,6 +44,7 @@ export class fieldMould extends MonsterEntity {
                     canEvade: true,
                     damage:0,
                     type: 'physical',
+                    element:"normal", 
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Toxic Spores`)

@@ -43,6 +43,7 @@ export class captainCrook extends MonsterEntity {
                     description: 'attacks with his cutlass',
                     canEvade: true,
                     type: 'physical',
+                    element:"normal", 
                     damage:25,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
@@ -57,6 +58,7 @@ export class captainCrook extends MonsterEntity {
                     description: 'wave elemental slash',
                     canEvade: true,
                     type: 'physical',
+                    element:"wave", 
                     damage:45,
                     mana_cost: 3,
                     use: (attacker, defender) =>{

@@ -9,6 +9,7 @@ const volt_tree=[
         mana_cost: 1,
         damage:20,
         type: 'physical',
+        element:"volt",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -60,6 +61,7 @@ const volt_tree=[
         mana_cost: 1,
         damage:20,
         type: 'magical',
+        element:"volt",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -111,6 +113,7 @@ const volt_tree=[
         mana_cost: 3,
         damage:45,
         type: 'physical',
+        element:"volt",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -162,6 +165,7 @@ const volt_tree=[
         mana_cost: 1,
         damage:45,
         type: 'magical',
+        element:"volt",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -212,6 +216,7 @@ const volt_tree=[
         description: 'A skill that creates a protective shield of lightning around the user.',
         canEvade: false,
         type: 'buff',
+        element:"volt",
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -234,6 +239,7 @@ const volt_tree=[
         description: 'A skill that allows the user to rapidly replenish their health by absorbing electricity from the environment.',
         canEvade: false,
         type: 'heal',
+        element:"volt",
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -260,6 +266,7 @@ const volt_tree=[
         mana_cost: 8,
         damage:65,
         type: 'physical',
+        element:"volt",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -310,6 +317,7 @@ const volt_tree=[
         canEvade: true,
         mana_cost: 8,
         damage:65,
+        element:"volt",
         type: 'magical',
         use: (attacker, defender) =>{
             let mod

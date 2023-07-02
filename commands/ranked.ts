@@ -328,7 +328,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                         }
                         else{
             
-                            skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                            let skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
                             if(skill){
                                 this.attacker.useSkill(this.attacker,this.defender,skill)
                                 await sleep(this.speed)
@@ -411,7 +411,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                             }
                             else{
                 
-                                skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                                let skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
                                 if(skill){
                                     this.attacker.useSkill(this.attacker,this.defender,skill)
                                     await sleep(this.speed)
@@ -486,7 +486,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                         }
                         else{
             
-                            skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                            let skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
                             if(skill){
                                 this.attacker.useSkill(this.attacker,this.defender,skill)
                                 await sleep(this.speed)
@@ -521,11 +521,11 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Duel wi
                 
                 
             }
-            async onSkillSelect(skillName: string) {
-                const skill = allskills.find(skill => skill.name === skillName)
+            // async onSkillSelect(skillName: string) {
+            //     const skill = allskills.find(skill => skill.name === skillName)
         
-                this.attacker.useSkill(this.attacker,this.defender,skill)
-            }
+            //     this.attacker.useSkill(this.attacker,this.defender,skill)
+            // }
         
             async onEnd(winner: Entity, loser: Entity) {
                 (await bot.users.fetch(opponentId)).dmChannel.send({embeds:this.duelMessageEmbeds()})

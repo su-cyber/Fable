@@ -8,6 +8,7 @@ const wanderer_tree=[
         canEvade: true,
         mana_cost: 0,
         damage:15,
+        element:"normal",
         type: 'physical',
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Scissor Kick`)
@@ -23,6 +24,7 @@ const wanderer_tree=[
         mana_cost: 2,
         damage:25,
         type: 'physical',
+        element:"normal",
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Venomous Strike`)
             defender.takeDamage
@@ -37,6 +39,7 @@ const wanderer_tree=[
         mana_cost:3,
         damage:40,
         type: 'physical',
+        element:"normal",
         use: (attacker, defender) =>{
 
             attacker.addLogMessage(
@@ -54,6 +57,7 @@ const wanderer_tree=[
         mana_cost: 6,
         damage:65,
         type: 'physical',
+        element:"normal",
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Fist of the Alpha`)
             defender.takeDamage
@@ -67,6 +71,7 @@ const wanderer_tree=[
         canEvade: false,
         type: 'self',
         damage:0,
+        element:"normal",
         mana_cost: 6,
         use: (attacker, defender) => {
             const evasion = defender.evasion

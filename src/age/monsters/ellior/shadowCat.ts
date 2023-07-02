@@ -43,6 +43,7 @@ export class shadowCat extends MonsterEntity {
                     description: `attacks with it's deadly claws`,
                     canEvade: true,
                     type: 'physical',
+                    element:"normal", 
                     damage:15,
                     mana_cost: 0,
                     use: (attacker, defender) =>{

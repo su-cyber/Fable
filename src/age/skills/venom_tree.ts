@@ -9,6 +9,7 @@ const venom_tree=[
         mana_cost: 1,
         damage:20,
         type: 'physical',
+        element:"venom",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -60,6 +61,7 @@ const venom_tree=[
         mana_cost: 1,
         damage:20,
         type: 'magical',
+        element:"venom",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -111,6 +113,7 @@ const venom_tree=[
         mana_cost: 3,
         damage:45,
         type: 'physical',
+        element:"venom",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -162,6 +165,7 @@ const venom_tree=[
         mana_cost: 1,
         damage:45,
         type: 'magical',
+        element:"venom",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -212,6 +216,7 @@ const venom_tree=[
         description: 'A skill that creates a protective shield of sludge around the user.',
         canEvade: false,
         type: 'buff',
+        element:"venom",
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -233,6 +238,7 @@ const venom_tree=[
         description: `A skill that summons a healing toxic cloud that rapidly restores the user's health.`,
         canEvade: false,
         type: 'heal',
+        element:"venom",
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -259,6 +265,7 @@ const venom_tree=[
         mana_cost: 8,
         damage:65,
         type: 'physical',
+        element:"venom",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -310,6 +317,7 @@ const venom_tree=[
         mana_cost: 8,
         damage:65,
         type: 'magical',
+        element:"venom",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){

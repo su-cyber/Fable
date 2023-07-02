@@ -43,6 +43,7 @@ export class Moonwisp extends MonsterEntity {
                     description: `puts the opponent in a state of illusion`,
                     canEvade: true,
                     type: 'magical',
+                    element:"normal", 
                     damage:15,
                     mana_cost: 0,
                     use: (attacker, defender) =>{

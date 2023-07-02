@@ -12,6 +12,7 @@ const assassin_tree=[
         mana_cost: 0,
         damage:15,
         type: 'physical',
+        element:"normal",
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Vanishing Strike`)
             defender.takeDamage
@@ -26,6 +27,7 @@ const assassin_tree=[
         mana_cost: 2,
         damage:25,
         type: 'physical',
+        element:"normal",
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Chain of Shadows`)
             defender.takeDamage
@@ -39,6 +41,7 @@ const assassin_tree=[
         canEvade: true,
         mana_cost:3,
         damage:40,
+        element:"normal",
         type: 'physical',
         use: (attacker, defender) =>{
             const VenomousSerpent = attacker.scheduler.task
@@ -69,6 +72,7 @@ const assassin_tree=[
         canEvade: true,
         mana_cost: 6,
         damage:65,
+        element:"normal",
         type: 'physical',
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Whirling Tempest`)
@@ -82,6 +86,7 @@ const assassin_tree=[
         description: `The assassin drains health from their target and restores their own health by a small amount, while unleashing a burst of energy that damages the enemy.`,
         canEvade: false,
         type: 'self',
+        element:"normal",
         damage:25,
         mana_cost: 6,
         use: (attacker, defender) => {

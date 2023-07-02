@@ -7,6 +7,7 @@ const alloy_tree=[
         description: `A skill that enables the user to cover themselves in steel and bash onto enemies.`,
         canEvade: true,
         mana_cost: 1,
+        element:"alloy",
         damage:20,
         type: 'physical',
         use: (attacker, defender) =>{
@@ -60,6 +61,7 @@ const alloy_tree=[
         mana_cost: 1,
         damage:20,
         type: 'magical',
+        element:"alloy",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -111,6 +113,7 @@ const alloy_tree=[
         mana_cost: 3,
         damage:45,
         type: 'physical',
+        element:"alloy",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -162,6 +165,7 @@ const alloy_tree=[
         mana_cost: 1,
         damage:45,
         type: 'magical',
+        element:"alloy",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -214,6 +218,7 @@ const alloy_tree=[
         type: 'buff',
         damage:0,
         mana_cost: 6,
+        element:"alloy",
         use: (attacker, defender) => {
             attacker.armor = 1.5*attacker.armor
             attacker.magicResistance = 1.5*attacker.magicResistance
@@ -234,6 +239,7 @@ const alloy_tree=[
         canEvade: false,
         type: 'heal',
         damage:0,
+        element:"alloy",
         mana_cost: 6,
         use: (attacker, defender) => {
             if(attacker.health+100 > attacker.maxHealth){
@@ -259,6 +265,7 @@ const alloy_tree=[
         canEvade: true,
         mana_cost: 8,
         damage:65,
+        element:"alloy",
         type: 'physical',
         use: (attacker, defender) =>{
             let mod
@@ -311,6 +318,7 @@ const alloy_tree=[
         mana_cost: 8,
         damage:65,
         type: 'magical',
+        element:"alloy",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){

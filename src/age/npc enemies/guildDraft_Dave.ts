@@ -43,6 +43,7 @@ export class Dave extends MonsterEntity {
                     description: 'attacks with a knife',
                     canEvade: true,
                     type: 'physical',
+                    element:"normal", 
                     damage:15,
                     mana_cost: 0,
                     use: (attacker, defender) =>{

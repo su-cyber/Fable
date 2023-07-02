@@ -43,6 +43,7 @@ export class MagmaGolem extends MonsterEntity {
                     description: `Spits out a beam of Magma`,
                     canEvade: true,
                     type: 'magical',
+                    element:"normal", 
                     damage:65,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
@@ -58,6 +59,7 @@ export class MagmaGolem extends MonsterEntity {
                     description: `Punches with flaming fists`,
                     canEvade: true,
                     type: 'physical',
+                    element:"normal", 
                     damage:45,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
@@ -73,6 +75,7 @@ export class MagmaGolem extends MonsterEntity {
                     description: `attacks with burning rocks`,
                     canEvade: true,
                     type: 'physical',
+                    element:"nromal", 
                     damage:25,
                     mana_cost: 0,
                     use: (attacker, defender) =>{

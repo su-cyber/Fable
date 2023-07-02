@@ -48,6 +48,7 @@ export class Droner extends MonsterEntity {
                     canEvade: true,
                     damage:0,
                     type: 'physical',
+                    element:"normal", 
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Acid Sting`)

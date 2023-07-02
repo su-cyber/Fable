@@ -43,6 +43,7 @@ export class Crystalcrawler extends MonsterEntity {
                     description: `shoots a barrage of crystal shards`,
                     canEvade: true,
                     type: 'physical',
+                    element:"normal", 
                     damage:15,
                     mana_cost: 0,
                     use: (attacker, defender) =>{

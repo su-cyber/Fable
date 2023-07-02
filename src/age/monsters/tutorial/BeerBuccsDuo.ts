@@ -47,6 +47,7 @@ export class BeerBuccsDuo extends MonsterEntity {
                     description: 'Basic attack',
                     canEvade: true,
                     type: 'physical',
+                    element:"normal", 
                     damage:0,
                     mana_cost: 0,
                     use: (attacker, defender) =>{

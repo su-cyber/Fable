@@ -10,6 +10,7 @@ const frost_tree=[
         mana_cost: 1,
         damage:20,
         type: 'physical',
+        element:"frost",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -61,6 +62,7 @@ const frost_tree=[
         mana_cost: 1,
         damage:20,
         type: 'magical',
+        element:"frost",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -112,6 +114,7 @@ const frost_tree=[
         mana_cost: 3,
         damage:45,
         type: 'physical',
+        element:"frost",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -163,6 +166,7 @@ const frost_tree=[
         mana_cost: 1,
         damage:45,
         type: 'magical',
+        element:"frost",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -213,6 +217,7 @@ const frost_tree=[
         description: 'A skill that creates a protective shield of ice around the user.',
         canEvade: false,
         type: 'buff',
+        element:"frost",
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -235,6 +240,7 @@ const frost_tree=[
         canEvade: false,
         type: 'heal',
         damage:0,
+        element:"frost",
         mana_cost: 6,
         use: (attacker, defender) => {
             if(attacker.health+100 > attacker.maxHealth){
@@ -260,6 +266,7 @@ const frost_tree=[
         mana_cost: 8,
         damage:65,
         type: 'physical',
+        element:"frost",
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Glacial Lance`)
             defender.takeDamage
@@ -274,6 +281,7 @@ const frost_tree=[
         mana_cost: 8,
         damage:65,
         type: 'magical',
+        element:"frost",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){

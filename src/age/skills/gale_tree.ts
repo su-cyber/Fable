@@ -8,6 +8,7 @@ const gale_tree=[
         canEvade: true,
         mana_cost: 1,
         damage:20,
+        element:"gale",
         type: 'physical',
         use: (attacker, defender) =>{
             let mod
@@ -60,6 +61,7 @@ const gale_tree=[
         mana_cost: 1,
         damage:20,
         type: 'magical',
+        element:"gale",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -111,6 +113,7 @@ const gale_tree=[
         mana_cost: 3,
         damage:45,
         type: 'physical',
+        element:"gale",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -162,6 +165,7 @@ const gale_tree=[
         mana_cost: 1,
         damage:45,
         type: 'magical',
+        element:"gale",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -212,6 +216,7 @@ const gale_tree=[
         description: 'A skill that creates a protective shield of wind around the user.',
         canEvade: false,
         type: 'buff',
+        element:"gale",
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -235,6 +240,7 @@ const gale_tree=[
         canEvade: false,
         type: 'heal',
         damage:0,
+        element:"gale",
         mana_cost: 6,
         use: (attacker, defender) => {
             if(attacker.health+100 > attacker.maxHealth){
@@ -258,6 +264,7 @@ const gale_tree=[
         description: `A skill that allows the user to run in the sky and deliver a swift strike to the enemy.`,
         canEvade: true,
         mana_cost: 8,
+        element:"gale",
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
@@ -310,6 +317,7 @@ const gale_tree=[
         canEvade: true,
         mana_cost: 8,
         damage:65,
+        element:"gale",
         type: 'magical',
         use: (attacker, defender) =>{
             let mod

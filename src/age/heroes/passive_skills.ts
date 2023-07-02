@@ -9,6 +9,7 @@ const passive_skills = [
         mana_cost: 0,
         damage:0,
         type: 'passive',
+        element:"normal",
         use: (attacker, defender) => {
             const Regeneration = attacker.scheduler.task.all
                 .turns(1000)
@@ -37,6 +38,7 @@ const passive_skills = [
         description: 'protection against flame element.',
         canEvade: false,
         type: 'passive',
+        element:"normal", 
         damage:0,
         mana_cost: 0,
         use: (attacker, defender) => {
@@ -64,6 +66,7 @@ const passive_skills = [
         mana_cost: 0,
         damage:0,
         type: 'passive',
+        element:"normal", 
         use: (attacker, defender) => {
             const goblinSummon = attacker.scheduler.task.all
                 .turns(100)

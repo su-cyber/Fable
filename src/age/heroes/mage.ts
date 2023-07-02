@@ -57,6 +57,7 @@ export class Mage extends ClassEntity {
                     mana_cost: 0,
                     damage:0,
                     type: 'physical',
+                    element:"normal",
                     use: (attacker, defender) =>
                         defender.takeDamage
                             .physical(attacker.attackDamage)
@@ -69,6 +70,7 @@ export class Mage extends ClassEntity {
                     canEvade: true,
                     mana_cost: 20,
                     type: 'magical',
+                    element:"normal",
                     damage:0,
                     use: (attacker, defender) => {
                         const fireball = attacker.scheduler.task.all

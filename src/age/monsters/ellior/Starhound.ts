@@ -43,6 +43,7 @@ export class starHound extends MonsterEntity {
                     description: `Blinds and damages the enemy with an intense light`,
                     canEvade: true,
                     type: 'magical',
+                    element:"normal", 
                     damage:15,
                     mana_cost: 0,
                     use: (attacker, defender) =>{

@@ -254,21 +254,21 @@ class DuelBuilder {
         )
     }
 
-    async onPotionSelect(potionName: string) {
-        this.deleteInfoMessages()
+    // async onPotionSelect(potionName: string) {
+    //     this.deleteInfoMessages()
         
             
             
-                this.attacker.useSkill(
-                    this.attacker,
-                    this.defender,
-                    potions.find(potion => potion.name === potionName)
-                )
+    //             this.attacker.useSkill(
+    //                 this.attacker,
+    //                 this.defender,
+    //                 potions.find(potion => potion.name === potionName)
+    //             )
             
            
       
         
-    }
+    // }
 
     async beforeDuelStart() {
         async function onCollect(collected: MessageComponentInteraction<CacheType> & { values: string[] }) {
@@ -404,7 +404,7 @@ class DuelBuilder {
                 //insert potions code here
                 inventory.findOne({userID:collected.user.id},async function(err,foundUser){
                 const PotionName = collected.values[0]
-                await thisThis.onPotionSelect(PotionName)
+                // await thisThis.onPotionSelect(PotionName)
                 
                 
                 thisThis.locker.unlock()

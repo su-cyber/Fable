@@ -9,6 +9,7 @@ const sorceror_tree=[
         mana_cost: 0,
         damage:15,
         type: 'magical',
+        element:"normal",
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Force Push`)
             defender.takeDamage
@@ -23,6 +24,7 @@ const sorceror_tree=[
         mana_cost: 2,
         damage:25,
         type: 'magical',
+        element:"normal",
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Arcane Shot`)
             defender.takeDamage
@@ -37,6 +39,7 @@ const sorceror_tree=[
         mana_cost:3,
         damage:40,
         type: 'magical',
+        element:"normal",
         use: (attacker, defender) =>{
 
             attacker.addLogMessage(
@@ -54,6 +57,7 @@ const sorceror_tree=[
         mana_cost: 6,
         damage:65,
         type: 'magical',
+        element:"normal",
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Shadow Magenum`)
             defender.takeDamage
@@ -65,6 +69,7 @@ const sorceror_tree=[
         name: `Crippling Curse`,
         description: `Channel your life energy to restore stamina and spyr.`,
         canEvade: false,
+        element:"normal",
         type: 'self',
         damage:0,
         mana_cost: 6,

@@ -249,12 +249,12 @@ export class PvEDuel extends DuelBuilder {
     }
     
 
-    async onSkillSelect(skillName: string) {
-        skillName = 'Basic attack'
-        const skill = allskills.find(skill => skill.name === skillName)
+    // async onSkillSelect(skillName: string) {
+    //     skillName = 'Basic attack'
+    //     const skill = allskills.find(skill => skill.name === skillName)
 
-        this.attacker.useSkill(this.attacker,this.defender,skill)
-    }
+    //     this.attacker.useSkill(this.attacker,this.defender,skill)
+    // }
     
     
     async onTurn(skipTurn: boolean,turn:number) {
@@ -543,10 +543,15 @@ export class PvEDuel extends DuelBuilder {
                     else if(this.attacker.skills[0].type == "magical"){
                         skill_dmg = calculate.magicDamage(val.damage+this.attacker.magicPower,this.defender.magicResistance)
                     }
+                    
                     damage_order.push(skill_dmg)
                     damage_order.sort()
                     const index = damage_order.indexOf(skill_dmg)
                     this.attacker.skills.splice(index,0,val)
+                    // if(val.element == null){
+
+                    // }
+                    
 
                 }
                 this.attacker.skills.reverse()

@@ -11,6 +11,7 @@ const samurai_tree=[
         canEvade: true,
         mana_cost: 0,
         damage:15,
+        element:"normal",
         type: 'physical',
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Shattering Kick`)
@@ -26,6 +27,7 @@ const samurai_tree=[
         mana_cost: 2,
         damage:25,
         type: 'physical',
+        element:"normal",
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Flashing Blade`)
             defender.takeDamage
@@ -39,6 +41,7 @@ const samurai_tree=[
         canEvade: true,
         mana_cost:3,
         damage:40,
+        element:"normal",
         type: 'physical',
         use: (attacker, defender) =>{
             const predatorShot = attacker.scheduler.task
@@ -69,6 +72,7 @@ const samurai_tree=[
         canEvade: true,
         mana_cost: 6,
         damage:65,
+        element:"normal",
         type: 'physical',
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Cyclone Slash`)
@@ -82,6 +86,7 @@ const samurai_tree=[
         description: `Channel your life energy to restore stamina and spyr.`,
         canEvade: false,
         type: 'self',
+        element:"normal",
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {

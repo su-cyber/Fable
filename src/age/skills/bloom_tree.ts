@@ -9,6 +9,7 @@ const bloom_tree=[
         mana_cost: 1,
         damage:20,
         type: 'physical',
+        element:"bloom",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -60,6 +61,7 @@ const bloom_tree=[
         mana_cost: 1,
         damage:20,
         type: 'magical',
+        element:"bloom",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -111,6 +113,7 @@ const bloom_tree=[
         mana_cost: 3,
         damage:45,
         type: 'physical',
+        element:"bloom",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -162,6 +165,7 @@ const bloom_tree=[
         mana_cost: 1,
         damage:45,
         type: 'magical',
+        element:"bloom",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -214,6 +218,7 @@ const bloom_tree=[
         type: 'buff',
         damage:0,
         mana_cost: 6,
+        element:"bloom",
         use: (attacker, defender) => {
             attacker.armor = 1.5*attacker.armor
             attacker.magicResistance = 1.5*attacker.magicResistance
@@ -235,6 +240,7 @@ const bloom_tree=[
         type: 'heal',
         damage:0,
         mana_cost: 6,
+        element:"bloom",
         use: (attacker, defender) => {
             if(attacker.health+100 > attacker.maxHealth){
                 attacker.health = attacker.maxHealth
@@ -259,6 +265,7 @@ const bloom_tree=[
         mana_cost: 8,
         damage:65,
         type: 'physical',
+        element:"bloom",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -310,6 +317,7 @@ const bloom_tree=[
         mana_cost: 8,
         damage:65,
         type: 'magical',
+        element:"bloom",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){

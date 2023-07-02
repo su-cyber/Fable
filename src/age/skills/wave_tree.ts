@@ -8,6 +8,7 @@ const wave_tree=[
         canEvade: true,
         mana_cost: 1,
         damage:20,
+        element:"wave",
         type: 'physical',
         use: (attacker, defender) =>{
             let mod
@@ -60,6 +61,7 @@ const wave_tree=[
         mana_cost: 1,
         damage:20,
         type: 'magical',
+        element:"wave",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -111,6 +113,7 @@ const wave_tree=[
         mana_cost: 3,
         damage:45,
         type: 'physical',
+        element:"wave",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -162,6 +165,7 @@ const wave_tree=[
         mana_cost: 1,
         damage:45,
         type: 'magical',
+        element:"wave",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -212,6 +216,7 @@ const wave_tree=[
         description: 'A skill that creates a protective shield of waves around the user.',
         canEvade: false,
         type: 'buff',
+        element:"wave",
         damage:0,
         mana_cost: 6,
         use: (attacker, defender) => {
@@ -232,6 +237,7 @@ const wave_tree=[
         name: 'Sanative Rain',
         description: `A skill that summons a healing rain that rapidly restores the user's health.`,
         canEvade: false,
+        element:"wave",
         type: 'heal',
         damage:0,
         mana_cost: 6,
@@ -259,6 +265,7 @@ const wave_tree=[
         mana_cost: 8,
         damage:65,
         type: 'physical',
+        element:"wave",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){
@@ -310,6 +317,7 @@ const wave_tree=[
         mana_cost: 8,
         damage:65,
         type: 'magical',
+        element:"wave",
         use: (attacker, defender) =>{
             let mod
             if(defender.element == "flame"){

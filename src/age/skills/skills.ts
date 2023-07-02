@@ -23,6 +23,7 @@ const otherskills = [{
     canEvade: true,
     type: 'physical',
     damage:45,
+    element:"normal",
     mana_cost: 3,
     use: (attacker, defender) =>{
         let mod

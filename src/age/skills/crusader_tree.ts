@@ -8,6 +8,7 @@ const crusader_tree=[
         canEvade: true,
         mana_cost: 0,
         damage:15,
+        element:"normal",
         type: 'physical',
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Sprint Bash`)
@@ -22,6 +23,7 @@ const crusader_tree=[
         canEvade: true,
         mana_cost: 2,
         damage:25,
+        element:"normal",
         type: 'physical',
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Skullcrusher`)
@@ -36,6 +38,7 @@ const crusader_tree=[
         canEvade: true,
         mana_cost:3,
         damage:40,
+        element:"normal",
         type: 'physical',
         use: (attacker, defender) =>{
 
@@ -53,6 +56,7 @@ const crusader_tree=[
         canEvade: true,
         mana_cost: 6,
         damage:65,
+        element:"normal",
         type: 'physical',
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Crushing Blow`)
@@ -67,6 +71,7 @@ const crusader_tree=[
         canEvade: false,
         type: 'self',
         damage:0,
+        element:"normal",
         mana_cost: 6,
         use: (attacker, defender) => {
             attacker.health = attacker.health+100

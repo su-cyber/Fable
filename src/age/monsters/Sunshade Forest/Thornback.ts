@@ -45,6 +45,7 @@ export class Thornback extends MonsterEntity {
                     canEvade: true,
                     damage:15,
                     type: 'physical',
+                    element:"normal",
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Spiked Charge`)

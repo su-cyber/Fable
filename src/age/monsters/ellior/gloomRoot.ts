@@ -43,6 +43,7 @@ export class gloomRoot extends MonsterEntity {
                     description: `attacks with it's roots`,
                     canEvade: true,
                     type: 'physical',
+                    element:"normal", 
                     damage:15,
                     mana_cost: 0,
                     use: (attacker, defender) =>{

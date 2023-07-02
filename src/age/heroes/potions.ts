@@ -11,6 +11,7 @@ const potions = [
         canEvade: false,
         mana_cost: 0,
         damage:0,
+        element:"normal",
         type: 'self',
         use: (attacker, defender) =>{
             attacker.health+=20
@@ -33,6 +34,7 @@ const potions = [
             canEvade: false,
             mana_cost: 0,
             damage:0,
+            element:"normal",
             type: 'self',
             use: (attacker, defender) =>{
                 attacker.mana+=50
@@ -54,6 +56,7 @@ const potions = [
         description: 'no potions',
         canEvade: false,
         mana_cost: 0,
+        element:"normal",
         damage:0,
         type: 'self',
         use: (attacker, defender) =>{

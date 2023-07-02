@@ -43,6 +43,7 @@ export class Emberbeast extends MonsterEntity {
                     description: `Breathes jet of flames`,
                     canEvade: true,
                     type: 'physical',
+                    element:"normal", 
                     damage:15,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
