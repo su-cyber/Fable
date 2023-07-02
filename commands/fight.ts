@@ -12,6 +12,7 @@ import sample from 'lodash.sample'
 import { SlashCommandIntegerOption} from '@discordjs/builders'
 import getHealth from '../src/utils/getHealth'
 import { Interaction, MessageEmbed } from 'discord.js'
+import { calculate } from '../src/age/classes'
 
 export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
@@ -223,6 +224,9 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
 )
 
 let skills =[]
+let skill_dmg = 0
+let damage_order = []
+let skill_order = []
 
 
 export class PvEDuel extends DuelBuilder {
@@ -533,8 +537,20 @@ export class PvEDuel extends DuelBuilder {
                 for(let j=0;j<skills.length;j++){
                     
                     let val = allskills.find(skill => skill.name === skills[j].name)
-                    this.attacker.skills.push(val)
+                    if(val.type == "physical"){
+                        skill_dmg = calculate.physicalDamage(val.damage+this.attacker.attackDamage,this.defender.armor)
+                    }
+                    else if(this.attacker.skills[0].type == "magical"){
+                        skill_dmg = calculate.magicDamage(val.damage+this.attacker.magicPower,this.defender.magicResistance)
+                    }
+                    damage_order.push(skill_dmg)
+                    damage_order.sort()
+                    const index = damage_order.indexOf(skill_dmg)
+                    this.attacker.skills.splice(index,0,val)
+
                 }
+                this.attacker.skills.reverse()
+                  
 
                 if(this.attacker.passive_skills.length !=0){
                     let i
@@ -553,77 +569,25 @@ export class PvEDuel extends DuelBuilder {
                     await sleep(this.speed)
                 }
                 else{
-                    let strongest = this.attacker.skills[0].damage
-                let strongest_type = this.attacker.skills[0].type
-                let strongest_name = this.attacker.skills[0].name
-                for(let i=0;i<this.attacker.skills.length;i++){
-                    if(this.attacker.skills[i].type=="physical"){
-                        if(strongest_type=="physical"){
-                            if(this.attacker.skills[i].damage+this.attacker.attackDamage>strongest+this.attacker.attackDamage
-                                ){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
-                            }
-                        }
-                        if(strongest_type=="magical"){
-                            if(this.attacker.skills[i].damage+this.attacker.attackDamage>strongest+this.attacker.magicPower){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
-                            }
-                        }
-                        
-                    }
-                    else if(this.attacker.skills[i].type=="magical"){
-                        if(strongest_type=="physical"){
-                            if(this.attacker.skills[i].damage+this.attacker.magicPower>strongest+this.attacker.attackDamage){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
-                            }
-                        }
-                        if(strongest_type=="magical"){
-                            if(this.attacker.skills[i].damage+this.attacker.magicPower>strongest+this.attacker.magicPower){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
-                            }
-                        }
-                        
-                    }
                     
-                }
-                let skill = allskills.find(skill => skill.name === strongest_name)
-                if(this.attacker.mana>=skill.mana_cost){
-                    if(this.attacker.mana>=2*skill.mana_cost){
-                        this.attacker.useSkill(this.attacker,this.defender,skill)
-                        await sleep(this.speed)
-                    }
-                    else{
-                        this.attacker.useSkill(this.attacker,this.defender,skill)
-                        await sleep(this.speed)
-                        const index = this.attacker.skills.indexOf(skill)
-                        this.attacker.skills.splice(index,1)
-    
-                    }
-                   
-                }
-                else{
-    
-                    skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
-                    if(skill){
-                        this.attacker.useSkill(this.attacker,this.defender,skill)
-                        await sleep(this.speed)
-                    }
-                    else{
-                        this.attacker.useSkill(this.attacker,this.defender,sample(skills))
-                        await sleep(this.speed)
-                    }
-                   
                     
-    
-                }
+                        
+            
+                            skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                            if(skill){
+                                this.attacker.useSkill(this.attacker,this.defender,skill)
+                                await sleep(this.speed)
+                            }
+                            else{
+                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                                await sleep(this.speed)
+                            }
+                           
+                            
+            
+                        
+                    
+
                 }
             }
             else if(this.attacker.health <= 0.5*this.attacker.maxHealth){
@@ -636,152 +600,30 @@ export class PvEDuel extends DuelBuilder {
                    
                 }
                 else{
-                    let strongest = this.attacker.skills[0].damage
-                    let strongest_type = this.attacker.skills[0].type
-                    let strongest_name = this.attacker.skills[0].name
-                    for(let i=0;i<this.attacker.skills.length;i++){
-                        if(this.attacker.skills[i].type=="physical"){
-                            if(strongest_type=="physical"){
-                                if(this.attacker.skills[i].damage+this.attacker.attackDamage>strongest+this.attacker.attackDamage
-                                    ){
-                                    strongest = this.attacker.skills[i].damage
-                                    strongest_name = this.attacker.skills[i].name
-                                    strongest_type = this.attacker.skills[i].type
-                                }
+                    skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                            if(skill){
+                                this.attacker.useSkill(this.attacker,this.defender,skill)
+                                await sleep(this.speed)
                             }
-                            if(strongest_type=="magical"){
-                                if(this.attacker.skills[i].damage+this.attacker.attackDamage>strongest+this.attacker.magicPower){
-                                    strongest = this.attacker.skills[i].damage
-                                    strongest_name = this.attacker.skills[i].name
-                                    strongest_type = this.attacker.skills[i].type
-                                }
+                            else{
+                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                                await sleep(this.speed)
                             }
-                            
-                        }
-                        else if(this.attacker.skills[i].type=="magical"){
-                            if(strongest_type=="physical"){
-                                if(this.attacker.skills[i].damage+this.attacker.magicPower>strongest+this.attacker.attackDamage){
-                                    strongest = this.attacker.skills[i].damage
-                                    strongest_name = this.attacker.skills[i].name
-                                    strongest_type = this.attacker.skills[i].type
-                                }
-                            }
-                            if(strongest_type=="magical"){
-                                if(this.attacker.skills[i].damage+this.attacker.magicPower>strongest+this.attacker.magicPower){
-                                    strongest = this.attacker.skills[i].damage
-                                    strongest_name = this.attacker.skills[i].name
-                                    strongest_type = this.attacker.skills[i].type
-                                }
-                            }
-                            
-                        }
-                        
-                    }
-                    let skill = allskills.find(skill => skill.name === strongest_name)
-                    if(this.attacker.mana>=skill.mana_cost){
-                        if(this.attacker.mana>=2*skill.mana_cost){
-                            this.attacker.useSkill(this.attacker,this.defender,skill)
-                            await sleep(this.speed)
-                        }
-                        else{
-                            this.attacker.useSkill(this.attacker,this.defender,skill)
-                            await sleep(this.speed)
-                            const index = this.attacker.skills.indexOf(skill)
-                            this.attacker.skills.splice(index,1)
-        
-                        }
-                       
-                    }
-                    else{
-        
-                        skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
-                        if(skill){
-                            this.attacker.useSkill(this.attacker,this.defender,skill)
-                            await sleep(this.speed)
-                        }
-                        else{
-                            this.attacker.useSkill(this.attacker,this.defender,sample(skills))
-                            await sleep(this.speed)
-                        }
-                       
-                        
-        
-                    }
+                           
                    
                 }
             }
             else{
-                let strongest = this.attacker.skills[0].damage
-                let strongest_type = this.attacker.skills[0].type
-                let strongest_name = this.attacker.skills[0].name
-                for(let i=0;i<this.attacker.skills.length;i++){
-                    if(this.attacker.skills[i].type=="physical"){
-                        if(strongest_type=="physical"){
-                            if(this.attacker.skills[i].damage+this.attacker.attackDamage>strongest+this.attacker.attackDamage
-                                ){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
+                let skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                            if(skill){
+                                this.attacker.useSkill(this.attacker,this.defender,skill)
+                                await sleep(this.speed)
                             }
-                        }
-                        if(strongest_type=="magical"){
-                            if(this.attacker.skills[i].damage+this.attacker.attackDamage>strongest+this.attacker.magicPower){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
+                            else{
+                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                                await sleep(this.speed)
                             }
-                        }
-                        
-                    }
-                    else if(this.attacker.skills[i].type=="magical"){
-                        if(strongest_type=="physical"){
-                            if(this.attacker.skills[i].damage+this.attacker.magicPower>strongest+this.attacker.attackDamage){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
-                            }
-                        }
-                        if(strongest_type=="magical"){
-                            if(this.attacker.skills[i].damage+this.attacker.magicPower>strongest+this.attacker.magicPower){
-                                strongest = this.attacker.skills[i].damage
-                                strongest_name = this.attacker.skills[i].name
-                                strongest_type = this.attacker.skills[i].type
-                            }
-                        }
-                        
-                    }
-                    
-                }
-                let skill = allskills.find(skill => skill.name === strongest_name)
-                if(this.attacker.mana>=skill.mana_cost){
-                    if(this.attacker.mana>=2*skill.mana_cost){
-                        this.attacker.useSkill(this.attacker,this.defender,skill)
-                        await sleep(this.speed)
-                    }
-                    else{
-                        this.attacker.useSkill(this.attacker,this.defender,skill)
-                        await sleep(this.speed)
-                        const index = this.attacker.skills.indexOf(skill)
-                        this.attacker.skills.splice(index,1)
-    
-                    }
-                   
-                }
-                else{
-    
-                    skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
-                    if(skill){
-                        this.attacker.useSkill(this.attacker,this.defender,skill)
-                        await sleep(this.speed)
-                    }
-                    else{
-                        this.attacker.useSkill(this.attacker,this.defender,sample(skills))
-                        await sleep(this.speed)
-                    }
-                   
-                    
-    
-                }
+                           
                
             }
                 
