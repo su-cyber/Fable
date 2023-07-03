@@ -49,7 +49,7 @@ export class Crystalcrawler extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Shard Barrage`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage+15)
+                            .physical(attacker.attackDamage*15)
                             .run(damage => `${defender.name} lost ${damage} HP by a barrage of sharp crystals`)
                     }
                 },

@@ -50,7 +50,7 @@ const alloy_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Metal Bash`)
             defender.takeDamage
-                .physical((attacker.attackDamage+20)*mod)
+                .physical((attacker.attackDamage*20)*mod)
                 .run(damage => `${attacker.name} covers themselves in metal and bashes ${defender.name} causing ${damage} damage`)
         }
     },{
@@ -102,7 +102,7 @@ const alloy_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Steel Spike`)
             defender.takeDamage
-                .magical((attacker.magicPower+20)*mod)
+                .magical((attacker.magicPower*20)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a barrage of steel spikes`)
         }
     },{
@@ -154,7 +154,7 @@ const alloy_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Brass Knuckle`)
             defender.takeDamage
-                .physical((attacker.attackDamage+45)*mod)
+                .physical((attacker.attackDamage*45)*mod)
                 .run(damage => `${attacker.name} enhances their fists with brass knuckles and punches ${defender.name} causing ${damage} damage`)
         }
     },{
@@ -206,7 +206,7 @@ const alloy_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Bullet Machinegun`)
             defender.takeDamage
-                .magical((attacker.magicPower+45)*mod)
+                .magical((attacker.magicPower*45)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP  by a barrage of metal bullets`)
         }
     },
@@ -307,7 +307,7 @@ const alloy_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Wire Slam`)
             defender.takeDamage
-                .physical((attacker.attackDamage+65)*mod)
+                .physical((attacker.attackDamage*65)*mod)
                 .run(damage => `${attacker.name} binds ${defender.name} with metal wires and slams them causing ${damage} damage`)
         }
     },{
@@ -359,7 +359,7 @@ const alloy_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Spiraling Iron Bolts`)
             defender.takeDamage
-                .magical((attacker.magicPower+65)*mod)
+                .magical((attacker.magicPower*65)*mod)
                 .run(damage => `${attacker.name} shoots spiralling bolts of iron on ${defender.name} causing ${damage} damage`)
         }
     },

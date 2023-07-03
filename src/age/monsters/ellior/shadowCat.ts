@@ -49,7 +49,7 @@ export class shadowCat extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Shredding Swipe`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage+15)
+                            .physical(attacker.attackDamage*15)
                             .run(damage => `${defender.name} lost ${damage} HP by Shredding Swipe`)
                     }
                 },

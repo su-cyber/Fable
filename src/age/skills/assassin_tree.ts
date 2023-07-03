@@ -16,7 +16,7 @@ const assassin_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Vanishing Strike`)
             defender.takeDamage
-                .physical(attacker.attackDamage+15)
+                .physical(attacker.attackDamage*15)
                 .run(damage => `${defender.name} lost ${damage} HP by a sudden strike from behind`)
         }
     },{
@@ -31,7 +31,7 @@ const assassin_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Chain of Shadows`)
             defender.takeDamage
-                .physical(attacker.attackDamage+25)
+                .physical(attacker.attackDamage*25)
                 .run(damage => `${defender.name} is striked with chains and looses ${damage} HP`)
         }
     },{
@@ -62,7 +62,7 @@ const assassin_tree=[
                 `${attacker.name} used Venomous Serpent`
             )
             defender.takeDamage
-            .physical(attacker.attackDamage+40)
+            .physical(attacker.attackDamage*40)
             .run(damage => `${defender.name} lost ${damage} HP by a deadly poison dart\n${defender.name} is poisoned!`)
         }
     },{
@@ -77,7 +77,7 @@ const assassin_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Whirling Tempest`)
             defender.takeDamage
-                .physical(attacker.attackDamage+65)
+                .physical(attacker.attackDamage*65)
                 .run(damage => `${defender.name} is striked and woundup in chains and looses ${damage} HP`)
         }
     },{
@@ -99,7 +99,7 @@ const assassin_tree=[
                 `${attacker.name} steals 50HP from ${defender.name}`
             )
             defender.takeDamage
-                .physical(attacker.attackDamage+25)
+                .physical(attacker.attackDamage*25)
                 .run(damage => `${defender.name} lost ${damage} HP from the burst of energy`)
         
             

@@ -43,13 +43,50 @@ export class MagmaGolem extends MonsterEntity {
                     description: `Spits out a beam of Magma`,
                     canEvade: true,
                     type: 'magical',
-                    element:"normal", 
+                    element:"flame", 
                     damage:65,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
+                        let mod
+            if(defender.element == "flame"){
+                mod  = 0.5
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 2
+            }
+            else if(defender.element == "gale"){
+                mod  = 2
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 0.5
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
                         attacker.addLogMessage(`${attacker.name} used Magma Beam`)
                         defender.takeDamage
-                            .magical(attacker.attackDamage+65)
+                            .magical(attacker.magicPower*65*mod)
                             .run(damage => `${defender.name} lost ${damage} HP by burning in hot magma`)
                     }
                 },
@@ -65,7 +102,7 @@ export class MagmaGolem extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Fiery Fist`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage+45)
+                            .physical(attacker.attackDamage*45)
                             .run(damage => `${attacker.name} covers it's arm with scorching flames and punches ${defender.name} causing ${damage} damage`)
                     }
                 },
@@ -81,7 +118,7 @@ export class MagmaGolem extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Wreaking Ball`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage+25)
+                            .physical(attacker.attackDamage*25)
                             .run(damage => `${attacker.name} hurls burning rocks at ${defender.name} causing ${damage} damage`)
                     }
                 },

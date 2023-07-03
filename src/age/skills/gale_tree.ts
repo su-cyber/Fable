@@ -102,7 +102,7 @@ const gale_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Mighty Breath`)
             defender.takeDamage
-                .magical((attacker.magicPower+20)*mod)
+                .magical((attacker.magicPower*20)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a strong burst of wind`)
         }
     },{
@@ -206,7 +206,7 @@ const gale_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Wind Palm`)
             defender.takeDamage
-                .magical((attacker.magicPower+45)*mod)
+                .magical((attacker.magicPower*45)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP  by a strong gust of wind`)
         }
     },
@@ -359,7 +359,7 @@ const gale_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Sonic Scythe`)
             defender.takeDamage
-                .magical((attacker.magicPower+65)*mod)
+                .magical((attacker.magicPower*65)*mod)
                 .run(damage => `${attacker.name} unleashes a sharp blade of wind on ${defender.name} causing ${damage} damage`)
         }
     },

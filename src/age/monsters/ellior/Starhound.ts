@@ -49,7 +49,7 @@ export class starHound extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Blinding Light`)
                         defender.takeDamage
-                            .magical(attacker.attackDamage+15)
+                            .magical(attacker.attackDamage*15)
                             .run(damage => `${defender.name} lost ${damage} HP by Blinding Light`)
                     }
                 },

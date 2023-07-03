@@ -42,14 +42,14 @@ export class grainMite extends MonsterEntity {
                     name: 'Cracker Bite',
                     description: 'A powerful bite attack',
                     canEvade: true,
-                    damage:0,
+                    damage:1,
                     type: 'physical',
                     element:"normal", 
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Cracker Bite`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage)
+                            .physical(attacker.attackDamage*1)
                             .run(damage => `${defender.name} lost ${damage} HP by a deadly bite`)
                     }
                 },

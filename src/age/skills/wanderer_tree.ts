@@ -13,7 +13,7 @@ const wanderer_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Scissor Kick`)
             defender.takeDamage
-                .physical(attacker.attackDamage+15)
+                .physical(attacker.attackDamage*15)
                 .run(damage => `${defender.name} lost ${damage} HP by a scissor kick`)
         }
     },{
@@ -28,7 +28,7 @@ const wanderer_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Venomous Strike`)
             defender.takeDamage
-                .physical(attacker.attackDamage+25)
+                .physical(attacker.attackDamage*25)
                 .run(damage => `${defender.name} lost ${damage} HP by being hit by a Katar laced with venom`)
         }
     },{
@@ -46,7 +46,7 @@ const wanderer_tree=[
                 `${attacker.name} used Beast Trap Takedown`
             )
             defender.takeDamage
-            .physical(attacker.attackDamage+40)
+            .physical(attacker.attackDamage*40)
             .run(damage => `${defender.name} lost ${damage} HP by gettig stuck in a beast trap`)
         }
     },{
@@ -61,7 +61,7 @@ const wanderer_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Fist of the Alpha`)
             defender.takeDamage
-                .physical(attacker.attackDamage+65)
+                .physical(attacker.attackDamage*65)
                 .run(damage => `${defender.name} lost ${damage} HP by a powerful punch`)
         }
     },{

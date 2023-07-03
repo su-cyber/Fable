@@ -298,10 +298,10 @@ export class PvEDuel extends DuelBuilder {
                     
                     let val = skills[j]
                     if(val.type == "physical"){
-                        skill_dmg = calculate.physicalDamage(val.damage+this.attacker.attackDamage,this.defender.armor)
+                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
                     }
                     else if(val.type == "magical"){
-                        skill_dmg = calculate.magicDamage(val.damage+this.attacker.magicPower,this.defender.magicResistance)
+                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element)
@@ -345,10 +345,10 @@ export class PvEDuel extends DuelBuilder {
                     
                     let val = skills[j]
                     if(val.type == "physical"){
-                        skill_dmg = calculate.physicalDamage(val.damage+this.attacker.attackDamage,this.defender.armor)
+                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
                     }
                     else if(val.type == "magical"){
-                        skill_dmg = calculate.magicDamage(val.damage+this.attacker.magicPower,this.defender.magicResistance)
+                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element)
@@ -384,10 +384,10 @@ export class PvEDuel extends DuelBuilder {
                 
                 let val = skills[j]
                 if(val.type == "physical"){
-                    skill_dmg = calculate.physicalDamage(val.damage+this.attacker.attackDamage,this.defender.armor)
+                    skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
                 }
                 else if(val.type == "magical"){
-                    skill_dmg = calculate.magicDamage(val.damage+this.attacker.magicPower,this.defender.magicResistance)
+                    skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
                 }
                 
                 let mod = calculateModifier(val.element,this.defender.element)
@@ -439,10 +439,10 @@ export class PvEDuel extends DuelBuilder {
                     
                     let val = allskills.find(skill => skill.name === skills[j].name)
                     if(val.type == "physical"){
-                        skill_dmg = calculate.physicalDamage(val.damage+this.attacker.attackDamage,this.defender.armor)
+                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
                     }
                     else if(val.type == "magical"){
-                        skill_dmg = calculate.magicDamage(val.damage+this.attacker.magicPower,this.defender.magicResistance)
+                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element)
@@ -513,10 +513,10 @@ export class PvEDuel extends DuelBuilder {
                     
                     let val = allskills.find(skill => skill.name === skills[j].name)
                     if(val.type == "physical"){
-                        skill_dmg = calculate.physicalDamage(val.damage+this.attacker.attackDamage,this.defender.armor)
+                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
                     }
                     else if(val.type == "magical"){
-                        skill_dmg = calculate.magicDamage(val.damage+this.attacker.magicPower,this.defender.magicResistance)
+                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element)
@@ -552,10 +552,10 @@ export class PvEDuel extends DuelBuilder {
                     
                     let val = allskills.find(skill => skill.name === skills[j].name)
                     if(val.type == "physical"){
-                        skill_dmg = calculate.physicalDamage(val.damage+this.attacker.attackDamage,this.defender.armor)
+                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
                     }
                     else if(val.type == "magical"){
-                        skill_dmg = calculate.magicDamage(val.damage+this.attacker.magicPower,this.defender.magicResistance)
+                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element)

@@ -13,7 +13,7 @@ const sorceror_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Force Push`)
             defender.takeDamage
-                .magical(attacker.magicPower+15)
+                .magical(attacker.magicPower*15)
                 .run(damage => `${defender.name} lost ${damage} HP by a magic thrust`)
         }
     },{
@@ -28,7 +28,7 @@ const sorceror_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Arcane Shot`)
             defender.takeDamage
-                .magical(attacker.magicPower+25)
+                .magical(attacker.magicPower*25)
                 .run(damage => `${defender.name} lost ${damage} HP by being hit by a strong magical shot`)
         }
     },{
@@ -46,7 +46,7 @@ const sorceror_tree=[
                 `${attacker.name} used Spyr Missile Barrage`
             )
             defender.takeDamage
-            .magical(attacker.magicPower+40)
+            .magical(attacker.magicPower*40)
             .run(damage => `${defender.name} lost ${damage} HP by a barrage of magic missiles`)
         }
     },{
@@ -61,7 +61,7 @@ const sorceror_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Shadow Magenum`)
             defender.takeDamage
-                .magical(attacker.magicPower+65)
+                .magical(attacker.magicPower*65)
                 .run(damage => `${defender.name} lost ${damage} HP by a sudden magical attack`)
         }
     },{

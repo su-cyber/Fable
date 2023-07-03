@@ -42,14 +42,14 @@ export class fieldMould extends MonsterEntity {
                     name: 'Toxic Spores',
                     description: 'the mould releases toxic spores in the air',
                     canEvade: true,
-                    damage:0,
+                    damage:1,
                     type: 'physical',
                     element:"normal", 
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Toxic Spores`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage)
+                            .physical(attacker.attackDamage*1)
                             .run(damage => `${defender.name} lost ${damage} HP by beathing in some of the toxic spores.`)
                     }
                 },

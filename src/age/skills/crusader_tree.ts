@@ -13,7 +13,7 @@ const crusader_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Sprint Bash`)
             defender.takeDamage
-                .physical(attacker.attackDamage+15)
+                .physical(attacker.attackDamage*15)
                 .run(damage => `${defender.name} lost ${damage} HP by a powerful tackle`)
         }
     },{
@@ -28,7 +28,7 @@ const crusader_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Skullcrusher`)
             defender.takeDamage
-                .physical(attacker.attackDamage+25)
+                .physical(attacker.attackDamage*25)
                 .run(damage => `${defender.name} lost ${damage} HP by being smashed by a hammer strike`)
         }
     },{
@@ -46,7 +46,7 @@ const crusader_tree=[
                 `${attacker.name} used Axe of the North`
             )
             defender.takeDamage
-            .physical(attacker.attackDamage+40)
+            .physical(attacker.attackDamage*40)
             .run(damage => `${defender.name} lost ${damage} HP by gettig stuck an Axe attack`)
         }
     },{
@@ -61,7 +61,7 @@ const crusader_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Crushing Blow`)
             defender.takeDamage
-                .physical(attacker.attackDamage+65)
+                .physical(attacker.attackDamage*65)
                 .run(damage => `${defender.name} lost ${damage} HP by a powerful blow from a hammer`)
         }
     },{

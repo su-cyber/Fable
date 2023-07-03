@@ -13,7 +13,7 @@ const paladin_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Authority Thrust`)
             defender.takeDamage
-                .physical(attacker.attackDamage+15)
+                .physical(attacker.attackDamage*15)
                 .run(damage => `${defender.name} lost ${damage} HP by a spear thrust`)
         }
     },{
@@ -28,7 +28,7 @@ const paladin_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Rampaging Charge`)
             defender.takeDamage
-                .physical(attacker.attackDamage+25)
+                .physical(attacker.attackDamage*25)
                 .run(damage => `${defender.name} lost ${damage} HP by being hit by a strong charged tackle`)
         }
     },{
@@ -46,7 +46,7 @@ const paladin_tree=[
                 `${attacker.name} used Solar Cleave`
             )
             defender.takeDamage
-            .physical(attacker.attackDamage+40)
+            .physical(attacker.attackDamage*40)
             .run(damage => `${defender.name} lost ${damage} HP by a deadly lance attack`)
         }
     },{
@@ -61,7 +61,7 @@ const paladin_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Lion's Impale`)
             defender.takeDamage
-                .physical(attacker.attackDamage+65)
+                .physical(attacker.attackDamage*65)
                 .run(damage => `${defender.name} lost ${damage} HP by being impaled by spear`)
         }
     },{

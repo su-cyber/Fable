@@ -48,12 +48,12 @@ export class BeerBuccsDuo extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"normal", 
-                    damage:0,
+                    damage:1,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Knife stab`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage)
+                            .physical(attacker.attackDamage*1)
                             .run(damage => `${defender.name} lost ${damage} HP by Knife stab`)
                     }
                 },

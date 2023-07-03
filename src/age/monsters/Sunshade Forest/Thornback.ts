@@ -50,7 +50,7 @@ export class Thornback extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Spiked Charge`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage + 15)
+                            .physical(attacker.attackDamage*15)
                             .run(damage => `${defender.name} lost ${damage} HP by Spiked Charge`)
                     }
                 },

@@ -50,7 +50,7 @@ const terra_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Stone Fist`)
             defender.takeDamage
-                .physical((attacker.attackDamage+20)*mod)
+                .physical((attacker.attackDamage*20)*mod)
                 .run(damage => `${attacker.name} covers their arm with rocks and punches ${defender.name} causing ${damage} damage`)
         }
     },{
@@ -102,7 +102,7 @@ const terra_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Mud Shower`)
             defender.takeDamage
-                .magical((attacker.magicPower+20)*mod)
+                .magical((attacker.magicPower*20)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a torrent of mud`)
         }
     },{
@@ -154,7 +154,7 @@ const terra_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Tremor Kick`)
             defender.takeDamage
-                .physical((attacker.attackDamage+45)*mod)
+                .physical((attacker.attackDamage*45)*mod)
                 .run(damage => `${attacker.name} kicks the ground causing a tremor doing ${damage} damage`)
         }
     },{
@@ -206,7 +206,7 @@ const terra_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Scorching Sands`)
             defender.takeDamage
-                .magical((attacker.magicPower+45)*mod)
+                .magical((attacker.magicPower*45)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a scorching wave of sand`)
         }
     },
@@ -306,7 +306,7 @@ const terra_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Mudslide Tackle`)
             defender.takeDamage
-                .physical((attacker.attackDamage+65)*mod)
+                .physical((attacker.attackDamage*65)*mod)
                 .run(damage => `${defender.name} gets knocked down by a powerful tackle causing ${damage} damage`)
         }
     },{
@@ -358,7 +358,7 @@ const terra_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Gem Barrage`)
             defender.takeDamage
-                .magical((attacker.magicPower+65)*mod)
+                .magical((attacker.magicPower*65)*mod)
                 .run(damage => `${attacker.name} unleashes a barrage of sharp rock spikes at ${defender.name} causing ${damage} damage`)
         }
     },
