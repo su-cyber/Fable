@@ -67,7 +67,7 @@ class Bot extends Client {
                                                         .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour health has increased to ${foundUser.health}HP\n\nYou can now learn a new skill! use /learnskill`)
                                             
                                         }
-                                        if(i%10==0 && i<=50){
+                                        else if(i%10==0 && i<=50){
                                             foundUser.skill_tree.class_status+=1
                                             levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')

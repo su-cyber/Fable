@@ -116,9 +116,15 @@ export default new MyCommandSlashBuilder({ name: 'learnnewskill', description: '
                         let skillembed = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('Selected')
-                                .setDescription(`You have obtained the following skills:-\n\n${mappedskills}`)
-                            
+                                .setDescription(`You have obtained the following skills:-\n\n${mappedskills}\n\nthe skills have been added to your skill list, use /addskill to add them to your skill cycle`)
+                        
+                        interaction.reply({embeds:[skillembed]})
+                        foundUser.allskills.concat(acquiredSkills)
+                        profileModel.updateOne({userID:authorId},{skill_tree:foundUser.skill_tree,allskills:foundUser.allskills})
+
                         }
+
+                        
                         else{
                             interaction.reply({content:`you cannot learn any skill right now`,ephemeral:true})
                         }
