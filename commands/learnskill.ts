@@ -112,14 +112,20 @@ export default new MyCommandSlashBuilder({ name: 'learnnewskill', description: '
                         const mappedskills=acquiredSkills.map((skill) => {
                             return `Skill Name: ${skill.name}\nDescription: ${skill.description}`
                         }).join("\n\n")
-                        
+                        let skill
+                        for(let j=0;j<acquiredSkills.length;j++){
+                             skill = {
+                                name:acquiredSkills[j].name,
+                                description:acquiredSkills[j].description
+                               }
+                             foundUser.allskills.push(skill)
+                        }
                         let skillembed = new MessageEmbed()
                                 .setColor('RANDOM')
-                                .setTitle('Selected')
+                                .setTitle('SKILLS OBTAINED!')
                                 .setDescription(`You have obtained the following skills:-\n\n${mappedskills}\n\nthe skills have been added to your skill list, use /addskill to add them to your skill cycle`)
                         
                         interaction.reply({embeds:[skillembed]})
-                        foundUser.allskills.concat(acquiredSkills)
                         await profileModel.updateOne({userID:authorId},{skill_tree:foundUser.skill_tree,allskills:foundUser.allskills})
 
                         }
