@@ -120,7 +120,7 @@ export default new MyCommandSlashBuilder({ name: 'learnnewskill', description: '
                         
                         interaction.reply({embeds:[skillembed]})
                         foundUser.allskills.concat(acquiredSkills)
-                        profileModel.updateOne({userID:authorId},{skill_tree:foundUser.skill_tree,allskills:foundUser.allskills})
+                        await profileModel.updateOne({userID:authorId},{skill_tree:foundUser.skill_tree,allskills:foundUser.allskills})
 
                         }
 
