@@ -52,13 +52,7 @@ class Bot extends Client {
                                 
                                 for(let i =1;i<1000;i++){
                                     if(foundUser.xp>=xpFormulate(i) && foundUser.level<i){
-                                        let sp
-                                        if(i===2){
-                                            sp = 5
-                                        }
-                                        else{
-                                            sp = 3
-                                        }
+                                        let sp=5
                                         
                                         let levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')
@@ -67,6 +61,14 @@ class Bot extends Client {
                                             
                                         if(i%3==0){
                                             foundUser.skill_tree.status+=1
+                                            levelupEmbed= new MessageEmbed()
+                                                        .setColor('RANDOM')
+                                                        .setTitle('LEVEL UP!')
+                                                        .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour health has increased to ${foundUser.health}HP\n\nYou can now learn a new skill! use /learnskill`)
+                                            
+                                        }
+                                        if(i%10==0 && i<=50){
+                                            foundUser.skill_tree.class_status+=1
                                             levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')
                                                         .setTitle('LEVEL UP!')
@@ -85,13 +87,7 @@ class Bot extends Client {
                                         await sleep(2)
                                         await interaction.channel.send({embeds:[levelupEmbed]})
                                         foundUser.level=foundUser.level+1
-                                        
-                                        if(foundUser.level === 2){
-                                            foundUser.skill_points += 5
-                                        }
-                                        else{
-                                            foundUser.skill_points += 3
-                                        }
+                                        foundUser.skill_points += 5
                                         
                                         
                                    }

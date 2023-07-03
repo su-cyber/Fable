@@ -22,11 +22,12 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                     .setDescription(`invest stat points`)
                 
                     let btnraw= new MessageActionRow().addComponents([
-                        new MessageButton().setCustomId("attack_power").setStyle("PRIMARY").setLabel("attack power"),
-                        new MessageButton().setCustomId("magic_power").setStyle("PRIMARY").setLabel("magic power"),
-                        new MessageButton().setCustomId("vitality").setStyle("PRIMARY").setLabel("vitality"),
-                        new MessageButton().setCustomId("durability").setStyle("PRIMARY").setLabel("durability"),
-                        new MessageButton().setCustomId("speed").setStyle("PRIMARY").setLabel("speed"),
+                        new MessageButton().setCustomId("attack_power").setStyle("PRIMARY").setLabel("VIGOUR"),
+                        new MessageButton().setCustomId("magic_power").setStyle("PRIMARY").setLabel("ARCANA"),
+                        new MessageButton().setCustomId("vitality").setStyle("PRIMARY").setLabel("FAITH"),
+                        new MessageButton().setCustomId("durability").setStyle("PRIMARY").setLabel("ENDURANCE"),
+                        new MessageButton().setCustomId("speed").setStyle("PRIMARY").setLabel("AGILITY"),
+                        new MessageButton().setCustomId("magic_resistance").setStyle("PRIMARY").setLabel("INTELLIGENCE"),
                     ])
                 
                     let btn_cancel = new MessageActionRow().addComponents([
@@ -135,7 +136,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                         let successembed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('STAT INVEST')
-                                        .setDescription(`Your magic damage has been increased to ${foundUser.magicPower}\nYour mana has been increased to ${foundUser.mana}`)
+                                        .setDescription(`Your magic damage has been increased to ${foundUser.magicPower}`)
                                     await profileModel.updateOne({userID:authorId},{magicPower:foundUser.magicPower,skill_points:foundUser.skill_points,mana:foundUser.mana})
                                     await interaction.editReply({embeds:[successembed],components:[]})
                                     
@@ -214,14 +215,52 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                     }
                                     else{
                                         foundUser.armour += 5*Number(num)
-                                    foundUser.magicResistance += 5*Number(num)
                                     foundUser.skill_points -= Number(num)
                                 
                                     let successembed = new MessageEmbed()
                                     .setColor('RANDOM')
                                     .setTitle('STAT INVEST')
-                                    .setDescription(`Your armour has been increased to ${foundUser.armour}\nYour magic resistance has been increased to ${foundUser.magicResistance}`)
-                                await profileModel.updateOne({userID:authorId},{armour:foundUser.armour,skill_points:foundUser.skill_points,magicResistance:foundUser.magicResistance})
+                                    .setDescription(`Your Durability has been increased to ${foundUser.armour},You are now more resistant to physical attacks`)
+                                await profileModel.updateOne({userID:authorId},{armour:foundUser.armour,skill_points:foundUser.skill_points})
+                                await interaction.editReply({embeds:[successembed],components:[]})
+                                
+                                collector_select.stop()
+                                collector_btn.stop()
+                                collector_cancel.stop()
+                                    }
+                                    
+                                })
+                                collector_cancel.on('collect', async j => {
+                                    j.deferUpdate().catch(() => null)
+                
+                                    let delembed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('STAT INVEST')
+                                    .setDescription(`stat investment cancelled!`)
+                                    
+                                    await interaction.editReply({embeds:[delembed],components:[]})
+                                    collector_select.stop()
+                                    collector_btn.stop()
+                                    collector_cancel.stop()
+                                })
+                            } 
+                            else if(i.customId === 'magic_resistance'){
+                                await interaction.editReply({content: null,embeds:[embed],components:[select,btn_cancel]})
+                                collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                                    collected.deferUpdate().catch(() => null)
+                                    const num = collected.values[0]
+                                    if(num>foundUser.skill_points){
+                                        interaction.editReply(`not enough skill points to invest!`)
+                                    }
+                                    else{
+                                        foundUser.armour += 5*Number(num)
+                                    foundUser.skill_points -= Number(num)
+                                
+                                    let successembed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('STAT INVEST')
+                                    .setDescription(`Your Intelligence has been increased to ${foundUser.magicResistance},You are now more resistant to magical attacks`)
+                                await profileModel.updateOne({userID:authorId},{magicResistance:foundUser.magicResistance,skill_points:foundUser.skill_points})
                                 await interaction.editReply({embeds:[successembed],components:[]})
                                 
                                 collector_select.stop()
@@ -262,7 +301,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                         let successembed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('STAT INVEST')
-                                        .setDescription(`Your speed has been increased!\nyou now have ${foundUser.evasion*100}% chance of evading an attack`)
+                                        .setDescription(`Your agility has been increased to ${foundUser.speed}!\nyou now have more chance of evading an attack`)
                                     await profileModel.updateOne({userID:authorId},{evasion:foundUser.evasion,skill_points:foundUser.skill_points,speed:foundUser.speed})
                                     await interaction.editReply({embeds:[successembed],components:[]})
                                     

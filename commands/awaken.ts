@@ -217,9 +217,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         class:'',
                                         elements:[],
                                         skill_tree:{
-                                            physical:0,
-                                            magical:1,
+                                            elemental:0,
                                             class:1,
+                                            class_status:0,
                                             status:0
                                         },
                                         vitality:1,

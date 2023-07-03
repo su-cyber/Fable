@@ -39,7 +39,7 @@ export default new MyCommandSlashBuilder({ name: 'learnnewskill', description: '
             else{
                 if(res){
                     profileModel.findOne({userID:authorId},async function(err,foundUser){
-                        if(foundUser.skill_tree.status){
+                        if(foundUser.skill_tree.status || foundUser.skill_tree.class_status){
                             let class_tree
                             if(foundUser.class == "Samurai"){
                                 class_tree = samurai_tree
@@ -90,343 +90,33 @@ export default new MyCommandSlashBuilder({ name: 'learnnewskill', description: '
                                 else if(foundUser.elements[0] == "Wave"){
                                     element_tree = wave_tree
                                 }
-                    //We initialise the options to something that can never happen i.e class_tree[0] will never come and add options one by one
-                    //if we check that condition we can seperate the options
-                                let option1 = class_tree[0]
-                                let option2 = class_tree[0]
-                                let option3 = class_tree[0]
-                                if(foundUser.skill_tree.class != 5){
-                                    option1 = class_tree[foundUser.skill_tree.class]
-                                }
-                                if(foundUser.skill_tree.physical != 8){
-                                    option2 = element_tree[foundUser.skill_tree.physical]
-                                }
-                                if(foundUser.skill_tree.magical != 9){
-                                    option3 = element_tree[foundUser.skill_tree.magical]
-                                }
-                                
-                                let skillEmbed = new MessageEmbed()
-                                    .setColor('RANDOM')
-                                    .setTitle('LEARN SKILL')
-                                    .setDescription(`Select a skill to learn:\n\nSkill 1: **${option1.name}**\nDescription:${option1.description}\n\nSkill 2: **${option2.name}**\nDescription:${option2.description}\n\nSkill 3: **${option3.name}**\nDescription:${option3.description}`)
-                                    let acceptembed = new MessageEmbed()
-                                    .setColor('RANDOM')
-                                    .setTitle('SELECT LOCATION')
-                                    .setDescription(``)
-                                    let btn_cancel = new MessageActionRow().addComponents([
-                                        new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
-                                    
-                                    let select =  new MessageActionRow().addComponents([
-                                            new MessageSelectMenu()
-                                            .setCustomId('select')
-                                                .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
-                                                .addOptions({
-                                                    
-                                                    label: option1.name,
-                                                    description: "",
-                                                    value: option1.name,
-                                                },{
-                                                    label: option2.name,
-                                                    description:  "",
-                                                    value: option2.name,
-                                                },{
-                                                    label: option3.name,
-                                                    description:  "",
-                                                    value: option3.name,
-                                                }
-                                                )
-                                                .setDisabled(false),
-                                        ])
-                                        if(option1 == class_tree[0] && option2 == class_tree[0] && option3 == class_tree[0]){
-                                            let maxembed = new MessageEmbed()
-                                            .setColor('RANDOM')
-                                            .setTitle('SKILL TREE - MAX')
-                                            .setDescription(`You Skill Tree is maxed out! you cannot learn a new skill`)
+                        
+                        
+                        let acquiredSkills = []
+                        if(foundUser.skill_tree.status){
+                            for(let i=0;i<foundUser.skill_tree.status;i++){
+                                acquiredSkills.push(element_tree[foundUser.skill_tree.elemental])
+                                foundUser.skill_tree.elemental+=1
+                            }
+                            foundUser.skill_tree.status=0
+                        }
+                       
+                        if(foundUser.skill_tree.class_status){
+                            for(let i=0;i<foundUser.skill_tree.class_status;i++){
+                                acquiredSkills.push(class_tree[foundUser.skill_tree.class])
+                                foundUser.skill_tree.class+=1
+                            }
+                            foundUser.skill_tree.class_status=0
+                        }
 
-                                        await interaction.reply({embeds:[maxembed]})
-                                        }
-                                        else{
-                                            if(option1 == class_tree[0]){
-                                                if(option2 == class_tree[0]){
-                                                    skillEmbed = new MessageEmbed()
-                                                    .setColor('RANDOM')
-                                                    .setTitle('LEARN SKILL')
-                                                    .setDescription(`Select a skill to learn:\n\nSkill 1: MAX\n\nSkill 2: MAX\n\nSkill 3: **${option3.name}**\nDescription:${option3.description}`)
-                                  
-                                                    select =  new MessageActionRow().addComponents([
-                                                        new MessageSelectMenu()
-                                                        .setCustomId('select')
-                                                            .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
-                                                            .addOptions({
-                                                                label: option3.name,
-                                                                description: option3.description,
-                                                                value: option3.name,
-                                                            }
-                                                            )
-                                                            .setDisabled(false),
-                                                    ])
-                                                }
-                                                else if(option3 == class_tree[0]){
-                                                    skillEmbed = new MessageEmbed()
-                                                        .setColor('RANDOM')
-                                                        .setTitle('LEARN SKILL')
-                                                        .setDescription(`Select a skill to learn:\n\nSkill 1: MAX\n\nSkill 2: **${option2.name}**\nDescription:${option2.description}\n\nSkill 3: MAX`)
-                                                    
-                                                    select =  new MessageActionRow().addComponents([
-                                                        new MessageSelectMenu()
-                                                        .setCustomId('select')
-                                                            .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
-                                                            .addOptions({
-                                                                label: option2.name,
-                                                                description: option2.description,
-                                                                value: option2.name,
-                                                            }
-                                                            )
-                                                            .setDisabled(false),
-                                                    ])
-                                                }
-                                                else{
-                                                    skillEmbed = new MessageEmbed()
-                                                        .setColor('RANDOM')
-                                                        .setTitle('LEARN SKILL')
-                                                        .setDescription(`Select a skill to learn:\n\nSkill 1: MAX\n\nSkill 2: **${option2.name}**\nDescription:${option2.description}\n\nSkill 3: **${option3.name}**\nDescription:${option3.description}`)
-                                                    
-                                                    select =  new MessageActionRow().addComponents([
-                                                        new MessageSelectMenu()
-                                                        .setCustomId('select')
-                                                            .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
-                                                            .addOptions({
-                                                                label: option2.name,
-                                                                description:  "",
-                                                                value: option2.name,
-                                                            },{
-                                                                label: option3.name,
-                                                                description:  "",
-                                                                value: option3.name,
-                                                            }
-                                                            )
-                                                            .setDisabled(false),
-                                                    ])
-                                                }
-                                            }
-                                            else if(option2 == class_tree[0]){
-                                                if(option3 == class_tree[0]){
-                                                    skillEmbed = new MessageEmbed()
-                                                        .setColor('RANDOM')
-                                                        .setTitle('LEARN SKILL')
-                                                        .setDescription(`Select a skill to learn:\n\nSkill 1: **${option1.name}**\nDescription:${option1.description}\n\nSkill 2: MAX\n\nSkill 3: MAX`)
-                                                    
-                                                    select =  new MessageActionRow().addComponents([
-                                                        new MessageSelectMenu()
-                                                        .setCustomId('select')
-                                                            .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
-                                                            .addOptions({
-                                                                label: option1.name,
-                                                                description:  "",
-                                                                value: option1.name,
-                                                            }
-                                                            )
-                                                            .setDisabled(false),
-                                                    ])
-                                                }
-                                                else if(option1 == class_tree[0]){
-                                                    skillEmbed = new MessageEmbed()
-                                                        .setColor('RANDOM')
-                                                        .setTitle('LEARN SKILL')
-                                                        .setDescription(`Select a skill to learn:\n\nSkill 1:MAX\n\nSkill 2: MAX\n\nSkill 3: **${option3.name}**\nDescription:${option3.description}`)
-                                                    
-                                                    select =  new MessageActionRow().addComponents([
-                                                        new MessageSelectMenu()
-                                                        .setCustomId('select')
-                                                            .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
-                                                            .addOptions({
-                                                                label: option3.name,
-                                                                description:  "",
-                                                                value: option3.name,
-                                                            }
-                                                            )
-                                                            .setDisabled(false),
-                                                    ])
-                                                }
-                                                else{
-                                                     skillEmbed = new MessageEmbed()
-                                                        .setColor('RANDOM')
-                                                        .setTitle('LEARN SKILL')
-                                                        .setDescription(`Select a skill to learn:\n\nSkill 1: **${option1.name}**\nDescription:${option1.description}\n\nSkill 2: MAX\n\nSkill 3: **${option3.name}**\nDescription:${option3.description}`)
-                                                    
-                                                    select =  new MessageActionRow().addComponents([
-                                                        new MessageSelectMenu()
-                                                        .setCustomId('select')
-                                                            .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
-                                                            .addOptions({
-                                                                label: option1.name,
-                                                                description:  "",
-                                                                value: option1.name,
-                                                            },{
-                                                                label: option3.name,
-                                                                description:  "",
-                                                                value: option3.name,
-                                                            }
-                                                            )
-                                                            .setDisabled(false),
-                                                    ])
-                                                }
-                                            }
-                                            else if(option3 == class_tree[0]){
-                                                if(option1 == class_tree[0]){
-                                                    skillEmbed = new MessageEmbed()
-                                                        .setColor('RANDOM')
-                                                        .setTitle('LEARN SKILL')
-                                                        .setDescription(`Select a skill to learn:\n\nSkill 1: MAX\n\nSkill 2: **${option2.name}**\nDescription:${option2.description}\n\nSkill 3: MAX`)
-                                                    
-                                                    select =  new MessageActionRow().addComponents([
-                                                        new MessageSelectMenu()
-                                                        .setCustomId('select')
-                                                            .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
-                                                            .addOptions({
-                                                                label: option2.name,
-                                                                description:  "",
-                                                                value: option2.name,
-                                                            }
-                                                            )
-                                                            .setDisabled(false),
-                                                    ])
-                                                }
-                                                else if(option2 == class_tree[0]){
-                                                    skillEmbed = new MessageEmbed()
-                                                    .setColor('RANDOM')
-                                                    .setTitle('LEARN SKILL')
-                                                    .setDescription(`Select a skill to learn:\n\nSkill 1: **${option1.name}**\nDescription:${option1.description}\n\nSkill 2: MAX\n\nSkill 3: MAX`)
-                                                
-                                                select =  new MessageActionRow().addComponents([
-                                                    new MessageSelectMenu()
-                                                    .setCustomId('select')
-                                                        .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
-                                                        .addOptions({
-                                                            label: option1.name,
-                                                            description:  "",
-                                                            value: option1.name,
-                                                        }
-                                                        )
-                                                        .setDisabled(false),
-                                                ])
-                                                }
-                                                else{
-                                                     skillEmbed = new MessageEmbed()
-                                                        .setColor('RANDOM')
-                                                        .setTitle('LEARN SKILL')
-                                                        .setDescription(`Select a skill to learn:\n\nSkill 1: **${option1.name}**\nDescription:${option1.description}\n\nSkill 2: **${option2.name}**\nDescription:${option2.description}\n\nSkill 3: MAX`)
-                                                    
-                                                    select =  new MessageActionRow().addComponents([
-                                                        new MessageSelectMenu()
-                                                        .setCustomId('select')
-                                                            .setPlaceholder(`Select a skill to learn ${interaction.user.username}`)
-                                                            .addOptions({
-                                                                label: option1.name,
-                                                                description:  "",
-                                                                value: option1.name,
-                                                            },{
-                                                                label: option2.name,
-                                                                description:  "",
-                                                                value: option2.name,
-                                                            }
-                                                            )
-                                                            .setDisabled(false),
-                                                    ])
-                                                }
-                                            }
-                                            await interaction.reply({content: null,embeds:[skillEmbed],components:[select,btn_cancel]})
-                                        }
-                                        
-
-                                        let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
-                                        let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
-                                        let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
-                                        let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
-                                    
-                                        
-                                    
-                                    
-                                        
-                                        collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
-                                            collected.deferUpdate().catch(() => null)
-                                            const choice = collected.values[0]
-                                            
-                                            if(choice == option1.name){
-                                                const newskill = {
-                                                    name:option1.name,
-                                                    description:option1.description
-                                                }
-                                                if(foundUser.currentskills.length<4){
-                                                    foundUser.currentskills.push(newskill)
-                                                    foundUser.allskills.push(newskill)
-                                                }
-                                                else{
-                                                    foundUser.allskills.push(newskill)
-                                                }
-                                                foundUser.skill_tree.class+=1
-                                                
-                                                acceptembed = new MessageEmbed()
-                                            .setColor('RANDOM')
-                                            .setTitle('SKILL CHOSEN')
-                                            .setDescription(`you chose ${option1.name}`)
-
-                                            }
-                                            else if(choice == option2.name){
-                                                const newskill = {
-                                                    name:option2.name,
-                                                    description:option2.description
-                                                }
-                                                if(foundUser.currentskills.length<4){
-                                                    foundUser.currentskills.push(newskill)
-                                                    foundUser.allskills.push(newskill)
-                                                }
-                                                else{
-                                                    foundUser.allskills.push(newskill)
-                                                }
-                                                foundUser.skill_tree.physical+=2
-                                                acceptembed = new MessageEmbed()
-                                                .setColor('RANDOM')
-                                                .setTitle('SKILL CHOSEN')
-                                                .setDescription(`you chose ${option2.name}`)
-                                               
-                                            }
-                                            else if(choice == option3.name){
-                                                const newskill = {
-                                                    name:option3.name,
-                                                    description:option3.description
-                                                }
-                                                if(foundUser.currentskills.length<4){
-                                                    foundUser.currentskills.push(newskill)
-                                                    foundUser.allskills.push(newskill)
-                                                }
-                                                else{
-                                                    foundUser.allskills.push(newskill)
-                                                }
-                                                foundUser.skill_tree.magical+=2
-                                                acceptembed = new MessageEmbed()
-                                                .setColor('RANDOM')
-                                                .setTitle('SKILL CHOSEN')
-                                                .setDescription(`you chose ${option3.name}`)
-                                               
-                                            }
-                                            foundUser.skill_tree.status-=1
-                                            await profileModel.updateOne({userID:authorId},{currentskills:foundUser.currentskills,allskills:foundUser.allskills,skill_tree:foundUser.skill_tree})
-                                            await interaction.editReply({embeds:[acceptembed],components:[]})
-                                            collector_select.stop()
-                                        })
-
-                                        collector_cancel.on('collect', async j => {
-                                            j.deferUpdate().catch(() => null)
-                                    
-                                            let delembed = new MessageEmbed()
-                                            .setColor('RANDOM')
-                                            .setTitle('CANCELLED')
-                                            .setDescription(`learn skill cancelled!`)
-                                            
-                                            await interaction.editReply({embeds:[delembed],components:[]})
-                                            collector_cancel.stop()
-                                        })
+                        const mappedskills=acquiredSkills.map((skill) => {
+                            return `Skill Name: ${skill.name}\nDescription: ${skill.description}`
+                        }).join("\n\n")
+                        
+                        let skillembed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle('Selected')
+                                .setDescription(`You have obtained the following skills:-\n\n${mappedskills}`)
                             
                         }
                         else{
