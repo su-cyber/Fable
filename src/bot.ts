@@ -18,6 +18,7 @@ import { getCommandsFromFolder } from './lib/utils/getCommandsFromFolder'
 import { SlashCommandBuilder } from '@discordjs/builders'
 import mongoose from "mongoose"
 import { sleep } from './utils'
+import getHealth from './utils/getHealth'
 
 type InteractionFn = (interaction: MessageComponentInteraction & { values: string[] }) => Promise<void>
 
@@ -52,19 +53,19 @@ class Bot extends Client {
                                 
                                 for(let i =1;i<1000;i++){
                                     if(foundUser.xp>=xpFormulate(i) && foundUser.level<i){
-                                        let sp=5
-                                        
+                                        let sp=3
+                                        foundUser.vitality+=5
                                         let levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')
                                                         .setTitle('LEVEL UP!')
-                                                        .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour health has increased to ${foundUser.health}HP`)
+                                                        .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP`)
                                             
                                         if(i%3==0){
                                             foundUser.skill_tree.status+=1
                                             levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')
                                                         .setTitle('LEVEL UP!')
-                                                        .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour health has increased to ${foundUser.health}HP\n\nYou can now learn a new skill! use /learnskill`)
+                                                        .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP\n\nYou can now learn a new skill! use /learnskill`)
                                             
                                         }
                                         else if(i%10==0 && i<=50){
@@ -72,14 +73,14 @@ class Bot extends Client {
                                             levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')
                                                         .setTitle('LEVEL UP!')
-                                                        .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour health has increased to ${foundUser.health}HP\n\nYou can now learn a new skill! use /learnskill`)
+                                                        .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP\n\nYou can now learn a new skill! use /learnskill`)
                                             
                                         }
                                         else{
                                             levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')
                                                         .setTitle('LEVEL UP!')
-                                                        .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour health has increased to ${foundUser.health}HP`)
+                                                        .setDescription(`you have levelled up to level ${i}!\nyou recieved ${sp} skill points!\nyour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP`)
                                             foundUser.mana+=1
                                         
                                         }
@@ -87,7 +88,7 @@ class Bot extends Client {
                                         await sleep(2)
                                         await interaction.channel.send({embeds:[levelupEmbed]})
                                         foundUser.level=foundUser.level+1
-                                        foundUser.skill_points += 5
+                                        foundUser.skill_points += 3
                                         
                                         
                                    }

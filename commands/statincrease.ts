@@ -24,7 +24,6 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                     let btnraw= new MessageActionRow().addComponents([
                         new MessageButton().setCustomId("attack_power").setStyle("PRIMARY").setLabel("VIGOUR"),
                         new MessageButton().setCustomId("magic_power").setStyle("PRIMARY").setLabel("ARCANA"),
-                        new MessageButton().setCustomId("vitality").setStyle("PRIMARY").setLabel("FAITH"),
                         new MessageButton().setCustomId("durability").setStyle("PRIMARY").setLabel("ENDURANCE"),
                         new MessageButton().setCustomId("speed").setStyle("PRIMARY").setLabel("AGILITY"),
                         new MessageButton().setCustomId("magic_resistance").setStyle("PRIMARY").setLabel("INTELLIGENCE"),
@@ -162,48 +161,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                     
                                 })
                             } 
-                
-                            else if(i.customId === 'vitality'){
-                                await interaction.editReply({content: null,embeds:[embed],components:[select,btn_cancel]})
-                                collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
-                                    collected.deferUpdate().catch(() => null)
-                                    const num = collected.values[0]
-                                    if(num>foundUser.skill_points){
-                                        interaction.editReply(`not enough skill points to invest!`)
-                                    }
-                                    else{
-                                        foundUser.vitality += Number(num)
-                                        foundUser.health = getHealth(foundUser.level,foundUser.vitality)
-                                        foundUser.skill_points -= Number(num)
-                                    
-                                        let successembed = new MessageEmbed()
-                                        .setColor('RANDOM')
-                                        .setTitle('STAT INVEST')
-                                        .setDescription(`Your health has been increased to ${foundUser.health}`)
-                                    await profileModel.updateOne({userID:authorId},{vitality:foundUser.vitality,skill_points:foundUser.skill_points,health:foundUser.health})
-                                    await interaction.editReply({embeds:[successembed],components:[]})
-                                    
-                                    collector_select.stop()
-                                    collector_btn.stop()
-                                    collector_cancel.stop()
-                                    }
-                                    
-                                    
-                                })
-                                collector_cancel.on('collect', async j => {
-                                    j.deferUpdate().catch(() => null)
-                
-                                    let delembed = new MessageEmbed()
-                                    .setColor('RANDOM')
-                                    .setTitle('STAT INVEST')
-                                    .setDescription(`stat investment cancelled!`)
-                                    
-                                    await interaction.editReply({embeds:[delembed],components:[]})
-                                    collector_select.stop()
-                                    collector_btn.stop()
-                                    collector_cancel.stop()
-                                })
-                            } 
+             
                 
                             else if(i.customId === 'durability'){
                                 await interaction.editReply({content: null,embeds:[embed],components:[select,btn_cancel]})
