@@ -94,7 +94,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                     if(btn.isButton()){
                                         if(btn.customId === "btn_accept"){
                                             await btn.deferUpdate().catch(e => {})
-                                            await interaction.editReply({embeds:[acceptEmbed]})
+                                            await interaction.editReply({embeds:[acceptEmbed],files:[]})
                                             const encounter = {
                                                 name: 'BeerBuccsDuo',
                                                 time : new Date(),
@@ -492,6 +492,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 if(btn.isButton()){
                                     if(btn.customId === "btn_accept"){
                                         await btn.deferUpdate().catch(e => {})
+                                        await interaction.editReply({files:[]})
                                         
                                         const attacker = Warrior.create(author)
                                         const monster = starHound.create()
@@ -597,7 +598,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             if(btn.isButton()){
                                 if(btn.customId === "btn_accept"){
                                     await btn.deferUpdate().catch(e => {})
-                                    
+                                    await interaction.editReply({files:[]})
                                     const attacker = Warrior.create(author)
                                     const monster = Dave.create()
                                     attacker.health=foundUser.health

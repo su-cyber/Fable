@@ -133,7 +133,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 if(btn.isButton()){
                                     if(btn.customId === "btn_accept"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[acceptEmbed]})
+                                        await interaction.editReply({embeds:[acceptEmbed],files:[]})
                                         const encounter = {
                                             name: monster.name,
                                             time : Date.now(),
@@ -275,7 +275,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 if(btn.isButton()){
                                     if(btn.customId === "btn_accept"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[acceptEmbed]})
+                                        await interaction.editReply({embeds:[acceptEmbed],files:[]})
                                         const encounter = {
                                             name: monster.name,
                                             time : Date.now(),
@@ -414,7 +414,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 if(btn.isButton()){
                                     if(btn.customId === "btn_accept"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[acceptEmbed]})
+                                        await interaction.editReply({embeds:[acceptEmbed],files:[]})
                                         const encounter = {
                                             name: monster.name,
                                             time : Date.now(),
@@ -813,7 +813,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 if(btn.isButton()){
                                     if(btn.customId === "btn_accept"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[acceptEmbed]})
+                                        await interaction.editReply({embeds:[acceptEmbed],files:[]})
                                         const encounter = {
                                             name: monster.name,
                                             time : Date.now(),

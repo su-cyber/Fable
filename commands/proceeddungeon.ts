@@ -82,7 +82,9 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                             const monster = BeerBuccaneer2.create()
                             const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                             await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
+                            
                             await sleep(1.5)
+                            await interaction.editReply({files:[]})
                                     attacker.health=foundUser.health
                                     attacker.mana=foundUser.mana
                                     attacker.armor=foundUser.armour
@@ -124,6 +126,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                 await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                 await sleep(1.5)
+                                await interaction.editReply({files:[]})
                                 attacker.health=foundUser.health
                                         attacker.mana=foundUser.mana
                                         attacker.armor=foundUser.armour
@@ -250,6 +253,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                             const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                             await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                             await sleep(1.5)
+                            await interaction.editReply({files:[]})
                             attacker.health=foundUser.health
                                     attacker.mana=foundUser.mana
                                     attacker.armor=foundUser.armour
@@ -291,6 +295,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                 await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                 await sleep(1.5)
+                                await interaction.editReply({files:[]})
                                 attacker.health=foundUser.health
                                         attacker.mana=foundUser.mana
                                         attacker.armor=foundUser.armour
@@ -400,6 +405,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                 await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                 await sleep(1.5)
+                                await interaction.editReply({files:[]})
                                 attacker.health=foundUser.health
                                         attacker.mana=foundUser.mana
                                         attacker.armor=foundUser.armour
@@ -525,6 +531,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                 await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                 await sleep(1.5)
+                                await interaction.editReply({files:[]})
                                 attacker.health=foundUser.health
                                         attacker.mana=foundUser.mana
                                         attacker.armor=foundUser.armour
@@ -630,6 +637,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                 await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                 await sleep(1.5)
+                                await interaction.editReply({files:[]})
                                 attacker.health=foundUser.health
                                         attacker.mana=foundUser.mana
                                         attacker.armor=foundUser.armour
