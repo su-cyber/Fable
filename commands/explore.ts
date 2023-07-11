@@ -107,10 +107,11 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Run").setDisabled(true),
                                 ])
     
-                                
+                            const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                             let fightEmbed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('ENCOUNTER')
+                            .setImage('attachment://' + monster.fileName)
                             .setDescription(`🔎 you found a ${monster.name}!\n\nDescription:${monster.description}`)
         
                             let acceptEmbed = new MessageEmbed()
@@ -124,7 +125,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setDescription('You ran away!')
                             
                         
-                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[]})
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
                         let filter = i => i.user.id === authorId
                             let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                     
@@ -248,10 +249,12 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 ])
     
                                 
-                            let fightEmbed = new MessageEmbed()
-                            .setColor('RANDOM')
-                            .setTitle('ENCOUNTER')
-                            .setDescription(`🔎 you found a ${monster.name}!\nDescription:${monster.description}`)
+                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                let fightEmbed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle('ENCOUNTER')
+                                .setImage('attachment://' + monster.fileName)
+                                .setDescription(`🔎 you found a ${monster.name}!\n\nDescription:${monster.description}`)
         
                             let acceptEmbed = new MessageEmbed()
                             .setColor('GREEN')
@@ -264,7 +267,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setDescription('You ran away!')
                             
                         
-                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[]})
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
                         let filter = i => i.user.id === authorId
                             let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                     
@@ -385,10 +388,12 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 ])
     
                                 
-                            let fightEmbed = new MessageEmbed()
-                            .setColor('RANDOM')
-                            .setTitle('ENCOUNTER')
-                            .setDescription(`🔎 you found a ${monster.name}!\nDescription:${monster.description}`)
+                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                let fightEmbed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle('ENCOUNTER')
+                                .setImage('attachment://' + monster.fileName)
+                                .setDescription(`🔎 you found a ${monster.name}!\n\nDescription:${monster.description}`)
         
                             let acceptEmbed = new MessageEmbed()
                             .setColor('GREEN')
@@ -401,7 +406,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setDescription('You ran away!')
                             
                         
-                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[]})
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
                         let filter = i => i.user.id === authorId
                             let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                     
@@ -782,10 +787,12 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 ])
     
                                 
-                            let fightEmbed = new MessageEmbed()
-                            .setColor('RANDOM')
-                            .setTitle('ENCOUNTER')
-                            .setDescription(`🔎 you found a ${monster.name}!\nDescription:${monster.description}`)
+                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                let fightEmbed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle('ENCOUNTER')
+                                .setImage('attachment://' + monster.fileName)
+                                .setDescription(`🔎 you found a ${monster.name}!\n\nDescription:${monster.description}`)
         
                             let acceptEmbed = new MessageEmbed()
                             .setColor('GREEN')
@@ -798,7 +805,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setDescription('You ran away!')
                             
                         
-                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[]})
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
                         let filter = i => i.user.id === authorId
                             let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                     

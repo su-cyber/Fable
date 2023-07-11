@@ -1,7 +1,7 @@
 
 import flame_tree from './flame_tree'
 import light_tree from './light_tree'
-import samurai_tree from './samurai_tree'
+import gladius_tree from './gladius_tree'
 import volt_tree from './volt_tree'
 import wave_tree from './wave_tree'
 import frost_tree from './frost_tree'
@@ -10,11 +10,10 @@ import alloy_tree from './alloy_tree'
 import bloom_tree from './bloom_tree'
 import terra_tree from './terra_tree'
 import venom_tree from './venom_tree'
-import assassin_tree from './assassin_tree'
-import paladin_tree from './paladin_tree'
-import sorceror_tree from './sorceror_tree'
-import crusader_tree from './crusader_tree'
-import wanderer_tree from './wanderer_tree'
+import noir_tree from './noir'
+import magus_tree from './magus_tree'
+import buushin_tree from './buushin_tree'
+import dragoon_tree from './dragoon_tree'
 
 const otherskills = [{
     cooldown: 0,
@@ -69,6 +68,6 @@ mod  = 1
             .run(damage => `**${defender.name}** lost ${damage} HP by a fast water imbued slash`)
     }
 },]
-const skills = flame_tree.concat(light_tree,samurai_tree,volt_tree,wave_tree,frost_tree,gale_tree,alloy_tree,bloom_tree,terra_tree,venom_tree,assassin_tree,wanderer_tree,sorceror_tree,paladin_tree,crusader_tree,otherskills)
+const skills = flame_tree.concat(light_tree,gladius_tree,volt_tree,wave_tree,frost_tree,gale_tree,alloy_tree,bloom_tree,terra_tree,venom_tree,noir_tree,dragoon_tree,magus_tree,buushin_tree,otherskills)
 
 export default skills

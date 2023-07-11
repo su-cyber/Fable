@@ -11,6 +11,7 @@ import { BeerBuccaneer1 } from '../src/age/monsters/Castellan Fields/BeerBuccane
 import { crookcutlass } from '../src/age/weapons/crook\'scutlass'
 import getHealth from '../src/utils/getHealth'
 import { captainCrook } from '../src/age/Dungeon-Boss/captainCrook'
+import { MessageAttachment } from 'discord.js'
 
 
 export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 'Move in the Dungeon' })
@@ -79,13 +80,15 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                             
                             const attacker = Warrior.create(author)
                             const monster = BeerBuccaneer2.create()
-                            await interaction.reply(`You encountered a ${monster.name}!`)
+                            const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                            await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                             await sleep(1.5)
                                     attacker.health=foundUser.health
                                     attacker.mana=foundUser.mana
                                     attacker.armor=foundUser.armour
                                     attacker.magicPower=foundUser.magicPower
                                     attacker.attackDamage=foundUser.attackDamage
+                                    attacker.magicResistance = foundUser.magicResistance
                                     attacker.evasion=foundUser.evasion
                                     attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
                                     attacker.element = foundUser.elements[0]
@@ -118,12 +121,14 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                             if(pick == "En1"){
                                 const attacker = Warrior.create(author)
                                 const monster = BeerBuccaneer1.create()
-                                await interaction.reply(`You encountered a ${monster.name}!`)
+                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                 await sleep(1.5)
                                 attacker.health=foundUser.health
                                         attacker.mana=foundUser.mana
                                         attacker.armor=foundUser.armour
                                         attacker.magicPower=foundUser.magicPower
+                                        attacker.magicResistance = foundUser.magicResistance
                                         attacker.attackDamage=foundUser.attackDamage
                                         attacker.evasion=foundUser.evasion
                                         attacker.element = foundUser.elements[0]
@@ -242,12 +247,14 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                             
                             const attacker = Warrior.create(author)
                             const monster = BeerBuccaneer2.create()
-                            await interaction.reply(`You encountered a ${monster.name}!`)
+                            const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                            await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                             await sleep(1.5)
                             attacker.health=foundUser.health
                                     attacker.mana=foundUser.mana
                                     attacker.armor=foundUser.armour
                                     attacker.magicPower=foundUser.magicPower
+                                    attacker.magicResistance = foundUser.magicResistance
                                     attacker.attackDamage=foundUser.attackDamage
                                     attacker.evasion=foundUser.evasion
                                     attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
@@ -281,12 +288,14 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                             if(pick == "En1"){
                                 const attacker = Warrior.create(author)
                                 const monster = BeerBuccaneer1.create()
-                                await interaction.reply(`You encountered a ${monster.name}!`)
+                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                 await sleep(1.5)
                                 attacker.health=foundUser.health
                                         attacker.mana=foundUser.mana
                                         attacker.armor=foundUser.armour
                                         attacker.magicPower=foundUser.magicPower
+                                        attacker.magicResistance = foundUser.magicResistance
                                         attacker.attackDamage=foundUser.attackDamage
                                         attacker.evasion=foundUser.evasion
                                         attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
@@ -388,13 +397,15 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                             if(pick == "En1"){
                                 const attacker = Warrior.create(author)
                                 const monster = BeerBuccaneer1.create()
-                                await interaction.reply(`You encountered a ${monster.name}!`)
+                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                 await sleep(1.5)
                                 attacker.health=foundUser.health
                                         attacker.mana=foundUser.mana
                                         attacker.armor=foundUser.armour
                                         attacker.magicPower=foundUser.magicPower
                                         attacker.attackDamage=foundUser.attackDamage
+                                        attacker.magicResistance = foundUser.magicResistance
                                         attacker.evasion=foundUser.evasion
                                         attacker.element = foundUser.elements[0]
                                         attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
@@ -511,12 +522,14 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                             if(pick == "En1"){
                                 const attacker = Warrior.create(author)
                                 const monster = BeerBuccaneer1.create()
-                                await interaction.reply(`You encountered a ${monster.name}!`)
+                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                 await sleep(1.5)
                                 attacker.health=foundUser.health
                                         attacker.mana=foundUser.mana
                                         attacker.armor=foundUser.armour
                                         attacker.magicPower=foundUser.magicPower
+                                        attacker.magicResistance = foundUser.magicResistance
                                         attacker.attackDamage=foundUser.attackDamage
                                         attacker.evasion=foundUser.evasion
                                         attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
@@ -614,13 +627,15 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                         else if(dungeon.step == 10){
                             const attacker = Warrior.create(author)
                                 const monster = captainCrook.create()
-                                await interaction.reply(`You encountered ${monster.name}!`)
+                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                 await sleep(1.5)
                                 attacker.health=foundUser.health
                                         attacker.mana=foundUser.mana
                                         attacker.armor=foundUser.armour
                                         attacker.magicPower=foundUser.magicPower
                                         attacker.attackDamage=foundUser.attackDamage
+                                        attacker.magicResistance = foundUser.magicResistance
                                         attacker.evasion=foundUser.evasion
                                         attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
                                         attacker.element = foundUser.elements[0]

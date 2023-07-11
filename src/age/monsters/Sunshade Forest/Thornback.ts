@@ -30,6 +30,7 @@ export class Thornback extends MonsterEntity {
             xp: generateXP(5,15),
             evasion: 0.05,
             attackDamage: 3,
+            fileName:'thornback.jpeg',
             magicPower: 0,
             run_chance: 0.02,
             armor: 1,

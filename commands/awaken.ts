@@ -41,30 +41,26 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 .setPlaceholder(`Select your preferred class ${interaction.user.username}`)
                                 .addOptions({
                                     
-                                    label: `Samurai`,
-                                    description: `Bloodthirsty and slices like butter.`,
-                                    value: `samurai`,
+                                    label: `Gladius`,
+                                    description: `A Category of Ajins who are experts in the use of Melee Weapons`,
+                                    value: `gladius`,
                                 },{
-                                    label: `Crusader`,
-                                    description: `Will crush you with his hammer.`,
-                                    value: `crusader`,
+                                    label: `Buushin`,
+                                    description: `A Category of Ajins who are experts in the use of Spyr, mainly melee attacks`,
+                                    value: `buushin`,
                                 },{
-                                    label: `Sorceror`,
-                                    description: `Ruins your day from a safe distance.`,
-                                    value: `sorceror`,
+                                    label: `Magus`,
+                                    description: `A Category of Ajins who are experts in the use of Spyr, mainly ranged attacks`,
+                                    value: `magus`,
                                 },
                                 {
-                                    label: `Wanderer`,
-                                    description: `Left their home to claim yours.`,
-                                    value: `wanderer`,
+                                    label: `Dragoon`,
+                                    description: `A Category of Ajins who are experts in the use of Ranged Weapons`,
+                                    value: `dragoon`,
                                 },{
-                                    label: `Paladin`,
-                                    description: `Very heavy, resilient and unyielding.`,
-                                    value: `paladin`,
-                                },{
-                                    label: `Assassin`,
-                                    description: `Silent as a feather, fast as a knife.`,
-                                    value: `assassin`,
+                                    label: `Noir`,
+                                    description: `A Category of Ajins that specialise in the use of Dark Arts and stealth`,
+                                    value: `noir`,
                                 },
                                 
                                 )
@@ -317,115 +313,101 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             let user_class = collected.values[0]
                             profileModel.findOne({userID:authorId},async (err,foundUser) => {
                                 
-                                if(user_class == 'samurai'){
-                                    foundUser.class = 'Samurai'
+                                if(user_class == 'gladius'){
+                                    foundUser.class = 'Gladius'
                                     foundUser.attackDamage = 15
-                                    foundUser.armour = 8
+                                    foundUser.armour = 10
                                     foundUser.speed = 15
-                                    foundUser.health = 80
-                                    foundUser.magicPower = 8
-                                    foundUser.vitality = 8
-                                    foundUser.magicResistance = 6
+                                    foundUser.evasion = 0.065
+                                    foundUser.health = 100
+                                    foundUser.magicPower = 7
+                                    foundUser.vitality = 10
+                                    foundUser.magicResistance = 5
                                     foundUser.currentskills = [{
-                                        name: 'Shattering Kick',
-                                        description: 'A powerful kick that deals low damage to the opponent',
+                                        name: 'Flashing Strike',
+                                        description: 'Unleash a swift strike, catching your opponent off guard with lightning-fast precision.',
                                     }]
                                     foundUser.allskills = [{
-                                        name: 'Shattering Kick',
-                                        description: 'A powerful kick that deals low damage to the opponent',
+                                        name: 'Flashing Strike',
+                                        description: 'Unleash a swift strike, catching your opponent off guard with lightning-fast precision.',
                                     }]
                                 }
-                                else if(user_class == 'assassin'){
-                                    foundUser.class = 'Assassin'
-                                    foundUser.attackDamage = 20
-                                    foundUser.armour = 0
+                                else if(user_class == 'noir'){
+                                    foundUser.class = 'Noir'
+                                    foundUser.attackDamage = 15
+                                    foundUser.armour = 2
                                     foundUser.speed = 20
+                                    foundUser.evasion = 0.08
                                     foundUser.health = 50
-                                    foundUser.magicPower = 5
+                                    foundUser.magicPower = 10
                                     foundUser.vitality = 5
                                     foundUser.magicResistance = 10
                                     foundUser.currentskills = [{
                                         name: 'Vanishing Strike',
-                                        description: 'The assassin disappears and reappears behind their target, dealing low damage.',
+                                        description: 'The Noir melds into the darkness, teleporting behind their target with deadly intent, leaving no trace but the echoing whispers of their vanishing strike.',
                                     }]
                                     foundUser.allskills = [{
                                         name: 'Vanishing Strike',
-                                        description: 'The assassin disappears and reappears behind their target, dealing low damage.',
+                                        description: 'The Noir melds into the darkness, teleporting behind their target with deadly intent, leaving no trace but the echoing whispers of their vanishing strike.',
                                     }]
                                 }
-                                else if(user_class == 'sorceror'){
-                                    foundUser.class = 'Sorceror'
-                                    foundUser.attackDamage = 0
+                                else if(user_class == 'magus'){
+                                    foundUser.class = 'Magus'
+                                    foundUser.attackDamage = 2
                                     foundUser.armour = 5
                                     foundUser.speed = 10
-                                    foundUser.health = 80
-                                    foundUser.magicPower = 20
-                                    foundUser.vitality = 8
-                                    foundUser.magicResistance = 15
-                                    foundUser.currentskills = [{
-                                        name: 'Force Push',
-                                        description: 'Pushes the enemy away from the Sorcerer, dealing low damage.',
-                                    }]
-                                    foundUser.allskills = [{
-                                        name: 'Force Push',
-                                        description: 'Pushes the enemy away from the Sorcerer, dealing low damage.',
-                                    }]
-                                }
-                                else if(user_class == 'crusader'){
-                                    foundUser.class = 'Crusader'
-                                    foundUser.attackDamage = 20
-                                    foundUser.armour = 15
-                                    foundUser.speed = 10
-                                    foundUser.magicPower = 0
-                                    foundUser.vitality = 15
-                                    foundUser.health = 150
-                                    foundUser.magicResistance = 0
-                                    foundUser.currentskills = [{
-                                        name: 'Sprint Bash',
-                                        description: 'The Crusader sprints into the enemy, pushing them to the ground.',
-                                    }]
-                                    foundUser.allskills = [{
-                                        name: 'Sprint Bash',
-                                        description: 'The Crusader sprints into the enemy, pushing them to the ground.',
-                                    }]
-                                }
-                                
-                                else if(user_class == 'wanderer'){
-                                    foundUser.class = 'Wanderer'
-                                    foundUser.attackDamage = 10
-                                    foundUser.armour = 5
-                                    foundUser.speed = 15
-                                    foundUser.magicPower = 15
                                     foundUser.health = 100
+                                    foundUser.magicPower = 20
                                     foundUser.vitality = 10
                                     foundUser.magicResistance = 15
                                     foundUser.currentskills = [{
-                                        name: 'Scissor Kick',
-                                        description: 'The Wanderer kicks the target with a powerful scissor kick, dealing low damage.',
+                                        name: 'Force Push',
+                                        description: 'Unleash an arcane surge, a devastating force that propels adversaries backward with explosive energy.',
                                     }]
                                     foundUser.allskills = [{
-                                        name: 'Scissor Kick',
-                                        description: 'The Wanderer kicks the target with a powerful scissor kick, dealing low damage.',
+                                        name: 'Force Push',
+                                        description: 'Unleash an arcane surge, a devastating force that propels adversaries backward with explosive energy.',
                                     }]
                                 }
-                                else if(user_class == 'paladin'){
-                                    foundUser.class = 'Paladin'
-                                    foundUser.attackDamage = 10
+                                else if(user_class == 'buushin'){
+                                    foundUser.class = 'Buushin'
+                                    foundUser.attackDamage = 20
                                     foundUser.armour = 15
                                     foundUser.speed = 10
-                                    foundUser.magicPower = 10
+                                    foundUser.magicPower = 2
                                     foundUser.vitality = 10
                                     foundUser.health = 100
                                     foundUser.magicResistance = 5
                                     foundUser.currentskills = [{
-                                        name: 'Authority Thrust',
-                                        description: 'The Paladin thrusts their spear forward, dealing low damage to the enemy.',
+                                        name: 'Shattering Kick',
+                                        description: `Unleash a resonating kick that reverberates through your opponent's defenses, creating a shattering impact.`,
                                     }]
                                     foundUser.allskills = [{
-                                        name: 'Authority Thrust',
-                                        description: 'The Paladin thrusts their spear forward, dealing low damage to the enemy.',
+                                        name: 'Shattering Kick',
+                                        description: `Unleash a resonating kick that reverberates through your opponent's defenses, creating a shattering impact.`,
                                     }]
                                 }
+                                
+                                else if(user_class == 'dragoon'){
+                                    foundUser.class = 'Dragoon'
+                                    foundUser.attackDamage = 5
+                                    foundUser.armour = 5
+                                    foundUser.speed = 15
+                                    foundUser.evasion = 0.065
+                                    foundUser.magicPower = 15
+                                    foundUser.health = 70
+                                    foundUser.vitality = 7
+                                    foundUser.magicResistance = 15
+                                    foundUser.currentskills = [{
+                                        name: 'Piercing Shot',
+                                        description: `Harness your weapon's power to project a shot that defies armor, piercing through even the sturdiest defenses with relentless precision.`,
+                                    }]
+                                    foundUser.allskills = [{
+                                        name: 'Piercing Shot',
+                                        description: `Harness your weapon's power to project a shot that defies armor, piercing through even the sturdiest defenses with relentless precision.`,
+                                    }]
+                                }
+                                
 
                                await collected.deferUpdate().catch(e => {})
                                 await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})

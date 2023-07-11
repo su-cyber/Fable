@@ -19,6 +19,7 @@ export class MonsterEntity extends Entity {
     run_chance: number
     element: string
     description: string
+    fileName: string
 
     constructor(
         props: Omit<EntityProps, 'id'> & {
@@ -27,6 +28,7 @@ export class MonsterEntity extends Entity {
             run_chance: number
             element: string
             description: string
+            fileName: string
         }
     ) {
         const { spawnRate, ...rest } = props

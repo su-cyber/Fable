@@ -8,12 +8,11 @@ import {
 } from 'discord.js'
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
-import samurai_tree from '../src/age/skills/samurai_tree'
-import assassin_tree from '../src/age/skills/assassin_tree'
-import crusader_tree from '../src/age/skills/crusader_tree'
-import sorceror_tree from '../src/age/skills/sorceror_tree'
-import wanderer_tree from '../src/age/skills/wanderer_tree'
-import paladin_tree from '../src/age/skills/paladin_tree'
+import gladius_tree from '../src/age/skills/gladius_tree'
+import noir_tree from '../src/age/skills/noir'
+import buushin_tree from '../src/age/skills/buushin_tree'
+import magus_tree from '../src/age/skills/magus_tree'
+import dragoon_tree from '../src/age/skills/dragoon_tree'
 import flame_tree from '../src/age/skills/flame_tree'
 import volt_tree from '../src/age/skills/volt_tree'
 import light_tree from '../src/age/skills/light_tree'
@@ -41,23 +40,20 @@ export default new MyCommandSlashBuilder({ name: 'learnnewskill', description: '
                     profileModel.findOne({userID:authorId},async function(err,foundUser){
                         if(foundUser.skill_tree.status || foundUser.skill_tree.class_status){
                             let class_tree
-                            if(foundUser.class == "Samurai"){
-                                class_tree = samurai_tree
+                            if(foundUser.class == "Gladius"){
+                                class_tree = gladius_tree
                             }
-                            else if(foundUser.class == "Sorceror"){
-                                class_tree = sorceror_tree
+                            else if(foundUser.class == "Magus"){
+                                class_tree = magus_tree
                             }
-                            else if(foundUser.class == "Paladin"){
-                                class_tree = paladin_tree
+                            else if(foundUser.class == "Buushin"){
+                                class_tree = buushin_tree
                             }
-                            else if(foundUser.class == "Crusader"){
-                                class_tree = crusader_tree
+                            else if(foundUser.class == "Dragoon"){
+                                class_tree = dragoon_tree
                             }
-                            else if(foundUser.class == "Wanderer"){
-                                class_tree = wanderer_tree
-                            }
-                            else if(foundUser.class == "Assassin"){
-                                class_tree = assassin_tree
+                            else if(foundUser.class == "Noir"){
+                                class_tree = noir_tree
                             }
                                 let element_tree
                                 if(foundUser.elements[0] == "Flame"){

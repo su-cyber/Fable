@@ -26,6 +26,7 @@ export class fieldMould extends MonsterEntity {
             spawnRate: 0.2,
             health: 30,
             mana:0,
+            fileName:'fieldmold.jpeg',
             xp: generateXP(5,15),
             evasion: 0.03,
             attackDamage: 10,

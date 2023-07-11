@@ -30,6 +30,7 @@ export class Treemick extends MonsterEntity {
             evasion: 0.05,
             attackDamage: 3,
             magicPower: 0,
+            fileName:'treemick.jpeg',
             run_chance: 0.02,
             armor: 1,
             speed: 5,

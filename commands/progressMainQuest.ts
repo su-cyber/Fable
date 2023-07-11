@@ -43,10 +43,12 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                         new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Run").setDisabled(true),
                                     ])
         
-                                    
+                                const attachment = new MessageAttachment('assets/Monsters/beerbuccsduo.jpeg')
+                                
                                 let fightEmbed = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('ENCOUNTER')
+                                .setImage('attachment://beerbuccsduo.jpeg')
                                 .setAuthor({
                                     iconURL:interaction.user.displayAvatarURL(),
                                     name:interaction.user.tag
@@ -84,7 +86,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 .setDescription('You cannot run away! Retry by pressing "/ProgressMainQuest"')
                                 
                             
-                            await interaction.reply({content: null,embeds:[fightEmbed],components:[btnraw]})
+                            await interaction.reply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
                             let filter = i => i.user.id === authorId
                                 let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                         
@@ -456,6 +458,9 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                         new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Fight").setDisabled(true),
                                        
                                     ])
+
+                                    const attachment = new MessageAttachment('assets/Monsters/starhound.jpeg')
+                                    
                                 let questEmbed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('A New Road')
@@ -463,6 +468,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             iconURL:interaction.user.displayAvatarURL(),
                             name:interaction.user.tag
                         })
+                        .setImage('attachment://starhound.jpeg')
                         .addFields([
                             {
                                 name: `Current Objective:`,
@@ -472,7 +478,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                         
                         
                         .setDescription(`For your second round, you are called into the Colosseum’s inner ring and are asked to fight a Magical Beast, as part of your job as a Guild Ranger will be to fight and subdue Magical Beasts.You look at the cage placed before you hidden with a cover, you can sense the bloodlust radiating from the beast inside the cage. The cover is lifted and the audience burst with excitement at the look of a Starhound, a ferocious hunter from the depths of the forest of Ellior.You ready your weapon as you prepare to fight it.`)
-                        await interaction.reply({content: null,embeds:[questEmbed],components:[btnraw]})
+                        await interaction.reply({content: null,embeds:[questEmbed],components:[btnraw],files:[attachment]})
                        
                         
                             
@@ -489,10 +495,12 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                         
                                         const attacker = Warrior.create(author)
                                         const monster = starHound.create()
+                                        
                                         attacker.health=foundUser.health
                                                 attacker.mana=foundUser.mana
                                                 attacker.armor=foundUser.armour
                                                 attacker.magicPower=foundUser.magicPower
+                                                attacker.magicResistance = foundUser.magicResistance
                                                 attacker.attackDamage=foundUser.attackDamage
                                                 attacker.evasion=foundUser.evasion
                                                 attacker.element = foundUser.elements[0]
@@ -556,6 +564,8 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                     new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Fight").setDisabled(true),
                                    
                                 ])
+                                const attachment = new MessageAttachment('assets/NPCs/npcdave.jpeg')
+                            
                     let questEmbed = new MessageEmbed()
                     .setColor('RANDOM')
                     .setTitle('A New Road')
@@ -563,6 +573,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                         iconURL:interaction.user.displayAvatarURL(),
                         name:interaction.user.tag
                     })
+                    .setImage('attachment://npcdave.jpeg')
                     .addFields([
                         {
                             name: `Current Objective:`,
@@ -572,7 +583,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                     
                     
                     .setDescription(`It is time for the final round. The round where you must fight another participant who has made it as far as you. Before the fights start though, there is a short announcement where the Vice-Masters of the many guilds around the world enter the colosseum and take a seat. They would choose the best candidates and offer them a position in their own guild. Of course losers would not get picked.With a loud blow of a horn, your opponent approaches you from the opposite side of the arena.You ready your weapons and brace yourself for the fight `)
-                    await interaction.reply({content: null,embeds:[questEmbed],components:[btnraw]})
+                    await interaction.reply({content: null,embeds:[questEmbed],components:[btnraw],files:[attachment]})
                    
                     
                         
@@ -594,6 +605,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                             attacker.armor=foundUser.armour
                                             attacker.magicPower=foundUser.magicPower
                                             attacker.attackDamage=foundUser.attackDamage
+                                            attacker.magicResistance = foundUser.magicResistance
                                             attacker.evasion=foundUser.evasion
                                             attacker.element = foundUser.elements[0]
                                             attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)

@@ -28,6 +28,7 @@ export class BeerBuccaneer2 extends MonsterEntity {
             mana:0,
             xp: generateXP(5,15),
             evasion: 0.05,
+            fileName:'beerbuccaneer2.jpeg',
             attackDamage: 10,
             magicPower: 0,
             run_chance: 0.02,

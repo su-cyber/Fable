@@ -31,6 +31,7 @@ export class BeerBuccaneer1 extends MonsterEntity {
             attackDamage: 5,
             magicPower: 0,
             run_chance: 0.02,
+            fileName:'beerbuccaneer1.jpeg',
             armor: 2,
             speed: 5,
             element:"wave",

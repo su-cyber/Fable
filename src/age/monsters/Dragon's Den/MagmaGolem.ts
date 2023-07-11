@@ -30,6 +30,7 @@ export class MagmaGolem extends MonsterEntity {
             evasion: 0.05,
             attackDamage: 45,
             magicPower: 0,
+            fileName:'magmagolem.jpeg',
             run_chance: 0.02,
             armor: 2,
             speed: 5,

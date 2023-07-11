@@ -54,6 +54,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                 attacker.health=foundUser.health
                                 attacker.mana=foundUser.mana
                                 attacker.armor=foundUser.armour
+                                attacker.magicResistance = foundUser.magicResistance
                                 attacker.magicPower=foundUser.magicPower
                                 attacker.attackDamage=foundUser.attackDamage
                                 attacker.element = foundUser.elements[0].toLowerCase()
@@ -285,37 +286,13 @@ export class PvEDuel extends DuelBuilder {
                         
                     } 
                 }
-                let skill = this.attacker.skills.find(skill => skill.type === "buff")
+                let skill = this.attacker.skills.find(skill => skill.type === "buff" && skill.mana_cost<=this.attacker.mana)
                 if(skill){
                     this.attacker.useSkill(this.attacker,this.defender,skill)
                     await sleep(this.speed)
                 }
                 else{
-                let skills = this.attacker.skills
-                this.attacker.skills = []
-                damage_order = []
-                for(let j=0;j<skills.length;j++){
-                    
-                    let val = skills[j]
-                    if(val.type == "physical"){
-                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
-                    }
-                    else if(val.type == "magical"){
-                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
-                    }
-                    
-                    let mod = calculateModifier(val.element,this.defender.element)
-                    skill_dmg = skill_dmg * mod
-                    damage_order.push(skill_dmg)
-                    damage_order.sort(function(a,b){return a - b})
-                    const index = damage_order.indexOf(skill_dmg)
-                    this.attacker.skills.splice(index,0,val)
-                    
-                    
-
-                }
-                this.attacker.skills.reverse()
-                  
+                
                 skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
                             if(skill){
                                 this.attacker.useSkill(this.attacker,this.defender,skill)
@@ -329,12 +306,11 @@ export class PvEDuel extends DuelBuilder {
                 }
             }
             else if(this.attacker.health <= 0.5*this.attacker.maxHealth){
-                let skill = this.attacker.skills.find(skill => skill.type === "heal")
+                let skill = this.attacker.skills.find(skill => skill.type === "heal" && skill.mana_cost<=this.attacker.mana)
                 if(skill){
-                    if(skill.mana_cost<=this.attacker.mana){
                         this.attacker.useSkill(this.attacker,this.defender,skill)
                         await sleep(this.speed)
-                    }
+                    
                    
                 }
                 else{
@@ -469,7 +445,7 @@ export class PvEDuel extends DuelBuilder {
                 }
             }
             if(turn == 0 || turn==1){
-                let skill = this.attacker.skills.find(skill => skill.type === "buff")
+                let skill = this.attacker.skills.find(skill => skill.type === "buff" && skill.mana_cost<=this.attacker.mana)
                 if(skill){
                     this.attacker.useSkill(this.attacker,this.defender,skill)
                     await sleep(this.speed)
@@ -477,19 +453,17 @@ export class PvEDuel extends DuelBuilder {
                 else{
                     
                     
-                        
-            
-                            skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
-                            if(skill){
-                                this.attacker.useSkill(this.attacker,this.defender,skill)
-                                await sleep(this.speed)
-                            }
-                            else{
-                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
-                                await sleep(this.speed)
-                            }
-                           
-                            
+                        skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                                if(skill){
+                                    this.attacker.useSkill(this.attacker,this.defender,skill)
+                                    await sleep(this.speed)
+                                }
+                                else{
+                                    this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                                    await sleep(this.speed)
+                                }
+                               
+                       
             
                         
                     
@@ -497,12 +471,12 @@ export class PvEDuel extends DuelBuilder {
                 }
             }
             else if(this.attacker.health <= 0.5*this.attacker.maxHealth){
-                let skill = this.attacker.skills.find(skill => skill.type === "heal")
+                let skill = this.attacker.skills.find(skill => skill.type === "heal" && skill.mana_cost<=this.attacker.mana)
                 if(skill){
-                    if(skill.mana_cost<=this.attacker.mana){
+                    
                         this.attacker.useSkill(this.attacker,this.defender,skill)
                         await sleep(this.speed)
-                    }
+                    
                    
                 }
                 else{

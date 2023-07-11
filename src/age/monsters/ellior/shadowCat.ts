@@ -29,6 +29,7 @@ export class shadowCat extends MonsterEntity {
             xp: generateXP(5,15),
             evasion: 0.05,
             attackDamage: 5,
+            fileName:'shadowcat.jpeg',
             magicPower: 0,
             run_chance: 0.02,
             armor: 2,

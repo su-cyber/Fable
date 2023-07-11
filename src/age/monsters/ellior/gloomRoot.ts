@@ -30,6 +30,7 @@ export class gloomRoot extends MonsterEntity {
             evasion: 0.05,
             attackDamage: 5,
             magicPower: 0,
+            fileName:'gloomroot.jpeg',
             run_chance: 0.02,
             armor: 2,
             speed: 5,
