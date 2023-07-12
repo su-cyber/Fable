@@ -59,7 +59,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                         value:`**press "fight" to fight them off when you are ready.**`
                                     }
                                 ])
-                                .setDescription(`You see a Duo of Beer Buccaneers approaching your way!\n\nEquip your sword by using the command "/equip" and entering "weapon" in **type** field and "sword" in **object** field.`)
+                                .setDescription(`A duo of Beer Buccaneers are approaching you!\n\nPsst, listen here. Don’t worry, I’ve paused the time. Turns out I can do that. Anyway, I see that you’re about to enter into your very first fight. And…you don’t have a weapon equipped. Use the **/inventory** command and see what you’ve got!\n\nOnce you’ve rummaged through your belongings, use the **/equip** command followed by entering **weapon** in “type” field and **weapon’s name** in the “objects” field.\n\nOnce you’re all equipped, press the **Fight** button. Fights in Fable happen in your PMs. No seriously, that’s the only place where you can do them. Every time you begin a fight, the Fable bot shall text you in PMs.\n\nAlso all fights in Fable are permanently on **“auto mode”**. The bot follows an intelligent decision making system that ends the battle in the most efficient way possible. But hey, if it helps, you can play the entirety of Fable in your PMs.\n\nNow press the **fight** button, and don’t press the **Run** button, unless you’re a weakling.`)
             
                                 let acceptEmbed = new MessageEmbed()
                                 .setColor('GREEN')
@@ -71,10 +71,10 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 .addFields([
                                     {
                                         name: `Current Objective:`,
-                                        value:`**Fight the Beer Buccaneers**`
+                                        value:`**Defeat the Beer Buccaneers**`
                                     }
                                 ])
-                                .setDescription('You have decided to fight!check your private message.\nRemember,each encounter only lasts for 2 mins!fight them before 2 minutes are over')
+                                .setDescription('You have decided to fight! Check your private messages! Remember: each encounter only lasts for 5 mins! Fight them before the time is up!')
             
                                 let rejectEmbed = new MessageEmbed()
                                 .setColor('RED')
@@ -151,7 +151,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 const attachment = new MessageAttachment('assets/AubeTown/Ghorgon.jpeg')
                                 let fightEmbed = new MessageEmbed()
                                 .setColor('RANDOM')
-                                .setTitle('ENCOUNTER')
+                                .setTitle('A DANGEROUS ENCOUNTER')
                                 .setAuthor({
                                     iconURL:interaction.user.displayAvatarURL(),
                                     name:interaction.user.tag
@@ -163,23 +163,22 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                         value:`**Fight the Gorghon**`
                                     }
                                 ])
-                                .setDescription(` Just as you finish off the two Beer Buccaneers, you notice that the other conscripts were having a very bad time. Some were well off, and yet many were already in the mud. You too are surrounded, but then a giant Ghorgon swoops in from the Castellan Fields, and flings the Beer Buccaneers in the air. It rushes towards you. You will have to fight this beast. `)
+                                .setDescription(`As the lifeless bodies of the Beer Buccaneers sank to the ground, a fleeting glance revealed the aftermath of the frenzied clash. The Empral Brigade, stirred by your valiant display, had risen to the occasion, joining the chaotic fray. Alas, their numbers paled against the overwhelming horde, sinking ankle-deep into the mire. Even your skill and resolve would falter beneath such a weighty tide. The odds stood grimly stacked against you.\n\nNevertheless, your mind was resolute. Mr. Briggs, the very man who had sought your protection, had entrusted his safety to your capable hands. Determination surged within, urging you onward. Yet, in that critical moment, an icy grip clutched at your heart, paralyzing you with dread. A presence, immense and foreboding, wrapped its tendrils around your trembling form.\n\nYour gaze was drawn upward, fixing upon a shadow dancing in the air, drawing closer with each passing heartbeat. It was a Ghorgon, tainted by the malicious touch of the Nightmares. Its colossal frame pounded mercilessly upon both Beer Buccaneers and Empral Brigade soldiers alike, obliterating all in its path. None stood a chance against such ferocity.\n\nThen, as if guided by a malevolent intelligence, its gaze locked onto you, a hapless target in its sights. Like a primordial force unleashed, it lunged forward with relentless speed. There was no escape, no reprieve from this impending confrontation.\n\nSummoning every ounce of resolve, you readied your arms, accepting the cruel reality that escape was not an option. For in this dark and treacherous moment, all that remained was to confront the nightmarish embodiment of terror hurtling towards you.`)
             
                                 let acceptEmbed = new MessageEmbed()
                                 .setColor('GREEN')
-                                .setTitle('New Beginnings')
+                                .setTitle('FINALLY AWAKE')
                                 .setAuthor({
                                     iconURL:interaction.user.displayAvatarURL(),
                                     name:interaction.user.tag
                                 })
-                                .setThumbnail('attachment://Ghorgon.jpeg')
                                 .addFields([
                                     {
                                         name: `Current Objective:`,
                                         value:`**Press "/progressmainquest" to continue**`
                                     }
                                 ])
-                                .setDescription('You wake up in the tiny guild outpost within Aube Town. You were told that the Ghorgon had escaped from a nearby Fragment, but it was killed by the Vice-Master of {x} Guild. He is also the one who saved your life.\n The Vice Master further said that he was impressed by you, and wants to give you a letter of recommendation to receive the “Guild Hunter License”. Usually you would need to pay a big fee to even register as a Guild Ranger (Guild member not belonging to any prominent guild who’s only involved in Defense or Research). One needs to have the Guild Hunter License to secure higher tiers of quests that involve fighting within fragments, explorations and other high-profile quests. All year, people from around the world complete low-tier quests to raise their merit in order to receive a letter of recommendation. With enough merit and a letter of recommendation, the aspiring ranger can take part in the Guild Carnival and join a guild!')
+                                .setDescription(`As consciousness beckoned you from the depths of slumber, the sterile air of the infirmary engulfed your senses. Groggily, your eyes fluttered open, drawn to the weight pressing against your legs. There, in an innocent repose, lay your childhood companion Emyr, his presence a comforting balm amidst the stark clinical surroundings. The nurse's voice, laden with concern, sliced through the haze of your awakening.\n\n“Ah, I see you are awake. You were out for a while there, like four days?" she spoke, her tone heavy with gravity.Your mind strained to piece together the fragments of the puzzle, weaving together the events that had unfolded during your unconscious state. It was Mr. Sebas, the esteemed Butler of the Mayor, who had come to your rescue. He had just returned from his untimely delegation to the Capital. Once a celebrated Ajin in his own right, his absence from Aube Town had left it vulnerable to the marauding Beer Buccaneers. Now, his very presence instilled fear in their hearts.\n\nBut the true testament of Mr. Sebas' power came to light as the Ghorgon, a monstrous embodiment of the Nightmare, clashed with the force of his indomitable will. He held the abomination at bay, a perilous task even for the most esteemed Ajins, until he ultimately felled the beast, ensuring victory in the face of unspeakable darkness.\n\nSuch was the remarkable backdrop against which your own valor shone. Mr. Sebas, impressed by your unwavering defiance in the face of certain doom, awaited your presence. He could be found within the enigmatic confines of the Town Library, a sanctuary teeming with untold secrets and unspoken debts.\n\nWith a reluctant yet understanding nod, you decided to let Emyr continue his well-deserved respite, recouping the sleep lost during his vigil. There would be time to express your gratitude to him later. For now, the path led to Mr. Sebas, a figure enshrouded in enigma and the embodiment of a debt repaid in kind.`)
             
                                 let rejectEmbed = new MessageEmbed()
                                 .setColor('RED')
@@ -203,7 +202,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                             await interaction.editReply({embeds:[acceptEmbed],files:[attachment]})
                             
                                             
-                                            await profileModel.updateOne({userID:interaction.user.id},{main_quest_phase:"3"})
+                                            await profileModel.updateOne({userID:interaction.user.id},{location:"Town Centre",main_quest_phase:"3"})
                                             
                                        
                                         collector.stop()
@@ -238,7 +237,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             
                             let fightEmbed = new MessageEmbed()
                             .setColor('RANDOM')
-                            .setTitle('New Beginnings')
+                            .setTitle('A NEW ROAD')
                             .setAuthor({
                                 iconURL:interaction.user.displayAvatarURL(),
                                 name:interaction.user.tag
@@ -246,17 +245,83 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             .addFields([
                                 {
                                     name: `Current Objective:`,
-                                    value:`**Use "/explore" command to explore Aube town and complete all the quests.**`
+                                    value:`**Press "/progressmainquest" to continue**`
                                 }
                             ])
                             
                             
-                            .setDescription(`finish all of the quests within Aube Town and meet this “Vice-Master” back in the Guild Outpost.`)
+                            .setDescription(`In the Town’s Library, an imposing figure stood before you—an elderly man donned in a black suit, his unwavering gaze piercing your very being. This was Mr. Sebas, the enigmatic savior who had plucked you from the clutches of danger.\n\nHis voice resonated with an undertone of urgency and a glimmer of intent. He spoke of a selfish desire to witness something first hand, leaving you to ponder the mysteries that surrounded him.\n\nYou expressed your gratitude for his life-saving intervention, yet he brushed aside such sentiments, delving into the enigma of Spyr—a magical essence that permeated Vearth's air, ground, and all living creatures. Only a select few, known as Ajins, possessed the rare ability to harness this power.\n\nAs Mr. Sebas probed your encounter with the brigands, you denied any knowledge of Spyr manipulation, attributing your strength to years spent toiling on a farm, protecting it from Boaars. However, doubts festered within Mr. Sebas, for no ordinary individual could have dispatched the brigands with such ease.\n\nHis conviction unwavering, Mr. Sebas declared that you were no ordinary boy, but rather an Ajin with untapped potential. He insisted that your current path in the town did not align with your true destiny, offering a proposition fraught with danger and the promise of a life forever altered.\n\nCaught in a whirlwind of amazement and uncertainty, you grappled with the idea of being an Ajin—a realm of power, wealth, and fame. The revelation stirred questions about your past, about Mr. Briggs and Emyr, and the possibility of realizing your true identity. A multitude of inquiries raged within your mind, demanding answers, as the weight of an important decision pressed upon you. Do you really intend to walk this newfound road of an Ajin?\n\n[Read extended interaction with character dialogue 📜](https://docs.google.com/document/d/1chVL2RCsJz47ql3zVwBzBY47dTlIgAM5V-c2b52B5Pk/edit?usp=sharing)`)
         
                             await interaction.reply({content: null,embeds:[fightEmbed]})
-                            await profileModel.updateOne({userID:authorId},{location:"Aube Town Guild Outpost",main_quest_phase:"4"})
+                            await profileModel.updateOne({userID:authorId},{main_quest_phase:"4"})
                         }
                         else if(foundUser.main_quest_phase == "4"){
+                            let fightEmbed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('A NEW ROAD')
+                            .setAuthor({
+                                iconURL:interaction.user.displayAvatarURL(),
+                                name:interaction.user.tag
+                            })
+                            .addFields([
+                                {
+                                    name: `Current Objective:`,
+                                    value:`**Press "/progressmainquest" to continue**`
+                                }
+                            ])
+                            
+                            
+                            .setDescription(`You stand before Mr. Sebas, your voice heavy with determination. You demand to know the path of the Ajin, your words carrying a weight that cannot be ignored.Sebas acknowledges your decision. He prepares to forcefully unlock the dormant Spyr Cores within you, infusing your body with his own power. Normally, these Cores would awaken gradually through training and maturation, but what is lost can never be fully regained. He leaps backward, assuming a combat stance, ready to demonstrate the technique.\n\nA violent tremor rocks the library, cracking floorboards and thrashing windows. The air thickens with an aura of dread emanating from Mr. Sebas. Fear envelopes you, reaching depths of terror you never thought possible. The weight of impending doom settles upon you, as if Death himself holds you in his grasp. To take another step would mean certain death.\n\nBut Sebas's voice cuts through the suffocating fear, commanding you not to hesitate. His words bear a power that threatens to buckle your knees, his Spyr pulsating with a force that could tear you apart. You struggle to maintain your composure, soaked in perspiration, barely standing.\n\nAgainst all instincts, you muster the courage to step forward, defying the inevitability of your demise. Sebas's excitement surges as he launches his bloodlust-infused fist towards you, poised to strike.\n\nTime slows to a crawl, and memories flash before your eyes. The temptation to surrender, to close your eyes and embrace your fate, is overwhelming. Yet, you resist. Sebas's attack grazes you, but something within you prevents his touch. Your own Spyr surges, mingling with the air and shielding you from harm.\n\nSebas congratulates you on ascending into a new realm. You sink to your knees and ask him about his true identity. He responds cryptically, claiming to be a mere old man who knows how to handle himself.\n\n[Read extended interaction with character dialogue 📜](https://docs.google.com/document/d/1c8ZTDMkJoTW2HLOAKV9sqZL-iqWzOUQIJDotoX4bN4Y/edit?usp=sharing)`)
+        
+                            await interaction.reply({content: null,embeds:[fightEmbed]})
+                            await profileModel.updateOne({userID:authorId},{main_quest_phase:"5"})
+                        }
+                        else if(foundUser.main_quest_phase == "5"){
+
+                            let classText 
+                            if(foundUser.class == "Gladius"){
+                                classText = `Glaidus - A Category of Ajins who are masters in using all types of Melee Weapons.`
+                            }
+                            else if(foundUser.class == "Noir"){
+                                classText = `Noir - A Category of Ajins that specialise in the use of Dark Arts and stealth`
+                            
+                            }
+                            else if(foundUser.class == "Magus"){
+                                classText = `Magus - A Category of Ajins who are experts in Conjuring Spyr`
+                            
+                            }
+                            else if(foundUser.class == "Buushin"){
+                                classText = `Buushin - A Category of Ajins who are experts in manifesting Spyr into their physical attacks`
+                            
+                            }
+                            else if(foundUser.class == "Dragoon"){
+                                classText = `Dragoon - A Category of Ajins who are experts in the use of Ranged Weapons`
+                            
+                            }
+                            
+                            let fightEmbed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('A NEW ROAD')
+                            .setAuthor({
+                                iconURL:interaction.user.displayAvatarURL(),
+                                name:interaction.user.tag
+                            })
+                            .addFields([
+                                {
+                                    name: `Current Objective:`,
+                                    value:`**Press "/progressmainquest" to continue**`
+                                }
+                            ])
+                            
+                            
+                            .setDescription(`You grab Mr. Sebas’ hand and get up. He tells you that your body has now transformed to a state where it will be able to harness Spyr. And after looking at your aura, he further deduces that you were born with the ${foundUser.elements[0]} Element’s Affinity. Furthermore he determines that you are a ${classText}`)
+        
+                            await interaction.reply({content: null,embeds:[fightEmbed]})
+                            await profileModel.updateOne({userID:authorId},{main_quest_phase:"6"})
+                        
+                        }
+
+                        else if(foundUser.main_quest_phase == "6"){
                            if(foundUser.location == "Aube Town Guild Outpost"){
                             if(foundUser.completed_quests.includes("KS-TA-SQ1") && foundUser.completed_quests.includes("KS-TA-SQ2") && foundUser.completed_quests.includes("KS-TA-SQ3") && foundUser.completed_quests.includes("KS-TA-SQ4") && foundUser.completed_quests.includes("KS-TA-SQ5")){
                                 let fightEmbed = new MessageEmbed()

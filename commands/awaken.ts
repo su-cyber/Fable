@@ -29,7 +29,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Cancel"),])
                     
                         let prologuebtn= new MessageActionRow().addComponents([
-                            new MessageButton().setCustomId("prologue_accept").setStyle("PRIMARY").setLabel("Begin Tutorisl"),
+                            new MessageButton().setCustomId("prologue_accept").setStyle("PRIMARY").setLabel("Begin Tutorial"),
                             new MessageButton().setCustomId("prologue_reject").setStyle("DANGER").setLabel("Cancel"),])
                             
                         
@@ -148,7 +148,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
     
                         let acceptEmbed = new MessageEmbed()
                         .setColor('GREEN')
-                        .setTitle('TUTORIAL STARTED')
+                        .setTitle('THE FIRST STEP')
                         .setAuthor({
                             iconURL:interaction.user.displayAvatarURL(),
                             name:interaction.user.tag
@@ -159,7 +159,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 value:`**Enter the command "/progressmainquest" to proceed further**`
                             }
                         ])
-                        .setDescription(`Welcome to your Fable, Ajin. Before you set out on your very own adventure, let’s learn a few things first. And that is the most important of all - the “Progress Main Quest” Command. It allows you to progress the main storyline of your Fable. Use whenever you’re ready to progress this game’s story.\n\n, enter the command /progressmainquest to proceed further.`)
+                        .setDescription(`Welcome to your Fable, Ajin. Before you set out on your very own adventure, let’s learn a few things first. And that is the most important of all - the “Progress Main Quest” Command. It allows you to progress the main storyline of your Fable. Use whenever you’re ready to progress this game’s story.`)
     
                         let rejectEmbed = new MessageEmbed()
                         .setColor('RED')
@@ -172,7 +172,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
 
                         let prologuerejectEmbed = new MessageEmbed()
                         .setColor('RED')
-                        .setTitle('TUTORIAL STARTED')
+                        .setTitle('THE FIRST STEP')
                         .setAuthor({
                             iconURL:interaction.user.displayAvatarURL(),
                             name:interaction.user.tag
@@ -474,6 +474,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                             await inventory.deleteOne({userID:authorId})
                                         }
                                         else{
+                                            await collected.deferUpdate().catch(e => {})
                                             await interaction.editReply({content: null,embeds:[prologueEmbed],components:[prologuebtn]})
                                         }
                                     })
