@@ -144,11 +144,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             iconURL:interaction.user.displayAvatarURL(),
                             name:interaction.user.tag
                         })
-                        .setDescription(`Vearth, a land blessed by the Gods, stretches out with emerald green lands and rivers that flow endlessly. Within its vibrant tapestry, diverse Magical Beasts roam, both kind and cruel. Sentient races hold dominion, ruling over this mystical realm.\n\n
-                        But Vearth's true gift lies in the embrace of "Spyr," a magical essence that weaves through the land and its people. Yet, this blessed realm suffers under a curse—the Nightmares. These capricious storms unleash devastation with thunderous might, relentless winds, and blinding deluges. Within the chaos, the Nightmares birth the malevolent Abyssals, demonic creatures hell-bent on Vearth's destruction.\n\n
-                        Amidst this turmoil, the Ajins emerge as both a beacon of hope and a target of fear. Unnatural beings, they command and bend Spyr to unprecedented levels. They stand as the vanguard against the Abyssals and their Nightmares, sacrificing their lives to safeguard the weak.\n\n
-                        You, too, are an Ajin, marked by an elemental affinity since birth, a guiding force on your destined Adventure. Your fable begins now. So, reveal to me which element enfolds you and the destiny that awaits your unwavering spirit.
-                        `)
+                        .setDescription(`Vearth, a land blessed by the Gods, stretches out with emerald green lands and rivers that flow endlessly. Within its vibrant tapestry, diverse Magical Beasts roam, both kind and cruel. Sentient races hold dominion, ruling over this mystical realm.\n\nBut Vearth's true gift lies in the embrace of "Spyr," a magical essence that weaves through the land and its people. Yet, this blessed realm suffers under a curse—the Nightmares. These capricious storms unleash devastation with thunderous might, relentless winds, and blinding deluges. Within the chaos, the Nightmares birth the malevolent Abyssals, demonic creatures hell-bent on Vearth's destruction.\n\nAmidst this turmoil, the Ajins emerge as both a beacon of hope and a target of fear. Unnatural beings, they command and bend Spyr to unprecedented levels. They stand as the vanguard against the Abyssals and their Nightmares, sacrificing their lives to safeguard the weak.\n\nYou, too, are an Ajin, marked by an elemental affinity since birth, a guiding force on your destined Adventure. Your fable begins now. So, reveal to me which element enfolds you and the destiny that awaits your unwavering spirit.`)
     
                         let acceptEmbed = new MessageEmbed()
                         .setColor('GREEN')
@@ -163,9 +159,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 value:`**Enter the command "/progressmainquest" to proceed further**`
                             }
                         ])
-                        .setDescription(`Welcome to your Fable, Ajin. Before you set out on your very own adventure, let’s learn a few things first. And that is the most important of all - the “Progress Main Quest” Command. It allows you to progress the main storyline of your Fable. Use whenever you’re ready to progress this game’s story.\n\n
-                        Now, enter the command /progressmainquest to proceed further.
-                        `)
+                        .setDescription(`Welcome to your Fable, Ajin. Before you set out on your very own adventure, let’s learn a few things first. And that is the most important of all - the “Progress Main Quest” Command. It allows you to progress the main storyline of your Fable. Use whenever you’re ready to progress this game’s story.\n\n, enter the command /progressmainquest to proceed further.`)
     
                         let rejectEmbed = new MessageEmbed()
                         .setColor('RED')
@@ -189,9 +183,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 value:`**Enter the command "/progressmainquest" to proceed further**`
                             }
                         ])
-                        .setDescription(`Yeah backing out is not an option anymore,anyways\n\nWelcome to your Fable, Ajin. Before you set out on your very own adventure, let’s learn a few things first. And that is the most important of all - the “Progress Main Quest” Command. It allows you to progress the main storyline of your Fable. Use whenever you’re ready to progress this game’s story.\n\n
-                        Now, enter the command /progressmainquest to proceed further.
-                        `)
+                        .setDescription(`Yeah backing out is not an option anymore,anyways\n\nWelcome to your Fable, Ajin. Before you set out on your very own adventure, let’s learn a few things first. And that is the most important of all - the “Progress Main Quest” Command. It allows you to progress the main storyline of your Fable. Use whenever you’re ready to progress this game’s story.\n\nNow, enter the command /progressmainquest to proceed further.`)
 
                         let elementEmbed1 = new MessageEmbed()
                         .setColor('BLUE')
@@ -210,12 +202,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             name:interaction.user.tag
                         })
                         
-                        .setDescription(`As the Nightmare's tendrils stretched across the southern realm, you raced towards the nearest bastion of safety. Yet, as despair settled upon you like a shroud, an unexpected savior emerged from the shadows - Mr. Briggs, an old acquaintance. Emerging from a fitful slumber, you awoke to find yourself nestled within the comforting embrace of Aube Town.\n\n
-                        In the safety of Mr. Briggs' presence, you confided your dwindling career as a Bodyguard, like a flickering flame threatened by encroaching darkness. Captivated by your tale, he beseeched you to become the shield that safeguards his life and that of his son, Emyr, during their stay in the town.\n\n
-                        Together, you ventured forth, marching towards the Mayor's domain, the air thick with apprehension. Yet, fate, with its twisted sense of irony, lay in wait. The murky depths of treachery revealed themselves as you fell into an ambush orchestrated by the notorious Beer Buccaneers, the local brigands known for their depravity.\n\n
-                        In this crucible of danger, you must rise to the occasion, combating the sinister forces that seek to unravel your newfound purpose. It is here, amidst the clash of steel and the scent of fear, that you shall prove your mettle, illuminating the path ahead and silencing the doubts that haunt your tormented soul.\n\n
-                        [Read extended Prologue 📜](https://docs.google.com/document/d/1KMXk4I87ZPkMwGQbG5nvcA_c5L2IWTT2i6t_5_8W2x8/edit?usp=drive_link)
-                        `)
+                        .setDescription(`As the Nightmare's tendrils stretched across the southern realm, you raced towards the nearest bastion of safety. Yet, as despair settled upon you like a shroud, an unexpected savior emerged from the shadows - Mr. Briggs, an old acquaintance. Emerging from a fitful slumber, you awoke to find yourself nestled within the comforting embrace of Aube Town.\n\nIn the safety of Mr. Briggs' presence, you confided your dwindling career as a Bodyguard, like a flickering flame threatened by encroaching darkness. Captivated by your tale, he beseeched you to become the shield that safeguards his life and that of his son, Emyr, during their stay in the town.\n\nTogether, you ventured forth, marching towards the Mayor's domain, the air thick with apprehension. Yet, fate, with its twisted sense of irony, lay in wait. The murky depths of treachery revealed themselves as you fell into an ambush orchestrated by the notorious Beer Buccaneers, the local brigands known for their depravity.\n\nIn this crucible of danger, you must rise to the occasion, combating the sinister forces that seek to unravel your newfound purpose. It is here, amidst the clash of steel and the scent of fear, that you shall prove your mettle, illuminating the path ahead and silencing the doubts that haunt your tormented soul.\n\n[Read extended Prologue 📜](https://docs.google.com/document/d/1KMXk4I87ZPkMwGQbG5nvcA_c5L2IWTT2i6t_5_8W2x8/edit?usp=drive_link)`)
 
                         let errorEmbed = new MessageEmbed()
                         .setColor('RED')
