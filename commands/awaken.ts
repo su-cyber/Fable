@@ -25,9 +25,13 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
             else{
                 profileModel.findOne({userID:authorId}, async function(err,foundUser) {
                     let btnraw= new MessageActionRow().addComponents([
-                        new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Tutorial"),
+                        new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Begin Fable"),
                         new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Cancel"),])
-                        
+                    
+                        let prologuebtn= new MessageActionRow().addComponents([
+                            new MessageButton().setCustomId("prologue_accept").setStyle("PRIMARY").setLabel("Begin Tutorisl"),
+                            new MessageButton().setCustomId("prologue_reject").setStyle("DANGER").setLabel("Cancel"),])
+                            
                         
         
                         let d_btnraw = new MessageActionRow().addComponents([
@@ -131,16 +135,23 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             iconURL:interaction.user.displayAvatarURL(),
                             name:interaction.user.tag
                         })
-                        .setDescription('Select your class out of the options')
+                        .setDescription('Choose the destiny that awaits you:')
                         
                         let ProceedEmbed = new MessageEmbed()
                         .setColor('RANDOM')
-                        .setTitle('TUTORIAL: New Beginings')
+                        .setTitle('A NEW FABLE')
                         .setAuthor({
                             iconURL:interaction.user.displayAvatarURL(),
                             name:interaction.user.tag
                         })
-                        .setDescription(`You are the newest recruit for the Empral Brigade, otherwise referred to as the “Horde” by different chapters of Knights across the Kingdoms. You are conscripts who are on your way over to the City of Vigia to assist the Sol-Crusaders. However, your long journey is cut short as a new Fragment is discovered near Aube Town and you are requested to wait until it has been sealed. During this time, the town is attacked by a band of Beer Buccaneers! You need to save yourself and the townsfolk under the absence of security.`)
+                        .setDescription(`Vearth, a land blessed by the Gods, stretches out with emerald green lands and rivers that flow endlessly. Within its vibrant tapestry, diverse Magical Beasts roam, both kind and cruel. Sentient races hold dominion, ruling over this mystical realm.\n\n
+
+                        But Vearth's true gift lies in the embrace of "Spyr," a magical essence that weaves through the land and its people. Yet, this blessed realm suffers under a curse—the Nightmares. These capricious storms unleash devastation with thunderous might, relentless winds, and blinding deluges. Within the chaos, the Nightmares birth the malevolent Abyssals, demonic creatures hell-bent on Vearth's destruction.\n\n
+                        
+                        Amidst this turmoil, the Ajins emerge as both a beacon of hope and a target of fear. Unnatural beings, they command and bend Spyr to unprecedented levels. They stand as the vanguard against the Abyssals and their Nightmares, sacrificing their lives to safeguard the weak.\n\n
+                        
+                        You, too, are an Ajin, marked by an elemental affinity since birth, a guiding force on your destined Adventure. Your fable begins now. So, reveal to me which element enfolds you and the destiny that awaits your unwavering spirit.
+                        `)
     
                         let acceptEmbed = new MessageEmbed()
                         .setColor('GREEN')
@@ -155,7 +166,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 value:`**Enter the command "/progressmainquest" to proceed further**`
                             }
                         ])
-                        .setDescription('You have decided to Begin your story!\n\nTutorial of Fabled has been initiated!')
+                        .setDescription(`Welcome to your Fable, Ajin. Before you set out on your very own adventure, let’s learn a few things first. And that is the most important of all - the “Progress Main Quest” Command. It allows you to progress the main storyline of your Fable. Use whenever you’re ready to progress this game’s story.\n\n
+                        Now, enter the command /progressmainquest to proceed further.
+                        `)
     
                         let rejectEmbed = new MessageEmbed()
                         .setColor('RED')
@@ -164,7 +177,25 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             iconURL:interaction.user.displayAvatarURL(),
                             name:interaction.user.tag
                         })
-                        .setDescription('You cannot play the game without completing the tutorial')
+                        .setDescription('You cannot play the game without proceeding!\nplease ```/awaken``` again to continue')
+
+                        let prologuerejectEmbed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('TUTORIAL STARTED')
+                        .setAuthor({
+                            iconURL:interaction.user.displayAvatarURL(),
+                            name:interaction.user.tag
+                        })
+                        .addFields([
+                            {
+                                name: `Current Objective:`,
+                                value:`**Enter the command "/progressmainquest" to proceed further**`
+                            }
+                        ])
+                        .setDescription(`Yeah backing out is not an option anymore,anyways\n\nWelcome to your Fable, Ajin. Before you set out on your very own adventure, let’s learn a few things first. And that is the most important of all - the “Progress Main Quest” Command. It allows you to progress the main storyline of your Fable. Use whenever you’re ready to progress this game’s story.\n\n
+                        Now, enter the command /progressmainquest to proceed further.
+                        `)
+
                         let elementEmbed1 = new MessageEmbed()
                         .setColor('BLUE')
                         .setTitle('ELEMENT SELECTION')
@@ -172,9 +203,25 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             iconURL:interaction.user.displayAvatarURL(),
                             name:interaction.user.tag
                         })
-                        .setDescription('Select your preferred element out of the options')
+                        .setDescription('Choose the element of Spyr that enfolds you:')
 
-                    
+                        let prologueEmbed = new MessageEmbed()
+                        .setColor('BLUE')
+                        .setTitle('PROLOGUE: A New Beginning')
+                        .setAuthor({
+                            iconURL:interaction.user.displayAvatarURL(),
+                            name:interaction.user.tag
+                        })
+                        
+                        .setDescription(`As the Nightmare's tendrils stretched across the southern realm, you raced towards the nearest bastion of safety. Yet, as despair settled upon you like a shroud, an unexpected savior emerged from the shadows - Mr. Briggs, an old acquaintance. Emerging from a fitful slumber, you awoke to find yourself nestled within the comforting embrace of Aube Town.\n\n
+
+                        In the safety of Mr. Briggs' presence, you confided your dwindling career as a Bodyguard, like a flickering flame threatened by encroaching darkness. Captivated by your tale, he beseeched you to become the shield that safeguards his life and that of his son, Emyr, during their stay in the town.\n\n
+                        
+                        Together, you ventured forth, marching towards the Mayor's domain, the air thick with apprehension. Yet, fate, with its twisted sense of irony, lay in wait. The murky depths of treachery revealed themselves as you fell into an ambush orchestrated by the notorious Beer Buccaneers, the local brigands known for their depravity.\n\n
+                        
+                        In this crucible of danger, you must rise to the occasion, combating the sinister forces that seek to unravel your newfound purpose. It is here, amidst the clash of steel and the scent of fear, that you shall prove your mettle, illuminating the path ahead and silencing the doubts that haunt your tormented soul.\n\n
+                        [Read extended Prologue 📜](https://docs.google.com/document/d/1KMXk4I87ZPkMwGQbG5nvcA_c5L2IWTT2i6t_5_8W2x8/edit?usp=drive_link)
+                        `)
 
                         let errorEmbed = new MessageEmbed()
                         .setColor('RED')
@@ -187,7 +234,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
 
                    await interaction.deferReply()
                     await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
-                    let filter = i => i.user.id === authorId || (i.customId == 'btn_element')
+                    let filter = i => i.user.id === authorId 
                     let filter_select_class = i => (i.customId === 'select_class') && i.user.id === authorId
                     let filter_select_element = i => (i.customId === 'select_element') && i.user.id === authorId
                         let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 240})
@@ -285,6 +332,16 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 })
                                 playerInventory.save();
                                 }
+                                else if(btn.customId === 'prologue_accept'){
+                                    await btn.deferUpdate().catch(e => {})
+                                    await interaction.editReply({embeds:[acceptEmbed],components:[]})
+                                    collector.stop()
+                                }
+                                else if(btn.customId === "prologue_reject"){
+                                    await btn.deferUpdate().catch(e => {})
+                                    await interaction.editReply({embeds:[prologuerejectEmbed],components:[]})
+                                    collector.stop()
+                                }
                                 else if(btn.customId === "btn_reject"){
                                     await btn.deferUpdate().catch(e => {})
                                     await interaction.editReply({embeds:[rejectEmbed],components:[]})
@@ -292,9 +349,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 }
                                
                                 
-                                collector.on("end",async(btn) => {
-                                    await interaction.editReply({components:[d_btnraw]})
-                                })
+                                
 
                                 
                          
@@ -411,7 +466,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
 
                                await collected.deferUpdate().catch(e => {})
                                 await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
-                                await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance,currentskills:foundUser.currentskills,allskills:foundUser.allskills,health:foundUser.health})
+                                await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance,evasion:foundUser.evasion,currentskills:foundUser.currentskills,allskills:foundUser.allskills,health:foundUser.health})
                                 
                                 
                                
@@ -427,7 +482,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             if(collected.customId == 'select_element'){
                                 user_elements.push(collected.values[0])
                                 await profileModel.updateOne({userID:authorId},{elements:user_elements})
-                                collector.stop()
+                                
                                 collector_select_class.stop()
                                 collector_select_element.stop()
                   
@@ -438,7 +493,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                             await inventory.deleteOne({userID:authorId})
                                         }
                                         else{
-                                            await interaction.editReply({content: null,embeds:[acceptEmbed],components:[]})
+                                            await interaction.editReply({content: null,embeds:[prologueEmbed],components:[prologuebtn]})
                                         }
                                     })
                                    
@@ -454,9 +509,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         }
                         
                     })
-                    collector_select_element.on("end",async(btn) => {
-                        await interaction.editReply({components:[d_btnraw]})
-                    })
+                    
                     
     
                     
