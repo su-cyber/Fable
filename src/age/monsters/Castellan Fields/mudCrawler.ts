@@ -24,18 +24,18 @@ export class mudCrawler extends MonsterEntity {
             name: 'Mud Crawler',
             description:`Worm like creatures with sharp teeths who blend in the mud and attack their prey. They often mark their hunting grounds with threads of silk produced from their salivary glands, although this silk is of low grade, it still fetches a decent price.`,
             spawnRate: 0.3,
-            health: 30,
+            health: 60,
             mana:0,
             fileName:'mudcrawler.jpeg',
             xp: generateXP(5,15),
             evasion: 0.03,
-            attackDamage: 10,
+            attackDamage: 12,
             magicPower: 0,
             run_chance: 0.02,
-            armor: 1,
-            speed: 5,
-            element:"wave",
-            magicResistance: 2,
+            armor: 7,
+            speed: 12,
+            element:"terra",
+            magicResistance: 4,
             passive_skills:[],
             skills: [
                 {
@@ -43,14 +43,14 @@ export class mudCrawler extends MonsterEntity {
                     name: 'Slip Bite',
                     description: 'A quick bite attack',
                     canEvade: true,
-                    damage:1,
+                    damage:15,
                     type: 'physical',
                     element:"normal", 
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Slip Bite`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*1)
+                            .physical(attacker.attackDamage*15)
                             .run(damage => `${defender.name} lost ${damage} HP by a sharp bite`)
                     }
                 },

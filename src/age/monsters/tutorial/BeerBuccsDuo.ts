@@ -28,34 +28,34 @@ export class BeerBuccsDuo extends MonsterEntity {
             name: 'Beer Buccuneers Duo',
             description:`a duo of Beer Buccaneers`,
             spawnRate: 0.4,
-            health: 30,
+            health: 50,
             evasion: 0.05,
             fileName:'beerbuccsduo.jpeg',
-            attackDamage: 5,
-            mana:10,
+            attackDamage: 10,
+            mana:0,
             xp: generateXP(5,15),
             magicPower: 0,
-            armor: 2,
-            speed: 5,
+            armor: 5,
+            speed: 2,
             element:"wave",
-            magicResistance: 1,
+            magicResistance: 3,
             run_chance: 100,
             passive_skills:[],
             skills: [
                 {
                     cooldown: 0,
-                    name: 'Knife stab ',
+                    name: 'Dual Slash',
                     description: 'Basic attack',
                     canEvade: true,
                     type: 'physical',
                     element:"normal", 
-                    damage:1,
+                    damage:20,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`${attacker.name} used Knife stab`)
+                        attacker.addLogMessage(`${attacker.name} used Dual Slash`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*1)
-                            .run(damage => `${defender.name} lost ${damage} HP by Knife stab`)
+                            .physical(attacker.attackDamage*20)
+                            .run(damage => `${defender.name} lost ${damage} HP by a Dual knife slash`)
                     }
                 },
             ],

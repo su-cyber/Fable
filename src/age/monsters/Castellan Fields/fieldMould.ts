@@ -24,18 +24,18 @@ export class fieldMould extends MonsterEntity {
             name: 'Field Mould',
             description:`A fungus that usually grows upon dead crops and has poisonous spores. They are hostile to any living creature that approaches them, they are immobile and their spores are not fatal. Any living thing killed by their spores become a host for new molds`,
             spawnRate: 0.2,
-            health: 30,
+            health: 50,
             mana:0,
             fileName:'fieldmold.jpeg',
             xp: generateXP(5,15),
             evasion: 0.03,
-            attackDamage: 10,
-            magicPower: 0,
+            attackDamage: 0,
+            magicPower: 4,
             run_chance: 0.02,
-            armor: 3,
-            speed: 15,
+            armor: 7,
+            speed: 1,
             element:"venom",
-            magicResistance: 2,
+            magicResistance: 8,
             passive_skills:[],
             skills: [
                 {
@@ -43,14 +43,14 @@ export class fieldMould extends MonsterEntity {
                     name: 'Toxic Spores',
                     description: 'the mould releases toxic spores in the air',
                     canEvade: true,
-                    damage:1,
-                    type: 'physical',
+                    damage:15,
+                    type: 'magical',
                     element:"normal", 
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Toxic Spores`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*1)
+                            .magical(attacker.magicPower*15)
                             .run(damage => `${defender.name} lost ${damage} HP by beathing in some of the toxic spores.`)
                     }
                 },
