@@ -50,7 +50,7 @@ new Bot({ intents: [
 
 
 
-}).run()
+messageCacheLifetime:21600,messageSweepInterval:43200}).run()
 
 async function give_energy(){
     await profileModel.updateMany({energy:{$lt:25}},{$inc:{energy:1}})

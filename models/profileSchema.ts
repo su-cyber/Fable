@@ -47,9 +47,9 @@ const profileSchema = new mongoose.Schema({
     guild:{type: String},
     guild_rank:{type: String},
     merit:{type: Number},
-    guild_class:{type: String},
     titles:{type: Array},
     current_title:{type: Array},
+    mount:{type:String}
 });
 
 const model = mongoose.model('ProfileModels',profileSchema);

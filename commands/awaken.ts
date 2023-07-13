@@ -290,7 +290,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         guild_class:"None",
                                         guild_rank:"None",
                                         titles:[],
-                                        current_title:"None"
+                                        current_title:"None",
+                                        mount:"None"
+                                        
                                         
                                     })
                                     profile.save();
