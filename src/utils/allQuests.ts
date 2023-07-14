@@ -46,8 +46,7 @@ const allQuests = [{
     rewards:"TBD",
     info:""
 
-},
-,{
+},{
     name:"PROLOGUE: A New Beginning",
     description:"The prologue and tutorial",
     quest_id:"Tutorial",
