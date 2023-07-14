@@ -24,18 +24,18 @@ export class Treemick extends MonsterEntity {
             name: 'Treemick',
             description:`Small stump like monsters who attack with wood splinters protruding from their bodies`,
             spawnRate: 0.5,
-            health: 30,
+            health: 50,
             mana:0,
             xp: generateXP(5,15),
             evasion: 0.05,
-            attackDamage: 3,
+            attackDamage: 15,
             magicPower: 0,
             fileName:'treemick.jpeg',
             run_chance: 0.02,
-            armor: 1,
-            speed: 5,
+            armor: 5,
+            speed: 12,
             element:"bloom",
-            magicResistance: 1,
+            magicResistance: 3,
             passive_skills:[],
             skills: [
                 {
@@ -43,14 +43,14 @@ export class Treemick extends MonsterEntity {
                     name: 'Wood Spike',
                     description: 'attacks with a spike of wood',
                     canEvade: true,
-                    damage:1,
+                    damage:20,
                     type: 'physical',
                     element:"normal", 
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Wood Spike`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*1)
+                            .physical(attacker.attackDamage*20)
                             .run(damage => `${defender.name} lost ${damage} HP by Wood Spike`)
                     }
                 },

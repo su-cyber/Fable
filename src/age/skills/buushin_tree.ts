@@ -17,20 +17,6 @@ const buushin_tree=[
                 .run(damage => `${defender.name} lost ${damage} HP by a powerful kick with deadly impact`)
         }
     },{
-        name: 'Inner Focus',
-        cooldown: 0,
-        description: 'Tap into the depths of your inner strength, igniting a fierce fire within that fuels your attacks with unstoppable power.',
-        canEvade: true,
-        mana_cost: 3,
-        damage:0,
-        element:"normal",
-        type: 'buff',
-        use: (attacker, defender) =>{
-            attacker.addLogMessage(`${attacker.name} used Inner Focus`)
-            attacker.attackDamage+=15
-            attacker.addLogMessage(`${attacker.name} tapped into the depths of your inner strength, igniting a fierce fire within that fuels your attacks with unstoppable power.`)
-        }
-    },{
         name: 'Guard Burst',
         cooldown: 0,
         description: 'Unleash a devastating blow that shatters the very foundation of defense, leaving your foes vulnerable and defenseless.',
@@ -47,6 +33,20 @@ const buushin_tree=[
             .physical(attacker.attackDamage*35)
             .run(damage => `${defender.name} lost ${damage} HP by a devastating blow that shattered the very foundation of defense, leaving them vulnerable to physical attacks.`)
             defender.armor=defender.armor*0.8
+        }
+    },{
+        name: 'Inner Focus',
+        cooldown: 0,
+        description: 'Tap into the depths of your inner strength, igniting a fierce fire within that fuels your attacks with unstoppable power.',
+        canEvade: true,
+        mana_cost: 3,
+        damage:0,
+        element:"normal",
+        type: 'buff',
+        use: (attacker, defender) =>{
+            attacker.addLogMessage(`${attacker.name} used Inner Focus`)
+            attacker.attackDamage+=15
+            attacker.addLogMessage(`${attacker.name} tapped into the depths of your inner strength, igniting a fierce fire within that fuels your attacks with unstoppable power.`)
         }
     },{
         name: `Phantom Shower`,

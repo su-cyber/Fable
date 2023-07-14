@@ -36,7 +36,7 @@ export default new MyCommandSlashBuilder({ name: 'questinfo', description: 'Know
                         statEmbed= new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('QUEST INFO')
-                        .setDescription(`#CURRENT MAIN QUEST:\n\n__**Name:**__ ${mainQuest.name}\n__**Description:**__ ${mainQuest.info}\n__**Rewards:**__ ${mainQuest.rewards}\n\n\n#CURRENT SIDE QUEST:\n\n__**Name:**__ ${sideQuest.name}\n__**Description:**__ ${sideQuest.info}\n__**Rewards:**__ ${sideQuest.rewards}`)
+                        .setDescription(`## CURRENT MAIN QUEST:\n\n__**Name:**__ ${mainQuest.name}\n__**Description:**__ ${mainQuest.info}\n__**Rewards:**__ ${mainQuest.rewards}\n\n\n## CURRENT SIDE QUEST:\n\n__**Name:**__ ${sideQuest.name}\n__**Description:**__ ${sideQuest.info}\n__**Rewards:**__ ${sideQuest.rewards}`)
                     
                     
                     

@@ -23,19 +23,19 @@ export class Crystalcrawler extends MonsterEntity {
         return new Crystalcrawler({
             name: 'Crystalcrawler',
             description:`A creature made entirely of sparkling, translucent crystals, the Crystalcrawler skitters across the cave walls with incredible agility. It attacks by launching razor-sharp crystal shards at its foes. Its drop is a Crystal Shard, a gemstone-like fragment that can be used in the creation of magical artifacts.`,
-            spawnRate: 0.5,
-            health: 50,
+            spawnRate: 0.35,
+            health: 100,
             mana:0,
             fileName:'crystalcrawler.jpeg',
             xp: generateXP(5,15),
             evasion: 0.05,
-            attackDamage: 5,
+            attackDamage: 25,
             magicPower: 0,
             run_chance: 0.02,
-            armor: 2,
-            speed: 5,
+            armor: 35,
+            speed: 15,
             element:"light",
-            magicResistance: 2,
+            magicResistance: 20,
             passive_skills:[],
             skills: [
                 {
@@ -45,12 +45,12 @@ export class Crystalcrawler extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"normal", 
-                    damage:15,
+                    damage:26,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Shard Barrage`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*15)
+                            .physical(attacker.attackDamage*26)
                             .run(damage => `${defender.name} lost ${damage} HP by a barrage of sharp crystals`)
                     }
                 },

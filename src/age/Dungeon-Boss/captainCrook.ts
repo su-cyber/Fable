@@ -24,18 +24,18 @@ export class captainCrook extends MonsterEntity {
             name: 'Captain Crook',
             description:`the leader of Beer Buccaneers`,
             spawnRate: 0.5,
-            health: 50,
-            mana:0,
+            health: 120,
+            mana:4,
             xp: generateXP(5,15),
             evasion: 0.05,
             attackDamage: 20,
             fileName:'captaincrook.jpeg',
-            magicPower: 0,
+            magicPower: 20,
             run_chance: 0.02,
-            armor: 5,
-            speed: 5,
+            armor: 15,
+            speed: 15,
             element:"wave",
-            magicResistance: 5,
+            magicResistance: 15,
             passive_skills:[],
             skills: [
                 {
@@ -45,12 +45,12 @@ export class captainCrook extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"normal", 
-                    damage:25,
+                    damage:24,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`**${attacker.name}** used Swift Cleave`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*25)
+                            .physical(attacker.attackDamage*24)
                             .run(damage => `**${defender.name}** lost ${damage} HP by a swift slash`)
                     }
                 },{
@@ -58,10 +58,10 @@ export class captainCrook extends MonsterEntity {
                     name: 'Wave Slash',
                     description: 'wave elemental slash',
                     canEvade: true,
-                    type: 'physical',
+                    type: 'magical',
                     element:"wave", 
-                    damage:45,
-                    mana_cost: 3,
+                    damage:35,
+                    mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod
             if(defender.element == "flame"){
@@ -102,7 +102,7 @@ export class captainCrook extends MonsterEntity {
             }
             attacker.addLogMessage(`**${attacker.name}** used Wave Slash`)
             defender.takeDamage
-                .physical((attacker.attackDamage*45)*mod)
+                .magical((attacker.attackDamage*35)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a fast water imbued slash`)
                     }
                 },

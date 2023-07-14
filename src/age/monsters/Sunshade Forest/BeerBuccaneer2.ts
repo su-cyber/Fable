@@ -1,8 +1,8 @@
 import { CommandInteraction } from 'discord.js'
 import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
-import { backBreaker } from '../../items/backbreaker'
 import generateXP from '../../../utils/generateXP'
+import { backBreaker } from '../../items/backbreaker'
 
 export class BeerBuccaneer2 extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -23,19 +23,19 @@ export class BeerBuccaneer2 extends MonsterEntity {
         return new BeerBuccaneer2({
             name: 'BeerBuccaneer [Lvl 2]',
             description:`Local pirates who are engaged in the theivery of Backbreaker around Aube Town`,
-            spawnRate: 0.5,
-            health: 30,
+            spawnRate: 0.35,
+            fileName:'beerbuccaneer2.jpeg',
+            health: 60,
             mana:0,
             xp: generateXP(5,15),
-            evasion: 0.05,
-            fileName:'beerbuccaneer2.jpeg',
-            attackDamage: 10,
+            evasion: 0.03,
+            attackDamage: 15,
             magicPower: 0,
             run_chance: 0.02,
-            armor: 3,
-            speed: 5,
+            armor: 8,
+            speed: 6,
             element:"wave",
-            magicResistance: 3,
+            magicResistance: 6,
             passive_skills:[],
             skills: [
                 {
@@ -44,8 +44,8 @@ export class BeerBuccaneer2 extends MonsterEntity {
                     description: 'attacks with a knife',
                     canEvade: true,
                     type: 'physical',
-                    element:"normal", 
                     damage:15,
+                    element:"normal", 
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Knife Stab`)

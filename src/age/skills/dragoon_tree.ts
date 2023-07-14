@@ -18,6 +18,24 @@ const dragoon_tree=[
                 .run(damage => `${defender.name} lost ${damage} HP by a precise shot bypassing all defenses`)
         }
     },{
+        name: 'Rapid Volley',
+        cooldown: 0,
+        description: 'Unleash a rapid succession of projectiles, turning the battlefield into a storm of devastation, leaving your foes struggling to dodge the onslaught.',
+        canEvade: true,
+        mana_cost:5,
+        damage:35,
+        type: 'physical',
+        element:"normal",
+        use: (attacker, defender) =>{
+
+            attacker.addLogMessage(
+                `${attacker.name} used Rapid Volley`
+            )
+            defender.takeDamage
+            .physical(attacker.attackDamage*35)
+            .run(damage => `${defender.name} lost ${damage} HP by a rapid onslaught of arcane projectiles`)
+        }
+    },{
         name: 'Paralyzing Bolt',
         cooldown: 0,
         description: `Releasing a bolt infused with paralytic force, seizing your enemy's movements and rendering them helpless.`,
@@ -43,24 +61,6 @@ const dragoon_tree=[
                         )
 
               }
-    },{
-        name: 'Rapid Volley',
-        cooldown: 0,
-        description: 'Unleash a rapid succession of projectiles, turning the battlefield into a storm of devastation, leaving your foes struggling to dodge the onslaught.',
-        canEvade: true,
-        mana_cost:5,
-        damage:35,
-        type: 'physical',
-        element:"normal",
-        use: (attacker, defender) =>{
-
-            attacker.addLogMessage(
-                `${attacker.name} used Rapid Volley`
-            )
-            defender.takeDamage
-            .physical(attacker.attackDamage*35)
-            .run(damage => `${defender.name} lost ${damage} HP by a rapid onslaught of arcane projectiles`)
-        }
     },{
         name: `True Strike`,
         cooldown: 0,

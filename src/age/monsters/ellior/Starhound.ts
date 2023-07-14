@@ -23,19 +23,19 @@ export class starHound extends MonsterEntity {
         return new starHound({
             name: 'Starhound',
             description:`A sleek, wolf-like creature with shimmering silver fur and bright, glowing eyes. The Starhound is fast and agile, able to run at incredible speeds through the forest. Its skill is to emit a bright, blinding light that can disorient its prey. Its drop is a Starhound tooth, which is highly valued for its ability to enhance magical spells.`,
-            spawnRate: 0.5,
-            health: 50,
+            spawnRate: 0.2,
+            health: 90,
             mana:0,
             xp: generateXP(5,15),
             evasion: 0.05,
-            attackDamage: 5,
+            attackDamage: 10,
             fileName:'starhound.jpeg',
-            magicPower: 0,
+            magicPower: 18,
             run_chance: 0.02,
-            armor: 2,
-            speed: 5,
+            armor: 18,
+            speed: 18,
             element:"light",
-            magicResistance: 2,
+            magicResistance: 16,
             passive_skills:[],
             skills: [
                 {
@@ -45,12 +45,12 @@ export class starHound extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     element:"normal", 
-                    damage:15,
+                    damage:26,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Blinding Light`)
                         defender.takeDamage
-                            .magical(attacker.attackDamage*15)
+                            .magical(attacker.attackDamage*26)
                             .run(damage => `${defender.name} lost ${damage} HP by Blinding Light`)
                     }
                 },

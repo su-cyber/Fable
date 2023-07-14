@@ -43,7 +43,7 @@ export class mudCrawler extends MonsterEntity {
                     name: 'Slip Bite',
                     description: 'A quick bite attack',
                     canEvade: true,
-                    damage:15,
+                    damage:20,
                     type: 'physical',
                     element:"normal", 
                     mana_cost: 0,

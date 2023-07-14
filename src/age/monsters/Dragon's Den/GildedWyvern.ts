@@ -23,19 +23,19 @@ export class Gildedwyvern extends MonsterEntity {
         return new Gildedwyvern({
             name: 'Gilded Wyvern',
             description:`A majestic creature covered in shimmering golden scales, the Gilded Wyvern possesses a powerful breath of gilded flames that melts even the sturdiest defenses. It attacks with swift aerial maneuvers and slashes from its razor-sharp talons. Its drop is a Gilded Scale, a valuable golden scale sought after by alchemists for its transmutation properties.`,
-            spawnRate: 0.5,
-            health: 50,
+            spawnRate: 0.2,
+            health: 110,
             mana:0,
             xp: generateXP(5,15),
             evasion: 0.05,
             fileName:'guildedwyvern.jpeg',
-            attackDamage: 5,
-            magicPower: 0,
+            attackDamage: 30,
+            magicPower: 25,
             run_chance: 0.02,
-            armor: 2,
-            speed: 5,
+            armor: 10,
+            speed: 30,
             element:"flame",
-            magicResistance: 2,
+            magicResistance: 15,
             passive_skills:[],
             skills: [
                 {
@@ -43,14 +43,51 @@ export class Gildedwyvern extends MonsterEntity {
                     name: 'Gilded Flame',
                     description: `Breathes jet of flames`,
                     canEvade: true,
-                    type: 'physical',
-                    element:"normal",
-                    damage:55,
+                    type: 'magical',
+                    element:"flame",
+                    damage:28,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
+                        let mod
+            if(defender.element == "flame"){
+                mod  = 0.5
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 2
+            }
+            else if(defender.element == "gale"){
+                mod  = 2
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 0.5
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
                         attacker.addLogMessage(`${attacker.name} used Gilded Flame`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*55)
+                            .magical(attacker.attackDamage*28*mod)
                             .run(damage => `${defender.name} lost ${damage} HP by a burst of flames`)
                     }
                 },
@@ -61,12 +98,12 @@ export class Gildedwyvern extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"normal",
-                    damage:35,
+                    damage:30,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Razor Slash`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*35)
+                            .physical(attacker.attackDamage*30)
                             .run(damage => `${defender.name} lost ${damage} HP by getting slashed by the Wyvern's sharp claws`)
                     }
                 },

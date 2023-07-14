@@ -92,7 +92,8 @@ export default new MyCommandSlashBuilder({ name: 'learnnewskill', description: '
                         if(foundUser.skill_tree.status){
                             for(let i=0;i<foundUser.skill_tree.status;i++){
                                 acquiredSkills.push(element_tree[foundUser.skill_tree.elemental])
-                                foundUser.skill_tree.elemental+=1
+                                acquiredSkills.push(element_tree[foundUser.skill_tree.elemental+1])
+                                foundUser.skill_tree.elemental+=2
                             }
                             foundUser.skill_tree.status=0
                         }

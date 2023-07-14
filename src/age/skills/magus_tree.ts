@@ -18,6 +18,24 @@ const magus_tree=[
                 .run(damage => `${defender.name} lost ${damage} HP by a powerful magic thrust propelling them backwards`)
         }
     },{
+        name: 'Missile Barrage',
+        cooldown: 0,
+        description: 'Unleash a violent barrage of magical bullets, overwhelming foes and disrupting their balance.',
+        canEvade: true,
+        mana_cost:5,
+        damage:35,
+        type: 'magical',
+        element:"normal",
+        use: (attacker, defender) =>{
+
+            attacker.addLogMessage(
+                `${attacker.name} used Missile Barrage`
+            )
+            defender.takeDamage
+            .magical(attacker.magicPower*35)
+            .run(damage => `${defender.name} lost ${damage} HP by a barrage of magic missiles`)
+        }
+    },{
         name: 'Into the Shadows',
         cooldown: 0,
         description: `Transforms the Magus into a shadowy form, rendering them immune to physical attacks for 2 turns.`,
@@ -40,24 +58,6 @@ const magus_tree=[
             attacker.addLogMessage(`${attacker.name} used Into the Shadows`,`${attacker.name} turned into a shadowy figure and cannot be physically touched`)
             
             
-        }
-    },{
-        name: 'Missile Barrage',
-        cooldown: 0,
-        description: 'Unleash a violent barrage of magical bullets, overwhelming foes and disrupting their balance.',
-        canEvade: true,
-        mana_cost:5,
-        damage:35,
-        type: 'magical',
-        element:"normal",
-        use: (attacker, defender) =>{
-
-            attacker.addLogMessage(
-                `${attacker.name} used Missile Barrage`
-            )
-            defender.takeDamage
-            .magical(attacker.magicPower*35)
-            .run(damage => `${defender.name} lost ${damage} HP by a barrage of magic missiles`)
         }
     },{
         name: `Mind Blast`,

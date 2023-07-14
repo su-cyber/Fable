@@ -23,19 +23,19 @@ export class Moonwisp extends MonsterEntity {
         return new Moonwisp({
             name: 'Moonwisp',
             description:`A small, glowing creature that floats through the forest on a trail of mist. The Moonwisp can be mischievous and lead travelers astray. Its skill is to create illusions that can confuse and disorient its prey. Its drop is a vial of its glowing essence, which can be used in healing potions.`,
-            spawnRate: 0.5,
-            health: 50,
+            spawnRate: 0.35,
+            health: 80,
             mana:0,
             xp: generateXP(5,15),
             evasion: 0.05,
             attackDamage: 5,
             fileName:'moonwisp.jpeg',
-            magicPower: 0,
+            magicPower: 15,
             run_chance: 0.02,
-            armor: 2,
-            speed: 5,
+            armor: 10,
+            speed: 15,
             element:"light",
-            magicResistance: 2,
+            magicResistance: 20,
             passive_skills:[],
             skills: [
                 {
@@ -45,13 +45,13 @@ export class Moonwisp extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     element:"normal", 
-                    damage:15,
+                    damage:22,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Wisp Illusion`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*15)
-                            .run(damage => `${defender.name} lost ${damage} HP by Wisp Illusion`)
+                            .magical(attacker.magicPower*22)
+                            .run(damage => `${defender.name} lost ${damage} HP by mental trauma caused by illusion`)
                     }
                 },
                

@@ -23,19 +23,19 @@ export class Emberbeast extends MonsterEntity {
         return new Emberbeast({
             name: 'Emberbeast',
             description:`A fearsome creature with smoldering red scales and flaming spines, the Emberbeast breathes jets of searing flames that engulf its foes. It charges with scorching speed, leaving trails of fire in its wake. Its drop is an Ember Scale, a fire-imbued scale renowned for its use in forging powerful flame-based weapons.`,
-            spawnRate: 0.5,
-            health: 50,
+            spawnRate: 0.35,
+            health: 100,
             mana:0,
             fileName:'emberbeast.jpeg',
             xp: generateXP(5,15),
             evasion: 0.05,
-            attackDamage: 5,
-            magicPower: 0,
+            attackDamage: 35,
+            magicPower: 10,
             run_chance: 0.02,
-            armor: 2,
-            speed: 5,
+            armor: 15,
+            speed: 25,
             element:"flame",
-            magicResistance: 2,
+            magicResistance: 10,
             passive_skills:[],
             skills: [
                 {
@@ -45,12 +45,12 @@ export class Emberbeast extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"normal", 
-                    damage:15,
+                    damage:26,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Jet Flame`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*15)
+                            .physical(attacker.attackDamage*26)
                             .run(damage => `${defender.name} lost ${damage} HP by a jet of scorching flames`)
                     }
                 },

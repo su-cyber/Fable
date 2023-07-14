@@ -20,21 +20,6 @@ const gladius_tree=[
                 .run(damage => `${defender.name} lost ${damage} HP by a lightning fast strike!`)
         }
     },{
-        name: 'Feasting in Agony',
-        cooldown: 0,
-        description: 'A lightning-fast sword strike that deals low damage to the opponent',
-        canEvade: true,
-        mana_cost: 2,
-        damage:25,
-        type: 'physical',
-        element:"normal",
-        use: (attacker, defender) =>{
-            attacker.addLogMessage(`${attacker.name} used Feasting in Agony`)
-            defender.takeDamage
-                .physical(attacker.attackDamage*25)
-                .run(damage => `${defender.name} lost ${damage} HP by a swift sword strike`)
-        }
-    },{
         name: 'Bloodletting',
         cooldown: 0,
         description: `Pierce through your enemy's defenses, leaving them bleeding and weakened. Skills gains more power if used in succession.`,
@@ -64,6 +49,21 @@ const gladius_tree=[
             defender.takeDamage
             .physical(attacker.attackDamage*35)
             .run(damage => `${defender.name} lost ${damage} HP by a deadly strike breaking through defences.\n${defender.name} is bleeding!`)
+        }
+    },{
+        name: 'Feasting in Agony',
+        cooldown: 0,
+        description: 'A lightning-fast sword strike that deals low damage to the opponent',
+        canEvade: true,
+        mana_cost: 2,
+        damage:25,
+        type: 'physical',
+        element:"normal",
+        use: (attacker, defender) =>{
+            attacker.addLogMessage(`${attacker.name} used Feasting in Agony`)
+            defender.takeDamage
+                .physical(attacker.attackDamage*25)
+                .run(damage => `${defender.name} lost ${damage} HP by a swift sword strike`)
         }
     },{
         name: 'Master at Work',

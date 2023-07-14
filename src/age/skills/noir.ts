@@ -20,20 +20,6 @@ const noir_tree=[
                 .run(damage => `${attacker.name} mends into the darkness and suddenly ${defender.name} loses ${damage} HP by a sudden strike from the shadows`)
         }
     },{
-        name: 'Smoke and Mirrors',
-        cooldown: 0,
-        description: 'The Noir throws a smoke bomb, creating a cloud of smoke that obscures vision and increases evasiveness.',
-        canEvade: true,
-        mana_cost: 3,
-        damage:0,
-        type: 'buff',
-        element:"normal",
-        use: (attacker, defender) =>{
-            attacker.addLogMessage(`${attacker.name} used Smoke and Mirrors`)
-            attacker.evasion+=0.03
-            attacker.addLogMessage(`${attacker.name} blends into a smoke screen increasing their ability to evade attacks.`)
-        }
-    },{
         name: 'Venomous Serpent',
         cooldown: 0,
         description: 'Summon a serpentine wraith of spyr energy, striking the enemy with its venomous fangs, entangling them in a debilitative poison that ravages their being.',
@@ -63,6 +49,20 @@ const noir_tree=[
             defender.takeDamage
             .physical(attacker.attackDamage*35)
             .run(damage => `${attacker.name} summons a serpentine wraith of spyr energy wrapping around ${defender.name} causing ${damage} dmg by it's poisonous fangs\n${defender.name} is poisoned!`)
+        }
+    },{
+        name: 'Smoke and Mirrors',
+        cooldown: 0,
+        description: 'The Noir throws a smoke bomb, creating a cloud of smoke that obscures vision and increases evasiveness.',
+        canEvade: true,
+        mana_cost: 3,
+        damage:0,
+        type: 'buff',
+        element:"normal",
+        use: (attacker, defender) =>{
+            attacker.addLogMessage(`${attacker.name} used Smoke and Mirrors`)
+            attacker.evasion+=0.03
+            attacker.addLogMessage(`${attacker.name} blends into a smoke screen increasing their ability to evade attacks.`)
         }
     },{
         name: `Death Blossom`,

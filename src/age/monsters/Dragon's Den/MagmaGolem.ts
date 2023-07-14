@@ -23,19 +23,19 @@ export class MagmaGolem extends MonsterEntity {
         return new MagmaGolem({
             name: 'Magma Golem',
             description:`A towering creature composed of molten rock and magma, the Magma Golem can unleash scorching waves of lava that engulf its adversaries. It can also deliver devastating punches with its fiery fists. Its drop is a Globs of Solidified Magma, which can be used by blacksmiths to create heat-resistant armor.`,
-            spawnRate: 0.5,
-            health: 50,
+            spawnRate: 0.1,
+            health: 200,
             mana:0,
             xp: generateXP(5,15),
             evasion: 0.05,
-            attackDamage: 45,
-            magicPower: 0,
+            attackDamage: 30,
+            magicPower: 35,
             fileName:'magmagolem.jpeg',
             run_chance: 0.02,
-            armor: 2,
-            speed: 5,
+            armor: 40,
+            speed: 10,
             element:"flame",
-            magicResistance: 2,
+            magicResistance: 30,
             passive_skills:[],
             skills: [
                 {
@@ -45,7 +45,7 @@ export class MagmaGolem extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     element:"flame", 
-                    damage:65,
+                    damage:30,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         let mod
@@ -87,7 +87,7 @@ export class MagmaGolem extends MonsterEntity {
             }
                         attacker.addLogMessage(`${attacker.name} used Magma Beam`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*65*mod)
+                            .magical(attacker.magicPower*30*mod)
                             .run(damage => `${defender.name} lost ${damage} HP by burning in hot magma`)
                     }
                 },
@@ -98,31 +98,16 @@ export class MagmaGolem extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"normal", 
-                    damage:45,
+                    damage:32,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Fiery Fist`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*45)
+                            .physical(attacker.attackDamage*32)
                             .run(damage => `${attacker.name} covers it's arm with scorching flames and punches ${defender.name} causing ${damage} damage`)
                     }
                 },
-                {
-                    cooldown: 0,
-                    name: 'Wreaking Ball',
-                    description: `attacks with burning rocks`,
-                    canEvade: true,
-                    type: 'physical',
-                    element:"nromal", 
-                    damage:25,
-                    mana_cost: 0,
-                    use: (attacker, defender) =>{
-                        attacker.addLogMessage(`${attacker.name} used Wreaking Ball`)
-                        defender.takeDamage
-                            .physical(attacker.attackDamage*25)
-                            .run(damage => `${attacker.name} hurls burning rocks at ${defender.name} causing ${damage} damage`)
-                    }
-                },
+                
                
             ],
         })

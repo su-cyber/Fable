@@ -23,19 +23,19 @@ export class gloomRoot extends MonsterEntity {
         return new gloomRoot({
             name: 'Gloomroot',
             description:`A massive, twisted tree with gnarled branches and glowing purple flowers. The Gloomroot is said to possess ancient magic and can manipulate the forest around it. Its skill is to create tendrils of darkness that can ensnare and trap its prey. Its drop is a Gloomroot branch, which can be used in the creation of powerful magical orbes.`,
-            spawnRate: 0.5,
-            health: 50,
+            spawnRate: 0.1,
+            health: 100,
             mana:0,
             xp: generateXP(5,15),
             evasion: 0.05,
-            attackDamage: 5,
-            magicPower: 0,
+            attackDamage: 25,
+            magicPower: 7,
             fileName:'gloomroot.jpeg',
             run_chance: 0.02,
-            armor: 2,
-            speed: 5,
+            armor: 24,
+            speed: 15,
             element:"bloom",
-            magicResistance: 2,
+            magicResistance: 24,
             passive_skills:[],
             skills: [
                 {
@@ -45,13 +45,13 @@ export class gloomRoot extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"normal", 
-                    damage:15,
+                    damage:26,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Dark Tendrils`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*15)
-                            .run(damage => `${defender.name} lost ${damage} HP by Dark Tendrils`)
+                            .physical(attacker.attackDamage*26)
+                            .run(damage => `${defender.name} lost ${damage} HP by getting crushed by dark tendrils`)
                     }
                 },
                

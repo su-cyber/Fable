@@ -23,19 +23,19 @@ export class shadowCat extends MonsterEntity {
         return new shadowCat({
             name: 'Shadow Cat',
             description:`A large, black feline with eyes that glow an eerie green. The Shadowcat is known for its stealth and ability to disappear into the shadows. Its attack is a powerful swipe with its razor-sharp claws. Its drop is a tuft of its fur, which is highly sought after for use in invisibility potions.`,
-            spawnRate: 0.5,
-            health: 50,
+            spawnRate: 0.35,
+            health: 80,
             mana:0,
             xp: generateXP(5,15),
             evasion: 0.05,
-            attackDamage: 5,
+            attackDamage: 15,
             fileName:'shadowcat.jpeg',
-            magicPower: 0,
+            magicPower: 5,
             run_chance: 0.02,
-            armor: 2,
-            speed: 5,
+            armor: 5,
+            speed: 20,
             element:"bloom",
-            magicResistance: 2,
+            magicResistance: 20,
             passive_skills:[],
             skills: [
                 {
@@ -45,12 +45,12 @@ export class shadowCat extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"normal", 
-                    damage:15,
+                    damage:22,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Shredding Swipe`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*15)
+                            .physical(attacker.attackDamage*22)
                             .run(damage => `${defender.name} lost ${damage} HP by Shredding Swipe`)
                     }
                 },
