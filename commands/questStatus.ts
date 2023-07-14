@@ -16,7 +16,7 @@ export default new MyCommandSlashBuilder({ name: 'questinfo', description: 'Know
                 profileModel.findOne({userID:authorId},async function(err,foundUser) {
                     let statEmbed
                     
-                    const mainQuest = allQuests.find(quest => quest.quest_id == foundUser.main_quest)
+                    const mainQuest = allQuests.find(quest => quest.name == foundUser.main_quest)
                     let sideQuest
                     if(foundUser.side_quest.length == 0){
                         sideQuest = {
