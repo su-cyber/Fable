@@ -87,7 +87,7 @@ export class Gildedwyvern extends MonsterEntity {
             }
                         attacker.addLogMessage(`${attacker.name} used Gilded Flame`)
                         defender.takeDamage
-                            .magical(attacker.attackDamage*28*mod)
+                            .magical(attacker.magicPower*28*mod)
                             .run(damage => `${defender.name} lost ${damage} HP by a burst of flames`)
                     }
                 },

@@ -25,7 +25,7 @@ export class MagmaGolem extends MonsterEntity {
             description:`A towering creature composed of molten rock and magma, the Magma Golem can unleash scorching waves of lava that engulf its adversaries. It can also deliver devastating punches with its fiery fists. Its drop is a Globs of Solidified Magma, which can be used by blacksmiths to create heat-resistant armor.`,
             spawnRate: 0.1,
             health: 200,
-            mana:0,
+            mana:4,
             xp: generateXP(5,15),
             evasion: 0.05,
             attackDamage: 30,
@@ -46,7 +46,7 @@ export class MagmaGolem extends MonsterEntity {
                     type: 'magical',
                     element:"flame", 
                     damage:30,
-                    mana_cost: 0,
+                    mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod
             if(defender.element == "flame"){
@@ -97,13 +97,50 @@ export class MagmaGolem extends MonsterEntity {
                     description: `Punches with flaming fists`,
                     canEvade: true,
                     type: 'physical',
-                    element:"normal", 
+                    element:"flame", 
                     damage:32,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
+                        let mod
+            if(defender.element == "flame"){
+                mod  = 0.5
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 0.5
+            }
+            else if(defender.element == "frost"){
+                mod  = 2
+            }
+            else if(defender.element == "gale"){
+                mod  = 2
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 0.5
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 1
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
                         attacker.addLogMessage(`${attacker.name} used Fiery Fist`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*32)
+                            .physical(attacker.attackDamage*32*mod)
                             .run(damage => `${attacker.name} covers it's arm with scorching flames and punches ${defender.name} causing ${damage} damage`)
                     }
                 },

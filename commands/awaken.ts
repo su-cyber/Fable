@@ -353,14 +353,14 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 
                                 if(user_class == 'gladius'){
                                     foundUser.class = 'Gladius'
-                                    foundUser.attackDamage = 15
-                                    foundUser.armour = 10
-                                    foundUser.speed = 15
+                                    foundUser.attackDamage = 17
+                                    foundUser.armour = 12
+                                    foundUser.speed = 17
                                     foundUser.evasion = 0.065
-                                    foundUser.health = 100
+                                    foundUser.health = 80
                                     foundUser.magicPower = 7
-                                    foundUser.vitality = 10
-                                    foundUser.magicResistance = 5
+                                    foundUser.vitality = 8
+                                    foundUser.magicResistance = 7
                                     foundUser.currentskills = [{
                                         name: 'Flashing Strike',
                                         description: 'Unleash a swift strike, catching your opponent off guard with lightning-fast precision.',
@@ -372,14 +372,14 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 }
                                 else if(user_class == 'noir'){
                                     foundUser.class = 'Noir'
-                                    foundUser.attackDamage = 15
-                                    foundUser.armour = 2
-                                    foundUser.speed = 20
+                                    foundUser.attackDamage = 17
+                                    foundUser.armour = 7
+                                    foundUser.speed = 22
                                     foundUser.evasion = 0.08
-                                    foundUser.health = 50
-                                    foundUser.magicPower = 10
-                                    foundUser.vitality = 5
-                                    foundUser.magicResistance = 10
+                                    foundUser.health = 80
+                                    foundUser.magicPower = 7
+                                    foundUser.vitality = 8
+                                    foundUser.magicResistance = 7
                                     foundUser.currentskills = [{
                                         name: 'Vanishing Strike',
                                         description: 'The Noir melds into the darkness, teleporting behind their target with deadly intent, leaving no trace but the echoing whispers of their vanishing strike.',
@@ -391,13 +391,13 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 }
                                 else if(user_class == 'magus'){
                                     foundUser.class = 'Magus'
-                                    foundUser.attackDamage = 2
-                                    foundUser.armour = 5
+                                    foundUser.attackDamage = 3
+                                    foundUser.armour = 7
                                     foundUser.speed = 10
-                                    foundUser.health = 100
-                                    foundUser.magicPower = 20
-                                    foundUser.vitality = 10
-                                    foundUser.magicResistance = 15
+                                    foundUser.health = 80
+                                    foundUser.magicPower = 22
+                                    foundUser.vitality = 8
+                                    foundUser.magicResistance = 18
                                     foundUser.currentskills = [{
                                         name: 'Force Push',
                                         description: 'Unleash an arcane surge, a devastating force that propels adversaries backward with explosive energy.',
@@ -409,13 +409,13 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 }
                                 else if(user_class == 'buushin'){
                                     foundUser.class = 'Buushin'
-                                    foundUser.attackDamage = 20
-                                    foundUser.armour = 15
+                                    foundUser.attackDamage = 22
+                                    foundUser.armour = 17
                                     foundUser.speed = 10
-                                    foundUser.magicPower = 2
+                                    foundUser.magicPower = 3
                                     foundUser.vitality = 10
-                                    foundUser.health = 100
-                                    foundUser.magicResistance = 5
+                                    foundUser.health = 80
+                                    foundUser.magicResistance = 8
                                     foundUser.currentskills = [{
                                         name: 'Shattering Kick',
                                         description: `Unleash a resonating kick that reverberates through your opponent's defenses, creating a shattering impact.`,
@@ -428,14 +428,14 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 
                                 else if(user_class == 'dragoon'){
                                     foundUser.class = 'Dragoon'
-                                    foundUser.attackDamage = 5
-                                    foundUser.armour = 5
-                                    foundUser.speed = 15
+                                    foundUser.attackDamage = 7
+                                    foundUser.armour = 7
+                                    foundUser.speed = 17
                                     foundUser.evasion = 0.065
-                                    foundUser.magicPower = 15
-                                    foundUser.health = 70
-                                    foundUser.vitality = 7
-                                    foundUser.magicResistance = 15
+                                    foundUser.magicPower = 17
+                                    foundUser.health = 80
+                                    foundUser.vitality = 8
+                                    foundUser.magicResistance = 12
                                     foundUser.currentskills = [{
                                         name: 'Piercing Shot',
                                         description: `Harness your weapon's power to project a shot that defies armor, piercing through even the sturdiest defenses with relentless precision.`,

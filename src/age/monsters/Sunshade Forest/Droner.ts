@@ -91,7 +91,7 @@ export class Droner extends MonsterEntity {
             }
                         attacker.addLogMessage(`${attacker.name} used Acid Sting`)
                         defender.takeDamage
-                            .magical(attacker.attackDamage*20*mod)
+                            .magical(attacker.magicPower*20*mod)
                             .run(damage => `${defender.name} lost ${damage} HP by getting stung by the Droner`)
                     }
                 },
