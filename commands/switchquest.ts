@@ -4,7 +4,7 @@ import {MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu, Messag
 import allQuests from '../src/utils/allQuests'
 
 
-export default new MyCommandSlashBuilder({ name: 'switchquests', description: 'switch your sidequests' })
+export default new MyCommandSlashBuilder({ name: 'choose_side_quest', description: 'switch your sidequests' })
 
 .setDo(
     async (bot, interaction) => {

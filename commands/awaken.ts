@@ -218,10 +218,10 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     let filter = i => i.user.id === authorId 
                     let filter_select_class = i => (i.customId === 'select_class') && i.user.id === authorId
                     let filter_select_element = i => (i.customId === 'select_element') && i.user.id === authorId
-                        let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 240})
-                        let collector_select_element = await interaction.channel.createMessageComponentCollector({filter: filter_select_element,time : 1000 * 240})
+                        let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
+                        let collector_select_element = await interaction.channel.createMessageComponentCollector({filter: filter_select_element})
                         
-                        let collector_select_class = await interaction.channel.createMessageComponentCollector({filter: filter_select_class,time:1000*240})
+                        let collector_select_class = await interaction.channel.createMessageComponentCollector({filter: filter_select_class})
                 
                         collector.on('collect',async (btn) => {
                             if(btn.isButton()){
