@@ -15,7 +15,8 @@ const aubeTownShop = {
     weapons: [Sword,steelSword,Spear],
     armour: [steelArmour],
     items: [shadowViel,solBracelet,goblinWhistle],
-    potions: [healthPotion,adrenalineShot,greaterHealthPotion,steelSkinPotion]
+    potions: [healthPotion,adrenalineShot,greaterHealthPotion,steelSkinPotion],
+    Total: [Sword,steelSword,Spear,steelArmour,shadowViel,solBracelet,goblinWhistle,healthPotion,adrenalineShot,greaterHealthPotion,steelSkinPotion]
 }
 
 export default aubeTownShop
