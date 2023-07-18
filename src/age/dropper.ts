@@ -52,10 +52,7 @@ export class Dropper {
         killer: Entity
     ) {
         const gainedXP=killed.xp
-        profileModel.findOne({userID:killer.id},async function(err,foundUser){
-            foundUser.xp+=gainedXP
-            await profileModel.updateOne({userID:killer.id},{xp:foundUser.xp})
-        })
+       
         const coins = formatMoney(randfloat(1, 1e8, 3), 3)
         const drop = this.drop()
         const text = `
@@ -79,6 +76,12 @@ export class Dropper {
        
 
         await interaction.channel.send(removeIndentation(text))
+        profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
+            foundUser.xp+=gainedXP
+            console.log(foundUser.xp);
+            
+            await profileModel.updateOne({userID:interaction.user.id},{xp:foundUser.xp})
+        })
     }
 
     async addItem(interaction:CommandInteraction,drop:Item,quantity:number){
