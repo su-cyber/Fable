@@ -9,6 +9,12 @@ import { MessageButton, MessageEmbed } from 'discord.js'
 import { steelSword } from '../src/age/weapons/steelSword'
 import { MessageComponentInteraction,CacheType } from 'discord.js'
 import { sleep } from '../src/utils'
+import { tachi_katana } from '../src/age/weapons/tachi_katana'
+import { Farmer_scythe } from '../src/age/weapons/farmer_scythe'
+import { bronze_orbe } from '../src/age/weapons/bronze_orb'
+import { leather_gauntlets } from '../src/age/weapons/leather_gauntlets'
+import learnskill from './learnskill'
+import { carved_bow } from '../src/age/weapons/carved_bow'
 
 
 export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken to your story' }).setDo(
@@ -301,16 +307,10 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     userID: authorId,
                                     serverID: guildID,
                                     inventory: {
-                                        weapons:[{name: Sword,
-                                        quantity:Number(1)},{name: steelSword,
-                                            quantity:Number(1)}],
+                                        weapons:[],
                                         items:[],
-                                        armour:[{name: steelArmour,
-                                            quantity:Number(1)}],
-                                        potions:[{
-                                            name: healthPotion,
-                                            quantity:Number(1)
-                                        }],
+                                        armour:[],
+                                        potions:[],
                                     }
                                 })
                                 playerInventory.save();
@@ -349,8 +349,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         
                         if(collected.customId == 'select_class'){
                             let user_class = collected.values[0]
+                            let class_weapon
                             profileModel.findOne({userID:authorId},async (err,foundUser) => {
-                                
+                            inventory.findOne({userID:authorId},async (err,foundInventory) => {
                                 if(user_class == 'gladius'){
                                     foundUser.class = 'Gladius'
                                     foundUser.attackDamage = 17
@@ -369,6 +370,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         name: 'Flashing Strike',
                                         description: 'Unleash a swift strike, catching your opponent off guard with lightning-fast precision.',
                                     }]
+
+                                    class_weapon = {name: tachi_katana,
+                                        quantity:Number(1)}
                                 }
                                 else if(user_class == 'noir'){
                                     foundUser.class = 'Noir'
@@ -388,6 +392,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         name: 'Vanishing Strike',
                                         description: 'The Noir melds into the darkness, teleporting behind their target with deadly intent, leaving no trace but the echoing whispers of their vanishing strike.',
                                     }]
+
+                                    class_weapon = {name: Farmer_scythe,
+                                        quantity:Number(1)}
                                 }
                                 else if(user_class == 'magus'){
                                     foundUser.class = 'Magus'
@@ -406,6 +413,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         name: 'Force Push',
                                         description: 'Unleash an arcane surge, a devastating force that propels adversaries backward with explosive energy.',
                                     }]
+
+                                    class_weapon = {name: bronze_orbe,
+                                        quantity:Number(1)}
                                 }
                                 else if(user_class == 'buushin'){
                                     foundUser.class = 'Buushin'
@@ -424,6 +434,10 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         name: 'Shattering Kick',
                                         description: `Unleash a resonating kick that reverberates through your opponent's defenses, creating a shattering impact.`,
                                     }]
+
+                                    class_weapon = {name: leather_gauntlets,
+                                        quantity:Number(1)}
+                                        
                                 }
                                 
                                 else if(user_class == 'dragoon'){
@@ -444,15 +458,22 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         name: 'Piercing Shot',
                                         description: `Harness your weapon's power to project a shot that defies armor, piercing through even the sturdiest defenses with relentless precision.`,
                                     }]
+
+                                    class_weapon = {name: carved_bow,
+                                        quantity:Number(1)}
                                 }
                                 
+                                foundInventory.inventory.weapons.push(class_weapon)
 
                                await collected.deferUpdate().catch(e => {})
                                 await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
                                 await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance,evasion:foundUser.evasion,currentskills:foundUser.currentskills,allskills:foundUser.allskills,health:foundUser.health})
-                                
+                                await inventory.updateOne({userID:authorId},{inventory:foundInventory.inventory})
                                 
                                
+
+                            })
+                                
                                 
                             })
                             

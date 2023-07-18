@@ -51,7 +51,7 @@ class Bot extends Client {
                         if(res){
                             profileSchema.findOne({userID:userID},async function(err,foundUser){
                                 
-                                for(let i =1;i<1000;i++){
+                                    let i = foundUser.level+1
                                     if(foundUser.xp>=xpFormulate(i) && foundUser.level<i){
                                         let sp=3
                                         foundUser.vitality+=5
@@ -93,7 +93,7 @@ class Bot extends Client {
                                         
                                    }
                                    
-                                }
+                                
                                 await profileSchema.updateOne({userID:userID},foundUser)
                                 
                                 

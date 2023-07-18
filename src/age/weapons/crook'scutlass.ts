@@ -5,7 +5,7 @@ export const crookcutlass = new Weapon({
     name: `capn. Crook's Cutlass`,
     description: 'stronger steel cutlass',
     damage:5,
-    type:'blade',
+    type:'melee',
     cost:1500,
     skills: [{name: 'Wave Slash',
     description: 'wave elemental slash'}]
