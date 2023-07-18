@@ -5,7 +5,7 @@ import { MessageAttachment } from 'discord.js'
 import getHealth from '../src/utils/getHealth'
 
 
-export default new MyCommandSlashBuilder({ name: 'locations', description: 'visit a location' })
+export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a location' })
 
 .setDo(
     async (bot, interaction) => {
@@ -72,28 +72,28 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
                 .setPlaceholder(`Select a location ${interaction.user.username}`)
                 .addOptions({
                     label: `The Terrific Troll Tavern`,
-                    description: `The Terrific Troll Tavern is a place of the rumors of halls and chatter of inns`,
+                    description: ``,
                     value: `The Terrific Troll Tavern`,
                 },{
                     label: `The Lager Estate`,
-                    description: `Home to the famous Lager Family and their legendary Backbreaker Beer.`,
+                    description: ``,
                     value: `The Lager Estate`,
                 },
                 {
                     label: `Crofter's Market`,
-                    description: `The Crofter’s Market is a place for craftsmanship to find new homes.`,
+                    description: ``,
                     value: `Crofter's Market`,
                 },{
                     label: `Aube Town Guild Outpost`,
-                    description: `The Guild Outpost is home to the unwavering and dedicated Guild Rangers.`,
+                    description: ``,
                     value: `Aube Town Guild Outpost`,
                 },{
                     label: `Town Centre`,
-                    description: `The Town Center is a place of importance, gathering and sometimes entertainment.`,
+                    description: ``,
                     value: `Town Centre`,
                 },{
                     label: `Abandoned Castle`,
-                    description: `An important architecture of the past, that has since become irrelevant`,
+                    description: ``,
                     value: `Abandoned Castle`,
                 },
                 
@@ -214,36 +214,36 @@ export default new MyCommandSlashBuilder({ name: 'locations', description: 'visi
                 .setPlaceholder(`Select a location ${interaction.user.username}`)
                 .addOptions({
                     label: `Guild District`,
-                    description: `The home to all guilds and the guild colosseum`,
+                    description: ``,
                     value: `Guild District`,
                 },{
                     label: `Guild Office`,
-                    description: `The Guild Office of your guild`,
+                    description: ``,
                     value: `Guild Office`,
                 },
                 {
                     label: `Auriga Sails Company`,
-                    description: `the famous Auriga ship company run by earl Auriga`,
+                    description: ``,
                     value: `Auriga Sails Company`,
                 },{
                     label: `Astro Avenue`,
-                    description: `Astro Avenue which is home to many foreign goods not found in Solarstrio`,
+                    description: ``,
                     value: `Astro Avenue`,
                 },{
                     label: `Golden Terminal`,
-                    description: `A famous station for Quarantrain`,
+                    description: ``,
                     value: `Golden Terminal`,
                 },{
                     label: `Castle of Chariots`,
-                    description: `The stunning castle of Earl Auriga`,
+                    description: ``,
                     value: `Castle of Chariots`,
                 },{
                     label: `Siewelle Port`,
-                    description: `The Port which serves as the main market of Zorya`,
+                    description: ``,
                     value: `Siewelle Port`,
                 },{
                     label: `Black Market`,
-                    description: `The mysterious black market`,
+                    description: ``,
                     value: `Black Market`,
                 },
                 

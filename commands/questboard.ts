@@ -69,7 +69,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
         
     ])
     let filtered_menu = []
-    let board = [Quest_embed_1,Quest_embed_2,Quest_embed_3,Quest_embed_4,Quest_embed_5]
+    let board = [Quest_embed_1,Quest_embed_2,Quest_embed_3,Quest_embed_4]
     shuffleArray(board)
     let board_copy = []
     for(let i=0;i<board.length;i++){
@@ -84,7 +84,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
             filtered_menu.push(foundQuest)
         }
     }
-    if(board.length == 0){
+    if(board_copy.length == 0){
         interaction.reply({content:`You have completed all the quests!`,ephemeral:true})
     }
     else{
@@ -123,21 +123,21 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
             .setTitle('Selected')
             .setDescription(`You have selected a quest!`)
     
-            let quest_cancel = new MessageEmbed()
-            .setColor('RANDOM')
-            .setTitle('Cancelled')
-            .setDescription(`You already have an ongoing side quest!`)
-            if(foundUser.side_quest_phase == 1 || foundUser.side_quest_phase == ""){
-                foundUser.side_quest.push(quest)
+            
+            foundUser.side_quest.push(quest)
+            if(foundUser.side_quest_phase == ""){
                 await profileModel.updateOne({userID:authorId},{side_quest:foundUser.side_quest,side_quest_phase:"1"})
-                interaction.editReply({content: null,embeds:[quest_selected],components:[]})
             }
             else{
-                interaction.editReply({content: null,embeds:[quest_cancel],components:[]})
+                await profileModel.updateOne({userID:authorId},{side_quest:foundUser.side_quest})
             }
+            
+            interaction.editReply({content: null,embeds:[quest_selected],components:[]})
+            
+          
         }
     
-
+        collector_btn.stop()
         collector_select.stop()
 
     })

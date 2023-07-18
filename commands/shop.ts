@@ -11,12 +11,7 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
 
 
 
-        let btnraw= new MessageActionRow().addComponents([
-            new MessageButton().setCustomId("armour").setStyle("PRIMARY").setLabel("ARMOUR"),
-            new MessageButton().setCustomId("weapons").setStyle("PRIMARY").setLabel("WEAPONS"),
-            new MessageButton().setCustomId("items").setStyle("PRIMARY").setLabel("ITEMS"),
-            new MessageButton().setCustomId("potions").setStyle("PRIMARY").setLabel("POTIONS")
-        ])
+        let btnraw
 
         let d_btnraw= new MessageActionRow().addComponents([
             new MessageButton().setCustomId("d_armour").setStyle("PRIMARY").setLabel("ARMOUR").setDisabled(true),
@@ -30,6 +25,12 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
         
         profileModel.findOne({userID:authorId},async (err,foundUser) => {
 if(foundUser.location == "Crofter's Market"){
+    btnraw= new MessageActionRow().addComponents([
+        new MessageButton().setCustomId("armour").setStyle("PRIMARY").setLabel("ARMOUR"),
+        new MessageButton().setCustomId("weapons").setStyle("PRIMARY").setLabel("WEAPONS"),
+        new MessageButton().setCustomId("items").setStyle("PRIMARY").setLabel("ITEMS"),
+        new MessageButton().setCustomId("potions").setStyle("PRIMARY").setLabel("POTIONS")
+    ])
     let homeembed= new MessageEmbed()
     .setColor('RANDOM')
     .setTitle('SHOP')

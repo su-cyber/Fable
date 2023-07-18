@@ -139,7 +139,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                             }
                     
                             else if(userType === "item"){
-                                const foundObject = foundUser.inventory.items.find(object => object.name.toLowerCase() === userobject)
+                                const foundObject = foundUser.inventory.items.find(object => object.name.name.toLowerCase() === userobject)
                                 if(foundObject){
                                     const foundItem = allItems.find(item => item.name.toLowerCase() === userobject)
                                     if(foundItem.type === "equippable"){

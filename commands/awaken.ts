@@ -315,16 +315,16 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 })
                                 playerInventory.save();
                                 }
-                                else if(btn.customId === 'prologue_accept'){
-                                    await btn.deferUpdate().catch(e => {})
-                                    await interaction.editReply({embeds:[acceptEmbed],components:[]})
-                                    collector.stop()
-                                }
-                                else if(btn.customId === "prologue_reject"){
-                                    await btn.deferUpdate().catch(e => {})
-                                    await interaction.editReply({embeds:[prologuerejectEmbed],components:[]})
-                                    collector.stop()
-                                }
+                                // else if(btn.customId === 'prologue_accept'){
+                                //     await btn.deferUpdate().catch(e => {})
+                                //     await interaction.editReply({embeds:[acceptEmbed],components:[]})
+                                //     collector.stop()
+                                // }
+                                // else if(btn.customId === "prologue_reject"){
+                                //     await btn.deferUpdate().catch(e => {})
+                                //     await interaction.editReply({embeds:[prologuerejectEmbed],components:[]})
+                                //     collector.stop()
+                                // }
                                 else if(btn.customId === "btn_reject"){
                                     await btn.deferUpdate().catch(e => {})
                                     await interaction.editReply({embeds:[rejectEmbed],components:[]})
@@ -413,7 +413,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.armour = 17
                                     foundUser.speed = 10
                                     foundUser.magicPower = 3
-                                    foundUser.vitality = 10
+                                    foundUser.vitality = 8
                                     foundUser.health = 80
                                     foundUser.magicResistance = 8
                                     foundUser.currentskills = [{
@@ -477,7 +477,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         }
                                         else{
                                             await collected.deferUpdate().catch(e => {})
-                                            await interaction.editReply({content: null,embeds:[prologueEmbed],components:[prologuebtn]})
+                                            await interaction.editReply({content: null,embeds:[prologueEmbed],components:[]})
+                                            await interaction.channel.send({content: null,embeds:[acceptEmbed],components:[]})
                                         }
                                     })
                                    

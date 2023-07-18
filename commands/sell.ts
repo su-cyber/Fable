@@ -88,7 +88,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                         
                                     }
                                     else{
-                                        const foundObject=userProfile.inventory.items.find(object => object.name.toLowerCase() === userobject)
+                                        const foundObject=userProfile.inventory.items.find(object => object.name.name.toLowerCase() === userobject)
                                         if(foundObject){
                                             if(foundObject.quantity>=userQuantity){
                                                 foundObject.quantity-=userQuantity

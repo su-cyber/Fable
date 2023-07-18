@@ -63,7 +63,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
             
                                 let acceptEmbed = new MessageEmbed()
                                 .setColor('GREEN')
-                                .setTitle('New Beginnings')
+                                .setTitle('FIRST JOB')
                                 .setAuthor({
                                     iconURL:interaction.user.displayAvatarURL(),
                                     name:interaction.user.tag
@@ -83,7 +83,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                     name:interaction.user.tag
                                 })
                                 .setTitle('ERROR')
-                                .setDescription('You cannot run away! Retry by pressing "/ProgressMainQuest"')
+                                .setDescription('You cannot run away! Retry by pressing "/Progressmainquest"')
                                 
                             
                             await interaction.reply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
@@ -175,7 +175,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 .addFields([
                                     {
                                         name: `Current Objective:`,
-                                        value:`**Press "/progressmainquest" to continue**`
+                                        value:`**Press "/Progressmainquest" to continue**`
                                     }
                                 ])
                                 .setDescription(`As consciousness beckoned you from the depths of slumber, the sterile air of the infirmary engulfed your senses. Groggily, your eyes fluttered open, drawn to the weight pressing against your legs. There, in an innocent repose, lay your childhood companion Emyr, his presence a comforting balm amidst the stark clinical surroundings. The nurse's voice, laden with concern, sliced through the haze of your awakening.\n\n“Ah, I see you are awake. You were out for a while there, like four days?" she spoke, her tone heavy with gravity.Your mind strained to piece together the fragments of the puzzle, weaving together the events that had unfolded during your unconscious state. It was Mr. Sebas, the esteemed Butler of the Mayor, who had come to your rescue. He had just returned from his untimely delegation to the Capital. Once a celebrated Ajin in his own right, his absence from Aube Town had left it vulnerable to the marauding Beer Buccaneers. Now, his very presence instilled fear in their hearts.\n\nBut the true testament of Mr. Sebas' power came to light as the Ghorgon, a monstrous embodiment of the Nightmare, clashed with the force of his indomitable will. He held the abomination at bay, a perilous task even for the most esteemed Ajins, until he ultimately felled the beast, ensuring victory in the face of unspeakable darkness.\n\nSuch was the remarkable backdrop against which your own valor shone. Mr. Sebas, impressed by your unwavering defiance in the face of certain doom, awaited your presence. He could be found within the enigmatic confines of the Town Library, a sanctuary teeming with untold secrets and unspoken debts.\n\nWith a reluctant yet understanding nod, you decided to let Emyr continue his well-deserved respite, recouping the sleep lost during his vigil. There would be time to express your gratitude to him later. For now, the path led to Mr. Sebas, a figure enshrouded in enigma and the embodiment of a debt repaid in kind.`)
@@ -188,7 +188,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                     name:interaction.user.tag
                                 })
                                 .setThumbnail('attachment://Ghorgon.jpeg')
-                                .setDescription('You cannot run away! Retry by pressing "/ProgressMainQuest"')
+                                .setDescription('You cannot run away! Retry by pressing "/Progressmainquest"')
                                 
                             
                             await interaction.reply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
@@ -199,7 +199,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                     if(btn.isButton()){
                                         if(btn.customId === "btn_accept"){
                                             await btn.deferUpdate().catch(e => {})
-                                            await interaction.editReply({embeds:[acceptEmbed],files:[attachment]})
+                                            await interaction.editReply({embeds:[acceptEmbed],files:[]})
                             
                                             
                                             await profileModel.updateOne({userID:interaction.user.id},{location:"Town Centre",main_quest_phase:"3"})
@@ -245,7 +245,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             .addFields([
                                 {
                                     name: `Current Objective:`,
-                                    value:`**Press "/progressmainquest" to continue**`
+                                    value:`**Press "/Progressmainquest" to continue**`
                                 }
                             ])
                             
@@ -266,7 +266,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             .addFields([
                                 {
                                     name: `Current Objective:`,
-                                    value:`**Press "/progressmainquest" to continue**`
+                                    value:`**Press "/Progressmainquest" to continue**`
                                 }
                             ])
                             
@@ -309,7 +309,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             .addFields([
                                 {
                                     name: `Current Objective:`,
-                                    value:`**Press "/progressmainquest" to continue**`
+                                    value:`**Press "/Progressmainquest" to continue**`
                                 },
                                 {
                                     name:'**REWARDS:**',
@@ -324,8 +324,82 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             await profileModel.updateOne({userID:authorId},{main_quest_phase:"6"})
                         
                         }
-
                         else if(foundUser.main_quest_phase == "6"){
+                            let fightEmbed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('TUTORIAL COMPLETE')
+                            .setAuthor({
+                                iconURL:interaction.user.displayAvatarURL(),
+                                name:interaction.user.tag
+                            })
+                            .addFields([
+                                {
+                                    name: `Current Objective:`,
+                                    value:`**Press "/Progressmainquest" in "Aube Town Guild Outpost" to continue**`
+                                }
+                            ])
+                            
+                            
+                            .setDescription(`*“Psst, hey! Yeah that’s right. I paused the time again. Just wanted to let you know that the universe is done holding your hand. From here on, it's all you. But…I may have sprinkled a few hints here and there for you yet, so look out. I wish you good luck!”*\n\nYou can now freely explore the world, and that too at your own leisure. Use the /walk command to see available locations you can walk to, in Aube Town. And use the /travel command to see available locations you can travel to, from Aube Town. The locations displayed will often show destinations that are nearby to your current location. In this case, since you are in Aube Town, you will see places to visit inside Aube Town as well as its exteriors.\n\nWhen you visit a location, you can actually explore them. Use the command /explore and it will let you explore the location you are currently in. For interiors, this command simply gives you more information about the place, but when you use it in the outskirts, like Forests, Caves or Mountains - you will actively start exploring it. Let’s say you are in a Forest, entering the /explore command will have you explore the place. This exploration attempt may end up in you finding crafting materials or run into dangerous magical beasts. You can indefinitely explore the outskirts. Just enter /explore repeatedly.\n\nAlso you should talk to the locals in every town and city. They have interesting gossip, knowledge, and items to share with you. You can do this by entering /talktolocals. Just like the explore button, you can enter this command indefinitely until you have talked to everyone new. There are about 10 strangers in every town and city who want to talk to you. Some of these people may be in a Bar/Inn mind you.`)
+        
+                            await interaction.reply({content: null,embeds:[fightEmbed]})
+                            await profileModel.updateOne({userID:authorId},{main_quest_phase:"7"})
+                        }
+                        else if(foundUser.main_quest_phase == "7"){
+                            if(foundUser.location == "Aube Town Guild Outpost"){
+                            let fightEmbed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('THE STARTING LINE')
+                            .setAuthor({
+                                iconURL:interaction.user.displayAvatarURL(),
+                                name:interaction.user.tag
+                            })
+                            .addFields([
+                                {
+                                    name: `Current Objective:`,
+                                    value:`**Press "/Progressmainquest" in "Aube Town Guild Outpost" to continue**`
+                                }
+                            ])
+                            
+                            
+                            .setDescription(`Upon entering the bustling Ranger Association's Guild Outpost in Aube Town, you are greeted by Eupheme and Andan, the caretakers. Expressing your desire to earn merit and obtain a letter of recommendation, you learn that the crowded outpost is a result of a recent Nightmare occurrence outside the town, and many Challengers are here to capitalize on the situation.\n\nAndan, with a disapproving tone, warns that starting now might be too late. The quests offering the most merit have already been taken, leaving only a few remaining, insufficient to meet your needs. Eupheme, however, believes there might be one involving the Lager Family.\n\nAndan expresses skepticism, stating that high-profile Ajins have already taken that quest, making it a dangerous race he can't entrust to a newcomer. After a moment of tension, he reluctantly agrees to let you take the high-merit quest only after completing all the remaining quests in Aube.\n\nYou agree to his demands, and step towards the Quest Board in order to check the available Quests.`)
+        
+                            await interaction.reply({content: null,embeds:[fightEmbed]})
+                            await profileModel.updateOne({userID:authorId},{main_quest_phase:"8"})
+                            }
+                            else{
+                                interaction.reply({content:`You are not in the guild outpost, please go to the outpost to continue!`,ephemeral:true})
+                            }
+                            
+                        }
+                        else if(foundUser.main_quest_phase == "8"){
+                            if(foundUser.location == "Aube Town Guild Outpost"){
+                            let fightEmbed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('THE STARTING LINE')
+                            .setAuthor({
+                                iconURL:interaction.user.displayAvatarURL(),
+                                name:interaction.user.tag
+                            })
+                            .addFields([
+                                {
+                                    name: `Current Objective:`,
+                                    value:`Complete all available Side Quests in Aube Town and speak to Andan.`
+                                }
+                            ])
+                            
+                            
+                            .setDescription(`At the Questboard, Eupheme informs you that Ajins who want to become Guild Rangers are referred to as the Challengers. Hence, they can only undertake E Class Quests to gain merit and receive a Letter of Recommendation. However, Guild caretakers like Eupheme and Andan may allow Challengers to take on D Rank Quests if they assess their strength as sufficient.\n\nHowever, the race to merit does not end here. Even as a Ranger, you will take on Quests that are on par with your strength, and only gradually will you be allowed to take on more threatening Quests as you are promoted within your Guild. Your merit in the Guild will be used to measure your strength and capability. As you gain more merit and fame by completing various quests, your power, influence and rank will increase in the Guild.\n\nUse /questboard to access the Guild’s Quest Board when visiting a Guild Outpost. You can view the various quests available to you and can take up any number of quests you like; however you can only focus on completing one quest at a time. There are two kinds of quests - 1) Main Quests 2) Side Quests\n\nYou only ever have a single Main Quest going on. But, you will have taken up several Side Quests too. In the case of Side Quests, you will have to pick one and complete it before you can start another. But you can change your active Side Quests using the /switchquest. Note that doing so will delete your progress and findings of the previously active quest. This will not impact your Main Quest at all, because you can have 1 Side Quest active at all time alongside your Main Quest.\n\nUse /progresssidequest to progress in your Side Quests. If you feel stuck or forget what you’re supposed to be doing, you can use /questinfo. Also ask for help from other Ajins.`)
+        
+                            await interaction.reply({content: null,embeds:[fightEmbed]})
+                            await profileModel.updateOne({userID:authorId},{main_quest_phase:"9"})
+                            }
+                            else{
+                                interaction.reply({content:`You are not in the guild outpost, please go to the outpost to continue!`,ephemeral:true})
+                            }
+                            
+                        }
+                        else if(foundUser.main_quest_phase == "9"){
                            if(foundUser.location == "Aube Town Guild Outpost"){
                             if(foundUser.completed_quests.includes("KS-TA-SQ1") && foundUser.completed_quests.includes("KS-TA-SQ2") && foundUser.completed_quests.includes("KS-TA-SQ3") && foundUser.completed_quests.includes("KS-TA-SQ4") && foundUser.completed_quests.includes("KS-TA-SQ5")){
                                 let fightEmbed = new MessageEmbed()
@@ -377,7 +451,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             .addFields([
                                 {
                                     name: `Current Objective:`,
-                                    value:`**Go to the Guild District and use "/progressmainquest" command to continue**`
+                                    value:`**Go to the Guild District and use "/Progressmainquest" command to continue**`
                                 }
                             ])
                             
@@ -434,7 +508,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 .addFields([
                                     {
                                         name: `Current Objective:`,
-                                        value:`**Press /progressmainquest to continue to round 2**`
+                                        value:`**Press /Progressmainquest to continue to round 2**`
                                     }
                                 ])
                                 
@@ -452,7 +526,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 .addFields([
                                     {
                                         name: `Current Objective:`,
-                                        value:`**Press /progressmainquest to continue to round 2**`
+                                        value:`**Press /Progressmainquest to continue to round 2**`
                                     }
                                 ])
                                 
@@ -470,7 +544,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 .addFields([
                                     {
                                         name: `Current Objective:`,
-                                        value:`**Press /progressmainquest to continue to round 2**`
+                                        value:`**Press /Progressmainquest to continue to round 2**`
                                     }
                                 ])
                                 

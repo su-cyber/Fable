@@ -136,7 +136,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                 }
                             }
                             else if(userType === "item"){
-                                const foundObject=foundUser.items.find(object => object.name.toLowerCase() === userobject)
+                                const foundObject=foundUser.items.find(object => object.name.name.toLowerCase() === userobject)
                                 if(foundObject){
                                     
                                         const index = foundUser.items.indexOf(foundObject)
@@ -148,14 +148,14 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                             
                                         }
                                         else{
-                                            const foundInventory=foundProfile.inventory.items.find(object => object.name.toLowerCase() === userobject)
+                                            const foundInventory=foundProfile.inventory.items.find(object => object.name.name.toLowerCase() === userobject)
                                             if(foundInventory){
                                                 foundInventory.quantity+=1
                                             }
                                             else{
                                                 
                                                 const newItem = {
-                                                    name:foundObject.name,
+                                                    name:foundObject,
                                                     quantity:Number(1)
                                                 }
                                                 foundProfile.inventory.items.push(newItem)

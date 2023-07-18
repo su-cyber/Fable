@@ -180,7 +180,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                         value:`**Obtained Solarcorn Stalk X 1**`
                                                     }
                                                 ])
-                                                .setDescription(`you hand over the stalk to the Crofters, and they give you some to keep. This reward will be relevant later when you leave Aube Town`)
+                                                .setDescription(`you hand over the stalk to the Crofters, and they give you some to keep.`)
                                                 interaction.reply({embeds:[successembed]})
                                                 foundObject.quantity-=4
                                                         if(foundObject.quantity===0){
