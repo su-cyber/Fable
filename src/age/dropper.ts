@@ -54,7 +54,7 @@ export class Dropper {
         const gainedXP=killed.xp
         profileModel.findOne({userID:killer.id},async function(err,foundUser){
             foundUser.xp+=gainedXP
-            await profileModel.findOneAndUpdate({userID:killer.id},foundUser)
+            await profileModel.updateOne({userID:killer.id},{xp:foundUser.xp})
         })
         const coins = formatMoney(randfloat(1, 1e8, 3), 3)
         const drop = this.drop()
