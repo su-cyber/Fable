@@ -75,7 +75,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 }
                                 else{
                                     const newItem = {
-                                        name:flora.name,
+                                        name:flora,
                                         description:flora.description,
                                         quantity:Number(flora.quantity)
                                     }
@@ -216,7 +216,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 }
                                 else{
                                     const newItem = {
-                                        name:flora.name,
+                                        name:flora,
                                         description:flora.description,
                                         quantity:Number(flora.quantity)
                                     }
@@ -358,7 +358,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 }
                                 else{
                                     const newItem = {
-                                        name:flora.name,
+                                        name:flora,
                                         description:flora.description,
                                         quantity:Number(flora.quantity)
                                     }
@@ -754,7 +754,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 }
                                 else{
                                     const newItem = {
-                                        name:flora.name,
+                                        name:flora,
                                         description:flora.description,
                                         quantity:Number(flora.quantity)
                                     }

@@ -44,10 +44,14 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                         
                                     }
                                     else{
-                                        let fullInventory = userProfile.inventory.weapons.concat(userProfile.inventory.items,userProfile.inventory.potions,userProfile.inventory.armour)
-                                        console.log(fullInventory);
+                                        let weapons = userProfile.inventory.weapons
+                                        let armour = userProfile.inventory.armour
+                                        let potions = userProfile.inventory.potions
+                                        let items = userProfile.inventory.items
+                                        let fullInventory = [].concat(weapons,armour,potions,items)
+                                 
                                         
-                                        const foundObject=fullInventory.find(object => object.name.name.toLowerCase() === userobject)
+                                        const foundObject=fullInventory.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
                                         if(foundObject){
                                             if(foundObject.name instanceof Weapon){
                                                 if(foundObject.quantity>=userQuantity){

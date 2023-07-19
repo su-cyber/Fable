@@ -97,7 +97,7 @@ export class Dropper {
                 }
                 else{
                     const newItem = {
-                        name:drop.name,
+                        name:drop,
                         description:drop.description,
                         quantity:Number(quantity)
                     }
