@@ -51,18 +51,14 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                         let fullInventory = [].concat(weapons,armour,potions,items)
                                  
                                         
-                                        const foundObject=fullInventory.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
+                                        let foundObject=fullInventory.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
                                         if(foundObject){
                                             if(foundObject.name instanceof Weapon){
                                                 if(foundObject.quantity>=userQuantity){
                                                     foundObject.quantity-=userQuantity
                                                     if(foundObject.quantity===0){
-                                                        foundObject.quantity+=userQuantity
                                                         const index = userProfile.inventory.weapons.indexOf(foundObject)
                                                         userProfile.inventory.weapons.splice(index,1)
-                                                        
-                                                        
-                                                        await inventory.updateOne({userID:authorId},userProfile)
                                                         
                                                     }
                                                     const selling_price=foundObject.name.cost*0.5
@@ -85,19 +81,14 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                     interaction.reply({content:`you dont have ${userQuantity} ${userobject}(s) to sell`,ephemeral:true})
                                                 }
                                                
-                                                
+                                                await inventory.updateOne({userID:authorId},userProfile)
                                             }
                                             else if(foundObject.name instanceof Armour){
                                                 if(foundObject.quantity>=userQuantity){
                                                     foundObject.quantity-=userQuantity
                                                     if(foundObject.quantity===0){
-                                                        foundObject.quantity+=userQuantity
                                                         const index = userProfile.inventory.armour.indexOf(foundObject)
                                                         userProfile.inventory.armour.splice(index,1)
-
-                                                       
-                                                        
-                                                        await inventory.updateOne({userID:authorId},userProfile)
                                                     }
                                                     const selling_price=foundObject.name.cost*0.5
                                                     profileModel.findOne({userID:authorId},async function(err,foundProfile){
@@ -119,18 +110,14 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                     interaction.reply({content:`you dont have ${userQuantity} ${userobject}(s) to sell`,ephemeral:true})
                                                 }
                                                
-                                               
+                                                await inventory.updateOne({userID:authorId},userProfile)
                                             }
                                             else if(foundObject.name instanceof Potion){
                                                 if(foundObject.quantity>=userQuantity){
                                                     foundObject.quantity-=userQuantity
                                                     if(foundObject.quantity===0){
-                                                        foundObject.quantity+=userQuantity
                                                         const index = userProfile.inventory.potions.indexOf(foundObject)
                                                         userProfile.inventory.potions.splice(index,1)
-                                                        
-                                                        
-                                                        await inventory.updateOne({userID:authorId},userProfile)
                                                     }
                                                     const selling_price=foundObject.name.cost*0.5
                                                     profileModel.findOne({userID:authorId},async function(err,foundProfile){
@@ -152,18 +139,17 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                     interaction.reply({content:`you dont have ${userQuantity} ${userobject}(s) to sell`,ephemeral:true})
                                                 }
                                                
-                                                
+                                                await inventory.updateOne({userID:authorId},userProfile)
                                             }
                                             else{
+                                                foundObject = userProfile.inventory.items.find(object => object.name.name.toLowerCase() === foundObject.name.name.toLowerCase())
                                                 if(foundObject.quantity>=userQuantity){
                                                     foundObject.quantity-=userQuantity
                                                     if(foundObject.quantity===0){
-                                                        foundObject.quantity+=userQuantity
                                                         const index = userProfile.inventory.items.indexOf(foundObject)
                                                         userProfile.inventory.items.splice(index,1)
+                                                        console.log(index);
                                                         
-                                                        
-                                                        await inventory.updateOne({userID:authorId},userProfile)
                                                     }
                                                     const selling_price=foundObject.name.cost*0.5
                                                     profileModel.findOne({userID:authorId},async function(err,foundProfile){
@@ -185,7 +171,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                     interaction.reply({content:`you dont have ${userQuantity} ${userobject}(s) to sell`,ephemeral:true})
                                                 }
                                                
-                                                
+                                                await inventory.updateOne({userID:authorId},userProfile)
                                             }
                                             
                                         }
