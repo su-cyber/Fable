@@ -30,7 +30,7 @@ export class Droner extends MonsterEntity {
             spawnRate: 0.2,
             health: 60,
             mana:0,
-            xp: generateXP(5,15),
+            xp: 9,
             evasion: 0.03,
             attackDamage: 0,
             fileName:'droner.jpeg',

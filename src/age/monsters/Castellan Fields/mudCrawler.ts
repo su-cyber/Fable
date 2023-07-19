@@ -27,7 +27,7 @@ export class mudCrawler extends MonsterEntity {
             health: 60,
             mana:0,
             fileName:'mudcrawler.jpeg',
-            xp: generateXP(5,15),
+            xp: 9,
             evasion: 0.03,
             attackDamage: 12,
             magicPower: 0,

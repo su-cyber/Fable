@@ -26,7 +26,7 @@ export class MagmaGolem extends MonsterEntity {
             spawnRate: 0.1,
             health: 200,
             mana:4,
-            xp: generateXP(5,15),
+            xp: generateXP(42,46),
             evasion: 0.05,
             attackDamage: 30,
             magicPower: 35,

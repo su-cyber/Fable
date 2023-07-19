@@ -26,7 +26,7 @@ export class captainCrook extends MonsterEntity {
             spawnRate: 0.5,
             health: 120,
             mana:4,
-            xp: generateXP(5,15),
+            xp: generateXP(25,30),
             evasion: 0.05,
             attackDamage: 20,
             fileName:'captaincrook.jpeg',

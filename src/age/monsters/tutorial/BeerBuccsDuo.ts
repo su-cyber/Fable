@@ -33,7 +33,7 @@ export class BeerBuccsDuo extends MonsterEntity {
             fileName:'beerbuccsduo.jpeg',
             attackDamage: 10,
             mana:0,
-            xp: generateXP(5,15),
+            xp: 15,
             magicPower: 0,
             armor: 5,
             speed: 2,

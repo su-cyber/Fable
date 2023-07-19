@@ -27,7 +27,7 @@ export class Thornback extends MonsterEntity {
             description:`A large, armored reptile covered in sharp thorns. The Thornback is slow-moving but extremely powerful. Its attack is a charge with its heavy, spiked tail. Its drop is a Thornback shell, which can be crafted into sturdy armor.`,
             health: 70,
             mana:0,
-            xp: generateXP(5,15),
+            xp: 12,
             evasion: 0.03,
             attackDamage: 15,
             fileName:'thornback.jpeg',

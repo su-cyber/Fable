@@ -26,7 +26,7 @@ export class Gildedwyvern extends MonsterEntity {
             spawnRate: 0.2,
             health: 110,
             mana:0,
-            xp: generateXP(5,15),
+            xp: generateXP(32,35),
             evasion: 0.05,
             fileName:'guildedwyvern.jpeg',
             attackDamage: 30,

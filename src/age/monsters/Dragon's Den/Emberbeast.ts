@@ -27,7 +27,7 @@ export class Emberbeast extends MonsterEntity {
             health: 100,
             mana:0,
             fileName:'emberbeast.jpeg',
-            xp: generateXP(5,15),
+            xp: generateXP(26,30),
             evasion: 0.05,
             attackDamage: 35,
             magicPower: 10,

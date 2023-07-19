@@ -26,7 +26,7 @@ export class Moonwisp extends MonsterEntity {
             spawnRate: 0.35,
             health: 80,
             mana:0,
-            xp: generateXP(5,15),
+            xp: generateXP(15,18),
             evasion: 0.05,
             attackDamage: 5,
             fileName:'moonwisp.jpeg',
