@@ -57,9 +57,10 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                 if(foundObject.quantity>=userQuantity){
                                                     foundObject.quantity-=userQuantity
                                                     if(foundObject.quantity===0){
+                                                        foundObject.quantity+=userQuantity
                                                         const index = userProfile.inventory.weapons.indexOf(foundObject)
                                                         userProfile.inventory.weapons.splice(index,1)
-                                                        console.log(index);
+                                                        
                                                         
                                                         await inventory.updateOne({userID:authorId},userProfile)
                                                         
@@ -90,10 +91,11 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                 if(foundObject.quantity>=userQuantity){
                                                     foundObject.quantity-=userQuantity
                                                     if(foundObject.quantity===0){
+                                                        foundObject.quantity+=userQuantity
                                                         const index = userProfile.inventory.armour.indexOf(foundObject)
                                                         userProfile.inventory.armour.splice(index,1)
 
-                                                        console.log(index);
+                                                       
                                                         
                                                         await inventory.updateOne({userID:authorId},userProfile)
                                                     }
@@ -123,9 +125,10 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                 if(foundObject.quantity>=userQuantity){
                                                     foundObject.quantity-=userQuantity
                                                     if(foundObject.quantity===0){
+                                                        foundObject.quantity+=userQuantity
                                                         const index = userProfile.inventory.potions.indexOf(foundObject)
                                                         userProfile.inventory.potions.splice(index,1)
-                                                        console.log(index);
+                                                        
                                                         
                                                         await inventory.updateOne({userID:authorId},userProfile)
                                                     }
@@ -155,9 +158,10 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                 if(foundObject.quantity>=userQuantity){
                                                     foundObject.quantity-=userQuantity
                                                     if(foundObject.quantity===0){
+                                                        foundObject.quantity+=userQuantity
                                                         const index = userProfile.inventory.items.indexOf(foundObject)
                                                         userProfile.inventory.items.splice(index,1)
-                                                        console.log(index);
+                                                        
                                                         
                                                         await inventory.updateOne({userID:authorId},userProfile)
                                                     }
