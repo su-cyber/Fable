@@ -64,7 +64,13 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                         }
                                         
                                     })
-                                    foundUser.attackDamage-=foundObject.damage
+                                    if(foundObject.type == "melee"){
+                                        foundUser.attackDamage-=foundObject.damage
+                                    }
+                                    else if(foundObject.type == "ranged"){
+                                        foundUser.magicPower-=foundObject.damage
+                                    }
+                                    
 
                                     if(foundObject.skills.length !=0){
                                         const foundskill=foundUser.allskills.find(skill => skill.name.toLowerCase() === foundObject.skills[0].name.toLowerCase())
@@ -123,6 +129,9 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                         
                                     })
                                     foundUser.armour-=foundObject.armour
+                                    foundUser.magicResistance -=foundObject.name.magicResistance
+                                    foundUser.speed -= foundObject.name.magicResistance
+                                    foundUser.vitality -= foundObject.name.vitality
                                     for(let i=0; i<foundObject.skills.length;i++){
                                         const foundSkill = foundUser.passiveskills.find(skill => skill.name == foundObject.skills[i])
                                         const index = foundUser.passiveskills.indexOf(foundSkill)

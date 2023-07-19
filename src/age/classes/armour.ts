@@ -5,6 +5,9 @@
     name: string
     description: string
     armour: number
+    magicResistance: number
+    vitality: number
+    speed: number
     cost:number
     skills: object[]
 }
@@ -14,6 +17,9 @@ class Armour {
     name: string
     description: string
     armour: number
+    magicResistance: number
+    vitality: number
+    speed: number
     cost:number
     skills: object[]
 

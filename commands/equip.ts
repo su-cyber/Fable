@@ -57,7 +57,13 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                        
                                         if(foundObject.name.skills.length == 0){
                                             foundProfile.weapon.push(foundObject.name)
-                                            foundProfile.attackDamage+=foundObject.name.damage
+                                            if(foundObject.type == "melee"){
+                                                foundProfile.attackDamage+=foundObject.name.damage
+                                            }
+                                            else if(foundObject.type == "ranged"){
+                                                foundProfile.magicPower+=foundObject.name.damage
+                                            }
+                                            
                                             await interaction.reply({content:`${userobject} has been equipped successfully!`})
                                  
                                         }
@@ -67,7 +73,12 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                 foundProfile.allskills.push(foundObject.name.skills[0])
                                                 await profileModel.updateOne({userID:authorId},{currentskills:foundProfile.currentskills,allskills:foundProfile.allskills})
                                                 foundProfile.weapon.push(foundObject.name)
-                                                foundProfile.attackDamage+=foundObject.name.damage
+                                                if(foundObject.type == "melee"){
+                                                    foundProfile.attackDamage+=foundObject.name.damage
+                                                }
+                                                else if(foundObject.type == "ranged"){
+                                                    foundProfile.magicPower+=foundObject.name.damage
+                                                }
                                                 await interaction.reply({content:`${userobject} has been equipped successfully!\n${foundObject.name.skills[0].name} has been added to your skill cycle!`})
                                                 }
                                                 else{
@@ -75,7 +86,12 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                     await profileModel.updateOne({userID:authorId},{allskills:foundProfile.allskills})
                                                     
                                                     foundProfile.weapon.push(foundObject.name)
-                                                    foundProfile.attackDamage+=foundObject.name.damage
+                                                    if(foundObject.type == "melee"){
+                                                        foundProfile.attackDamage+=foundObject.name.damage
+                                                    }
+                                                    else if(foundObject.type == "ranged"){
+                                                        foundProfile.magicPower+=foundObject.name.damage
+                                                    }
                                                     await interaction.reply({content:`${userobject} has been equipped successfully!\n${foundObject.name.skills[0].name} has been added to your skill list!`})
                                                 }
                                             
@@ -120,6 +136,9 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                     }
                                                 foundProfile.armourSuit.push(foundObject.name)
                                                 foundProfile.armour+=foundObject.name.armour
+                                                foundProfile.magicResistance +=foundObject.name.magicResistance
+                                                foundProfile.speed += foundObject.name.magicResistance
+                                                foundProfile.vitality += foundObject.name.vitality
                                                 foundProfile.passiveskills = foundProfile.passiveskills.concat(foundObject.name.skills)
                                                 await interaction.reply({content:`${userobject} has been equipped successfully!`})
                                             }

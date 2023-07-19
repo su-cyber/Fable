@@ -19,7 +19,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                     let embed = new MessageEmbed()
                     .setColor('RANDOM')
                     .setTitle('STAT INVEST')
-                    .setDescription(`invest stat points`)
+                    .setDescription(`How have the newly unlocked Spyr Cores affected your body?`)
                 
                     let btnraw= new MessageActionRow().addComponents([
                         new MessageButton().setCustomId("attack_power").setStyle("PRIMARY").setLabel("VIGOUR"),
@@ -32,45 +32,45 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                     let btn_cancel = new MessageActionRow().addComponents([
                         new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
                 
-                    let select =  new MessageActionRow().addComponents([
-                            new MessageSelectMenu()
-                            .setCustomId('select')
-                                .setPlaceholder(`Select number of skill points ${interaction.user.username}`)
-                                .addOptions({
+                    // let select =  new MessageActionRow().addComponents([
+                    //         new MessageSelectMenu()
+                    //         .setCustomId('select')
+                    //             .setPlaceholder(`Select number of skill points ${interaction.user.username}`)
+                    //             .addOptions({
                                     
-                                        label: '1',
-                                        description: 'invest 1 stat point',
-                                        value: '1',
-                                },{
-                                    label: '2',
-                                    description: 'invest 2 stat point',
-                                    value: '2',
-                                },{
-                                    label: '3',
-                                    description: 'invest 3 stat point',
-                                    value: '3',
-                                },{
-                                    label: '4',
-                                    description: 'invest 4 stat point',
-                                    value: '4',
-                                },{
-                                    label: '5',
-                                    description: 'invest 5 stat point',
-                                    value: '5',
-                                }
-                                )
-                                .setDisabled(false),
-                        ]) 
+                    //                     label: '1',
+                    //                     description: 'invest 1 stat point',
+                    //                     value: '1',
+                    //             },{
+                    //                 label: '2',
+                    //                 description: 'invest 2 stat point',
+                    //                 value: '2',
+                    //             },{
+                    //                 label: '3',
+                    //                 description: 'invest 3 stat point',
+                    //                 value: '3',
+                    //             },{
+                    //                 label: '4',
+                    //                 description: 'invest 4 stat point',
+                    //                 value: '4',
+                    //             },{
+                    //                 label: '5',
+                    //                 description: 'invest 5 stat point',
+                    //                 value: '5',
+                    //             }
+                    //             )
+                    //             .setDisabled(false),
+                    //     ]) 
                 
                     await interaction.deferReply()
                     await interaction.editReply({content: null,embeds:[embed],components:[btnraw]})
                 
                     let filter_btn = (interaction : any) => interaction.user.id === authorId && interaction.isButton()
-                    let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
-                    let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"
+                    // let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+                    // let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"
                     let collector_btn =  interaction.channel.createMessageComponentCollector({ filter:filter_btn })
-                    let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
-                    let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
+                    // let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
+                    // let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
                 
                     
                 
@@ -78,10 +78,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                         i.deferUpdate().catch(() => null)
                         profileModel.findOne({userID:authorId}, async (err,foundUser) => {
                             if(i.customId === 'attack_power'){
-                                await interaction.editReply({content: null,embeds:[embed],components:[select,btn_cancel]})
-                                collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
-                                    collected.deferUpdate().catch(() => null)
-                                    const num = collected.values[0]
+                                    const num = 1
                 
                                     if(num>foundUser.skill_points){
                                         interaction.editReply(`not enough skill points to invest!`)
@@ -93,38 +90,19 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                         let successembed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('STAT INVEST')
-                                        .setDescription(`Your attack damage has been increased to ${foundUser.attackDamage}`)
+                                        .setDescription(`Your Vigour has been increased! Your body feels more powerful as strength courses through you.`)
                                     await profileModel.updateOne({userID:authorId},{attackDamage:foundUser.attackDamage,skill_points:foundUser.skill_points})
                                     await interaction.editReply({embeds:[successembed],components:[]})
-                                    collector_select.stop()
+                                    
                                     collector_btn.stop()
-                                    collector_cancel.stop()
+                                    
                                     }
-                                    
-                                   
-                                    
-                                    
-                                })
-                                collector_cancel.on('collect', async j => {
-                                    j.deferUpdate().catch(() => null)
-                
-                                    let delembed = new MessageEmbed()
-                                    .setColor('RANDOM')
-                                    .setTitle('STAT INVEST')
-                                    .setDescription(`stat investment cancelled!`)
-                                    
-                                    await interaction.editReply({embeds:[delembed],components:[]})
-                                    collector_select.stop()
-                                    collector_btn.stop()
-                                    collector_cancel.stop()
-                                })
+                            
                             } 
                 
                             else if(i.customId === 'magic_power'){
-                                await interaction.editReply({content: null,embeds:[embed],components:[select,btn_cancel]})
-                                collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
-                                    collected.deferUpdate().catch(() => null)
-                                    const num = collected.values[0]
+                                const num = 1
+                
                                     if(num>foundUser.skill_points){
                                         interaction.editReply(`not enough skill points to invest!`)
                                     }
@@ -135,155 +113,80 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                         let successembed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('STAT INVEST')
-                                        .setDescription(`Your magic damage has been increased to ${foundUser.magicPower}`)
-                                    await profileModel.updateOne({userID:authorId},{magicPower:foundUser.magicPower,skill_points:foundUser.skill_points,mana:foundUser.mana})
+                                        .setDescription(`Your Arcana has been increased! You can feel your arcane powers increase as more spyr flows through your spyr circuits.`)
+                                    await profileModel.updateOne({userID:authorId},{magicPower:foundUser.magicPower,skill_points:foundUser.skill_points})
                                     await interaction.editReply({embeds:[successembed],components:[]})
                                     
-                                    collector_select.stop()
                                     collector_btn.stop()
-                                    collector_cancel.stop()
-                                        
+                                    
                                     }
-                                   
-                                })
-                                collector_cancel.on('collect', async j => {
-                                    j.deferUpdate().catch(() => null)
-                
-                                    let delembed = new MessageEmbed()
-                                    .setColor('RANDOM')
-                                    .setTitle('STAT INVEST')
-                                    .setDescription(`stat investment cancelled!`)
-                                    
-                                    await interaction.editReply({embeds:[delembed],components:[]})
-                                    collector_select.stop()
-                                    collector_btn.stop()
-                                    collector_cancel.stop()
-                                    
-                                })
                             } 
              
                 
                             else if(i.customId === 'durability'){
-                                await interaction.editReply({content: null,embeds:[embed],components:[select,btn_cancel]})
-                                collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
-                                    collected.deferUpdate().catch(() => null)
-                                    const num = collected.values[0]
-                                    if(num>foundUser.skill_points){
-                                        interaction.editReply(`not enough skill points to invest!`)
-                                    }
-                                    else{
-                                        foundUser.armour += 5*Number(num)
+                                const num = 1
+                
+                                if(num>foundUser.skill_points){
+                                    interaction.editReply(`not enough skill points to invest!`)
+                                }
+                                else{
+                                    foundUser.armour += 5*Number(num)
                                     foundUser.skill_points -= Number(num)
                                 
                                     let successembed = new MessageEmbed()
                                     .setColor('RANDOM')
                                     .setTitle('STAT INVEST')
-                                    .setDescription(`Your Durability has been increased to ${foundUser.armour},You are now more resistant to physical attacks`)
+                                    .setDescription(`Your Durability has been increased! You can feel your body get sturdy and more resistant to physical attacks`)
                                 await profileModel.updateOne({userID:authorId},{armour:foundUser.armour,skill_points:foundUser.skill_points})
                                 await interaction.editReply({embeds:[successembed],components:[]})
                                 
-                                collector_select.stop()
                                 collector_btn.stop()
-                                collector_cancel.stop()
-                                    }
-                                    
-                                })
-                                collector_cancel.on('collect', async j => {
-                                    j.deferUpdate().catch(() => null)
-                
-                                    let delembed = new MessageEmbed()
-                                    .setColor('RANDOM')
-                                    .setTitle('STAT INVEST')
-                                    .setDescription(`stat investment cancelled!`)
-                                    
-                                    await interaction.editReply({embeds:[delembed],components:[]})
-                                    collector_select.stop()
-                                    collector_btn.stop()
-                                    collector_cancel.stop()
-                                })
+                                
+                                }
                             } 
                             else if(i.customId === 'magic_resistance'){
-                                await interaction.editReply({content: null,embeds:[embed],components:[select,btn_cancel]})
-                                collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
-                                    collected.deferUpdate().catch(() => null)
-                                    const num = collected.values[0]
+                                const num = 1
+                
                                     if(num>foundUser.skill_points){
                                         interaction.editReply(`not enough skill points to invest!`)
                                     }
                                     else{
-                                        foundUser.armour += 5*Number(num)
-                                    foundUser.skill_points -= Number(num)
-                                
-                                    let successembed = new MessageEmbed()
-                                    .setColor('RANDOM')
-                                    .setTitle('STAT INVEST')
-                                    .setDescription(`Your Intelligence has been increased to ${foundUser.magicResistance},You are now more resistant to magical attacks`)
-                                await profileModel.updateOne({userID:authorId},{magicResistance:foundUser.magicResistance,skill_points:foundUser.skill_points})
-                                await interaction.editReply({embeds:[successembed],components:[]})
-                                
-                                collector_select.stop()
-                                collector_btn.stop()
-                                collector_cancel.stop()
-                                    }
-                                    
-                                })
-                                collector_cancel.on('collect', async j => {
-                                    j.deferUpdate().catch(() => null)
-                
-                                    let delembed = new MessageEmbed()
-                                    .setColor('RANDOM')
-                                    .setTitle('STAT INVEST')
-                                    .setDescription(`stat investment cancelled!`)
-                                    
-                                    await interaction.editReply({embeds:[delembed],components:[]})
-                                    collector_select.stop()
-                                    collector_btn.stop()
-                                    collector_cancel.stop()
-                                })
-                            } 
-                
-                            else if(i.customId === 'speed'){
-                                await interaction.editReply({content: null,embeds:[embed],components:[select,btn_cancel]})
-                                collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
-                                    collected.deferUpdate().catch(() => null)
-                                    const num = collected.values[0]
-                                    if(num>foundUser.skill_points){
-                                        interaction.editReply(`not enough skill points to invest!`)
-                                    }
-                                    else{
-                                        foundUser.evasion += 0.001*Number(num)
-                                        foundUser.speed += 5*Number(num)
-                                        
+                                        foundUser.magicResistance += 5*Number(num)
                                         foundUser.skill_points -= Number(num)
                                     
                                         let successembed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('STAT INVEST')
-                                        .setDescription(`Your agility has been increased to ${foundUser.speed}!\nyou now have more chance of evading an attack`)
-                                    await profileModel.updateOne({userID:authorId},{evasion:foundUser.evasion,skill_points:foundUser.skill_points,speed:foundUser.speed})
+                                        .setDescription(`Your Knowledge has been increased! You are now more resistant to attacks conjured with spyr`)
+                                    await profileModel.updateOne({userID:authorId},{magicResistance:foundUser.magicResistance,skill_points:foundUser.skill_points})
                                     await interaction.editReply({embeds:[successembed],components:[]})
                                     
-                                    collector_select.stop()
                                     collector_btn.stop()
-                                    collector_cancel.stop()
-                                        
+                                    
                                     }
-                                   
-                                    
-                                })
-                                collector_cancel.on('collect', async j => {
-                                    j.deferUpdate().catch(() => null)
+                            } 
                 
-                                    let delembed = new MessageEmbed()
-                                    .setColor('RANDOM')
-                                    .setTitle('STAT INVEST')
-                                    .setDescription(`stat investment cancelled!`)
+                            else if(i.customId === 'speed'){
+                                const num = 1
+                
+                                    if(num>foundUser.skill_points){
+                                        interaction.editReply(`not enough skill points to invest!`)
+                                    }
+                                    else{
+                                        foundUser.speed += 5*Number(num)
+                                        foundUser.evasion +=0.001
+                                        foundUser.skill_points -= Number(num)
                                     
-                                    await interaction.editReply({embeds:[delembed],components:[]})
-                                    collector_select.stop()
+                                        let successembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('STAT INVEST')
+                                        .setDescription(`Your Agility has been increased! You can feel that your body is more light and your reflexes have been increased`)
+                                    await profileModel.updateOne({userID:authorId},{speed:foundUser.speed,evasion:foundUser.evasion,skill_points:foundUser.skill_points})
+                                    await interaction.editReply({embeds:[successembed],components:[]})
+                                    
                                     collector_btn.stop()
-                                    collector_cancel.stop()
-                                })
+                                    
+                                    }
                             }
                             
                         })

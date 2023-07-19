@@ -78,8 +78,6 @@ export class Dropper {
         await interaction.channel.send(removeIndentation(text))
         profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
             foundUser.xp+=gainedXP
-            console.log(foundUser.xp);
-            
             await profileModel.updateOne({userID:interaction.user.id},{xp:foundUser.xp})
         })
     }

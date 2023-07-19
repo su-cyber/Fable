@@ -5,6 +5,9 @@ export const steelArmour = new Armour({
     name: 'Steel Armour',
     description: 'simple steel armour',
     armour:15,
+    magicResistance:0,
+    vitality:0,
+    speed:0,
     cost:500,
     skills: [{
         name: 'Regeneration',

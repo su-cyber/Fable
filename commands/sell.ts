@@ -53,7 +53,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                     console.log(index);
                                                     
                                                 }
-                                                const selling_price=foundObject.name.cost*0.6
+                                                const selling_price=foundObject.name.cost*0.5
                                                 profileModel.findOne({userID:authorId},async function(err,foundProfile){
                                                     if(err){
                                                         console.log(err);
@@ -97,7 +97,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                     userProfile.inventory.items.splice(index,1)
                                                 }
                                                 const found = allItems.find(object => object.name.toLowerCase() === userobject)
-                                                const selling_price=found.cost*0.6
+                                                const selling_price=found.cost*0.5
                                                 profileModel.findOne({userID:authorId},async function(err,foundProfile){
                                                     if(err){
                                                         console.log(err);
@@ -141,7 +141,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                     const index = userProfile.inventory.armour.indexOf(foundObject)
                                                     userProfile.inventory.armour.splice(index,1)
                                                 }
-                                                const selling_price=foundObject.name.cost*0.6
+                                                const selling_price=foundObject.name.cost*0.5
                                                 profileModel.findOne({userID:authorId},async function(err,foundProfile){
                                                     if(err){
                                                         console.log(err);
@@ -183,7 +183,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                     const index = userProfile.inventory.potions.indexOf(foundObject)
                                                     userProfile.inventory.potions.splice(index,1)
                                                 }
-                                                const selling_price=foundObject.name.cost*0.6
+                                                const selling_price=foundObject.name.cost*0.5
                                                 profileModel.findOne({userID:authorId},async function(err,foundProfile){
                                                     if(err){
                                                         console.log(err);
