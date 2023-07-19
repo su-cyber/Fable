@@ -149,8 +149,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                         const index = userProfile.inventory.items.indexOf(foundObject)
                                                         userProfile.inventory.items.splice(index,1)
                                                     }
-                                                    const found = allItems.find(object => object.name.toLowerCase() === userobject)
-                                                    const selling_price=found.cost*0.5
+                                                    const selling_price=foundObject.name.cost*0.5
                                                     profileModel.findOne({userID:authorId},async function(err,foundProfile){
                                                         if(err){
                                                             console.log(err);
@@ -163,7 +162,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                         await profileModel.updateOne({userID:authorId},foundProfile)
         
                                                     })
-                                                    await interaction.reply({content:`${userQuantity} ${found.name}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
+                                                    await interaction.reply({content:`${userQuantity} ${foundObject.name.name}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
                                                     
                                                 }
                                                 else{
