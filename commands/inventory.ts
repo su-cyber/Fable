@@ -20,7 +20,7 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'open
                         }
                         else{
                             const mappeditems=foundUser.inventory.items.map((item) => {
-                                return `${item.name} X ${item.quantity}`
+                                return `${item.name.name} X ${item.quantity}`
                             }).join("\n")
                             const mappedweapons=foundUser.inventory.weapons.map((weapon) => {
                                 return `${weapon.name.name} X ${weapon.quantity}`
