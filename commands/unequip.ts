@@ -7,16 +7,12 @@ import { SlashCommandStringOption } from '@discordjs/builders'
 
 export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequip a weapon,armour or item' })
 .addStringOption((option: SlashCommandStringOption) =>
-        option.setName('type').setDescription('type of object').setRequired(true)
-    )
-.addStringOption((option: SlashCommandStringOption) =>
         option.setName('object').setDescription('name of the weapon,armour or item').setRequired(true)
     )
     .setDo(
     async (bot, interaction) => {
         const authorId = interaction.user.id;
         const guildID = interaction.guildId;
-        const userType = interaction.options.getString('type').toLowerCase()
         const userobject = interaction.options.getString('object').toLowerCase()
 
         

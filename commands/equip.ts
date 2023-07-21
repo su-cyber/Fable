@@ -140,6 +140,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                     interaction.reply({content:"you already have a Wearable Item equipped!",ephemeral:true})
                                                 }
                                             await profileModel.updateOne({userID:authorId},foundProfile)
+                                            await inventory.updateOne({userID:authorId},foundUser)
                                             }
                                             
                                         })
@@ -168,6 +169,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                         interaction.reply({content:"you already have a trinket eqipped!",ephemeral:true})
                                                     }
                                                 await profileModel.updateOne({userID:authorId},foundProfile)
+                                                await inventory.updateOne({userID:authorId},foundUser)
                                                 }
                                                 
                                             })
