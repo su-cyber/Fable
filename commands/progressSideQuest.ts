@@ -248,7 +248,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                     name:interaction.user.tag
                                                 })
                                                 
-                                                .setDescription(`you show the Treemick's Branches to the Guild and they confirm the quest completion`)
+                                                .setDescription(`You show the Treemick's Branches to the Guild and they confirm the quest completion`)
                                                 interaction.reply({embeds:[successembed]})
                                                 foundUser.completed_quests.push("KS-TA-SQ4")
                                                 foundUser.side_quest.splice(0,1)
@@ -272,9 +272,10 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                         }
                         else if(foundUser.side_quest[0] == "KS-TA-SQ5"){
                             if(foundUser.side_quest_phase == "1"){
-                                let quest_embed = new MessageEmbed()
+                                if(foundUser.location == "The Terrific Troll Tavern"){
+                                    let quest_embed = new MessageEmbed()
                                 .setColor('RANDOM')
-                                .setTitle(`STOLEN CONSIGNMENTS!`)
+                                .setTitle(`AUBE TOWN'S HERO`)
                                 .setAuthor({
                                     iconURL:interaction.user.displayAvatarURL(),
                                     name:interaction.user.tag
@@ -285,17 +286,23 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                         value:`**press /progresssidequest in lager estate to proceed**`
                                     }
                                 ])
-                                .setDescription(`The owner of the Terrific Troll Tavern claims that his latest consignment of Backbreaker never reached him, and thus he is losing a lot of business unable to satisfy the Crofters visiting him. The Lager Family refuses to accept any blame so it is up to you to find what is happening to his consignments between the Lager Estate and the Tavern.\n\n**Go to lager estate to proceed**`)
+                                .setDescription(`In the heart of Aube Town lies the Terrific Troll Tavern, its owner burdened with a troubled tale. His latest consignment of the renowned Backbreaker has vanished without a trace, leaving him unable to appease the thirsty Crofters who flock to his establishment. Frustration drips from his words as he lays blame on the esteemed Lager Family, accusing them of withholding the precious deliveries.\n\n But the Lager Family remains steadfast, denying any responsibility for the missing consignments. The feud has brewed a tempest of mistrust between them and the townsfolk, and the burden of unearthing the truth now falls upon you, a determined Ajin.\n\nTonight, the Tavern owner reveals, a fresh consignment from the Lager Family is set to arrive. The stakes are high, and he implores you to unveil the hard evidence he so desperately seeks. Your task is to embark on this treacherous journey, following the trail from the Lager Estate to the Tavern's doorstep. Unraveling the enigma surrounding the missing deliveries is now in your hands.`)
                             
                                 await interaction.reply({embeds:[quest_embed]})
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"2"})
+
+                                }
+                                else{
+                                    interaction.reply({content:`You are not at The Terrific Troll Tavern, please visit the tavern to continue`,ephemeral:true})
+                                }
+                                
 
                             }
                             else if(foundUser.side_quest_phase == "2"){
                                 if(foundUser.location == "Lager Estate"){
                                     let quest_embed = new MessageEmbed()
                                 .setColor('RANDOM')
-                                .setTitle(`STOLEN CONSIGNMENTS!`)
+                                .setTitle(`AUBE TOWN'S HERO`)
                                 .setAuthor({
                                     iconURL:interaction.user.displayAvatarURL(),
                                     name:interaction.user.tag
@@ -303,10 +310,10 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 .addFields([
                                     {
                                         name: `Current Objective:`,
-                                        value:`**press /progresssidequest in the town centre to proceed**`
+                                        value:`**Press "/progresssidequest" at the Terrific Troll Tavern to continue.**`
                                     }
                                 ])
-                                .setDescription(` You find out that the Tavern’s consignment of Backbreaker is being stolen by the driver, as he drives off to the Abandoned castle instead of the way of the Tavern.By following the Stagecoach, you see the driver stop by the gate of the Abandoned Castle and use a key to get inside it.\n\n**You must report this back!**`)
+                                .setDescription(`In the dead of night, the eerie shadows of the Lager Estate loom before you. A sense of foreboding taints the air as you witness them loading the new consignments bound for the Terrific Troll Tavern. But something's amiss – there's an unusual air of heightened security, a guardedness that oozes suspicion and caution. Perhaps the feud between the Lager Family and the Tavern's owner seems to have cast a dark cloud over the Estate, amplifying their vigilance.\n\nAs the Backbreaker-laden carriage sets off, you find yourself compelled to follow its path, curiosity and trepidation twisting in your gut. Following the carriage, you venture into the unknown, the night enshrouding you in its chilling embrace. The carriage's destination unravels a shocking twist – the Abandoned Castle, a forsaken relic on the town's fringes. The unsettling sight of the carriage stopping before the Castle sends shivers down your spine.\n\nTwo figures emerge from the carriage – sinister Beer Buccaneers. They wield a key to the Castle's gate, gaining entry to the forsaken fortress. A shroud of uncertainty hangs over this unexpected development, and dread clings to your every step.\n\nA torrent of questions floods your mind. Why would the Lager Family's consignment end up at the Abandoned Castle? The Tavern's owner must be informed, but the truth you bear might ignite a storm of chaos and despair that could consume Aube Town whole.`)
                             
                                 await interaction.reply({embeds:[quest_embed]})
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"3"})
@@ -318,10 +325,10 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
 
                             }
                             else if(foundUser.side_quest_phase == "3"){
-                                if(foundUser.location == "Town Centre"){
+                                if(foundUser.location == "The Terrific Troll Tavern"){
                                     let quest_embed = new MessageEmbed()
                                 .setColor('RANDOM')
-                                .setTitle(`STOLEN CONSIGNMENTS!`)
+                                .setTitle(`AUBE TOWN'S HERO`)
                                 .setAuthor({
                                     iconURL:interaction.user.displayAvatarURL(),
                                     name:interaction.user.tag
@@ -329,16 +336,16 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 .addFields([
                                     {
                                         name: `Current Objective:`,
-                                        value:`**press /progresssidequest in the town centre to proceed**`
+                                        value:`**Press "/progresssidequest" at the Town Centre to continue.**`
                                     }
                                 ])
-                                .setDescription(`You report your findings to the owner of the Tavern who is shocked by your findings because none of the residents have reported any shady activity associated with the abandoned castle. It was once an outpost for the Empral Brigade during the old war but ever since then, it has been unoccupied. The owner of the Tavern is concerned because this is not enough proof for him to take a fight with the Lager Family, and thus he requests you to assist him further by doubling your pay. He requests you to speak with the Town’s mayor\nWith the Fort’s key in hand, it is now time to make your way to the Abandoned Castle. However, the Mayor warns you beforehand. Whatever you uncover in the castle, it is not something you can handle as you are now. So he requests you to speak with Sebas, who is Mayor’s butler and also the town’s trainer who teaches the fundamentals of Spyr in Aube Town.\n\n**You must speak to sebas**`)
+                                .setDescription(`You share the bone-chilling revelation with the Tavern owner, and his shock resonates through the room like a lingering ghost. The residents of Aube Town have yet to report any suspicious activity associated with the forsaken Abandoned Castle. Once an outpost for the Empral Brigade during the Old War, the Castle has remained deserted since, cloaked in a shroud of forgotten history.\n\nThe Tavern owner's concern is palpable—he knows this discovery alone is not enough to confront the mighty Lager Family. The prospect of a confrontation with them sends shivers down his spine, for their laughter would echo like sinister whispers in the night, taunting his accusations.\n\n He implores you to delve deeper into the mysteries of Aube Town, promising to double your pay for your aid. He believes the key to unearthing more evidence lies with the Town's mayor. A request that might unveil truths darker than the abandoned fortress itself.`)
                             
                                 await interaction.reply({embeds:[quest_embed]})
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"4"})
                                 }
                                 else{
-                                    interaction.reply({content:`You are not in the town centre!`,ephemeral:true})
+                                    interaction.reply({content:`You are not at The Terrific Troll Tavern, please visit the tavern to continue`,ephemeral:true})
                                 }
                                 
 
@@ -347,7 +354,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 if(foundUser.location == "Town Centre"){
                                     let quest_embed = new MessageEmbed()
                                 .setColor('RANDOM')
-                                .setTitle(`STOLEN CONSIGNMENTS!`)
+                                .setTitle(`AUBE TOWN'S HERO`)
                                 .setAuthor({
                                     iconURL:interaction.user.displayAvatarURL(),
                                     name:interaction.user.tag
@@ -355,10 +362,10 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 .addFields([
                                     {
                                         name: `Current Objective:`,
-                                        value:`**Clear the dungeon in the Abandoned Castle and press /progresssidequest in towncentre**`
+                                        value:`**Press "/progresssidequest" at the Town Centre to continue.**`
                                     }
                                 ])
-                                .setDescription(`Sebas teaches you about investing in your stats and how you can focus your builds to match your style of fighting. He further explains what changes in your body occur when you invest in certain stats. Now you are ready to take on whatever awaits you at the Abandoned Fort.\n\n**Go and investigate the Abandoned Castle**`)
+                                .setDescription(`You relay your startling discoveries to the Mayor, who, to your relief, not only believes you but is also willing to extend his support. Shock and anger flicker across his features as he realizes the brigands have nestled themselves so close to his town, right under his nose. With a solemn determination, he entrusts you with a key to the Abandoned Castle, recognizing your strength as an Ajin—knowledge he gleaned from Mr. Sebas, whose endorsement carries great weight.\n\nHowever, the Mayor doesn't mince words. The secrets you may uncover within the Castle are not to be taken lightly. The lurking dangers lie beyond your current capabilities, and he implores you to seek counsel from Mr. Sebas, a beacon of wisdom and strength, to unlock your potential and grow even more powerful.`)
                             
                                 await interaction.reply({embeds:[quest_embed]})
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"5"})
@@ -371,35 +378,51 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                             }
                             else if(foundUser.side_quest_phase == "5"){
                                 if(foundUser.location == "Town Centre"){
-                                    if(foundUser.completed_dungeons.includes("Abandoned Castle")){
-                                        let quest_embed = new MessageEmbed()
+                                    let quest_embed = new MessageEmbed()
                                 .setColor('RANDOM')
-                                .setTitle(`STOLEN CONSIGNMENTS!`)
+                                .setTitle(`AUBE TOWN'S HERO`)
                                 .setAuthor({
                                     iconURL:interaction.user.displayAvatarURL(),
                                     name:interaction.user.tag
                                 })
                                 .addFields([
                                     {
-                                        name: `Quest Completed!`,
-                                        value:`**Clear the dungeon in the Abandoned Castle and press /progresssidequest in towncentre**`
+                                        name: `Current Objective:`,
+                                        value:`**Press "/progresssidequest" at the Abandoned Castle to continue.**`
                                     }
                                 ])
-                                .setDescription(`You rid Aube Town of its problems with the Beer Buccaneers as any survivors will run away. The player will then be named “Hero of Aube Town” by the Mayor.\n\n**You earned a new title!**`)
+                                .setDescription(`Upon entering Mr. Sebas' library, a warm welcome awaits you. The seasoned Ajin notices the change in you, a transformation evident since your last encounter. The spark of progress is unmistakable—you now manifest and wield Spyr on your own, a testament to your growth and potential. Notably, your Keystone Grimoire reveals an increased power level, a sign of your burgeoning strength.\n\nThe surge in power brings forth a remarkable phenomenon—an unlocking of dormant Spyr Cores within your body. As these long-hidden cores awaken, they grant you access to a wellspring of untapped Spyr, empowering you with a reservoir of potential waiting to be unleashed.\n\nWith each rise in your Power Level, the once dormant Spyr Cores transform into sources of energy, allowing you to generate and wield greater quantities of Spyr.\n\n[You have now unlocked the use of the command **/statinvest**. As your Power Level increases, more Spyr Cores in your body unlock that empower you further. For every Power Level you increase, you will unlock 3 Spyr Cores. You can then decide how these newly opened Spyr Cores have made you stronger. Consider them like unlocking Skill Points on level-ups. Whenever you want to invest them, use the command **/statinvest**. Each Spyr Core increases a stat of your choosing by +5.]\n\n- Investing in Vigour makes your melee attacks stronger.\n- Investing in Endurance makes you resist melee attacks better.\n- Investing in Arcana makes your ranged attacks stronger.\n- Investing in Knowledge makes you resist ranged attacks better.\n- Investing in Agility makes you attack ahead of those slower than yourself.\n`)
                             
                                 await interaction.reply({embeds:[quest_embed]})
-                                foundUser.completed_quests.push("KS-TA-SQ5")
-                                foundUser.side_quest.splice(0,1)
-                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest})
-                     
-                                    }
-                                    else{
-                                        interaction.reply({content:`You have not cleared the dungeon yet!`,ephemeral:true})
-                                    }
-                                    
+                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"6"})
                                 }
                                 else{
                                     interaction.reply({content:`You are not in the town centre!`,ephemeral:true})
+                                }
+                                
+
+                            }
+                            else if(foundUser.side_quest_phase == "6"){
+                                if(foundUser.location == "Abandoned Castle"){
+                                    let quest_embed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`AUBE TOWN'S HERO`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .addFields([
+                                    {
+                                        name: `Current Objective:`,
+                                        value:`**Press "/explore" at the Abandoned Castle to enter the dungeon. Then press /proceeddungeon whenever you wish to move to the next room in the Dungeon.**`
+                                    }
+                                ])
+                                .setDescription(`In the ominous shadow of the Abandoned Castle, you clutch the key in your trembling arms, its weight a grim reminder of the impending challenge. The rusted steel gates loom before you, creaking in the desolate wind, as if whispering foreboding secrets. With every step closer, a sense of unease grips your heart, for you know that crossing this threshold will lead you into the heart of darkness. With a deep breath, you ready yourself for the challenges that await beyond those decrepit gates.\n\n: You are about to enter your first “Dungeon”. Dungeons in Fable are different and more difficult than any other form of challenge. They throw you into a lair which you cannot return from. There are tougher battles and they occur more often. There are traps, but also rewarding items to find in Dungeons. There are two types of Dungeons in Fable. Pygmy Dungeons and Colossal Dungeons. When you’re in a Dungeon, your only choice is to “proceed” further into the rooms of a dungeon. It is impossible to determine the length nor predict every room of a Dungeon. They’re completely random for every person who attempts them. Sometimes, you may find certain rooms in Dungeons that will heal you, but other than those, you better come stocked up on items when you enter them. Once you go in, you’re only coming out the other end…or if you lose. Are you ready?`)
+                            
+                                await interaction.reply({embeds:[quest_embed]})
+                                }
+                                else{
+                                    interaction.reply({content:`You are not in the Abandoned Castle!`,ephemeral:true})
                                 }
                                 
 
@@ -629,6 +652,9 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                     interaction.reply({content:`You are not in the Astro Avenue! visit the Astro Avenue to continue`,ephemeral:true})
                                 }
                             }
+                        }
+                        else{
+                            interaction.reply({content:`You do not have any SideQuest right now`,ephemeral:true})
                         }
                         
                        
