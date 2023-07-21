@@ -34,9 +34,13 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                             
                         }
                         else{
-                            if(userType === "weapon"){
+                            
+                            let foundWeapon = foundUser.weapon.find(object => object.name.toLowerCase() === userobject)
+                            let foundArmour = foundUser.armourSuit.find(object => object.name.toLowerCase() === userobject)
+                            let founditem = foundUser.items.find(object => object.name.toLowerCase() === userobject)
+                            if(foundWeapon){
                                 const foundObject=foundUser.weapon.find(object => object.name.toLowerCase() === userobject)
-                                if(foundObject){
+                                
                                     
                                         const index = foundUser.weapon.indexOf(foundObject)
                                         foundUser.weapon.splice(index,1)
@@ -93,14 +97,11 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                     
                                     await interaction.reply({content:`${userobject} has been unequipped successfully!`})
                                 
-                                }
-                                else{
-                                    await interaction.reply({content:`you dont have anything called ${userobject} eqipped`,ephemeral:true})
-                                }
+                                
                             }
-                            else if(userType === "armour"){
+                            else if(foundArmour){
                                 const foundObject=foundUser.armourSuit.find(object => object.name.toLowerCase() === userobject)
-                                if(foundObject){
+                                
                                     
                                         const index = foundUser.armourSuit.indexOf(foundObject)
                                         foundUser.armourSuit.splice(index,1)
@@ -139,14 +140,11 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                     }
                                     await interaction.reply({content:`${userobject} has been unequipped successfully!`})
 
-                                }
-                                else{
-                                    await interaction.reply({content:`you dont have anything called ${userobject} eqipped`,ephemeral:true})
-                                }
+                                
                             }
-                            else if(userType === "item"){
+                            else if(founditem){
                                 const foundObject=foundUser.items.find(object => object.name.name.toLowerCase() === userobject)
-                                if(foundObject){
+                                
                                     
                                         const index = foundUser.items.indexOf(foundObject)
                                         foundUser.items.splice(index,1)
@@ -181,13 +179,10 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                     }
                                     
                                     await interaction.reply({content:`${userobject} has been unequipped successfully!`})
-                                }
-                                else{
-                                    await interaction.reply({content:`you dont have anything called ${userobject} eqipped`,ephemeral:true})
-                                }
+                                
                             }
                             else{
-                                interaction.reply({content:"invalid type",ephemeral:true})
+                                await interaction.reply({content:`you dont have anything called ${userobject} eqipped`,ephemeral:true})
                             }
                            
                         }

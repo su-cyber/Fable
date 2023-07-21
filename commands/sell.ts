@@ -44,20 +44,13 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                         
                                     }
                                     else{
-                                        let weapons = userProfile.inventory.weapons
-                                        let armour = userProfile.inventory.armour
-                                        let potions = userProfile.inventory.potions
-                                        let items = userProfile.inventory.items
-                                        let fullInventory = [].concat(weapons,armour,potions,items)
-                                 
-                                        
-                                        let foundObject=fullInventory.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
+                                        let foundObject
                                         let foundWeapon = userProfile.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
                                         let foundarmour = userProfile.inventory.armour.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
-                                         let foundpotion = userProfile.inventory.potions.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
-                                        if(foundObject){
+                                        let foundpotion = userProfile.inventory.potions.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
+                                        let foundItem = userProfile.inventory.items.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
+                                        if(foundItem || foundWeapon || foundarmour || foundpotion){
                                             if(foundWeapon){
-                                                console.log("weapon");
                                                 
                                                 foundObject = userProfile.inventory.weapons.find(object => object.name.name.toLowerCase() === foundObject.name.name.toLowerCase())
                                                 if(foundObject.quantity>=userQuantity){

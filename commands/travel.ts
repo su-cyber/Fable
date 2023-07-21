@@ -149,11 +149,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             }
             else if(location == 'Sunshade Forest'){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                const attachment = new MessageAttachment('assets/AubeTown/Badlands.jpg')
+                const attachment = new MessageAttachment('assets/AubeTown/sunshade_forest.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
-                .setImage('attachment://Badlands.jpg')
+                .setImage('attachment://sunshade_forest.jpg')
                 .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
@@ -302,11 +302,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             }
             else if(location == 'Sunshade Forest'){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                const attachment = new MessageAttachment('assets/AubeTown/Badlands.jpg')
+                const attachment = new MessageAttachment('assets/AubeTown/sunshade_forest.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
-                .setImage('attachment://Badlands.jpg')
+                .setImage('attachment://sunshade_forest.jpg')
                 .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
@@ -579,11 +579,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             }
             else if(location == 'Sunshade Forest'){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                const attachment = new MessageAttachment('assets/AubeTown/Badlands.jpg')
+                const attachment = new MessageAttachment('assets/AubeTown/sunshade_forest.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
-                .setImage('attachment://Badlands.jpg')
+                .setImage('attachment://sunshade_forest.jpg')
                 .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }

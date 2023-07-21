@@ -12,13 +12,6 @@ const allQuests = [{
     info:"The Radiantura in Castellan Fields need to be fed with the Stalks of Solarcorn. However the Crofters have run out. Visit the Lager Estate where you can find the Solarcorn Stalks and bring them back to feed the Radiantura."
 
 },{
-    name:"The Crofter’s Market",
-    description:"help set up a farmer's market in Aube Town",
-    quest_id:"KS-TA-SQ3",
-    rewards:"TBD",
-    info:"The player is asked by a travelling merchant to help get some ingredients. The player must gather ingredients like Radiantura’s Milk, Argentum Leaf, Sale Poster, Steam Shovel, & I Love Guild t-shirts"
-
-},{
     name:"Stumped!",
     description:"wild group of Treemics have mixed themselves among the tree stumps",
     quest_id:"KS-TA-SQ4",

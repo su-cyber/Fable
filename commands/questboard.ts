@@ -45,11 +45,6 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
 
                                 
 
-                                let Quest_embed_3 = new MessageEmbed()
-                                .setColor('RANDOM')
-                                .setTitle('The Crofter’s Market')
-                                .setDescription(`The player is asked by the local farmer to help set up a farmer's market in Aube Town. The player must gather ingredients like Radiantura’s Milk, Argentum Leaf, Sale Poster, Steam Shovel, & I Love Guild t-shirts to help the farmer set up a stall, and attract customers to the market`)
-
                                 let Quest_embed_4 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('Stumped!')
@@ -69,7 +64,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
         
     ])
     let filtered_menu = []
-    let board = [Quest_embed_1,Quest_embed_2,Quest_embed_3,Quest_embed_4]
+    let board = [Quest_embed_1,Quest_embed_2,Quest_embed_4]
     shuffleArray(board)
     let board_copy = []
     for(let i=0;i<board.length;i++){

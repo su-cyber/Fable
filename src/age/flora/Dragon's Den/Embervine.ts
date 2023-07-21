@@ -8,7 +8,7 @@ export class Embervine extends Flora{
 
     id:"Embervine_ellior" ,
     name: "Embervine leaves",
-    description: "These rare, iridescent crystals found all over in the cave are the manifestation of the dragon's condensed latent magic. When held up to the light, the crystals refract colors in mesmerizing patterns. These are great source of spyr and can be commercially used for various purposes including brewing potions, magic rituals and powering machines run by spyr.",
+    description: "These Vines overrun every corner of the Dragon's Den, the leaves of this vines glow and release heat giving out warmth in the otherwise cold environment.",
     spawnRate: 0.6,
     type: "regular",
     cost:200,
