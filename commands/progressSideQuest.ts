@@ -54,7 +54,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                             }
                             else if(foundUser.side_quest_phase == "2"){
                                 Inventory.findOne({userID:authorId},async function(err,userProfile){
-                                    const foundObject=userProfile.inventory.items.find(object => object.name.toLowerCase() === "sunshade wood")
+                                    const foundObject=userProfile.inventory.items.find(object => object.name.name.toLowerCase() === "sunshade wood")
                                     if(foundObject){
                                         if(foundObject.quantity >=25){
                                             let successembed = new MessageEmbed()
@@ -135,7 +135,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                             
                                         }
                                         else{
-                                            const foundItem = foundUser.inventory.items.find(item => item.name === solarCorn.name)
+                                            const foundItem = foundUser.inventory.items.find(item => item.name.name === solarCorn.name)
                                             if (foundItem){
                             
                                                 foundItem.quantity+=5
@@ -164,7 +164,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                             else if(foundUser.side_quest_phase == "3"){
                                 if(foundUser.city_town == "Castellan Fields"){
                                     Inventory.findOne({userID:authorId},async function(err,userProfile){
-                                        const foundObject=userProfile.inventory.items.find(object => object.name.toLowerCase() === "solarcorn stalk")
+                                        const foundObject=userProfile.inventory.items.find(object => object.name.name.toLowerCase() === "solarcorn stalk")
                                         if(foundObject){
                                             if(foundObject.quantity>=5){
                                                 let successembed = new MessageEmbed()
@@ -237,7 +237,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                             else if(foundUser.side_quest_phase == "2"){
                                 if(foundUser.location == "Aube Town Guild Outpost"){
                                     Inventory.findOne({userID:authorId},async function(err,userProfile){
-                                    const foundObject=userProfile.inventory.items.find(object => object.name.toLowerCase() === treemickBranch.name.toLowerCase())
+                                    const foundObject=userProfile.inventory.items.find(object => object.name.name.toLowerCase() === treemickBranch.name.toLowerCase())
                                     if(foundObject){
                                         if(foundObject.quantity >= 5){
                                             let successembed = new MessageEmbed()

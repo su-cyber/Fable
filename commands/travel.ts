@@ -169,7 +169,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else{
-                   await interaction.editReply({content:`The Route to Zorya is Blocked by the Town Militia due to the ongoing Nightmare, You cannot proceed right now`}) 
+                   await interaction.editReply({content:`The Route to Zorya is Blocked by the Town Militia due to the ongoing Nightmare, You cannot proceed right now`,embeds:[],components:[]}) 
                 }
                 
             }
