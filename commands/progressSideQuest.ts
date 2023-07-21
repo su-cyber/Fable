@@ -162,7 +162,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
              
                             }
                             else if(foundUser.side_quest_phase == "3"){
-                                if(foundUser.location == "Castellan Fields"){
+                                if(foundUser.city_town == "Castellan Fields"){
                                     Inventory.findOne({userID:authorId},async function(err,userProfile){
                                         const foundObject=userProfile.inventory.items.find(object => object.name.toLowerCase() === "solarcorn stalk")
                                         if(foundObject){
