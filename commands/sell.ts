@@ -52,7 +52,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                         if(foundItem || foundWeapon || foundarmour || foundpotion){
                                             if(foundWeapon){
                                                 
-                                                foundObject = userProfile.inventory.weapons.find(object => object.name.name.toLowerCase() === foundObject.name.name.toLowerCase())
+                                                foundObject = userProfile.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject)
                                                 if(foundObject.quantity>=userQuantity){
                                                     foundObject.quantity-=userQuantity
                                                     if(foundObject.quantity===0){
@@ -83,7 +83,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                 await inventory.updateOne({userID:authorId},userProfile)
                                             }
                                             else if(foundarmour){
-                                                foundObject = userProfile.inventory.armour.find(object => object.name.name.toLowerCase() === foundObject.name.name.toLowerCase())
+                                                foundObject = userProfile.inventory.armour.find(object => object.name.name.toLowerCase() === userobject)
                                                 if(foundObject.quantity>=userQuantity){
                                                     foundObject.quantity-=userQuantity
                                                     if(foundObject.quantity===0){
@@ -113,7 +113,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                 await inventory.updateOne({userID:authorId},userProfile)
                                             }
                                             else if(foundpotion){
-                                                foundObject = userProfile.inventory.potions.find(object => object.name.name.toLowerCase() === foundObject.name.name.toLowerCase())
+                                                foundObject = userProfile.inventory.potions.find(object => object.name.name.toLowerCase() === userobject)
                                                 if(foundObject.quantity>=userQuantity){
                                                     foundObject.quantity-=userQuantity
                                                     if(foundObject.quantity===0){
@@ -143,7 +143,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                 await inventory.updateOne({userID:authorId},userProfile)
                                             }
                                             else{
-                                                foundObject = userProfile.inventory.items.find(object => object.name.name.toLowerCase() === foundObject.name.name.toLowerCase())
+                                                foundObject = userProfile.inventory.items.find(object => object.name.name.toLowerCase() === userobject)
                                                 if(foundObject.quantity>=userQuantity){
                                                     foundObject.quantity-=userQuantity
                                                     if(foundObject.quantity===0){
