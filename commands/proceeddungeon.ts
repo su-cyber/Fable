@@ -49,27 +49,27 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                             .setDescription(`you found 5 bottles of backbreaker!\nBackBreaker x 5 added to inventory!`)
                                             await interaction.reply({embeds:[stepembed],components:[]})
                     
-                                            inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                                            inventory.findOne({userID:interaction.user.id},async function(err,foundInventory){
                                                 if(err){
                                                     console.log(err);
                                                     
                                                 }
                                                 else{
-                                                    const foundItem = foundUser.inventory.items.find(item => item.name === backBreaker.name)
+                                                    const foundItem = foundInventory.inventory.items.find(item => item.name.name === backBreaker.name)
                                                     if (foundItem){
                                     
                                                         foundItem.quantity+=5
                                                     }
                                                     else{
                                                         const newItem = {
-                                                            name:backBreaker.name,
+                                                            name:backBreaker,
                                                             description:backBreaker.description,
                                                             quantity:Number(5)
                                                         }
-                                                        foundUser.inventory.items.push(newItem)
+                                                        foundInventory.inventory.items.push(newItem)
                                                     }
                                                     
-                                                    await inventory.updateOne({userID:authorId},foundUser)
+                                                    await inventory.updateOne({userID:authorId},foundInventory)
                                                     dungeon.step+=1
                                                     await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                                                 }
@@ -199,13 +199,13 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 .setDescription(`you found yourself wandering into the weapon room!\nCapn. Crook's Cutlass x 1 added to inventory!`)
                                                 await interaction.reply({embeds:[stepembed],components:[]})
                         
-                                                inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                                                inventory.findOne({userID:interaction.user.id},async function(err,foundInventory){
                                                     if(err){
                                                         console.log(err);
                                                         
                                                     }
                                                     else{
-                                                        const foundItem = foundUser.inventory.weapons.find(item => item.name.name === crookcutlass.name)
+                                                        const foundItem = foundInventory.inventory.weapons.find(item => item.name.name === crookcutlass.name)
                                                         if (foundItem){
                                         
                                                             foundItem.quantity+=1
@@ -216,9 +216,9 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                                 description:crookcutlass.description,
                                                                 quantity:Number(1)
                                                             }
-                                                            foundUser.inventory.weapons.push(newItem)
+                                                            foundInventory.inventory.weapons.push(newItem)
                                                         }
-                                                        await inventory.updateOne({userID:authorId},foundUser)
+                                                        await inventory.updateOne({userID:authorId},foundInventory)
                                                     }
                                                     
                                                 })
@@ -368,13 +368,13 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 .setDescription(`you found yourself wandering into the weapon room!\nCapn. Crook's Cutlass x 1 added to inventory!`)
                                                 await interaction.reply({embeds:[stepembed],components:[]})
                         
-                                                inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                                                inventory.findOne({userID:interaction.user.id},async function(err,foundInventory){
                                                     if(err){
                                                         console.log(err);
                                                         
                                                     }
                                                     else{
-                                                        const foundItem = foundUser.inventory.weapons.find(item => item.name.name === crookcutlass.name)
+                                                        const foundItem = foundInventory.inventory.weapons.find(item => item.name.name === crookcutlass.name)
                                                         if (foundItem){
                                         
                                                             foundItem.quantity+=1
@@ -385,9 +385,9 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                                 description:crookcutlass.description,
                                                                 quantity:Number(1)
                                                             }
-                                                            foundUser.inventory.weapons.push(newItem)
+                                                            foundInventory.inventory.weapons.push(newItem)
                                                         }
-                                                        await inventory.updateOne({userID:authorId},foundUser)
+                                                        await inventory.updateOne({userID:authorId},foundInventory)
                                                     }
                                                     
                                                 })
@@ -477,13 +477,13 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 .setDescription(`you found yourself wandering into the weapon room!\nCapn. Crook's Cutlass x 1 added to inventory!`)
                                                 await interaction.reply({embeds:[stepembed],components:[]})
                         
-                                                inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                                                inventory.findOne({userID:interaction.user.id},async function(err,foundInventory){
                                                     if(err){
                                                         console.log(err);
                                                         
                                                     }
                                                     else{
-                                                        const foundItem = foundUser.inventory.weapons.find(item => item.name.name === crookcutlass.name)
+                                                        const foundItem = foundInventory.inventory.weapons.find(item => item.name.name === crookcutlass.name)
                                                         if (foundItem){
                                         
                                                             foundItem.quantity+=1
@@ -494,9 +494,9 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                                 description:crookcutlass.description,
                                                                 quantity:Number(1)
                                                             }
-                                                            foundUser.inventory.weapons.push(newItem)
+                                                            foundInventory.inventory.weapons.push(newItem)
                                                         }
-                                                        await inventory.updateOne({userID:authorId},foundUser)
+                                                        await inventory.updateOne({userID:authorId},foundInventory)
                                                     }
                                                     
                                                 })
@@ -602,13 +602,13 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 .setDescription(`you found yourself wandering into the weapon room!\nCapn. Crook's Cutlass x 1 added to inventory!`)
                                                 await interaction.reply({embeds:[stepembed],components:[]})
                         
-                                                inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                                                inventory.findOne({userID:interaction.user.id},async function(err,foundInventory){
                                                     if(err){
                                                         console.log(err);
                                                         
                                                     }
                                                     else{
-                                                        const foundItem = foundUser.inventory.weapons.find(item => item.name.name === crookcutlass.name)
+                                                        const foundItem = foundInventory.inventory.weapons.find(item => item.name.name === crookcutlass.name)
                                                         if (foundItem){
                                         
                                                             foundItem.quantity+=1
@@ -619,9 +619,9 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                                 description:crookcutlass.description,
                                                                 quantity:Number(1)
                                                             }
-                                                            foundUser.inventory.weapons.push(newItem)
+                                                            foundInventory.inventory.weapons.push(newItem)
                                                         }
-                                                        await inventory.updateOne({userID:authorId},foundUser)
+                                                        await inventory.updateOne({userID:authorId},foundInventory)
                                                     }
                                                     
                                                 })
@@ -675,13 +675,13 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                         else if(dungeon.step == 11){
                                             
                                             let stepembed 
-                                            inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                                            inventory.findOne({userID:interaction.user.id},async function(err,foundInventory){
                                                 if(err){
                                                     console.log(err);
                                                     
                                                 }
                                                 else{
-                                                    const foundItem = foundUser.inventory.weapons.find(item => item.name.name === crookcutlass.name)
+                                                    const foundItem = foundInventory.inventory.weapons.find(item => item.name.name === crookcutlass.name)
                                                     const foundweapon = foundUser.weapon.find(item => item.name === crookcutlass.name)
                                                     if (foundItem || foundweapon){
                                     
@@ -715,9 +715,9 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                             description:crookcutlass.description,
                                                             quantity:Number(1)
                                                         }
-                                                        foundUser.inventory.weapons.push(newItem)
+                                                        foundInventory.inventory.weapons.push(newItem)
                                                     }
-                                                    await inventory.updateOne({userID:authorId},foundUser)
+                                                    await inventory.updateOne({userID:authorId},foundInventory)
                                                 }
                                                 
                                             })
