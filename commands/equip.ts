@@ -31,13 +31,13 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                         }
                         else{
                                         let foundObject
-                                        let foundWeapon = foundUser.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
-                                        let foundarmour = foundUser.inventory.armour.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
-                                        let foundItem = foundUser.inventory.items.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
+                                        let foundWeapon = foundUser.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject)
+                                        let foundarmour = foundUser.inventory.armour.find(object => object.name.name.toLowerCase() === userobject)
+                                        let foundItem = foundUser.inventory.items.find(object => object.name.name.toLowerCase() === userobject)
                                 
                                 if(foundItem || foundWeapon || foundarmour){
                                     if(foundWeapon){
-                                        foundObject = foundUser.inventory.weapons.find(object => object.name.name.toLowerCase() === foundObject.name.name.toLowerCase())
+                                        foundObject = foundUser.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject)
                                         profileModel.findOne({userID:authorId},async function(err,foundProfile){
                                             if(err){
                                                 console.log(err);
@@ -114,7 +114,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                         })
                                     }
                                     else if(foundarmour){
-                                        foundObject = foundUser.inventory.armour.find(object => object.name.name.toLowerCase() === foundObject.name.name.toLowerCase())
+                                        foundObject = foundUser.inventory.armour.find(object => object.name.name.toLowerCase() === userobject)
                                         profileModel.findOne({userID:authorId},async function(err,foundProfile){
                                             if(err){
                                                 console.log(err);
@@ -145,7 +145,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                         })
                                     }
                                     else if (foundItem){
-                                        foundObject = foundUser.inventory.items.find(object => object.name.name.toLowerCase() === foundObject.name.name.toLowerCase())
+                                        foundObject = foundUser.inventory.items.find(object => object.name.name.toLowerCase() === userobject)
                                         if(foundObject.type === "equippable"){
                                             profileModel.findOne({userID:authorId},async function(err,foundProfile){
                                                 if(err){
