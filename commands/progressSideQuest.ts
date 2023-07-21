@@ -299,7 +299,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
 
                             }
                             else if(foundUser.side_quest_phase == "2"){
-                                if(foundUser.location == "Lager Estate"){
+                                if(foundUser.location == "The Lager Estate"){
                                     let quest_embed = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle(`AUBE TOWN'S HERO`)

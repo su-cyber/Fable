@@ -427,7 +427,17 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 
                                 .setDescription(`As you return to the Guild Outpost after helping everyone in Aube Town, the atmosphere is subdued with most Challengers gone. Andan shares a poignant tale of his reckless, brave father who faced danger fearlessly but tragically lost his life. He sees that same spark of bravery in you. Andan presents a grey box containing his father's prized weapons, allowing you to choose one before embarking on the final Quest. The weight of history and destiny rests upon your decision, with the potential to leave a lasting mark on the world. There are two prized weapons in front of you. Which will you pick?\n\n1) Gilthunder's Spear (Melee): +5 Vigour\nElement: Volt | Skill: Thundering Blow | POW: 30,\n\n2) Gilthunder's Boltgun (Ranged): +5 Arcana\nElement: Volt | Skill: Electro Burst | POW: 30.\n\n[Read extended interaction with character dialogue](https://docs.google.com/document/d/1UogBXgr0ugJNRRtH63H6EseVA4n7tSC17okSsghTXxQ/edit?usp=sharing)📜`)
 
-                                let proceedembed = new MessageEmbed()
+                                              await interaction.reply({content: null,embeds:[fightEmbed],components:[weaponbtn]})
+                                let filter = i => i.user.id === authorId
+                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
+
+
+                                collector.on('collect',async (btn) => {
+                                    if(btn.isButton()){
+                                        if(btn.customId === "spear"){
+                                            await btn.deferUpdate().catch(e => {})
+                                            chosenWeapon = "Gilthunder's Spear"
+                                            let proceedembed = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle(`AUBE TOWN'S HERO`)
                                 .setAuthor({
@@ -442,18 +452,9 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 ])
                                 
                                 
-                                .setDescription(`**${chosenWeapon} has been added to your inventory!**\n**A new sidequest "AubeTown's Hero" has been added!**\n\nAfter choosing a prized weapon, Andan expresses a mix of nostalgia and concern for its future. He and Eupheme then reveal the details of the Quest you're about to undertake, involving the prestigious Lager Family and a feud with the Tavern owner over missing consignments of the famed drink, Backbreaker. The Guild has taken over the Quest due to its importance, suspecting a third party's involvement. Your mission is to help the Guild resolve the conflict and uncover the truth. Andan advises starting by speaking to the Tavern owner. As you prepare to embark on this enigmatic journey, the weight of the task ahead lingers in the air.\n\n2) Gilthunder's Boltgun (Ranged): +5 Arcana\nElement: Volt | Skill: Electro Burst | POW: 30.\n\n[Read extended interaction with character dialogue](https://docs.google.com/document/d/1UogBXgr0ugJNRRtH63H6EseVA4n7tSC17okSsghTXxQ/edit?usp=sharing)📜`)
+                                .setDescription(`**${chosenWeapon} has been added to your inventory!**\n**A new sidequest "AubeTown's Hero" has been added!**\n\nAfter choosing a prized weapon, Andan expresses a mix of nostalgia and concern for its future. He and Eupheme then reveal the details of the Quest you're about to undertake, involving the prestigious Lager Family and a feud with the Tavern owner over missing consignments of the famed drink, Backbreaker. The Guild has taken over the Quest due to its importance, suspecting a third party's involvement. Your mission is to help the Guild resolve the conflict and uncover the truth. Andan advises starting by speaking to the Tavern owner. As you prepare to embark on this enigmatic journey, the weight of the task ahead lingers in the air.\n\n[Read extended interaction with character dialogue](https://docs.google.com/document/d/1UogBXgr0ugJNRRtH63H6EseVA4n7tSC17okSsghTXxQ/edit?usp=sharing)📜`)
 
-                                await interaction.reply({content: null,embeds:[fightEmbed],components:[weaponbtn]})
-                                let filter = i => i.user.id === authorId
-                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
-
-
-                                collector.on('collect',async (btn) => {
-                                    if(btn.isButton()){
-                                        if(btn.customId === "spear"){
-                                            await btn.deferUpdate().catch(e => {})
-                                            chosenWeapon = "Gilthunder's Spear"
+                  
                                             inventory.findOne({userID:authorId},async function(err,foundInventory){
                                                 const newWeapon = {
                                                     name:gilthunder_spear,
@@ -469,6 +470,25 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                         else if(btn.customId === "boltgun"){
                                             await btn.deferUpdate().catch(e => {})
                                             chosenWeapon = "Gilthunder's Boltgun"
+
+                                            let proceedembed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`AUBE TOWN'S HERO`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .addFields([
+                                    {
+                                        name: `Current Objective:`,
+                                        value:`**Press "/progresssidequest" at the Terrific Troll Tavern to continue.**`
+                                    }
+                                ])
+                                
+                                
+                                .setDescription(`**${chosenWeapon} has been added to your inventory!**\n**A new sidequest "AubeTown's Hero" has been added!**\n\nAfter choosing a prized weapon, Andan expresses a mix of nostalgia and concern for its future. He and Eupheme then reveal the details of the Quest you're about to undertake, involving the prestigious Lager Family and a feud with the Tavern owner over missing consignments of the famed drink, Backbreaker. The Guild has taken over the Quest due to its importance, suspecting a third party's involvement. Your mission is to help the Guild resolve the conflict and uncover the truth. Andan advises starting by speaking to the Tavern owner. As you prepare to embark on this enigmatic journey, the weight of the task ahead lingers in the air.\n\n[Read extended interaction with character dialogue](https://docs.google.com/document/d/1UogBXgr0ugJNRRtH63H6EseVA4n7tSC17okSsghTXxQ/edit?usp=sharing)📜`)
+
+                  
                                             inventory.findOne({userID:authorId},async function(err,foundInventory){
                                                 const newWeapon = {
                                                     name:gilthunder_boltgun,
