@@ -126,6 +126,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                         if(foundObject.quantity===0){
                                             const index = foundUser.inventory.armour.indexOf(foundObject)
                                             foundUser.inventory.armour.splice(index,1)
+                                            
                                         }
                                                     foundProfile.armourSuit.push(foundObject.name)
                                                     foundProfile.armour+=foundObject.name.armour
@@ -134,13 +135,16 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                     foundProfile.vitality += foundObject.name.vitality
                                                     foundProfile.passiveskills = foundProfile.passiveskills.concat(foundObject.name.skills)
                                                     await interaction.reply({content:`${userobject} has been equipped successfully!`})
+                                                    await inventory.updateOne({userID:authorId},foundUser)
+                                                    await profileModel.updateOne({userID:authorId},foundProfile)
                                                 }
                                                 else{
                                                     
                                                     interaction.reply({content:"you already have a Wearable Item equipped!",ephemeral:true})
                                                 }
-                                            await profileModel.updateOne({userID:authorId},foundProfile)
-                                            await inventory.updateOne({userID:authorId},foundUser)
+                                                
+
+                                            
                                             }
                                             
                                         })
