@@ -142,7 +142,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                             }
                                             else{
                                                 const newItem = {
-                                                    name:solarCorn.name,
+                                                    name:solarCorn,
                                                     description:solarCorn.description,
                                                     quantity:Number(5)
                                                 }
