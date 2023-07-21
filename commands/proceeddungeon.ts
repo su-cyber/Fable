@@ -682,7 +682,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 }
                                                 else{
                                                     const foundItem = foundUser.inventory.weapons.find(item => item.name.name === crookcutlass.name)
-                                                    const foundweapon = foundUser.weapon[0].name == crookcutlass.name
+                                                    const foundweapon = foundUser.weapon.find(item => item.name === crookcutlass.name)
                                                     if (foundItem || foundweapon){
                                     
                                                          stepembed = new MessageEmbed()
