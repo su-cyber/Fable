@@ -36,7 +36,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                     
                     if(location == "Crofter's Market"){
                         
-                            const foundObject = aubeTownShop.Total.find(object => object.name.toLowerCase() === userobject)
+                            const foundObject = aubeTownShop.Total.find(object => object.name.toLowerCase() === userobject.toLowerCase())
                             if(foundObject){
                                 profileModel.findOne({userID:authorId},async function(err,userProfile){
                                     if(err){
@@ -64,7 +64,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                                             else{
                                                                 let foundInventory
                                                                 if(foundObject instanceof Weapon){
-                                                                     foundInventory=foundProfile.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject)
+                                                                     foundInventory=foundProfile.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
 
                                                                      if(foundInventory){
                                                                         foundInventory.quantity+=userQuantity
@@ -79,7 +79,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                                                     }
                                                                 }
                                                                 else if(foundObject instanceof Armour){
-                                                                    foundInventory=foundProfile.inventory.armour.find(object => object.name.name.toLowerCase() === userobject)
+                                                                    foundInventory=foundProfile.inventory.armour.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
                                                                 
                                                                     if(foundInventory){
                                                                         foundInventory.quantity+=userQuantity
@@ -94,7 +94,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                                                     }
                                                                 }
                                                                 else if(foundObject instanceof Potion){
-                                                                    foundInventory=foundProfile.inventory.potions.find(object => object.name.name.toLowerCase() === userobject)
+                                                                    foundInventory=foundProfile.inventory.potions.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
                                                                 
                                                                     if(foundInventory){
                                                                         foundInventory.quantity+=userQuantity
@@ -109,7 +109,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                                                     }
                                                                 }
                                                                 else{
-                                                                    foundInventory=foundProfile.inventory.items.find(object => object.name.name.toLowerCase() === userobject)
+                                                                    foundInventory=foundProfile.inventory.items.find(object => object.name.name.toLowerCase() === userobject.toLowerCase())
                                                                 
                                                                     if(foundInventory){
                                                                         foundInventory.quantity+=userQuantity
