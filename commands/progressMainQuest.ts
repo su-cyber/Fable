@@ -9,6 +9,9 @@ import { Warrior } from '../src/age/heroes/warrior'
 import getHealth from '../src/utils/getHealth'
 import { Dave } from '../src/age/npc enemies/guildDraft_Dave'
 import sample from 'lodash.sample'
+import inventory from '../models/InventorySchema'
+import { gilthunder_spear } from '../src/age/weapons/gilthunder_spear'
+import { gilthunder_boltgun } from '../src/age/weapons/gilthunder_boltgun'
 
 
 export default new MyCommandSlashBuilder({ name: 'progressmainquest', description: 'progress your main quest progress' }).setDo(
@@ -401,10 +404,15 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                         }
                         else if(foundUser.main_quest_phase == "9"){
                            if(foundUser.location == "Aube Town Guild Outpost"){
-                            if(foundUser.completed_quests.includes("KS-TA-SQ1") && foundUser.completed_quests.includes("KS-TA-SQ2") && foundUser.completed_quests.includes("KS-TA-SQ3") && foundUser.completed_quests.includes("KS-TA-SQ4") && foundUser.completed_quests.includes("KS-TA-SQ5")){
+                            if(foundUser.completed_quests.includes("KS-TA-SQ1") && foundUser.completed_quests.includes("KS-TA-SQ2") && foundUser.completed_quests.includes("KS-TA-SQ4")){
+                                let chosenWeapon
+                                let weaponbtn= new MessageActionRow().addComponents([
+                                    new MessageButton().setCustomId("spear").setStyle("PRIMARY").setLabel("Spear"),
+                                    new MessageButton().setCustomId("boltgun").setStyle("PRIMARY").setLabel("BoltGun"),])
+                                    
                                 let fightEmbed = new MessageEmbed()
                                 .setColor('RANDOM')
-                                .setTitle('New Beginnings - COMPLETED')
+                                .setTitle(`AUBE TOWN'S HERO`)
                                 .setAuthor({
                                     iconURL:interaction.user.displayAvatarURL(),
                                     name:interaction.user.tag
@@ -412,19 +420,71 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 .addFields([
                                     {
                                         name: `Current Objective:`,
-                                        value:`**Use "/travel" command to travel to Zorya and proceed the main quest**`
-                                    },{
-                                        name:`Rewards:`,
-                                        value:`**Obtained:**Title - "Hero of Aube"`
+                                        value:`**Choose your preferred Weapon**`
                                     }
                                 ])
                                 
                                 
-                                .setDescription(`You have proved yourself to the people of Aube and earned their praises even ridding them of the leader of Beer Buccaneers which is an outstanding feat in itself which lead to the mayor awarding you a new title!.As you go inside the guild outpost to meet the "vice-Master" who saved your life, to your dismay he is nowehere to be found however, you recieve a letter of recommendation along with a symbol branded into the envelope from the receptionist.\n\nYou try to analyse the symbol as it seems familiar to you but you can't remember.You are now all set to go to Zorya to participate in the Annual Guild Draft!`)
-            
-                                await interaction.reply({content: null,embeds:[fightEmbed]})
-                                foundUser.completed_quests.push("Tutorial")
-                                await profileModel.updateOne({userID:authorId},{current_title:"Hero of Aube",titles:foundUser.titles.push("Hero of Aube"),main_quest_phase:"1",completed_quests:foundUser.completed_quests,main_quest:"KS-ZS-MQ1"})
+                                .setDescription(`As you return to the Guild Outpost after helping everyone in Aube Town, the atmosphere is subdued with most Challengers gone. Andan shares a poignant tale of his reckless, brave father who faced danger fearlessly but tragically lost his life. He sees that same spark of bravery in you. Andan presents a grey box containing his father's prized weapons, allowing you to choose one before embarking on the final Quest. The weight of history and destiny rests upon your decision, with the potential to leave a lasting mark on the world. There are two prized weapons in front of you. Which will you pick?\n\n1) Gilthunder's Spear (Melee): +5 Vigour\nElement: Volt | Skill: Thundering Blow | POW: 30,\n\n2) Gilthunder's Boltgun (Ranged): +5 Arcana\nElement: Volt | Skill: Electro Burst | POW: 30.\n\n[Read extended interaction with character dialogue](https://docs.google.com/document/d/1UogBXgr0ugJNRRtH63H6EseVA4n7tSC17okSsghTXxQ/edit?usp=sharing)📜`)
+
+                                let proceedembed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`AUBE TOWN'S HERO`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .addFields([
+                                    {
+                                        name: `Current Objective:`,
+                                        value:`**Press "/progresssidequest" at the Terrific Troll Tavern to continue.**`
+                                    }
+                                ])
+                                
+                                
+                                .setDescription(`**${chosenWeapon} has been added to your inventory!**\n**A new sidequest "AubeTown's Hero" has been added!**\n\nAfter choosing a prized weapon, Andan expresses a mix of nostalgia and concern for its future. He and Eupheme then reveal the details of the Quest you're about to undertake, involving the prestigious Lager Family and a feud with the Tavern owner over missing consignments of the famed drink, Backbreaker. The Guild has taken over the Quest due to its importance, suspecting a third party's involvement. Your mission is to help the Guild resolve the conflict and uncover the truth. Andan advises starting by speaking to the Tavern owner. As you prepare to embark on this enigmatic journey, the weight of the task ahead lingers in the air.\n\n2) Gilthunder's Boltgun (Ranged): +5 Arcana\nElement: Volt | Skill: Electro Burst | POW: 30.\n\n[Read extended interaction with character dialogue](https://docs.google.com/document/d/1UogBXgr0ugJNRRtH63H6EseVA4n7tSC17okSsghTXxQ/edit?usp=sharing)📜`)
+
+                                await interaction.reply({content: null,embeds:[fightEmbed],components:[weaponbtn]})
+                                let filter = i => i.user.id === authorId
+                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
+
+
+                                collector.on('collect',async (btn) => {
+                                    if(btn.isButton()){
+                                        if(btn.customId === "spear"){
+                                            await btn.deferUpdate().catch(e => {})
+                                            chosenWeapon = "Gilthunder's Spear"
+                                            inventory.findOne({userID:authorId},async function(err,foundInventory){
+                                                const newWeapon = {
+                                                    name:gilthunder_spear,
+                                                    quantity:Number(1)
+                                                }
+                                                foundInventory.inventory.weapons.push(newWeapon)
+                                                await inventory.updateOne({userID:authorId},foundInventory)
+                                                await interaction.editReply({embeds:[proceedembed],components:[]})
+                                                foundUser.side_quest.push("KS-TA-SQ5")
+                                                await profileModel.updateOne({userID:authorId},{main_quest_phase:"10",side_quest:foundUser.side_quest})
+                                            })
+                                        }
+                                        else if(btn.customId === "boltgun"){
+                                            await btn.deferUpdate().catch(e => {})
+                                            chosenWeapon = "Gilthunder's Boltgun"
+                                            inventory.findOne({userID:authorId},async function(err,foundInventory){
+                                                const newWeapon = {
+                                                    name:gilthunder_boltgun,
+                                                    quantity:Number(1)
+                                                }
+                                                foundInventory.inventory.weapons.push(newWeapon)
+                                                await inventory.updateOne({userID:authorId},foundInventory)
+                                                await interaction.editReply({embeds:[proceedembed],components:[]})
+                                                foundUser.side_quest.push("KS-TA-SQ5")
+                                                await profileModel.updateOne({userID:authorId},{main_quest_phase:"10",side_quest:foundUser.side_quest})
+                                            })
+                                        }
+                                    }
+                                })
+                                
+                                
                             }
                             else{
                                 interaction.reply({content:`you have not completed all the quests in Aube, please check the Questboard`,ephemeral:true})
@@ -435,6 +495,39 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             interaction.reply({content:`You are not in the guild outpost, please go to the outpost to continue!`,ephemeral:true})
                            }
                             
+
+                        }
+                        else if(foundUser.main_quest_phase == "10"){
+                            if(foundUser.location == "Aube Town Guild Outpost"){
+                                if(foundUser.completed_quests.includes("KS-TA-SQ5")){
+                                    let fightEmbed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle(`A HERO'S LEGACY`)
+                            .setAuthor({
+                                iconURL:interaction.user.displayAvatarURL(),
+                                name:interaction.user.tag
+                            })
+                            .addFields([
+                                {
+                                    name: `Current Objective:`,
+                                    value:`**Press /progressmainquest in Zorya to continue**`
+                                }
+                            ])
+                            
+                            
+                            .setDescription(`In the aftermath of a harrowing battle against the nefarious Beer Buccaneers and their leader, Captain Crook, you bring them bound and guilty to the stunned Guild Outpost. Andan and Eupheme are left speechless, their disbelief etched upon their faces like a haunting specter. As the Mayor and Mr. Sebas appear, it becomes evident that the enigmatic Ajin had foreseen this outcome, orchestrating the Mayor's presence in this fateful moment.\n\n With unwavering resolve, you lay bare all your chilling findings before the Mayor, leaving him largely impressed and indebted to your valorous actions. The dark specter of raids from the Beer Buccaneers will haunt Aube Town no more, and the feud between the Tavern owner and the Lager Family meets its resolution.\n\nAs the Mayor publicly bestows upon you the illustrious title of "Hero of Aube Town," your heart swells with pride, a testament to your courage in the face of unimaginable darkness. A jubilant triumph amid the shadows, symbolizing the beginning of a new era for Aube Town.\n\nWith the Letter of Recommendation now in your possession, Mr. Sebas' guidance points you toward the Stateship of Zorya, where the Annual Guild Draft awaits. The urgency leaves no time for fond recollections, urging you to bid farewell to your companions, Mr. Briggs and Emyr, with a sense of bittersweet finality.\n\nAs you embark on this new chapter, your heart weighs heavy with the echoes of your recent trials, and a faint premonition lingers within—the haunting sense that your journey is far from over, and that darker secrets yet await you in the realms beyond. The path to Zorya beckons, its mysteries shrouded in uncertainty and enigma, while the legacy of the Hero of Aube Town begins to take root, leaving an indelible mark upon the shadows of Aube's history.`)
+        
+                            await interaction.reply({content: null,embeds:[fightEmbed]})
+                            foundUser.completed_quests.push("Tutorial")
+                            await profileModel.updateOne({userID:authorId},{current_title:"Hero of Aube",titles:foundUser.titles.push("Hero of Aube"),main_quest_phase:"1",completed_quests:foundUser.completed_quests,main_quest:"KS-ZS-MQ1"})
+                                }
+                                else{
+                                    interaction.reply({content:`You have not completed the quest "Aube Town's Hero" yet, complete it to continue!`,ephemeral:true})
+                                }
+                            }
+                            else{
+                                interaction.reply({content:`You are not in the guild outpost, please go to the outpost to continue!`,ephemeral:true})
+                            }
 
                         }
                         }

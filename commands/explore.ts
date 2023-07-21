@@ -462,9 +462,9 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 else if(city_town == "aube"){
                      if(location == "Abandoned Castle"){
                         if(foundUser.completed_dungeons.includes("Abandoned Castle")){
-                            interaction.reply(`You have already cleared this dungeon!`)
+                            interaction.reply({content:`You have already cleared this dungeon!`,ephemeral:true})
                         }
-                        else{
+                        else if(foundUser.side_quest[0] == "KS-TA-SQ5" && foundUser.side_quest_phase == "6"){
                             let btnraw= new MessageActionRow().addComponents([
                                 new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Enter"),
                                 new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Cancel"),])
@@ -530,6 +530,9 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 collector.on('end', () => {
                                     interaction.editReply({components: [d_btnraw]})
                                 })
+                        }
+                        else{
+                            interaction.reply({content:`You cannot Explore this location yet,continue the story to reveal the hidden mystery of the Abandoned Castle!`,ephemeral:true})
                         }
                         
                     }

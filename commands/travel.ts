@@ -158,6 +158,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Zorya'){
+                if(foundUser.completed_quests.includes( "KS-TA-SQ5")){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
                 const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
                 let successembed = new MessageEmbed()
@@ -166,6 +167,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setImage('attachment://zorya_main.jpg')
                 .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else{
+                   await interaction.editReply({content:`The Route to Zorya is Blocked by the Town Militia due to the ongoing Nightmare, You cannot proceed right now`}) 
+                }
+                
             }
             
             

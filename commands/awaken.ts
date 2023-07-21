@@ -202,7 +202,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
 
                         let prologueEmbed = new MessageEmbed()
                         .setColor('BLUE')
-                        .setTitle('PROLOGUE: A New Beginning')
+                        .setTitle('A New Beginning')
                         .setAuthor({
                             iconURL:interaction.user.displayAvatarURL(),
                             name:interaction.user.tag

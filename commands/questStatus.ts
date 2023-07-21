@@ -21,7 +21,7 @@ export default new MyCommandSlashBuilder({ name: 'questinfo', description: 'Know
                     if(foundUser.side_quest.length == 0){
                         sideQuest = {
                             name:"NONE",
-                            description:"The Radiantura in Castellan Fields need to be fed",
+                            description:"",
                             quest_id:"null",
                             rewards:"None",
                             info:"You have no ongoing side Quest"

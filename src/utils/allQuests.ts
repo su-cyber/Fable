@@ -19,7 +19,7 @@ const allQuests = [{
     info:"The local Solarii are having trouble cutting down Sunshade Trees in Castellan Fields, due to a wild group of Treemics that have mixed themselves among the leftover tree stumps. Whenever a person traverses near the tree stumps’, the Treemics attack them. Hunt Them down."
 
 },{
-    name:"Stolen Consignments",
+    name:"Aube Town's Hero",
     description:"find what is happening to his consignments",
     quest_id:"KS-TA-SQ5",
     rewards:"TBD",
@@ -40,7 +40,7 @@ const allQuests = [{
     info:""
 
 },{
-    name:"PROLOGUE: A New Beginning",
+    name:"A New Beginning",
     description:"The prologue and tutorial",
     quest_id:"Tutorial",
     rewards:"TBD",
