@@ -9,9 +9,14 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
         const authorId = interaction.user.id;
         const guildID = interaction.guildId;
 
-
-
-        let btnraw
+        profileModel.exists({userID:authorId},async function(err,res){
+            if(err){
+                console.log(err);
+                
+            }
+            else{
+                if(res){
+                    let btnraw
 
         let d_btnraw= new MessageActionRow().addComponents([
             new MessageButton().setCustomId("d_brass_shovel").setStyle("PRIMARY").setLabel("Brass Shovel").setDisabled(true),
@@ -127,6 +132,14 @@ else{
 
 
         })
+                }
+                else{
+                    interaction.reply({content:"it seems you are not an awakened yet!",ephemeral:true})
+                }
+            }
+        })
+
+        
         
         
 

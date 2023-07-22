@@ -152,7 +152,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     }
                                     else if(btn.customId === "btn_reject"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[rejectEmbed],components:[]})
+                                        await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]})
                                          foundUser.encounter = []
                                     
                                         await profileModel.updateOne({userID:authorId},foundUser)
@@ -294,7 +294,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     }
                                     else if(btn.customId === "btn_reject"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[rejectEmbed],components:[]})
+                                        await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]})
                                          foundUser.encounter = []
                                     
                                         await profileModel.updateOne({userID:authorId},foundUser)
@@ -433,7 +433,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     }
                                     else if(btn.customId === "btn_reject"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[rejectEmbed],components:[]})
+                                        await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]})
                                          foundUser.encounter = []
                                     
                                         await profileModel.updateOne({userID:authorId},foundUser)
@@ -835,7 +835,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     }
                                     else if(btn.customId === "btn_reject"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[rejectEmbed],components:[]})
+                                        await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]})
                                          foundUser.encounter = []
                                     
                                         await profileModel.updateOne({userID:authorId},foundUser)
