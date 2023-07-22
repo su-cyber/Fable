@@ -7,8 +7,8 @@ import { silkBlob } from '../../items/silkblob'
 export class mudCrawler extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Mud Crawler slipped away as you were about to finish it'],
-            withDropMessages: ['The Mud Crawler seems to have dropped something'],
+            withoutDropMessages: ['The Mud Crawler slipped away into the muddy fields as you were about to finish it',`You split the worm-like creature in two but failed to obtain anything usefull.`],
+            withDropMessages: [`The Mud Crawler stops moving as it floats dead in the mud puddle. You extract some silk from it's mouth`],
         }
 
         await new Dropper([

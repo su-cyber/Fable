@@ -8,8 +8,8 @@ import { buzzHoney } from '../../items/buzz_honey'
 export class Droner extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Droner escaped as you were about to finish it'],
-            withDropMessages: ['The Droner seems to have dropped something'],
+            withoutDropMessages: ['The Droner Flew away before you could finish it'],
+            withDropMessages: [`You kill the Droner and decide to extract whatever you can from it's corpse`],
         }
 
         await new Dropper([

@@ -8,8 +8,8 @@ import { thornbackShell } from '../../items/thornback_shell'
 export class Thornback extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Treemick ran away as you were about to finish it'],
-            withDropMessages: ['The Treemick dropped something'],
+            withoutDropMessages: ['The ThornBack ran away as you were about to finish it'],
+            withDropMessages: [`You finish off the Thornback and remove it's shell to take with you`],
         }
 
         await new Dropper([

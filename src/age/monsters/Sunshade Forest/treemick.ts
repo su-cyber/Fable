@@ -7,8 +7,8 @@ import { treemickBranch } from '../../items/treemickBranch'
 export class Treemick extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Treemick ran away as you were about to finish it'],
-            withDropMessages: ['The Treemick dropped something'],
+            withoutDropMessages: ['The Treemick ran away as you were about to finish it',`The Treemick withered away to splinters of wood before you could finish it`],
+            withDropMessages: [`You finish off The Treemick and cut off one of it's branches`],
         }
 
         await new Dropper([

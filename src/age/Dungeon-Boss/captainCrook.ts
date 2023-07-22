@@ -7,8 +7,8 @@ import { goldenTelescope } from '../items/goldenTelescope'
 export class captainCrook extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Beer Buccaneer ran away as you were about to finish it'],
-            withDropMessages: ['The Beer Buccaneer dropped something'],
+            withoutDropMessages: ['The struggling pirate falls on his knees coughing blood as you look down on him with a triumphant look aiming your weapon on his neck.'],
+            withDropMessages: ['The struggling pirate falls on his knees coughing blood as you look down on him with a triumphant look aiming your weapon on his neck.'],
         }
 
         await new Dropper([

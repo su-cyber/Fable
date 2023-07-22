@@ -7,8 +7,8 @@ import { shadowCat_tuft } from '../../items/shadowCat_tuft'
 export class shadowCat extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Shadow Cat ran away as you were about to finish it'],
-            withDropMessages: ['The Shadow Cat dropped something'],
+            withoutDropMessages: ['The Shadow Cat ran away before you could finish it',`The Shadow Cat blends into the shadows and disappears as you approached to finish it off.`],
+            withDropMessages: [`The Shadow Cat lies dead on the ground as you finish it off and take some tuft from it's body`],
         }
 
         await new Dropper([

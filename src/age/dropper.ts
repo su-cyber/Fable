@@ -1,4 +1,4 @@
-import { CommandInteraction } from 'discord.js'
+import { CommandInteraction, MessageEmbed } from 'discord.js'
 import sample from 'lodash.sample'
 import sum from 'lodash.sum'
 import { formatMoney, randfloat, randint, removeIndentation } from '../utils'
@@ -56,12 +56,11 @@ export class Dropper {
         const coins = formatMoney(randfloat(1, 1e8, 3), 3)
         const drop = this.drop()
         const text = `
-            **${killed.name} was successfully killed!**
+            **${killed.name} was successfully Subdued!**
 
             ${drop ? sample(withDropMessages)  : sample(withoutDropMessages)}
 
-            You gained few coins!
-            🪙 X ${coins}
+
             You gained ${gainedXP} XP!
             
             ${drop ? `You found ${drop.name}! 
@@ -74,8 +73,12 @@ export class Dropper {
 
         }
        
-
-        await interaction.channel.send(removeIndentation(text))
+        let deathEmbed = new MessageEmbed()
+        .setColor('GREEN')
+        .setTitle('BATTLE REPORT')
+        .setDescription(`${removeIndentation(text)}`)
+    
+        await interaction.channel.send({embeds:[deathEmbed]})
         profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
             foundUser.xp+=gainedXP
             await profileModel.updateOne({userID:interaction.user.id},{xp:foundUser.xp})

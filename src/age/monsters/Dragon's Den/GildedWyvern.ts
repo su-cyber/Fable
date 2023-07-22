@@ -7,8 +7,8 @@ import { gildedScale } from '../../items/GildedScale'
 export class Gildedwyvern extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Gilded Wyvern ran away as you were about to finish it'],
-            withDropMessages: ['The Gilded Wyvern dropped something'],
+            withoutDropMessages: ['The Gilded Wyvern escaped as you were about to land the finishing blow.',],
+            withDropMessages: [`The Guilded Wyvern lies dead on the ground as you collect some of it's scales`],
         }
 
         await new Dropper([

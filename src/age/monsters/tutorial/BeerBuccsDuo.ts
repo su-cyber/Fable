@@ -11,7 +11,7 @@ export class BeerBuccsDuo extends MonsterEntity {
     await profileModel.updateOne({userID:killer.id},{main_quest_phase:"2"})
 
         const messages = {
-            withoutDropMessages: ['Press "/progressmainquest" to continue'],
+            withoutDropMessages: ['**Press "/progressmainquest" to continue**'],
             withDropMessages: ['You can hear his last grunts before his death'],
         }
 

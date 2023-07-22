@@ -7,8 +7,8 @@ import { emberScale } from '../../items/Emberscale'
 export class Emberbeast extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Emberbeast ran away as you were about to finish it'],
-            withDropMessages: ['The Emberbeast dropped something'],
+            withoutDropMessages: ['The Emberbeast ran away as you were about to finish it',`The Emberbeast burnt to ashes as you cleave it in halve leaving nothing behind`],
+            withDropMessages: [`You finish off The Emberbeast and collect some of it's burning scales`],
         }
 
         await new Dropper([

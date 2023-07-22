@@ -7,8 +7,8 @@ import { starHound_tooth } from '../../items/starHound_tooth'
 export class starHound extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Starhound ran away as you were about to finish it'],
-            withDropMessages: ['The Starhound dropped something'],
+            withoutDropMessages: ['The Starhound ran away as you were about to finish it',`The Starhound blinds you with a sudden flash before escaping from your clutches`],
+            withDropMessages: [`You finish off the beast before taking one of it's tooth with you`],
         }
 
         await new Dropper([

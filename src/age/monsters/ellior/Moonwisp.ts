@@ -7,8 +7,8 @@ import { glowingEssence } from '../../items/glowingEssence'
 export class Moonwisp extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Moonwisp ran away as you were about to finish it'],
-            withDropMessages: ['The Moonwisp dropped something'],
+            withoutDropMessages: ['The Moonwisp disappeared into mist as you were about to finish it',`The moonwisp faded into a warm burst of light before you could finish it`],
+            withDropMessages: [`After finishing off the Moonwisp, you collect some of it's glowing essense`],
         }
 
         await new Dropper([

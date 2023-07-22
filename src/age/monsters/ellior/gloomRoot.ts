@@ -7,8 +7,8 @@ import { gloomRoot_branch } from '../../items/gloomRootBranch'
 export class gloomRoot extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Gloomroot ran away as you were about to finish it'],
-            withDropMessages: ['The Gloomroot dropped something'],
+            withoutDropMessages: ['The Gloomroot decayed and withered away before you could finish it'],
+            withDropMessages: [`The Gloomroot stops moving as you finish it and rip off one of it's branches`],
         }
 
         await new Dropper([

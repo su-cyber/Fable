@@ -7,8 +7,8 @@ import { solidifiedMagma } from '../../items/solidifiedMagma'
 export class MagmaGolem extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Magma Golem ran away as you were about to finish it'],
-            withDropMessages: ['The Magma Golem dropped something'],
+            withoutDropMessages: ['The Magma Golem burst to a rubble of rocks before you could finish it',`The Magma Golem cools down as all it's heat discipate as soon as you destroy it's spyr core.`],
+            withDropMessages: ['You destroyed the spyr core of the Magma Golem as it breaks into a wreck of magma from where you collect some solidified magma.'],
         }
 
         await new Dropper([

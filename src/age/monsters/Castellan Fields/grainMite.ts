@@ -7,8 +7,8 @@ import { grainmiteTooth } from '../../items/grainmiteTeeth'
 export class grainMite extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Grain Mite ran away as you were about to finish it'],
-            withDropMessages: ['The Grain Mite seems to have dropped something'],
+            withoutDropMessages: ['The Grain Mite ran away before you could finish it',],
+            withDropMessages: [`You finsh off The Grain Mite and break one of it's tooth to take with you.`],
         }
 
         await new Dropper([
