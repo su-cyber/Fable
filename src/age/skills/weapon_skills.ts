@@ -5,7 +5,7 @@ const Weaponskills = [{
     canEvade: true,
     type: 'physical',
     damage:45,
-    element:"normal",
+    element:"wave",
     mana_cost: 3,
     use: (attacker, defender) =>{
         let mod

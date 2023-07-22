@@ -34,7 +34,7 @@ export class grainMite extends MonsterEntity {
             run_chance: 0.02,
             armor: 3,
             speed: 10,
-            element:"wild",
+            element:"terra",
             magicResistance: 2,
             passive_skills:[],
             skills: [
