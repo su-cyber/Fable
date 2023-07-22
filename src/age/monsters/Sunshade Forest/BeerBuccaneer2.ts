@@ -7,8 +7,8 @@ import { backBreaker } from '../../items/backbreaker'
 export class BeerBuccaneer2 extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The Beer Buccaneer ran away as you were about to finish it'],
-            withDropMessages: ['The Beer Buccaneer dropped something'],
+            withoutDropMessages: [`You finished off the pirate but couldn't find anything useful on him`,`You look down on the weakling as he grovels before you begging you to spare him.`],
+            withDropMessages: ['The pirate falls motionless on the ground as you finish him off before taking a bottle of brackbreaker that was with him.'],
         }
 
         await new Dropper([
