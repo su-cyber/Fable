@@ -4,7 +4,7 @@ import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 import aubeTownShop from '../src/age/shops/aubeTownShop'
 import inventory from '../models/InventorySchema'
 import allWeapons from '../src/age/weapons/allWeapons'
-export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access the Shop' })
+export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Access your inventory' })
     .setDo(
     async (bot, interaction) => {
         const authorId = interaction.user.id;
