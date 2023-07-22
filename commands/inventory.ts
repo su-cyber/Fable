@@ -107,7 +107,7 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
     
      }
      else{
-        ItemsEmbed = new MessageEmbed()
+        PotionsEmbed = new MessageEmbed()
         .setColor('RANDOM')
         .setTitle('POTIONS')
         .setDescription(`## AVAILABLE POTIONS:-\n\n### NONE\n\n`)
