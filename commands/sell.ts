@@ -3,11 +3,7 @@ import profileModel from '../models/profileSchema'
 import inventory from '../models/InventorySchema'
 import { SlashCommandIntegerOption, SlashCommandUserOption } from '@discordjs/builders'
 import { SlashCommandStringOption } from '@discordjs/builders'
-import allItems from '../src/age/items/allItems'
-import { Weapon } from '../src/age/classes/weapon'
-import { Armour } from '../src/age/classes/armour'
-import { Item } from '../src/age/item'
-import { Potion } from '../src/age/classes/potion'
+
 
 
 export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any weapon,armour or item' })
