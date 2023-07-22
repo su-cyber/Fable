@@ -539,7 +539,8 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
         
                             await interaction.reply({content: null,embeds:[fightEmbed]})
                             foundUser.completed_quests.push("Tutorial")
-                            await profileModel.updateOne({userID:authorId},{current_title:"Hero of Aube",titles:foundUser.titles.push("Hero of Aube"),main_quest_phase:"1",completed_quests:foundUser.completed_quests,main_quest:"KS-ZS-MQ1"})
+                            foundUser.titles.push("Hero of Aube")
+                            await profileModel.updateOne({userID:authorId},{current_title:"Hero of Aube",titles:foundUser.titles,main_quest_phase:"1",completed_quests:foundUser.completed_quests,main_quest:"KS-ZS-MQ1"})
                                 }
                                 else{
                                     interaction.reply({content:`You have not completed the quest "Aube Town's Hero" yet, complete it to continue!`,ephemeral:true})

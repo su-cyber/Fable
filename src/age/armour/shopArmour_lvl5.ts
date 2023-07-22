@@ -1,4 +1,6 @@
+import { leather_boots } from './leather_boots'
+import { solari_robe } from './solari_robe'
 import {steelArmour} from './steel_armour'
 
-const shopArmour_lvl5 = [steelArmour]
-export default shopArmour_lvl5
+const allArmour = [steelArmour,leather_boots,solari_robe]
+export default allArmour
