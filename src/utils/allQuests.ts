@@ -15,7 +15,7 @@ const allQuests = [{
     name:"Stumped!",
     description:"wild group of Treemics have mixed themselves among the tree stumps",
     quest_id:"KS-TA-SQ4",
-    rewards:"TBD",
+    rewards:"Goblin Whistle(Trinket)",
     info:"The local Solarii are having trouble cutting down Sunshade Trees in Castellan Fields, due to a wild group of Treemics that have mixed themselves among the leftover tree stumps. Whenever a person traverses near the tree stumps’, the Treemics attack them. Hunt Them down."
 
 },{

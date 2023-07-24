@@ -12,6 +12,7 @@ import { steamShovel } from '../src/age/items/steamShovel'
 import { guildTshirt } from '../src/age/items/guildTshirt'
 import { treemickBranch } from '../src/age/items/treemickBranch'
 import { PvEDuel } from './fight'
+import { goblinWhistle } from '../src/age/items/goblinWhistle'
 
 
 export default new MyCommandSlashBuilder({ name: 'progresssidequest', description: 'progress your side quest' }).setDo(
@@ -243,10 +244,10 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 .addFields([
                                     {
                                         name: `Current Objective:`,
-                                        value:`**Go to Castellan Fields to hunt the Treemicks\nexplore the castellan fields to encounter treemicks**`
+                                        value:`**Go to Sunshade Forest to hunt the Treemicks\nexplore the Sunshade Forest to encounter treemicks**`
                                     }
                                 ])
-                                .setDescription(`The local Solarii are having trouble cutting down Sunshade Trees in Castellan Fields, due to a wild group of Treemics that have mixed themselves among the leftover tree stumps. Whenever a person traverses near the tree stumps’, the Treemics attack them. Hunt Them down.\n\n**Bring 5 'Treemick's Branch' to Guild Outpost as proof**`)
+                                .setDescription(`The local Solarii are having trouble cutting down Sunshade Trees in Sunshade Forest, due to a wild group of Treemics that have mixed themselves among the leftover tree stumps. Whenever a person traverses near the tree stumps’, the Treemics attack them. Hunt Them down.\n\n**Bring 5 'Treemick's Branch' to Guild Outpost as proof**`)
                             
                                 await interaction.reply({embeds:[quest_embed]})
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"2"})
@@ -265,11 +266,28 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                     iconURL:interaction.user.displayAvatarURL(),
                                                     name:interaction.user.tag
                                                 })
-                                                
-                                                .setDescription(`You show the Treemick's Branches to the Guild and they confirm the quest completion`)
+                                                .addFields([
+                                                    {
+                                                        name: `Rewards:`,
+                                                        value:`**Obtained Goblin Whistle X 1**`
+                                                    }
+                                                ])
+                                                .setDescription(`You show the Treemick's Branches to the Guild and they confirm the quest completion, You are given a trinket as a reward`)
                                                 interaction.reply({embeds:[successembed]})
                                                 foundUser.completed_quests.push("KS-TA-SQ4")
                                                 foundUser.side_quest.splice(0,1)
+                                                const foundwhistle = userProfile.inventory.items.find(object => object.name.name.toLowerCase() === "goblin whistle")
+                                            if(foundwhistle){
+                                                foundwhistle.quantity+=5
+                                            }
+                                            else{
+                                                const reward = {
+                                                    name:goblinWhistle,
+                                                    quantity:1
+                                                }
+                                                userProfile.inventory.items.push(reward)
+                                            }
+                                            await Inventory.updateOne({userID:authorId},userProfile)
                                                
                                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest})
                                         

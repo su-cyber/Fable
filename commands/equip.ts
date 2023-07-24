@@ -79,6 +79,9 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                     else if(foundObject.type == "ranged"){
                                                         foundProfile.magicPower+=foundObject.name.damage
                                                     }
+                                                    console.log(foundProfile.attackDamage);
+                                                    
+                                                    await profileModel.updateOne({userID:authorId},{attackDamage:foundProfile.attackDamage,magicPower:foundProfile.magicPower})
                                                     await interaction.reply({content:`${userobject} has been equipped successfully!\n${foundObject.name.skills[0].name} has been added to your skill cycle!`})
                                                     }
                                                     else{

@@ -34,7 +34,8 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                 dialogue = sample([
                                                     `Silas: Feeling tired after all that ruckus from the other day? Get yourself a Backbreaker at the local tavern. That ought to fix ya up!`,
                                                     `Elijah: You wanna go to Zorya City? Well, it's a long way towards the west. I recommend taking a ride on one of the Stagecoaches that drives you there. Beware of the bandits though. I recommend keeping a weapon on yourself at all times.`,
-                                                    `Livilla: My house is at the edge of the town, and due to the constant dust storms in the area, it is never clean. Everyday I clean it, only for it to get dirty all over again.`
+                                                    `Livilla: My house is at the edge of the town, and due to the constant dust storms in the area, it is never clean. Everyday I clean it, only for it to get dirty all over again.`,
+                                                    `Marcoh: I often come here to chat with Guild Rangers. That is because it is law that Tavern Owners must provide free food and lodging to Rangers who are passing by. Rangers use Taverns to rest up and heal. I mean, look at yourself, don’t you feel refreshed already?`
                                                 ])
                                                 dialogueembed = new MessageEmbed()
                                                     .setColor('RANDOM')

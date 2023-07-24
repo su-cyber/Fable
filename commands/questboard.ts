@@ -48,7 +48,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
                                 let Quest_embed_4 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('Stumped!')
-                                .setDescription(`The local Solarii are having trouble cutting down Sunshade Trees in Sunshade Forest, due to a wild group of Treemics that have mixed themselves among the leftover tree stumps. Whenever a person traverses near the tree stumps’, the Treemics attack them. A few lives have already been lost.`)
+                                .setDescription(`The local Solarii are having trouble cutting down Sunshade Trees in Sunshade Forest, due to a wild group of Treemics that have mixed themselves among the leftover tree stumps. Whenever a person traverses near the tree stumps’, the Treemics attack them. A few lives have already been lost.\n\n__Rewards__:**Goblin Whistle(Trinket)**`)
 
                                 
                             
