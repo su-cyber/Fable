@@ -136,7 +136,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                             await interaction.reply({content:`${userobject} has been unequipped successfully!`})
                                         
                                         await inventory.updateOne({userID:authorId},foundProfile)
-                                        
+                                        await profileModel.updateOne({userID:authorId},foundUser)
                                         }
                                         
                                     })
