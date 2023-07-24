@@ -100,9 +100,9 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                 
                                 console.log(foundUser.vitality);
                                 foundUser.armour-=foundObject.armour
-                                foundUser.magicResistance -=foundObject.name.magicResistance
-                                foundUser.speed -= foundObject.name.speed
-                                foundUser.vitality = foundUser.vitality - foundObject.name.vitality
+                                foundUser.magicResistance -=foundObject.magicResistance
+                                foundUser.speed -= foundObject.speed
+                                foundUser.vitality = foundUser.vitality - foundObject.vitality
                                 console.log(foundUser.vitality);
                                 
                                 
