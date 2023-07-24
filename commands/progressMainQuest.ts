@@ -570,27 +570,11 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             
                             
                             .setDescription(`In the solitude of Castellan Fields, you encounter Mr. Briggs, a man who once owned great lands and farms in the South but lost everything to a Nightmare. He reflects on his past and how he supported and mentored you, treating you like a son, even when you chose a different path. You confide in him about your journey to become a true Ajin through the Annual Guild Draft, vowing to protect others from suffering and loss.\n\nTouched by your determination, Mr. Briggs reveals he always knew you were an Ajin but promised your uncle to protect you. Now recognizing your strength, he expresses pride in your growth and wishes you well, hoping you become an Ajin he can proudly speak of to others. As the sun sets over Castellan Fields, a bond of mentorship and love connects you both, setting the stage for a new chapter in your intertwined destinies.\n\n**Received 500C!**\n\n[Read extended interaction with character dialogue](https://docs.google.com/document/d/1ifxvXec4g57yA-8WC7gBVSQZak-WTATyj_p8MdzlBvc/edit?usp=sharing)📜`)
-        
-                            await interaction.reply({content: null,embeds:[fightEmbed]})
-                            inventory.findOne({userID:authorId},async function(err,userProfile){
-
-                                const foundring = userProfile.inventory.items.find(object => object.name.name.toLowerCase() === "amber ring")
-                                if(foundring){
-                                    foundring.quantity+=1
-                                }
-                                else{
-                                    const reward = {
-                                        name:amberRing,
-                                        quantity:1
-                                    }
-                                    userProfile.inventory.items.push(reward)
-                                }
-                                await inventory.updateOne({userID:authorId},userProfile)
                             
-                            })
-                           
-                            foundUser.completed_quests.push("Tutorial")
-                            await profileModel.updateOne({userID:authorId},{main_quest_phase:"1",completed_quests:foundUser.completed_quests,main_quest:"KS-ZS-MQ1"})
+                            await interaction.reply({content: null,embeds:[fightEmbed]})
+                            foundUser.coins+=500
+                            await profileModel.updateOne({userID:authorId},{coins:foundUser.coins,main_quest_phase:"12"})
+                            
                             }
                             else{
                                 interaction.reply({content:`You are not in the Castellan Fields, please go there to continue!`,ephemeral:true})
@@ -613,12 +597,28 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             ])
                             
                             
-                            .setDescription(`You encounter Emyr atop a building at the Town Centre's entrance. He expresses concern and gratitude for your past actions, and you reveal your decision to participate in the Annual Guild Draft to become a Guild Ranger. Emyr shares his own aspirations, aiming to join the Coalition of Fargon to pursue intriguing projects. Both friends encourage and support each other, and Emyr gifts you an Amber Ring for your journey. With a warm farewell, you set off to Zorya, knowing that the bond between friends will guide you through the challenges ahead.\n\n**Received Amber Ring x1!**\n\n[Read extended interaction with character dialogue](https://docs.google.com/document/d/1ifxvXec4g57yA-8WC7gBVSQZak-WTATyj_p8MdzlBvc/edit?usp=sharing)📜`)
+                            .setDescription(`You encounter Emyr atop a building at the Town Centre's entrance. He expresses concern and gratitude for your past actions, and you reveal your decision to participate in the Annual Guild Draft to become a Guild Ranger. Emyr shares his own aspirations, aiming to join the Coalition of Fargon to pursue intriguing projects. Both friends encourage and support each other, and Emyr gifts you an Amber Ring for your journey. With a warm farewell, you set off to Zorya, knowing that the bond between friends will guide you through the challenges ahead.\n\n**Received Amber Ring x1!**\n\n[Read extended interaction with character dialogue](https://docs.google.com/document/d/1RLJQmWycqXClKdKsRIrv0QFm1_jd3Up9L2E_79iHW8o/edit?usp=sharing)📜`)
         
                             await interaction.reply({content: null,embeds:[fightEmbed]})
+                            inventory.findOne({userID:authorId},async function(err,userProfile){
 
-                            foundUser.coins+=500
-                            await profileModel.updateOne({userID:authorId},{coins:foundUser.coins,main_quest_phase:"12"})
+                                const foundring = userProfile.inventory.items.find(object => object.name.name.toLowerCase() === "amber ring")
+                                if(foundring){
+                                    foundring.quantity+=1
+                                }
+                                else{
+                                    const reward = {
+                                        name:amberRing,
+                                        quantity:1
+                                    }
+                                    userProfile.inventory.items.push(reward)
+                                }
+                                await inventory.updateOne({userID:authorId},userProfile)
+                            
+                            })
+                           
+                            foundUser.completed_quests.push("Tutorial")
+                            await profileModel.updateOne({userID:authorId},{main_quest_phase:"1",completed_quests:foundUser.completed_quests,main_quest:"KS-ZS-MQ1"})
                             }
                             else{
                                 interaction.reply({content:`You looked everywhere but couldn't find Emyr anywhere, perhaps he is somewhere else`,ephemeral:true})
