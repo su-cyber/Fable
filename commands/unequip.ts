@@ -120,6 +120,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                                 }
                                                 foundProfile.inventory.armour.push(newItem)
                                             }
+                                            console.log(foundUser.vitality);
                                             foundUser.armour-=foundObject.armour
                                             foundUser.magicResistance -=foundObject.name.magicResistance
                                             foundUser.speed -= foundObject.name.speed
