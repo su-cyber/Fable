@@ -104,7 +104,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                 const num = 1
                 
                                     if(num>foundUser.skill_points){
-                                        interaction.editReply(`not enough skill points to invest!`)
+                                        interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]})
                                     }
                                     else{
                                         foundUser.magicPower += 5*Number(num)
@@ -127,7 +127,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                 const num = 1
                 
                                 if(num>foundUser.skill_points){
-                                    interaction.editReply(`not enough skill points to invest!`)
+                                    interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]})
                                 }
                                 else{
                                     foundUser.armour += 5*Number(num)
@@ -148,7 +148,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                 const num = 1
                 
                                     if(num>foundUser.skill_points){
-                                        interaction.editReply(`not enough skill points to invest!`)
+                                        interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]})
                                     }
                                     else{
                                         foundUser.magicResistance += 5*Number(num)
@@ -170,7 +170,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                 const num = 1
                 
                                     if(num>foundUser.skill_points){
-                                        interaction.editReply(`not enough skill points to invest!`)
+                                        interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]})
                                     }
                                     else{
                                         foundUser.speed += 5*Number(num)

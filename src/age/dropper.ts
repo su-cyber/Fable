@@ -9,6 +9,7 @@ import { Item } from './item'
 import inventory from '../../models/InventorySchema'
 import profileModel from '../../models/profileSchema'
 import { MonsterEntity } from './classes'
+import { amberRing } from './items/amber_ring'
 
 
 type Props = {
@@ -51,8 +52,12 @@ export class Dropper {
         killed: MonsterEntity,
         killer: Entity
     ) {
-        const gainedXP=killed.xp
-       
+        let gainedXP=killed.xp
+       profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
+        if(foundUser.items.includes(amberRing)){
+            gainedXP = Math.floor(gainedXP + gainedXP*0.1)
+        }
+       })
         const coins = formatMoney(randfloat(1, 1e8, 3), 3)
         const drop = this.drop()
         const text = `

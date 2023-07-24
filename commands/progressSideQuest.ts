@@ -44,10 +44,10 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 .addFields([
                                     {
                                         name: `Current Objective:`,
-                                        value:`**Explore the Castellan Fields to obtain 25 Sunshade Woods**`
+                                        value:`**Explore the Sunshade Forest to obtain 25 Sunshade Wood**`
                                     }
                                 ])
-                                .setDescription(`The Solarii farms are suffering from an onslaught of Ravens who are out to destroy their hard-earned harvest. You need to help them build 5 Scarecrows. Each Scarecrow requires 5 wood. Wood can be found by chopping down trees in Castellan Fields.\n\n use **/progresssidequest** to proceed after you collect the Sunshade Wood`)
+                                .setDescription(`The Solarii farms are suffering from an onslaught of Ravens who are out to destroy their hard-earned harvest. You need to help them build 5 Scarecrows. Each Scarecrow requires 5 wood. Wood can be found by chopping down trees in Sunshade Forest.\n\n use **/progresssidequest** to proceed after you collect the Sunshade Wood`)
                             
                                 await interaction.reply({embeds:[quest_embed]})
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"2"})
@@ -278,7 +278,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                 foundUser.side_quest.splice(0,1)
                                                 const foundwhistle = userProfile.inventory.items.find(object => object.name.name.toLowerCase() === "goblin whistle")
                                             if(foundwhistle){
-                                                foundwhistle.quantity+=5
+                                                foundwhistle.quantity+=1
                                             }
                                             else{
                                                 const reward = {

@@ -47,13 +47,14 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                         }
                                         else{
                                             
-                                            if(foundProfile.status_effects.status.length == 0){
-                                                foundObject.quantity-=1
+                                            
+                                                
+                                                if(foundObject.name.status[0] == "Heal"){
+                                                    foundObject.quantity-=1
                                                 if(foundObject.quantity===0){
                                                     const index = foundUser.inventory.potions.indexOf(foundObject)
                                                     foundUser.inventory.potions.splice(index,1)
                                                 }
-                                                if(foundObject.name.status[0] == "Heal"){
                                                     interaction.reply({content:`${foundObject.name.use_string}`})
                                                     if(foundProfile.health+foundObject.name.value[0] > getHealth(foundProfile.level,foundProfile.vitality)){
                                                         foundProfile.health = getHealth(foundProfile.level,foundProfile.vitality)
@@ -64,7 +65,13 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                                     
                                                 }
                                                 else{
-                                                    let i
+                                                    if(foundProfile.status_effects.status.length == 0){
+                                                        foundObject.quantity-=1
+                                                if(foundObject.quantity===0){
+                                                    const index = foundUser.inventory.potions.indexOf(foundObject)
+                                                    foundUser.inventory.potions.splice(index,1)
+                                                }
+                                                        let i
                                                     foundProfile.status_effects.status = foundObject.name.status
                                                     foundProfile.status_effects.value = foundObject.name.value
                                                     foundProfile.status_effects.turns = foundObject.name.turns
@@ -84,10 +91,13 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                                     
                                                     interaction.reply({content:`${foundObject.name.use_string}`})
                                                     }
-                                                }
-                                            else{
-                                                interaction.reply({content:`you already have an active status effect!`,ephemeral:true})
-                                            }
+                                                    else{
+                                                        interaction.reply({content:`you already have an active status effect!`,ephemeral:true})
+                                                    }
+                                                    
+                                                    }
+                                                
+                                            
                                             
                                            
                                         await profileModel.updateOne({userID:authorId},foundProfile)
@@ -114,13 +124,14 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                                 
                                             }
                                             else{
-                                                if(foundProfile.status_effects.status.length == 0){
-                                                    foundObject.quantity-=1
+                                                
+                                                    
+                                                    if(foundItem.status[0] == "Heal"){
+                                                        foundObject.quantity-=1
                                                     if(foundObject.quantity===0){
                                                         const index = foundUser.inventory.items.indexOf(foundObject)
                                                         foundUser.inventory.items.splice(index,1)
                                                     }
-                                                    if(foundItem.status[0] == "Heal"){
                                                         interaction.reply({content:`${foundItem.use_string}`})
                                                         if(foundProfile.health+foundItem.value[0] > getHealth(foundProfile.level,foundProfile.vitality)){
                                                             foundProfile.health = getHealth(foundProfile.level,foundProfile.vitality)
@@ -131,7 +142,14 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                                         
                                                     }
                                                     else{
-                                                        let i
+                                                        
+                                                        if(foundProfile.status_effects.status.length == 0){
+                                                            foundObject.quantity-=1
+                                                    if(foundObject.quantity===0){
+                                                        const index = foundUser.inventory.items.indexOf(foundObject)
+                                                        foundUser.inventory.items.splice(index,1)
+                                                    }
+                                                            let i
                                                         foundProfile.status_effects.status = foundItem.status
                                                         foundProfile.status_effects.value = foundItem.value
                                                         foundProfile.status_effects.turns = foundItem.turns
@@ -157,10 +175,13 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                                         
                                                         interaction.reply({content:`${foundItem.use_string}`})
                                                         }
-                                                    }
-                                                else{
-                                                    interaction.reply({content:`you already have an active status effect!`,ephemeral:true})
-                                                }
+                                                        else{
+                                                            interaction.reply({content:`you already have an active status effect!`,ephemeral:true})
+                                                        }
+                                                        
+                                                        }
+                                                    
+                                                
                                                 
                                                
                                             await profileModel.updateOne({userID:authorId},foundProfile)

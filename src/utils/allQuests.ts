@@ -46,5 +46,12 @@ const allQuests = [{
     rewards:"Ajin Awakening",
     info:"As the Nightmare's tendrils stretched across the southern realm, you raced towards the nearest bastion of safety. Yet, as despair settled upon you like a shroud, an unexpected savior emerged from the shadows - Mr. Briggs, an old acquaintance. Emerging from a fitful slumber, you awoke to find yourself nestled within the comforting embrace of Aube Town.\nA new Road and a new life awaits you!"
 
+},{
+    name:"A New Road",
+    description:"Zorya Arc starts",
+    quest_id:"KS-ZS-MQ1",
+    rewards:"TBD",
+    info:"As the Nightmare's tendrils stretched across the southern realm, you raced towards the nearest bastion of safety. Yet, as despair settled upon you like a shroud, an unexpected savior emerged from the shadows - Mr. Briggs, an old acquaintance. Emerging from a fitful slumber, you awoke to find yourself nestled within the comforting embrace of Aube Town.\nA new Road and a new life awaits you!"
+
 }]
 export default allQuests

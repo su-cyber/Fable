@@ -12,6 +12,7 @@ import sample from 'lodash.sample'
 import inventory from '../models/InventorySchema'
 import { gilthunder_spear } from '../src/age/weapons/gilthunder_spear'
 import { gilthunder_boltgun } from '../src/age/weapons/gilthunder_boltgun'
+import { amberRing } from '../src/age/items/amber_ring'
 
 
 export default new MyCommandSlashBuilder({ name: 'progressmainquest', description: 'progress your main quest progress' }).setDo(
@@ -530,7 +531,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             .addFields([
                                 {
                                     name: `Current Objective:`,
-                                    value:`**Press /progressmainquest in Zorya to continue**`
+                                    value:`**Press /progressmainquest in Castellan Fields to say goodbye to Mr.Briggs**`
                                 }
                             ])
                             
@@ -538,9 +539,9 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             .setDescription(`In the aftermath of a harrowing battle against the nefarious Beer Buccaneers and their leader, Captain Crook, you bring them bound and guilty to the stunned Guild Outpost. Andan and Eupheme are left speechless, their disbelief etched upon their faces like a haunting specter. As the Mayor and Mr. Sebas appear, it becomes evident that the enigmatic Ajin had foreseen this outcome, orchestrating the Mayor's presence in this fateful moment.\n\n With unwavering resolve, you lay bare all your chilling findings before the Mayor, leaving him largely impressed and indebted to your valorous actions. The dark specter of raids from the Beer Buccaneers will haunt Aube Town no more, and the feud between the Tavern owner and the Lager Family meets its resolution.\n\nAs the Mayor publicly bestows upon you the illustrious title of "Hero of Aube Town," your heart swells with pride, a testament to your courage in the face of unimaginable darkness. A jubilant triumph amid the shadows, symbolizing the beginning of a new era for Aube Town.\n\nWith the Letter of Recommendation now in your possession, Mr. Sebas' guidance points you toward the Stateship of Zorya, where the Annual Guild Draft awaits. The urgency leaves no time for fond recollections, urging you to bid farewell to your companions, Mr. Briggs and Emyr, with a sense of bittersweet finality.\n\nAs you embark on this new chapter, your heart weighs heavy with the echoes of your recent trials, and a faint premonition lingers within—the haunting sense that your journey is far from over, and that darker secrets yet await you in the realms beyond. The path to Zorya beckons, its mysteries shrouded in uncertainty and enigma, while the legacy of the Hero of Aube Town begins to take root, leaving an indelible mark upon the shadows of Aube's history.`)
         
                             await interaction.reply({content: null,embeds:[fightEmbed]})
-                            foundUser.completed_quests.push("Tutorial")
+                            
                             foundUser.titles.push("Hero of Aube")
-                            await profileModel.updateOne({userID:authorId},{current_title:"Hero of Aube",titles:foundUser.titles,main_quest_phase:"1",completed_quests:foundUser.completed_quests,main_quest:"KS-ZS-MQ1"})
+                            await profileModel.updateOne({userID:authorId},{current_title:"Hero of Aube",titles:foundUser.titles,main_quest_phase:"11",completed_quests:foundUser.completed_quests,main_quest:"KS-ZS-MQ1"})
                                 }
                                 else{
                                     interaction.reply({content:`You have not completed the quest "Aube Town's Hero" yet, complete it to continue!`,ephemeral:true})
@@ -551,7 +552,80 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             }
 
                         }
+                        else if(foundUser.main_quest_phase == "11"){
+                            if(foundUser.city_town == "Castellan Fields"){
+                                let fightEmbed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle(`GOODBYES`)
+                            .setAuthor({
+                                iconURL:interaction.user.displayAvatarURL(),
+                                name:interaction.user.tag
+                            })
+                            .addFields([
+                                {
+                                    name: `Current Objective:`,
+                                    value:`**Find where Emyr is and Press /progressmainquest to say goodbye to Emyr**`
+                                }
+                            ])
+                            
+                            
+                            .setDescription(`In the solitude of Castellan Fields, you encounter Mr. Briggs, a man who once owned great lands and farms in the South but lost everything to a Nightmare. He reflects on his past and how he supported and mentored you, treating you like a son, even when you chose a different path. You confide in him about your journey to become a true Ajin through the Annual Guild Draft, vowing to protect others from suffering and loss.\n\nTouched by your determination, Mr. Briggs reveals he always knew you were an Ajin but promised your uncle to protect you. Now recognizing your strength, he expresses pride in your growth and wishes you well, hoping you become an Ajin he can proudly speak of to others. As the sun sets over Castellan Fields, a bond of mentorship and love connects you both, setting the stage for a new chapter in your intertwined destinies.\n\n**Received 500C!**\n\n[Read extended interaction with character dialogue](https://docs.google.com/document/d/1ifxvXec4g57yA-8WC7gBVSQZak-WTATyj_p8MdzlBvc/edit?usp=sharing)📜`)
+        
+                            await interaction.reply({content: null,embeds:[fightEmbed]})
+                            inventory.findOne({userID:authorId},async function(err,userProfile){
+
+                                const foundring = userProfile.inventory.items.find(object => object.name.name.toLowerCase() === "amber ring")
+                                if(foundring){
+                                    foundring.quantity+=1
+                                }
+                                else{
+                                    const reward = {
+                                        name:amberRing,
+                                        quantity:1
+                                    }
+                                    userProfile.inventory.items.push(reward)
+                                }
+                                await inventory.updateOne({userID:authorId},userProfile)
+                            
+                            })
+                           
+                            foundUser.completed_quests.push("Tutorial")
+                            await profileModel.updateOne({userID:authorId},{main_quest_phase:"1",completed_quests:foundUser.completed_quests,main_quest:"KS-ZS-MQ1"})
+                            }
+                            else{
+                                interaction.reply({content:`You are not in the Castellan Fields, please go there to continue!`,ephemeral:true})
+                            }
                         }
+                        else if(foundUser.main_quest_phase == "12"){
+                            if(foundUser.location == "Town Centre"){
+                                let fightEmbed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle(`GOODBYES`)
+                            .setAuthor({
+                                iconURL:interaction.user.displayAvatarURL(),
+                                name:interaction.user.tag
+                            })
+                            .addFields([
+                                {
+                                    name: `Current Objective:`,
+                                    value:`**Use "/travel" and choose the Stateship of Zorya to continue..**`
+                                }
+                            ])
+                            
+                            
+                            .setDescription(`You encounter Emyr atop a building at the Town Centre's entrance. He expresses concern and gratitude for your past actions, and you reveal your decision to participate in the Annual Guild Draft to become a Guild Ranger. Emyr shares his own aspirations, aiming to join the Coalition of Fargon to pursue intriguing projects. Both friends encourage and support each other, and Emyr gifts you an Amber Ring for your journey. With a warm farewell, you set off to Zorya, knowing that the bond between friends will guide you through the challenges ahead.\n\n**Received Amber Ring x1!**\n\n[Read extended interaction with character dialogue](https://docs.google.com/document/d/1ifxvXec4g57yA-8WC7gBVSQZak-WTATyj_p8MdzlBvc/edit?usp=sharing)📜`)
+        
+                            await interaction.reply({content: null,embeds:[fightEmbed]})
+
+                            foundUser.coins+=500
+                            await profileModel.updateOne({userID:authorId},{coins:foundUser.coins,main_quest_phase:"12"})
+                            }
+                            else{
+                                interaction.reply({content:`You looked everywhere but couldn't find Emyr anywhere, perhaps he is somewhere else`,ephemeral:true})
+                            }
+                        }
+                        }
+                        
                         else if(foundUser.main_quest == "KS-ZS-MQ1"){
                             if(foundUser.main_quest_phase == "1"){
                                 if(foundUser.city_town == "Zorya"){
