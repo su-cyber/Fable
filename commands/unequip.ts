@@ -144,7 +144,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                 
                             }
                             else if(founditem){
-                                const foundObject=foundUser.items.find(object => object.name.name.toLowerCase() === userobject)
+                                const foundObject=foundUser.items.find(object => object.name.toLowerCase() === userobject)
                                 
                                     
                                         const index = foundUser.items.indexOf(foundObject)

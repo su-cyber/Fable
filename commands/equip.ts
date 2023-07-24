@@ -57,10 +57,10 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                            
                                             if(foundObject.name.skills.length == 0){
                                                 foundProfile.weapon.push(foundObject.name)
-                                                if(foundObject.type == "melee"){
+                                                if(foundObject.name.type == "melee"){
                                                     foundProfile.attackDamage+=foundObject.name.damage
                                                 }
-                                                else if(foundObject.type == "ranged"){
+                                                else if(foundObject.name.type == "ranged"){
                                                     foundProfile.magicPower+=foundObject.name.damage
                                                 }
                                                 
@@ -73,17 +73,16 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                     foundProfile.allskills.push(foundObject.name.skills[0])
                                                     await profileModel.updateOne({userID:authorId},{currentskills:foundProfile.currentskills,allskills:foundProfile.allskills})
                                                     foundProfile.weapon.push(foundObject.name)
-                                                    if(foundObject.type == "melee"){
+                                                    if(foundObject.name.type == "melee"){
                                                         foundProfile.attackDamage+=foundObject.name.damage
                                                     }
-                                                    else if(foundObject.type == "ranged"){
+                                                    else if(foundObject.name.type == "ranged"){
                                                         foundProfile.magicPower+=foundObject.name.damage
                                                     }
-                                                    console.log(foundProfile.attackDamage);
-                                                    console.log(foundObject.name.damage);
                                                     
                                                     
-                                                    await profileModel.updateOne({userID:authorId},{attackDamage:foundProfile.attackDamage,magicPower:foundProfile.magicPower})
+                                                    
+                                                   
                                                     await interaction.reply({content:`${userobject} has been equipped successfully!\n${foundObject.name.skills[0].name} has been added to your skill cycle!`})
                                                     }
                                                     else{
@@ -91,10 +90,10 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                         await profileModel.updateOne({userID:authorId},{allskills:foundProfile.allskills})
                                                         
                                                         foundProfile.weapon.push(foundObject.name)
-                                                        if(foundObject.type == "melee"){
+                                                        if(foundObject.name.type == "melee"){
                                                             foundProfile.attackDamage+=foundObject.name.damage
                                                         }
-                                                        else if(foundObject.type == "ranged"){
+                                                        else if(foundObject.name.type == "ranged"){
                                                             foundProfile.magicPower+=foundObject.name.damage
                                                         }
                                                         await interaction.reply({content:`${userobject} has been equipped successfully!\n${foundObject.name.skills[0].name} has been added to your skill list!`})
@@ -156,7 +155,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                     }
                                     else if (foundItem){
                                         foundObject = foundUser.inventory.items.find(object => object.name.name.toLowerCase() === userobject)
-                                        if(foundObject.type === "equippable"){
+                                        if(foundObject.name.type === "equippable"){
                                             profileModel.findOne({userID:authorId},async function(err,foundProfile){
                                                 if(err){
                                                     console.log(err);
@@ -169,8 +168,8 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                 const index = foundUser.inventory.items.indexOf(foundObject)
                                                 foundUser.inventory.items.splice(index,1)
                                             }
-                                                        foundProfile.items.push(foundObject)
-                                                        foundProfile.passiveskills = foundProfile.passiveskills.concat(foundObject.skills)
+                                                        foundProfile.items.push(foundObject.name)
+                                                        foundProfile.passiveskills = foundProfile.passiveskills.concat(foundObject.name.skills)
                                                         await interaction.reply({content:`${userobject} has been equipped successfully!`})
                                                     }
                                                     else{
