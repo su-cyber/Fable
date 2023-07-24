@@ -6,7 +6,7 @@ export const goldenTelescope = new Item({
     description: `Captain Crook's treasured telecope`,
     emoji: '🔭',
     cost:5000,
-    type:"none",
+    type:"drop",
     skills:[],
     status:[],
     value:[],

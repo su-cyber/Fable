@@ -144,25 +144,31 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Aube Town Guild Outpost'){
+                const attachment = new MessageAttachment('assets/AubeTown/Aube_outpost.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
+                .setImage('attachment://Aube_outpost.jpg')
                 .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of magical beasts and bandits, while the air hums with a sense of shared purpose and safety\n\nuse **/explore** to explore this location`)
-                await interaction.editReply({embeds:[successembed],components:[]})
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Town Centre'){
+                const attachment = new MessageAttachment('assets/AubeTown/Town_Centre.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
+                .setImage('attachment://Town_Centre.jpg')
                 .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\nuse **/explore** to explore this location`)
-                await interaction.editReply({embeds:[successembed],components:[]})
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Abandoned Castle'){
+                const attachment = new MessageAttachment('assets/AubeTown/Abandoned_Castle.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
+                .setImage('attachment://Abandoned_Castle.jpg')
                 .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\nuse **/explore** to explore this location`)
-                await interaction.editReply({embeds:[successembed],components:[]})
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
            
             

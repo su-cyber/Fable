@@ -2,13 +2,13 @@ const allQuests = [{
     name: "War with Ravens",
     description:"The Solarii farms are suffering from an onslaught of Ravens",
     quest_id:"KS-TA-SQ1",
-    rewards:"TBD",
+    rewards:"Radiantura's Milk x 5",
     info:"The Solarii farms are suffering from an onslaught of Ravens who are out to destroy their hard-earned harvest. You need to help them build 5 Scarecrows. Each Scarecrow requires 5 wood. Wood can be found by chopping down trees in Castellan Fields.\n\n use **/progresssidequest** to proceed after you collect the Sunshade Wood."
 },{
     name:"Feed the Radiantura",
     description:"The Radiantura in Castellan Fields need to be fed",
     quest_id:"KS-TA-SQ2",
-    rewards:"TBD",
+    rewards:"300🪙",
     info:"The Radiantura in Castellan Fields need to be fed with the Stalks of Solarcorn. However the Crofters have run out. Visit the Lager Estate where you can find the Solarcorn Stalks and bring them back to feed the Radiantura."
 
 },{
@@ -22,7 +22,7 @@ const allQuests = [{
     name:"Aube Town's Hero",
     description:"find what is happening to his consignments",
     quest_id:"KS-TA-SQ5",
-    rewards:"TBD",
+    rewards:"???",
     info:"The owner of the Terrific Troll Tavern claims that his latest consignment of Backbreaker never reached him, and thus he is losing a lot of business unable to satisfy the Crofters visiting him. The Lager Family refuses to accept any blame so it is up to you to find what is happening to his consignments between the Lager Estate and the Tavern."
 
 },{
@@ -43,7 +43,7 @@ const allQuests = [{
     name:"A New Beginning",
     description:"The prologue and tutorial",
     quest_id:"Tutorial",
-    rewards:"TBD",
+    rewards:"Ajin Awakening",
     info:"As the Nightmare's tendrils stretched across the southern realm, you raced towards the nearest bastion of safety. Yet, as despair settled upon you like a shroud, an unexpected savior emerged from the shadows - Mr. Briggs, an old acquaintance. Emerging from a fitful slumber, you awoke to find yourself nestled within the comforting embrace of Aube Town.\nA new Road and a new life awaits you!"
 
 }]

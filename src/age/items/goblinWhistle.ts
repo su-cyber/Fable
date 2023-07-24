@@ -6,7 +6,7 @@ export const goblinWhistle = new Item({
     name: 'Goblin Whistle',
     description: `Summon a group of goblins before a battle to do your bidding.`,
     emoji:"",
-    cost:200,
+    cost:2000,
     type:"equippable",
     skills:[{
         name: 'Goblin Summon',

@@ -6,7 +6,7 @@ export const solarCorn = new Item({
     name: 'Solarcorn Stalk',
     description: 'stalks of solar corn',
     emoji: "",
-    cost:200,
+    cost:100,
     type:"none",
     skills:[],
     status:[],

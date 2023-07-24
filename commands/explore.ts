@@ -473,9 +473,11 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Enter").setDisabled(true),
                                     new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Cancel").setDisabled(true),
                                 ])
+                                const attachment = new MessageAttachment('assets/AubeTown/Abandoned_Castle.jpg')
                             let dungeonEmbed = new MessageEmbed()
                                     .setColor('RANDOM')
                                     .setTitle(`Exploring ${location}...`)
+                                    .setImage('attachment://Abandoned_Castle.jpg')
                                     .setDescription(`As you approach the Abandoned Castle, a sense of mystery and melancholy washes over you. Its imposing silhouette stands as a testament to a bygone era, where echoes of battles and whispers of forgotten tales linger in the air. The weathered stones bear the weight of history, each crack and crevice whispering secrets lost to time. The once-majestic architecture now wears a cloak of solitude, the windows like empty eyes that have seen the passage of ages.\n\nYou are about to enter a dungeon!\nDo you wish to proceed?`)
                 
                                     let acceptEmbed = new MessageEmbed()
@@ -489,7 +491,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     .setDescription('You decided to retreat!')
                                     
                                 
-                                await interaction.reply({content: null,embeds:[dungeonEmbed],components:[btnraw]})
+                                await interaction.reply({content: null,embeds:[dungeonEmbed],components:[btnraw],files:[attachment]})
                                 let filter = i => i.user.id === authorId
                                     let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                             
@@ -547,18 +549,22 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
             
                     }
                     else if(location == 'Town Centre'){
+                        const attachment = new MessageAttachment('assets/AubeTown/Town_Centre.jpg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
+                        .setImage('attachment://Town_Centre.jpg')
                         .setTitle(`Exploring ${location}...`)
                         .setDescription(`As you walk around the town center of Aube, a whimsical world unfolds before your eyes. Vibrant market stalls adorned with colorful banners beckon you closer, while the air buzzes with laughter and music, as the tightly-knit community of residents and travelers alike gather joyfully to partake in enchanting events and lively festivals.`)
-                        await interaction.reply({embeds:[successembed],components:[]})
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Aube Town Guild Outpost'){
+                        const attachment = new MessageAttachment('assets/AubeTown/Aube_outpost.jpg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
+                        .setImage('attachment://Aube_outpost.jpg')
                         .setTitle(`Exploring ${location}...`)
                         .setDescription(`As your gaze lands upon the Guild Outpost nestled in Aube Town, you witness a bustling hub where Guild Rangers diligently assist the locals, providing support in tasks and safeguarding them from both mythical creatures and nefarious bandits with unwavering dedication.`)
-                        await interaction.reply({embeds:[successembed],components:[]})
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == `Crofter's Market`){
                         const attachment = new MessageAttachment('assets/AubeTown/Crofters_Market.jpg')

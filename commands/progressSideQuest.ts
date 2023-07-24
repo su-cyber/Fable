@@ -60,6 +60,12 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                             let successembed = new MessageEmbed()
                                             .setColor('GREEN')
                                             .setTitle('WAR WITH RAVENS-Quest Completed!')
+                                            .addFields([
+                                                {
+                                                    name: `Rewards:`,
+                                                    value:`**Obtained Radiantura's Milk x 5**`
+                                                }
+                                            ])
                                             .setAuthor({
                                                 iconURL:interaction.user.displayAvatarURL(),
                                                 name:interaction.user.tag
@@ -75,6 +81,17 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
     
                                             foundUser.completed_quests.push("KS-TA-SQ1")
                                             foundUser.side_quest.splice(0,1)
+                                            const foundmilk = userProfile.inventory.items.find(object => object.name.name.toLowerCase() === "radiantura's milk")
+                                            if(foundmilk){
+                                                foundmilk.quantity+=5
+                                            }
+                                            else{
+                                                const reward = {
+                                                    name:Radiantura_milk,
+                                                    quantity:5
+                                                }
+                                                userProfile.inventory.items.push(reward)
+                                            }
                                             await Inventory.updateOne({userID:authorId},userProfile)
                                             await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest})
                                         }
@@ -177,10 +194,10 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                 .addFields([
                                                     {
                                                         name: `Rewards:`,
-                                                        value:`**Obtained Solarcorn Stalk X 1**`
+                                                        value:`**Obtained Solarcorn Stalk X 1**\n**You recieved 300🪙**`
                                                     }
                                                 ])
-                                                .setDescription(`you hand over the stalk to the Crofters, and they give you some to keep.`)
+                                                .setDescription(`you hand over the stalk to the Crofters, and they give you some to keep.They thank you for your service and give 300🪙 as a token of gratitude.`)
                                                 interaction.reply({embeds:[successembed]})
                                                 foundObject.quantity-=4
                                                         if(foundObject.quantity===0){
@@ -190,8 +207,9 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
         
                                                 foundUser.completed_quests.push("KS-TA-SQ2")
                                                 foundUser.side_quest.splice(0,1)
+                                                foundUser.coins+=300
                                                 await Inventory.updateOne({userID:authorId},userProfile)
-                                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest})
+                                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest,coins:foundUser.coins})
                                           
                                             }
                                             else{

@@ -36,12 +36,12 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
                                 let Quest_embed_1 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('War with Ravens')
-                                .setDescription(`The Solarii farms are suffering from an onslaught of Ravens who are out to destroy their hard-earned harvest. You need to help them build 5 Scarecrows.`)
+                                .setDescription(`The Solarii farms are suffering from an onslaught of Ravens who are out to destroy their hard-earned harvest. You need to help them build 5 Scarecrows.\n\n__Rewards__:**Radiantura's Milk x 5**`)
 
                                 let Quest_embed_2 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('Feed the Radiantura')
-                                .setDescription(`The Radiantura in Castellan Fields need to be fed with the Stalks of Solarcorn. However the Crofters have run out.`)
+                                .setDescription(`The Radiantura in Castellan Fields need to be fed with the Stalks of Solarcorn. However the Crofters have run out.\n\n__Rewards__:**300🪙**`)
 
                                 
 
@@ -50,11 +50,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
                                 .setTitle('Stumped!')
                                 .setDescription(`The local Solarii are having trouble cutting down Sunshade Trees in Sunshade Forest, due to a wild group of Treemics that have mixed themselves among the leftover tree stumps. Whenever a person traverses near the tree stumps’, the Treemics attack them. A few lives have already been lost.`)
 
-                                let Quest_embed_5 = new MessageEmbed()
-                                .setColor('RANDOM')
-                                .setTitle('Stolen Consignments')
-                                .setDescription(`The owner of the Terrific Troll Tavern claims that his latest consignment of Backbreaker never reached him, and thus he is losing a lot of business unable to satisfy the Crofters visiting him. The Lager Family refuses to accept any blame so it is up to you to find what is happening to his consignments between the Lager Estate and the Tavern`)
-
+                                
                             
                                 
     let btnraw= new MessageActionRow().addComponents([

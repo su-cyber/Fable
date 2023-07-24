@@ -6,11 +6,11 @@ export const Radiantura_milk = new Item({
     name: `Radiantura's Milk`,
     description: 'a bottle of radiantura milk',
     emoji: "",
-    cost:100,
-    type:"none",
+    cost:500,
+    type:"usable",
     skills:[],
-    status:[],
-    value:[],
+    status:["Heal"],
+    value:[50],
     turns:0,
-    use_string:""
+    use_string:"You gulp down the bottle of fresh milk restoring your vitality and health by a little."
 })

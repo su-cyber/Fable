@@ -7,7 +7,7 @@ export const gloomRoot_branch = new Item({
     description: 'the branch of a Gloomroot',
     emoji: "🌴",
     cost:150,
-    type:"none",
+    type:"drop",
     skills:[],
     status:[],
     value:[],
