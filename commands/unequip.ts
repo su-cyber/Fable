@@ -134,7 +134,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                                 foundUser.passiveskills.splice(index,1)
                                             }
                                             await interaction.reply({content:`${userobject} has been unequipped successfully!`})
-                                        await profileModel.updateOne({userID:authorId},{armour:foundUser.armour,magicResistance:foundUser.magicResistance,speed:foundUser.speed,vitality:foundUser.vitality,passiveskills:foundUser.passiveskills})
+                                        await profileModel.updateOne({userID:authorId},{armour:foundUser.armour,magicResistance:foundUser.magicResistance,speed:foundUser.speed,vitality:foundUser.vitality - foundObject.name.vitality,passiveskills:foundUser.passiveskills})
                                         await inventory.updateOne({userID:authorId},foundProfile)
                                         
                                         }
