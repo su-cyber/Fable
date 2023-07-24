@@ -98,22 +98,10 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                             else if(foundArmour){
                                 const foundObject=foundUser.armourSuit.find(object => object.name.toLowerCase() === userobject)
                                 
-                                console.log(foundUser.vitality);
-                                foundUser.armour-=foundObject.armour
-                                foundUser.magicResistance -=foundObject.magicResistance
-                                foundUser.speed -= foundObject.speed
-                                foundUser.vitality = foundUser.vitality - foundObject.vitality
-                                console.log(foundUser.vitality);
-                                
-                                
-                                for(let i=0; i<foundObject.skills.length;i++){
-                                    const foundSkill = foundUser.passiveskills.find(skill => skill.name == foundObject.skills[i])
-                                    const index = foundUser.passiveskills.indexOf(foundSkill)
-                                    foundUser.passiveskills.splice(index,1)
-                                }
+                                    
                                         const index = foundUser.armourSuit.indexOf(foundObject)
                                         foundUser.armourSuit.splice(index,1)
-                                        
+                                    
                                     inventory.findOne({userID:authorId},async function(err,foundProfile){
                                         if(err){
                                             console.log(err);
@@ -133,6 +121,18 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                                 foundProfile.inventory.armour.push(newItem)
                                             }
                                             
+                                            foundUser.armour-=foundObject.armour
+                                            foundUser.magicResistance -=foundObject.magicResistance
+                                            foundUser.speed -= foundObject.speed
+                                            foundUser.vitality = foundUser.vitality - foundObject.vitality
+                                            
+                                            
+                                            
+                                            for(let i=0; i<foundObject.skills.length;i++){
+                                                const foundSkill = foundUser.passiveskills.find(skill => skill.name == foundObject.skills[i])
+                                                const index = foundUser.passiveskills.indexOf(foundSkill)
+                                                foundUser.passiveskills.splice(index,1)
+                                            }
                                             await interaction.reply({content:`${userobject} has been unequipped successfully!`})
                                         
                                         await inventory.updateOne({userID:authorId},foundProfile)
