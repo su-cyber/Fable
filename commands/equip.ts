@@ -131,7 +131,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                     foundProfile.armourSuit.push(foundObject.name)
                                                     foundProfile.armour+=foundObject.name.armour
                                                     foundProfile.magicResistance +=foundObject.name.magicResistance
-                                                    foundProfile.speed += foundObject.name.magicResistance
+                                                    foundProfile.speed += foundObject.name.speed
                                                     foundProfile.vitality += foundObject.name.vitality
                                                     foundProfile.passiveskills = foundProfile.passiveskills.concat(foundObject.name.skills)
                                                     await interaction.reply({content:`${userobject} has been equipped successfully!`})
