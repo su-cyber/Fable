@@ -124,6 +124,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                             foundUser.magicResistance -=foundObject.name.magicResistance
                                             foundUser.speed -= foundObject.name.speed
                                             foundUser.vitality -= foundObject.name.vitality
+                                            await profileModel.updateOne({userID:authorId},foundUser)
                                             for(let i=0; i<foundObject.skills.length;i++){
                                                 const foundSkill = foundUser.passiveskills.find(skill => skill.name == foundObject.skills[i])
                                                 const index = foundUser.passiveskills.indexOf(foundSkill)
@@ -132,7 +133,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                             await interaction.reply({content:`${userobject} has been unequipped successfully!`})
                                             
                                         await inventory.updateOne({userID:authorId},foundProfile)
-                                        await profileModel.updateOne({userID:authorId},foundUser)
+                                        
                                         }
                                         
                                     })
@@ -181,7 +182,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                             else{
                                 await interaction.reply({content:`you dont have anything called ${userobject} eqipped`,ephemeral:true})
                             }
-                           
+                            await profileModel.updateOne({userID:authorId},foundUser)
                         }
                         
                         
