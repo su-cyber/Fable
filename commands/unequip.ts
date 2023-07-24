@@ -124,7 +124,9 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                             foundUser.magicResistance -=foundObject.name.magicResistance
                                             foundUser.speed -= foundObject.name.speed
                                             foundUser.vitality -= foundObject.name.vitality
-                                            await profileModel.updateOne({userID:authorId},foundUser)
+                                            console.log(foundUser.vitality);
+                                            
+                                            await profileModel.updateOne({userID:authorId},{armour:foundUser.armour,magicResistance:foundUser.magicResistance,speed:foundUser.speed,vitality:foundUser.vitality})
                                             for(let i=0; i<foundObject.skills.length;i++){
                                                 const foundSkill = foundUser.passiveskills.find(skill => skill.name == foundObject.skills[i])
                                                 const index = foundUser.passiveskills.indexOf(foundSkill)
