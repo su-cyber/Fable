@@ -33,7 +33,7 @@ export default new MyCommandSlashBuilder({ name: 'questinfo', description: 'Know
                         sideQuest = allQuests.find(quest => quest.quest_id == foundUser.side_quest[0])
                     }
                     
-                    if(foundUser.quest = "None"){
+                    if(foundUser.quest == "None"){
                         huntingQuest = {
                             name:"NONE",
                             description:"",
@@ -51,7 +51,7 @@ export default new MyCommandSlashBuilder({ name: 'questinfo', description: 'Know
                         statEmbed= new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('QUEST INFO')
-                        .setDescription(`## CURRENT MAIN QUEST:\n\n__**Name:**__ ${mainQuest.name}\n__**Description:**__ ${mainQuest.info}\n__**Rewards:**__ ${mainQuest.rewards}\n\n\n## CURRENT SIDE QUEST:\n\n__**Name:**__ ${sideQuest.name}\n__**Description:**__ ${sideQuest.info}\n__**Rewards:**__ ${sideQuest.rewards}\n\n\n## CURRENT HUNTING CONTRACT:\n\n__**Name:**__ ${huntingQuest.name}\n__**Description:**__ ${huntingQuest.info}\n__**Rewards:**__ ${huntingQuest.rewards}`)
+                        .setDescription(`## CURRENT MAIN QUEST:\n\n__**Name:**__ ${mainQuest.name}\n__**Description:**__ ${mainQuest.info}\n__**Rewards:**__ ${mainQuest.rewards}\n\n\n## CURRENT SIDE QUEST:\n\n__**Name:**__ ${sideQuest.name}\n__**Description:**__ ${sideQuest.info}\n__**Rewards:**__ ${sideQuest.rewards}\n\n\n## CURRENT HUNTING CONTRACT:\n\n__**Name:**__ ${huntingQuest.name}\n__**Description:**__ ${huntingQuest.info}\n__**Rewards:**__ ${huntingQuest.rewards}\n__**Remaining Targets:**__ ${foundUser.quest_quantity}`)
                     
                     
                     
