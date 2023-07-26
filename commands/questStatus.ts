@@ -3,6 +3,7 @@ import profileModel from '../models/profileSchema'
 import { MessageEmbed } from 'discord.js'
 import xpFormulate from '../src/utils/XPformulate'
 import allQuests from '../src/utils/allQuests'
+import hunting_contracts from '../src/utils/allHuntingContracts'
 
 export default new MyCommandSlashBuilder({ name: 'questinfo', description: 'Know about your current quests' }).setDo(
     async (bot, interaction) => {
@@ -18,6 +19,7 @@ export default new MyCommandSlashBuilder({ name: 'questinfo', description: 'Know
                     
                     const mainQuest = allQuests.find(quest => quest.quest_id == foundUser.main_quest)
                     let sideQuest
+                    let huntingQuest
                     if(foundUser.side_quest.length == 0){
                         sideQuest = {
                             name:"NONE",
@@ -31,12 +33,25 @@ export default new MyCommandSlashBuilder({ name: 'questinfo', description: 'Know
                         sideQuest = allQuests.find(quest => quest.quest_id == foundUser.side_quest[0])
                     }
                     
-
+                    if(foundUser.quest = ""){
+                        huntingQuest = {
+                            name:"NONE",
+                            description:"",
+                            quest_id:"null",
+                            rewards:"None",
+                            info:"You have no ongoing Hunting Contract"
+                        }
+                    }
+                    else{
+                        huntingQuest = hunting_contracts.find(quest => quest.quest_id == foundUser.quest)
+                        let rewards = `${huntingQuest.rewards.coins}🪙 | ${huntingQuest.rewards.merit} Merit`
+                        huntingQuest.rewards = rewards
+                    }
 
                         statEmbed= new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('QUEST INFO')
-                        .setDescription(`## CURRENT MAIN QUEST:\n\n__**Name:**__ ${mainQuest.name}\n__**Description:**__ ${mainQuest.info}\n__**Rewards:**__ ${mainQuest.rewards}\n\n\n## CURRENT SIDE QUEST:\n\n__**Name:**__ ${sideQuest.name}\n__**Description:**__ ${sideQuest.info}\n__**Rewards:**__ ${sideQuest.rewards}`)
+                        .setDescription(`## CURRENT MAIN QUEST:\n\n__**Name:**__ ${mainQuest.name}\n__**Description:**__ ${mainQuest.info}\n__**Rewards:**__ ${mainQuest.rewards}\n\n\n## CURRENT SIDE QUEST:\n\n__**Name:**__ ${sideQuest.name}\n__**Description:**__ ${sideQuest.info}\n__**Rewards:**__ ${sideQuest.rewards}\n\n\n## CURRENT HUNTING CONTRACT:\n\n__**Name:**__ ${huntingQuest.name}\n__**Description:**__ ${huntingQuest.info}\n__**Rewards:**__ ${huntingQuest.rewards}`)
                     
                     
                     

@@ -81,7 +81,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                     const num = 1
                 
                                     if(num>foundUser.skill_points){
-                                        interaction.editReply(`not enough skill points to invest!`)
+                                        interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]})
                                     }
                                     else{
                                         foundUser.attackDamage += 5*Number(num)

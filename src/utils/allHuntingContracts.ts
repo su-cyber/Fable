@@ -14,7 +14,7 @@ const hunting_contracts = [{
     description:"The Solarii farms are suffering from an onslaught of Ravens",
     quest_id:"KS-TA-HC2",
     quantity:3,
-    target:"Mudcrawler",
+    target:"Mud Crawler",
     rewards:{
         coins:50,
         merit:10
