@@ -48,7 +48,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                     const pick = weightedRandom(["flora","monster"],[0.6,0.4])
 
                     if(pick == "flora"){
-                        await interaction.editReply({ content: '\u200b', components: [] })
+                        await interaction.editReply({ content: '\u200b', components: [],files:[] })
                         const flora = (await getRandomFlora(city_town))
                         let floraEmbed = new MessageEmbed()
                             .setColor('GREEN')
@@ -60,7 +60,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 }
                             ])
                             .setDescription(`You found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
-                        await interaction.editReply({embeds:[floraEmbed]})
+                        await interaction.editReply({embeds:[floraEmbed],files:[]})
     
                         inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
                             if(err){
@@ -187,10 +187,10 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setDescription(`You step onto the Castellan Fields, feeling the earth beneath your feet and the gentle breeze whispering through the golden grains. The air is alive with the symphony of hard work as resilient crofters sow seeds and tend to their crops, their determination transforming mere dust into bountiful treasures. In this sea of golden splendor, you become part of a timeless cycle of growth and abundance, where the sweat of the crofters turns the humble soil into infinite prosperity.`)
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                 await sleep(2)
-                    const pick = weightedRandom(["flora","monster"],[0.6,0.4])
+                    const pick = weightedRandom(["flora","monster"],[0,1])
 
                     if(pick == "flora"){
-                        await interaction.editReply({ content: '\u200b', components: [] })
+                        await interaction.editReply({ content: '\u200b', components: [],files:[] })
                         const flora = (await getRandomFlora(city_town))
                         let floraEmbed = new MessageEmbed()
                             .setColor('GREEN')
@@ -202,7 +202,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 }
                             ])
                             .setDescription(`You found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
-                            await interaction.editReply({embeds:[floraEmbed]})
+                            await interaction.editReply({embeds:[floraEmbed],files:[]})
                         inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
                             if(err){
                                 console.log(err);
@@ -231,7 +231,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                     
                     
                        
-                            await interaction.editReply({ content: '\u200b', components: [] })
+                            await interaction.editReply({ content: '\u200b', components: [], })
                             const monster = (await getRandomMonster(city_town))
                             
     
@@ -344,7 +344,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 }
                             ])
                             .setDescription(`You found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
-                        await interaction.editReply({embeds:[floraEmbed]})
+                        await interaction.editReply({embeds:[floraEmbed],files:[]})
                         inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
                             if(err){
                                 console.log(err);
@@ -749,7 +749,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 }
                             ])
                             .setDescription(`You found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
-                        await interaction.editReply({embeds:[floraEmbed]})
+                        await interaction.editReply({embeds:[floraEmbed],files:[]})
                         inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
                             if(err){
                                 console.log(err);
