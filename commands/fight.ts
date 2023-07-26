@@ -669,12 +669,13 @@ export class PvEDuel extends DuelBuilder {
                             .setDescription(`You have Successfully Completed the Hunting Contract!\n\n Obtained ${foundContract.rewards.coins}🪙!\nObtained ${foundContract.rewards.merit} Merit!`)
 
                             await user.send({embeds:[huntEmbed]})
+                            foundUser.quest = ""
                             foundUser.quest_mob = "None"
                             foundUser.merit+=foundContract.rewards.merit
                             foundUser.coins+=foundContract.rewards.coins
                             foundUser.completed_quests.push(foundContract.quest_id)
                         }
-                        await profileModel.updateOne({userID:authorID},{quest_quantity:foundUser.quest_quantity,quest_mob:foundUser.quest_mob,quest:"",coins:foundUser.coins,merit:foundUser.merit,completed_quests:foundUser.completed_quests})
+                        await profileModel.updateOne({userID:authorID},{quest_quantity:foundUser.quest_quantity,quest_mob:foundUser.quest_mob,quest:foundUser.quest,coins:foundUser.coins,merit:foundUser.merit,completed_quests:foundUser.completed_quests})
                     }
                 }
                 else{
