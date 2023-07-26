@@ -153,6 +153,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                     ])
         
                                 const attachment = new MessageAttachment('assets/AubeTown/Ghorgon.jpeg')
+                                const attachment2 = new MessageAttachment('assets/AubeTown/waking.jpeg')
                                 let fightEmbed = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('A DANGEROUS ENCOUNTER')
@@ -176,6 +177,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                     iconURL:interaction.user.displayAvatarURL(),
                                     name:interaction.user.tag
                                 })
+                                .setImage('attachment2://waking.jpeg')
                                 .addFields([
                                     {
                                         name: `Current Objective:`,
@@ -203,7 +205,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                     if(btn.isButton()){
                                         if(btn.customId === "btn_accept"){
                                             await btn.deferUpdate().catch(e => {})
-                                            await interaction.editReply({embeds:[acceptEmbed],files:[]})
+                                            await interaction.editReply({embeds:[acceptEmbed],files:[attachment2]})
                             
                                             
                                             await profileModel.updateOne({userID:interaction.user.id},{location:"Town Centre",main_quest_phase:"3"})
@@ -238,10 +240,11 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             }
 
                         else if(foundUser.main_quest_phase == "3"){
-                            
+                            const attachment = new MessageAttachment('assets/AubeTown/sebas_intro.jpeg')
                             let fightEmbed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('A NEW ROAD')
+                            .setImage('attachment://sebas_intro.jpeg')
                             .setAuthor({
                                 iconURL:interaction.user.displayAvatarURL(),
                                 name:interaction.user.tag
@@ -256,7 +259,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             
                             .setDescription(`In the Town’s Library, an imposing figure stood before you—an elderly man donned in a black suit, his unwavering gaze piercing your very being. This was Mr. Sebas, the enigmatic savior who had plucked you from the clutches of danger.\n\nHis voice resonated with an undertone of urgency and a glimmer of intent. He spoke of a selfish desire to witness something first hand, leaving you to ponder the mysteries that surrounded him.\n\nYou expressed your gratitude for his life-saving intervention, yet he brushed aside such sentiments, delving into the enigma of Spyr—a magical essence that permeated Vearth's air, ground, and all living creatures. Only a select few, known as Ajins, possessed the rare ability to harness this power.\n\nAs Mr. Sebas probed your encounter with the brigands, you denied any knowledge of Spyr manipulation, attributing your strength to years spent toiling on a farm, protecting it from Boaars. However, doubts festered within Mr. Sebas, for no ordinary individual could have dispatched the brigands with such ease.\n\nHis conviction unwavering, Mr. Sebas declared that you were no ordinary boy, but rather an Ajin with untapped potential. He insisted that your current path in the town did not align with your true destiny, offering a proposition fraught with danger and the promise of a life forever altered.\n\nCaught in a whirlwind of amazement and uncertainty, you grappled with the idea of being an Ajin—a realm of power, wealth, and fame. The revelation stirred questions about your past, about Mr. Briggs and Emyr, and the possibility of realizing your true identity. A multitude of inquiries raged within your mind, demanding answers, as the weight of an important decision pressed upon you. Do you really intend to walk this newfound road of an Ajin?\n\n[Read extended interaction with character dialogue](https://docs.google.com/document/d/1chVL2RCsJz47ql3zVwBzBY47dTlIgAM5V-c2b52B5Pk/edit?usp=sharing)📜`)
         
-                            await interaction.reply({content: null,embeds:[fightEmbed]})
+                            await interaction.reply({content: null,embeds:[fightEmbed],files:[attachment]})
                             await profileModel.updateOne({userID:authorId},{main_quest_phase:"4"})
                         }
                         else if(foundUser.main_quest_phase == "4"){
@@ -302,7 +305,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 classText = `Dragoon - A Category of Ajins who are experts in the use of Ranged Weapons`
                             
                             }
-                            
+                            const attachment = new MessageAttachment('assets/AubeTown/sebas_zeal.jpeg')
                             let fightEmbed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('A NEW ROAD')
@@ -310,6 +313,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 iconURL:interaction.user.displayAvatarURL(),
                                 name:interaction.user.tag
                             })
+                            .setImage('attachment://sebas_zeal.jpeg')
                             .addFields([
                                 {
                                     name: `Current Objective:`,

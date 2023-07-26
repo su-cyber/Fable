@@ -636,7 +636,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = captainCrook.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(2.5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana

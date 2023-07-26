@@ -28,7 +28,7 @@ const profileSchema = new mongoose.Schema({
     currentskills: {type:Array},
     allskills:{type:Array},
     passiveskills:{type: Array},
-    quest:{type: Boolean},
+    quest:{type: String},
     quest_location:{type: String},
     quest_mob:{type: String},
     quest_quantity:{type: Number},

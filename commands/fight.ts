@@ -13,6 +13,7 @@ import { SlashCommandIntegerOption} from '@discordjs/builders'
 import getHealth from '../src/utils/getHealth'
 import { Interaction, MessageEmbed } from 'discord.js'
 import { calculate } from '../src/age/classes'
+import hunting_contracts from '../src/utils/allHuntingContracts'
 
 export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
@@ -661,16 +662,19 @@ export class PvEDuel extends DuelBuilder {
                     if(foundUser.quest_mob == loser.name && foundUser.quest_quantity>0){
                         foundUser.quest_quantity -=1
                         if(foundUser.quest_quantity == 0){
+                            const foundContract = hunting_contracts.find(quest => quest.quest_id == foundUser.quest)
                             let huntEmbed = new MessageEmbed()
                             .setColor('GREEN')
                             .setTitle('HUNT COMPLETED')
-                            .setDescription('You have Successfully Completed the Hunting Contract!')
+                            .setDescription(`You have Successfully Completed the Hunting Contract!\n\n Obtained ${foundContract.rewards.coins}🪙!\nObtained ${foundContract.rewards.merit} Merit!`)
 
                             await user.send({embeds:[huntEmbed]})
                             foundUser.quest_mob = "None"
-                            
+                            foundUser.merit+=foundContract.rewards.merit
+                            foundUser.coins+=foundContract.rewards.coins
+                            foundUser.completed_quests.push(foundContract.quest_id)
                         }
-                        await profileModel.updateOne({userID:authorID},{quest_quantity:foundUser.quest_quantity,quest_mob:foundUser.quest_mob})
+                        await profileModel.updateOne({userID:authorID},{quest_quantity:foundUser.quest_quantity,quest_mob:foundUser.quest_mob,quest:"",coins:foundUser.coins,merit:foundUser.merit,completed_quests:foundUser.completed_quests})
                     }
                 }
                 else{

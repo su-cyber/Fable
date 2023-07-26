@@ -15,6 +15,7 @@ import { bronze_orbe } from '../src/age/weapons/bronze_orb'
 import { leather_gauntlets } from '../src/age/weapons/leather_gauntlets'
 import learnskill from './learnskill'
 import { carved_bow } from '../src/age/weapons/carved_bow'
+import { MessageAttachment } from 'discord.js'
 
 
 export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken to your story' }).setDo(
@@ -136,16 +137,17 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
 
                         let classEmbed = new MessageEmbed()
                         .setColor('BLURPLE')
-                        .setTitle('CLASS SELECTION')
+                        .setTitle('DESTINY')
                         .setAuthor({
                             iconURL:interaction.user.displayAvatarURL(),
                             name:interaction.user.tag
                         })
                         .setDescription('Choose the destiny that awaits you:')
-                        
+                        const attachment = new MessageAttachment('assets/AubeTown/vearth_scape.jpeg')
                         let ProceedEmbed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('A NEW FABLE')
+                        .setImage('attachment://vearth_scape.jpeg')
                         .setAuthor({
                             iconURL:interaction.user.displayAvatarURL(),
                             name:interaction.user.tag
@@ -199,10 +201,11 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             name:interaction.user.tag
                         })
                         .setDescription('Choose the element of Spyr that enfolds you:')
-
+                        const attachment2 = new MessageAttachment('assets/AubeTown/nightmare.jpeg')
                         let prologueEmbed = new MessageEmbed()
                         .setColor('BLUE')
                         .setTitle('A New Beginning')
+                        .setImage('attachment2://nightmare.jpeg')
                         .setAuthor({
                             iconURL:interaction.user.displayAvatarURL(),
                             name:interaction.user.tag
@@ -220,7 +223,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         .setDescription('an error was encountered while creating your profile! kindly /awaken again')
 
                    await interaction.deferReply()
-                    await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw]})
+                    await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw],files:[attachment]})
                     let filter = i => i.user.id === authorId 
                     let filter_select_class = i => (i.customId === 'select_class') && i.user.id === authorId
                     let filter_select_element = i => (i.customId === 'select_element') && i.user.id === authorId
@@ -233,7 +236,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             if(btn.isButton()){
                                 if(btn.customId === "btn_accept"){
                                     await btn.deferUpdate().catch(e => {})
-                                    await interaction.editReply({embeds:[classEmbed],components:[select_class]})
+                                    await interaction.editReply({embeds:[classEmbed],components:[select_class],files:[]})
                                     
                                     
                                     let profile = await new profileModel({
@@ -272,7 +275,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         currentskills: [],
                                         allskills:[],
                                         passiveskills:[],
-                                        quest:false,
+                                        quest:'',
                                         quest_location:'',
                                         quest_mob:'',
                                         quest_quantity:0,
@@ -327,7 +330,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 // }
                                 else if(btn.customId === "btn_reject"){
                                     await btn.deferUpdate().catch(e => {})
-                                    await interaction.editReply({embeds:[rejectEmbed],components:[]})
+                                    await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]})
                                     collector.stop()
                                 }
                                
@@ -498,8 +501,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         }
                                         else{
                                             await collected.deferUpdate().catch(e => {})
-                                            await interaction.editReply({content: null,embeds:[prologueEmbed],components:[]})
-                                            await interaction.channel.send({content: null,embeds:[acceptEmbed],components:[]})
+                                            await interaction.editReply({content: null,embeds:[prologueEmbed],components:[],files:[attachment2]})
+                                            await interaction.channel.send({content: null,embeds:[acceptEmbed],components:[],files:[]})
                                         }
                                     })
                                    
