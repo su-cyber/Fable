@@ -33,7 +33,7 @@ export default new MyCommandSlashBuilder({ name: 'questinfo', description: 'Know
                         sideQuest = allQuests.find(quest => quest.quest_id == foundUser.side_quest[0])
                     }
                     
-                    if(foundUser.quest = ""){
+                    if(foundUser.quest = "None"){
                         huntingQuest = {
                             name:"NONE",
                             description:"",
