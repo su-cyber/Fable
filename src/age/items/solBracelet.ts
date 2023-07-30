@@ -6,7 +6,7 @@ export const solBracelet = new Item({
     name: 'Sol Bracelet',
     description: 'A wearable bracelet that grants protection against the element of flame',
     emoji:"",
-    cost:200,
+    cost:3000,
     type:"equippable",
     skills:[{
         name: 'Flame Resistance',

@@ -43,12 +43,12 @@ const passive_skills = [
         mana_cost: 0,
         use: (attacker, defender) => {
             if(defender.element == "flame"){
-                attacker.armor = 1.5*attacker.armor
-                attacker.magicResistance = 1.5*attacker.magicResistance
+                attacker.armor = attacker.armor+5
+                attacker.magicResistance = attacker.magicResistance+5
 
                 attacker.addLogMessage(
                     `${attacker.name} Has Fire Resistance`,
-                    `Flame type enemies will have 50% less effect`
+                    `Flame type enemies will have less effect on you`
                 )
             }
             
@@ -85,6 +85,32 @@ const passive_skills = [
                 `${attacker.name} blew the Goblin Whistle`,
                 `A group of goblins were summoned to do ${attacker.name}'s bidding`
             )
+        },
+    },{
+        cooldown: 0,
+        name: `Nature's Authority`,
+        description: '10% attack boost against Bloom type enemies',
+        canEvade: false,
+        type: 'passive',
+        element:"normal", 
+        damage:0,
+        mana_cost: 0,
+        use: (attacker, defender) => {
+            if(defender.element == "bloom"){
+                attacker.attackDamage = 1.15*attacker.attackDamage
+                attacker.magicPower = 1.15*attacker.magicPower
+
+                attacker.addLogMessage(
+                    `${attacker.name} Has Nature's Authority`,
+                    `Bloom type enemies will be weakened in your presence`
+                )
+            }
+            
+
+
+           
+            
+           
         },
     },
 

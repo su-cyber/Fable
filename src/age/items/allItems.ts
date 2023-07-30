@@ -27,8 +27,11 @@ import { shadowViel } from './shadowViel'
 import { solBracelet } from './solBracelet'
 import { goblinWhistle } from './goblinWhistle'
 import { Glimmerroot } from '../flora/ellior/Glimmerroot'
+import { bottleWine } from './BottleWine'
+import { smokeBomb } from './smokeBomb'
+import { steamedBread } from './steamedBread'
 
 export default [Chorusbloom.create(),
     SunshadeWood.create(),Dreamlily.create(),ArgentenumLeaves.create(),solarCorn,Radiantura_milk,steamShovel,guildTshirt,salePoster,treemickBranch,silkBlob,
     dronerAcid,RayleighFlower.create(),backBreaker,buzzHoney,thornbackShell,shadowCat_tuft,glowingEssence,starHound_tooth,gloomRoot_branch,
-    crystalShard,gildedScale,solidifiedMagma,emberScale,shadowViel,solBracelet,goblinWhistle,Glimmerroot.create()]
+    crystalShard,gildedScale,solidifiedMagma,emberScale,shadowViel,solBracelet,goblinWhistle,Glimmerroot.create(),bottleWine,smokeBomb,steamedBread]

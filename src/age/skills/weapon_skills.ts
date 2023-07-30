@@ -154,6 +154,21 @@ mod  = 1
             .magical((attacker.attackDamage*30)*mod)
             .run(damage => `${defender.name} lost ${damage} HP by a barrage of lightning imbued Bolts`)
     }
-}]
+},{
+    name: 'Mutilate',
+    cooldown: 0,
+    description: 'Mutilate your enemy with fast precise strikes.',
+    canEvade: true,
+    mana_cost: 3,
+    damage:45,
+    element:"normal",
+    type: 'physical',
+    use: (attacker, defender) =>{
+        attacker.addLogMessage(`${attacker.name} used Mutilate`)
+        defender.takeDamage
+            .physical(attacker.attackDamage*45)
+            .run(damage => `${defender.name} lost ${damage} HP by a series of critical strikes to their vitals`)
+    }
+},]
 
 export default Weaponskills
