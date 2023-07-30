@@ -68,7 +68,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 
                             }
                             else{
-                                const foundItem = foundUser.inventory.items.find(item => item.name === flora.name)
+                                const foundItem = foundUser.inventory.items.find(item => item.name.name === flora.name)
                                 if (foundItem){
                 
                                     foundItem.quantity+=flora.quantity
@@ -209,7 +209,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 
                             }
                             else{
-                                const foundItem = foundUser.inventory.items.find(item => item.name === flora.name)
+                                const foundItem = foundUser.inventory.items.find(item => item.name.name === flora.name)
                                 if (foundItem){
                 
                                     foundItem.quantity+=flora.quantity
@@ -351,7 +351,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 
                             }
                             else{
-                                const foundItem = foundUser.inventory.items.find(item => item.name === flora.name)
+                                const foundItem = foundUser.inventory.items.find(item => item.name.name === flora.name)
                                 if (foundItem){
                 
                                     foundItem.quantity+=flora.quantity
@@ -756,7 +756,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 
                             }
                             else{
-                                const foundItem = foundUser.inventory.items.find(item => item.name === flora.name)
+                                const foundItem = foundUser.inventory.items.find(item => item.name.name === flora.name)
                                 if (foundItem){
                 
                                     foundItem.quantity+=flora.quantity

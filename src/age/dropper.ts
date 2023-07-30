@@ -98,7 +98,7 @@ export class Dropper {
                 
             }
             else{
-                const foundItem = foundUser.inventory.items.find(item => item.name === drop.name)
+                const foundItem = foundUser.inventory.items.find(item => item.name.name === drop.name)
                 if (foundItem){
 
                     foundItem.quantity+=quantity
