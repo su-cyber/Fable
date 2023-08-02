@@ -153,11 +153,11 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Town Centre'){
-                const attachment = new MessageAttachment('assets/AubeTown/Town_Centre.jpg')
+                const attachment = new MessageAttachment('assets/AubeTown/Town_Centre.gif')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
-                .setImage('attachment://Town_Centre.jpg')
+                .setImage('attachment://Town_Centre.gif')
                 .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }

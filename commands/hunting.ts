@@ -109,7 +109,7 @@ export default new MyCommandSlashBuilder({ name: 'hunting_contract', description
             let quest_selected = new MessageEmbed()
             .setColor('RANDOM')
             .setTitle('Selected')
-            .setDescription(`You have selected a quest!`)
+            .setDescription(`You have selected a Hunting Contract!`)
     
             
             foundUser.quest = quest
