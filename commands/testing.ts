@@ -131,7 +131,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.drawImage(img,0,0)
     ctx.font = '28px "serif"'
     ctx.fillStyle = "yellow"
-    ctx.fillText(`${name}'s Grimoire`, 105, 125);
+    ctx.fillText(`${name}'s Grimoire`, 65, 125);
     ctx.font = '38px "serif"'
     ctx.fillStyle = "#2a9df4"
     ctx.fillText(`${level}`, 1070, 118);
@@ -144,7 +144,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${durability}`, 1125, 294);
     ctx.fillText(`${knowledge}`, 1125, 525);
     ctx.font = '16px "serif"'
-    ctx.fillStyle = "black"
+    ctx.fillStyle = "#644E41"
     ctx.fillText(`${title}`, 397, 216);
     ctx.fillText(`${guildinfo}`, 397, 246);
     ctx.fillText(`${weapon}`, 375, 275);
@@ -157,10 +157,10 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${merit}`, 477, 408);
     ctx.fillText(`${location}`, 135, 461);
     ctx.fillStyle = "#C4B190"
-    ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 163, 175);
     ctx.font = '18px "serif"'
+    ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 163, 175);
     ctx.fillText(`${grade} ${foundUser.class.toUpperCase()}`, 115, 375);
-    ctx.fillStyle = "black"
+    ctx.fillStyle = "#644E41"
     ctx.font = '38px "serif"'
     ctx.fillText(`${mainquest}`, 217, 530);
     ctx.fillText(`${side_quest}`, sqx, sqy);
