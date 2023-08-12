@@ -83,7 +83,7 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
                                     const name = user.username
                                     profileModel.findOne({userID:user.id},async function(err,foundUser){
                                         if(foundUser.guild == "None"){
-                                            interaction.reply({content:`You have not recieved your Ranger License yet!`,ephemeral:true})
+                                            interaction.reply({content:`The user has not recieved their Ranger License yet`,ephemeral:true})
                                         }
                                         else{
                                         path = `assets/Ranger_License/${foundUser.class}_Bronze_license.jpeg`
