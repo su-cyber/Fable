@@ -58,7 +58,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     const items = itemExist? foundUser.items[0] : "None"
     const mount = foundUser.mount
     const grade = foundUser.ranger_grade
-    const guildinfo = `${foundUser.guild} - ${foundUser.guild_rank} Rank`
+    const guildinfo = `${foundUser.guild_rank}`
     const title = foundUser.current_title[0]
     let side_quest
     if(foundUser.side_quest.length == 0){
@@ -81,24 +81,24 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.drawImage(img,0,0)
     ctx.font = '22px "serif"'
     ctx.fillStyle = "yellow"
-    ctx.fillText(`${name}'s Grimoire`, 120, 130);
+    ctx.fillText(`${name}'s Grimoire`, 120, 125);
     ctx.font = '38px "serif"'
     ctx.fillStyle = "#2a9df4"
     ctx.fillText(`${level}`, 1070, 118);
     ctx.font = '30px "serif"'
-    ctx.fillText(`${sp}`, 900, 157);
+    ctx.fillText(`${sp}`, 910, 157);
     ctx.fillText(`${faith}`, 935, 226);
     ctx.fillText(`${vigour}`, 737, 295);
     ctx.fillText(`${arcana}`, 737, 525);
     ctx.fillText(`${agility}`, 935, 591);
     ctx.fillText(`${durability}`, 1125, 294);
     ctx.fillText(`${knowledge}`, 1125, 525);
-    ctx.font = '20px "serif"'
+    ctx.font = '16px "serif"'
     ctx.fillStyle = "black"
-    ctx.fillText(`${title}`, 397, 212);
+    ctx.fillText(`${title}`, 397, 220);
     ctx.fillText(`${guildinfo}`, 397, 250);
-    ctx.fillText(`${weapon}`, 375, 273);
-    ctx.fillText(`${armour}`, 375, 313);
+    ctx.fillText(`${weapon}`, 375, 280);
+    ctx.fillText(`${armour}`, 375, 300);
     ctx.fillText(`${mount}`, 361, 335);
     ctx.fillText(`${items}`, 364, 368);
     const buffer = await src.toBuffer('image/jpeg')
