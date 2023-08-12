@@ -61,7 +61,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     const mount = foundUser.mount
     let grade
     if(foundUser.ranger_grade == "None"){
-        grade = "      "
+        grade = "          "
     }
     else{
         grade = `${foundUser.ranger_grade} GRADE:`
@@ -157,9 +157,9 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${merit}`, 477, 408);
     ctx.fillText(`${location}`, 135, 461);
     ctx.fillStyle = "#C4B190"
-    ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 193, 175);
+    ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 163, 175);
     ctx.font = '18px "serif"'
-    ctx.fillText(`${grade} ${foundUser.class}`, 115, 375);
+    ctx.fillText(`${grade} ${foundUser.class.toUpperCase()}`, 115, 375);
     ctx.fillStyle = "black"
     ctx.font = '38px "serif"'
     ctx.fillText(`${mainquest}`, 217, 530);
