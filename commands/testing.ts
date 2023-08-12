@@ -157,7 +157,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${merit}`, 477, 408);
     ctx.fillText(`${location}`, 135, 461);
     ctx.fillStyle = "#C4B190"
-    ctx.font = '18px "serif"'
+    ctx.font = '16px "serif"'
     ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 163, 175);
     ctx.fillText(`${grade} ${foundUser.class.toUpperCase()}`, 115, 375);
     ctx.fillStyle = "#644E41"
