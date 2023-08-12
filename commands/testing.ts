@@ -95,10 +95,10 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${knowledge}`, 1125, 525);
     ctx.font = '16px "serif"'
     ctx.fillStyle = "black"
-    ctx.fillText(`${title}`, 397, 220);
-    ctx.fillText(`${guildinfo}`, 397, 250);
-    ctx.fillText(`${weapon}`, 375, 280);
-    ctx.fillText(`${armour}`, 375, 300);
+    ctx.fillText(`${title}`, 397, 216);
+    ctx.fillText(`${guildinfo}`, 397, 246);
+    ctx.fillText(`${weapon}`, 375, 275);
+    ctx.fillText(`${armour}`, 375, 305);
     ctx.fillText(`${mount}`, 361, 335);
     ctx.fillText(`${items}`, 364, 368);
     const buffer = await src.toBuffer('image/jpeg')
