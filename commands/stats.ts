@@ -24,24 +24,12 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'see your
             else{
                 if(res){
                     
-                    let img 
+                    let img
+                    let path
                     const name = interaction.user.username
                     profileModel.findOne({userID:authorId},async function(err,foundUser){
-                     if(foundUser.class == "Gladius"){
-                         img = await loadImage("assets/Statscreen/Gladius_stat.jpeg")
-                     }
-                     else if(foundUser.class == "Noir"){
-                         img = await loadImage("assets/Statscreen/Noir_stat.jpeg")
-                     }
-                     else if(foundUser.class == "Buushin"){
-                         img = await loadImage("assets/Statscreen/Buushin_stat.jpeg")
-                     }
-                     else if(foundUser.class == "Magus"){
-                         img = await loadImage("assets/Statscreen/Magus_stat.jpeg")
-                     }
-                     else if(foundUser.class == "Dragoon"){
-                         img = await loadImage("assets/Statscreen/Dragoon_stat.jpeg")
-                     }
+                        path = `assets/Statscreen/${foundUser.class}_stat.jpeg`
+                        img = await loadImage(path)
                      
                      const weaponExist = foundUser.weapon.length
                      const armourExist = foundUser.armourSuit.length

@@ -22,29 +22,46 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
             }
             else{
                 if(res){
-                    console.log(user);
-                    
-                    profileModel.exists({userID:authorId},async function(err,res){
-                        if(err){
-                            console.log(err);
+                    if(user == null){
+                        let img
+                        let path
+                        const name = interaction.user.username
+                        profileModel.findOne({userID:authorId},async function(err,foundUser){
                             
-                        }
-                        else{
-                            if(res){
-
-                                let img
-                                let path
-                                const name = interaction.user.username
-                                profileModel.findOne({userID:authorId},async function(err,foundUser){
-            
-            
-                                })
+                            path = `assets/Ranger_License/${foundUser.class}_Bronze_license.jpeg`
+                            img = await loadImage(path)
+                            registerFont('fonts/DellaRespira.ttf', { family: 'DellaRespira' })
+                            const src = new Canvas(822,1122)
+                            let ctx = src.getContext("2d")
+                            ctx.drawImage(img,0,0)
+                            
+                        })
+                    }
+                    else{
+                        profileModel.exists({userID:user.id},async function(err,res){
+                            if(err){
+                                console.log(err);
+                                
                             }
                             else{
-                                interaction.reply({content:`It seems that the mentioned User is not awakened yet!`,ephemeral:true},)
+                                if(res){
+    
+                                    let img
+                                    let path
+                                    const name = user.username
+                                    profileModel.findOne({userID:user.id},async function(err,foundUser){
+                
+                
+                                    })
+                                }
+                                else{
+                                    interaction.reply({content:`It seems that the mentioned User is not awakened yet!`,ephemeral:true},)
+                                }
                             }
-                        }
-                    })
+                        })
+                    }
+                    
+                    
                    
 
                 }
