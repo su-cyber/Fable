@@ -25,19 +25,39 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
                     if(user == null){
                         let img
                         let path
-                        const name = interaction.user.username
+                        const name = interaction.user.username.toUpperCase()
                         profileModel.findOne({userID:authorId},async function(err,foundUser){
-                            
+                            if(foundUser.guild == "None"){
+                                interaction.reply({content:`You have not recieved your Ranger License yet!`,ephemeral:true})
+                            }
+                            else{
                             path = `assets/Ranger_License/${foundUser.class}_Bronze_license.jpeg`
                             img = await loadImage(path)
+
+
+                            const title = foundUser.current_title[0]
+                            const level = foundUser.level
+                            const grade = foundUser.ranger_grade
+                            const rank = foundUser.guild_rank
+                            const guild = `${foundUser.guild.toUpperCase()} GUILD`
                             registerFont('fonts/DellaRespira.ttf', { family: 'DellaRespira' })
                             const src = new Canvas(822,1122)
                             let ctx = src.getContext("2d")
                             ctx.drawImage(img,0,0)
+
+                            ctx.font = '40px "serif"'
+                            ctx.fillStyle = "yellow"
+                            ctx.fillText(`${level}`, 84, 801);
+                            ctx.font = '32px "serif"'
+                            ctx.fillText(`${grade}`, 304, 804);
                             
+
+
                             const buffer = await src.toBuffer('image/jpeg')
                             const attachment = await new MessageAttachment(buffer)
                             interaction.reply({files:[attachment],ephemeral:true})
+                            }
+                            
                         })
                     }
                     else{
