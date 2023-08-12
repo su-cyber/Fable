@@ -69,10 +69,41 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
         side_quest = foundUser.side_quest[0]
     }
     if(foundUser.location == "None"){
-        location = `${foundUser.city_town}`
+        if(foundUser.city_town == "aube"){
+            location = "Township of Aube"
+        }
+        else if(foundUser.city_town == "ellior"){
+            location = "Ellior Forest"
+        }
+        else if(foundUser.city_town == "Zorya"){
+            location = "Stateship of Zorya"
+        }
+        else if(foundUser.city_town == "Werfall"){
+            location = "Township of Werfall"
+        }
+        else{
+            location = `${foundUser.city_town}`
+        }
+        
     }
     else{
-        location = `${foundUser.city_town} -> ${foundUser.location}`
+        let city_town
+        if(foundUser.city_town == "aube"){
+            city_town = "Township of Aube"
+        }
+        else if(foundUser.city_town == "ellior"){
+            city_town = "Ellior Forest"
+        }
+        else if(foundUser.city_town == "Zorya"){
+            city_town = "Stateship of Zorya"
+        }
+        else if(foundUser.city_town == "Werfall"){
+            city_town = "Township of Werfall"
+        }
+        else{
+            city_town = foundUser.city_town
+        }
+        location = `${city_town} -> ${foundUser.location}`
     }
     
 
@@ -80,7 +111,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     const src = new Canvas(1300,700)
     let ctx = src.getContext("2d")
     ctx.drawImage(img,0,0)
-    ctx.font = '26px "serif"'
+    ctx.font = '28px "serif"'
     ctx.fillStyle = "yellow"
     ctx.fillText(`${name}'s Grimoire`, 120, 125);
     ctx.font = '38px "serif"'
@@ -102,13 +133,14 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${armour}`, 375, 305);
     ctx.fillText(`${mount}`, 361, 335);
     ctx.fillText(`${items}`, 364, 368);
-    ctx.font = '24px "serif"'
-    ctx.fillText(`${health}`, 141, 406);
-    ctx.fillText(`${money}`, 297, 406);
-    ctx.fillText(`${merit}`, 450, 406);
+    ctx.font = '20px "serif"'
+    ctx.fillText(`${health}`, 136, 406);
+    ctx.fillText(`${money}`, 292, 406);
+    ctx.fillText(`${merit}`, 447, 406);
+    ctx.fillText(`${location}`, 204, 459);
     const buffer = await src.toBuffer('image/jpeg')
     const attachment = await new MessageAttachment(buffer)
-    interaction.reply({files:[attachment]})
+    interaction.reply({files:[attachment],ephemeral:true})
     
    })
    
