@@ -59,7 +59,14 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     const armour = armourExist? foundUser.armourSuit[0].name : "None"
     const items = itemExist? foundUser.items[0] : "None"
     const mount = foundUser.mount
-    const grade = foundUser.ranger_grade
+    let grade
+    if(foundUser.ranger_grade == "None"){
+        grade = ""
+    }
+    else{
+        grade = `${foundUser.ranger_grade} GRADE:`
+    }
+    
     const guildinfo = `${foundUser.guild_rank}`
     const title = foundUser.current_title[0]
     let side_quest
@@ -76,7 +83,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
         side_quest = allQuests.find(quest => quest.quest_id == foundUser.side_quest[0]).name
     }
     let kingdom
-    if(foundUser.kingdom == "Solarstrio"){
+    if(foundUser.kingdom == "solarstrio"){
         kingdom = "Kingdom of Solarstrio"
     }
     if(foundUser.location == "None"){
@@ -149,9 +156,10 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${money}`, 312, 408);
     ctx.fillText(`${merit}`, 447, 408);
     ctx.fillText(`${location}`, 135, 461);
-    ctx.fillStyle = "#B49B79"
-    ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 213, 168);
-    ctx.fillText(`${grade} GRADE: ${foundUser.class}`, 123, 369);
+    ctx.fillStyle = "#C4B190"
+    ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 193, 175);
+    ctx.font = '16px "serif"'
+    ctx.fillText(`${grade} ${foundUser.class}`, 115, 375);
     ctx.fillStyle = "black"
     ctx.font = '38px "serif"'
     ctx.fillText(`${mainquest}`, 217, 530);
