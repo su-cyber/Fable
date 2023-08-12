@@ -66,7 +66,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     let sqx
     let sqy
     if(foundUser.side_quest.length == 0){
-        sqx = 267
+        sqx = 277
         sqy = 602
         side_quest = "None"
     }
@@ -74,6 +74,10 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
         sqx = 217
         sqy = 602
         side_quest = allQuests.find(quest => quest.quest_id == foundUser.side_quest[0]).name
+    }
+    let kingdom
+    if(foundUser.kingdom == "Solarstrio"){
+        kingdom = "Kingdom of Solarstrio"
     }
     if(foundUser.location == "None"){
         if(foundUser.city_town == "aube"){
@@ -91,7 +95,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
         else{
             location = `${foundUser.city_town}`
         }
-        
+        location = `${kingdom} -> ${location}`
     }
     else{
         let city_town
@@ -142,9 +146,13 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${items}`, 364, 368);
     ctx.font = '20px "serif"'
     ctx.fillText(`${health}`, 136, 408);
-    ctx.fillText(`${money}`, 302, 408);
+    ctx.fillText(`${money}`, 312, 408);
     ctx.fillText(`${merit}`, 447, 408);
-    ctx.fillText(`${location}`, 165, 461);
+    ctx.fillText(`${location}`, 135, 461);
+    ctx.fillStyle = "#B49B79"
+    ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 213, 168);
+    ctx.fillText(`${grade} GRADE: ${foundUser.class}`, 123, 369);
+    ctx.fillStyle = "black"
     ctx.font = '38px "serif"'
     ctx.fillText(`${mainquest}`, 217, 530);
     ctx.fillText(`${side_quest}`, sqx, sqy);
