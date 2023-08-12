@@ -50,13 +50,15 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
                             ctx.fillText(`${level}`, 78, 820);
                             ctx.font = '32px "serif"'
                             ctx.fillText(`${grade}`, 292, 812);
-                            ctx.fillText(`${rank}`, 525, 814);
+                            ctx.fillText(`${rank}`, 515, 814);
                             ctx.font = 'bold 18px "serif"'
                             ctx.fillStyle = "black"
                             ctx.fillText(`${guild}`, 485, 906);
-                            ctx.font = '22px "serif"'
+                            ctx.font = '26px "serif"'
                             ctx.fillStyle = "yellow"
-                            ctx.fillText(`${name}`, 40, 913);
+                            ctx.fillText(`${name}`, 40, 910);
+                            ctx.font = '32px "serif"'
+                            ctx.fillText(`${title}`, 206, 57);
                             
 
 
