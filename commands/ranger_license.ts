@@ -45,14 +45,15 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
                             let ctx = src.getContext("2d")
                             ctx.drawImage(img,0,0)
 
-                            ctx.font = '48px "serif"'
+                            ctx.font = '58px "serif"'
                             ctx.fillStyle = "yellow"
-                            ctx.fillText(`${level}`, 70, 831);
+                            ctx.fillText(`${level}`, 78, 812);
                             ctx.font = '32px "serif"'
                             ctx.fillText(`${grade}`, 294, 817);
-                            ctx.fillText(`${rank}`, 484, 807);
-                            ctx.font = '14px "serif"'
-                            ctx.fillText(`${rank}`, 471, 903);
+                            ctx.fillText(`${rank}`, 522, 814);
+                            ctx.font = '16px "serif"'
+                            ctx.fillStyle = "black"
+                            ctx.fillText(`${guild}`, 515, 906);
                             
 
 
