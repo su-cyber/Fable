@@ -61,7 +61,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     const mount = foundUser.mount
     let grade
     if(foundUser.ranger_grade == "None"){
-        grade = ""
+        grade = "      "
     }
     else{
         grade = `${foundUser.ranger_grade} GRADE:`
@@ -136,7 +136,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillStyle = "#2a9df4"
     ctx.fillText(`${level}`, 1070, 118);
     ctx.font = '30px "serif"'
-    ctx.fillText(`${sp}`, 904, 157);
+    ctx.fillText(`${sp}`, 904, 159);
     ctx.fillText(`${faith}`, 935, 226);
     ctx.fillText(`${vigour}`, 737, 295);
     ctx.fillText(`${arcana}`, 737, 525);
@@ -154,11 +154,11 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.font = '20px "serif"'
     ctx.fillText(`${health}`, 136, 408);
     ctx.fillText(`${money}`, 312, 408);
-    ctx.fillText(`${merit}`, 447, 408);
+    ctx.fillText(`${merit}`, 477, 408);
     ctx.fillText(`${location}`, 135, 461);
     ctx.fillStyle = "#C4B190"
     ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 193, 175);
-    ctx.font = '16px "serif"'
+    ctx.font = '18px "serif"'
     ctx.fillText(`${grade} ${foundUser.class}`, 115, 375);
     ctx.fillStyle = "black"
     ctx.font = '38px "serif"'
