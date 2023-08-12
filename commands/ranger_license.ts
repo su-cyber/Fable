@@ -13,7 +13,7 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
     async (bot, interaction) => {
         const authorId = interaction.user.id;
         const guildID = interaction.guildId;
-        const userId = interaction.options.getUser('user').id
+        const user = interaction.options.getUser('user')
 
         profileModel.exists({userID:authorId},async function(err,res){
             if(err){
@@ -22,7 +22,7 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
             }
             else{
                 if(res){
-                    console.log(userId);
+                    console.log(user);
                     
                     profileModel.exists({userID:authorId},async function(err,res){
                         if(err){
