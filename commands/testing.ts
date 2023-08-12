@@ -146,7 +146,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${merit}`, 447, 408);
     ctx.fillText(`${location}`, 195, 461);
     ctx.font = '38px "serif"'
-    ctx.fillText(`${mainquest}`, 217, 523);
+    ctx.fillText(`${mainquest}`, 217, 530);
     ctx.fillText(`${side_quest}`, sqx, sqy);
     const buffer = await src.toBuffer('image/jpeg')
     const attachment = await new MessageAttachment(buffer)
