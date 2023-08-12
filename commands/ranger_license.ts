@@ -38,8 +38,8 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
                             const title = foundUser.current_title[0]
                             const level = foundUser.level
                             const grade = foundUser.ranger_grade
-                            const rank = foundUser.guild_rank
-                            const guild = `${foundUser.guild.toUpperCase()} GUILD`
+                            const rank = foundUser.guild_rank.toUpperCase()
+                            const guild = `${foundUser.guild.toUpperCase()} GUILD RANGER`
                             registerFont('fonts/DellaRespira.ttf', { family: 'DellaRespira' })
                             const src = new Canvas(822,1122)
                             let ctx = src.getContext("2d")
@@ -47,13 +47,13 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
 
                             ctx.font = '58px "serif"'
                             ctx.fillStyle = "yellow"
-                            ctx.fillText(`${level}`, 78, 812);
+                            ctx.fillText(`${level}`, 78, 820);
                             ctx.font = '32px "serif"'
-                            ctx.fillText(`${grade}`, 294, 817);
-                            ctx.fillText(`${rank}`, 522, 814);
-                            ctx.font = '16px "serif"'
+                            ctx.fillText(`${grade}`, 292, 812);
+                            ctx.fillText(`${rank}`, 535, 814);
+                            ctx.font = '18px "serif"'
                             ctx.fillStyle = "black"
-                            ctx.fillText(`${guild}`, 515, 906);
+                            ctx.fillText(`${guild}`, 500, 906);
                             
 
 
