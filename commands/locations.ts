@@ -206,7 +206,40 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                                     .setColor('RANDOM')
                                     .setTitle('SELECT LOCATION')
                                     .setDescription(`Choose a location to visit in ${city_town}`)
-                                    
+                                    .addFields([
+                                        {
+                                            name: `Guild District`,
+                                            value:`**Description**:A hub of adventurer guilds and the grand Colosseum arena.\n`
+                                        },
+                                        {
+                                            name: `Guild Office`,
+                                            value:`**Description**:The main Guild Office of many guilds around the world\n`
+                                        },
+                                        {
+                                            name: `Auriga Sails Company`,
+                                            value:`**Description**:A renowned shipbuilding workshop crafting sturdy vessels.\n`
+                                        },
+                                        {
+                                            name: `Astro Avenue`,
+                                            value:`**Description**:A vibrant thoroughfare lined with captivating attractions.\n`
+                                        },
+                                        {
+                                            name: `Golden Terminal`,
+                                            value:`**Description**:A bustling travel hub with majestic steam engine trains.\n`
+                                        },
+                                        {
+                                            name: `Castle of Chariots`,
+                                            value:`**Description**:An imposing fortress residence of Earl Auriga.\n`
+                                        },
+                                        {
+                                            name: `Siewelle Port`,
+                                            value:`**Description**:A grand harbor with 7 piers guarded by towering sea gates.\n`
+                                        },
+                                        {
+                                            name: `Black Market`,
+                                            value:`**Description**:An underground network of illicit and experimental wares.\n`
+                                        }
+                                    ])
                                     
                                
     
@@ -401,7 +434,16 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                                     .setColor('RANDOM')
                                     .setTitle('SELECT LOCATION')
                                     .setDescription(`Choose a location to visit in ${city_town}`)
-                                    
+                                    .addFields([
+                                        {
+                                            name: `Ranger Tents`,
+                                            value:`**Description**:A sprawling encampment housing determined yet weary rangers.\n`
+                                        },
+                                        {
+                                            name: `Werfall Ranger Centre`,
+                                            value:`**Description**:A strategic command center coordinating efforts against the nightmare.\n`
+                                        }
+                                    ])
                                     
                                
     

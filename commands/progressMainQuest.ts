@@ -990,7 +990,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             
                             
                             await interaction.reply({content: null,embeds:[questEmbed]})
-                            await profileModel.updateOne({userID:authorId},{main_quest_phase:"6"})
+                            await profileModel.updateOne({userID:authorId},{main_quest_phase:"7"})
                         }
                         else{
                             interaction.reply({content:`After defeating the Spectraling, your heart races amid the distant screams of the crowd. Amidst wiping the blood off your face, you realize attention has shifted to Rammir, a notorious figure. Spectators discuss his release by Guildmaster Baeyu for possible recruitment into the Megalos Guild. Amidst rumors, the formidable Rammir emerges as a unique Challenger, capable of great power. The second test of the Annual Guild Draft ends with this revelation, leaving you anticipating the next challenge.\n**(press /progressmainquest to continue)**`,ephemeral:true})

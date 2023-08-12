@@ -183,16 +183,60 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                     `Luciana: “There are some people who claim that Earl Auriga used his power as an Earl to amass wealth, but in reality Earl Auriga had always owned Auriga Sails Company and only after making his business a success, did he ever run for the position of Earl. He even passed the ownership of the company to his sister after becoming the Earl. Personally I think Earl Auriga is the reason Zorya has become as it is today, and people with such opinions should just keep their mouths shut.”`,
                                                     `Edgar: “The Castle of Chariots…man what a magnificent work of art. I would love to visit it once and take a tour but it isn’t just open to anyone. That is why I have become an Adventurer. Maybe one day I would be big enough for Earl Auriga to personally request me. What a sight that would be.”`
                                                 ])
-                                                
+                                                dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated!')
+                                                    .setDescription(`${dialogue}\n`)
                                                 
                                             }
                                             
                                         }
+                                        else if(foundUser.city_town == "Dragon's Den"){
+                                            dialogueembed = new MessageEmbed()
+                                            .setColor('RANDOM')
+                                            .setTitle('Dialogue Failed')
+                                            .setDescription(`No one could be found to talk in the proximity!`)
+                                        }
+                                        else if(foundUser.city_town == "Sunstone Mines"){
+                                            dialogueembed = new MessageEmbed()
+                                            .setColor('RANDOM')
+                                            .setTitle('Dialogue Failed')
+                                            .setDescription(`No one could be found to talk in the proximity!`)
+                                        }
+                                        else if(foundUser.city_town == "Zephyr Mountain"){
+                                            dialogueembed = new MessageEmbed()
+                                            .setColor('RANDOM')
+                                            .setTitle('Dialogue Failed')
+                                            .setDescription(`No one could be found to talk in the proximity!`)
+                                        }
+                                        else if(foundUser.city_town == "Zephyr Mountain"){
+                                            dialogueembed = new MessageEmbed()
+                                            .setColor('RANDOM')
+                                            .setTitle('Dialogue Failed')
+                                            .setDescription(`No one could be found to talk in the proximity!`)
+                                        }
+                                        else if(foundUser.city_town == "Werfall"){
+                                            dialogue = sample([
+                                                `Sowyer: Looking for Rangers in your Guild? Are you sure they aren’t dead already? But if they aren’t, they should eventually show up at the Werfall Ranger Center.`,
+                                                `Gannon: I have been stationed here for a year now. There’s nothing I haven’t seen. Most of my friends are either dead or have gone insane. But I hear there are some Rangers here who have been in this shithole even longer than me. Since the incident happened. I just wish I could find them and cause them the pain they have caused me.`,
+                                                `Amyra: It is believed that when a C2 Nightmare took over Werfall, the Gatekeeper escaped into our world, leaving his post. Ever since then, we haven’t been able to fully purge the Nightmare.`,
+                                                `Colliff: It’s really strange what happened here. Abyssals are not supposed to be intelligent enough to make decisions. They work in patterns that are predictable. This is the reason Werfall has the entire world baffled.`,
+                                                
+                                            ])
+                                            dialogueembed = new MessageEmbed()
+                                                .setColor('RANDOM')
+                                                .setTitle('Dialogue Initiated')
+                                                .setDescription(`${dialogue}`)
+                                        }
+                                        else{
+                                            dialogueembed = new MessageEmbed()
+                                            .setColor('RANDOM')
+                                            .setTitle('Dialogue Failed')
+                                            .setDescription(`No one could be found to talk in the proximity!`)
+                                        
+                                        }
                                     }
-                                    dialogueembed = new MessageEmbed()
-                                                    .setColor('RANDOM')
-                                                    .setTitle('Dialogue Initiated!')
-                                                    .setDescription(`${dialogue}\n`)
+                                    
                                    
                                     await interaction.reply({embeds:[dialogueembed]});
                                    }
