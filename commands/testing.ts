@@ -54,7 +54,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     let location
     const money = foundUser.coins
     const merit = foundUser.merit
-    const mainquest = allQuests.find(quest => quest.quest_id == foundUser.main_quest)
+    const mainquest = allQuests.find(quest => quest.quest_id == foundUser.main_quest).name
     const weapon = weaponExist? foundUser.weapon[0].name : "None"
     const armour = armourExist? foundUser.armourSuit[0].name : "None"
     const items = itemExist? foundUser.items[0] : "None"
@@ -63,11 +63,17 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     const guildinfo = `${foundUser.guild_rank}`
     const title = foundUser.current_title[0]
     let side_quest
+    let sqx
+    let sqy
     if(foundUser.side_quest.length == 0){
+        sqx = 247
+        sqy = 602
         side_quest = "None"
     }
     else{
-        side_quest = allQuests.find(quest => quest.quest_id == foundUser.side_quest[0])
+        sqx = 217
+        sqy = 602
+        side_quest = allQuests.find(quest => quest.quest_id == foundUser.side_quest[0]).name
     }
     if(foundUser.location == "None"){
         if(foundUser.city_town == "aube"){
@@ -141,7 +147,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${location}`, 195, 461);
     ctx.font = '38px "serif"'
     ctx.fillText(`${mainquest}`, 217, 523);
-    ctx.fillText(`${side_quest}`, 217, 596);
+    ctx.fillText(`${side_quest}`, sqx, sqy);
     const buffer = await src.toBuffer('image/jpeg')
     const attachment = await new MessageAttachment(buffer)
     interaction.reply({files:[attachment],ephemeral:true})
