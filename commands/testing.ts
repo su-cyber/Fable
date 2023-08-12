@@ -57,6 +57,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     const armour = armourExist? foundUser.armourSuit[0].name : "None"
     const items = itemExist? foundUser.items[0] : "None"
     const mount = foundUser.mount
+    const grade = foundUser.ranger_grade
     const guildinfo = `${foundUser.guild} - ${foundUser.guild_rank} Rank`
     const title = foundUser.current_title[0]
     let side_quest
@@ -80,7 +81,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.drawImage(img,0,0)
     ctx.font = '22px "serif"'
     ctx.fillStyle = "yellow"
-    ctx.fillText(`${name}'s Diary`, 120, 110);
+    ctx.fillText(`${name}'s Grimoire`, 120, 130);
     ctx.font = '38px "serif"'
     ctx.fillStyle = "#2a9df4"
     ctx.fillText(`${level}`, 1070, 118);
@@ -92,6 +93,14 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${agility}`, 935, 591);
     ctx.fillText(`${durability}`, 1125, 294);
     ctx.fillText(`${knowledge}`, 1125, 525);
+    ctx.font = '20px "serif"'
+    ctx.fillStyle = "brown"
+    ctx.fillText(`${title}`, 397, 212);
+    ctx.fillText(`${guildinfo}`, 397, 212);
+    ctx.fillText(`${weapon}`, 375, 273);
+    ctx.fillText(`${armour}`, 375, 273);
+    ctx.fillText(`${mount}`, 361, 335);
+    ctx.fillText(`${items}`, 364, 368);
     const buffer = await src.toBuffer('image/jpeg')
     const attachment = await new MessageAttachment(buffer)
     interaction.reply({files:[attachment]})
