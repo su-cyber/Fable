@@ -52,6 +52,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     const XP = `${foundUser.xp}/${xpFormulate(foundUser.level+1)}`
     let location
     const money = foundUser.coins
+    const merit = foundUser.merit
     const mainquest = foundUser.main_quest
     const weapon = weaponExist? foundUser.weapon[0].name : "None"
     const armour = armourExist? foundUser.armourSuit[0].name : "None"
@@ -79,14 +80,14 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     const src = new Canvas(1300,700)
     let ctx = src.getContext("2d")
     ctx.drawImage(img,0,0)
-    ctx.font = '22px "serif"'
+    ctx.font = '26px "serif"'
     ctx.fillStyle = "yellow"
     ctx.fillText(`${name}'s Grimoire`, 120, 125);
     ctx.font = '38px "serif"'
     ctx.fillStyle = "#2a9df4"
     ctx.fillText(`${level}`, 1070, 118);
     ctx.font = '30px "serif"'
-    ctx.fillText(`${sp}`, 910, 157);
+    ctx.fillText(`${sp}`, 906, 157);
     ctx.fillText(`${faith}`, 935, 226);
     ctx.fillText(`${vigour}`, 737, 295);
     ctx.fillText(`${arcana}`, 737, 525);
@@ -101,6 +102,10 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${armour}`, 375, 305);
     ctx.fillText(`${mount}`, 361, 335);
     ctx.fillText(`${items}`, 364, 368);
+    ctx.font = '24px "serif"'
+    ctx.fillText(`${health}`, 141, 406);
+    ctx.fillText(`${money}`, 297, 406);
+    ctx.fillText(`${merit}`, 450, 406);
     const buffer = await src.toBuffer('image/jpeg')
     const attachment = await new MessageAttachment(buffer)
     interaction.reply({files:[attachment]})
