@@ -5,7 +5,7 @@ import { loadImage,Canvas,registerFont } from 'canvas'
 import { SlashCommandUserOption } from '@discordjs/builders'
 
 
-export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access the Shop' })
+export default new MyCommandSlashBuilder({ name: 'ranger_license', description: `View your own or another user's license` })
 .addUserOption((option: SlashCommandUserOption) =>
 option.setName('user').setDescription(`View user's license`).setRequired(false)
 )
