@@ -66,7 +66,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     let sqx
     let sqy
     if(foundUser.side_quest.length == 0){
-        sqx = 247
+        sqx = 267
         sqy = 602
         side_quest = "None"
     }
@@ -125,7 +125,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillStyle = "#2a9df4"
     ctx.fillText(`${level}`, 1070, 118);
     ctx.font = '30px "serif"'
-    ctx.fillText(`${sp}`, 906, 157);
+    ctx.fillText(`${sp}`, 904, 157);
     ctx.fillText(`${faith}`, 935, 226);
     ctx.fillText(`${vigour}`, 737, 295);
     ctx.fillText(`${arcana}`, 737, 525);
@@ -142,9 +142,9 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${items}`, 364, 368);
     ctx.font = '20px "serif"'
     ctx.fillText(`${health}`, 136, 408);
-    ctx.fillText(`${money}`, 292, 408);
+    ctx.fillText(`${money}`, 302, 408);
     ctx.fillText(`${merit}`, 447, 408);
-    ctx.fillText(`${location}`, 195, 461);
+    ctx.fillText(`${location}`, 165, 461);
     ctx.font = '38px "serif"'
     ctx.fillText(`${mainquest}`, 217, 530);
     ctx.fillText(`${side_quest}`, sqx, sqy);
