@@ -4,6 +4,7 @@ import {MessageAttachment} from 'discord.js'
 import { loadImage,Canvas,registerFont } from 'canvas'
 import { SlashCommandUserOption } from '@discordjs/builders'
 
+registerFont('fonts/DellaRespira.ttf', { family: 'DellaRespira' })
 
 export default new MyCommandSlashBuilder({ name: 'ranger_license', description: `View your own or another user's license` })
 .addUserOption((option: SlashCommandUserOption) =>
@@ -40,24 +41,24 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
                             const grade = foundUser.ranger_grade
                             const rank = foundUser.guild_rank.toUpperCase()
                             const guild = `${foundUser.guild.toUpperCase()} GUILD RANGER`
-                            registerFont('./fonts/DellaRespira.ttf', { family: 'DellaRespira' })
+                            
                             const src = new Canvas(822,1122)
                             let ctx = src.getContext("2d")
                             ctx.drawImage(img,0,0)
 
-                            ctx.font = '58px "DellaRespira"'
+                            ctx.font = '58px "serif"'
                             ctx.fillStyle = "#E29A37"
                             ctx.fillText(`${level}`, 78, 820);
-                            ctx.font = '32px "DellaRespira"'
+                            ctx.font = '32px "serif"'
                             ctx.fillText(`${grade}`, 292, 812);
                             ctx.fillText(`${rank}`, 515, 814);
-                            ctx.font = 'bold 18px "DellaRespira"'
+                            ctx.font = 'bold 18px "serif"'
                             ctx.fillStyle = "black"
                             ctx.fillText(`${guild}`, 485, 906);
-                            ctx.font = '26px "DellaRespira"'
+                            ctx.font = '26px "serif"'
                             ctx.fillStyle = "#E29A37"
                             ctx.fillText(`${name}`, 40, 910);
-                            ctx.font = '38px "DellaRespira"'
+                            ctx.font = '38px "serif"'
                             ctx.fillText(`${title}`, 253, 57);
                             
 
