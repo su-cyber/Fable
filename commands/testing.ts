@@ -18,29 +18,25 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
    const name = interaction.user.username
    profileModel.findOne({userID:authorId},async function(err,foundUser){
     if(foundUser.class == "Gladius"){
-        img = await loadImage("assets/Statscreen/gladius_stat.png")
+        img = await loadImage("assets/Statscreen/Gladius_stat.jpeg")
     }
     else if(foundUser.class == "Noir"){
-        img = await loadImage("assets/Statscreen/noir_stat.png")
+        img = await loadImage("assets/Statscreen/Noir_stat.jpeg")
     }
     else if(foundUser.class == "Buushin"){
-        img = await loadImage("assets/Statscreen/buushin_stat.png")
+        img = await loadImage("assets/Statscreen/Buushin_stat.jpeg")
     }
     else if(foundUser.class == "Magus"){
-        img = await loadImage("assets/Statscreen/magus_stat.png")
+        img = await loadImage("assets/Statscreen/Magus_stat.jpeg")
     }
     else if(foundUser.class == "Dragoon"){
-        img = await loadImage("assets/Statscreen/dragoon_stat.png")
+        img = await loadImage("assets/Statscreen/Dragoon_stat.jpeg")
     }
-    else if(foundUser.class == "Kastiel"){
-        img = await loadImage("assets/Statscreen/kastiel_stat.png")
-    }
+    
     const weaponExist = foundUser.weapon.length
     const armourExist = foundUser.armourSuit.length
     const itemExist = foundUser.items.length
-    const mappeditems = foundUser.items.map((item) => {
-        return `${item.name}`
-    }).join(", ")
+    
     
 
 
@@ -59,15 +55,16 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     const mainquest = foundUser.main_quest
     const weapon = weaponExist? foundUser.weapon[0].name : "None"
     const armour = armourExist? foundUser.armourSuit[0].name : "None"
-    const items = itemExist? mappeditems : "None"
+    const items = itemExist? foundUser.items[0] : "None"
     const mount = foundUser.mount
     const guildinfo = `${foundUser.guild} - ${foundUser.guild_rank} Rank`
     const title = foundUser.current_title[0]
+    let side_quest
     if(foundUser.side_quest.length == 0){
-        const side_quest = "None"
+        side_quest = "None"
     }
     else{
-        const side_quest = foundUser.side_quest[0]
+        side_quest = foundUser.side_quest[0]
     }
     if(foundUser.location == "None"){
         location = `${foundUser.city_town}`
@@ -95,7 +92,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${agility}`, 935, 591);
     ctx.fillText(`${durability}`, 1125, 294);
     ctx.fillText(`${knowledge}`, 1125, 525);
-    const buffer = await src.toBuffer('image/png')
+    const buffer = await src.toBuffer('image/jpeg')
     const attachment = await new MessageAttachment(buffer)
     interaction.reply({files:[attachment]})
     

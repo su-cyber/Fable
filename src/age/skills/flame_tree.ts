@@ -11,7 +11,7 @@ const flame_tree=[
         type: 'physical',
         element:"flame",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -63,7 +63,7 @@ const flame_tree=[
         type: 'magical',
         element:"flame",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -119,7 +119,7 @@ const flame_tree=[
         type: 'physical',
         element:"flame",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -171,7 +171,7 @@ const flame_tree=[
         type: 'magical',
         element:"flame",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -270,7 +270,7 @@ const flame_tree=[
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -322,7 +322,7 @@ const flame_tree=[
         type: 'magical',
         element:"flame",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }

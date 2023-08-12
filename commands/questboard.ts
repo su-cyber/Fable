@@ -207,7 +207,7 @@ let Quest_embed_1 = new MessageEmbed()
     ])
     let filtered_menu = []
     let board
-    if(foundUser.guild_class == "E"){
+    if(foundUser.ranger_grade == "E"){
         board = [Quest_embed_1,Quest_embed_2]
     }
     else{

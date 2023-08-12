@@ -11,7 +11,7 @@ const volt_tree=[
         type: 'physical',
         element:"volt",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 1
             }
@@ -63,7 +63,7 @@ const volt_tree=[
         type: 'magical',
         element:"volt",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 1
             }
@@ -115,7 +115,7 @@ const volt_tree=[
         type: 'physical',
         element:"volt",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 1
             }
@@ -167,7 +167,7 @@ const volt_tree=[
         type: 'magical',
         element:"volt",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 1
             }
@@ -268,7 +268,7 @@ const volt_tree=[
         type: 'physical',
         element:"volt",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 1
             }
@@ -320,7 +320,7 @@ const volt_tree=[
         element:"volt",
         type: 'magical',
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 1
             }

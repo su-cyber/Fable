@@ -11,7 +11,7 @@ const venom_tree=[
         type: 'physical',
         element:"venom",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 1
             }
@@ -63,7 +63,7 @@ const venom_tree=[
         type: 'magical',
         element:"venom",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 1
             }
@@ -115,7 +115,7 @@ const venom_tree=[
         type: 'physical',
         element:"venom",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 1
             }
@@ -167,7 +167,7 @@ const venom_tree=[
         type: 'magical',
         element:"venom",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 1
             }
@@ -267,7 +267,7 @@ const venom_tree=[
         type: 'physical',
         element:"venom",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 1
             }
@@ -319,7 +319,7 @@ const venom_tree=[
         type: 'magical',
         element:"venom",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 1
             }

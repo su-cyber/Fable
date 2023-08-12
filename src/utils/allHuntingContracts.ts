@@ -5,7 +5,7 @@ const hunting_contracts = [{
     quantity:5,
     target:"Thornback",
     rewards:{
-        coins:100,
+        coins:500,
         merit:10
     },
     info:"The Ranger Association has put up a contract to eliminate 5 Thornbacks due to their recent hostile nature"
@@ -16,7 +16,7 @@ const hunting_contracts = [{
     quantity:3,
     target:"Mud Crawler",
     rewards:{
-        coins:50,
+        coins:150,
         merit:10
     },
     info:"The Ranger Association has put up a contract to eliminate 3 Mudcrawlers as crofters are having difficulties in farming the Castellan Fields due to an onslaught of Mudcrawlers"

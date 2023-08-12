@@ -11,7 +11,7 @@ const light_tree=[
         element:"light",
         type: 'physical',
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 2
             }
@@ -63,7 +63,7 @@ const light_tree=[
         type: 'magical',
         element:"light",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 2
             }
@@ -115,7 +115,7 @@ const light_tree=[
         type: 'physical',
         element:"light",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 2
             }
@@ -167,7 +167,7 @@ const light_tree=[
         type: 'magical',
         element:"light",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 2
             }
@@ -266,7 +266,7 @@ const light_tree=[
         type: 'physical',
         element:"light",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 2
             }
@@ -318,7 +318,7 @@ const light_tree=[
         type: 'magical',
         element:"light",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 2
             }

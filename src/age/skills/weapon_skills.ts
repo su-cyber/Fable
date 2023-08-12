@@ -8,7 +8,7 @@ const Weaponskills = [{
     element:"wave",
     mana_cost: 3,
     use: (attacker, defender) =>{
-        let mod
+        let mod = 1
 if(defender.element == "flame"){
 mod  = 2
 }
@@ -60,7 +60,7 @@ mod  = 1
     type: 'physical',
     element:"volt",
     use: (attacker, defender) =>{
-        let mod
+        let mod = 1
         if(defender.element == "flame"){
             mod  = 1
         }
@@ -112,7 +112,7 @@ mod  = 1
     type: 'magical',
     element:"volt",
     use: (attacker, defender) =>{
-        let mod
+        let mod = 1
         if(defender.element == "flame"){
             mod  = 1
         }

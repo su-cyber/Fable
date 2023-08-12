@@ -153,11 +153,11 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Town Centre'){
-                const attachment = new MessageAttachment('assets/AubeTown/Town_Centre.gif')
+                const attachment = new MessageAttachment('assets/AubeTown/Town_Centre.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
-                .setImage('attachment://Town_Centre.gif')
+                .setImage('attachment://Town_Centre.jpg')
                 .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
@@ -389,11 +389,105 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
         else if(city_town == "Zephyr Mountain"){
             interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
         }
-        else if(city_town == "orld husk"){
+        else if(city_town == "Orld Tree Husk "){
             interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
         }
         else if(city_town == "Sunstone Mines"){
             interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
+        }
+        else if(city_town == "Werfall"){
+            
+                                    let embed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('SELECT LOCATION')
+                                    .setDescription(`Choose a location to visit in ${city_town}`)
+                                    
+                                    
+                               
+    
+    
+    let btn_cancel = new MessageActionRow().addComponents([
+        new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
+    
+    let select =  new MessageActionRow().addComponents([
+            new MessageSelectMenu()
+            .setCustomId('select')
+                .setPlaceholder(`Select a location ${interaction.user.username}`)
+                .addOptions({
+                    label: `Ranger Tents`,
+                    description: ``,
+                    value: `Ranger Tents`,
+                },{
+                    label: `Werfall Ranger Centre`,
+                    description: ``,
+                    value: `Werfall Ranger Centre`,
+                },
+                
+                
+                )
+                .setDisabled(false),
+        ])  
+        let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+        let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
+        let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
+        let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
+    
+        collector_select.setMaxListeners(Infinity)
+        collector_cancel.setMaxListeners(Infinity)
+    
+    
+        await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})
+    
+        collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+            collected.deferUpdate().catch(() => null)
+            const location = collected.values[0]
+            
+            await profileModel.updateOne({userID:authorId},{location:location})
+           
+            if(location == 'Ranger Tents'){
+                const attachment = new MessageAttachment('assets/Werfall/ranger_tents.jpeg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://ranger_tents.jpeg')
+                .setDescription(`Arriving at the heart of Werfall, you are met with the sight of the Ranger Tents. These canvas sanctuaries, bearing the distinctive marks of the "Emperal Brigade" and various Guilds dot the landscape, a stark contrast against the backdrop of ruin. Your footsteps echo softly as you navigate the narrow pathways between the tents. Rangers move with purpose, their faces etched with determination as they mend gear, resupply, and attend to their wounded companions. The atmosphere exudes a somber camaraderie, a testament to the unbreakable bonds forged amidst adversity, as the Rangers stand united against the encroaching darkness.\n\n**use /explore to explore this location**`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'Werfall Ranger Centre'){
+                const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
+                let successembed
+                    successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://ranger_centre.jpeg.jpg')
+                    .setDescription(`Your footsteps lead you to the heart of Werfall, where the Werfall Ranger Centre stands resolute. Its weathered walls, bearing witness to the town's tumultuous history, exude an air of defiance. Stepping through its entrance, you are met with a scene of purposeful activity. The scent of herbs and ink fills the air, a reminder of the centre's dual roles in both healing and planning. Rangers and medics work in harmony, exchanging nods and soft words as they carry out their duties. The centre pulses with an unyielding spirit, a symbol of resilience in the face of the unrelenting challenges that have befallen Werfall.\n\n**use /explore to explore this location**`)
+                     
+               
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            
+           
+            
+            
+    
+            
+            collector_select.stop()
+        })
+    
+        collector_cancel.on('collect', async j => {
+            j.deferUpdate().catch(() => null)
+    
+            let delembed = new MessageEmbed()
+            .setColor('RANDOM')
+            .setTitle('CANCELLED')
+            .setDescription(`location visit cancelled!`)
+            
+            await interaction.editReply({embeds:[delembed],components:[]})
+            collector_cancel.stop()
+        })
+    
+    
+    
         }
         
                             }

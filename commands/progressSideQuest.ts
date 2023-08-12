@@ -64,7 +64,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                             .addFields([
                                                 {
                                                     name: `Rewards:`,
-                                                    value:`**Obtained Radiantura's Milk x 5**`
+                                                    value:`**Obtained Radiantura's Milk x 5\nYou recieved 10 Merit**`
                                                 }
                                             ])
                                             .setAuthor({
@@ -94,7 +94,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                 userProfile.inventory.items.push(reward)
                                             }
                                             await Inventory.updateOne({userID:authorId},userProfile)
-                                            await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest})
+                                            await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest,merit:foundUser.merit+10})
                                         }
                                         else{
                                             interaction.reply({content:`You have not gathered the required materials!`,ephemeral:true})
@@ -195,7 +195,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                 .addFields([
                                                     {
                                                         name: `Rewards:`,
-                                                        value:`**Obtained Solarcorn Stalk X 1**\n**You recieved 300🪙**`
+                                                        value:`**Obtained Solarcorn Stalk X 1**\n**You recieved 300🪙**\n**You recieve 10 Merit**`
                                                     }
                                                 ])
                                                 .setDescription(`you hand over the stalk to the Crofters, and they give you some to keep.They thank you for your service and give 300🪙 as a token of gratitude.`)
@@ -210,7 +210,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                 foundUser.side_quest.splice(0,1)
                                                 foundUser.coins+=300
                                                 await Inventory.updateOne({userID:authorId},userProfile)
-                                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest,coins:foundUser.coins})
+                                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest,coins:foundUser.coins,merit:foundUser.merit+10})
                                           
                                             }
                                             else{
@@ -269,7 +269,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                 .addFields([
                                                     {
                                                         name: `Rewards:`,
-                                                        value:`**Obtained Goblin Whistle X 1**`
+                                                        value:`**Obtained Goblin Whistle X 1\nYou recieved 10 Merit**`
                                                     }
                                                 ])
                                                 .setDescription(`You show the Treemick's Branches to the Guild and they confirm the quest completion, You are given a trinket as a reward`)
@@ -289,7 +289,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                             }
                                             await Inventory.updateOne({userID:authorId},userProfile)
                                                
-                                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest})
+                                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest,merit:foundUser.merit+10})
                                         
                                         }
                                         else{
@@ -329,7 +329,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
 
                                 }
                                 else{
-                                    interaction.reply({content:`You are not at The Terrific Troll Tavern, please visit the tavern to continue`,ephemeral:true})
+                                    interaction.reply({content:`As you return to the Guild Outpost after helping everyone in Aube Town, the atmosphere is subdued with most Challengers gone. Andan shares a poignant tale of his reckless, brave father who faced danger fearlessly but tragically lost his life. He sees that same spark of bravery in you. Andan presents a grey box containing his father's prized weapons, allowing you to choose one before embarking on the final Quest.\n**(Press /progresssidequest in Terrific Troll Tavern to continue)**`,ephemeral:true})
                                 }
                                 
 
@@ -355,7 +355,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"3"})
                                 }
                                 else{
-                                    interaction.reply({content:`You are not in the lager estate!`,ephemeral:true})
+                                    interaction.reply({content:`The owner of the Terrific Troll Tavern claims that his latest consignment of Backbreaker never reached him, and thus he is losing a lot of business unable to satisfy the Crofters visiting him. The Lager Family refuses to accept any blame so it is up to you to find what is happening to his consignments between the Lager Estate and the Tavern.\n**(Press "/progresssidequest" at the Lager Estate to continue.)**`,ephemeral:true})
                                 }
                                 
 
@@ -381,7 +381,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"4"})
                                 }
                                 else{
-                                    interaction.reply({content:`You are not at The Terrific Troll Tavern, please visit the tavern to continue`,ephemeral:true})
+                                    interaction.reply({content:`Under the cover of darkness, you observe the Lager Estate loading new consignments for the Terrific Troll Tavern. Heightened security and caution hint at the feud between the Lager Family and the Tavern's owner. Following the carriage discreetly, you stumble upon a shocking twist—the consignment is delivered to the Abandoned Castle. Sinister Beer Buccaneers enter the forsaken fortress, leaving you with an enigmatic puzzle to unravel.\n**(Press "/progresssidequest" at the Terrific Troll Tavern to continue.)**`,ephemeral:true})
                                 }
                                 
 
@@ -407,7 +407,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"5"})
                                 }
                                 else{
-                                    interaction.reply({content:`You are not in the town centre!`,ephemeral:true})
+                                    interaction.reply({content:`You reveal the shocking findings to the Tavern owner, who is astonished as the residents haven't reported any suspicious activity at the abandoned castle. To confront the Lager Family, he requests your further assistance and offers to double your pay. He asks you to speak with the Town's mayor to uncover more evidence, delving into the mysteries of Aube Town.\n**(Press /progresssidequest in Town Centre to continue)**`,ephemeral:true})
                                 }
                                 
 
@@ -433,7 +433,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"6"})
                                 }
                                 else{
-                                    interaction.reply({content:`You are not in the town centre!`,ephemeral:true})
+                                    interaction.reply({content:`After informing the Mayor of the brigands' presence at the Abandoned Castle, he expresses shock and frustration for being unaware of their proximity. He trusts you, an Ajin, and provides you with the key to the Castle. However, he warns you of the dangers lurking within and advises seeking guidance from Mr. Sebas to become stronger before facing the mysteries within. With the Mayor's trust and guidance, you embark on a transformative journey to uncover the Castle's secrets and unlock your true potential as an Ajin. The stage is set for an epic adventure in the city of Aube, where shadows of ancient history converge with your own quest for strength and resilience.\n**(Press /progresssidequest in Town Centre to continue)**`,ephemeral:true})
                                 }
                                 
 
@@ -458,7 +458,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await interaction.reply({embeds:[quest_embed]})
                                 }
                                 else{
-                                    interaction.reply({content:`You are not in the Abandoned Castle!`,ephemeral:true})
+                                    interaction.reply({content:`Visiting Mr. Sebas in his library, you are warmly received. He astutely observes a significant change in you since your last encounter—an evident manifestation and control over Spyr on your own. Your Keystone Grimoire's increased power level signifies your growth, unlocking dormant Spyr Cores within your body. With each core awakened, you gain the ability to generate and wield more Spyr, fueling your excitement and potential.\n**(Press /progresssidequest in Abandoned Castle to continue)**`,ephemeral:true})
                                 }
                                 
 
@@ -519,7 +519,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                         value:`**press /progresssidequest in Various locations of Zorya to investigate further**`
                                     }
                                 ])
-                                .setDescription(`You search and interview many in ${foundUser.location} but to your dismay you couldn't obtain any useful information.`)
+                                .setDescription(`In your search for the missing Astrolabe,you interview many in ${foundUser.location} but to your dismay you couldn't obtain any useful information.`)
                                 
                                 }
                                 
@@ -548,7 +548,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"4"})
                                 }
                                 else{
-                                    interaction.reply({content:`You are not in the Golden Terminal! visit the Golden Terminal to continue`,ephemeral:true})
+                                    interaction.reply({content:`After investigating various locations, you finally find a lead on the missing astrolabe, you must go to the Golden Terminal to continue.\n**(press /progresssidequest in Golden Terminal to continue)**`,ephemeral:true})
                                 }
                                 
 
@@ -568,14 +568,14 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                             value:`**press /progresssidequest in Black Market to retrieve the money from the thief!**`
                                         }
                                     ])
-                                    .setDescription(`You Reach the Black Market following the trail of the thief and manage to finally catch them talking to a dealer in the black market. It turns out to be a lady who panics seeing your Guild Emblem after you confront her and explains that she isn't the thief but rather someone who bought it from the original thief and is trying to sell it for a profit.\n\n The seller isn't ready to hand over the astrolabe just like that and everyone in the Black Market seems to take her side. You figue that it isn't wise to cause a scene here and Your only choice is to catch the thief and bring back the money the seller originally paid for the Astrolabe if you ever hope to retrieve it.\n\n**You Must search the blackmarket for the original thief who also dwells here**`)
+                                    .setDescription(`You Reach the Black Market following the trail of the thief and manage to finally catch them talking to a dealer in the black market. It turns out to be a lady who panics seeing your Guild Emblem after you confront her and explains that she isn't the thief but rather someone who bought it from the original thief and is trying to sell it for a profit.\n\n The seller isn't ready to hand over the astrolabe just like that and everyone in the Black Market seems to take her side. You figure that it isn't wise to cause a scene here and Your only choice is to catch the thief and bring back the money the seller originally paid for the Astrolabe if you ever hope to retrieve it.\n\n**You Must search the blackmarket for the original thief who also dwells here**`)
                                 
                                 await interaction.reply({embeds:[quest_embed]})
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"5"})
                                
                                 }
                                 else{
-                                    interaction.reply({content:`You are not in the Black Market! visit the Black Market to continue`,ephemeral:true})
+                                    interaction.reply({content:`You must follow the trail of the thief and reach the Black Market! visit the Black Market to continue`,ephemeral:true})
                                 }
                             }
                             else if(foundUser.side_quest_phase == "5"){
@@ -625,7 +625,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                             value:`**press /progresssidequest to Interrogate the thief and retrieve the money**`
                                         }
                                     ])
-                                    .setDescription(`You try your best to locate the thief before finally managing to find someone who matches the description given to you by the stranger in Astro Avenue and start running towards him who quickly catches on and starts running away swiftly through the nooks and crooks of the market making it very difficult even for an awakened like you to catch up.After running after him for a while you suddenly find a familiar face holding the thief by his neck as he struggles to move,It's your fellow guildmate who joined the guild around the same time as you.\n\n${dialogue}\n\n You retrieve the thief from your guildmate thanking for the help in chasing him.\n\n**Proceed to Interrogate the Thief**`)
+                                    .setDescription(`You try your best to locate the thief before finally managing to find someone who matches the description given to you by the stranger in Astro Avenue and start running towards him who quickly catches on and starts running away swiftly through the nooks and crooks of the market making it very difficult even for an Ajin like you to catch up.After running after him for a while you suddenly find a familiar face holding the thief by his neck as he struggles to move,It's your fellow guildmate who joined the guild around the same time as you.\n\n${dialogue}\n\n You retrieve the thief from your guildmate thanking for the help in chasing him.\n\n**Proceed to Interrogate the Thief**`)
                                 
                                 await interaction.reply({embeds:[quest_embed]})
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"6"})
@@ -657,7 +657,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                
                                 }
                                 else{
-                                    interaction.reply({content:`You are not in the Black Market! visit the Black Market to continue`,ephemeral:true})
+                                    interaction.reply({content:`You must interrogate the thief! visit the Black Market to continue`,ephemeral:true})
                                 }
                             }
                             else if(foundUser.side_quest_phase == "7"){
@@ -685,7 +685,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                
                                 }
                                 else{
-                                    interaction.reply({content:`You are not in the Astro Avenue! visit the Astro Avenue to continue`,ephemeral:true})
+                                    interaction.reply({content:`You must give the missing astrolabe back to the owner! visit the Astro Avenue to continue`,ephemeral:true})
                                 }
                             }
                         }

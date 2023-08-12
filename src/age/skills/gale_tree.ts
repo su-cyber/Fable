@@ -11,7 +11,7 @@ const gale_tree=[
         element:"gale",
         type: 'physical',
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -63,7 +63,7 @@ const gale_tree=[
         type: 'magical',
         element:"gale",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -115,7 +115,7 @@ const gale_tree=[
         type: 'physical',
         element:"gale",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -167,7 +167,7 @@ const gale_tree=[
         type: 'magical',
         element:"gale",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -268,7 +268,7 @@ const gale_tree=[
         damage:65,
         type: 'physical',
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -320,7 +320,7 @@ const gale_tree=[
         element:"gale",
         type: 'magical',
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }

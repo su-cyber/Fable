@@ -4,10 +4,10 @@ import { Dropper } from '../dropper'
 import generateXP from '../../utils/generateXP'
 import { shadowCat_tuft } from '../items/shadowCat_tuft'
 
-export class  Fiskille extends MonsterEntity {
+export class  Spectraling extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['You defeat Fiskille and raise your hands in a trumphant pose\n\n**(press /progressmainquest to continue)**',`Fiskille lies defeated on the ground as you land the finishing blow\n\n**(press /progressmainquest to continue)**`],
+            withoutDropMessages: ['You finish off the SPectraling and watch it fade away to nothingness\n\n**(press /progressmainquest to continue)**'],
             withDropMessages: [`The Shadow Cat lies dead on the ground as you finish it off and take some tuft from it's body`],
         }
 
@@ -20,8 +20,8 @@ export class  Fiskille extends MonsterEntity {
     }
 
     static create() {
-        return new Fiskille({
-            name: 'Fiskille',
+        return new Spectraling({
+            name: 'Spectraling',
             description:`The Opponent in Guild Draft`,
             spawnRate: 0.35,
             health: 80,
@@ -29,7 +29,7 @@ export class  Fiskille extends MonsterEntity {
             xp: generateXP(15,18),
             evasion: 0.05,
             attackDamage: 15,
-            fileName:'npcdave.jpeg',
+            fileName:'spectraling.jpeg',
             magicPower: 5,
             run_chance: 0.02,
             armor: 5,
@@ -40,18 +40,18 @@ export class  Fiskille extends MonsterEntity {
             skills: [
                 {
                     cooldown: 0,
-                    name: 'Shredding Swipe',
-                    description: `attacks with it's deadly claws`,
+                    name: 'Phantom Hold',
+                    description: `attacks with it's spectral tendrils`,
                     canEvade: true,
                     type: 'physical',
                     element:"normal", 
                     damage:22,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`${attacker.name} used Shredding Swipe`)
+                        attacker.addLogMessage(`${attacker.name} used Phantom Hold`)
                         defender.takeDamage
                             .physical(attacker.attackDamage*22)
-                            .run(damage => `${defender.name} lost ${damage} HP by Shredding Swipe`)
+                            .run(damage => `${defender.name} lost ${damage} HP by being crushed by the spectral grip`)
                     }
                 },
                

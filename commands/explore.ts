@@ -866,16 +866,47 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                        
                     }
                 }
-                else if(city_town == "orld husk"){
+                else if(city_town == "Orld Tree Husk"){
                 const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle(`Now Exploring ${city_town}...`)
                 .setImage('attachment://orld_husk.jpg')
-                .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\nuse **/explore** to explore this location`)
+                .setDescription(`you visited ${location},The Husk of the ancient Orld Tree`)
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
             
                 }
+                else if(city_town == "Werfall"){
+                    if(location == "None"){
+                        const attachment = new MessageAttachment('assets/Werfall/werfall_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(`Now Exploring ${city_town}...`)
+                .setImage('attachment://werfall_main.jpg')
+                .setDescription(`Venturing deeper into Werfall, You were met with a disheartening tableau. Tents, both orderly and makeshift, formed a sprawling encampment that seemed to stretch endlessly, filled with rangers and medics going about their grim duties. The air was tinged with an unsettling mixture of determination and resignation, as those who remained struggled to grapple with the insurmountable challenges before them. The remnants of what once was a thriving community were now akin to the pervasive undercurrent of death and insanity that had claimed many of their own. It was a haunting reminder of the fragile nature of existence, as well as a testament to the unyielding resolve of those who continued to fight against the darkness that had befallen the once-prosperous township.`)
+                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+
+                    else if(location == "Ranger Tents"){
+                const attachment = new MessageAttachment('assets/Werfall/ranger_tents.jpeg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(`Now Exploring ${location}...`)
+                .setImage('attachment://ranger_tents.jpeg')
+                .setDescription(`As you navigate the ruins of Werfall, you come across the Ranger Tents. These makeshift shelters, adorned with the emblem of the "Emperal Brigade," stand as a testament to the determination and struggle of those who have sought refuge here. The lanterns cast a dim, almost ethereal glow, revealing the faces of weary but resolute Rangers huddled around tables strewn with maps and documents. The air is thick with a mixture of weariness and dedication, as the Rangers press on in their mission amidst the backdrop of devastation.`)
+                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == "Werfall Ranger Centre"){
+                        const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`Now Exploring ${location}...`)
+                        .setImage('attachment://ranger_centre.jpeg')
+                        .setDescription(` In the heart of the fallen town, your gaze lands upon the Werfall Ranger Centre. Once a hub of bustling activity, it now stands as a resilient bastion amid the chaos. The sturdy stone walls bear scars of past battles, a visual record of the determination of those who defend the town. Stepping inside, the mingling scents of herbs, antiseptics, ink, and parchment create an atmosphere of both healing and strategy. Rangers move purposefully, their conversations hushed yet intense, while medics tend to wounded comrades with practiced care. The centre emanates a steadfast resolve, a beacon of hope against the pervasive shadow of despair.`)
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                            }
+                }
+                
             }
           
                 

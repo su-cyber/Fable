@@ -11,7 +11,7 @@ const bloom_tree=[
         type: 'physical',
         element:"bloom",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -63,7 +63,7 @@ const bloom_tree=[
         type: 'magical',
         element:"bloom",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -115,7 +115,7 @@ const bloom_tree=[
         type: 'physical',
         element:"bloom",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -167,7 +167,7 @@ const bloom_tree=[
         type: 'magical',
         element:"bloom",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -267,7 +267,7 @@ const bloom_tree=[
         type: 'physical',
         element:"bloom",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -319,7 +319,7 @@ const bloom_tree=[
         type: 'magical',
         element:"bloom",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }

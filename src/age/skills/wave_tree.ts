@@ -11,7 +11,7 @@ const wave_tree=[
         element:"wave",
         type: 'physical',
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 2
             }
@@ -63,7 +63,7 @@ const wave_tree=[
         type: 'magical',
         element:"wave",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 2
             }
@@ -115,7 +115,7 @@ const wave_tree=[
         type: 'physical',
         element:"wave",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 2
             }
@@ -167,7 +167,7 @@ const wave_tree=[
         type: 'magical',
         element:"wave",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 2
             }
@@ -267,7 +267,7 @@ const wave_tree=[
         type: 'physical',
         element:"wave",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 2
             }
@@ -319,7 +319,7 @@ const wave_tree=[
         type: 'magical',
         element:"wave",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 2
             }

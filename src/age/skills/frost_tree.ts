@@ -12,7 +12,7 @@ const frost_tree=[
         type: 'physical',
         element:"frost",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -64,7 +64,7 @@ const frost_tree=[
         type: 'magical',
         element:"frost",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -116,7 +116,7 @@ const frost_tree=[
         type: 'physical',
         element:"frost",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -168,7 +168,7 @@ const frost_tree=[
         type: 'magical',
         element:"frost",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }
@@ -283,7 +283,7 @@ const frost_tree=[
         type: 'magical',
         element:"frost",
         use: (attacker, defender) =>{
-            let mod
+            let mod = 1
             if(defender.element == "flame"){
                 mod  = 0.5
             }

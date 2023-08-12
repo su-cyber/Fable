@@ -29,8 +29,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             if(kingdom == "solarstrio"){
                                 if(city_town == "aube"){
                                     let embed
-                                    let mount = "none"
-                                    if(mount == "none"){
+                                    let mount = "None"
+                                    if(mount == "None"){
                                         embed = new MessageEmbed()
                                     .setColor('RANDOM')
                                     .setTitle('SELECT PLACE')
@@ -93,20 +93,20 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Castellan Fields`,
-                    description: `The famous golden hued fields of Aube.`,
+                    description: ``,
                     value: `Castellan Fields`,
                 },{
                     label: `Sunshade Forest`,
-                    description: `A treacherous place for travelers and explorers alike.`,
+                    description: ``,
                     value: `Sunshade Forest`,
                 },
                 {
                     label: `The Badlands`,
-                    description: `Face the crippling heat, with nothing to find in it.`,
+                    description: ``,
                     value: `The Badlands`,
                 },{
                     label: `State of Zorya`,
-                    description: `One of the largest Stateships in Solarstrio, where progress meets modernity.`,
+                    description: ``,
                     value: `Zorya`,
                 }
                 )
@@ -159,7 +159,18 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             }
             else if(location == 'Zorya'){
                 if(foundUser.completed_quests.includes( "KS-TA-SQ5")){
+                    if(foundUser.coins>=100 && foundUser.mount == "None"){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://zorya_main.jpg')
+                .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                else if(foundUser.mount != "None"){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                 const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -169,7 +180,12 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else{
-                   await interaction.editReply({content:`The Route to Zorya is Blocked by the Town Militia due to the ongoing Nightmare, You cannot proceed right now`,embeds:[],components:[]}) 
+                    interaction.editReply(`You do not have enough coins to pay for the Stagecoach`)
+                }
+                
+                }
+                else{
+                   await interaction.editReply({content:`The Route to Zorya is Blocked by the Emperal Brigade due to the ongoing Nightmare, You cannot proceed right now`,embeds:[],components:[]}) 
                 }
                 
             }
@@ -198,8 +214,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     }
                     else if(city_town == "Castellan Fields"){
                                     let embed
-                                    let mount = "none"
-                                    if(mount == "none"){
+                                    let mount = "None"
+                                    if(mount == "None"){
                                         embed = new MessageEmbed()
                                     .setColor('RANDOM')
                                     .setTitle('SELECT PLACE')
@@ -256,16 +272,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Aube Town`,
-                    description: `The township of Aube`,
+                    description: ``,
                     value: `aube`,
                 },{
                     label: `Sunshade Forest`,
-                    description: `A treacherous place for travelers and explorers alike.`,
+                    description: ``,
                     value: `Sunshade Forest`,
                 },
                 {
                     label: `The Badlands`,
-                    description: ` Face the crippling heat, with nothing to find in it.`,
+                    description: ``,
                     value: `The Badlands`,
                 },
                 )
@@ -342,8 +358,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             }
              else if(city_town == "Sunshade Forest"){
                                     let embed
-                                    let mount = "none"
-                                    if(mount == "none"){
+                                    let mount = "None"
+                                    if(mount == "None"){
                                         embed = new MessageEmbed()
                                     .setColor('RANDOM')
                                     .setTitle('SELECT PLACE')
@@ -400,16 +416,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Aube Town`,
-                    description: `The township of Aube`,
+                    description: ``,
                     value: `aube`,
                 },{
                     label: `Castellan Fields`,
-                    description: `The famous golden hued fields of Aube.`,
+                    description: ``,
                     value: `Castellan Fields`,
                 },
                 {
                     label: `The Badlands`,
-                    description: ` Face the crippling heat, with nothing to find in it.`,
+                    description: ``,
                     value: `The Badlands`,
                 },
                 )
@@ -485,8 +501,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             }
             else if(city_town == "The Badlands"){
                                     let embed
-                                    let mount = "none"
-                                    if(mount == "none"){
+                                    let mount = "None"
+                                    if(mount == "None"){
                                         embed = new MessageEmbed()
                                     .setColor('RANDOM')
                                     .setTitle('SELECT PLACE')
@@ -543,16 +559,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Aube Town`,
-                    description: `The township of Aube`,
+                    description: ``,
                     value: `aube`,
                 },{
                     label: `Castellan Fields`,
-                    description: `The famous golden hued fields of Aube.`,
+                    description: ``,
                     value: `Castellan Fields`,
                 },
                 {
                     label: `Sunshade Forest`,
-                    description: `the outskirts of aube town`,
+                    description: ``,
                     value: `Sunshade Forest`,
                 },
                 )
@@ -670,7 +686,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         },
                                         {
                                             name: `Township of Werfall`,
-                                            value:`**Travelled on Stage Coach**\n**Description**:The Township of Werfall\n**Cost**:100 🪙`
+                                            value:`**Travelled on Stage Coach**\n**Description**:The Township of Werfall\n**Cost**:500 🪙`
                                         },
                                        
                                     ])
@@ -716,7 +732,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         },
                                         {
                                             name: `Township of Werfall`,
-                                            value:`**Travelled on Mount**\n**Description**:The Township of Werfall\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Mount**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**:0 🪙\n`
                                         },
                                        
                                         
@@ -736,46 +752,46 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Aube Town`,
-                    description: `The township of Aube`,
+                    description: ``,
                     value: `aube`,
                 },{
                     label: `Ellior Forest`,
-                    description: `The enchanting Forest of Ellior`,
+                    description: ``,
                     value: `ellior`,
                 },
                 {
                     label: `Dragon's Den`,
-                    description: `The den of an ancient dragon`,
+                    description: ``,
                     value: `Dragon's Den`,
                 },
                 {
                     label: `Sunstone Mines`,
-                    description: `The minefield where sunstones are mined`,
+                    description: ``,
                     value: `Sunstone Mines`,
                 },
                 {
                     label: `Zephyr Mountain`,
-                    description: `The great mountains of Zephyr range`,
+                    description: ``,
                     value: `Zephyr Mountain`,
                 },
                 {
                     label: `State of Tethys`,
-                    description: `The Stateship of Tethys`,
+                    description: ``,
                     value: `Tethys`,
                 },
                 {
                     label: `Capital State of Gloaming`,
-                    description: `The Capital of Solarstrio, stateship of Gloaming`,
+                    description: ``,
                     value: `Gloaming`,
                 },
                 {
                     label: `Orld Tree's Husk`,
-                    description: `The Husk of the ancient Orld Tree`,
-                    value: `orld husk`,
+                    description: ``,
+                    value: `Orld Tree Husk `,
                 },
                 {
                     label: `Township of Werfall`,
-                    description: `The Township of Werfall`,
+                    description: ``,
                     value: `Werfall`,
                 },
                 )
@@ -796,6 +812,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             
             
             if(location == 'aube'){
+                if(foundUser.coins>=100 && foundUser.mount == "None"){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
                 const attachment = new MessageAttachment('assets/AubeTown/Aube_Town.jpg')
                 let successembed = new MessageEmbed()
@@ -804,6 +821,21 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setImage('attachment://Aube_Town.jpg')
                 .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(foundUser.mount != "None"){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/AubeTown/Aube_Town.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://Aube_Town.jpg')
+                .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else{
+                    interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                }
+                
             }
             else if(location == 'ellior'){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -852,7 +884,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RED')
                 .setTitle('ERROR!')
                 .setImage('attachment://tethys_main.jpg')
-                .setDescription(`The road to state of Tethys is currently Blocked!\n\nuse **/explore** to explore this location`)
+                .setDescription(`The road to state of Tethys is currently Blocked!`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Gloaming'){
@@ -862,10 +894,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setColor('RED')
                 .setTitle('ERROR!')
                 .setImage('attachment://tethys_main.jpg')
-                .setDescription(`The road to the capital state of Gloaming is currently Blocked!\n\nuse **/explore** to explore this location`)
+                .setDescription(`The road to the capital state of Gloaming is currently Blocked!`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
-            else if(location == 'orld husk'){
+            else if(location == 'Orld Tree Husk '){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                 const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
                 let successembed = new MessageEmbed()
@@ -876,14 +908,55 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Werfall'){
-                
-                const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
-                let successembed = new MessageEmbed()
+                if(foundUser.coins>=500 && foundUser.mount == "None"){
+                    let successembed
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-500,location:"None"})
+                const attachment = new MessageAttachment('assets/Werfall/werfall_main.jpg')
+                if(foundUser.completed_quests.includes("KS-ZS-MQ1")){
+                successembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('LOCATION REACHED')
-                .setImage('attachment://tethys_main.jpg')
-                .setDescription(`The road to the township of Werfall is currently Blocked!\n\nuse **/explore** to explore this location`)
+                .setImage('attachment://werfall_main.jpg')
+                .setDescription(`As You approached the outskirts of Werfall, an eerie transformation was evident. Once a thriving hub of commerce, the town now exuded an air of bleakness and despair. Tents, emblazoned with the emblem of the "Emperal Brigade," sprawled across the landscape, housing a mix of rangers and medics in a poignant display of organized chaos. The streets, once teeming with life, were now pathways of decay and abandonment. The atmosphere was heavy with a sense of death that had permeated every corner of the town, leaving behind an indelible mark of loss. The toll of this ruinous affliction was evident in the haunted gazes of those who moved among the tents, their once-strong spirits shattered by the unforgiving grip of the town's tragic fate.`)
+                }
+                else{
+                successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://werfall_main.jpg')
+                .setDescription(`The road to the township of Werfall is currently Blocked!`)
+                }
+                
+                
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(foundUser.mount != "None"){
+                    let successembed
+                    
+                    const attachment = new MessageAttachment('assets/Tethys/werfall_main.jpg')
+                    if(foundUser.completed_quests.includes("KS-ZS-MQ1")){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                    successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://werfall_main.jpg')
+                    .setDescription(`As You approached the outskirts of Werfall, an eerie transformation was evident. Once a thriving hub of commerce, the town now exuded an air of bleakness and despair. Tents, emblazoned with the emblem of the "Emperal Brigade," sprawled across the landscape, housing a mix of rangers and medics in a poignant display of organized chaos. The streets, once teeming with life, were now pathways of decay and abandonment. The atmosphere was heavy with a sense of death that had permeated every corner of the town, leaving behind an indelible mark of loss. The toll of this ruinous affliction was evident in the haunted gazes of those who moved among the tents, their once-strong spirits shattered by the unforgiving grip of the town's tragic fate.`)
+                    }
+                    else{
+                    successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://werfall_main.jpg')
+                    .setDescription(`The road to the township of Werfall is currently Blocked!`)
+                    }
+                    
+                    
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else{
+                    interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                }
+                
             }
             
             
@@ -910,8 +983,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             }
             else if(city_town == "ellior"){
                                     let embed
-                                    let mount = "none"
-                                    if(mount == "none"){
+                                    let mount = "None"
+                                    if(mount == "None"){
                                         embed = new MessageEmbed()
                                     .setColor('RANDOM')
                                     .setTitle('SELECT PLACE')
@@ -984,27 +1057,27 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Stateship of Zorya`,
-                    description: `One of the largest Stateships in Solarstrio, where progress meets modernity.`,
+                    description: ``,
                     value: `Zorya`,
                 },{
                     label: `Dragon's Den`,
-                    description: `The den of an ancient Dragon`,
-                    value: `Dragon's Den`,
+                    description: ``,
+                    value: ``,
                 },
                 {
                     label: `Sunstone Mines`,
-                    description: `A minefield where sunstones are mined`,
+                    description: ``,
                     value: `Sunstone Mines`,
                 },
                 {
                     label: `Zephyr Mountain`,
-                    description: `The great mountains of Zephyr range`,
+                    description: ``,
                     value: `Zephyr Mountain`,
                 },
                 {
                     label: `Orld Tree's Husk`,
-                    description: `The husk of the orld tree`,
-                    value: `orld husk`,
+                    description: ``,
+                    value: `Orld Tree Husk `,
                 },
                 )
                 .setDisabled(false),
@@ -1073,7 +1146,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
-            else if(location == 'orld husk'){
+            else if(location == 'Orld Tree Husk '){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                 const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
                 let successembed = new MessageEmbed()
@@ -1109,8 +1182,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             }
             else if(city_town == "Dragon's Den"){
                                     let embed
-                                    let mount = "none"
-                                    if(mount == "none"){
+                                    let mount = "None"
+                                    if(mount == "None"){
                                         embed = new MessageEmbed()
                                     .setColor('RANDOM')
                                     .setTitle('SELECT PLACE')
@@ -1183,27 +1256,27 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Stateship of Zorya`,
-                    description: `One of the largest Stateships in Solarstrio, where progress meets modernity.`,
+                    description: ``,
                     value: `Zorya`,
                 },{
                     label: `Ellior Forest`,
-                    description: `the enchanted forest of ellior`,
+                    description: ``,
                     value: `ellior`,
                 },
                 {
                     label: `Sunstone Mines`,
-                    description: `A minefield where sunstones are mined`,
+                    description: ``,
                     value: `Sunstone Mines`,
                 },
                 {
                     label: `Zephyr Mountain`,
-                    description: `The great mountains of Zephyr range`,
+                    description: ``,
                     value: `Zephyr Mountain`,
                 },
                 {
                     label: `Orld Tree's Husk`,
-                    description: `The husk of the orld tree`,
-                    value: `orld husk`,
+                    description: ``,
+                    value: `Orld Tree Husk `,
                 },
                 )
                 .setDisabled(false),
@@ -1262,7 +1335,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
-            else if(location == 'orld husk'){
+            else if(location == 'Orld Tree Husk '){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                 const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
                 let successembed = new MessageEmbed()
@@ -1298,8 +1371,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             }
             else if(city_town == "Sunstone Mines"){
                                     let embed
-                                    let mount = "none"
-                                    if(mount == "none"){
+                                    let mount = "None"
+                                    if(mount == "None"){
                                         embed = new MessageEmbed()
                                     .setColor('RANDOM')
                                     .setTitle('SELECT PLACE')
@@ -1372,27 +1445,27 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Stateship of Zorya`,
-                    description: `One of the largest Stateships in Solarstrio, where progress meets modernity.`,
+                    description: ``,
                     value: `Zorya`,
                 },{
                     label: `Ellior Forest`,
-                    description: `the enchanted forest of ellior`,
+                    description: ``,
                     value: `ellior`,
                 },
                 {
                     label: `Dragon's Den`,
-                    description: `A minefield where sunstones are mined`,
+                    description: ``,
                     value: `Dragon's Den`,
                 },
                 {
                     label: `Zephyr Mountain`,
-                    description: `The great mountains of Zephyr range`,
+                    description: ``,
                     value: `Zephyr Mountain`,
                 },
                 {
                     label: `Orld Tree's Husk`,
-                    description: `The husk of the orld tree`,
-                    value: `orld husk`,
+                    description: ``,
+                    value: `Orld Tree Husk `,
                 },
                 )
                 .setDisabled(false),
@@ -1451,7 +1524,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
-            else if(location == 'orld husk'){
+            else if(location == 'Orld Tree Husk '){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                 const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
                 let successembed = new MessageEmbed()
@@ -1487,8 +1560,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             }
             else if(city_town == "Zephyr Mountain"){
                                     let embed
-                                    let mount = "none"
-                                    if(mount == "none"){
+                                    let mount = "None"
+                                    if(mount == "None"){
                                         embed = new MessageEmbed()
                                     .setColor('RANDOM')
                                     .setTitle('SELECT PLACE')
@@ -1561,27 +1634,27 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Stateship of Zorya`,
-                    description: `One of the largest Stateships in Solarstrio, where progress meets modernity.`,
+                    description: ``,
                     value: `Zorya`,
                 },{
                     label: `Ellior Forest`,
-                    description: `the enchanted forest of ellior`,
+                    description: ``,
                     value: `ellior`,
                 },
                 {
                     label: `Dragon's Den`,
-                    description: `A minefield where sunstones are mined`,
+                    description: ``,
                     value: `Dragon's Den`,
                 },
                 {
                     label: `Sunstone Mines`,
-                    description: `The great mountains of Zephyr range`,
+                    description: ``,
                     value: `Sunstone Mines`,
                 },
                 {
                     label: `Orld Tree's Husk`,
-                    description: `The husk of the orld tree`,
-                    value: `orld husk`,
+                    description: ``,
+                    value: `Orld Tree Husk `,
                 },
                 )
                 .setDisabled(false),
@@ -1641,7 +1714,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location`)
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
-            else if(location == 'orld husk'){
+            else if(location == 'Orld Tree Husk '){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                 const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
                 let successembed = new MessageEmbed()
@@ -1675,10 +1748,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
     
     
             }
-            else if(city_town == "orld husk"){
+            else if(city_town == "Orld Tree Husk "){
                                     let embed
-                                    let mount = "none"
-                                    if(mount == "none"){
+                                    let mount = "None"
+                                    if(mount == "None"){
                                         embed = new MessageEmbed()
                                     .setColor('RANDOM')
                                     .setTitle('SELECT PLACE')
@@ -1751,26 +1824,26 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                 .addOptions({
                     label: `Stateship of Zorya`,
-                    description: `One of the largest Stateships in Solarstrio, where progress meets modernity.`,
+                    description: ``,
                     value: `Zorya`,
                 },{
                     label: `Ellior Forest`,
-                    description: `the enchanted forest of ellior`,
+                    description: ``,
                     value: `ellior`,
                 },
                 {
                     label: `Dragon's Den`,
-                    description: `A minefield where sunstones are mined`,
+                    description: ``,
                     value: `Dragon's Den`,
                 },
                 {
                     label: `Sunstone Mines`,
-                    description: `The great mountains of Zephyr range`,
+                    description: ``,
                     value: `Sunstone Mines`,
                 },
                 {
                     label: `Zephyr Mountain`,
-                    description: `The husk of the orld tree`,
+                    description: ``,
                     value: `Zephyr Mountain`,
                 },
                 )
@@ -1861,6 +1934,117 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             collector_cancel.stop()
         })
     
+    
+    
+            }
+            else if(city_town == "Werfall"){
+                let embed
+                                    let mount = "None"
+                                    if(mount == "None"){
+                                        embed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('SELECT PLACE')
+                                    .setDescription(`choose a place to travel from Aube Town`)
+                                    .addFields([
+                                        {
+                                            name: `Stateship of Zorya`,
+                                            value:`**Travelled on Stagecoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:500 🪙\n`
+                                        },
+                                        
+                                    ])
+                                    
+                                    }
+                                    else{
+                                        embed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle('SELECT PLACE')
+                                    .setDescription(`choose a place to travel from Aube Town`)
+                                    .addFields([
+                                        {
+                                            name: `Stateship of Zorya`,
+                                            value:`**Travelled on Mount**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                        },
+                                        
+                                    ])
+
+                                    }
+                                    
+                               
+    
+    
+    let btn_cancel = new MessageActionRow().addComponents([
+        new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
+    
+    let select =  new MessageActionRow().addComponents([
+            new MessageSelectMenu()
+            .setCustomId('select')
+                .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                .addOptions({
+                    label: `Stateship of Zorya`,
+                    description: ``,
+                    value: `Zorya`,
+                },
+                )
+                .setDisabled(false),
+        ])  
+        let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+        let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
+        let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
+        let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
+
+    
+    
+        await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})
+    
+        collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+            collected.deferUpdate().catch(() => null)
+            const location = collected.values[0]
+            
+            
+            if(location == 'Zorya'){
+                if(foundUser.coins >=500 && foundUser.mount == "None"){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-500,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://zorya_main.jpg')
+                .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(foundUser.mount != "None"){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://zorya_main.jpg')
+                .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else{
+                    interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                }
+                
+            }
+            
+            
+    
+            
+            collector_select.stop()
+        })
+    
+        collector_cancel.on('collect', async j => {
+            j.deferUpdate().catch(() => null)
+    
+            let delembed = new MessageEmbed()
+            .setColor('RANDOM')
+            .setTitle('CANCELLED')
+            .setDescription(`location visit cancelled!`)
+            
+            await interaction.editReply({embeds:[delembed],components:[]})
+            collector_cancel.stop()
+        })
     
     
             }

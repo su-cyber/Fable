@@ -85,7 +85,7 @@ class Bot extends Client {
                                         
                                         }
                                        
-                                        await sleep(2)
+                                        await sleep(1)
                                         await interaction.channel.send({embeds:[levelupEmbed]})
                                         foundUser.level=foundUser.level+1
                                         foundUser.skill_points += 3

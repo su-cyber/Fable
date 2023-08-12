@@ -296,7 +296,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         completed_dungeons:[],
                                         merit:0,
                                         guild:"None",
-                                        guild_class:"None",
+                                        guild_rank:"None",
+                                        ranger_grade:"None",
                                         titles:[],
                                         current_title:"None",
                                         mount:"None"

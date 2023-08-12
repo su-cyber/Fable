@@ -45,6 +45,7 @@ const profileSchema = new mongoose.Schema({
     dungeon:{type: Object},
     completed_dungeons:{type: Array},
     guild:{type: String},
+    ranger_grade:{type: String},
     guild_rank:{type: String},
     merit:{type: Number},
     titles:{type: Array},
