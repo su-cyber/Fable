@@ -35,6 +35,9 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
                             let ctx = src.getContext("2d")
                             ctx.drawImage(img,0,0)
                             
+                            const buffer = await src.toBuffer('image/jpeg')
+                            const attachment = await new MessageAttachment(buffer)
+                            interaction.reply({files:[attachment],ephemeral:true})
                         })
                     }
                     else{
