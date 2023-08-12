@@ -83,9 +83,9 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.fillText(`${name}'s Diary`, 120, 110);
     ctx.font = '38px "serif"'
     ctx.fillStyle = "#2a9df4"
-    ctx.fillText(`${level}`, 1046, 140);
+    ctx.fillText(`${level}`, 1070, 118);
     ctx.font = '30px "serif"'
-    ctx.fillText(`${sp}`, 895, 170);
+    ctx.fillText(`${sp}`, 900, 157);
     ctx.fillText(`${faith}`, 935, 226);
     ctx.fillText(`${vigour}`, 737, 295);
     ctx.fillText(`${arcana}`, 737, 525);
