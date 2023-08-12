@@ -5,6 +5,7 @@ import { loadImage,Canvas,registerFont } from 'canvas'
 import getHealth from '../src/utils/getHealth'
 import xpFormulate from '../src/utils/XPformulate'
 import allQuests from '../src/utils/allQuests'
+import meritFormulate from '../src/utils/meritFormulate'
 
 
 
@@ -53,7 +54,14 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     const XP = `${foundUser.xp}/${xpFormulate(foundUser.level+1)}`
     let location
     const money = foundUser.coins
-    const merit = foundUser.merit
+    let merit
+    if(foundUser.ranger_grade == "None"){
+        merit = foundUser.merit
+    }
+    else{
+        merit = `${foundUser.merit}/${meritFormulate(foundUser.ranger_grade)}`
+    }
+     
     const mainquest = allQuests.find(quest => quest.quest_id == foundUser.main_quest).name
     const weapon = weaponExist? foundUser.weapon[0].name : "None"
     const armour = armourExist? foundUser.armourSuit[0].name : "None"
@@ -61,7 +69,7 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     const mount = foundUser.mount
     let grade
     if(foundUser.ranger_grade == "None"){
-        grade = "          "
+        grade = "         "
     }
     else{
         grade = `${foundUser.ranger_grade} GRADE:`
@@ -154,11 +162,11 @@ export default new MyCommandSlashBuilder({ name: 'img', description: 'testing im
     ctx.font = '20px "serif"'
     ctx.fillText(`${health}`, 136, 408);
     ctx.fillText(`${money}`, 312, 408);
-    ctx.fillText(`${merit}`, 477, 408);
+    ctx.fillText(`${merit}`, 457, 408);
     ctx.fillText(`${location}`, 135, 461);
     ctx.fillStyle = "#C4B190"
-    ctx.font = '16px "serif"'
-    ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 163, 175);
+    ctx.font = '14px "serif"'
+    ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 183, 175);
     ctx.fillText(`${grade} ${foundUser.class.toUpperCase()}`, 115, 375);
     ctx.fillStyle = "#644E41"
     ctx.font = '38px "serif"'
