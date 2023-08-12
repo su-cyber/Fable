@@ -40,24 +40,24 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
                             const grade = foundUser.ranger_grade
                             const rank = foundUser.guild_rank.toUpperCase()
                             const guild = `${foundUser.guild.toUpperCase()} GUILD RANGER`
-                            registerFont('fonts/DellaRespira.ttf', { family: 'DellaRespira' })
+                            registerFont('./fonts/DellaRespira.ttf', { family: 'DellaRespira' })
                             const src = new Canvas(822,1122)
                             let ctx = src.getContext("2d")
                             ctx.drawImage(img,0,0)
 
-                            ctx.font = '58px "serif"'
+                            ctx.font = '58px DellaRespira'
                             ctx.fillStyle = "#E29A37"
                             ctx.fillText(`${level}`, 78, 820);
-                            ctx.font = '32px "serif"'
+                            ctx.font = '32px DellaRespira'
                             ctx.fillText(`${grade}`, 292, 812);
                             ctx.fillText(`${rank}`, 515, 814);
-                            ctx.font = 'bold 18px "serif"'
+                            ctx.font = 'bold 18px DellaRespira'
                             ctx.fillStyle = "black"
                             ctx.fillText(`${guild}`, 485, 906);
-                            ctx.font = '26px "serif"'
+                            ctx.font = '26px DellaRespira'
                             ctx.fillStyle = "#E29A37"
                             ctx.fillText(`${name}`, 40, 910);
-                            ctx.font = '38px "serif"'
+                            ctx.font = '38px DellaRespira'
                             ctx.fillText(`${title}`, 253, 57);
                             
 
