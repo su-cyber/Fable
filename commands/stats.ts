@@ -159,11 +159,12 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'see your
                      ctx.fillText(`${health}`, 136, 408);
                      ctx.fillText(`${money}`, 312, 408);
                      ctx.fillText(`${merit}`, 457, 408);
-                     ctx.fillText(`${location}`, 135, 461);
+                     ctx.font = '16px "serif"'
+                     ctx.fillText(`${location}`, 165, 461);
                      ctx.fillStyle = "#C4B190"
-                     ctx.font = '14px "serif"'
-                     ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 183, 175);
-                     ctx.fillText(`${grade} ${foundUser.class.toUpperCase()}`, 125, 372);
+                     ctx.font = '12px "serif"'
+                     ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 183, 170);
+                     ctx.fillText(`${grade} ${foundUser.class.toUpperCase()}`, 125, 375);
                      ctx.fillStyle = "#644E41"
                      ctx.font = '38px "serif"'
                      ctx.fillText(`${mainquest}`, 217, 530);
