@@ -59,9 +59,9 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         if(btn.customId === "accept"){
                                             await btn.deferUpdate().catch(e => {})
                                             
-                                            const attacker = Warrior.create(author)
+                                const attacker = Warrior.create(author)
                                 const defender = Warrior.create(opponent)
-                                await profileModel.findOne({userID:authorId},async function(err,foundUser) {
+                                 profileModel.findOne({userID:authorId},async function(err,foundUser) {
                                     if(err){
                                         console.log(err);
                                         
@@ -101,7 +101,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                 
                                     }
                                 })
-                                await profileModel.findOne({userID:opponentId},async function(err,foundUser) {
+                                profileModel.findOne({userID:opponentId},async function(err,foundUser) {
                                     if(err){
                                         console.log(err);
                                         
@@ -155,7 +155,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         speed:2.5
                                     }).start()
                                 }
-                                    collector.stop()
+                                    
                                         }
                                         else if(btn.customId === "reject"){
                                             await btn.deferUpdate().catch(e => {})
