@@ -11,6 +11,8 @@ import getHealth from '../src/utils/getHealth'
 import sample from 'lodash.sample'
 import passive_skills from '../src/age/heroes/passive_skills'
 import { calculate } from '../src/age/classes'
+import { MessageEmbed } from 'discord.js'
+import { MessageActionRow, MessageButton } from 'discord.js'
 
 export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with a player' })
     .addUserOption((option: SlashCommandUserOption) =>
@@ -38,7 +40,26 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                         }
                         else{
                             if(result){
-                                const attacker = Warrior.create(author)
+                                let btnraw= new MessageActionRow().addComponents([
+                                    new MessageButton().setCustomId("accept").setStyle("SUCCESS").setLabel("ACCEPT"),
+                                    new MessageButton().setCustomId("reject").setStyle("DANGER").setLabel("REJECT"),
+                                    
+                                ])
+
+                                let consentEmbed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle('DUEL REQUEST')
+                                .setDescription(`${author.username} has requested ${opponent.username} for a friendly Duel!\n\n**What will you do ${opponent.username}?**`)
+                                await interaction.reply({embeds:[consentEmbed],components:[btnraw]})
+                                let filter = i => i.user.id === opponentId
+                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
+
+                                collector.on('collect',async (btn) => {
+                                    if(btn.isButton()){
+                                        if(btn.customId === "accept"){
+                                            await btn.deferUpdate().catch(e => {})
+                                            
+                                            const attacker = Warrior.create(author)
                                 const defender = Warrior.create(opponent)
                                 await profileModel.findOne({userID:authorId},async function(err,foundUser) {
                                     if(err){
@@ -134,6 +155,29 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         speed:2.5
                                     }).start()
                                 }
+                                    collector.stop()
+                                        }
+                                        else if(btn.customId === "reject"){
+                                            await btn.deferUpdate().catch(e => {})
+                                            interaction.editReply({content:`${opponent.username} rejected the Duel Request!`,embeds:[],components:[]})
+                                        }
+                                        
+                                        
+                                        
+                                    }
+                                
+                            
+                            
+                            
+                            })
+                            
+                            collector.on('end', () => {
+                            interaction.deleteReply()
+                            })
+                            
+                                
+                            
+                                
                                 
                         
                             }
@@ -360,7 +404,7 @@ class PvPDuel extends DuelBuilder {
     async beforeDuelStart() {
         super.beforeDuelStart()
 
-        await this.replyOrEdit({ content: `initiating duel with ${this.player2.name}!` })
+        await this.replyOrEdit({ content: `initiating duel with ${this.player2.name}!`,embeds:[],components:[]})
         await sleep(1.2)
         
         

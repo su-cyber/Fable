@@ -163,7 +163,7 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'see your
                      ctx.fillText(`${location}`, 205, 461);
                      ctx.fillStyle = "#C4B190"
                      ctx.font = '12px "serif"'
-                     ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 183, 171);
+                     ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 183, 172);
                      ctx.fillText(`${grade} ${foundUser.class.toUpperCase()}`, 125, 373);
                      ctx.fillStyle = "#644E41"
                      ctx.font = '38px "serif"'
