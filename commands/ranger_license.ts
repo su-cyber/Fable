@@ -15,6 +15,7 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
         const authorId = interaction.user.id;
         const guildID = interaction.guildId;
         const user = interaction.options.getUser('user')
+        var author = await bot.users.fetch(authorId)
 
         profileModel.exists({userID:authorId},async function(err,res){
             if(err){
@@ -41,6 +42,7 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
                             const grade = foundUser.ranger_grade
                             const rank = foundUser.guild_rank.toUpperCase()
                             const guild = `${foundUser.guild.toUpperCase()} GUILD RANGER`
+                            const text = `This License Certifies that **${name}** is a ${foundUser.ranger_grade} Grade Ranger from **${foundUser.guild} Guild.**\nHailed by many as the **${foundUser.title}** and a newly recruited **${foundUser.guild_rank}** at the **${foundUser.guild} Guild**`
                             
                             const src = new Canvas(822,1122)
                             let ctx = src.getContext("2d")
@@ -60,6 +62,8 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
                             ctx.fillText(`${name}`, 40, 910);
                             ctx.font = '38px "serif"'
                             ctx.fillText(`${title}`, 253, 57);
+                            ctx.font = '16px "serif"'
+                            ctx.fillText(`${text}`, 21, 954);
                             
 
 
@@ -96,6 +100,7 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
                                         const grade = foundUser.ranger_grade
                                         const rank = foundUser.guild_rank.toUpperCase()
                                         const guild = `${foundUser.guild.toUpperCase()} GUILD RANGER`
+                                        const text = `This License Certifies that **${name}** is a ${foundUser.ranger_grade} Grade Ranger from **${foundUser.guild} Guild.**\nHailed by many as the **${foundUser.title}** and a newly recruited **${foundUser.guild_rank}** at the **${foundUser.guild} Guild**`
                                         registerFont('fonts/DellaRespira.ttf', { family: 'DellaRespira' })
                                         const src = new Canvas(822,1122)
                                         let ctx = src.getContext("2d")
@@ -115,6 +120,8 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
                                         ctx.fillText(`${name}`, 40, 910);
                                         ctx.font = '38px "serif"'
                                         ctx.fillText(`${title}`, 253, 57);
+                                        ctx.font = '16px "serif"'
+                                        ctx.fillText(`${text}`, 21, 954);
                                         
             
             
