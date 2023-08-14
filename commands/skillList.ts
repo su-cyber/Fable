@@ -28,7 +28,7 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
                                 return `${skill.name}`
                             }).join("\n")
                            
-                            await interaction.reply({content:`**current skills:**\n${mappedcskills}\n\n**all skills:**\n${mappedallskills}`});
+                            await interaction.reply({content:`**Current Skills:**\n${mappedcskills}\n\n**All Skills:**\n${mappedallskills}`});
                         }
                     })
                 }
