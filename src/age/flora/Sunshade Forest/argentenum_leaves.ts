@@ -8,7 +8,7 @@ export class ArgentenumLeaves extends Flora{
 
     id:"argentenum_castellan" ,
     name: "Argentenum Leaves",
-    description: "tree in castellan fields",
+    description: `A drought-tolerant tree that can thrive in hot, dry weather and can be grown in well-drained soil`,
     spawnRate: 0.15,
     type: "flora",
     cost:80,

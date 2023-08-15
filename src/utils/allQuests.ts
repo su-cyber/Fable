@@ -51,14 +51,14 @@ const allQuests = [{
     description:"Zorya Arc starts",
     quest_id:"KS-ZS-MQ1",
     rewards:"Ranger Licence",
-    info:"As the Nightmare's tendrils stretched across the southern realm, you raced towards the nearest bastion of safety. Yet, as despair settled upon you like a shroud, an unexpected savior emerged from the shadows - Mr. Briggs, an old acquaintance. Emerging from a fitful slumber, you awoke to find yourself nestled within the comforting embrace of Aube Town.\nA new Road and a new life awaits you!"
+    info:" You find yourself bidding farewell to familiar faces and setting foot in the State of Zorya. Your ultimate goal is crystal clear: to reach the Colosseum in the Guild District and participate in the highly anticipated annual Guild Draft, armed with your precious letter of recommendation."
 
 },{
     name:"New Home",
     description:"Werfall Arc",
     quest_id:"KS-ZS-MQ2",
     rewards:"???",
-    info:"As the Nightmare's tendrils stretched across the southern realm, you raced towards the nearest bastion of safety. Yet, as despair settled upon you like a shroud, an unexpected savior emerged from the shadows - Mr. Briggs, an old acquaintance. Emerging from a fitful slumber, you awoke to find yourself nestled within the comforting embrace of Aube Town.\nA new Road and a new life awaits you!"
+    info:"You find yourself in the bustling Ranger Street, seeking out your Guild's office. After being welcomed and receiving the Ranger Rulebook and License, you are tasked with a mission to the dangerous Township of Werfall.What awaits you in Werfall is unclear."
 
 }]
 export default allQuests

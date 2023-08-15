@@ -274,7 +274,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         currentskills: [],
                                         allskills:[],
                                         passiveskills:[],
-                                        quest:'',
+                                        quest:'None',
                                         quest_location:'',
                                         quest_mob:'',
                                         quest_quantity:0,
