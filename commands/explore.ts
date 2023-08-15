@@ -45,7 +45,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setDescription(`As you venture into the haunting embrace of the Ellior Forest, an unsettling chill creeps up your spine. The dense canopy above casts an oppressive gloom, obscuring the path ahead. Every rustle of leaves and hushed whisper of the wind sends shivers down your spine, as if the very air carries a sense of foreboding. Shadows dance among the gnarled trees, playing tricks on your mind. Every step forward is fraught with trepidation, for within this sinister realm, evil lurks at every corner, and the line between reality and nightmares blurs.`)
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                 await sleep(2)
-                    const pick = weightedRandom(["flora","monster"],[0.6,0.4])
+                    const pick = weightedRandom(["flora","monster"],[0.3,0.7])
 
                     if(pick == "flora"){
                         await interaction.editReply({ content: '\u200b', components: [],files:[] })
