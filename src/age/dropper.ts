@@ -82,7 +82,7 @@ export class Dropper {
         .setColor('GREEN')
         .setTitle('BATTLE REPORT')
         .setDescription(`${removeIndentation(text)}`)
-        await (interaction.client.channels.cache.get(`996424956428689518`) as TextChannel).send({embeds:[deathEmbed]})
+        // await (interaction.client.channels.cache.get(`996424956428689518`) as TextChannel).send({embeds:[deathEmbed]})
         await interaction.channel.send({embeds:[deathEmbed]})
         profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
             foundUser.xp+=gainedXP
