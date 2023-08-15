@@ -187,7 +187,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setDescription(`You step onto the Castellan Fields, feeling the earth beneath your feet and the gentle breeze whispering through the golden grains. The air is alive with the symphony of hard work as resilient crofters sow seeds and tend to their crops, their determination transforming mere dust into bountiful treasures. In this sea of golden splendor, you become part of a timeless cycle of growth and abundance, where the sweat of the crofters turns the humble soil into infinite prosperity.`)
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                 await sleep(2)
-                    const pick = weightedRandom(["flora","monster"],[0.6,0.4])
+                    const pick = weightedRandom(["flora","monster"],[0.1,0.9])
 
                     if(pick == "flora"){
                         await interaction.editReply({ content: '\u200b', components: [],files:[] })
@@ -329,7 +329,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 .setDescription(`As you step into the Sunshade Forest, an otherworldly hush blankets the air, shrouding the surroundings in an ominous darkness. The drought-tolerant Sunshade Trees loom overhead, their broad silver leaves reflecting scant rays of sunlight, casting a surreal glow. Each step brings a sense of trepidation, for this forest holds secrets and hidden perils. Shadows dance and whispers echo, reminding you to tread cautiously, as the beauty of the Sunshade Forest conceals the lurking dangers that lie within its enigmatic depths.`)
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                 await sleep(2)
-                    const pick = weightedRandom(["flora","monster"],[0.6,0.4])
+                    const pick = weightedRandom(["flora","monster"],[0.3,0.7])
 
                     if(pick == "flora"){
                         await interaction.editReply({ content: '\u200b', components: [] })
@@ -734,7 +734,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
 
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                 await sleep(2)
-                    const pick = weightedRandom(["flora","monster"],[0.6,0.4])
+                    const pick = weightedRandom(["flora","monster"],[0.3,0.7])
 
                     if(pick == "flora"){
                         await interaction.editReply({ content: '\u200b', components: [] })

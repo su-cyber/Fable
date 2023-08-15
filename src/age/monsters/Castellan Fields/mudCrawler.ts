@@ -23,7 +23,7 @@ export class mudCrawler extends MonsterEntity {
         return new mudCrawler({
             name: 'Mud Crawler',
             description:`Worm like creatures with sharp teeths who blend in the mud and attack their prey. They often mark their hunting grounds with threads of silk produced from their salivary glands, although this silk is of low grade, it still fetches a decent price.`,
-            spawnRate: 0.3,
+            spawnRate: 0.05,
             health: 60,
             mana:0,
             fileName:'mudcrawler.jpeg',
