@@ -3,7 +3,7 @@ const allQuests = [{
     description:"The Solarii farms are suffering from an onslaught of Ravens",
     quest_id:"KS-TA-SQ1",
     rewards:"Radiantura's Milk x 5",
-    info:"The Solarii farms are suffering from an onslaught of Ravens who are out to destroy their hard-earned harvest. You need to help them build 5 Scarecrows. Each Scarecrow requires 5 wood. Wood can be found by chopping down trees in Castellan Fields.\n\n use **/progresssidequest** to proceed after you collect the Sunshade Wood."
+    info:"The Solarii farms are suffering from an onslaught of Ravens who are out to destroy their hard-earned harvest. You need to help them build 5 Scarecrows. Each Scarecrow requires 5 wood. Wood can be found by chopping down trees in Sunshade Forest.\n\n use **/progresssidequest** to proceed after you collect the Sunshade Wood."
 },{
     name:"Feed the Radiantura",
     description:"The Radiantura in Castellan Fields need to be fed",
@@ -16,7 +16,7 @@ const allQuests = [{
     description:"wild group of Treemics have mixed themselves among the tree stumps",
     quest_id:"KS-TA-SQ4",
     rewards:"Goblin Whistle(Trinket)",
-    info:"The local Solarii are having trouble cutting down Sunshade Trees in Castellan Fields, due to a wild group of Treemics that have mixed themselves among the leftover tree stumps. Whenever a person traverses near the tree stumps’, the Treemics attack them. Hunt Them down."
+    info:"The local Solarii are having trouble cutting down Sunshade Trees in Castellan Fields, due to a wild group of Treemics that have mixed themselves among the leftover tree stumps. Whenever a person traverses near the tree stumps’, the Treemics attack them. Hunt Them down. Slay Treemicks and return with x5 Treemick Branch."
 
 },{
     name:"Aube Town's Hero",
@@ -43,7 +43,7 @@ const allQuests = [{
     name:"A New Beginning",
     description:"The prologue and tutorial",
     quest_id:"Tutorial",
-    rewards:"Ajin Awakening",
+    rewards:"Letter of Recommendation",
     info:"As the Nightmare's tendrils stretched across the southern realm, you raced towards the nearest bastion of safety. Yet, as despair settled upon you like a shroud, an unexpected savior emerged from the shadows - Mr. Briggs, an old acquaintance. Emerging from a fitful slumber, you awoke to find yourself nestled within the comforting embrace of Aube Town.\nA new Road and a new life awaits you!"
 
 },{
@@ -51,7 +51,7 @@ const allQuests = [{
     description:"Zorya Arc starts",
     quest_id:"KS-ZS-MQ1",
     rewards:"Ranger Licence",
-    info:" You find yourself bidding farewell to familiar faces and setting foot in the State of Zorya. Your ultimate goal is crystal clear: to reach the Colosseum in the Guild District and participate in the highly anticipated annual Guild Draft, armed with your precious letter of recommendation."
+    info:"You find yourself bidding farewell to familiar faces and setting foot in the State of Zorya. Your ultimate goal is crystal clear: to reach the Colosseum in the Guild District and participate in the highly anticipated annual Guild Draft, armed with your precious letter of recommendation."
 
 },{
     name:"New Home",

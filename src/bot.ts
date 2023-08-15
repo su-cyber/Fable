@@ -65,7 +65,7 @@ class Bot extends Client {
                                             levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')
                                                         .setTitle('LEVEL UP!')
-                                                        .setDescription(`You have levelled up to Level ${i}!\n\nYou have unlocked ${sp} new spyr cores inside your body!\n\nYour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP\n\nYou can now learn a new skill! use /learnskill`)
+                                                        .setDescription(`You have levelled up to Level ${i}!\n\nYou have unlocked ${sp} new spyr cores inside your body!\n\nYour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP\n\nYou can now learn a new skill! use /learnnewskill`)
                                             
                                         }
                                         else if((i==6 || i==15 || i==23 || i==32 || i==36 || i==48)  && i<=70){
@@ -73,7 +73,7 @@ class Bot extends Client {
                                             levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')
                                                         .setTitle('LEVEL UP!')
-                                                        .setDescription(`You have levelled up to Level ${i}!\n\nYou have unlocked ${sp} new spyr cores inside your body!\n\nYour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP\n\nYou can now learn a new skill! use /learnskill`)
+                                                        .setDescription(`You have levelled up to Level ${i}!\n\nYou have unlocked ${sp} new spyr cores inside your body!\n\nYour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP\n\nYou can now learn a new skill! use /learnnewskill`)
                                             
                                         }
                                         else{

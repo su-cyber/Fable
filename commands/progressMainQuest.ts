@@ -200,13 +200,13 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             
                             await interaction.reply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
                             let filter = i => i.user.id === authorId
-                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
+                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
                         
                                 collector.on('collect',async (btn) => {
                                     if(btn.isButton()){
                                         if(btn.customId === "btn_accept"){
                                             await btn.deferUpdate().catch(e => {})
-                                            await interaction.editReply({embeds:[acceptEmbed],files:[attachment2]})
+                                            await interaction.editReply({embeds:[acceptEmbed],files:[attachment2],components:[]})
                             
                                             
                                             await profileModel.updateOne({userID:interaction.user.id},{location:"Town Centre",main_quest_phase:"3"})

@@ -5,7 +5,7 @@ import { MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu, Messa
 
 
 
-export default new MyCommandSlashBuilder({ name: 'switchskill', description: 'add a skill to your skill cycle' })
+export default new MyCommandSlashBuilder({ name: 'addskill', description: 'add a skill to your skill cycle' })
 .addStringOption((option: SlashCommandStringOption) =>
         option.setName('skill').setDescription('skill to add').setRequired(true)
     )
