@@ -11,9 +11,10 @@ import inventory from '../models/InventorySchema'
 import sample from 'lodash.sample'
 import { SlashCommandIntegerOption} from '@discordjs/builders'
 import getHealth from '../src/utils/getHealth'
-import { Interaction, MessageEmbed } from 'discord.js'
+import { Client, Interaction, MessageEmbed } from 'discord.js'
 import { calculate } from '../src/age/classes'
 import hunting_contracts from '../src/utils/allHuntingContracts'
+import { Bot } from '../src/bot'
 
 export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
@@ -221,6 +222,8 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                 }
             }
         })
+
+        
        
     }
 )

@@ -26,7 +26,7 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'see your
                     
                     let img
                     let path
-                    const name = interaction.user.username
+                    const name = interaction.user.username.toUpperCase()
                     profileModel.findOne({userID:authorId},async function(err,foundUser){
                         path = `assets/Statscreen/${foundUser.class}_stat.jpeg`
                         img = await loadImage(path)
@@ -135,7 +135,7 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'see your
                      ctx.drawImage(img,0,0)
                      ctx.font = '28px "serif"'
                      ctx.fillStyle = "yellow"
-                     ctx.fillText(`${name}'s Grimoire`, 65, 125);
+                     ctx.fillText(`${name}'s GRIMOIRE`, 65, 125);
                      ctx.font = '38px "serif"'
                      ctx.fillStyle = "#2a9df4"
                      ctx.fillText(`${level}`, 1070, 118);
@@ -161,6 +161,7 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'see your
                      ctx.fillText(`${merit}`, 457, 408);
                      ctx.font = '16px "serif"'
                      ctx.fillText(`${location}`, 205, 461);
+                     ctx.fillText(`Energy : ${foundUser.energy}/25`, 490, 118);
                      ctx.fillStyle = "#C4B190"
                      ctx.font = '12px "serif"'
                      ctx.fillText(`CURRENT EXPERIENCE: ${XP}`, 183, 172);

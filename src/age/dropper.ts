@@ -1,4 +1,4 @@
-import { CommandInteraction, MessageEmbed } from 'discord.js'
+import { CommandInteraction, MessageEmbed, TextChannel } from 'discord.js'
 import sample from 'lodash.sample'
 import sum from 'lodash.sum'
 import { formatMoney, randfloat, randint, removeIndentation } from '../utils'
@@ -82,7 +82,7 @@ export class Dropper {
         .setColor('GREEN')
         .setTitle('BATTLE REPORT')
         .setDescription(`${removeIndentation(text)}`)
-    
+        await (interaction.client.channels.cache.get(`996424956428689518`) as TextChannel).send({embeds:[deathEmbed]})
         await interaction.channel.send({embeds:[deathEmbed]})
         profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
             foundUser.xp+=gainedXP
@@ -133,7 +133,7 @@ export class Dropper {
             })
 
                
-                await inventory.findOneAndUpdate({userID:interaction.user.id},foundUser)
+                await inventory.updateOne({userID:interaction.user.id},foundUser)
             }
         })
     }

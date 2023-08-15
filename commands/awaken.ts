@@ -241,7 +241,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     let profile = await new profileModel({
                                         userID: authorId,
                                         serverID: guildID,
-                                        coins: 20000,
+                                        coins: 50,
                                         xp:0,
                                         level:1,
                                         energy:25,
@@ -361,9 +361,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.armour = 12
                                     foundUser.speed = 17
                                     foundUser.evasion = 0.065
-                                    foundUser.health = 80
+                                    foundUser.health = 100
                                     foundUser.magicPower = 7
-                                    foundUser.vitality = 8
+                                    foundUser.vitality = 10
                                     foundUser.magicResistance = 7
                                     foundUser.currentskills = [{
                                         name: 'Flashing Strike',
@@ -383,9 +383,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.armour = 7
                                     foundUser.speed = 22
                                     foundUser.evasion = 0.08
-                                    foundUser.health = 80
+                                    foundUser.health = 100
                                     foundUser.magicPower = 7
-                                    foundUser.vitality = 8
+                                    foundUser.vitality = 10
                                     foundUser.magicResistance = 7
                                     foundUser.currentskills = [{
                                         name: 'Vanishing Strike',
@@ -404,9 +404,9 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.attackDamage = 3
                                     foundUser.armour = 7
                                     foundUser.speed = 10
-                                    foundUser.health = 80
+                                    foundUser.health = 100
                                     foundUser.magicPower = 22
-                                    foundUser.vitality = 8
+                                    foundUser.vitality = 10
                                     foundUser.magicResistance = 18
                                     foundUser.currentskills = [{
                                         name: 'Force Push',
@@ -426,8 +426,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.armour = 17
                                     foundUser.speed = 10
                                     foundUser.magicPower = 3
-                                    foundUser.vitality = 8
-                                    foundUser.health = 80
+                                    foundUser.vitality = 10
+                                    foundUser.health = 100
                                     foundUser.magicResistance = 8
                                     foundUser.currentskills = [{
                                         name: 'Shattering Kick',
@@ -450,8 +450,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     foundUser.speed = 17
                                     foundUser.evasion = 0.065
                                     foundUser.magicPower = 17
-                                    foundUser.health = 80
-                                    foundUser.vitality = 8
+                                    foundUser.health = 100
+                                    foundUser.vitality = 10
                                     foundUser.magicResistance = 12
                                     foundUser.currentskills = [{
                                         name: 'Piercing Shot',

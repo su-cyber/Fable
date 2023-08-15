@@ -119,7 +119,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                             await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                                         }
                                         else if(dungeon.step == 3){
-                                            const pick = weightedRandom(["En1","En2","En3","En4","En5"],[0.5,0.2,0.2,0.09,0.01])
+                                            const pick = weightedRandom(["En1","En2","En3","En4"],[0.5,0.2,0.2,0.09])
                                             if(pick == "En1"){
                                                 const attacker = Warrior.create(author)
                                                 const monster = BeerBuccaneer1.create()
@@ -192,39 +192,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                     
                                           
                                             }
-                                            else if(pick == "En5"){
-                                                let stepembed = new MessageEmbed()
-                                                .setColor('RED')
-                                                .setTitle('STEP #3')
-                                                .setDescription(`you found yourself wandering into the weapon room!\nCapn. Crook's Cutlass x 1 added to inventory!`)
-                                                await interaction.reply({embeds:[stepembed],components:[]})
-                        
-                                                inventory.findOne({userID:interaction.user.id},async function(err,foundInventory){
-                                                    if(err){
-                                                        console.log(err);
-                                                        
-                                                    }
-                                                    else{
-                                                        const foundItem = foundInventory.inventory.weapons.find(item => item.name.name === crookcutlass.name)
-                                                        if (foundItem){
-                                        
-                                                            foundItem.quantity+=1
-                                                        }
-                                                        else{
-                                                            const newItem = {
-                                                                name:crookcutlass,
-                                                                description:crookcutlass.description,
-                                                                quantity:Number(1)
-                                                            }
-                                                            foundInventory.inventory.weapons.push(newItem)
-                                                        }
-                                                        await inventory.updateOne({userID:authorId},foundInventory)
-                                                    }
-                                                    
-                                                })
-                                                dungeon.step+=1
-                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
-                                            }
+                                            
+                                            
                                             
                                             
                                         }
@@ -288,7 +257,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                             await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                                         }
                                         else if(dungeon.step == 6){
-                                            const pick = weightedRandom(["En1","En2","En3","En4","En5"],[0.5,0.2,0.2,0.09,0.01])
+                                            const pick = weightedRandom(["En1","En2","En3","En4"],[0.5,0.2,0.2,0.09])
                                             if(pick == "En1"){
                                                 const attacker = Warrior.create(author)
                                                 const monster = BeerBuccaneer1.create()
@@ -361,44 +330,12 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                     
                                           
                                             }
-                                            else if(pick == "En5"){
-                                                let stepembed = new MessageEmbed()
-                                                .setColor('RED')
-                                                .setTitle('STEP #6')
-                                                .setDescription(`you found yourself wandering into the weapon room!\nCapn. Crook's Cutlass x 1 added to inventory!`)
-                                                await interaction.reply({embeds:[stepembed],components:[]})
-                        
-                                                inventory.findOne({userID:interaction.user.id},async function(err,foundInventory){
-                                                    if(err){
-                                                        console.log(err);
-                                                        
-                                                    }
-                                                    else{
-                                                        const foundItem = foundInventory.inventory.weapons.find(item => item.name.name === crookcutlass.name)
-                                                        if (foundItem){
-                                        
-                                                            foundItem.quantity+=1
-                                                        }
-                                                        else{
-                                                            const newItem = {
-                                                                name:crookcutlass,
-                                                                description:crookcutlass.description,
-                                                                quantity:Number(1)
-                                                            }
-                                                            foundInventory.inventory.weapons.push(newItem)
-                                                        }
-                                                        await inventory.updateOne({userID:authorId},foundInventory)
-                                                    }
-                                                    
-                                                })
-                                                dungeon.step+=1
-                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
-                                            }
+                                            
                                             
                                             
                                         }
                                         else if(dungeon.step == 7){
-                                            const pick = weightedRandom(["En1","En2","En3","En4","En5"],[0.5,0.2,0.2,0.09,0.01])
+                                            const pick = weightedRandom(["En1","En2","En3","En4"],[0.5,0.2,0.2,0.09])
                                             if(pick == "En1"){
                                                 const attacker = Warrior.create(author)
                                                 const monster = BeerBuccaneer1.create()
@@ -470,39 +407,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                             await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                                           
                                             }
-                                            else if(pick == "En5"){
-                                                let stepembed = new MessageEmbed()
-                                                .setColor('RED')
-                                                .setTitle('STEP #7')
-                                                .setDescription(`you found yourself wandering into the weapon room!\nCapn. Crook's Cutlass x 1 added to inventory!`)
-                                                await interaction.reply({embeds:[stepembed],components:[]})
-                        
-                                                inventory.findOne({userID:interaction.user.id},async function(err,foundInventory){
-                                                    if(err){
-                                                        console.log(err);
-                                                        
-                                                    }
-                                                    else{
-                                                        const foundItem = foundInventory.inventory.weapons.find(item => item.name.name === crookcutlass.name)
-                                                        if (foundItem){
-                                        
-                                                            foundItem.quantity+=1
-                                                        }
-                                                        else{
-                                                            const newItem = {
-                                                                name:crookcutlass,
-                                                                description:crookcutlass.description,
-                                                                quantity:Number(1)
-                                                            }
-                                                            foundInventory.inventory.weapons.push(newItem)
-                                                        }
-                                                        await inventory.updateOne({userID:authorId},foundInventory)
-                                                    }
-                                                    
-                                                })
-                                                dungeon.step+=1
-                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
-                                            }
+                                            
                                             
                                             
                                         }
@@ -524,7 +429,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                             await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                                         }
                                         else if(dungeon.step == 9){
-                                            const pick = weightedRandom(["En1","En2","En3","En4","En5"],[0.5,0.2,0.2,0.09,0.01])
+                                            const pick = weightedRandom(["En1","En2","En3","En4"],[0.5,0.2,0.2,0.09])
                                             if(pick == "En1"){
                                                 const attacker = Warrior.create(author)
                                                 const monster = BeerBuccaneer1.create()
@@ -673,54 +578,64 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                             
                                         }
                                         else if(dungeon.step == 11){
-                                            
+                                            const pick = weightedRandom(["En1","En2"],[0.8,0.2])
                                             let stepembed 
-                                            inventory.findOne({userID:interaction.user.id},async function(err,foundInventory){
-                                                if(err){
-                                                    console.log(err);
-                                                    
-                                                }
-                                                else{
-                                                    const foundItem = foundInventory.inventory.weapons.find(item => item.name.name === crookcutlass.name)
-                                                    const foundweapon = foundUser.weapon.find(item => item.name === crookcutlass.name)
-                                                    if (foundItem || foundweapon){
-                                    
-                                                         stepembed = new MessageEmbed()
+                                            if(pick == "En1"){
+                                                stepembed = new MessageEmbed()
                                                         .setColor('RED')
-                                                        .setTitle('DUNGEON-END')
+                                                        .setTitle(`CROOK'S CHAMBERS`)
                                                         .addFields([
                                                             {
                                                                 name: `Current Objective:`,
                                                                 value:`**press /progressmainquest at the guild outpost to continue**`
                                                             }
                                                         ])
-                                                        .setDescription(`you finally reached the treasure room! You found many valuable items and decided to keep them\nYou found Treasure x 1!\n5000 coins added!\n\n**You have Successfully completed the quest "Aube Town's Hero" and exited the Abandoned Castle**`)
+                                                        .setDescription(`You finally reached the end of the dungeon!You enter a rather well maintained room which looks like the personal room of Captain Crook You found many valuable items and decided to return all of them keeping only some for yourself\nYou found Coin Bag x 1!\n500 coins added!\n\n**You have Successfully completed the quest "Aube Town's Hero" and exited the Abandoned Castle**`)
                                                         await interaction.reply({embeds:[stepembed],components:[]})
-                                                        await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+5000})
+                                                        await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+500})
+                                            }
+                                            else{
+                                                stepembed = new MessageEmbed()
+                                                        .setColor('RED')
+                                                        .setTitle(`CROOK'S CHAMBERS`)
+                                                        .addFields([
+                                                            {
+                                                                name: `Current Objective:`,
+                                                                value:`**press /progressmainquest at the guild outpost to continue**`
+                                                            }
+                                                        ])
+                                                        .setDescription(`You finally reached the end of the dungeon!You enter a rather well maintained room which looks like the personal room of Captain Crook, you found Captain Crook's Cutlass!\n\nCapn. Crook's Cutlass added to inventory!\n\n**You have Successfully completed the quest "Aube Town's Hero" and exited the Abandoned Castle**`)
+                                                        await interaction.reply({embeds:[stepembed],components:[]})
+                                                inventory.findOne({userID:interaction.user.id},async function(err,foundInventory){
+                                                    if(err){
+                                                        console.log(err);
+                                                        
                                                     }
                                                     else{
-                                                        stepembed = new MessageEmbed()
-                                                        .setColor('RED')
-                                                        .setTitle('DUNGEON-END')
-                                                        .addFields([
-                                                            {
-                                                                name: `Current Objective:`,
-                                                                value:`**press /progressmainquest at the guild outpost to continue**`
-                                                            }
-                                                        ])
-                                                        .setDescription(`you finally reached the treasure room! You found many valuable items and decided to keep them\nCapn. Crook's Cutlass x 1 added to inventory!\n\n**You have Successfully completed the quest "Aube Town's Hero" and exited the Abandoned Castle**`)
-                                                        await interaction.reply({embeds:[stepembed],components:[]})
-                                                        const newItem = {
-                                                            name:crookcutlass,
-                                                            description:crookcutlass.description,
-                                                            quantity:Number(1)
+                                                        const foundItem = foundInventory.inventory.weapons.find(item => item.name.name === crookcutlass.name)
+                                                        if (foundItem){
+                                        
+                                                            foundItem.quantity+=1
                                                         }
-                                                        foundInventory.inventory.weapons.push(newItem)
+                                                        else{
+                                                            const newItem = {
+                                                                name:crookcutlass,
+                                                                description:crookcutlass.description,
+                                                                quantity:Number(1)
+                                                            }
+                                                            foundInventory.inventory.weapons.push(newItem)
+                                                        }
+                                                        await inventory.updateOne({userID:authorId},foundInventory)
                                                     }
-                                                    await inventory.updateOne({userID:authorId},foundInventory)
-                                                }
+                                                    
+                                                })
+                                            }
+                                                    
+                                    
+                                                         
+                                                    
+                                                    
                                                 
-                                            })
                                             
                                             dungeon.step = 0
                                             dungeon.name = ""
