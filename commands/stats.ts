@@ -52,7 +52,7 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'see your
                      const money = foundUser.coins
                      let merit
                      if(foundUser.ranger_grade == "None"){
-                         merit = foundUser.merit
+                         merit = `${foundUser.merit}/500`
                      }
                      else{
                          merit = `${foundUser.merit}/${meritFormulate(foundUser.ranger_grade)}`

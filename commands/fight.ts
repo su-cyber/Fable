@@ -47,7 +47,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                     if(interaction.guild == null){
                         profileModel.findOne({userID:authorId},async function(err,foundUser){
                             if(foundUser.energy <= 0){
-                                interaction.reply({content:`you cannot fight as you dont have any energy left`,ephemeral:true})
+                                interaction.reply({content:`You cannot move as you dont have any energy left!You can view your current energy in your Keystone Grimoire and you regain 1 energy every 1 hour in real-time.Every battle costs 1 energy and energy is needed to move inside dungeons but is only spent if you engage in a battle`,ephemeral:true})
                                 foundUser.encounter = []
                                 await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
                             }

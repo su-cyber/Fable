@@ -338,6 +338,7 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                         .setDescription(`you visited ${foundUser.guild}'s ${location}, The main office in Solarstrio\n\nuse **/explore** to explore this location`)
                          
                     }
+                    await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == `Auriga Sails Company`){

@@ -399,6 +399,11 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                     {
                                         name: `Current Objective:`,
                                         value:`**Press "/progresssidequest" at the Town Centre to continue.**`
+                                    },
+                                    {
+                                        name: `Rewards`,
+                                        value:`**Recieved Key to Abandoned Castle x1\nYou recieved 15 Merit**`
+                                      
                                     }
                                 ])
                                 .setDescription(`You relay your startling discoveries to the Mayor, who, to your relief, not only believes you but is also willing to extend his support. Shock and anger flicker across his features as he realizes the brigands have nestled themselves so close to his town, right under his nose. With a solemn determination, he entrusts you with a key to the Abandoned Castle, recognizing your strength as an Ajin—knowledge he gleaned from Mr. Sebas, whose endorsement carries great weight.\n\nHowever, the Mayor doesn't mince words. The secrets you may uncover within the Castle are not to be taken lightly. The lurking dangers lie beyond your current capabilities, and he implores you to seek counsel from Mr. Sebas, a beacon of wisdom and strength, to unlock your potential and grow even more powerful.`)

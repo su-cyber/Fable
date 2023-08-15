@@ -9,7 +9,7 @@ export class SunshadeWood extends Flora{
     id:"sunshade_castellan" ,
     name: "Sunshade Wood",
     description: `A drought-tolerant tree that can thrive in hot, dry weather and can be grown in well-drained soil`,
-    spawnRate: 0.35,
+    spawnRate: 0.45,
     type: "flora",
     cost:30,
     fake_name:"Castellan Sunshade",

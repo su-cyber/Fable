@@ -336,7 +336,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 },
                                 {
                                     name:'**REWARDS:**',
-                                    value:`Obtained **Keystone Journal**!\nYou can view your stats by using **/stats** command`
+                                    value:`Obtained **Keystone Grimoire**!\nYou can view your stats by using **/stats** command`
                                 }
                             ])
                             
@@ -433,7 +433,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 let chosenWeapon
                                 let weaponbtn= new MessageActionRow().addComponents([
                                     new MessageButton().setCustomId("spear").setStyle("PRIMARY").setLabel("Spear"),
-                                    new MessageButton().setCustomId("boltgun").setStyle("PRIMARY").setLabel("BoltGun"),])
+                                    new MessageButton().setCustomId("boltgun").setStyle("PRIMARY").setLabel("Boltgun"),])
                                     
                                 let fightEmbed = new MessageEmbed()
                                 .setColor('RANDOM')

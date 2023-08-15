@@ -9,7 +9,7 @@ export class ArgentenumLeaves extends Flora{
     id:"argentenum_castellan" ,
     name: "Argentenum Leaves",
     description: `A drought-tolerant tree that can thrive in hot, dry weather and can be grown in well-drained soil`,
-    spawnRate: 0.15,
+    spawnRate: 0.25,
     type: "flora",
     cost:80,
     fake_name:"Castellan Sunshade",

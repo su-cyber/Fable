@@ -38,7 +38,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                             const dungeon = foundUser.dungeon
                             if(dungeon.status == true){
                                 if(foundUser.energy <= 0){
-                                    interaction.reply({content:`you cannot move as you dont have any energy left`,ephemeral:true})
+                                    interaction.reply({content:`You cannot move as you dont have any energy left!You can view your current energy in your Keystone Grimoire and you regain 1 energy every 1 hour in real-time.Every battle costs 1 energy and energy is needed to move inside dungeons but is only spent if you engage in a battle`,ephemeral:true})
                                 }
                                 else{
                                     if(dungeon.name === "Abandoned Castle"){
@@ -389,7 +389,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                             else if(pick == "En3"){
                                                 let stepembed = new MessageEmbed()
                                             .setColor('RED')
-                                            .setTitle('STEP #3')
+                                            .setTitle('STEP #7')
                                             .setDescription(`you stepped into a Slippery Floor!\nYou lost 10% of your health!`)
                                             await interaction.reply({embeds:[stepembed],components:[]})
                                             await profileModel.updateOne({userID:authorId},{health:Math.round(foundUser.health-0.1*foundUser.health)})
