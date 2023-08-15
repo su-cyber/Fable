@@ -5,13 +5,13 @@ import profileModel from '../models/profileSchema'
 import inventory from '../models/InventorySchema'
 import { MessageEmbed } from 'discord.js'
 import { backBreaker } from '../src/age/items/backbreaker'
-import { BeerBuccaneer2 } from '../src/age/monsters/Castellan Fields/BeerBuccaneer2'
 import { PvEDuel } from './fight'
-import { BeerBuccaneer1 } from '../src/age/monsters/Castellan Fields/BeerBuccaneer1'
 import { crookcutlass } from '../src/age/weapons/crook\'scutlass'
 import getHealth from '../src/utils/getHealth'
 import { captainCrook } from '../src/age/Dungeon-Boss/captainCrook'
 import { MessageAttachment } from 'discord.js'
+import { BeerBuccaneer1 } from '../src/age/monsters/Sunshade Forest/BeerBuccaneer1'
+import { BeerBuccaneer2 } from '../src/age/monsters/Sunshade Forest/BeerBuccaneer2'
 
 
 export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 'Move in the Dungeon' })
