@@ -25,33 +25,70 @@ export class  Fiskille extends MonsterEntity {
             description:`The Opponent in Guild Draft`,
             spawnRate: 0.35,
             health: 80,
-            mana:0,
+            mana:3,
             xp: generateXP(15,18),
             evasion: 0.05,
-            attackDamage: 15,
+            attackDamage: 20,
             fileName:'npcdave.jpeg',
             magicPower: 5,
             run_chance: 0.02,
-            armor: 5,
-            speed: 20,
-            element:"normal",
-            magicResistance: 20,
+            armor: 10,
+            speed: 15,
+            element:"volt",
+            magicResistance: 15,
             passive_skills:[],
             skills: [
                 {
                     cooldown: 0,
-                    name: 'Shredding Swipe',
+                    name: 'Zap Cut',
                     description: `attacks with it's deadly claws`,
                     canEvade: true,
                     type: 'physical',
-                    element:"normal", 
-                    damage:22,
-                    mana_cost: 0,
+                    element:"volt",
+                    damage:26,
+                    mana_cost: 1,
                     use: (attacker, defender) =>{
-                        attacker.addLogMessage(`${attacker.name} used Shredding Swipe`)
+                        let mod = 1
+                        if(defender.element == "flame"){
+                            mod  = 1
+                        }
+                        else if(defender.element == "light"){
+                            mod  = 0.5
+                        }
+                        else if(defender.element == "volt"){
+                            mod  = 0.5
+                        }
+                        else if(defender.element == "wave"){
+                            mod  = 2
+                        }
+                        else if(defender.element == "frost"){
+                            mod  = 1
+                        }
+                        else if(defender.element == "gale"){
+                            mod  = 2
+                        }
+                        else if(defender.element == "bloom"){
+                            mod  = 0.5
+                        }
+                        else if(defender.element == "terra"){
+                            mod  = 0.5
+                        }
+                        else if(defender.element == "alloy"){
+                            mod  = 2
+                        }
+                        else if(defender.element == "venom"){
+                            mod  = 1
+                        }
+                        else if(defender.element == "draco"){
+                            mod  = 0.5
+                        }
+                        else if(defender.element == "ruin"){
+                            mod  = 1
+                        }
+                        attacker.addLogMessage(`${attacker.name} used Zap Cut`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*22)
-                            .run(damage => `${defender.name} lost ${damage} HP by Shredding Swipe`)
+                            .physical(attacker.attackDamage*26*mod)
+                            .run(damage => `${defender.name} lost ${damage} HP by a lightning imbued slash`)
                     }
                 },
                

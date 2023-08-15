@@ -21,11 +21,11 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
                         }
                         else{
                             const mappedcskills=foundUser.currentskills.map((skill) => {
-                                return `${skill.name}`
+                                return `${skill.name} - ${skill.description}`
                             }).join("\n")
                            
                             const mappedallskills=foundUser.allskills.map((skill) => {
-                                return `${skill.name}`
+                                return `${skill.name} - ${skill.description}`
                             }).join("\n")
                            
                             await interaction.reply({content:`**Current Skills:**\n${mappedcskills}\n\n**All Skills:**\n${mappedallskills}`});

@@ -22,7 +22,11 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                             
                         }
                         else{
-                            if(foundUser.dungeon.status){
+                            if(foundUser.main_quest == "Tutorial" && Number(foundUser.main_quest_phase)<7){
+                                interaction.reply({content:`You cannot use this command right now! please complete the tutorial`,ephemeral:true})
+                            }
+                            else{
+                                if(foundUser.dungeon.status){
                                     interaction.reply({content:`You cannot use this command inside a dungeon!`,ephemeral:true})
                                    }
                                    else{
@@ -240,6 +244,8 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                    
                                     await interaction.reply({embeds:[dialogueembed]});
                                    }
+                            }
+                            
 
                             
                         }

@@ -8,7 +8,7 @@ export class RayleighFlower extends Flora{
 
     id:"rayleigh_castellan" ,
     name: "Rayleigh Flower",
-    description: "a flower in castellan fields",
+    description: "A flower that grows as a weed in castellan fields",
     spawnRate: 1,
     type: "flora",
     cost:20,
