@@ -502,6 +502,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         else{
                                             await collected.deferUpdate().catch(e => {})
                                             await interaction.editReply({content: null,embeds:[prologueEmbed],components:[],files:[attachment2]})
+                                            await sleep(10)
                                             await interaction.channel.send({content: null,embeds:[acceptEmbed],components:[],files:[]})
                                         }
                                     })

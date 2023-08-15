@@ -61,7 +61,7 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'see your
                      const mainquest = allQuests.find(quest => quest.quest_id == foundUser.main_quest).name
                      const weapon = weaponExist? foundUser.weapon[0].name : "None"
                      const armour = armourExist? foundUser.armourSuit[0].name : "None"
-                     const items = itemExist? foundUser.items[0] : "None"
+                     const items = itemExist? foundUser.items[0].name : "None"
                      const mount = foundUser.mount
                      let grade
                      if(foundUser.ranger_grade == "None"){

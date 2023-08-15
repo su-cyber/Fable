@@ -272,7 +272,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                         value:`**Obtained Goblin Whistle X 1\nYou recieved 10 Merit**`
                                                     }
                                                 ])
-                                                .setDescription(`You show the Treemick's Branches to the Guild and they confirm the quest completion, You are given a trinket as a reward`)
+                                                .setDescription(`You show the Treemick's Branches to the Guild Outpost and they confirm the quest completion, You are given a trinket as a reward`)
                                                 interaction.reply({embeds:[successembed]})
                                                 foundUser.completed_quests.push("KS-TA-SQ4")
                                                 foundUser.side_quest.splice(0,1)

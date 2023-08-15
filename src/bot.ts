@@ -58,14 +58,14 @@ class Bot extends Client {
                                         let levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')
                                                         .setTitle('LEVEL UP!')
-                                                        .setDescription(`you have levelled up to level ${i}!\nyou unlocked ${sp} spyr cores!\nyour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP`)
+                                                        .setDescription(`You have levelled up to Level ${i}!\n\nYou have unlocked ${sp} new spyr cores inside your body!\n\nYour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP`)
                                             
                                         if((i==3 || i==9 || i==12 || i==18 || i==26 || i==38 || i==43 || i==54 || i==62 || i==70) && i<=70){
                                             foundUser.skill_tree.status+=1
                                             levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')
                                                         .setTitle('LEVEL UP!')
-                                                        .setDescription(`you have levelled up to level ${i}!\nyou unlocked ${sp} spyr cores!\nyour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP\n\nYou can now learn a new skill! use /learnskill`)
+                                                        .setDescription(`You have levelled up to Level ${i}!\n\nYou have unlocked ${sp} new spyr cores inside your body!\n\nYour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP\n\nYou can now learn a new skill! use /learnskill`)
                                             
                                         }
                                         else if((i==6 || i==15 || i==23 || i==32 || i==36 || i==48)  && i<=70){
@@ -73,14 +73,14 @@ class Bot extends Client {
                                             levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')
                                                         .setTitle('LEVEL UP!')
-                                                        .setDescription(`you have levelled up to level ${i}!\nyou unlocked ${sp} spyr cores!\nyour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP\n\nYou can now learn a new skill! use /learnskill`)
+                                                        .setDescription(`You have levelled up to Level ${i}!\n\nYou have unlocked ${sp} new spyr cores inside your body!\n\nYour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP\n\nYou can now learn a new skill! use /learnskill`)
                                             
                                         }
                                         else{
                                             levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')
                                                         .setTitle('LEVEL UP!')
-                                                        .setDescription(`you have levelled up to level ${i}!\nyou unlocked ${sp} spyr cores!\nyour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP`)
+                                                        .setDescription(`You have levelled up to Level ${i}!\n\nYou have unlocked ${sp} new spyr cores inside your body!\n\nYour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP`)
                                             foundUser.mana+=1
                                         
                                         }

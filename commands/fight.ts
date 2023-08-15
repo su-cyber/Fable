@@ -290,15 +290,7 @@ export class PvEDuel extends DuelBuilder {
                         
                     } 
                 }
-                if(this.defender.passive_skills.length !=0){
-                    let i
-                    for(i=0;i<this.defender.passive_skills.length;i++){
-                        const passive_skill = passive_skills.find(skill => skill.name === this.defender.passive_skills[i].name)
-                        this.defender.useSkill(this.defender,this.attacker,passive_skill)
-                        
-                        
-                    } 
-                }
+                
                 let skill = this.attacker.skills.find(skill => skill.type === "buff" && skill.mana_cost<=this.attacker.mana)
                 if(skill){
                     this.attacker.useSkill(this.attacker,this.defender,skill)
@@ -479,15 +471,7 @@ export class PvEDuel extends DuelBuilder {
                         
                     } 
                 }
-                if(this.defender.passive_skills.length !=0){
-                    let i
-                    for(i=0;i<this.defender.passive_skills.length;i++){
-                        const passive_skill = passive_skills.find(skill => skill.name === this.defender.passive_skills[i].name)
-                        this.defender.useSkill(this.defender,this.attacker,passive_skill)
-                        
-                        
-                    } 
-                }
+                
             }
             if(turn == 0 || turn==1){
                 let skill = this.attacker.skills.find(skill => skill.type === "buff" && skill.mana_cost<=this.attacker.mana)

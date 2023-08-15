@@ -64,7 +64,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                         value:`**press "fight" to fight them off when you are ready.**`
                                     }
                                 ])
-                                .setDescription(`A duo of Beer Buccaneers are approaching you!\n\nPsst, listen here. Don’t worry, I’ve paused the time. Turns out I can do that. Anyway, I see that you’re about to enter into your very first fight. And…you don’t have a weapon equipped. Use the **/inventory** command and see what you’ve got!\n\nOnce you’ve rummaged through your belongings, use the **/equip** command followed by entering **weapon** in “type” field and **weapon’s name** in the “objects” field.\n\nOnce you’re all equipped, press the **Fight** button. Fights in Fable happen in your PMs. No seriously, that’s the only place where you can do them. Every time you begin a fight, the Fable bot shall text you in PMs.\n\nAlso all fights in Fable are permanently on **“auto mode”**. The bot follows an intelligent decision making system that ends the battle in the most efficient way possible. But hey, if it helps, you can play the entirety of Fable in your PMs.\n\nNow press the **fight** button, and don’t press the **Run** button, unless you’re a weakling.`)
+                                .setDescription(`A duo of Beer Buccaneers are approaching you!\n\nPsst, listen here. Don’t worry, I’ve paused the time. Turns out I can do that. Anyway, I see that you’re about to enter into your very first fight. And…you don’t have a weapon equipped. Use the **/inventory** command and see what you’ve got!\n\nOnce you’ve rummaged through your belongings, use the **/equip** command followed by **weapon’s name** in the “object” field.\n\nOnce you’re all equipped, press the **Fight** button. Fights in Fable happen in your PMs. No seriously, that’s the only place where you can do them. Every time you begin a fight, the Fable bot shall text you in PMs.\n\nAlso all fights in Fable are permanently on **“auto mode”**. The bot follows an intelligent decision making system that ends the battle in the most efficient way possible. But hey, if it helps, you can play the entirety of Fable in your PMs.\n\nNow press the **fight** button, and don’t press the **Run** button, unless you’re a weakling.`)
             
                                 let acceptEmbed = new MessageEmbed()
                                 .setColor('GREEN')
@@ -79,7 +79,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                         value:`**Defeat the Beer Buccaneers**`
                                     }
                                 ])
-                                .setDescription('You have decided to fight! Check your private messages! Remember: each encounter only lasts for 5 mins! Fight them before the time is up!')
+                                .setDescription('You have decided to fight! Check your private messages! Remember: start the fight within the next 5 mins!')
             
                                 let rejectEmbed = new MessageEmbed()
                                 .setColor('RED')
@@ -93,13 +93,13 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             
                             await interaction.reply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
                             let filter = i => i.user.id === authorId
-                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
+                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
                         
                                 collector.on('collect',async (btn) => {
                                     if(btn.isButton()){
                                         if(btn.customId === "btn_accept"){
                                             await btn.deferUpdate().catch(e => {})
-                                            await interaction.editReply({embeds:[acceptEmbed],files:[]})
+                                            await interaction.editReply({embeds:[acceptEmbed],files:[],components:[]})
                                             const encounter = {
                                                 name: 'BeerBuccsDuo',
                                                 time : new Date(),
