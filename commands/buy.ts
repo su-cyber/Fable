@@ -134,7 +134,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                                             }
                                                             
                                                         })
-                                                        await interaction.reply({content:`${userQuantity} ${userobject}(s) has been bought successfully!`})
+                                                        await interaction.reply({content:`${userQuantity} ${foundObject.name}(s) has been bought successfully!`})
                                                     }
                                                     else{
                                                        
@@ -255,7 +255,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                                         }
                                                         
                                                     })
-                                                    await interaction.reply({content:`${userQuantity} ${userobject}(s) has been bought successfully!`})
+                                                    await interaction.reply({content:`${userQuantity} ${foundObject.name}(s) has been bought successfully!`})
                                                 }
                                                 else{
                                                    
@@ -376,7 +376,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                                     }
                                                     
                                                 })
-                                                await interaction.reply({content:`${userQuantity} ${userobject}(s) has been bought successfully!`})
+                                                await interaction.reply({content:`${userQuantity} ${foundObject.name}(s) has been bought successfully!`})
                                             }
                                             else{
                                                

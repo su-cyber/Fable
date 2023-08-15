@@ -69,7 +69,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                         await profileModel.updateOne({userID:authorId},foundProfile)
         
                                                     })
-                                                    await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
+                                                    await interaction.reply({content:`${userQuantity} ${foundObject.name.name}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
                                                     
                                                 }
                                                 else{
@@ -99,7 +99,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                         await profileModel.updateOne({userID:authorId},foundProfile)
         
                                                     })
-                                                    await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
+                                                    await interaction.reply({content:`${userQuantity} ${foundObject.name.name}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
                                                     
                                                 }
                                                 else{
@@ -129,7 +129,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                         await profileModel.updateOne({userID:authorId},foundProfile)
         
                                                     })
-                                                    await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
+                                                    await interaction.reply({content:`${userQuantity} ${foundObject.name.name}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
                                                     
                                                 }
                                                 else{
@@ -225,7 +225,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                     await profileModel.updateOne({userID:authorId},foundProfile)
     
                                                 })
-                                                await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
+                                                await interaction.reply({content:`${userQuantity} ${foundObject.name.name}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
                                                 
                                             }
                                             else{
@@ -255,7 +255,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                     await profileModel.updateOne({userID:authorId},foundProfile)
     
                                                 })
-                                                await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
+                                                await interaction.reply({content:`${userQuantity} ${foundObject.name.name}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
                                                 
                                             }
                                             else{
@@ -285,7 +285,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                     await profileModel.updateOne({userID:authorId},foundProfile)
     
                                                 })
-                                                await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
+                                                await interaction.reply({content:`${userQuantity} ${foundObject.name.name}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
                                                 
                                             }
                                             else{
@@ -381,7 +381,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                 await profileModel.updateOne({userID:authorId},foundProfile)
 
                                             })
-                                            await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
+                                            await interaction.reply({content:`${userQuantity} ${foundObject.name.name}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
                                             
                                         }
                                         else{
@@ -411,7 +411,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                 await profileModel.updateOne({userID:authorId},foundProfile)
 
                                             })
-                                            await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
+                                            await interaction.reply({content:`${userQuantity} ${foundObject.name.name}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
                                             
                                         }
                                         else{
@@ -441,7 +441,7 @@ export default new MyCommandSlashBuilder({ name: 'sell', description: 'sell any 
                                                 await profileModel.updateOne({userID:authorId},foundProfile)
 
                                             })
-                                            await interaction.reply({content:`${userQuantity} ${userobject}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
+                                            await interaction.reply({content:`${userQuantity} ${foundObject.name.name}(s) has been sold for ${selling_price*userQuantity}🪙 successfully!`})
                                             
                                         }
                                         else{

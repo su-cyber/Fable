@@ -91,7 +91,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                     }
                                     }
                                     
-                                    await interaction.reply({content:`${userobject} has been unequipped successfully!`})
+                                    await interaction.reply({content:`${foundObject.name} has been unequipped successfully!`})
                                 
                                 
                             }
@@ -133,7 +133,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                                 const index = foundUser.passiveskills.indexOf(foundSkill)
                                                 foundUser.passiveskills.splice(index,1)
                                             }
-                                            await interaction.reply({content:`${userobject} has been unequipped successfully!`})
+                                            await interaction.reply({content:`${foundObject.name} has been unequipped successfully!`})
                                         
                                         await inventory.updateOne({userID:authorId},foundProfile)
                                         await profileModel.updateOne({userID:authorId},foundUser)
@@ -174,7 +174,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                                 foundUser.passiveskills.splice(index,1)
                                             }
                                             await profileModel.updateOne({userID:authorId},foundUser)
-                                            await interaction.reply({content:`${userobject} has been unequipped successfully!`})
+                                            await interaction.reply({content:`${foundObject.name} has been unequipped successfully!`})
                                         await inventory.updateOne({userID:authorId},foundProfile)
                                         }
                                         

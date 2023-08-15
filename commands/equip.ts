@@ -64,7 +64,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                     foundProfile.magicPower+=foundObject.name.damage
                                                 }
                                                 
-                                                await interaction.reply({content:`${userobject} has been equipped successfully!`})
+                                                await interaction.reply({content:`${foundObject.name.name} has been equipped successfully!`})
                                      
                                             }
                                             else{
@@ -83,7 +83,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                     
                                                     
                                                    
-                                                    await interaction.reply({content:`${userobject} has been equipped successfully!\n${foundObject.name.skills[0].name} has been added to your skill cycle!`})
+                                                    await interaction.reply({content:`${foundObject.name.name} has been equipped successfully!\n\n${foundObject.name.skills[0].name} has been added to your skill cycle!`})
                                                     }
                                                     else{
                                                         foundProfile.allskills.push(foundObject.name.skills[0])
@@ -96,7 +96,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                         else if(foundObject.name.type == "ranged"){
                                                             foundProfile.magicPower+=foundObject.name.damage
                                                         }
-                                                        await interaction.reply({content:`${userobject} has been equipped successfully!\n${foundObject.name.skills[0].name} has been added to your skill list!`})
+                                                        await interaction.reply({content:`${foundObject.name.name} has been equipped successfully!\n${foundObject.name.skills[0].name} has been added to your skill list!`})
                                                     }
                                                 
                                      
@@ -138,7 +138,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                     foundProfile.speed += foundObject.name.speed
                                                     foundProfile.vitality += foundObject.name.vitality
                                                     foundProfile.passiveskills = foundProfile.passiveskills.concat(foundObject.name.skills)
-                                                    await interaction.reply({content:`${userobject} has been equipped successfully!`})
+                                                    await interaction.reply({content:`${foundObject.name.name} has been equipped successfully!`})
                                                     await inventory.updateOne({userID:authorId},foundUser)
                                                     await profileModel.updateOne({userID:authorId},foundProfile)
                                                 }
@@ -170,7 +170,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                             }
                                                         foundProfile.items.push(foundObject.name)
                                                         foundProfile.passiveskills = foundProfile.passiveskills.concat(foundObject.name.skills)
-                                                        await interaction.reply({content:`${userobject} has been equipped successfully!`})
+                                                        await interaction.reply({content:`${foundObject.name.name} has been equipped successfully!`})
                                                     }
                                                     else{
                                                         
