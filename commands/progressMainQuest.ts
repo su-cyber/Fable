@@ -559,7 +559,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 },
                                 {
                                     name: `Rewards`,
-                                    value:`**Obtained a new title: "Hero of Aube"\nYou recieved 15 Merit**`
+                                    value:`**Obtained a new title: "Hero of Aube"\n\nYou recieved 15 Merit**\n\nRecieved Letter of Recommendation!`
                                   
                                 }
                             ])

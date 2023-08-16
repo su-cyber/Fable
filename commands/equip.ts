@@ -174,7 +174,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                     }
                                                     else{
                                                         
-                                                        interaction.reply({content:"you already have a trinket eqipped!  press /unequip to unequip that trinket",ephemeral:true})
+                                                        interaction.reply({content:"you already have a trinket equipped!  press /unequip to unequip that trinket",ephemeral:true})
                                                     }
                                                 await profileModel.updateOne({userID:authorId},foundProfile)
                                                 await inventory.updateOne({userID:authorId},foundUser)

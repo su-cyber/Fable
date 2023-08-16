@@ -54,7 +54,7 @@ export class Dropper {
     ) {
         let gainedXP=killed.xp
        profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
-        if(foundUser.items.includes(amberRing)){
+        if(foundUser.items[0].name.name == "Amber Ring"){
             gainedXP = Math.round(gainedXP + gainedXP*0.1)
         }
        })

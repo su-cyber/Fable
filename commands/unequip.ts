@@ -183,7 +183,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                 
                             }
                             else{
-                                await interaction.reply({content:`you dont have anything called ${userobject} eqipped`,ephemeral:true})
+                                await interaction.reply({content:`you dont have anything called ${userobject} equipped`,ephemeral:true})
                             }
                             await profileModel.updateOne({userID:authorId},foundUser)
                         }
