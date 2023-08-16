@@ -321,6 +321,7 @@ export class PvEDuel extends DuelBuilder {
     
                 }
                 this.attacker.skills.reverse()
+                console.log(damage_order)
                 console.log(this.attacker.skills);
                 
                 skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
