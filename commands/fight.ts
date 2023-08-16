@@ -311,11 +311,18 @@ export class PvEDuel extends DuelBuilder {
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element)
+                    console.log("before mod",skill_dmg);
+                    
                     skill_dmg = skill_dmg * mod
                     damage_order.push(skill_dmg)
                     damage_order.sort(function(a,b){return a - b})
                     const index = damage_order.indexOf(skill_dmg)
                     this.attacker.skills.splice(index,0,val)
+                    console.log("after mod",skill_dmg);
+                    console.log("mod",mod);
+                    
+                    
+                    
                     
                     
     
