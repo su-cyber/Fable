@@ -311,6 +311,10 @@ export class PvEDuel extends DuelBuilder {
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element)
+                    console.log("skill element",val.element);
+                    console.log("defender element",this.defender.element);
+                    
+                    
                     console.log("before mod",skill_dmg);
                     
                     skill_dmg = skill_dmg * mod
