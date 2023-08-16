@@ -56,9 +56,11 @@ export class Dropper {
        
         
        profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
+        console.log(foundUser.items[0].name);
         
         if(foundUser.items[0].name == "Amber Ring"){
             gainedXP = Math.round(gainedXP + gainedXP*0.1)
+            console.log(gainedXP);
             
             
         }
