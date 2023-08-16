@@ -52,15 +52,20 @@ export class Dropper {
         killed: MonsterEntity,
         killer: Entity
     ) {
-        let gainedXP=killed.xp
+        
        
-        
+        var gainedXP=killed.xp
        profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
-        
         
         if(foundUser.items[0].name == "Amber Ring"){
             gainedXP = Math.round(gainedXP + gainedXP*0.1)
+            
+            
         }
+        foundUser.xp+=gainedXP
+        await profileModel.updateOne({userID:interaction.user.id},{xp:foundUser.xp})
+       })
+
         const coins = formatMoney(randfloat(1, 1e8, 3), 3)
         const drop = this.drop()
         const text = `
@@ -87,11 +92,6 @@ export class Dropper {
         .setDescription(`${removeIndentation(text)}`)
         // await (interaction.client.channels.cache.get(`996424956428689518`) as TextChannel).send({embeds:[deathEmbed]})
         await interaction.channel.send({embeds:[deathEmbed]})
-        
-            foundUser.xp+=gainedXP
-            await profileModel.updateOne({userID:interaction.user.id},{xp:foundUser.xp})
-       })
-        
         
     }
 
