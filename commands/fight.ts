@@ -310,7 +310,7 @@ export class PvEDuel extends DuelBuilder {
                         skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
                     }
                     
-                    let mod = calculateModifier(val.element,this.defender.element)
+                    let mod = calculateModifier(val.element,this.defender.element.toLowerCase())
                     console.log("skill element",val.element);
                     console.log("defender element",this.defender.element);
                     
@@ -369,7 +369,7 @@ export class PvEDuel extends DuelBuilder {
                         skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
                     }
                     
-                    let mod = calculateModifier(val.element,this.defender.element)
+                    let mod = calculateModifier(val.element,this.defender.element.toLowerCase())
                     skill_dmg = skill_dmg * mod
                     damage_order.push(skill_dmg)
                     damage_order.sort(function(a,b){return a - b})
@@ -408,7 +408,7 @@ export class PvEDuel extends DuelBuilder {
                     skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
                 }
                 
-                let mod = calculateModifier(val.element,this.defender.element)
+                let mod = calculateModifier(val.element,this.defender.element.toLowerCase())
                 skill_dmg = skill_dmg * mod
                 damage_order.push(skill_dmg)
                 damage_order.sort(function(a,b){return a - b})
