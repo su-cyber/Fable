@@ -3,6 +3,7 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { treemickBranch } from '../../items/treemickBranch'
+import { calculateModifier } from '../../../../commands/fight'
 
 export class Treemick extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -24,18 +25,18 @@ export class Treemick extends MonsterEntity {
             name: 'Treemick',
             description:`Small stump like monsters who attack with wood splinters protruding from their bodies`,
             spawnRate: 0.8,
-            health: 50,
+            health: 80,
             mana:0,
             xp: 7,
             evasion: 0.05,
-            attackDamage: 15,
+            attackDamage: 18,
             magicPower: 0,
             fileName:'treemick.jpeg',
             run_chance: 0.02,
-            armor: 5,
-            speed: 12,
+            armor: 8,
+            speed: 18,
             element:"bloom",
-            magicResistance: 3,
+            magicResistance: 8,
             passive_skills:[],
             skills: [
                 {
@@ -45,13 +46,14 @@ export class Treemick extends MonsterEntity {
                     canEvade: true,
                     damage:20,
                     type: 'physical',
-                    element:"normal", 
+                    element:"bloom", 
                     mana_cost: 0,
                     use: (attacker, defender) =>{
+                        let mod = calculateModifier("bloom",defender.element.toLowerCase())
                         attacker.addLogMessage(`${attacker.name} used Wood Spike`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*20)
-                            .run(damage => `${defender.name} lost ${damage} HP by Wood Spike`)
+                            .physical(attacker.attackDamage*20*mod)
+                            .run(damage => `${defender.name} lost ${damage} HP by Wood Spikes`)
                     }
                 },
             ],

@@ -24,18 +24,18 @@ export class fieldMould extends MonsterEntity {
             name: 'Field Mould',
             description:`A fungus that usually grows upon dead crops and has poisonous spores. They are hostile to any living creature that approaches them, they are immobile and their spores are not fatal. Any living thing killed by their spores become a host for new molds`,
             spawnRate: 0.1,
-            health: 50,
+            health: 60,
             mana:0,
             fileName:'fieldmold.jpeg',
             xp: 7,
-            evasion: 0.03,
+            evasion: 0,
             attackDamage: 0,
-            magicPower: 4,
+            magicPower: 8,
             run_chance: 0.02,
-            armor: 7,
-            speed: 1,
+            armor: 14,
+            speed: 2,
             element:"venom",
-            magicResistance: 8,
+            magicResistance: 16,
             passive_skills:[],
             skills: [
                 {
@@ -45,9 +45,46 @@ export class fieldMould extends MonsterEntity {
                     canEvade: true,
                     damage:15,
                     type: 'magical',
-                    element:"normal", 
+                    element:"venom",
                     mana_cost: 0,
                     use: (attacker, defender) =>{
+                        let mod
+            if(defender.element == "flame"){
+                mod  = 1
+            }
+            else if(defender.element == "light"){
+                mod  = 0.5
+            }
+            else if(defender.element == "volt"){
+                mod  = 1
+            }
+            else if(defender.element == "wave"){
+                mod  = 1
+            }
+            else if(defender.element == "frost"){
+                mod  = 1
+            }
+            else if(defender.element == "gale"){
+                mod  = 1
+            }
+            else if(defender.element == "bloom"){
+                mod  = 2
+            }
+            else if(defender.element == "terra"){
+                mod  = 2
+            }
+            else if(defender.element == "alloy"){
+                mod  = 2
+            }
+            else if(defender.element == "venom"){
+                mod  = 0.5
+            }
+            else if(defender.element == "draco"){
+                mod  = 0.5
+            }
+            else if(defender.element == "ruin"){
+                mod  = 1
+            }
                         attacker.addLogMessage(`${attacker.name} used Toxic Spores`)
                         defender.takeDamage
                             .magical(attacker.magicPower*15)

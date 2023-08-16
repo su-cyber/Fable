@@ -26,7 +26,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                         new MessageButton().setCustomId("magic_power").setStyle("PRIMARY").setLabel("ARCANA"),
                         new MessageButton().setCustomId("durability").setStyle("PRIMARY").setLabel("ENDURANCE"),
                         new MessageButton().setCustomId("speed").setStyle("PRIMARY").setLabel("AGILITY"),
-                        new MessageButton().setCustomId("magic_resistance").setStyle("PRIMARY").setLabel("INTELLIGENCE"),
+                        new MessageButton().setCustomId("magic_resistance").setStyle("PRIMARY").setLabel("KNOWLEDGE"),
                     ])
                 
                     let btn_cancel = new MessageActionRow().addComponents([

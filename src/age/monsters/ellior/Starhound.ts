@@ -3,6 +3,7 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { starHound_tooth } from '../../items/starHound_tooth'
+import { calculateModifier } from '../../../../commands/fight'
 
 export class starHound extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -24,18 +25,18 @@ export class starHound extends MonsterEntity {
             name: 'Starhound',
             description:`A sleek, wolf-like creature with shimmering silver fur and bright, glowing eyes. The Starhound is fast and agile, able to run at incredible speeds through the forest. Its skill is to emit a bright, blinding light that can disorient its prey. Its drop is a Starhound tooth, which is highly valued for its ability to enhance magical spells.`,
             spawnRate: 0.2,
-            health: 90,
+            health: 220,
             mana:0,
             xp: generateXP(20,23),
             evasion: 0.05,
             attackDamage: 10,
             fileName:'starhound.jpeg',
-            magicPower: 18,
+            magicPower: 36,
             run_chance: 0.02,
-            armor: 18,
-            speed: 18,
+            armor: 26,
+            speed: 30,
             element:"light",
-            magicResistance: 16,
+            magicResistance: 26,
             passive_skills:[],
             skills: [
                 {
@@ -44,13 +45,14 @@ export class starHound extends MonsterEntity {
                     description: `Blinds and damages the enemy with an intense light`,
                     canEvade: true,
                     type: 'magical',
-                    element:"normal", 
+                    element:"light", 
                     damage:26,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
+                        let mod = calculateModifier("light",defender.element)
                         attacker.addLogMessage(`${attacker.name} used Blinding Light`)
                         defender.takeDamage
-                            .magical(attacker.attackDamage*26)
+                            .magical(attacker.attackDamage*26*mod)
                             .run(damage => `${defender.name} lost ${damage} HP by Blinding Light`)
                     }
                 },

@@ -3,6 +3,7 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { glowingEssence } from '../../items/glowingEssence'
+import { calculateModifier } from '../../../../commands/fight'
 
 export class Moonwisp extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -24,16 +25,16 @@ export class Moonwisp extends MonsterEntity {
             name: 'Moonwisp',
             description:`A small, glowing creature that floats through the forest on a trail of mist. The Moonwisp can be mischievous and lead travelers astray. Its skill is to create illusions that can confuse and disorient its prey. Its drop is a vial of its glowing essence, which can be used in healing potions.`,
             spawnRate: 0.35,
-            health: 80,
+            health: 120,
             mana:0,
             xp: generateXP(15,18),
             evasion: 0.05,
             attackDamage: 5,
             fileName:'moonwisp.jpeg',
-            magicPower: 15,
+            magicPower: 30,
             run_chance: 0.02,
-            armor: 10,
-            speed: 15,
+            armor: 11,
+            speed: 22,
             element:"light",
             magicResistance: 20,
             passive_skills:[],
@@ -44,13 +45,14 @@ export class Moonwisp extends MonsterEntity {
                     description: `puts the opponent in a state of illusion`,
                     canEvade: true,
                     type: 'magical',
-                    element:"normal", 
+                    element:"light", 
                     damage:22,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
+                        let mod = calculateModifier("light",defender.element)
                         attacker.addLogMessage(`${attacker.name} used Wisp Illusion`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*22)
+                            .magical(attacker.magicPower*22*mod)
                             .run(damage => `${defender.name} lost ${damage} HP by mental trauma caused by illusion`)
                     }
                 },

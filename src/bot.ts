@@ -54,7 +54,7 @@ class Bot extends Client {
                                     let i = foundUser.level+1
                                     if(foundUser.xp>=xpFormulate(i) && foundUser.level<i){
                                         let sp=3
-                                        foundUser.vitality+=5
+                                        foundUser.vitality+=3
                                         foundUser.health = getHealth(i,foundUser.vitality)
                                         let levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')

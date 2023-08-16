@@ -3,7 +3,7 @@ const Weaponskills = [{
     name: 'Wave Slash',
     description: 'wave elemental slash',
     canEvade: true,
-    type: 'physical',
+    type: 'magical',
     damage:45,
     element:"wave",
     mana_cost: 3,
@@ -47,7 +47,7 @@ mod  = 1
 }
         attacker.addLogMessage(`**${attacker.name}** used Wave Slash`)
         defender.takeDamage
-            .physical((attacker.attackDamage*45)*mod)
+            .magical((attacker.magicPower*45)*mod)
             .run(damage => `**${defender.name}** lost ${damage} HP by a fast water imbued slash`)
     }
 },{

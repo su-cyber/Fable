@@ -24,16 +24,16 @@ export class captainCrook extends MonsterEntity {
             name: 'Captain Crook',
             description:`the leader of Beer Buccaneers`,
             spawnRate: 0.5,
-            health: 120,
+            health: 145,
             mana:4,
             xp: generateXP(25,30),
             evasion: 0.05,
-            attackDamage: 20,
+            attackDamage: 18,
             fileName:'captaincrook.jpeg',
-            magicPower: 20,
+            magicPower: 21,
             run_chance: 0.02,
             armor: 15,
-            speed: 15,
+            speed: 20,
             element:"wave",
             magicResistance: 15,
             passive_skills:[],
@@ -102,7 +102,7 @@ export class captainCrook extends MonsterEntity {
             }
             attacker.addLogMessage(`**${attacker.name}** used Wave Slash`)
             defender.takeDamage
-                .magical((attacker.attackDamage*35)*mod)
+                .magical((attacker.magicPower*35)*mod)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a fast water imbued slash`)
                     }
                 },

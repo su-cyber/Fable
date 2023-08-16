@@ -321,6 +321,8 @@ export class PvEDuel extends DuelBuilder {
     
                 }
                 this.attacker.skills.reverse()
+                console.log(this.attacker.skills);
+                
                 skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
                             if(skill){
                                 this.attacker.useSkill(this.attacker,this.defender,skill)
@@ -713,7 +715,7 @@ class PvEDuel_Quest extends PvEDuel {
 
 }
 
-function calculateModifier(skill_element: string,defender_element: string){
+export function calculateModifier(skill_element: string,defender_element: string){
     let mod
     if(skill_element == null){
         mod = 1

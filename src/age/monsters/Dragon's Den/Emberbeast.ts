@@ -3,6 +3,7 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { emberScale } from '../../items/Emberscale'
+import { calculateModifier } from '../../../../commands/fight'
 
 export class Emberbeast extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -24,7 +25,7 @@ export class Emberbeast extends MonsterEntity {
             name: 'Emberbeast',
             description:`A fearsome creature with smoldering red scales and flaming spines, the Emberbeast breathes jets of searing flames that engulf its foes. It charges with scorching speed, leaving trails of fire in its wake. Its drop is an Ember Scale, a fire-imbued scale renowned for its use in forging powerful flame-based weapons.`,
             spawnRate: 0.35,
-            health: 100,
+            health: 160,
             mana:0,
             fileName:'emberbeast.jpeg',
             xp: generateXP(26,30),
@@ -32,10 +33,10 @@ export class Emberbeast extends MonsterEntity {
             attackDamage: 35,
             magicPower: 10,
             run_chance: 0.02,
-            armor: 15,
-            speed: 25,
+            armor: 21,
+            speed: 30,
             element:"flame",
-            magicResistance: 10,
+            magicResistance: 16,
             passive_skills:[],
             skills: [
                 {
@@ -44,13 +45,14 @@ export class Emberbeast extends MonsterEntity {
                     description: `Breathes jet of flames`,
                     canEvade: true,
                     type: 'physical',
-                    element:"normal", 
+                    element:"flame", 
                     damage:26,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
+                        let mod = calculateModifier("flame",defender.element)
                         attacker.addLogMessage(`${attacker.name} used Jet Flame`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*26)
+                            .physical(attacker.attackDamage*26*mod)
                             .run(damage => `${defender.name} lost ${damage} HP by a jet of scorching flames`)
                     }
                 },
