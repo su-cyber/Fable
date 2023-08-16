@@ -55,7 +55,7 @@ export class Dropper {
         let gainedXP=killed.xp
        
         
-       const finalexp = await profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
+       const finalexp = profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
         if(foundUser.items[0].name == "Amber Ring"){
             gainedXP = Math.round(gainedXP + gainedXP*0.1)
             
@@ -117,7 +117,7 @@ export class Dropper {
                     }
                     foundUser.inventory.items.push(newItem)
                 }
-                await profileModel.findOne({userID:interaction.user.id},async function(err,foundProfile){
+                profileModel.findOne({userID:interaction.user.id},async function(err,foundProfile){
 
             
             
