@@ -54,15 +54,14 @@ export class Dropper {
     ) {
         let gainedXP=killed.xp
        
-        
-       const finalexp = profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
+    const query =  profileModel.findOne({userID:interaction.user.id})
+    const foundUser = await query.exec()
         if(foundUser.items[0].name == "Amber Ring"){
             gainedXP = Math.round(gainedXP + gainedXP*0.1)
             
         }
-        return gainedXP
-       })
-       console.log(finalexp);
+        
+       console.log(gainedXP);
        
         const coins = formatMoney(randfloat(1, 1e8, 3), 3)
         const drop = this.drop()
@@ -72,7 +71,7 @@ export class Dropper {
             ${drop ? sample(withDropMessages)  : sample(withoutDropMessages)}
 
 
-            You gained ${finalexp} XP!
+            You gained ${gainedXP} XP!
             
             ${drop ? `You found ${drop.name}! 
             ${drop.emoji} X ${1}` : ''}
@@ -90,7 +89,7 @@ export class Dropper {
         .setDescription(`${removeIndentation(text)}`)
         // await (interaction.client.channels.cache.get(`996424956428689518`) as TextChannel).send({embeds:[deathEmbed]})
         await interaction.channel.send({embeds:[deathEmbed]})
-        await profileModel.updateOne({userID:interaction.user.id},{$inc:{xp:finalexp}})
+        await profileModel.updateOne({userID:interaction.user.id},{$inc:{xp:gainedXP}})
 
             
         
