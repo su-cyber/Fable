@@ -56,12 +56,14 @@ export class Dropper {
        
     const query =  profileModel.findOne({userID:interaction.user.id})
     const foundUser = await query.exec()
+    if(foundUser.items.length != 0){
         if(foundUser.items[0].name == "Amber Ring"){
             gainedXP = Math.round(gainedXP + gainedXP*0.1)
             
         }
+    }
         
-       console.log(gainedXP);
+        
        
         const coins = formatMoney(randfloat(1, 1e8, 3), 3)
         const drop = this.drop()
