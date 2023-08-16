@@ -151,7 +151,7 @@ mod  = 1
         }
         attacker.addLogMessage(`${attacker.name} used Electro Burst`)
         defender.takeDamage
-            .magical((attacker.magicDamage*30)*mod)
+            .magical((attacker.magicPower*30)*mod)
             .run(damage => `${defender.name} lost ${damage} HP by a barrage of lightning imbued Bolts`)
     }
 },{
