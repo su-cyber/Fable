@@ -52,20 +52,16 @@ export class Dropper {
         killed: MonsterEntity,
         killer: Entity
     ) {
-        
+        let gainedXP=killed.xp
        
-        var gainedXP=killed.xp
-       profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
         
+       const finalexp = await profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
         if(foundUser.items[0].name == "Amber Ring"){
             gainedXP = Math.round(gainedXP + gainedXP*0.1)
             
-            
         }
-        foundUser.xp+=gainedXP
-        await profileModel.updateOne({userID:interaction.user.id},{xp:foundUser.xp})
+        return gainedXP
        })
-
         const coins = formatMoney(randfloat(1, 1e8, 3), 3)
         const drop = this.drop()
         const text = `
@@ -74,7 +70,7 @@ export class Dropper {
             ${drop ? sample(withDropMessages)  : sample(withoutDropMessages)}
 
 
-            You gained ${gainedXP} XP!
+            You gained ${finalexp} XP!
             
             ${drop ? `You found ${drop.name}! 
             ${drop.emoji} X ${1}` : ''}
@@ -92,7 +88,10 @@ export class Dropper {
         .setDescription(`${removeIndentation(text)}`)
         // await (interaction.client.channels.cache.get(`996424956428689518`) as TextChannel).send({embeds:[deathEmbed]})
         await interaction.channel.send({embeds:[deathEmbed]})
-        
+        profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
+            foundUser.xp+=finalexp
+            await profileModel.updateOne({userID:interaction.user.id},{xp:foundUser.xp})
+        })
     }
 
     async addItem(interaction:CommandInteraction,drop:Item,quantity:number){
