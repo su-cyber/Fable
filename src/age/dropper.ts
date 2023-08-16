@@ -88,7 +88,7 @@ export class Dropper {
         .setDescription(`${removeIndentation(text)}`)
         // await (interaction.client.channels.cache.get(`996424956428689518`) as TextChannel).send({embeds:[deathEmbed]})
         await interaction.channel.send({embeds:[deathEmbed]})
-        profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
+        await profileModel.findOne({userID:interaction.user.id},async function(err,foundUser){
             foundUser.xp+=finalexp
             await profileModel.updateOne({userID:interaction.user.id},{xp:foundUser.xp})
         })
