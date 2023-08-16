@@ -64,6 +64,7 @@ export class captainCrook extends MonsterEntity {
                     mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod
+                        defender.element = defender.element.toLowerCase()
             if(defender.element == "flame"){
                 mod  = 2
             }

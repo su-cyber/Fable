@@ -49,6 +49,7 @@ export class Emberbeast extends MonsterEntity {
                     damage:26,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
+                        defender.element = defender.element.toLowerCase()
                         let mod = calculateModifier("flame",defender.element)
                         attacker.addLogMessage(`${attacker.name} used Jet Flame`)
                         defender.takeDamage

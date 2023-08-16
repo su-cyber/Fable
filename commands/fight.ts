@@ -59,7 +59,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                 attacker.magicResistance = foundUser.magicResistance
                                 attacker.magicPower=foundUser.magicPower
                                 attacker.attackDamage=foundUser.attackDamage
-                                attacker.element = foundUser.elements[0].toLowerCase()
+                                attacker.element = foundUser.elements[0].toLowerCase();
                                 attacker.evasion=foundUser.evasion
                                 attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
                                 attacker.passive_skills = foundUser.passiveskills
@@ -84,7 +84,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                
                                     attacker.skills=foundUser.currentskills
                                 
-                                
+                                    attacker.element = attacker.element.toLowerCase()
                                     
                                    
                                 
@@ -311,19 +311,12 @@ export class PvEDuel extends DuelBuilder {
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element.toLowerCase())
-                    console.log("skill element",val.element);
-                    console.log("defender element",this.defender.element);
-                    
-                    
-                    console.log("before mod",skill_dmg);
                     
                     skill_dmg = skill_dmg * mod
                     damage_order.push(skill_dmg)
                     damage_order.sort(function(a,b){return a - b})
                     const index = damage_order.indexOf(skill_dmg)
                     this.attacker.skills.splice(index,0,val)
-                    console.log("after mod",skill_dmg);
-                    console.log("mod",mod);
                     
                     
                     
@@ -332,8 +325,7 @@ export class PvEDuel extends DuelBuilder {
     
                 }
                 this.attacker.skills.reverse()
-                console.log(damage_order)
-                console.log(this.attacker.skills);
+                
                 
                 skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
                             if(skill){

@@ -49,6 +49,7 @@ export class Gildedwyvern extends MonsterEntity {
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         let mod
+                        defender.element = defender.element.toLowerCase()
             if(defender.element == "flame"){
                 mod  = 0.5
             }
