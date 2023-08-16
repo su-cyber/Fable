@@ -62,6 +62,8 @@ export class Dropper {
         }
         return gainedXP
        })
+       console.log(finalexp);
+       
         const coins = formatMoney(randfloat(1, 1e8, 3), 3)
         const drop = this.drop()
         const text = `
@@ -115,7 +117,7 @@ export class Dropper {
                     }
                     foundUser.inventory.items.push(newItem)
                 }
-                profileModel.findOne({userID:interaction.user.id},async function(err,foundProfile){
+                await profileModel.findOne({userID:interaction.user.id},async function(err,foundProfile){
 
             
             
