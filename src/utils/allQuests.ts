@@ -44,21 +44,21 @@ const allQuests = [{
     description:"The prologue and tutorial",
     quest_id:"Tutorial",
     rewards:"Letter of Recommendation",
-    info:"As the Nightmare's tendrils stretched across the southern realm, you raced towards the nearest bastion of safety. Yet, as despair settled upon you like a shroud, an unexpected savior emerged from the shadows - Mr. Briggs, an old acquaintance. Emerging from a fitful slumber, you awoke to find yourself nestled within the comforting embrace of Aube Town.\nA new Road and a new life awaits you!"
+    info:`After a Nightmare emerged, you took shelter in Aube Town and decided to stay with Mr. Briggs. At that time, you got involved with the neafrious Beer Buccaneers who were terrorizing Aube. After the incident, you come across Mr. Sebas, a retired Ajin who shows you your true potential and guides you on a new path.`
 
 },{
     name:"A New Road",
     description:"Zorya Arc starts",
     quest_id:"KS-ZS-MQ1",
     rewards:"Ranger Licence",
-    info:"You find yourself bidding farewell to familiar faces and setting foot in the State of Zorya. Your ultimate goal is crystal clear: to reach the Colosseum in the Guild District and participate in the highly anticipated annual Guild Draft, armed with your precious letter of recommendation."
+    info:`After bidding your farewells to Mr. Briggs and Emyr, you now seek out the Guild Colosseum in Zorya to take part in the Annual Guild Draft and become a proud Ranger of the Ranger's Association. The tests it will throw towards you will be perilious, but at the end, it will all be worth it.`
 
 },{
     name:"New Home",
     description:"Werfall Arc",
     quest_id:"KS-ZS-MQ2",
     rewards:"???",
-    info:"You find yourself in the bustling Ranger Street, seeking out your Guild's office. After being welcomed and receiving the Ranger Rulebook and License, you are tasked with a mission to the dangerous Township of Werfall.What awaits you in Werfall is unclear."
+    info:`It is finally time you became a Ranger and met with fellow Rangers from your Guild. Your life has changed forever, but an important task awaits your attention.`
 
 }]
 export default allQuests
