@@ -1161,7 +1161,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                     else if(foundUser.main_quest == "KS-ZS-MQ2"){
 
                         if(foundUser.main_quest_phase == "1"){
-                            if(foundUser.location == "Guild District"){
+                            if(foundUser.location == "Guild Office"){
                                 const guild = foundUser.guild
                                 let questEmbed = new MessageEmbed()
                                 .setColor('RANDOM')
@@ -1188,7 +1188,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             
                         }
                         else if(foundUser.main_quest_phase == "2"){
-                            if(foundUser.location == "Guild District"){
+                            if(foundUser.location == "Guild Office"){
                                 
                                 let questEmbed = new MessageEmbed()
                                 .setColor('RANDOM')

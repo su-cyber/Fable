@@ -28,18 +28,18 @@ export class Droner extends MonsterEntity {
             name: 'Droner',
             description:`Insects about the size of an average human hand who make a loud droning sound and feed on the nectar of Rayleigh Flowers. Although not hostile, they don't hesitate to attack humans when disturbed and their sting is said to make an average human unconscious for hours.`,
             spawnRate: 0.2,
-            health: 80,
+            health: 60,
             mana:0,
             xp: 9,
             evasion: 0.03,
             attackDamage: 0,
             fileName:'droner.jpeg',
-            magicPower: 16,
+            magicPower: 14,
             run_chance: 0.02,
-            armor: 10,
-            speed: 18,
+            armor: 8,
+            speed: 14,
             element:"venom",
-            magicResistance: 8,
+            magicResistance: 6,
             passive_skills:[],
             skills: [
                 {
@@ -53,6 +53,7 @@ export class Droner extends MonsterEntity {
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         let mod
+                        defender.element = defender.element.toLowerCase()
             if(defender.element == "flame"){
                 mod  = 1
             }

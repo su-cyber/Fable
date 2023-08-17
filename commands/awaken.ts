@@ -335,7 +335,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 else if(btn.customId == "prologue_accept"){
                     
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.channel.send({content: null,embeds:[acceptEmbed],components:[],files:[]})
+                                        await interaction.editReply({content: null,embeds:[acceptEmbed],components:[],files:[]})
                                         collector.stop()
                                 }
                                

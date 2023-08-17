@@ -31,12 +31,12 @@ export class Moonwisp extends MonsterEntity {
             evasion: 0.05,
             attackDamage: 5,
             fileName:'moonwisp.jpeg',
-            magicPower: 30,
+            magicPower: 28,
             run_chance: 0.02,
-            armor: 11,
-            speed: 22,
+            armor: 10,
+            speed: 25,
             element:"light",
-            magicResistance: 20,
+            magicResistance: 22,
             passive_skills:[],
             skills: [
                 {

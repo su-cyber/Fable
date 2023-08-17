@@ -24,7 +24,7 @@ export class  Fiskille extends MonsterEntity {
             name: 'Fiskille',
             description:`The Opponent in Guild Draft`,
             spawnRate: 0.35,
-            health: 145,
+            health: 120,
             mana:3,
             xp: generateXP(15,18),
             evasion: 0.05,
