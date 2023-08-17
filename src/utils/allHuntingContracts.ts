@@ -17,7 +17,7 @@ const hunting_contracts = [{
     target:"Mud Crawler",
     rewards:{
         coins:150,
-        merit:15
+        merit:35
     },
     info:"The Ranger Association has put up a contract to eliminate 3 Mudcrawlers as crofters are having difficulties in farming the Castellan Fields due to an onslaught of Mudcrawlers"
 

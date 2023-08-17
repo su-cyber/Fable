@@ -2,8 +2,8 @@ import { Weapon } from "../classes/weapon";
 
 export const gilthunder_spear = new Weapon({
     id: 'weapon__gilthunder_spear',
-    name: `Gilthunder's Spear`,
-    description: `A weapon owned by Gilthunder.`,
+    name: `Rusted Spear`,
+    description: `+4 Vigour|A weapon owned by Gilthunder in his prime but has since lost it's glory.`,
     damage:4,
     type:'melee',
     cost:1000,

@@ -34,7 +34,7 @@ export class  Spectraling extends MonsterEntity {
             run_chance: 0.02,
             armor: 2,
             speed: 28,
-            element:"normal",
+            element:"gale",
             magicResistance: 24,
             passive_skills:[],
             skills: [

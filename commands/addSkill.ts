@@ -39,7 +39,7 @@ export default new MyCommandSlashBuilder({ name: 'addskill', description: 'add a
                                    }
                                 foundUser.currentskills.unshift(skill)
                                    await profileModel.updateOne({userID:authorId},{currentskills:foundUser.currentskills})
-                                   interaction.reply(`${foundskill.name} has been added to your skill cycle!`)
+                                   await interaction.reply(`${foundskill.name} has been added to your skill cycle!`)
                                 }
                                 else{
 

@@ -21,11 +21,25 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
                         }
                         else{
                             const mappedcskills=foundUser.currentskills.map((skill) => {
-                                return `${skill.name} - ${skill.description}`
+                                let use
+                                if(skill.type == "physical"){
+                                    use = `Uses Vigour`
+                                }
+                                else{
+                                    use = `Uses Arcana`
+                                }
+                                return `${skill.name} - ${skill.description}\n**(${use})**`
                             }).join("\n\n")
                            
                             const mappedallskills=foundUser.allskills.map((skill) => {
-                                return `${skill.name} - ${skill.description}`
+                                let use
+                                if(skill.type == "physical"){
+                                    use = `Uses Vigour`
+                                }
+                                else{
+                                    use = `Uses Arcana`
+                                }
+                                return `${skill.name} - ${skill.description}\n**(${use})**`
                             }).join("\n\n")
                            
                             await interaction.reply({content:`**Current Skills:**\n${mappedcskills}\n\n**All Skills:**\n${mappedallskills}`});

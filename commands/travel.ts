@@ -690,7 +690,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             },
                                             {
                                                 name: `Township of Werfall`,
-                                                value:`**Travelled on Stage Coach**\n**Description**:The Township of Werfall\n**Cost**:500 🪙`
+                                                value:`**Travelled on Stage Coach**\n**Description**:The Township of Werfall\n**Cost**:150 🪙`
                                             },
                                            
                                         ])
@@ -736,7 +736,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             },
                                             {
                                                 name: `Township of Werfall`,
-                                                value:`**Travelled on Mount**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Mount**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**:150 🪙\n`
                                             },
                                            
                                             
@@ -912,9 +912,9 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Werfall'){
-                    if(foundUser.coins>=500 && foundUser.mount == "None"){
+                    if(foundUser.coins>=150 && foundUser.mount == "None"){
                         let successembed
-                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-500,location:"None"})
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-150,location:"None"})
                     const attachment = new MessageAttachment('assets/Werfall/werfall_main.jpg')
                     if(foundUser.completed_quests.includes("KS-ZS-MQ1")){
                     successembed = new MessageEmbed()

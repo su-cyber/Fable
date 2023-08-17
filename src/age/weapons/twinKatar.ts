@@ -3,7 +3,7 @@ import { Weapon } from "../classes/weapon";
 export const twinKatar = new Weapon({
     id: 'weapon__twinKattar',
     name: 'Twin Katars',
-    description: 'A pair of deadly katars',
+    description: '+8 Vigour|A pair of deadly katars',
     damage:8,
     type:'melee',
     cost:5000,

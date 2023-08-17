@@ -56,7 +56,7 @@ mod  = 1
     description: `A lightning imbued spear thrust.`,
     canEvade: true,
     mana_cost: 2,
-    damage:30,
+    damage:20,
     type: 'physical',
     element:"volt",
     use: (attacker, defender) =>{
@@ -108,7 +108,7 @@ mod  = 1
     description: `A lightning burst of bolts`,
     canEvade: true,
     mana_cost: 2,
-    damage:30,
+    damage:20,
     type: 'magical',
     element:"volt",
     use: (attacker, defender) =>{
