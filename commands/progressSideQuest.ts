@@ -244,10 +244,10 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 .addFields([
                                     {
                                         name: `Current Objective:`,
-                                        value:`**Go to Sunshade Forest to hunt the Treemicks\nexplore the Sunshade Forest to encounter treemicks**`
+                                        value:`**Go to Castellan Fields to hunt the Treemicks\nexplore the Castellan Fields to encounter treemicks**`
                                     }
                                 ])
-                                .setDescription(`The local Solarii are having trouble cutting down Sunshade Trees in Sunshade Forest, due to a wild group of Treemics that have mixed themselves among the leftover tree stumps. Whenever a person traverses near the tree stumps’, the Treemics attack them. Hunt Them down.\n\n**Bring 5 'Treemick's Branch' to Guild Outpost as proof**`)
+                                .setDescription(`The local Solarii are having trouble cutting down Sunshade Trees in Castellan Fields, due to a wild group of Treemics that have mixed themselves among the leftover tree stumps. Whenever a person traverses near the tree stumps’, the Treemics attack them. Hunt Them down.\n\n**Bring 5 'Treemick's Branch' to Guild Outpost as proof**`)
                             
                                 await interaction.reply({embeds:[quest_embed]})
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"2"})
