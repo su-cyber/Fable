@@ -44,7 +44,7 @@ const allQuests = [{
     description:"The prologue and tutorial",
     quest_id:"Tutorial",
     rewards:"Letter of Recommendation",
-    info:`After a Nightmare emerged, you took shelter in Aube Town and decided to stay with Mr. Briggs. At that time, you got involved with the neafrious Beer Buccaneers who were terrorizing Aube. After the incident, you come across Mr. Sebas, a retired Ajin who shows you your true potential and guides you on a new path.`
+    info:`After a Nightmare emerged, you took shelter in Aube Town and decided to stay with Mr. Briggs. At that time, you got involved with the nefarious Beer Buccaneers who were terrorizing Aube. After the incident, you come across Mr. Sebas, a retired Ajin who shows you your true potential and guides you on a new path.`
 
 },{
     name:"A New Road",
