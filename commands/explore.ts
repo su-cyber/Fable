@@ -604,7 +604,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setColor('RANDOM')
                             .setTitle(`Now Exploring ${location}...`)
                             .setImage('attachment://guild_office.jpg')
-                            .setDescription(`you visited a random ${location} but were restricted entry by the Guards\n\nuse **/explore** to explore this location`)
+                            .setDescription(`You visited a random ${location} but were restricted entry by the Guards\n\nuse **/explore** to explore this location`)
                              
                         }
                         else{
