@@ -37,18 +37,10 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
             const city_town = foundUser.city_town
             if(foundUser.kingdom == "solarstrio"){
                 if(city_town == "ellior"){
-                const attachment = new MessageAttachment('assets/Zorya/ellior_forest.jpg')
-                let successembed = new MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle(`Now Exploring ${city_town}...`)
-                .setImage('attachment://ellior_forest.jpg')
-                .setDescription(`As you venture into the haunting embrace of the Ellior Forest, an unsettling chill creeps up your spine. The dense canopy above casts an oppressive gloom, obscuring the path ahead. Every rustle of leaves and hushed whisper of the wind sends shivers down your spine, as if the very air carries a sense of foreboding. Shadows dance among the gnarled trees, playing tricks on your mind. Every step forward is fraught with trepidation, for within this sinister realm, evil lurks at every corner, and the line between reality and nightmares blurs.`)
-                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
-                await sleep(2)
                     const pick = weightedRandom(["flora","monster"],[0.3,0.7])
 
                     if(pick == "flora"){
-                        await interaction.editReply({ content: '\u200b', components: [],files:[] })
+                        await interaction.reply({ content: '\u200b', components: [],files:[] })
                         const flora = (await getRandomFlora(city_town))
                         let floraEmbed = new MessageEmbed()
                             .setColor('GREEN')
@@ -90,7 +82,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                     
                     
                        
-                            await interaction.editReply({ content: '\u200b', components: [] })
+                            await interaction.reply({ content: '\u200b', components: [] })
                             const monster = (await getRandomMonster(city_town))
                             
     
@@ -179,18 +171,11 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
      
                 }
                 else if(city_town == "Castellan Fields"){
-                const attachment = new MessageAttachment('assets/AubeTown/Castellan_Fields.jpeg')
-                let successembed = new MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle(`Now Exploring ${city_town}...`)
-                .setImage('attachment://Castellan_Fields.jpeg')
-                .setDescription(`You step onto the Castellan Fields, feeling the earth beneath your feet and the gentle breeze whispering through the golden grains. The air is alive with the symphony of hard work as resilient crofters sow seeds and tend to their crops, their determination transforming mere dust into bountiful treasures. In this sea of golden splendor, you become part of a timeless cycle of growth and abundance, where the sweat of the crofters turns the humble soil into infinite prosperity.`)
-                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
-                await sleep(2)
+                
                     const pick = weightedRandom(["flora","monster"],[0.1,0.9])
 
                     if(pick == "flora"){
-                        await interaction.editReply({ content: '\u200b', components: [],files:[] })
+                        await interaction.reply({ content: '\u200b', components: [],files:[] })
                         const flora = (await getRandomFlora(city_town))
                         let floraEmbed = new MessageEmbed()
                             .setColor('GREEN')
@@ -231,7 +216,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                     
                     
                        
-                            await interaction.editReply({ content: '\u200b', components: [], })
+                            await interaction.reply({ content: '\u200b', components: [], })
                             const monster = (await getRandomMonster(city_town))
                             
     
@@ -321,18 +306,11 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
      
                 }
                 else if(city_town == "Sunshade Forest"){
-                const attachment = new MessageAttachment('assets/AubeTown/sunshade_forest.jpg')
-                let successembed = new MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle(`Now Exploring ${city_town}...`)
-                .setImage('attachment://sunshade_forest.jpg')
-                .setDescription(`As you step into the Sunshade Forest, an otherworldly hush blankets the air, shrouding the surroundings in an ominous darkness. The drought-tolerant Sunshade Trees loom overhead, their broad silver leaves reflecting scant rays of sunlight, casting a surreal glow. Each step brings a sense of trepidation, for this forest holds secrets and hidden perils. Shadows dance and whispers echo, reminding you to tread cautiously, as the beauty of the Sunshade Forest conceals the lurking dangers that lie within its enigmatic depths.`)
-                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
-                await sleep(2)
+                
                     const pick = weightedRandom(["flora","monster"],[0.3,0.7])
 
                     if(pick == "flora"){
-                        await interaction.editReply({ content: '\u200b', components: [] })
+                        await interaction.reply({ content: '\u200b', components: [] })
                         const flora = (await getRandomFlora(city_town))
                         let floraEmbed = new MessageEmbed()
                             .setColor('GREEN')
@@ -370,7 +348,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         })
                     }
                     else if(pick == "monster"){
-                            await interaction.editReply({ content: '\u200b', components: [] })
+                            await interaction.reply({ content: '\u200b', components: [] })
                             const monster = (await getRandomMonster(city_town))
                             
     
@@ -725,19 +703,11 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
             
                 }
                 else if(city_town == "Dragon's Den"){
-                const attachment = new MessageAttachment('assets/Zorya/dragon_den.jpg')
-                let successembed = new MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle(`Now Exploring ${city_town}...`)
-                .setImage('attachment://dragon_den.jpg')
-                .setDescription(`As you cautiously step into the foreboding depths of the Dragon's Den, an ancient presence lingers in the air. The cavernous expanse resonates with a sense of both awe and danger, as if the very walls hold whispered secrets of untold wealth and unspoken perils. Your gaze is drawn to the remnants of a fallen Greater Dragon, its skeletal remains a haunting reminder of the power that once commanded this domain. Every step forward is accompanied by a mix of fascination and unease, as you navigate the treacherous path in search of the legendary treasures rumored to be concealed within. In the Dragon's Den, you become an intrepid explorer, venturing into the heart of the unknown, ready to face the mysteries and dangers that lie in wait.`)
-
-                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
-                await sleep(2)
+                
                     const pick = weightedRandom(["flora","monster"],[0.3,0.7])
 
                     if(pick == "flora"){
-                        await interaction.editReply({ content: '\u200b', components: [] })
+                        await interaction.reply({ content: '\u200b', components: [] })
                         const flora = (await getRandomFlora(city_town))
                         let floraEmbed = new MessageEmbed()
                             .setColor('GREEN')
@@ -778,7 +748,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                     
                     
                        
-                            await interaction.editReply({ content: '\u200b', components: [] })
+                            await interaction.reply({ content: '\u200b', components: [] })
                             const monster = (await getRandomMonster(city_town))
                             
     

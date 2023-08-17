@@ -27,7 +27,7 @@ export class Droner extends MonsterEntity {
         return new Droner({
             name: 'Droner',
             description:`Insects about the size of an average human hand who make a loud droning sound and feed on the nectar of Rayleigh Flowers. Although not hostile, they don't hesitate to attack humans when disturbed and their sting is said to make an average human unconscious for hours.`,
-            spawnRate: 0.2,
+            spawnRate: 0.5,
             health: 60,
             mana:0,
             xp: 9,
