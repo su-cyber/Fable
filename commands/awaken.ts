@@ -35,8 +35,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Cancel"),])
                     
                         let prologuebtn= new MessageActionRow().addComponents([
-                            new MessageButton().setCustomId("prologue_accept").setStyle("PRIMARY").setLabel("Begin Tutorial"),
-                            new MessageButton().setCustomId("prologue_reject").setStyle("DANGER").setLabel("Cancel"),])
+                            new MessageButton().setCustomId("prologue_accept").setStyle("PRIMARY").setLabel("Begin Tutorial"),])
                             
                         
         
@@ -333,6 +332,12 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                     await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]})
                                     collector.stop()
                                 }
+                                else if(btn.customId == "prologue_accept"){
+                    
+                                        await btn.deferUpdate().catch(e => {})
+                                        await interaction.channel.send({content: null,embeds:[acceptEmbed],components:[],files:[]})
+                                        collector.stop()
+                                }
                                
                                 
                                 
@@ -482,9 +487,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             
                         }
                     })
-                    collector_select_class.on("end",async(btn) => {
-                        await interaction.editReply({components:[d_btnraw]})
-                    })
+                    
                         collector_select_element.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                             if(collected.customId == 'select_element'){
                                 user_elements.push(collected.values[0])
@@ -501,9 +504,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         }
                                         else{
                                             await collected.deferUpdate().catch(e => {})
-                                            await interaction.editReply({content: null,embeds:[prologueEmbed],components:[],files:[attachment2]})
-                                            await sleep(10)
-                                            await interaction.channel.send({content: null,embeds:[acceptEmbed],components:[],files:[]})
+                                            await interaction.editReply({content: null,embeds:[prologueEmbed],components:[prologuebtn],files:[attachment2]})
+                                            
                                         }
                                     })
                                    

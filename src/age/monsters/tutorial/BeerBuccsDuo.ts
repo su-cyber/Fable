@@ -8,7 +8,7 @@ import { backBreaker } from '../../items/backbreaker'
 
 export class BeerBuccsDuo extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
-    await profileModel.updateOne({userID:killer.id},{main_quest_phase:"2"})
+   
 
         const messages = {
             withoutDropMessages: ['**Press "/progressmainquest" to continue**'],

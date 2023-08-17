@@ -650,8 +650,13 @@ export class PvEDuel extends DuelBuilder {
                 
                 await profileModel.updateOne({userID:authorID},foundUser)
                 if(winner.id == authorID){
+                    if(foundUser.main_quest == "Tutorial" && foundUser.main_quest_phase == "1"){
+                        await profileModel.updateOne({userID:authorID},{health:winner.health,main_quest_phase:"2"})
+                    }
+                    else{
+                        await profileModel.updateOne({userID:authorID},{health:winner.health})
+                    }
                     
-                    await profileModel.updateOne({userID:authorID},{health:winner.health})
                     if(foundUser.quest_mob == loser.name && foundUser.quest_quantity>0){
                         foundUser.quest_quantity -=1
                         if(foundUser.quest_quantity == 0){
