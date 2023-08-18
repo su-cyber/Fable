@@ -59,8 +59,8 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         if(btn.customId === "accept"){
                                             await btn.deferUpdate().catch(e => {})
                                             
-                                const attacker = Warrior.create(author)
-                                const defender = Warrior.create(opponent)
+                                const attacker = await Warrior.create(author)
+                                const defender = await Warrior.create(opponent)
                                  profileModel.findOne({userID:authorId},async function(err,foundUser) {
                                     if(err){
                                         console.log(err);
@@ -101,23 +101,23 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                 
                                     }
                                 })
-                                profileModel.findOne({userID:opponentId},async function(err,foundUser) {
+                                profileModel.findOne({userID:opponentId},async function(err,foundOpponent) {
                                     if(err){
                                         console.log(err);
                                         
                                     }
                                     else{
-                                        defender.health=foundUser.health
-                                        defender.mana=foundUser.mana
-                                        defender.armor=foundUser.armour
-                                        defender.magicPower=foundUser.magicPower
-                                        defender.element = foundUser.elements[0].toLowerCase()
-                                        defender.attackDamage=foundUser.attackDamage
-                                        defender.evasion=foundUser.evasion
-                                        defender.maxHealth=getHealth(foundUser.level,foundUser.vitality)
-                                        defender.passive_skills = foundUser.passiveskills
-                                        defender.maxMana = foundUser.mana
-                                        defender.speed = foundUser.speed
+                                        defender.health=foundOpponent.health
+                                        defender.mana=foundOpponent.mana
+                                        defender.armor=foundOpponent.armour
+                                        defender.magicPower=foundOpponent.magicPower
+                                        defender.element = foundOpponent.elements[0].toLowerCase()
+                                        defender.attackDamage=foundOpponent.attackDamage
+                                        defender.evasion=foundOpponent.evasion
+                                        defender.maxHealth=getHealth(foundOpponent.level,foundOpponent.vitality)
+                                        defender.passive_skills = foundOpponent.passiveskills
+                                        defender.maxMana = foundOpponent.mana
+                                        defender.speed = foundOpponent.speed
                                         
                                         inventory.findOne({userID:authorId},async function(err,foundProfile) {
                                             if(foundProfile.inventory.potions.length !=0){
@@ -135,7 +135,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         })
                         
                                        
-                                        defender.skills=foundUser.currentskills
+                                        defender.skills=foundOpponent.currentskills
                                         defender.element = defender.element.toLowerCase()
                                         
                                     }

@@ -84,8 +84,8 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                         await profileModel.updateOne({userID:authorId},{allskills:foundUser.allskills})
                                     }
                                     else{
-                                        const index = foundUser.allskills.findIndex(skill => skill.name.toLowerCase() === foundskill.name.toLowerCase())
-                                        foundUser.allskills.splice(index,1)
+                                        const index3 = foundUser.allskills.findIndex(skill => skill.name.toLowerCase() === foundskill.name.toLowerCase())
+                                        foundUser.allskills.splice(index3,1)
                                         await profileModel.updateOne({userID:authorId},{allskills:foundUser.allskills})
                                    
                                     }
@@ -130,8 +130,8 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                             
                                             for(let i=0; i<foundObject.skills.length;i++){
                                                 const foundSkill = foundUser.passiveskills.find(skill => skill.name == foundObject.skills[i])
-                                                const index = foundUser.passiveskills.indexOf(foundSkill)
-                                                foundUser.passiveskills.splice(index,1)
+                                                const index2 = foundUser.passiveskills.indexOf(foundSkill)
+                                                foundUser.passiveskills.splice(index2,1)
                                             }
                                             await interaction.reply({content:`${foundObject.name} has been unequipped successfully!`})
                                         
@@ -169,10 +169,14 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                                 foundProfile.inventory.items.push(newItem)
                                             }
                                             for(let i=0; i<foundObject.skills.length;i++){
+                                                console.log(foundUser.passiveskills);
                                                 const foundSkill = foundUser.passiveskills.find(skill => skill.name == foundObject.skills[i])
-                                                const index = foundUser.passiveskills.indexOf(foundSkill)
-                                                foundUser.passiveskills.splice(index,1)
+                                                const index2 = foundUser.passiveskills.indexOf(foundSkill)
+                                                foundUser.passiveskills.splice(index2,1)
+                                                console.log(foundUser.passiveskills);
+                                                
                                             }
+                                            
                                             await profileModel.updateOne({userID:authorId},foundUser)
                                             await interaction.reply({content:`${foundObject.name} has been unequipped successfully!`})
                                         await inventory.updateOne({userID:authorId},foundProfile)
