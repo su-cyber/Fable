@@ -337,6 +337,8 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     
                                         await btn.deferUpdate().catch(e => {})
                                         await interaction.editReply({content: null,embeds:[acceptEmbed],components:[],files:[]})
+                                        const query =  profileModel.findOne({userID:interaction.user.id})
+                                        const foundUser = await query.exec()
                                         let fableLog = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('FABLE LOG')
