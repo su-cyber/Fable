@@ -75,11 +75,12 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                 attacker.element = foundUser.elements[0].toLowerCase()
                                 attacker.attackDamage=foundUser.attackDamage
                                 attacker.magicResistance = foundUser.magicResistance
+                                attacker.speed = foundUser.speed
                                 attacker.evasion=foundUser.evasion
                                 attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
                                 attacker.passive_skills = foundUser.passiveskills
                                 attacker.maxMana = foundUser.mana
-                                attacker.speed = foundUser.speed
+                                
                                 
                                 inventory.findOne({userID:authorId},async function(err,foundProfile) {
                                     if(foundProfile.inventory.potions.length !=0){
@@ -114,28 +115,13 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         defender.element = foundUser.elements[0].toLowerCase()
                                         defender.attackDamage=foundUser.attackDamage
                                         defender.magicResistance = foundUser.magicResistance
+                                        defender.speed = foundUser.speed
                                         defender.evasion=foundUser.evasion
                                         defender.maxHealth=getHealth(foundUser.level,foundUser.vitality)
                                         defender.passive_skills = foundUser.passiveskills
                                         defender.maxMana = foundUser.mana
-                                        defender.speed = foundUser.speed
                                         
-                                        inventory.findOne({userID:authorId},async function(err,foundProfile) {
-                                            if(foundProfile.inventory.potions.length !=0){
-                                                defender.potions = []
-                                                for(let i=0;i<foundProfile.inventory.potions.length;i++){
-                                                    
-                                                    defender.potions.push(foundProfile.inventory.potions[i].name)
-                                                            }
-                        
-                                                
-                                            }
-                                            else{
-                                                defender.potions =[]
-                                            }
-                                        })
-                        
-                                       
+                                        
                                         defender.skills=foundUser.currentskills
                                         defender.element = defender.element.toLowerCase()
                                         
