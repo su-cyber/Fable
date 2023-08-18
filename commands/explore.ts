@@ -612,7 +612,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setColor('RANDOM')
                             .setTitle(`Now Exploring ${location}...`)
                             .setImage('attachment://guild_office.jpg')
-                            .setDescription(`you visited ${foundUser.guild}'s ${location}, The main office in Solarstrio\n\nuse **/explore** to explore this location`)
+                            .setDescription(`As you step into the guild office, you are greeted by a bustling hub of activity. Rangers and Guild Officers are scattered about, engaged in various tasks. The walls are adorned with notice boards displaying quests of different difficulties, their parchment edges curling with age. The air is filled with a mix of excitement and anticipation, as Rangers gather around the quest board, discussing potential missions. Guild officers can be seen diligently managing appointments, answering inquiries, and ensuring the smooth operation of the guild. The office exudes a sense of purpose and opportunity, with the promise of adventure awaiting those who are ready to take on the challenges that lie ahead.\n\nuse **/explore** to explore this location`)
                              
                         }
                         await interaction.reply({embeds:[successembed],components:[],files:[attachment]})

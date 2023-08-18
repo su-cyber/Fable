@@ -335,7 +335,7 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://guild_office.jpg')
-                        .setDescription(`you visited ${foundUser.guild}'s ${location}, The main office in Solarstrio\n\nuse **/explore** to explore this location`)
+                        .setDescription(`you visited ${foundUser.guild}'s ${location}, As you enter the guild hall, you observe a bustling atmosphere filled with Rangers of varying ranks. The walls are adorned with faded banners and worn-out mission reports, a testament to the guild's history. The sound of camaraderie and training drills fills the air, as Rangers of different divisions hone their skills. Despite the lack of grandeur, there is an undeniable sense of determination and unity among the members, each striving to prove their worth and make their mark in the Ranger Association.\n\nuse **/explore** to explore this location`)
                          
                     }
                     await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})

@@ -42,7 +42,7 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
                             const grade = foundUser.ranger_grade
                             const rank = foundUser.guild_rank.toUpperCase()
                             const guild = `${foundUser.guild.toUpperCase()} GUILD RANGER`
-                            const text = `This License Certifies that ${name} is a ${foundUser.ranger_grade} Grade Ranger from ${foundUser.guild} Guild.\nHailed by many as the ${foundUser.current_title[0]} and a newly recruited ${foundUser.guild_rank} at the ${foundUser.guild} Guild`
+                            const text = `This License Certifies that ${name} is a ${foundUser.ranger_grade} Grade Ranger\nfrom ${foundUser.guild} Guild.Hailed by many as the ${foundUser.title} and a newly recruited\n${foundUser.guild_rank} at the ${foundUser.guild} Guild`
                             
                             const src = new Canvas(822,1122)
                             let ctx = src.getContext("2d")
@@ -101,7 +101,7 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
                                         const grade = foundUser.ranger_grade
                                         const rank = foundUser.guild_rank.toUpperCase()
                                         const guild = `${foundUser.guild.toUpperCase()} GUILD RANGER`
-                                        const text = `This License Certifies that ${name} is a ${foundUser.ranger_grade} Grade Ranger from ${foundUser.guild} Guild.\nHailed by many as the ${foundUser.title} and a newly recruited ${foundUser.guild_rank} at the ${foundUser.guild} Guild`
+                                        const text = `This License Certifies that ${name} is a ${foundUser.ranger_grade} Grade Ranger\nfrom ${foundUser.guild} Guild.Hailed by many as the ${foundUser.title} and a newly recruited\n${foundUser.guild_rank} at the ${foundUser.guild} Guild`
                                         registerFont('fonts/DellaRespira.ttf', { family: 'DellaRespira' })
                                         const src = new Canvas(822,1122)
                                         let ctx = src.getContext("2d")
