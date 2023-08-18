@@ -10,15 +10,11 @@ import { log } from 'console'
 
 export default new MyCommandSlashBuilder({ name: 'use', description: 'use an item or potion' })
 .addStringOption((option: SlashCommandStringOption) =>
-        option.setName('type').setDescription('type of the object').setRequired(true)
-    )
-.addStringOption((option: SlashCommandStringOption) =>
         option.setName('object').setDescription('name of the weapon,armour or item').setRequired(true)
     )
     .setDo(
     async (bot, interaction) => {
         const authorId = interaction.user.id;
-        const userType = interaction.options.getString('type').toLowerCase()
         const userobject = interaction.options.getString('object').toLowerCase()
 
       
@@ -36,7 +32,9 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                             
                         }
                         else{
-                            if(userType === "potion"){
+                            const foundPotion=foundUser.inventory.potions.find(object => object.name.name.toLowerCase() === userobject)
+                            const foundtrinket = foundUser.inventory.items.find(object => object.name.name.toLowerCase() === userobject)
+                            if(foundPotion){
                                 const foundObject=foundUser.inventory.potions.find(object => object.name.name.toLowerCase() === userobject)
                                 if(foundObject){
                                     
@@ -107,13 +105,10 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                     })
                                     
                                 }
-                                else{
-                                    await interaction.reply({content:`you dont own anything called ${userobject}`,ephemeral:true})
-                                }
                             }
                             
                     
-                            else if(userType === "item"){
+                            else if(foundtrinket){
                                 const foundObject = foundUser.inventory.items.find(object => object.name.name.toLowerCase() === userobject)
                                 if(foundObject){
                                     const foundItem = allItems.find(item => item.name.toLowerCase() === userobject)
@@ -195,13 +190,11 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                     }
 
                                 }
-                                else{
-                                    await interaction.reply({content:`you dont own anything called ${userobject}`,ephemeral:true})
-                                }
+                                
                     
                             }
                             else{
-                                interaction.reply({content:"invalid type",ephemeral:true})
+                                await interaction.reply({content:`you dont own anything called ${userobject}`,ephemeral:true})
                             }
                            
                         }
