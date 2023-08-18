@@ -127,8 +127,6 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         
                                     }
                                 })
-                                console.log(attacker.speed);
-                                console.log(defender.speed);
                                 
                                 
                                 if(attacker.speed >= defender.speed){
