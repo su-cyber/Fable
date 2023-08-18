@@ -136,6 +136,8 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                         
                                        
                                         defender.skills=foundUser.currentskills
+                                        attacker.element = attacker.element.toLowerCase()
+                                        defender.element = defender.element.toLowerCase()
                                         
                                     }
                                 })
