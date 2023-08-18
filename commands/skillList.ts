@@ -30,7 +30,7 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
                                 else{
                                     use = `Uses Arcana`
                                 }
-                                return `${skill.name} - ${skill.description}\n**(${use})**`
+                                return `__**Name**__: ${skill.name}\n__**Description**__:${skill.description}\n__**POW**__: ${foundSkill.damage}\n**(${use})**`
                             }).join("\n\n")
                            
                             const mappedallskills=foundUser.allskills.map((skill) => {
@@ -42,7 +42,7 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
                                 else{
                                     use = `Uses Arcana`
                                 }
-                                return `${skill.name} - ${skill.description}\n**(${use})**`
+                                return `__**Name**__: ${skill.name}\n__**Description**__:${skill.description}\n__**POW**__: ${foundSkill.damage}\n**(${use})**`
                             }).join("\n\n")
                            
                             await interaction.reply({content:`**Current Skills:**\n${mappedcskills}\n\n**All Skills:**\n${mappedallskills}`});
