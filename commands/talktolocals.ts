@@ -173,6 +173,10 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                         `Darcy: “I JUST LOOOOOOVE WHEN THE REDNESS OF THE BLOOD MIXES WITH THE BLUE HUE OF THE SEA! IT IS AWESOME GAHAHAHA!”`
                                                     ])
                                                 }
+                                                dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated!')
+                                                    .setDescription(`${dialogue}\n`)
                                             }
                                             else{
                                                 dialogue = sample([

@@ -81,7 +81,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
     else{
         let select =  new MessageActionRow().addComponents([
             new MessageSelectMenu()
-            .setCustomId('select')
+            .setCustomId('select_quest')
                 .setPlaceholder(`Select a quest ${interaction.user.username}`)
                 .addOptions(
                     filtered_menu.map(quest => ({
@@ -96,7 +96,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
     await interaction.editReply({content: null,embeds:[board_copy[0]],components:[btnraw,select]})
 
     let filter_btn = (interaction : any) => interaction.user.id === authorId && interaction.isButton()
-    let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+    let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select_quest"
     let collector_btn =  interaction.channel.createMessageComponentCollector({ filter:filter_btn })
     let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
 
@@ -156,8 +156,9 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
 
         }
         else if(i.customId === 'stop'){
-            interaction.deleteReply()
+            await interaction.deleteReply()
             collector_btn.stop()
+            collector_select.stop()
         }
         else{
 
@@ -234,7 +235,7 @@ let Quest_embed_1 = new MessageEmbed()
     else{
         let select =  new MessageActionRow().addComponents([
             new MessageSelectMenu()
-            .setCustomId('select')
+            .setCustomId('select_quest')
                 .setPlaceholder(`Select a quest ${interaction.user.username}`)
                 .addOptions(
                     filtered_menu.map(quest => ({
@@ -249,7 +250,7 @@ let Quest_embed_1 = new MessageEmbed()
     await interaction.editReply({content: null,embeds:[board_copy[0]],components:[btnraw,select]})
 
     let filter_btn = (interaction : any) => interaction.user.id === authorId && interaction.isButton()
-    let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+    let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select_quest"
     let collector_btn =  interaction.channel.createMessageComponentCollector({ filter:filter_btn })
     let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
 
