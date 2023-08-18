@@ -956,8 +956,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             .addFields([
                                 {
                                     name: `Current Objective:`,
-                                    value:`**Enter /progressmainquest to continue.**`
-                                }
+                                    value:`**Enter /progressmainquest to continue.**`                              }
                             ])
                             
                             
