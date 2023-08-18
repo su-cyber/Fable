@@ -109,8 +109,11 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         
                                     }
                                     else{
+                                        monster.name = opponent.username
                                         monster.health=getHealth(foundOpponent.level,foundOpponent.vitality)
+                                        monster.maxHealth=getHealth(foundOpponent.level,foundOpponent.vitality)
                                         monster.mana=foundOpponent.mana
+                                        monster.maxMana = foundOpponent.mana
                                         monster.armor=foundOpponent.armour
                                         monster.magicPower=foundOpponent.magicPower
                                         monster.element = foundOpponent.elements[0].toLowerCase()
@@ -134,7 +137,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                 
                                 
                                 if(attacker.speed>= monster.speed){
-                                    await new PvEDuel({
+                                    await new PvPDuel({
                                         interaction,
                                         player1: attacker,
                                         player2: monster,
