@@ -86,7 +86,7 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
     
                                     let img
                                     let path
-                                    const name = user.username
+                                    const name = user.username.toUpperCase()
                                     profileModel.findOne({userID:user.id},async function(err,foundUser){
                                         if(foundUser.guild == "None"){
                                             interaction.reply({content:`The user has not recieved their Ranger License yet`,ephemeral:true})
@@ -107,23 +107,24 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
                                         let ctx = src.getContext("2d")
                                         ctx.drawImage(img,0,0)
             
-                                        ctx.font = '58px "serif"'
-                                        ctx.fillStyle = "#E29A37"
-                                        ctx.fillText(`${level}`, 78, 820);
-                                        ctx.font = '32px "serif"'
-                                        ctx.fillText(`${grade}`, 292, 812);
-                                        ctx.fillText(`${rank}`, 515, 814);
-                                        ctx.font = 'bold 18px "serif"'
-                                        ctx.fillStyle = "black"
-                                        ctx.fillText(`${guild}`, 485, 906);
-                                        ctx.font = '26px "serif"'
-                                        ctx.fillStyle = "#E29A37"
-                                        ctx.fillText(`${name}`, 40, 910);
-                                        ctx.font = '38px "serif"'
-                                        ctx.fillText(`${title}`, 253, 57);
-                                        ctx.font = '16px "serif"'
-                                        ctx.fillText(`${text}`, 21, 954);
-                                        
+                            ctx.font = '58px "serif"'
+                            ctx.fillStyle = "#E29A37"
+                            ctx.fillText(`${level}`, 78, 820);
+                            ctx.font = '32px "serif"'
+                            ctx.fillText(`${grade}`, 292, 812);
+                            ctx.fillText(`${rank}`, 515, 814);
+                            ctx.font = 'bold 18px "serif"'
+                            ctx.fillStyle = "black"
+                            ctx.fillText(`${guild}`, 485, 906);
+                            ctx.font = '26px "serif"'
+                            ctx.fillStyle = "#E29A37"
+                            ctx.fillText(`${name}`, 40, 910);
+                            ctx.font = '38px "serif"'
+                            ctx.fillText(`${title}`, 253, 57);
+                            ctx.font = '20px "serif"'
+                            ctx.fillText(`${text}`, 42, 963);
+                            
+
             
             
                                         const buffer = await src.toBuffer('image/jpeg')
