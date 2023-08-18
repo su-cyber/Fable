@@ -140,6 +140,10 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         
                                     }
                                 })
+                                console.log(attacker);
+                                console.log(defender);
+                                
+                                
                                 if(attacker.speed>= defender.speed){
                                     await new PvPDuel({
                                         interaction,
