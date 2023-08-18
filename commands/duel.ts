@@ -52,7 +52,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                 .setDescription(`${author.username} has requested ${opponent.username} for a friendly Duel!\n\n**What will you do ${opponent.username}?**`)
                                 await interaction.reply({embeds:[consentEmbed],components:[btnraw]})
                                 let filter = i => i.user.id === opponentId
-                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
+                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
 
                                 collector.on('collect',async (btn) => {
                                     if(btn.isButton()){
@@ -68,7 +68,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                     }
                                     else{
                                         
-                                attacker.health=foundUser.health
+                                attacker.health=getHealth(foundUser.level,foundUser.vitality)
                                 attacker.mana=foundUser.mana
                                 attacker.armor=foundUser.armour
                                 attacker.magicPower=foundUser.magicPower
@@ -96,7 +96,6 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                     }
                                 })
                 
-                               
                                     attacker.skills=foundUser.currentskills
                                     attacker.element = attacker.element.toLowerCase()
                                 
@@ -108,7 +107,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         
                                     }
                                     else{
-                                        defender.health=foundUser.health
+                                        defender.health=getHealth(foundUser.level,foundUser.vitality)
                                         defender.mana=foundUser.mana
                                         defender.armor=foundUser.armour
                                         defender.magicPower=foundUser.magicPower
@@ -142,7 +141,11 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         
                                     }
                                 })
-                                if(attacker.speed > defender.speed){
+                                console.log(attacker.speed);
+                                console.log(defender.speed);
+                                
+                                
+                                if(attacker.speed >= defender.speed){
                                     await new PvPDuel({
                                         interaction,
                                         player1: attacker,
@@ -174,9 +177,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                             
                             })
                             
-                            collector.on('end', () => {
-                            interaction.deleteReply()
-                            })
+                           
                             
                                 
                             
@@ -211,8 +212,8 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
     let damage_order = []
 
 class PvPDuel extends DuelBuilder {
-    player1: Entity
-    player2: Entity
+    player1: any
+    player2: any
     speed:number
 
     async onTurn(skipTurn: boolean,turn:number) {
