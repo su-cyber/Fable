@@ -13,8 +13,6 @@ import passive_skills from '../src/age/heroes/passive_skills'
 import { calculate } from '../src/age/classes'
 import { MessageEmbed } from 'discord.js'
 import { MessageActionRow, MessageButton } from 'discord.js'
-import { PvEDuel } from './fight'
-import { BeerBuccaneer2 } from '../src/age/monsters/Sunshade Forest/BeerBuccaneer2'
 
 export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with a player' })
     .addUserOption((option: SlashCommandUserOption) =>
@@ -61,8 +59,8 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         if(btn.customId === "accept"){
                                             await btn.deferUpdate().catch(e => {})
                                             
-                                const attacker = await Warrior.create(author)
-                                const monster = await BeerBuccaneer2.create()
+                                const attacker = Warrior.create(author)
+                                const defender = Warrior.create(opponent)
                                  profileModel.findOne({userID:authorId},async function(err,foundUser) {
                                     if(err){
                                         console.log(err);
@@ -74,9 +72,9 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                 attacker.mana=foundUser.mana
                                 attacker.armor=foundUser.armour
                                 attacker.magicPower=foundUser.magicPower
-                                attacker.magicResistance = foundUser.magicResistance
                                 attacker.element = foundUser.elements[0].toLowerCase()
                                 attacker.attackDamage=foundUser.attackDamage
+                                attacker.magicResistance = foundUser.magicResistance
                                 attacker.evasion=foundUser.evasion
                                 attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
                                 attacker.passive_skills = foundUser.passiveskills
@@ -104,52 +102,58 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                 
                                     }
                                 })
-                                profileModel.findOne({userID:opponentId},async function(err,foundOpponent) {
+                                profileModel.findOne({userID:opponentId},async function(err,foundUser) {
                                     if(err){
                                         console.log(err);
                                         
                                     }
                                     else{
-                                        monster.name = opponent.username
-                                        monster.health=getHealth(foundOpponent.level,foundOpponent.vitality)
-                                        monster.maxHealth=getHealth(foundOpponent.level,foundOpponent.vitality)
-                                        monster.mana=foundOpponent.mana
-                                        monster.maxMana = foundOpponent.mana
-                                        monster.armor=foundOpponent.armour
-                                        monster.magicPower=foundOpponent.magicPower
-                                        monster.magicResistance = foundOpponent.magicResistance
-                                        monster.element = foundOpponent.elements[0].toLowerCase()
-                                        monster.attackDamage=foundOpponent.attackDamage
-                                        monster.evasion=foundOpponent.evasion
-                                        monster.passive_skills = foundOpponent.passiveskills
-                                        monster.speed = foundOpponent.speed
+                                        defender.health=foundUser.health
+                                        defender.mana=foundUser.mana
+                                        defender.armor=foundUser.armour
+                                        defender.magicPower=foundUser.magicPower
+                                        defender.element = foundUser.elements[0].toLowerCase()
+                                        defender.attackDamage=foundUser.attackDamage
+                                        defender.magicResistance = foundUser.magicResistance
+                                        defender.evasion=foundUser.evasion
+                                        defender.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                        defender.passive_skills = foundUser.passiveskills
+                                        defender.maxMana = foundUser.mana
+                                        defender.speed = foundUser.speed
                                         
-                                        
-                                        const opponentskills = []
-                                       for(let i=0;i<foundOpponent.currentskills.length;i++){
-                                        const findskill = allskills.find(skill => skill.name == foundOpponent.currentskills[0].name)
-                                        opponentskills.push(findskill)
-                                       }
-                                        monster.skills=opponentskills
-                                        monster.element = monster.element.toLowerCase()
+                                        inventory.findOne({userID:authorId},async function(err,foundProfile) {
+                                            if(foundProfile.inventory.potions.length !=0){
+                                                defender.potions = []
+                                                for(let i=0;i<foundProfile.inventory.potions.length;i++){
+                                                    
+                                                    defender.potions.push(foundProfile.inventory.potions[i].name)
+                                                            }
+                        
+                                                
+                                            }
+                                            else{
+                                                defender.potions =[]
+                                            }
+                                        })
+                        
+                                       
+                                        defender.skills=foundUser.currentskills
+                                        defender.element = defender.element.toLowerCase()
                                         
                                     }
                                 })
-                                
-                                
-                                
-                                if(attacker.speed>= monster.speed){
+                                if(attacker.speed > defender.speed){
                                     await new PvPDuel({
                                         interaction,
                                         player1: attacker,
-                                        player2: monster,
+                                        player2: defender,
                                         speed:2.5
                                     }).start()
                                 }
                                 else{
                                     await new PvPDuel({
                                         interaction,
-                                        player1: monster,
+                                        player1: defender,
                                         player2: attacker,
                                         speed:2.5
                                     }).start()
@@ -206,22 +210,213 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
     let skill_dmg = 0
     let damage_order = []
 
-class PvPDuel extends PvEDuel {
+class PvPDuel extends DuelBuilder {
     player1: Entity
     player2: Entity
     speed:number
 
+    async onTurn(skipTurn: boolean,turn:number) {
+        const isMonsterTurn = this.attacker instanceof MonsterEntity
+
+        if (skipTurn) {
+            if (isMonsterTurn) {
+                await sleep(this.speed)
+                this.deleteInfoMessages()
+            }
+
+            return
+        }
+        
+        if (this.attacker instanceof MonsterEntity) {
+
+            
+        } 
+        else {
+            await this.sendInfoMessage(this.attacker.skills, true)
+            // const max = this.skill_len
+            
+            // const min = 0
+            // const skillName = this.attacker.skills[Math.floor(Math.random() * max)].name
+            // console.log(skillName);
+            
+            // const skill = allskills.find(skill => skill.name === skillName)
     
+            // this.attacker.useSkill(this.attacker,this.defender,skill)
+            // await sleep(1.5)
+            
+            if(turn == 0 || turn==1){
+                let skills = this.attacker.skills
+                this.attacker.skills=[]
+                damage_order = []
+                for(let j=0;j<skills.length;j++){
+                    
+                    let val = allskills.find(skill => skill.name === skills[j].name)
+                    if(val.type == "physical"){
+                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
+                    }
+                    else if(val.type == "magical"){
+                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
+                    }
+                    
+                    let mod = calculateModifier(val.element,this.defender.element)
+                    skill_dmg = skill_dmg * mod
+                    damage_order.push(skill_dmg)
+                    damage_order.sort(function(a,b){return a - b})
+                    const index = damage_order.indexOf(skill_dmg)
+                    this.attacker.skills.splice(index,0,val)
+                    
+                    
+
+                }
+                this.attacker.skills.reverse()
+                  
+
+                if(this.attacker.passive_skills.length !=0){
+                    let i
+                    for(i=0;i<this.attacker.passive_skills.length;i++){
+                        const passive_skill = passive_skills.find(skill => skill.name === this.attacker.passive_skills[i].name)
+                        this.attacker.useSkill(this.attacker,this.defender,passive_skill)
+                        
+                        
+                    } 
+                }
+            }
+            if(turn == 0 || turn==1){
+                let skill = this.attacker.skills.find(skill => skill.type === "buff" && skill.mana_cost<=this.attacker.mana)
+                if(skill){
+                    this.attacker.useSkill(this.attacker,this.defender,skill)
+                    await sleep(this.speed)
+                }
+                else{
+                    
+                    
+                        
+            
+                            skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                            if(skill){
+                                this.attacker.useSkill(this.attacker,this.defender,skill)
+                                await sleep(this.speed)
+                            }
+                            else{
+                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                                await sleep(this.speed)
+                            }
+                           
+                            
+            
+                        
+                    
+
+                }
+            }
+            else if(this.attacker.health <= 0.5*this.attacker.maxHealth){
+                let skill = this.attacker.skills.find(skill => skill.type === "heal" && skill.mana_cost<=this.attacker.mana)
+                if(skill){
+                    
+                        this.attacker.useSkill(this.attacker,this.defender,skill)
+                        await sleep(this.speed)
+                    
+                   
+                }
+                else{
+                skills = this.attacker.skills
+                this.attacker.skills=[]
+                damage_order = []
+                for(let j=0;j<skills.length;j++){
+                    
+                    let val = allskills.find(skill => skill.name === skills[j].name)
+                    if(val.type == "physical"){
+                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
+                    }
+                    else if(val.type == "magical"){
+                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
+                    }
+                    
+                    let mod = calculateModifier(val.element,this.defender.element)
+                    skill_dmg = skill_dmg * mod
+                    damage_order.push(skill_dmg)
+                    damage_order.sort(function(a,b){return a - b})
+                    const index = damage_order.indexOf(skill_dmg)
+                    this.attacker.skills.splice(index,0,val)
+                    
+                    
+
+                }
+                this.attacker.skills.reverse()
+                  
+                    skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                            if(skill){
+                                this.attacker.useSkill(this.attacker,this.defender,skill)
+                                await sleep(this.speed)
+                            }
+                            else{
+                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                                await sleep(this.speed)
+                            }
+                           
+                   
+                }
+            }
+            else{
+                skills = this.attacker.skills
+                this.attacker.skills=[]
+                damage_order = []
+                for(let j=0;j<skills.length;j++){
+                    
+                    let val = allskills.find(skill => skill.name === skills[j].name)
+                    if(val.type == "physical"){
+                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
+                    }
+                    else if(val.type == "magical"){
+                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
+                    }
+                    
+                    let mod = calculateModifier(val.element,this.defender.element)
+                    skill_dmg = skill_dmg * mod
+                    damage_order.push(skill_dmg)
+                    damage_order.sort(function(a,b){return a - b})
+                    const index = damage_order.indexOf(skill_dmg)
+                    this.attacker.skills.splice(index,0,val)
+                    
+                    
+
+                }
+                this.attacker.skills.reverse()
+                  
+                let skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                            if(skill){
+                                this.attacker.useSkill(this.attacker,this.defender,skill)
+                                await sleep(this.speed)
+                            }
+                            else{
+                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                                await sleep(this.speed)
+                            }
+                           
+               
+            }
+                
+            
+              
+        }
+
+        await this.sendInfoMessage(this.attacker.skills,true)
+        
+    }
 
     async beforeDuelStart() {
         super.beforeDuelStart()
 
-        await this.replyOrEdit({ content: `initiating duel with ${this.defender.name}!`,embeds:[],components:[]})
+        await this.replyOrEdit({ content: `initiating duel with ${this.player2.name}!`,embeds:[],components:[]})
         await sleep(1.2)
         
         
     }
-    
+    async onSkillSelect(skillName: string) {
+        const skill = allskills.find(skill => skill.name === skillName)
+
+        this.attacker.useSkill(this.attacker,this.defender,skill)
+    }
 
     async onEnd(winner: Entity, loser: Entity) {
         await this.interaction.channel.send(`🏆 **${winner.name}** won!`)
