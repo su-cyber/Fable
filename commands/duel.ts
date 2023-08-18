@@ -140,8 +140,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         
                                     }
                                 })
-                                console.log(attacker);
-                                console.log(defender);
+                                
                                 
                                 
                                 if(attacker.speed>= defender.speed){
@@ -234,6 +233,8 @@ class PvPDuel extends DuelBuilder {
             
         } 
         else {
+            console.log(this.attacker);
+            
             await this.sendInfoMessage(this.attacker.skills, true)
             // const max = this.skill_len
             

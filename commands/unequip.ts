@@ -169,11 +169,11 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                                 foundProfile.inventory.items.push(newItem)
                                             }
                                             for(let i=0; i<foundObject.skills.length;i++){
-                                                console.log(foundUser.passiveskills);
+
                                                 const foundSkill = foundUser.passiveskills.find(skill => skill.name == foundObject.skills[i])
                                                 const index2 = foundUser.passiveskills.indexOf(foundSkill)
                                                 foundUser.passiveskills.splice(index2,1)
-                                                console.log(foundUser.passiveskills);
+
                                                 
                                             }
                                             
