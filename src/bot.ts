@@ -92,16 +92,18 @@ class Bot extends Client {
                                         foundUser.level=foundUser.level+1
                                         foundUser.skill_points += 3
                                         
-                                        
-                                   }
-                                   
-                                
-                                await profileSchema.updateOne({userID:userID},foundUser)
                             let fableLog = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('FABLE LOG')
                             .setDescription(`${interaction.user.username} has Levelled Up to Level ${i}!`)
                             await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
+
+                            await profileSchema.updateOne({userID:userID},foundUser)
+                                   }
+                                   
+                                
+                                
+                            
                                 
                                 
                             })
