@@ -13,6 +13,7 @@ import passive_skills from '../src/age/heroes/passive_skills'
 import { calculate } from '../src/age/classes'
 import { MessageEmbed } from 'discord.js'
 import { MessageActionRow, MessageButton } from 'discord.js'
+import { PvEDuel } from './fight'
 
 export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with a player' })
     .addUserOption((option: SlashCommandUserOption) =>
@@ -144,7 +145,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                 
                                 
                                 if(attacker.speed>= defender.speed){
-                                    await new PvPDuel({
+                                    await new PvEDuel({
                                         interaction,
                                         player1: attacker,
                                         player2: defender,
@@ -233,7 +234,6 @@ class PvPDuel extends DuelBuilder {
             
         } 
         else {
-            console.log(this.attacker);
             
             await this.sendInfoMessage(this.attacker.skills, true)
             // const max = this.skill_len
