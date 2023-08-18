@@ -223,7 +223,7 @@ else if(foundUser.location == "Black Market"){
     
     collector.on('collect',async (btn) => {
         if(btn.isButton()){
-            if(btn.customId === "vulkun_pier"){
+            if(btn.customId === "enter_market"){
                 await btn.deferUpdate().catch(e => {})
                 interaction.editReply({embeds: [blackMarketEmbed]})
                 
