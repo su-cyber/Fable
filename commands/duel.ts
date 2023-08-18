@@ -74,6 +74,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                 attacker.mana=foundUser.mana
                                 attacker.armor=foundUser.armour
                                 attacker.magicPower=foundUser.magicPower
+                                attacker.magicResistance = foundUser.magicResistance
                                 attacker.element = foundUser.elements[0].toLowerCase()
                                 attacker.attackDamage=foundUser.attackDamage
                                 attacker.evasion=foundUser.evasion
@@ -116,6 +117,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         monster.maxMana = foundOpponent.mana
                                         monster.armor=foundOpponent.armour
                                         monster.magicPower=foundOpponent.magicPower
+                                        monster.magicResistance = foundOpponent.magicResistance
                                         monster.element = foundOpponent.elements[0].toLowerCase()
                                         monster.attackDamage=foundOpponent.attackDamage
                                         monster.evasion=foundOpponent.evasion
@@ -214,7 +216,7 @@ class PvPDuel extends PvEDuel {
     async beforeDuelStart() {
         super.beforeDuelStart()
 
-        await this.replyOrEdit({ content: `initiating duel with ${this.player2.name}!`,embeds:[],components:[]})
+        await this.replyOrEdit({ content: `initiating duel with ${this.defender.name}!`,embeds:[],components:[]})
         await sleep(1.2)
         
         

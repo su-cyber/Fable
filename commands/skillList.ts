@@ -1,5 +1,6 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
+import allskills from '../src/age/skills/skills'
 
 export default new MyCommandSlashBuilder({ name: 'listskills', description: 'list all your skills' }).setDo(
     async (bot, interaction) => {
@@ -22,7 +23,8 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
                         else{
                             const mappedcskills=foundUser.currentskills.map((skill) => {
                                 let use
-                                if(skill.type == "physical"){
+                                const foundSkill = allskills.find(allskill => allskill.name == skill.name)
+                                if(foundSkill.type == "physical"){
                                     use = `Uses Vigour`
                                 }
                                 else{
@@ -33,7 +35,8 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
                            
                             const mappedallskills=foundUser.allskills.map((skill) => {
                                 let use
-                                if(skill.type == "physical"){
+                                const foundSkill = allskills.find(allskill => allskill.name == skill.name)
+                                if(foundSkill.type == "physical"){
                                     use = `Uses Vigour`
                                 }
                                 else{
