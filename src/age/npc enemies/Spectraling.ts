@@ -7,7 +7,7 @@ import { shadowCat_tuft } from '../items/shadowCat_tuft'
 export class  Spectraling extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['You finish off the SPectraling and watch it fade away to nothingness\n\n**(press /progressmainquest to continue)**'],
+            withoutDropMessages: ['You finish off the Spectraling and watch it fade away to nothingness\n\n**(press /progressmainquest to continue)**'],
             withDropMessages: [`The Shadow Cat lies dead on the ground as you finish it off and take some tuft from it's body`],
         }
 

@@ -12,6 +12,7 @@ import { captainCrook } from '../src/age/Dungeon-Boss/captainCrook'
 import { MessageAttachment } from 'discord.js'
 import { BeerBuccaneer1 } from '../src/age/monsters/Sunshade Forest/BeerBuccaneer1'
 import { BeerBuccaneer2 } from '../src/age/monsters/Sunshade Forest/BeerBuccaneer2'
+import { TextChannel } from 'discord.js'
 
 
 export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 'Move in the Dungeon' })
@@ -593,6 +594,12 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                         .setDescription(`You finally reached the end of the dungeon!You enter a rather well maintained room which looks like the personal room of Captain Crook You found many valuable items and decided to return all of them keeping only some for yourself\nYou found Coin Bag x 1!\n500 coins added!\n\n**You have Successfully completed the quest "Aube Town's Hero" and exited the Abandoned Castle**`)
                                                         await interaction.reply({embeds:[stepembed],components:[]})
                                                         await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+500})
+                                                        let fableLog = new MessageEmbed()
+                                                        .setColor('RANDOM')
+                                                        .setTitle('FABLE LOG')
+                                                        .setDescription(`${interaction.user.username} has Cleared the Dungeon **"Abandoned Castle"**!`)
+                                                        await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
+                                                        
                                             }
                                             else{
                                                 stepembed = new MessageEmbed()
@@ -627,6 +634,12 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                         }
                                                         await inventory.updateOne({userID:authorId},foundInventory)
                                                     }
+                                                    let fableLog = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('FABLE LOG')
+                                                    .setDescription(`${interaction.user.username} has Cleared the Dungeon **"Abandoned Castle"** and also managed to retrieve a rare weapon **"Captain Crook's Cutlass"**!`)
+                                                    await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
+                                                    
                                                     
                                                 })
                                             }

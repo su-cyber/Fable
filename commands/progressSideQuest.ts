@@ -13,6 +13,7 @@ import { guildTshirt } from '../src/age/items/guildTshirt'
 import { treemickBranch } from '../src/age/items/treemickBranch'
 import { PvEDuel } from './fight'
 import { goblinWhistle } from '../src/age/items/goblinWhistle'
+import { TextChannel } from 'discord.js'
 
 
 export default new MyCommandSlashBuilder({ name: 'progresssidequest', description: 'progress your side quest' }).setDo(
@@ -95,6 +96,11 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                             }
                                             await Inventory.updateOne({userID:authorId},userProfile)
                                             await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest,merit:foundUser.merit+10})
+                                            let fableLog = new MessageEmbed()
+                                                .setColor('RANDOM')
+                                                .setTitle('FABLE LOG')
+                                                .setDescription(`${interaction.user.username} has Completed the Side Quest **"War with Ravens"** and recieved **Radiantura's Milk x 5**!`)
+                                                await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
                                         }
                                         else{
                                             interaction.reply({content:`You have not gathered the required materials!`,ephemeral:true})
@@ -128,6 +134,8 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                             
                                 await interaction.reply({embeds:[quest_embed]})
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"2"})
+                                
+                                
 
                             }
                             else if(foundUser.side_quest_phase == "2"){
@@ -211,6 +219,11 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                 foundUser.coins+=300
                                                 await Inventory.updateOne({userID:authorId},userProfile)
                                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest,coins:foundUser.coins,merit:foundUser.merit+10})
+                                                let fableLog = new MessageEmbed()
+                                                .setColor('RANDOM')
+                                                .setTitle('FABLE LOG')
+                                                .setDescription(`${interaction.user.username} has Completed the Side Quest **"Feed the Radiantura"** and recieved **300🪙**!`)
+                                                await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
                                           
                                             }
                                             else{
@@ -290,6 +303,11 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                             await Inventory.updateOne({userID:authorId},userProfile)
                                                
                                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest,merit:foundUser.merit+10})
+                                                let fableLog = new MessageEmbed()
+                                                .setColor('RANDOM')
+                                                .setTitle('FABLE LOG')
+                                                .setDescription(`${interaction.user.username} has Completed the Side Quest **"Stumped!"** and recieved **Goblin Whistle**!`)
+                                                await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
                                         
                                         }
                                         else{
@@ -677,7 +695,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                     .addFields([
                                         {
                                             name: `Rewards:`,
-                                            value:`**some shit**`
+                                            value:`**1500🪙**`
                                         }
                                     ])
                                     .setDescription(`You bring back the Astrolabe to the wealthy citizen who hired you to find it. He is ecstatic since you brought it back and pays you well for your troubles. In the moment you think how Butch got lucky in the sense that he got caught by you, who spared him, and how you ended up being owed a favor by the thieving siblings as soon as you held the Astrolabe. Perhaps there is something about them that is just hard to explain.`)
@@ -685,7 +703,12 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await interaction.reply({embeds:[quest_embed]})
                                 foundUser.completed_quests.push("KS-ZS-SQ1")
                                 foundUser.side_quest.splice(0,1)
-                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest})
+                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest,coins:foundUser.coins+1500})
+                                let fableLog = new MessageEmbed()
+                                                .setColor('RANDOM')
+                                                .setTitle('FABLE LOG')
+                                                .setDescription(`${interaction.user.username} has Completed the Side Quest **"Heirloom Missing"** and recieved 1500🪙!`)
+                                                await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
                      
                                
                                 }

@@ -14,6 +14,7 @@ import { gilthunder_spear } from '../src/age/weapons/gilthunder_spear'
 import { gilthunder_boltgun } from '../src/age/weapons/gilthunder_boltgun'
 import { amberRing } from '../src/age/items/amber_ring'
 import { Spectraling } from '../src/age/npc enemies/Spectraling'
+import { TextChannel } from 'discord.js'
 
 
 export default new MyCommandSlashBuilder({ name: 'progressmainquest', description: 'progress your main quest progress' }).setDo(
@@ -108,7 +109,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                             
                                             foundUser.encounter.push(encounter)
                                             await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
-                                            await interaction.user.send(`Use /fight to begin encounter`)
+                                            await interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`})})
                                             
         
                                             
@@ -571,6 +572,12 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             
                             foundUser.titles.push("Hero of Aube")
                             await profileModel.updateOne({userID:authorId},{current_title:"Hero of Aube",titles:foundUser.titles,main_quest_phase:"11",merit:foundUser.merit+15})
+                            let fableLog = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('FABLE LOG')
+                            .setDescription(`${interaction.user.username} has obtained a new title **"Hero of Aube"**!`)
+                            await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
+                            
                                 }
                                 else{
                                     interaction.reply({content:`You have not completed the quest "Aube Town's Hero" yet, complete it to continue!`,ephemeral:true})
@@ -648,6 +655,11 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                            
                             foundUser.completed_quests.push("Tutorial")
                             await profileModel.updateOne({userID:authorId},{main_quest_phase:"1",completed_quests:foundUser.completed_quests,main_quest:"KS-ZS-MQ1"})
+                            let fableLog = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('FABLE LOG')
+                            .setDescription(`${interaction.user.username} has Completed the Main Quest "New Beginnings" and is on their way to the Stateship of Zorya!`)
+                            await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
                             }
                             else{
                                 interaction.reply({content:`You looked everywhere but couldn't find Emyr, perhaps he is somewhere else.You must find him to bid him farewell.\n**(Press /progressmainquest in various locations to search for him)**`,ephemeral:true})
@@ -1150,6 +1162,12 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                         await interaction.reply({embeds:[questEmbed]})
                         foundUser.completed_quests.push("KS-ZS-MQ1")
                         await profileModel.updateOne({userID:interaction.user.id},{main_quest_phase:1,main_quest:"KS-ZS-MQ2",completed_quests:foundUser.completed_quests,guild:guild,guild_rank:"Rookie",ranger_grade:"E"})
+                        let fableLog = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('FABLE LOG')
+                            .setDescription(`${interaction.user.username} has Completed the Main Quest "A New Road" and has been Recruited by the **${guild} Guild** as a Rookie Ranger following the Annual Guild Draft!`)
+                            await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
+                            
                     }
                     else{
                         interaction.reply({content:`In the midst of combat with fellow Ajin Fiskille, a complex realization emerges about battling one's own kind despite previous victories. The tests become echoes of the past, leaving only the imminent outcome. Amidst the settling dust and shared anticipation, the Announcer's voice heralds the conclusion of the Annual Guild Draft, as Challengers await judgment from Vice-Masters, their destinies entwined with the momentous event.\n**(press /progressmainquest in your Guild Office to continue)**`,ephemeral:true})
@@ -1288,6 +1306,12 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 .setDescription(`You enter the basecamp to find its tents filled to the brim with Rangers, some who were prepared and those caught unprepared. You encountered a few merchants and infirmaries every 100 steps. At one place, Rangers required healing, and in another place, Rangers were being armed. It was quite brutal, but perhaps you could find something of value here as you wait for your colleagues.\n\nYou can now walk to the base camp tents and use **/talktolocals.**\n\nYou sense an eerie feeling throughout your time in the basecamp. It only kept getting worse as you continued. It sort of scared you for what was about to come. Whatever this feeling was, it was part of you for now.\n\nAs you slowly make your way towards the Werfall Ranger Center, you begin to notice that the crowd kept getting denser and angrier as you got closer. It felt like you were drowning in a protest. Perhaps it had to do something with the Storm Seer who had just come? Regardless, you began looking around to locate Rangers from your Guild. Among the crowd, you caught the eye of a hooded figure who seemed to stare directly at you with his piercing gaze, unfazed by the crowd. The figure stood out so much, yet only you seemed to notice them.\n\nBefore you knew it, this figure started to close the gap between the two of you. Seeing them, your heart starts pounding rapidly and you remember the eerie feeling you felt earlier. When you blinked, the figure had vanished, no trace of him left. You looked to the left, then to the right but they were not to be found anywhere.\n\nJust then, your eyes widen, your heart slows down, and blood begins to drip down to the ground from your mouth. You look down, and find an arm impaling your stomach. This arm…it belonged to the Hooded Figure who now stood in front of you.\n\n**To Be Continued…**\n\nCongratulations! You have completed the Alpha Test and have finished the main storyline.You can still explore the world and free-roam Aube and Zorya and complete all side-quests and Hunting Contracts or you can simply enjoy fighting monsters!`)
                                 await interaction.reply({embeds:[questEmbed]})
                                 await profileModel.updateOne({userID:interaction.user.id},{main_quest_phase:6})
+                                let fableLog = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle('FABLE LOG')
+                                .setDescription(`${interaction.user.username} has Completed the Alpha Test!`)
+                                await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
+                                
                             }
                             else{
                                 interaction.reply({content:`You somehow manage to sneak inside the Ranger Tents\n**(press /progressmainquest in Ranger Tents to continue)**`,ephemeral:true})

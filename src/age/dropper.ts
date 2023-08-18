@@ -84,14 +84,26 @@ export class Dropper {
            
 
         }
+       const log = `
+       **${killed.name} was successfully Subdued by ${killer.name}!**
+
+       ${killer.name} gained ${gainedXP} XP!
        
+       ${drop ? `${killer.name} found ${drop.name}! 
+       ${drop.emoji} X ${1}` : ''}
+       `
         let deathEmbed = new MessageEmbed()
         .setColor('GREEN')
         .setTitle('BATTLE REPORT')
         .setDescription(`${removeIndentation(text)}`)
-        // await (interaction.client.channels.cache.get(`996424956428689518`) as TextChannel).send({embeds:[deathEmbed]})
+        let fableLog = new MessageEmbed()
+        .setColor('RANDOM')
+        .setTitle('FABLE LOG')
+        .setDescription(`${removeIndentation(log)}`)
+        await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
         await interaction.channel.send({embeds:[deathEmbed]})
         await profileModel.updateOne({userID:interaction.user.id},{$inc:{xp:gainedXP}})
+        
 
             
         

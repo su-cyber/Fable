@@ -15,6 +15,7 @@ import { leather_gauntlets } from '../src/age/weapons/leather_gauntlets'
 import learnskill from './learnskill'
 import { carved_bow } from '../src/age/weapons/carved_bow'
 import { MessageAttachment } from 'discord.js'
+import { TextChannel } from 'discord.js'
 
 
 export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken to your story' }).setDo(
@@ -150,7 +151,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                             iconURL:interaction.user.displayAvatarURL(),
                             name:interaction.user.tag
                         })
-                        .setDescription(`Vearth, a land blessed by the Gods, stretches out with emerald green lands and rivers that flow endlessly. Within its vibrant tapestry, diverse creatures called Spyriths roam, both kind and cruel. Sentient races hold dominion, ruling over this mystical realm.\n\nBut Vearth's true gift lies in the embrace of "Spyr," a magical essence that weaves through the land and its people. Yet, this blessed realm suffers under a curse—the Nightmares. These capricious storms unleash devastation with thunderous might, relentless winds, and blinding deluges. Within the chaos, the Nightmares birth the malevolent Abyssals, demonic creatures hell-bent on Vearth's destruction.\n\nAmidst this turmoil, the Ajins emerge as both a beacon of hope and a target of fear. Unnatural beings, they command and bend Spyr to unprecedented levels. They stand as the vanguard against the Abyssals and their Nightmares, sacrificing their lives to safeguard the weak.\n\nYou, too, are an Ajin, marked by an elemental affinity since birth, a guiding force on your destined Adventure. Your fable begins now. So, reveal to me which element enfolds you and the destiny that awaits your unwavering spirit.`)
+                        .setDescription(`Vearth, a land blessed by the Gods, stretches out with emerald green lands and rivers that flow endlessly. Within its vibrant tapestry, diverse creatures called Spyriths roam, both kind and cruel. Sentient races hold dominion, ruling over this mystical realm.\n\nBut Vearth's true gift lies in the embrace of "Spyr," a magical essence that weaves through the land and its people. Yet, this blessed realm suffers under a curse—the Nightmares. These capricious storms unleash devastation with thunderous might, relentless winds, and blinding deluges. Within the chaos, the Nightmares birth the malevolent Abyssals, demonic creatures hell-bent on Vearth's destruction.\n\nAmidst this turmoil, the Ajins emerge as both a beacon of hope and a target of fear. Unnatural beings, they command and bend Spyr to unprecedented levels. They stand as the vanguard against the Abyssals and their Nightmares, sacrificing their lives to safeguard the weak.\n\nYou, too, are an Ajin, marked by an elemental affinity since birth, a guiding force on your destined Adventure. Your fable begins now. So, reveal to me which element enfolds you and the destiny that awaits your unwavering spirit.\n\n**⚠️WARNING!⚠️**\nPlease make sure that your DMs are open!You may close your DMs again after Fable sends you the first message.`)
     
                         let acceptEmbed = new MessageEmbed()
                         .setColor('GREEN')
@@ -336,6 +337,11 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                     
                                         await btn.deferUpdate().catch(e => {})
                                         await interaction.editReply({content: null,embeds:[acceptEmbed],components:[],files:[]})
+                                        let fableLog = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('FABLE LOG')
+                                        .setDescription(`**${interaction.user.username}** has awakened as a **${foundUser.class}** proficient in the element of **${foundUser.elements[0]}** and has begun their Fable.`)
+                                        await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
                                         collector.stop()
                                 }
                                
