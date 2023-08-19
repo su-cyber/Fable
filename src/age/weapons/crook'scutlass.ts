@@ -2,7 +2,7 @@ import { Weapon } from "../classes/weapon";
 
 export const crookcutlass = new Weapon({
     id: 'weapon__crookcutlass',
-    name: `Crook's Cutlass`,
+    name: `Crook Cutlass`,
     description: '+5 Vigour|A stronger steel cutlass owned by Captain Crook',
     damage:5,
     type:'melee',

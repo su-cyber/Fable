@@ -1952,7 +1952,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:500 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:150 🪙\n`
                                             },
                                             
                                         ])
@@ -2006,8 +2006,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 
                 
                 if(location == 'Zorya'){
-                    if(foundUser.coins >=500 && foundUser.mount == "None"){
-                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-500,location:"None"})
+                    if(foundUser.coins >=150 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-150,location:"None"})
                     const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
                     let successembed = new MessageEmbed()
                     .setColor('RANDOM')

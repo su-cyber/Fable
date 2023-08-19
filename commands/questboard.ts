@@ -209,7 +209,7 @@ let Quest_embed_1 = new MessageEmbed()
     let filtered_menu = []
     let board
     if(foundUser.ranger_grade == "E"){
-        board = [Quest_embed_1,Quest_embed_2]
+        board = [Quest_embed_1]
     }
     else{
         board = [Quest_embed_1,Quest_embed_2,Quest_embed_3,Quest_embed_4]
