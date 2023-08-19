@@ -142,10 +142,12 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                 
                                 if(timestamp - foundUser.encounter[0].time <= 2*60*1000){
                                     if(foundUser.location == foundUser.encounter[0].location || foundUser.city_town == foundUser.encounter[0].location){
-                                        const monster = (await getMonsters(foundUser.encounter[0].location)).map(fn => fn.create())
+                                        const monster = await (await getMonsters(foundUser.encounter[0].location)).map(fn => fn.create())
                                     .find(m => m.name === foundUser.encounter[0].name)
                                     
-                        
+                                    
+                            foundUser.encounter = []
+                            await profileModel.updateOne({userID:this.interaction.user.id},{encounter:foundUser.encounter})
                         if(attacker.speed >= monster.speed){
                             await new PvEDuel({
                                 interaction,
@@ -247,7 +249,7 @@ export class PvEDuel extends DuelBuilder {
         else{
             await this.replyOrEdit({ content: `starting combat with ${this.player2.name}!`,components:[],embeds:[] })
         }
-       
+        
         await sleep(1.2)
         
         
@@ -618,7 +620,7 @@ export class PvEDuel extends DuelBuilder {
             }
             else{
                 let i
-                foundUser.encounter = []
+                
                 foundUser.energy-=1
                 if(foundUser.status_effects.status.length != 0){
                     foundUser.status_effects.turns-=1
