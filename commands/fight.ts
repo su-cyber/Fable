@@ -147,7 +147,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                     
                                     
                             foundUser.encounter = []
-                            await profileModel.updateOne({userID:this.interaction.user.id},{encounter:foundUser.encounter})
+                            await profileModel.updateOne({userID:interaction.user.id},{encounter:foundUser.encounter})
                         if(attacker.speed >= monster.speed){
                             await new PvEDuel({
                                 interaction,
