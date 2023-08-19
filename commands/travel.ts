@@ -199,6 +199,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
                 
                 collector_select.stop()
+                collector_cancel.stop()
             })
         
             collector_cancel.on('collect', async j => {
@@ -343,6 +344,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
                 
                 collector_select.stop()
+                collector_cancel.stop()
             })
         
             collector_cancel.on('collect', async j => {
@@ -486,6 +488,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
                 
                 collector_select.stop()
+                collector_cancel.stop()
             })
         
             collector_cancel.on('collect', async j => {
@@ -630,6 +633,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
                 
                 collector_select.stop()
+                collector_cancel.stop()
             })
         
             collector_cancel.on('collect', async j => {
@@ -968,6 +972,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
                 
                 collector_select.stop()
+                collector_cancel.stop()
             })
         
             collector_cancel.on('collect', async j => {
@@ -1167,6 +1172,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
                 
                 collector_select.stop()
+                collector_cancel.stop()
             })
         
             collector_cancel.on('collect', async j => {
@@ -1356,6 +1362,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
                 
                 collector_select.stop()
+                collector_cancel.stop()
             })
         
             collector_cancel.on('collect', async j => {
@@ -1545,6 +1552,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
                 
                 collector_select.stop()
+                collector_cancel.stop()
             })
         
             collector_cancel.on('collect', async j => {
@@ -1735,6 +1743,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
                 
                 collector_select.stop()
+                collector_cancel.stop()
             })
         
             collector_cancel.on('collect', async j => {
@@ -1924,6 +1933,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
                 
                 collector_select.stop()
+                collector_cancel.stop()
             })
         
             collector_cancel.on('collect', async j => {
@@ -2036,6 +2046,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
                 
                 collector_select.stop()
+                collector_cancel.stop()
             })
         
             collector_cancel.on('collect', async j => {

@@ -180,6 +180,7 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
         
                 
                 collector_select.stop()
+                collector_cancel.stop()
             })
         
             collector_cancel.on('collect', async j => {
@@ -401,6 +402,7 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
         
                 
                 collector_select.stop()
+                collector_cancel.stop()
             })
         
             collector_cancel.on('collect', async j => {
@@ -513,12 +515,9 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 
-               
-                
-                
-        
-                
+
                 collector_select.stop()
+                collector_cancel.stop()
             })
         
             collector_cancel.on('collect', async j => {
