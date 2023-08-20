@@ -101,8 +101,9 @@ export default new MyCommandSlashBuilder({ name: 'addskill', description: 'add a
                 description:foundskill.description
 
                }
+            foundUser.currentskills.splice(index,1)
              foundUser.currentskills.push(skill)
-             foundUser.currentskills.splice(index,1)
+             
             
             await profileModel.updateOne({userID:authorId},{currentskills:foundUser.currentskills})
 
