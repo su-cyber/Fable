@@ -430,7 +430,9 @@ export class PvEDuel extends DuelBuilder {
             
         } 
         else {
-           
+           if(turn == 15 || turn == 16){
+            await this.deleteInfoMessages()
+           }
             await this.sendInfoMessage(this.attacker.skills, true)
             // const max = this.skill_len
             
