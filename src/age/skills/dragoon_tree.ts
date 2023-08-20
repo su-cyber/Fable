@@ -10,11 +10,11 @@ const dragoon_tree=[
         mana_cost: 0,
         damage:15,
         element:"normal",
-        type: 'physical',
+        type: 'magical',
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Piercing Shot`)
             defender.takeDamage
-                .physical(attacker.attackDamage*15)
+                .magical(attacker.attackDamage*15)
                 .run(damage => `${defender.name} lost ${damage} HP by a precise shot bypassing all defenses`)
         }
     },{
@@ -24,7 +24,7 @@ const dragoon_tree=[
         canEvade: true,
         mana_cost:5,
         damage:35,
-        type: 'physical',
+        type: 'magical',
         element:"normal",
         use: (attacker, defender) =>{
 
@@ -32,7 +32,7 @@ const dragoon_tree=[
                 `${attacker.name} used Rapid Volley`
             )
             defender.takeDamage
-            .physical(attacker.attackDamage*35)
+            .magical(attacker.attackDamage*35)
             .run(damage => `${defender.name} lost ${damage} HP by a rapid onslaught of arcane projectiles`)
         }
     },{
@@ -42,7 +42,7 @@ const dragoon_tree=[
         canEvade: true,
         mana_cost: 3,
         damage:0,
-        type: 'physical',
+        type: 'magical',
         element:"normal",
         use: (attacker, defender) =>{
             
@@ -68,12 +68,12 @@ const dragoon_tree=[
         canEvade: true,
         mana_cost: 8,
         damage:50,
-        type: 'physical',
+        type: 'magical',
         element:"normal",
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used True Strike`)
             defender.takeDamage
-                .physical(attacker.attackDamage*50)
+                .magical(attacker.attackDamage*50)
                 .run(damage => `${defender.name} lost ${damage} HP by a lightning fast shot to their vitals with deadly precision`)
         }
     },{
@@ -111,7 +111,7 @@ const dragoon_tree=[
         canEvade: true,
         mana_cost:12,
         damage:70,
-        type: 'physical',
+        type: 'magical',
         element:"normal",
         use: (attacker, defender) =>{
 
@@ -119,7 +119,7 @@ const dragoon_tree=[
                 `${attacker.name} used Burst Mode`
             )
             defender.takeDamage
-            .physical(attacker.attackDamage*70)
+            .magical(attacker.attackDamage*70)
             .run(damage => `${attacker.name} Harnessess the untamed energies within, empowering their projectiles with a surging burst that erupts upon impact, wreaking havoc on ${defender.name} causing ${damage} dmg.`)
         }
     },{
@@ -129,7 +129,7 @@ const dragoon_tree=[
         canEvade: true,
         mana_cost:15,
         damage:85,
-        type: 'physical',
+        type: 'magical',
         element:"normal",
         use: (attacker, defender) =>{
 
@@ -137,7 +137,7 @@ const dragoon_tree=[
                 `${attacker.name} used Rain of Doom`
             )
             defender.takeDamage
-            .physical(attacker.attackDamage*85)
+            .magical(attacker.attackDamage*85)
             .run(damage => `${attacker.name} unleashes an overwhelming barrage of projectiles that paints the battlefield in a tapestry of destruction causing ${damage} dmg on ${defender.name}`)
         }
     },
