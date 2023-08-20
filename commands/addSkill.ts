@@ -72,7 +72,7 @@ export default new MyCommandSlashBuilder({ name: 'addskill', description: 'add a
                 },{
                     label: `${foundUser.currentskills[2].name}`,
                     description: ``,
-                    value: ``,
+                    value: `${foundUser.currentskills[2].name}`,
                 },{
                     label: `${foundUser.currentskills[3].name}`,
                     description: ``,
