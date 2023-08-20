@@ -38,8 +38,8 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                 const foundObject=foundUser.weapon.find(object => object.name.toLowerCase() === userobject)
                                 
                                     
-                                        const index = foundUser.weapon.indexOf(foundObject)
-                                        foundUser.weapon.splice(index,1)
+                                        const index = await foundUser.weapon.indexOf(foundObject)
+                                        await foundUser.weapon.splice(index,1)
                                     
                                     inventory.findOne({userID:authorId},async function(err,foundProfile){
                                         if(err){
@@ -57,7 +57,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                                     name:foundObject,
                                                     quantity:Number(1)
                                                 }
-                                                foundProfile.inventory.weapons.push(newItem)
+                                                await foundProfile.inventory.weapons.push(newItem)
                                             }
                                             
                                         await inventory.updateOne({userID:authorId},foundProfile)
@@ -96,11 +96,11 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                 
                             }
                             else if(foundArmour){
-                                const foundObject=foundUser.armourSuit.find(object => object.name.toLowerCase() === userobject)
+                                const foundObject= await foundUser.armourSuit.find(object => object.name.toLowerCase() === userobject)
                                 
                                     
-                                        const index = foundUser.armourSuit.indexOf(foundObject)
-                                        foundUser.armourSuit.splice(index,1)
+                                        const index = await foundUser.armourSuit.indexOf(foundObject)
+                                        await foundUser.armourSuit.splice(index,1)
                                     
                                     inventory.findOne({userID:authorId},async function(err,foundProfile){
                                         if(err){
@@ -108,7 +108,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                             
                                         }
                                         else{
-                                            const foundInventory=foundProfile.inventory.armour.find(object => object.name.name.toLowerCase() === userobject)
+                                            const foundInventory= await foundProfile.inventory.armour.find(object => object.name.name.toLowerCase() === userobject)
                                             if(foundInventory){
                                                 foundInventory.quantity+=1
                                             }
@@ -118,7 +118,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                                     name:foundObject,
                                                     quantity:Number(1)
                                                 }
-                                                foundProfile.inventory.armour.push(newItem)
+                                                await foundProfile.inventory.armour.push(newItem)
                                             }
                                             
                                             foundUser.armour-=foundObject.armour
@@ -147,8 +147,8 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                 const foundObject=foundUser.items.find(object => object.name.toLowerCase() === userobject)
                                 
                                     
-                                        const index = foundUser.items.indexOf(foundObject)
-                                        foundUser.items.splice(index,1)
+                                        const index = await foundUser.items.indexOf(foundObject)
+                                        await foundUser.items.splice(index,1)
                                     
                                     inventory.findOne({userID:authorId},async function(err,foundProfile){
                                         if(err){
@@ -166,7 +166,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
                                                     name:foundObject,
                                                     quantity:Number(1)
                                                 }
-                                                foundProfile.inventory.items.push(newItem)
+                                                await foundProfile.inventory.items.push(newItem)
                                             }
                                             for(let i=0; i<foundObject.skills.length;i++){
 

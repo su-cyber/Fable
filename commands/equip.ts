@@ -31,13 +31,13 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                         }
                         else{
                                         let foundObject
-                                        let foundWeapon = foundUser.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject)
-                                        let foundarmour = foundUser.inventory.armour.find(object => object.name.name.toLowerCase() === userobject)
-                                        let foundItem = foundUser.inventory.items.find(object => object.name.name.toLowerCase() === userobject)
+                                        let foundWeapon = await foundUser.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject)
+                                        let foundarmour = await foundUser.inventory.armour.find(object => object.name.name.toLowerCase() === userobject)
+                                        let foundItem = await foundUser.inventory.items.find(object => object.name.name.toLowerCase() === userobject)
                                 
                                 if(foundItem || foundWeapon || foundarmour){
                                     if(foundWeapon){
-                                        foundObject = foundUser.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject)
+                                        foundObject = await foundUser.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject)
                                         profileModel.findOne({userID:authorId},async function(err,foundProfile){
                                             if(err){
                                                 console.log(err);
@@ -47,7 +47,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                 if(foundProfile.weapon.length === 0){
                                                     foundObject.quantity-=1
                                         if(foundObject.quantity===0){
-                                            const index = foundUser.inventory.weapons.findIndex(object => object.name.name.toLowerCase() === userobject)
+                                            const index = await foundUser.inventory.weapons.findIndex(object => object.name.name.toLowerCase() === userobject)
                                             foundUser.inventory.weapons.splice(index,1)
                                         }
                                         else{
@@ -56,7 +56,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                         
                                            
                                             if(foundObject.name.skills.length == 0){
-                                                foundProfile.weapon.push(foundObject.name)
+                                                await foundProfile.weapon.push(foundObject.name)
                                                 if(foundObject.name.type == "melee"){
                                                     foundProfile.attackDamage+=foundObject.name.damage
                                                 }
@@ -69,10 +69,10 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                             }
                                             else{
                                                 if(foundProfile.currentskills.length<4){
-                                                    foundProfile.currentskills.push(foundObject.name.skills[0])
-                                                    foundProfile.allskills.push(foundObject.name.skills[0])
+                                                    await foundProfile.currentskills.push(foundObject.name.skills[0])
+                                                    await foundProfile.allskills.push(foundObject.name.skills[0])
                                                     await profileModel.updateOne({userID:authorId},{currentskills:foundProfile.currentskills,allskills:foundProfile.allskills})
-                                                    foundProfile.weapon.push(foundObject.name)
+                                                    await foundProfile.weapon.push(foundObject.name)
                                                     if(foundObject.name.type == "melee"){
                                                         foundProfile.attackDamage+=foundObject.name.damage
                                                     }
@@ -86,10 +86,10 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                     await interaction.reply({content:`${foundObject.name.name} has been equipped successfully!\n\n${foundObject.name.skills[0].name} has been added to your skill cycle!`})
                                                     }
                                                     else{
-                                                        foundProfile.allskills.push(foundObject.name.skills[0])
+                                                        await foundProfile.allskills.push(foundObject.name.skills[0])
                                                         await profileModel.updateOne({userID:authorId},{allskills:foundProfile.allskills})
                                                         
-                                                        foundProfile.weapon.push(foundObject.name)
+                                                        await foundProfile.weapon.push(foundObject.name)
                                                         if(foundObject.name.type == "melee"){
                                                             foundProfile.attackDamage+=foundObject.name.damage
                                                         }
@@ -118,7 +118,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                         })
                                     }
                                     else if(foundarmour){
-                                        foundObject = foundUser.inventory.armour.find(object => object.name.name.toLowerCase() === userobject)
+                                        foundObject = await foundUser.inventory.armour.find(object => object.name.name.toLowerCase() === userobject)
                                         profileModel.findOne({userID:authorId},async function(err,foundProfile){
                                             if(err){
                                                 console.log(err);
@@ -128,11 +128,11 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                 if(foundProfile.armourSuit.length == 0){
                                                     foundObject.quantity-=1
                                         if(foundObject.quantity===0){
-                                            const index = foundUser.inventory.armour.indexOf(foundObject)
-                                            foundUser.inventory.armour.splice(index,1)
+                                            const index2 = await foundUser.inventory.armour.indexOf(foundObject)
+                                            foundUser.inventory.armour.splice(index2,1)
                                             
                                         }
-                                                    foundProfile.armourSuit.push(foundObject.name)
+                                                    await foundProfile.armourSuit.push(foundObject.name)
                                                     foundProfile.armour+=foundObject.name.armour
                                                     foundProfile.magicResistance +=foundObject.name.magicResistance
                                                     foundProfile.speed += foundObject.name.speed
@@ -154,7 +154,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                         })
                                     }
                                     else if (foundItem){
-                                        foundObject = foundUser.inventory.items.find(object => object.name.name.toLowerCase() === userobject)
+                                        foundObject = await foundUser.inventory.items.find(object => object.name.name.toLowerCase() === userobject)
                                         if(foundObject.name.type === "equippable"){
                                             profileModel.findOne({userID:authorId},async function(err,foundProfile){
                                                 if(err){
@@ -165,10 +165,10 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                                     if(foundProfile.items.length == 0){
                                                         foundObject.quantity-=1
                                             if(foundObject.quantity===0){
-                                                const index = foundUser.inventory.items.indexOf(foundObject)
-                                                foundUser.inventory.items.splice(index,1)
+                                                const index3 = await foundUser.inventory.items.indexOf(foundObject)
+                                                foundUser.inventory.items.splice(index3,1)
                                             }
-                                                        foundProfile.items.push(foundObject.name)
+                                                        await foundProfile.items.push(foundObject.name)
                                                         foundProfile.passiveskills = foundProfile.passiveskills.concat(foundObject.name.skills)
                                                         await interaction.reply({content:`${foundObject.name.name} has been equipped successfully!`})
                                                     }

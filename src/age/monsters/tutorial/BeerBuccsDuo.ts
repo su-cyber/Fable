@@ -29,7 +29,7 @@ export class BeerBuccsDuo extends MonsterEntity {
             description:`a duo of Beer Buccaneers`,
             spawnRate: 0.4,
             health: 45,
-            evasion: 0.05,
+            evasion: 0,
             fileName:'beerbuccsduo.jpeg',
             attackDamage: 15,
             mana:0,

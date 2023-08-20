@@ -111,7 +111,7 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
         
            
         
-            await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})
+            await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]}).catch(e => {})
         
             collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                 collected.deferUpdate().catch(() => null)

@@ -47,7 +47,7 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
                             }).join("\n\n")
                             let successembed = await new MessageEmbed()
                             .setColor('RANDOM')
-                            .setTitle('REPLACE SKILL')
+                            .setTitle('SKILL LIST')
                             .setDescription(`**Current Skills:**\n${mappedcskills}\n\n**All Skills:**\n${mappedallskills}`)
                             await interaction.reply({embeds:[successembed]});
                         }
