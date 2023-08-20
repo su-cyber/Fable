@@ -14,7 +14,7 @@ const dragoon_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Piercing Shot`)
             defender.takeDamage
-                .magical(attacker.attackDamage*15)
+                .magical(attacker.magicPower*15)
                 .run(damage => `${defender.name} lost ${damage} HP by a precise shot bypassing all defenses`)
         }
     },{
@@ -32,7 +32,7 @@ const dragoon_tree=[
                 `${attacker.name} used Rapid Volley`
             )
             defender.takeDamage
-            .magical(attacker.attackDamage*35)
+            .magical(attacker.magicPower*35)
             .run(damage => `${defender.name} lost ${damage} HP by a rapid onslaught of arcane projectiles`)
         }
     },{
@@ -73,7 +73,7 @@ const dragoon_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used True Strike`)
             defender.takeDamage
-                .magical(attacker.attackDamage*50)
+                .magical(attacker.magicPower*50)
                 .run(damage => `${defender.name} lost ${damage} HP by a lightning fast shot to their vitals with deadly precision`)
         }
     },{
@@ -119,7 +119,7 @@ const dragoon_tree=[
                 `${attacker.name} used Burst Mode`
             )
             defender.takeDamage
-            .magical(attacker.attackDamage*70)
+            .magical(attacker.magicPower*70)
             .run(damage => `${attacker.name} Harnessess the untamed energies within, empowering their projectiles with a surging burst that erupts upon impact, wreaking havoc on ${defender.name} causing ${damage} dmg.`)
         }
     },{
@@ -137,7 +137,7 @@ const dragoon_tree=[
                 `${attacker.name} used Rain of Doom`
             )
             defender.takeDamage
-            .magical(attacker.attackDamage*85)
+            .magical(attacker.magicPower*85)
             .run(damage => `${attacker.name} unleashes an overwhelming barrage of projectiles that paints the battlefield in a tapestry of destruction causing ${damage} dmg on ${defender.name}`)
         }
     },

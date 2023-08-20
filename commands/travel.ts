@@ -38,7 +38,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from ${city_town}`)
                                         .addFields([
                                             {
                                                 name: `Castellan Fields`,
@@ -63,7 +63,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from ${city_town}`)
                                         .addFields([
                                             {
                                                 name: `Castellan Fields`,
@@ -225,7 +225,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from ${city_town}`)
                                         .addFields([
                                             {
                                                 name: `Aube Town`,
@@ -247,7 +247,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from ${city_town}`)
                                         .addFields([
                                             {
                                                 name: `Aube Town`,
@@ -371,7 +371,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from ${city_town}`)
                                         .addFields([
                                             {
                                                 name: `Aube Town`,
@@ -393,7 +393,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from ${city_town}`)
                                         .addFields([
                                             {
                                                 name: `Aube Town`,
@@ -516,7 +516,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from ${city_town}`)
                                         .addFields([
                                             {
                                                 name: `Aube Town`,
@@ -538,7 +538,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from ${city_town}`)
                                         .addFields([
                                             {
                                                 name: `Aube Town`,
@@ -708,7 +708,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from ${city_town}`)
                                         .addFields([
                                             {
                                                 name: `Ellior Forest`,
@@ -1002,7 +1002,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from ${city_town}`)
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
@@ -1032,7 +1032,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from ${city_town}`)
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
@@ -1203,7 +1203,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from Dragon's Den`)
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
@@ -1233,7 +1233,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from Dragon's Den`)
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
@@ -1394,7 +1394,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from Sunstone Mines`)
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
@@ -1424,7 +1424,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from Sunstone Mines`)
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
@@ -1585,7 +1585,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from Zephyr Mountain`)
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
@@ -1615,7 +1615,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from Zephyr Mountain`)
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
@@ -1777,7 +1777,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from Orld Tree Husk`)
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
@@ -1807,7 +1807,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from Orld Tree Husk`)
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
@@ -1968,7 +1968,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from Werfall`)
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
@@ -1982,7 +1982,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from Aube Town`)
+                                        .setDescription(`choose a place to travel from ${city_town}`)
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
