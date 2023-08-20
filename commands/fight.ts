@@ -666,6 +666,8 @@ export class PvEDuel extends DuelBuilder {
                         if(foundUser.quest_quantity == 0){
                             const foundContract = await hunting_contracts.find(quest => quest.quest_id == foundUser.quest)
                             if(foundContract != undefined){
+                                console.log(foundContract);
+                                
                                 let huntEmbed = new MessageEmbed()
                                 .setColor('GREEN')
                                 .setTitle('HUNT COMPLETED')

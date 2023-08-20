@@ -42,7 +42,7 @@ export default new MyCommandSlashBuilder({ name: 'hunting_contract', description
                                 let Quest_embed_2 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('Contract - Mudcrawlers')
-                                .setDescription(`The Ranger Association has put up a contract to eliminate 3 Mudcrawlers as crofters are having difficulties in farming the Castellan Fields due to an onslaught of Mudcrawlers\n\n__Rewards__:**510🪙 | 35 Merit**`)
+                                .setDescription(`The Ranger Association has put up a contract to eliminate 3 Mudcrawlers as crofters are having difficulties in farming the Castellan Fields due to an onslaught of Mudcrawlers\n\n__Rewards__:**150🪙 | 35 Merit**`)
 
                                 
 
