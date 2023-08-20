@@ -94,7 +94,7 @@ export default new MyCommandSlashBuilder({ name: 'addskill', description: 'add a
         collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
             collected.deferUpdate().catch(() => null)
             const replace = collected.values[0]
-            const index = foundUser.currentskills.findIndex(skill => skill.name.toLowerCase() === replace.toLowerCase())
+            const index = await foundUser.currentskills.findIndex(skill => skill.name.toLowerCase() === replace.toLowerCase())
             
             const skill = {
                 name:foundskill.name,
@@ -107,7 +107,7 @@ export default new MyCommandSlashBuilder({ name: 'addskill', description: 'add a
             
             await profileModel.updateOne({userID:authorId},{currentskills:foundUser.currentskills})
 
-            let successembed = new MessageEmbed()
+            let successembed = await new MessageEmbed()
             .setColor('RANDOM')
             .setTitle('REPLACE SKILL')
             .setDescription(`${foundskill.name} has been replaced with ${replace} in skill cycle!`)

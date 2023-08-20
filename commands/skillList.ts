@@ -1,6 +1,7 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
 import allskills from '../src/age/skills/skills'
+import { MessageEmbed } from 'discord.js'
 
 export default new MyCommandSlashBuilder({ name: 'listskills', description: 'list all your skills' }).setDo(
     async (bot, interaction) => {
@@ -44,8 +45,11 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
                                 }
                                 return `__**Name**__: ${skill.name}\n__**Description**__:${skill.description}\n__**POW**__: ${foundSkill.damage}\n**(${use})**`
                             }).join("\n\n")
-                           
-                            await interaction.reply({content:`**Current Skills:**\n${mappedcskills}\n\n**All Skills:**\n${mappedallskills}`});
+                            let successembed = await new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('REPLACE SKILL')
+                            .setDescription(`**Current Skills:**\n${mappedcskills}\n\n**All Skills:**\n${mappedallskills}`)
+                            await interaction.reply({embeds:[successembed]});
                         }
                     })
                 }
