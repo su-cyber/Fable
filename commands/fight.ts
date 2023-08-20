@@ -663,8 +663,7 @@ export class PvEDuel extends DuelBuilder {
                         foundUser.quest_quantity -=1
                         if(foundUser.quest_quantity == 0){
                             const foundContract = await hunting_contracts.find(quest => quest.quest_id == foundUser.quest)
-                            console.log(foundContract);
-                            console.log(foundUser.quest);
+                            
                             
                             
                             if(foundContract){
@@ -680,11 +679,11 @@ export class PvEDuel extends DuelBuilder {
                                 foundUser.coins+=foundContract.rewards.coins
                                 foundUser.completed_quests.push(foundContract.quest_id)
 
-                                await profileModel.updateOne({userID:authorID},{quest_quantity:foundUser.quest_quantity,quest_mob:foundUser.quest_mob,quest:foundUser.quest,coins:foundUser.coins,merit:foundUser.merit,completed_quests:foundUser.completed_quests})
+                                
                             }
                             
                         }
-                        
+                        await profileModel.updateOne({userID:authorID},{quest_quantity:foundUser.quest_quantity,quest_mob:foundUser.quest_mob,quest:foundUser.quest,coins:foundUser.coins,merit:foundUser.merit,completed_quests:foundUser.completed_quests})
                     }
                 }
                 else{

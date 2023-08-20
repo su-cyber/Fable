@@ -193,6 +193,7 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                 
                 await interaction.editReply({embeds:[delembed],components:[]})
                 collector_cancel.stop()
+                collector_select.stop()
             })
         
         
@@ -415,6 +416,7 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                 
                 await interaction.editReply({embeds:[delembed],components:[]})
                 collector_cancel.stop()
+                collector_select.stop()
             })
         
         
@@ -530,6 +532,7 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                 
                 await interaction.editReply({embeds:[delembed],components:[]})
                 collector_cancel.stop()
+                collector_select.stop()
             })
         
         

@@ -212,6 +212,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 
                 await interaction.editReply({embeds:[delembed],components:[]})
                 collector_cancel.stop()
+                collector_select.stop()
             })
         
         
@@ -357,6 +358,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 
                 await interaction.editReply({embeds:[delembed],components:[]})
                 collector_cancel.stop()
+                collector_select.stop()
             })
         
         
@@ -501,6 +503,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 
                 await interaction.editReply({embeds:[delembed],components:[]})
                 collector_cancel.stop()
+                collector_select.stop()
             })
         
         
@@ -646,6 +649,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 
                 await interaction.editReply({embeds:[delembed],components:[]})
                 collector_cancel.stop()
+                collector_select.stop()
             })
         
         
@@ -985,6 +989,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 
                 await interaction.editReply({embeds:[delembed],components:[]})
                 collector_cancel.stop()
+                collector_select.stop()
             })
         
         
@@ -1185,6 +1190,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 
                 await interaction.editReply({embeds:[delembed],components:[]})
                 collector_cancel.stop()
+                collector_select.stop()
             })
         
         
@@ -1375,6 +1381,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 
                 await interaction.editReply({embeds:[delembed],components:[]})
                 collector_cancel.stop()
+                collector_select.stop()
             })
         
         
@@ -1565,6 +1572,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 
                 await interaction.editReply({embeds:[delembed],components:[]})
                 collector_cancel.stop()
+                collector_select.stop()
             })
         
         
@@ -1756,6 +1764,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 
                 await interaction.editReply({embeds:[delembed],components:[]})
                 collector_cancel.stop()
+                collector_select.stop()
             })
         
         
@@ -1946,6 +1955,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 
                 await interaction.editReply({embeds:[delembed],components:[]})
                 collector_cancel.stop()
+                collector_select.stop()
             })
         
         
@@ -2059,6 +2069,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 
                 await interaction.editReply({embeds:[delembed],components:[]})
                 collector_cancel.stop()
+                collector_select.stop()
             })
         
         

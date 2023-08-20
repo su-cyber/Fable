@@ -63,19 +63,19 @@ export default new MyCommandSlashBuilder({ name: 'addskill', description: 'add a
                 .addOptions({
                     
                     label: `${foundUser.currentskills[0].name}`,
-                    description: `${foundUser.currentskills[0].description}`,
+                    description: ``,
                     value: `${foundUser.currentskills[0].name}`,
                 },{
                     label: `${foundUser.currentskills[1].name}`,
-                    description: `${foundUser.currentskills[1].description}`,
+                    description: ``,
                     value: `${foundUser.currentskills[1].name}`,
                 },{
                     label: `${foundUser.currentskills[2].name}`,
-                    description: `${foundUser.currentskills[2].description}`,
-                    value: `${foundUser.currentskills[2].name}`,
+                    description: ``,
+                    value: ``,
                 },{
                     label: `${foundUser.currentskills[3].name}`,
-                    description: `${foundUser.currentskills[3].description}`,
+                    description: ``,
                     value: `${foundUser.currentskills[3].name}`,
                 }
                 )
@@ -113,6 +113,7 @@ export default new MyCommandSlashBuilder({ name: 'addskill', description: 'add a
 
             await interaction.editReply({embeds:[successembed],components:[]})
             collector_select.stop()
+            collector_select.stop()
         })
 
         collector_cancel.on('collect', async j => {
@@ -125,6 +126,7 @@ export default new MyCommandSlashBuilder({ name: 'addskill', description: 'add a
             
             await interaction.editReply({embeds:[delembed],components:[]})
             collector_cancel.stop()
+            collector_select.stop()
         })
 
 
