@@ -23,7 +23,7 @@ export class grainMite extends MonsterEntity {
         return new grainMite({
             name: 'Grain Mite',
             description:`Common rodents in crop fields known for destroying crops and lay waste on godowns in swarms. They have sharp claws and teeths strong enough to crack the hardest grains and nuts.`,
-            spawnRate: 0.05,
+            spawnRate: 0.1,
             fileName:'grainmite.jpeg',
             health: 45,
             mana:0,

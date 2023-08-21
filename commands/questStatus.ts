@@ -43,7 +43,8 @@ export default new MyCommandSlashBuilder({ name: 'questinfo', description: 'Know
                         }
                     }
                     else{
-                        huntingQuest = hunting_contracts.find(quest => quest.quest_id == foundUser.quest)
+                        const foundContract = await hunting_contracts.find(quest => quest.quest_id == foundUser.quest)
+                        huntingQuest = foundContract
                         let rewards = `${huntingQuest.rewards.coins} 🪙 | ${huntingQuest.rewards.merit} Merit`
                         huntingQuest.rewards = rewards
                     }

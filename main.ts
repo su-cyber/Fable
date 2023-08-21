@@ -4,7 +4,7 @@ import profileModel from './models/profileSchema'
 
  
 
-setInterval(give_energy,1000*3600);
+setInterval(give_energy,1000*1200);
 
 new Bot({ intents: [
     Intents.FLAGS.GUILDS, 

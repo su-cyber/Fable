@@ -24,7 +24,7 @@ export class Treemick extends MonsterEntity {
         return new Treemick({
             name: 'Treemick',
             description:`Small stump like monsters who attack with wood splinters protruding from their bodies`,
-            spawnRate: 0.8,
+            spawnRate: 0.65,
             health: 60,
             mana:0,
             xp: 7,

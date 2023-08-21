@@ -38,7 +38,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .setDescription(`choose a place to travel from Aube Town`)
                                         .addFields([
                                             {
                                                 name: `Castellan Fields`,
@@ -63,7 +63,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .setDescription(`choose a place to travel from Aube Town`)
                                         .addFields([
                                             {
                                                 name: `Castellan Fields`,
@@ -141,7 +141,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\nuse **/explore** to explore this location`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
-                else if(location == 'Badlands'){
+                else if(location == 'The Badlands'){
                     await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                     const attachment = new MessageAttachment('assets/AubeTown/Badlands.jpg')
                     let successembed = new MessageEmbed()
@@ -318,7 +318,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\nuse **/explore** to explore this location`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
-                else if(location == 'Badlands'){
+                else if(location == 'The Badlands'){
                     await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                     const attachment = new MessageAttachment('assets/AubeTown/Badlands.jpg')
                     let successembed = new MessageEmbed()
@@ -463,7 +463,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\nuse **/explore** to explore this location`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
-                else if(location == 'Badlands'){
+                else if(location == 'The Badlands'){
                     await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                     const attachment = new MessageAttachment('assets/AubeTown/Badlands.jpg')
                     let successembed = new MessageEmbed()
@@ -1002,7 +1002,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .setDescription(`choose a place to travel from Ellior Forest`)
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
@@ -1032,7 +1032,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             embed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .setDescription(`choose a place to travel from Ellior Forest`)
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
