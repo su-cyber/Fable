@@ -41,7 +41,7 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
         })
         .setDescriptions(combined.map((item) => `${item.name.name}`))
 
-        await embed.send({options:{interaction:interaction}})
+        await embed.send({options:{interaction:interaction as any}})
 
     
     })
