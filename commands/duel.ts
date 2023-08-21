@@ -128,8 +128,12 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                     }
                                 })
                                 
+                                const query1 =  profileModel.findOne({userID:authorId})
+                                const query2 =  profileModel.findOne({userID:opponentId})
+                                const foundUser = await query1.exec()
+                                const foundOpponent = await query2.exec()
                                 
-                                if(attacker.speed >= defender.speed){
+                                if(foundUser.speed >= foundOpponent.speed){
                                     await new PvPDuel({
                                         interaction,
                                         player1: attacker,
@@ -217,6 +221,9 @@ class PvPDuel extends DuelBuilder {
             
         } 
         else {
+            if(turn == 15 || turn == 16){
+                await this.deleteInfoMessages()
+               }
             await this.sendInfoMessage(this.attacker.skills, true)
             // const max = this.skill_len
             
