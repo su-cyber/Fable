@@ -799,7 +799,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     {
                         label: `Orld Tree's Husk`,
                         description: ``,
-                        value: `Orld Tree Husk `,
+                        value: `Orld Tree Husk`,
                     },
                     {
                         label: `Township of Werfall`,
@@ -909,7 +909,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setDescription(`The road to the capital state of Gloaming is currently Blocked!`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
-                else if(location == 'Orld Tree Husk '){
+                else if(location == 'Orld Tree Husk'){
                     await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                     const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
                     let successembed = new MessageEmbed()
@@ -1091,7 +1091,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     {
                         label: `Orld Tree's Husk`,
                         description: ``,
-                        value: `Orld Tree Husk `,
+                        value: `Orld Tree Husk`,
                     },
                     )
                     .setDisabled(false),
@@ -1160,7 +1160,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\nuse **/explore** to explore this location`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
-                else if(location == 'Orld Tree Husk '){
+                else if(location == 'Orld Tree Husk'){
                     await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                     const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
                     let successembed = new MessageEmbed()
@@ -1292,7 +1292,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     {
                         label: `Orld Tree's Husk`,
                         description: ``,
-                        value: `Orld Tree Husk `,
+                        value: `Orld Tree Husk`,
                     },
                     )
                     .setDisabled(false),
@@ -1351,7 +1351,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\nuse **/explore** to explore this location`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
-                else if(location == 'Orld Tree Husk '){
+                else if(location == 'Orld Tree Husk'){
                     await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                     const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
                     let successembed = new MessageEmbed()
@@ -1483,7 +1483,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     {
                         label: `Orld Tree's Husk`,
                         description: ``,
-                        value: `Orld Tree Husk `,
+                        value: `Orld Tree Husk`,
                     },
                     )
                     .setDisabled(false),
@@ -1542,7 +1542,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
-                else if(location == 'Orld Tree Husk '){
+                else if(location == 'Orld Tree Husk'){
                     await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                     const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
                     let successembed = new MessageEmbed()
@@ -1674,7 +1674,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     {
                         label: `Orld Tree's Husk`,
                         description: ``,
-                        value: `Orld Tree Husk `,
+                        value: `Orld Tree Husk`,
                     },
                     )
                     .setDisabled(false),
@@ -1734,7 +1734,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
-                else if(location == 'Orld Tree Husk '){
+                else if(location == 'Orld Tree Husk'){
                     await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                     const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
                     let successembed = new MessageEmbed()
@@ -1770,7 +1770,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
         
                 }
-                else if(city_town == "Orld Tree Husk "){
+                else if(city_town == "Orld Tree Husk"){
                                         let embed
                                         let mount = "None"
                                         if(mount == "None"){
