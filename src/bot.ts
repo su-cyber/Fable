@@ -86,11 +86,10 @@ class Bot extends Client {
                                             foundUser.mana+=1
                                         
                                         }
-                                       
-                                        await sleep(1)
                                         foundUser.level=foundUser.level+1
                                         foundUser.skill_points += 3
-                                        await profileSchema.updateOne({userID:userID},foundUser)
+                                        await profileSchema.updateOne({userID:userID},{level:foundUser.level,skill_points:foundUser.skill_points,mana:foundUser.mana,skill_tree:foundUser.skill_tree,vitality:foundUser.vitality,health:foundUser.health})
+                                        await sleep(1)
                                         await interaction.channel.send({embeds:[levelupEmbed]})
                                         
                                         

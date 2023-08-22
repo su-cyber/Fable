@@ -29,7 +29,7 @@ const allQuests = [{
     name:"Heirloom Missing",
     description:"find the missing Heirloom",
     quest_id:"KS-ZS-SQ1",
-    rewards:"TBD",
+    rewards:"1500🪙",
     info:"you are hired by a wealthy citizen of Zorya to find their missing astrolabe. The astrolabe is a family heirloom that is believed to bring good fortune to its owner. You must search the city and interview locals to find out where the astrolabe may have ended up."
 
 },{

@@ -431,7 +431,7 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
             else if(city_town == "Zephyr Mountain"){
                 interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
             }
-            else if(city_town == "Orld Tree Husk "){
+            else if(city_town == "Orld Tree Husk"){
                 interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
             }
             else if(city_town == "Sunstone Mines"){
