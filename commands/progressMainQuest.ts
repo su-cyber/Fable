@@ -94,7 +94,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             
                             await interaction.reply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
                             let filter = i => i.user.id === authorId
-                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
+                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time:1000*600})
                         
                                 collector.on('collect',async (btn) => {
                                     if(btn.isButton()){
@@ -201,7 +201,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             
                             await interaction.reply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
                             let filter = i => i.user.id === authorId
-                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
+                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time:1000*600})
                         
                                 collector.on('collect',async (btn) => {
                                     if(btn.isButton()){
@@ -455,13 +455,15 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
 
                                               await interaction.reply({content: null,embeds:[fightEmbed],components:[weaponbtn]})
                                 let filter = i => i.user.id === authorId
-                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
+                                let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time:1000*600})
 
 
                                 collector.on('collect',async (btn) => {
                                     if(btn.isButton()){
                                         if(btn.customId === "spear"){
+                                            
                                             await btn.deferUpdate().catch(e => {})
+                                            collector.stop()
                                             chosenWeapon = "Rusted Spear"
                                             let proceedembed = new MessageEmbed()
                                 .setColor('RANDOM')
@@ -495,6 +497,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                         }
                                         else if(btn.customId === "boltgun"){
                                             await btn.deferUpdate().catch(e => {})
+                                            collector.stop()
                                             chosenWeapon = "Rusted Boltgun"
 
                                             let proceedembed = new MessageEmbed()
@@ -811,7 +814,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                            
                             
                             let filter = i => i.user.id === authorId
-                            let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
+                            let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time:1000*600})
                         
                                 collector.on('collect',async (btn) => {
                                     if(btn.isButton()){
@@ -885,7 +888,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                        
                         
                         let filter = i => i.user.id === authorId
-                            let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
+                            let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time:1000*600})
                     
                             collector.on('collect',async (btn) => {
                                 if(btn.isButton()){
@@ -1046,7 +1049,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                    
                     
                     let filter = i => i.user.id === authorId
-                        let collector = await interaction.channel.createMessageComponentCollector({filter: filter})
+                        let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time:1000*600})
                 
                         collector.on('collect',async (btn) => {
                             if(btn.isButton()){

@@ -297,8 +297,8 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
             ])  
             let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
             let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
-            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
-            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
         
             collector_select.setMaxListeners(Infinity)
             collector_cancel.setMaxListeners(Infinity)
@@ -480,8 +480,8 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
             ])  
             let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
             let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
-            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
-            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
         
             collector_select.setMaxListeners(Infinity)
             collector_cancel.setMaxListeners(Infinity)

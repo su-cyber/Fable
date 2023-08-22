@@ -97,8 +97,8 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
 
     let filter_btn = (interaction : any) => interaction.user.id === authorId && interaction.isButton()
     let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select_quest"
-    let collector_btn =  interaction.channel.createMessageComponentCollector({ filter:filter_btn })
-    let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
+    let collector_btn =  interaction.channel.createMessageComponentCollector({ filter:filter_btn,time:1000*300 })
+    let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
 
 
     let count = 0
@@ -251,8 +251,8 @@ let Quest_embed_1 = new MessageEmbed()
 
     let filter_btn = (interaction : any) => interaction.user.id === authorId && interaction.isButton()
     let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select_quest"
-    let collector_btn =  interaction.channel.createMessageComponentCollector({ filter:filter_btn })
-    let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
+    let collector_btn =  interaction.channel.createMessageComponentCollector({ filter:filter_btn,time:1000*300 })
+    let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
 
 
     let count = 0
@@ -284,6 +284,7 @@ let Quest_embed_1 = new MessageEmbed()
     
 
         collector_select.stop()
+        collector_btn.stop()
 
     })
     collector_btn.on('collect', async i => {
@@ -312,6 +313,7 @@ let Quest_embed_1 = new MessageEmbed()
         else if(i.customId === 'stop'){
             interaction.deleteReply()
             collector_btn.stop()
+            collector_select.stop()
         }
         else{
 

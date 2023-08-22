@@ -58,8 +58,8 @@ export default new MyCommandSlashBuilder({ name: 'choose_sidequest', description
     
                                     let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
                             let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
-                            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
-                            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
+                            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+                            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
                         
                             
                         
@@ -81,6 +81,7 @@ export default new MyCommandSlashBuilder({ name: 'choose_sidequest', description
                     
                                 await interaction.editReply({embeds:[successembed],components:[]})
                                 collector_select.stop()
+                                collector_cancel.stop()
                             })
                     
                             collector_cancel.on('collect', async j => {
@@ -93,6 +94,7 @@ export default new MyCommandSlashBuilder({ name: 'choose_sidequest', description
                                 
                                 await interaction.editReply({embeds:[delembed],components:[]})
                                 collector_cancel.stop()
+                                collector_select.stop()
                             })
                     
                             

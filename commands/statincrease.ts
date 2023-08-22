@@ -68,7 +68,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                     let filter_btn = (interaction : any) => interaction.user.id === authorId && interaction.isButton()
                     // let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
                     // let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"
-                    let collector_btn =  interaction.channel.createMessageComponentCollector({ filter:filter_btn })
+                    let collector_btn =  interaction.channel.createMessageComponentCollector({ filter:filter_btn,time:1000*300 })
                     // let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select })
                     // let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel })
                 
