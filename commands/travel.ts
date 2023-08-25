@@ -1076,7 +1076,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     },{
                         label: `Dragon's Den`,
                         description: ``,
-                        value: ``,
+                        value: `Dragon's Den`,
                     },
                     {
                         label: `Sunstone Mines`,
