@@ -37,7 +37,7 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
        let totalInventoy = playerWeapons.concat(playerArmour,playerPotions,playerItems)
 
     let filter = i => i.user.id === authorId
-    let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
+    let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 300})
     
     function chunkArray(array, chunkSize) {
         const chunkedArray = [];
@@ -100,9 +100,16 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
         ItemEmbeds.push(newEmbed)
          
       })
+      let empty = new MessageEmbed()
+      .setColor('RANDOM')
+      .setTitle('INVENTORY')
+      .setDescription(`**YOUR ENTIRE INVETORY IS EMPTY**`)
     let totalEmbeds = weaponEmbeds.concat(ArmourEmbeds,PotionEmbeds,ItemEmbeds)
+    if(totalEmbeds.length == 0){
+        totalEmbeds.push(empty)
+    }
     for(let j =0;j<totalEmbeds.length;j++){
-        totalEmbeds[j].setFooter({text:`${j+1}/${totalEmbeds.length}`})
+        totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
     }
     await interaction.deferReply()
     await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw]})
