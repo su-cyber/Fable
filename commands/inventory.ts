@@ -52,7 +52,7 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
       const chunkedPotions = chunkArray(playerPotions,5);
 
       let weaponEmbeds = []
-      let AmrourEmbeds = []
+      let ArmourEmbeds = []
       let ItemEmbeds = []
       let PotionEmbeds = []
 
@@ -75,7 +75,7 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
         .setColor('RANDOM')
         .setTitle('ARMOUR')
         .setDescription(`${armour}`)
-        AmrourEmbeds.push(newEmbed)
+        ArmourEmbeds.push(newEmbed)
          
       })
       chunkedPotions.map((data) => {
@@ -100,13 +100,16 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
         ItemEmbeds.push(newEmbed)
          
       })
-    let totalEmbeds = weaponEmbeds.concat(AmrourEmbeds,PotionEmbeds,ItemEmbeds)
+    let totalEmbeds = weaponEmbeds.concat(ArmourEmbeds,PotionEmbeds,ItemEmbeds)
+    for(let j =0;j<totalEmbeds.length;j++){
+        totalEmbeds[j].setFooter({text:`${j+1}/${totalEmbeds.length}`})
+    }
     await interaction.deferReply()
     await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw]})
     let count = 0
     collector.on('collect', async i => {
-        i.deferUpdate().catch(() => null)
         if(i.customId === 'forward'){
+            await i.deferUpdate().catch(e => {})
             if(count== totalEmbeds.length-1){
                 count=0
             }
@@ -114,9 +117,10 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
                 count +=1
             }
             
-            interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw]})
+            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw]})
         }
         else if(i.customId === 'backward'){
+            await i.deferUpdate().catch(e => {})
             if(count== 0){
                 count=totalEmbeds.length-1
             }
@@ -124,11 +128,10 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
                 count-=1
             }
             
-            interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw]})
+            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw]})
 
         }
         else if(i.customId === 'stop'){
-            interaction.deleteReply()
             collector.stop()
             
         }
