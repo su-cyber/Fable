@@ -18,15 +18,15 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
             }
             else{
                 if(res){
-                    let btnraw
+                    
         profileModel.findOne({userID:authorId},async (err,foundUser) => {
 
-    btnraw= new MessageActionRow().addComponents([
-        new MessageButton().setCustomId("weapons").setStyle("PRIMARY").setLabel("WEAPONS"),
-        new MessageButton().setCustomId("armour").setStyle("PRIMARY").setLabel("ARMOUR"),
-        new MessageButton().setCustomId("items").setStyle("PRIMARY").setLabel("ITEMS"),
-        new MessageButton().setCustomId("potions").setStyle("PRIMARY").setLabel("POTIONS")
-    ])
+            let btnraw= new MessageActionRow().addComponents([
+                new MessageButton().setCustomId("backward").setStyle("PRIMARY").setLabel("⏪"),
+                new MessageButton().setCustomId("stop").setStyle("DANGER").setLabel("stop"),
+                new MessageButton().setCustomId("forward").setStyle("PRIMARY").setLabel("⏩"),
+                
+            ])
     
     inventory.findOne({userID:authorId},async function(err,foundInventory){
         let playerWeapons = foundInventory.inventory.weapons
@@ -34,116 +34,111 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
         let playerItems = foundInventory.inventory.items
         let playerPotions = foundInventory.inventory.potions
 
-       
+       let totalInventoy = playerWeapons.concat(playerArmour,playerPotions,playerItems)
 
     let filter = i => i.user.id === authorId
     let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
-    const weapons=playerWeapons.map((weapon) => {
-        return `__Name__:**${weapon.name.name}**\n__Description__: ${weapon.name.description}\n__Quantity__: ${weapon.quantity}`
-    }).join("\n\n")
+    
+    function chunkArray(array, chunkSize) {
+        const chunkedArray = [];
+        for (let i = 0; i < array.length; i += chunkSize) {
+          chunkedArray.push(array.slice(i, i + chunkSize));
+        }
+        return chunkedArray;
+      }
+      const chunkedWeapons = chunkArray(playerWeapons,5);
+      const chunkedArmour = chunkArray(playerArmour,5);
+      const chunkedItems = chunkArray(playerItems,5);
+      const chunkedPotions = chunkArray(playerPotions,5);
 
-    const armour=playerArmour.map((weapon) => {
-        return `__Name__:**${weapon.name.name}**\n__Description__: ${weapon.name.description}\n__Quantity__: ${weapon.quantity}`
-    }).join("\n\n")
+      let weaponEmbeds = []
+      let AmrourEmbeds = []
+      let ItemEmbeds = []
+      let PotionEmbeds = []
 
-    const items=playerItems.map((weapon) => {
-        return `__Name__:**${weapon.name.name}**\n__Description__: ${weapon.name.description}\n__Quantity__: ${weapon.quantity}`
-    }).join("\n\n")
-
-    const potions=playerPotions.map((weapon) => {
-        return `__Name__:**${weapon.name.name}**\n__Description__: ${weapon.name.description}\n__Quantity__: ${weapon.quantity}`
-    }).join("\n\n")
-
-    let WeaponEmbed
-    let ArmourEmbed
-    let ItemsEmbed
-    let PotionsEmbed
-    if(playerWeapons.length != 0){
-        WeaponEmbed= new MessageEmbed()
+      chunkedWeapons.map((data) => {
+        const weapons=data.map((weapon) => {
+            return `__Name__:**${weapon.name.name}**\n__Description__: ${weapon.name.description}\n__Quantity__: ${weapon.quantity}`
+        }).join("\n\n")
+        const newEmbed = new MessageEmbed()
         .setColor('RANDOM')
         .setTitle('WEAPONS')
-        .setDescription(`## AVAILABLE WEAPONS:-\n\n${weapons}\n\nUse **/equip** followed by the weapon's name to equip a weapon from the inventory`)
-    
-    }
-    else{
-        WeaponEmbed = new MessageEmbed()
-        .setColor('RANDOM')
-        .setTitle('WEAPONS')
-        .setDescription(`## AVAILABLE WEAPONS:-\n\n### NONE\n\n`)
-    
-    }
-    if(playerArmour.length != 0){
-    ArmourEmbed =  new MessageEmbed()
-    .setColor('RANDOM')
-    .setTitle('ARMOUR')
-    .setDescription(`## AVAILABLE ARMOUR:-\n\n${armour}\n\nUse **/equip** followed by the armour's name to equip an armour from the inventory`)
-
-    }
-    else{
-        ArmourEmbed = new MessageEmbed()
+        .setDescription(`${weapons}`)
+        weaponEmbeds.push(newEmbed)
+         
+      })
+      chunkedArmour.map((data) => {
+        const armour=data.map((weapon) => {
+            return `__Name__:**${weapon.name.name}**\n__Description__: ${weapon.name.description}\n__Quantity__: ${weapon.quantity}`
+        }).join("\n\n")
+        const newEmbed = new MessageEmbed()
         .setColor('RANDOM')
         .setTitle('ARMOUR')
-        .setDescription(`## AVAILABLE ARMOUR:-\n\n### NONE\n\n`)
-    
-    }
-    if(playerItems.length !=0){
-    ItemsEmbed =  new MessageEmbed()
-    .setColor('RANDOM')
-    .setTitle('ITEMS')
-    .setDescription(`## AVAILABLE ITEMS:-\n\n${items}\n\nUse **/use** followed by the item's name to use the item\nSimilarly, you can also equip any trinkets you own by using **/equip** followed by the name of the item to equip.`)
-
-     }
-     else{
-        ItemsEmbed = new MessageEmbed()
-        .setColor('RANDOM')
-        .setTitle('ITEMS')
-        .setDescription(`## AVAILABLE ITEMS:-\n\n### NONE\n\n`)
-     }
-     if(playerPotions.length != 0){
-        PotionsEmbed =  new MessageEmbed()
-        .setColor('RANDOM')
-        .setTitle('ITEMS')
-        .setDescription(`## AVAILABLE ITEMS:-\n\n${potions}\n\nUse **/use** followed by the potion's name to use the potion`)
-    
-     }
-     else{
-        PotionsEmbed = new MessageEmbed()
+        .setDescription(`${armour}`)
+        AmrourEmbeds.push(newEmbed)
+         
+      })
+      chunkedPotions.map((data) => {
+        const potions=data.map((weapon) => {
+            return `__Name__:**${weapon.name.name}**\n__Description__: ${weapon.name.description}\n__Quantity__: ${weapon.quantity}`
+        }).join("\n\n")
+        const newEmbed = new MessageEmbed()
         .setColor('RANDOM')
         .setTitle('POTIONS')
-        .setDescription(`## AVAILABLE POTIONS:-\n\n### NONE\n\n`)
-     }
-    
-    await interaction.reply({embeds:[WeaponEmbed],components:[btnraw]})
-    collector.on('collect',async (btn) => {
-        if(btn.isButton()){
-            if(btn.customId === "weapons"){
-                await btn.deferUpdate().catch(e => {})
-                interaction.editReply({embeds: [WeaponEmbed]})
-                
-                
+        .setDescription(`${potions}`)
+        PotionEmbeds.push(newEmbed)
+         
+      })
+      chunkedItems.map((data) => {
+        const items=data.map((weapon) => {
+            return `__Name__:**${weapon.name.name}**\n__Description__: ${weapon.name.description}\n__Quantity__: ${weapon.quantity}`
+        }).join("\n\n")
+        const newEmbed = new MessageEmbed()
+        .setColor('RANDOM')
+        .setTitle('ITEMS')
+        .setDescription(`${items}`)
+        ItemEmbeds.push(newEmbed)
+         
+      })
+    let totalEmbeds = weaponEmbeds.concat(AmrourEmbeds,PotionEmbeds,ItemEmbeds)
+    await interaction.deferReply()
+    await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw]})
+    let count = 0
+    collector.on('collect', async i => {
+        i.deferUpdate().catch(() => null)
+        if(i.customId === 'forward'){
+            if(count== totalEmbeds.length-1){
+                count=0
             }
-            else if(btn.customId === "armour"){
-                await btn.deferUpdate().catch(e => {})
-                interaction.editReply({embeds: [ArmourEmbed]})
-                
-                
-            }
-            else if(btn.customId === "items"){
-                await btn.deferUpdate().catch(e => {})
-                interaction.editReply({embeds: [ItemsEmbed]})
-            }
-            else if(btn.customId === "potions"){
-                await btn.deferUpdate().catch(e => {})
-                interaction.editReply({embeds: [PotionsEmbed]})
+            else{
+                count +=1
             }
             
+            interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw]})
+        }
+        else if(i.customId === 'backward'){
+            if(count== 0){
+                count=totalEmbeds.length-1
+            }
+            else{
+                count-=1
+            }
+            
+            interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw]})
+
+        }
+        else if(i.customId === 'stop'){
+            interaction.deleteReply()
+            collector.stop()
             
         }
+        else{
+
+        }
+
+  
     
-
-
-
-})
+    })
 
 collector.on('end', () => {
 interaction.deleteReply()
