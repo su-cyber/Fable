@@ -3,6 +3,7 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { gildedScale } from '../../items/GildedScale'
+import { calculateSTAB } from '../../../../commands/fight'
 
 export class Gildedwyvern extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -25,6 +26,7 @@ export class Gildedwyvern extends MonsterEntity {
             description:`A majestic creature covered in shimmering golden scales, the Gilded Wyvern possesses a powerful breath of gilded flames that melts even the sturdiest defenses. It attacks with swift aerial maneuvers and slashes from its razor-sharp talons. Its drop is a Gilded Scale, a valuable golden scale sought after by alchemists for its transmutation properties.`,
             spawnRate: 0.2,
             health: 200,
+            level:8,
             mana:0,
             xp: generateXP(32,35),
             evasion: 0.05,
@@ -86,9 +88,10 @@ export class Gildedwyvern extends MonsterEntity {
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("flame",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Gilded Flame`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*28*mod)
+                            .magical(attacker.magicPower*28*mod*stab)
                             .run(damage => `${defender.name} lost ${damage} HP by a burst of flames`)
                     }
                 },

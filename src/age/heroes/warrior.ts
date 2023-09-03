@@ -32,6 +32,7 @@ export class Warrior extends ClassEntity {
         return new Warrior({
             user,
             health: 1000,
+            level:1,
             attackDamage: 100,
             mana:50,
             magicPower: 0,

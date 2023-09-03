@@ -25,6 +25,7 @@ export class Crystalcrawler extends MonsterEntity {
             description:`A creature made entirely of sparkling, translucent crystals, the Crystalcrawler skitters across the cave walls with incredible agility. It attacks by launching razor-sharp crystal shards at its foes. Its drop is a Crystal Shard, a gemstone-like fragment that can be used in the creation of magical artifacts.`,
             spawnRate: 0.35,
             health: 135,
+            level:7,
             mana:0,
             fileName:'crystalcrawler.jpeg',
             xp: generateXP(26,30),

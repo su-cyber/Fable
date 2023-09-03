@@ -4,6 +4,7 @@ import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { dronerAcid } from '../../items/dronerAcid'
 import { buzzHoney } from '../../items/buzz_honey'
+import { calculateSTAB } from '../../../../commands/fight'
 
 export class Droner extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -29,6 +30,7 @@ export class Droner extends MonsterEntity {
             description:`Insects about the size of an average human hand who make a loud droning sound and feed on the nectar of Rayleigh Flowers. Although not hostile, they don't hesitate to attack humans when disturbed and their sting is said to make an average human unconscious for hours.`,
             spawnRate: 0.5,
             health: 60,
+            level:2,
             mana:0,
             xp: 9,
             evasion: 0.03,
@@ -90,9 +92,10 @@ export class Droner extends MonsterEntity {
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("venom",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Acid Sting`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*20*mod)
+                            .magical(attacker.magicPower*20*mod*stab)
                             .run(damage => `${defender.name} lost ${damage} HP by getting stung by the Droner`)
                     }
                 },

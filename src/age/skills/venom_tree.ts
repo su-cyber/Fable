@@ -1,5 +1,5 @@
 
-
+import { calculateSTAB } from "../../../commands/fight"
 const venom_tree=[
     {
         name: 'Poison Claw',
@@ -48,9 +48,10 @@ const venom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("venom",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Poison Claw`)
             defender.takeDamage
-                .physical((attacker.attackDamage*20)*mod)
+                .physical((attacker.attackDamage*stab*20)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a poisonous claw attack`)
         }
     },{
@@ -100,9 +101,10 @@ const venom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("venom",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Poison Gas`)
             defender.takeDamage
-                .magical((attacker.magicPower*20)*mod)
+                .magical((attacker.magicPower*stab*20)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by breathing in toxic gas`)
         }
     },{
@@ -152,9 +154,10 @@ const venom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("venom",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Toxic Serpent Bite`)
             defender.takeDamage
-                .physical((attacker.attackDamage*45)*mod)
+                .physical((attacker.attackDamage*stab*45)*mod)
                 .run(damage => `${attacker.name} uleaashes a venomous serpent upon ${defender.name} causing ${damage} damage`)
         }
     },{
@@ -204,9 +207,10 @@ const venom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("venom",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Toxic Meltdow`)
             defender.takeDamage
-                .magical((attacker.magicPower*45)*mod)
+                .magical((attacker.magicPower*stab*45)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a burst of corrosive gas`)
         }
     },
@@ -304,9 +308,10 @@ const venom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("venom",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Venom Strike`)
             defender.takeDamage
-                .physical((attacker.attackDamage*65)*mod)
+                .physical((attacker.attackDamage*stab*65)*mod)
                 .run(damage => `${attacker.name} covers their fist in poison and punches ${defender.name} causing ${damage} damage`)
         }
     },{
@@ -356,9 +361,10 @@ const venom_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("venom",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Acid Spray`)
             defender.takeDamage
-                .magical((attacker.magicPower*65)*mod)
+                .magical((attacker.magicPower*stab*65)*mod)
                 .run(damage => `${attacker.name} sprays a potent acid at ${defender.name} causing ${damage} damage`)
         }
     },

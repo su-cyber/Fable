@@ -80,6 +80,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                 attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
                                 attacker.passive_skills = foundUser.passiveskills
                                 attacker.maxMana = foundUser.mana
+                                attacker.level = foundUser.level
                                 
                                 
                                 inventory.findOne({userID:authorId},async function(err,foundProfile) {
@@ -120,6 +121,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         defender.maxHealth=getHealth(foundUser.level,foundUser.vitality)
                                         defender.passive_skills = foundUser.passiveskills
                                         defender.maxMana = foundUser.mana
+                                        defender.level = foundUser.level
                                         
                                         
                                         defender.skills=foundUser.currentskills

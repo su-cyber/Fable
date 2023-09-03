@@ -25,6 +25,7 @@ export class shadowCat extends MonsterEntity {
             description:`A large, black feline with eyes that glow an eerie green. The Shadowcat is known for its stealth and ability to disappear into the shadows. Its attack is a powerful swipe with its razor-sharp claws. Its drop is a tuft of its fur, which is highly sought after for use in invisibility potions.`,
             spawnRate: 0.35,
             health: 120,
+            level:6,
             mana:0,
             xp: generateXP(15,18),
             evasion: 0.05,

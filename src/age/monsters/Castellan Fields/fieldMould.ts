@@ -3,6 +3,7 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { dronerAcid } from '../../items/dronerAcid'
+import { calculateSTAB } from '../../../../commands/fight'
 
 export class fieldMould extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -25,6 +26,7 @@ export class fieldMould extends MonsterEntity {
             description:`A fungus that usually grows upon dead crops and has poisonous spores. They are hostile to any living creature that approaches them, they are immobile and their spores are not fatal. Any living thing killed by their spores become a host for new molds`,
             spawnRate: 0.1,
             health: 45,
+            level:1,
             mana:0,
             fileName:'fieldmold.jpeg',
             xp: 7,
@@ -86,9 +88,10 @@ export class fieldMould extends MonsterEntity {
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("venom",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Toxic Spores`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*15)
+                            .magical(attacker.magicPower*15*stab*mod)
                             .run(damage => `${defender.name} lost ${damage} HP by beathing in some of the toxic spores.`)
                     }
                 },

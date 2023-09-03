@@ -4,6 +4,7 @@ import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { starHound_tooth } from '../../items/starHound_tooth'
 import { calculateModifier } from '../../../../commands/fight'
+import { calculateSTAB } from '../../../../commands/fight'
 
 export class starHound extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -26,6 +27,7 @@ export class starHound extends MonsterEntity {
             description:`A sleek, wolf-like creature with shimmering silver fur and bright, glowing eyes. The Starhound is fast and agile, able to run at incredible speeds through the forest. Its skill is to emit a bright, blinding light that can disorient its prey. Its drop is a Starhound tooth, which is highly valued for its ability to enhance magical spells.`,
             spawnRate: 0.1,
             health: 180,
+            level:7,
             mana:0,
             xp: generateXP(20,23),
             evasion: 0.05,
@@ -50,9 +52,10 @@ export class starHound extends MonsterEntity {
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("light",defender.element)
+                        let stab = calculateSTAB("light",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Blinding Light`)
                         defender.takeDamage
-                            .magical(attacker.attackDamage*26*mod)
+                            .magical(attacker.attackDamage*26*mod*stab)
                             .run(damage => `${defender.name} lost ${damage} HP by Blinding Light`)
                     }
                 },

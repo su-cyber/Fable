@@ -3,6 +3,8 @@ import { MonsterEntity, ClassEntity } from '../classes'
 import { Dropper } from '../dropper'
 import generateXP from '../../utils/generateXP'
 import { goldenTelescope } from '../items/goldenTelescope'
+import { calculateSTAB } from '../../../commands/fight'
+
 
 export class captainCrook extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -25,6 +27,7 @@ export class captainCrook extends MonsterEntity {
             description:`the leader of Beer Buccaneers`,
             spawnRate: 0.5,
             health: 120,
+            level:4,
             mana:4,
             xp: generateXP(25,30),
             evasion: 0.05,
@@ -101,9 +104,10 @@ export class captainCrook extends MonsterEntity {
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("wave",attacker.element)
             attacker.addLogMessage(`**${attacker.name}** used Wave Slash`)
             defender.takeDamage
-                .magical((attacker.magicPower*35)*mod)
+                .magical((attacker.magicPower*35)*mod*stab)
                 .run(damage => `**${defender.name}** lost ${damage} HP by a fast water imbued slash`)
                     }
                 },

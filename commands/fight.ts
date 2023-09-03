@@ -65,6 +65,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                 attacker.passive_skills = foundUser.passiveskills
                                 attacker.maxMana = foundUser.mana
                                 attacker.speed = foundUser.speed
+                                attacker.level = foundUser.level
                                 
                                 inventory.findOne({userID:authorId},async function(err,foundProfile) {
                                     if(foundProfile.inventory.potions.length !=0){
@@ -313,8 +314,9 @@ export class PvEDuel extends DuelBuilder {
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element.toLowerCase())
+                    let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
                     
-                    skill_dmg = skill_dmg * mod
+                    skill_dmg = skill_dmg * mod * stab
                     damage_order.push(skill_dmg)
                     damage_order.sort(function(a,b){return a - b})
                     const index = damage_order.indexOf(skill_dmg)
@@ -364,7 +366,9 @@ export class PvEDuel extends DuelBuilder {
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element.toLowerCase())
-                    skill_dmg = skill_dmg * mod
+                    let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
+                    
+                    skill_dmg = skill_dmg * mod * stab
                     damage_order.push(skill_dmg)
                     damage_order.sort(function(a,b){return a - b})
                     const index = damage_order.indexOf(skill_dmg)
@@ -403,7 +407,9 @@ export class PvEDuel extends DuelBuilder {
                 }
                 
                 let mod = calculateModifier(val.element,this.defender.element.toLowerCase())
-                skill_dmg = skill_dmg * mod
+                let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
+                    
+                skill_dmg = skill_dmg * mod * stab
                 damage_order.push(skill_dmg)
                 damage_order.sort(function(a,b){return a - b})
                 const index = damage_order.indexOf(skill_dmg)
@@ -460,7 +466,9 @@ export class PvEDuel extends DuelBuilder {
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element)
-                    skill_dmg = skill_dmg * mod
+                    let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
+                    
+                    skill_dmg = skill_dmg * mod * stab
                     damage_order.push(skill_dmg)
                     damage_order.sort(function(a,b){return a - b})
                     const index = damage_order.indexOf(skill_dmg)
@@ -533,7 +541,9 @@ export class PvEDuel extends DuelBuilder {
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element)
-                    skill_dmg = skill_dmg * mod
+                    let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
+                    
+                    skill_dmg = skill_dmg * mod * stab
                     damage_order.push(skill_dmg)
                     damage_order.sort(function(a,b){return a - b})
                     const index = damage_order.indexOf(skill_dmg)
@@ -572,7 +582,9 @@ export class PvEDuel extends DuelBuilder {
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element)
-                    skill_dmg = skill_dmg * mod
+                    let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
+                    
+                    skill_dmg = skill_dmg * mod * stab
                     damage_order.push(skill_dmg)
                     damage_order.sort(function(a,b){return a - b})
                     const index = damage_order.indexOf(skill_dmg)
@@ -1125,4 +1137,12 @@ else{
     mod = 1
 }
 return mod
+}
+
+export function calculateSTAB(skill_element: string,attacker_element: string){
+    let stab = 1
+    if(skill_element == attacker_element){
+        stab = 1.2
+    }
+    return stab
 }

@@ -1,5 +1,5 @@
 
-
+import { calculateSTAB } from "../../../commands/fight"
 const volt_tree=[
     {
         name: 'Surging Kick',
@@ -48,9 +48,10 @@ const volt_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("volt",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Surging Kick`)
             defender.takeDamage
-                .physical((attacker.attackDamage*20)*mod)
+                .physical((attacker.attackDamage*stab*20)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a lightning charged kick`)
         }
     },{
@@ -100,9 +101,10 @@ const volt_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("volt",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Thunderclap`)
             defender.takeDamage
-                .magical((attacker.magicPower*20)*mod)
+                .magical((attacker.magicPower*stab*20)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a shockwave of lightning`)
         }
     },{
@@ -152,9 +154,10 @@ const volt_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("volt",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Plasma Fist`)
             defender.takeDamage
-                .physical((attacker.attackDamage*45)*mod)
+                .physical((attacker.attackDamage*stab*45)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by the plasma charged fists of ${attacker.name}`)
         }
     },{
@@ -204,9 +207,10 @@ const volt_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("volt",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Chain Lightning`)
             defender.takeDamage
-                .magical((attacker.magicPower*45)*mod)
+                .magical((attacker.magicPower*stab*45)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP  by a barrage of lightning projectiles`)
         }
     },
@@ -305,9 +309,10 @@ const volt_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("volt",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Piercing Bolt`)
             defender.takeDamage
-                .physical((attacker.attackDamage*65)*mod)
+                .physical((attacker.attackDamage*stab*65)*mod)
                 .run(damage => `${attacker.name} shoots a piercing bolt of lightning on ${defender.name} causing ${damage} damage`)
         }
     },{
@@ -357,9 +362,10 @@ const volt_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("volt",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Heavy Thunder`)
             defender.takeDamage
-                .magical((attacker.magicPower*65)*mod)
+                .magical((attacker.magicPower*stab*65)*mod)
                 .run(damage => `${attacker.name} unleashes a massive bolt of lightning on ${defender.name} causing ${damage} damage`)
         }
     },

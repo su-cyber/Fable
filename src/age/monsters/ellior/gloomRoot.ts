@@ -4,6 +4,7 @@ import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { gloomRoot_branch } from '../../items/gloomRootBranch'
 import { calculateModifier } from '../../../../commands/fight'
+import { calculateSTAB } from '../../../../commands/fight'
 
 export class gloomRoot extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -26,6 +27,7 @@ export class gloomRoot extends MonsterEntity {
             description:`A massive, twisted tree with gnarled branches and glowing purple flowers. The Gloomroot is said to possess ancient magic and can manipulate the forest around it. Its skill is to create tendrils of darkness that can ensnare and trap its prey. Its drop is a Gloomroot branch, which can be used in the creation of powerful magical orbes.`,
             spawnRate: 0.2,
             health: 120,
+            level:6,
             mana:0,
             xp: generateXP(26,30),
             evasion: 0.05,
@@ -50,9 +52,10 @@ export class gloomRoot extends MonsterEntity {
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("bloom",defender.element.toLowerCase())
+                        let stab = calculateSTAB("bloom",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Dark Tendrils`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*26*mod)
+                            .physical(attacker.attackDamage*26*mod*stab)
                             .run(damage => `${defender.name} lost ${damage} HP by getting crushed by dark tendrils`)
                     }
                 },

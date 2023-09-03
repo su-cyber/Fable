@@ -4,6 +4,7 @@ import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { treemickBranch } from '../../items/treemickBranch'
 import { calculateModifier } from '../../../../commands/fight'
+import { calculateSTAB } from '../../../../commands/fight'
 
 export class Treemick extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -26,6 +27,7 @@ export class Treemick extends MonsterEntity {
             description:`Small stump like monsters who attack with wood splinters protruding from their bodies`,
             spawnRate: 0.65,
             health: 60,
+            level:2,
             mana:0,
             xp: 7,
             evasion: 0.05,
@@ -50,9 +52,10 @@ export class Treemick extends MonsterEntity {
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("bloom",defender.element.toLowerCase())
+                        let stab = calculateSTAB("bloom",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Wood Spike`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*20*mod)
+                            .physical(attacker.attackDamage*20*mod*stab)
                             .run(damage => `${defender.name} lost ${damage} HP by Wood Spikes`)
                     }
                 },

@@ -3,6 +3,7 @@ import { MonsterEntity, ClassEntity } from '../classes'
 import { Dropper } from '../dropper'
 import generateXP from '../../utils/generateXP'
 import { shadowCat_tuft } from '../items/shadowCat_tuft'
+import { calculateSTAB } from '../../../commands/fight'
 
 export class  Fiskille extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -25,6 +26,7 @@ export class  Fiskille extends MonsterEntity {
             description:`The Opponent in Guild Draft`,
             spawnRate: 0.35,
             health: 120,
+            level:4,
             mana:3,
             xp: generateXP(15,18),
             evasion: 0.05,
@@ -85,9 +87,10 @@ export class  Fiskille extends MonsterEntity {
                         else if(defender.element == "ruin"){
                             mod  = 1
                         }
+                        let stab = calculateSTAB("volt",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Zap Cut`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*26*mod)
+                            .physical(attacker.attackDamage*26*mod*stab)
                             .run(damage => `${defender.name} lost ${damage} HP by a lightning imbued slash`)
                     }
                 },

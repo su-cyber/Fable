@@ -1,5 +1,5 @@
 
-
+import { calculateSTAB } from "../../../commands/fight"
 const wave_tree=[
     {
         name: 'Jet Punch',
@@ -48,9 +48,10 @@ const wave_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("wave",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Jet Punch`)
             defender.takeDamage
-                .physical((attacker.attackDamage*20)*mod)
+                .physical((attacker.attackDamage*stab*20)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a hydro propelled punch`)
         }
     },{
@@ -100,9 +101,10 @@ const wave_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("wave",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Aqua Bullets`)
             defender.takeDamage
-                .magical((attacker.magicPower*20)*mod)
+                .magical((attacker.magicPower*stab*20)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a stream of water bullets`)
         }
     },{
@@ -152,9 +154,10 @@ const wave_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("wave",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Dive Bomb`)
             defender.takeDamage
-                .physical((attacker.attackDamage*45)*mod)
+                .physical((attacker.attackDamage*stab*45)*mod)
                 .run(damage => `${attacker.name} crashes down on the ground unleasing a wave on ${defender.name} and causing ${damage} damage`)
         }
     },{
@@ -204,9 +207,10 @@ const wave_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("wave",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Water Blast`)
             defender.takeDamage
-                .magical((attacker.magicPower*45)*mod)
+                .magical((attacker.magicPower*stab*45)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP  by a powerful blast of water`)
         }
     },
@@ -304,9 +308,10 @@ const wave_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("wave",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Surging Strikes`)
             defender.takeDamage
-                .physical((attacker.attackDamage*65)*mod)
+                .physical((attacker.attackDamage*stab*65)*mod)
                 .run(damage => `${attacker.name} strikes ${defender.name} with a flurry of water strikes causing ${damage} damage`)
         }
     },{
@@ -356,9 +361,10 @@ const wave_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("wave",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Whirlpool Envelope`)
             defender.takeDamage
-                .magical((attacker.magicPower*65)*mod)
+                .magical((attacker.magicPower*stab*65)*mod)
                 .run(damage => `${attacker.name} unleashes a massive whirlpool on ${defender.name} causing ${damage} damage`)
         }
     },

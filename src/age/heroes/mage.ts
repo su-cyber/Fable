@@ -40,6 +40,7 @@ export class Mage extends ClassEntity {
         return new Mage({
             user,
             health: 100,
+            level:1,
             attackDamage: 10,
             mana:100,
             magicPower: 0,

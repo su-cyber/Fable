@@ -3,6 +3,7 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { solidifiedMagma } from '../../items/solidifiedMagma'
+import { calculateSTAB } from '../../../../commands/fight'
 
 export class MagmaGolem extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -25,6 +26,7 @@ export class MagmaGolem extends MonsterEntity {
             description:`A towering creature composed of molten rock and magma, the Magma Golem can unleash scorching waves of lava that engulf its adversaries. It can also deliver devastating punches with its fiery fists. Its drop is a Globs of Solidified Magma, which can be used by blacksmiths to create heat-resistant armor.`,
             spawnRate: 0.1,
             health: 290,
+            level:8,
             mana:4,
             xp: generateXP(42,46),
             evasion: 0.05,
@@ -85,9 +87,10 @@ export class MagmaGolem extends MonsterEntity {
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("flame",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Magma Beam`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*30*mod)
+                            .magical(attacker.magicPower*30*mod*stab)
                             .run(damage => `${defender.name} lost ${damage} HP by burning in hot magma`)
                     }
                 },
@@ -139,9 +142,10 @@ export class MagmaGolem extends MonsterEntity {
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("flame",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Fiery Fist`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*32*mod)
+                            .physical(attacker.attackDamage*32*mod*stab)
                             .run(damage => `${attacker.name} covers it's arm with scorching flames and punches ${defender.name} causing ${damage} damage`)
                     }
                 },

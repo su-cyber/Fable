@@ -25,6 +25,7 @@ export class  Spectraling extends MonsterEntity {
             description:`The Opponent in Guild Draft`,
             spawnRate: 0.35,
             health: 105,
+            level:5,
             mana:0,
             xp: generateXP(15,18),
             evasion: 0.05,

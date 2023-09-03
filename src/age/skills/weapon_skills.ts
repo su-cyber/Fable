@@ -1,3 +1,5 @@
+import { calculateSTAB } from "../../../commands/fight"
+
 const Weaponskills = [{
     cooldown: 0,
     name: 'Wave Slash',
@@ -45,9 +47,10 @@ mod  = 0.5
 else if(defender.element == "ruin"){
 mod  = 1
 }
+let stab = calculateSTAB("wave",attacker.element)
         attacker.addLogMessage(`**${attacker.name}** used Wave Slash`)
         defender.takeDamage
-            .magical((attacker.magicPower*45)*mod)
+            .magical((attacker.magicPower*stab*45)*mod)
             .run(damage => `**${defender.name}** lost ${damage} HP by a fast water imbued slash`)
     }
 },{
@@ -97,9 +100,10 @@ mod  = 1
         else if(defender.element == "ruin"){
             mod  = 1
         }
+        let stab = calculateSTAB("wave",attacker.element)
         attacker.addLogMessage(`${attacker.name} used Thundering Blow`)
         defender.takeDamage
-            .physical((attacker.attackDamage*30)*mod)
+            .physical((attacker.attackDamage*stab*30)*mod)
             .run(damage => `${defender.name} lost ${damage} HP by a lightning imbued Spear Thrust`)
     }
 },{
@@ -149,9 +153,10 @@ mod  = 1
         else if(defender.element == "ruin"){
             mod  = 1
         }
+        let stab = calculateSTAB("wave",attacker.element)
         attacker.addLogMessage(`${attacker.name} used Electro Burst`)
         defender.takeDamage
-            .magical((attacker.magicPower*30)*mod)
+            .magical((attacker.magicPower*stab*30)*mod)
             .run(damage => `${defender.name} lost ${damage} HP by a barrage of lightning imbued Bolts`)
     }
 },{

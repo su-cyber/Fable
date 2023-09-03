@@ -1,5 +1,5 @@
 
-
+import { calculateSTAB } from "../../../commands/fight"
 const gale_tree=[
     {
         name: 'Razor Kick',
@@ -48,9 +48,10 @@ const gale_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("gale",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Razor Kick`)
             defender.takeDamage
-                .physical((attacker.attackDamage+20)*mod)
+                .physical((attacker.attackDamage*stab+20)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a sharp wind slash`)
         }
     },{
@@ -100,9 +101,10 @@ const gale_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("gale",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Mighty Breath`)
             defender.takeDamage
-                .magical((attacker.magicPower*20)*mod)
+                .magical((attacker.magicPower*stab*20)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a strong burst of wind`)
         }
     },{
@@ -152,9 +154,10 @@ const gale_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("gale",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Tempest Fist`)
             defender.takeDamage
-                .physical((attacker.attackDamage+45)*mod)
+                .physical((attacker.attackDamage*stab+45)*mod)
                 .run(damage => `${attacker.name} covers their arm by a sharp whirlwind and punches ${defender.name} causing ${damage} damage`)
         }
     },{
@@ -204,9 +207,10 @@ const gale_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("gale",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Wind Palm`)
             defender.takeDamage
-                .magical((attacker.magicPower*45)*mod)
+                .magical((attacker.magicPower*stab*45)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP  by a strong gust of wind`)
         }
     },
@@ -305,9 +309,10 @@ const gale_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("gale",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Windwalk Strike`)
             defender.takeDamage
-                .physical((attacker.attackDamage+65)*mod)
+                .physical((attacker.attackDamage*stab+65)*mod)
                 .run(damage => `${attacker.name} runs towards the sky and strikes ${defender.name} from above causing ${damage} damage`)
         }
     },{
@@ -357,9 +362,10 @@ const gale_tree=[
             else if(defender.element == "ruin"){
                 mod  = 1
             }
+            let stab = calculateSTAB("gale",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Sonic Scythe`)
             defender.takeDamage
-                .magical((attacker.magicPower*65)*mod)
+                .magical((attacker.magicPower*stab*65)*mod)
                 .run(damage => `${attacker.name} unleashes a sharp blade of wind on ${defender.name} causing ${damage} damage`)
         }
     },

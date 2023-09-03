@@ -26,6 +26,7 @@ export class BeerBuccaneer1 extends MonsterEntity {
             spawnRate: 0.25,
             fileName:'beerbuccaneer1.jpeg',
             health: 45,
+            level:1,
             mana:0,
             xp: 7,
             evasion: 0.03,

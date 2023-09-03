@@ -29,6 +29,7 @@ export type EntityProps = {
     skills         : Skill[]
     effects?       : Effect
     passive_skills: Skill[]
+    level: number
 }
 
 export class Entity {
@@ -49,6 +50,7 @@ export class Entity {
     passive_skills: Skill[]
     effects: Effect[]
     potions: Potion[]
+    level:number
 
     addLogMessage: (...text: string[]) => void
     scheduler: Scheduler

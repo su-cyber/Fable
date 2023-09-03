@@ -26,6 +26,7 @@ export class grainMite extends MonsterEntity {
             spawnRate: 0.1,
             fileName:'grainmite.jpeg',
             health: 45,
+            level:1,
             mana:0,
             xp: 7,
             evasion: 0.03,
