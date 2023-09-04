@@ -1,5 +1,5 @@
 import { calculateSTAB } from "../../../commands/fight"
-
+import lvl_modifier from "../../utils/lvl_modifier"
 const bloom_tree=[
     {
         name: 'Splinter Burst',
@@ -51,7 +51,7 @@ const bloom_tree=[
             let stab = calculateSTAB("bloom",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Splinter Burst`)
             defender.takeDamage
-                .physical((attacker.attackDamage*stab*20)*mod)
+                .physical((attacker.attackDamage*stab*lvl_modifier(attacker.level)*20)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a barrage of sharp wood splinters`)
         }
     },{
@@ -104,7 +104,7 @@ const bloom_tree=[
             let stab = calculateSTAB("bloom",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Spore Spread`)
             defender.takeDamage
-                .magical((attacker.magicPower*stab*20)*mod)
+                .magical((attacker.magicPower*stab*lvl_modifier(attacker.level)*20)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by poisonous spores`)
         }
     },{
@@ -157,7 +157,7 @@ const bloom_tree=[
             let stab = calculateSTAB("bloom",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Lumber Smack`)
             defender.takeDamage
-                .physical((attacker.attackDamage*stab*45)*mod)
+                .physical((attacker.attackDamage*stab*lvl_modifier(attacker.level)*45)*mod)
                 .run(damage => `${attacker.name} covers their arm by thick wood and punches ${defender.name} causing ${damage} damage`)
         }
     },{
@@ -210,7 +210,7 @@ const bloom_tree=[
             let stab = calculateSTAB("bloom",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Sap Blast`)
             defender.takeDamage
-                .magical((attacker.magicPower*stab*45)*mod)
+                .magical((attacker.magicPower*stab*lvl_modifier(attacker.level)*45)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a blast of sticky sap`)
         }
     },
@@ -311,7 +311,7 @@ const bloom_tree=[
             let stab = calculateSTAB("bloom",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Root Slam`)
             defender.takeDamage
-                .physical((attacker.attackDamage*stab*65)*mod)
+                .physical((attacker.attackDamage*stab*lvl_modifier(attacker.level)*65)*mod)
                 .run(damage => `${defender.name} gets bound by roots and slammed into the ground causing ${damage} damage`)
         }
     },{
@@ -364,7 +364,7 @@ const bloom_tree=[
             let stab = calculateSTAB("bloom",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Spiked Wooden Ball`)
             defender.takeDamage
-                .magical((attacker.magicPower*stab*65)*mod)
+                .magical((attacker.magicPower*stab*lvl_modifier(attacker.level)*65)*mod)
                 .run(damage => `${attacker.name} unleashes a huge spiked wooden ball at ${defender.name} causing ${damage} damage`)
         }
     },

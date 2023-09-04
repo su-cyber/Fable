@@ -1,6 +1,7 @@
 
 import { emoji } from '../../lib/utils/emoji'
 import { poisoning } from '../effects/poisoning'
+import lvl_modifier from '../../utils/lvl_modifier'
 
 
 const noir_tree=[
@@ -16,7 +17,7 @@ const noir_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Vanishing Strike`)
             defender.takeDamage
-                .physical(attacker.attackDamage*15)
+                .physical(attacker.attackDamage*15*lvl_modifier(attacker.level))
                 .run(damage => `${attacker.name} mends into the darkness and suddenly ${defender.name} loses ${damage} HP by a sudden strike from the shadows`)
         }
     },{
@@ -47,7 +48,7 @@ const noir_tree=[
                 `${attacker.name} used Venomous Serpent`
             )
             defender.takeDamage
-            .physical(attacker.attackDamage*35)
+            .physical(attacker.attackDamage*35*lvl_modifier(attacker.level))
             .run(damage => `${attacker.name} summons a serpentine wraith of spyr energy wrapping around ${defender.name} causing ${damage} dmg by it's poisonous fangs\n${defender.name} is poisoned!`)
         }
     },{
@@ -76,7 +77,7 @@ const noir_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Death Blossom`)
             defender.takeDamage
-                .physical(attacker.attackDamage*50)
+                .physical(attacker.attackDamage*50*lvl_modifier(attacker.level))
                 .run(damage => `${defender.name} is caught in the explosion caused by a barrage of volatile seeds losing ${damage} HP`)
         }
     },{
@@ -98,7 +99,7 @@ const noir_tree=[
                 `${attacker.name} steals 150HP from ${defender.name}`
             )
             defender.takeDamage
-                .physical(attacker.attackDamage*35)
+                .physical(attacker.attackDamage*35*lvl_modifier(attacker.level))
                 .run(damage => `${defender.name} lost ${damage} HP from a devastating burst of dark energy`)
         
             
@@ -116,7 +117,7 @@ const noir_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Evicerating Darkness`)
             defender.takeDamage
-                .physical(attacker.attackDamage*70)
+                .physical(attacker.attackDamage*70*lvl_modifier(attacker.level))
                 .run(damage => `${defender.name} lost ${damage} HP by a cataclysmic blast of malevolent energy that engulfed them, obliterating all in its path with devastating power`)
         }
     },{
@@ -131,7 +132,7 @@ const noir_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Crimson Harvest`)
             defender.takeDamage
-                .physical(attacker.attackDamage*85)
+                .physical(attacker.attackDamage*85*lvl_modifier(attacker.level))
                 .run(damage => `${defender.name} lost ${damage} HP by a deadly dance of death as ${attacker.name} mutilates them with their blades.`)
         }
     },

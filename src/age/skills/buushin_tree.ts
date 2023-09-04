@@ -1,5 +1,5 @@
 
-
+import lvl_modifier from "../../utils/lvl_modifier"
 const buushin_tree=[
     {
         name: 'Shattering Kick',
@@ -13,7 +13,7 @@ const buushin_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Shattering Kick`)
             defender.takeDamage
-                .physical(attacker.attackDamage*15)
+                .physical(attacker.attackDamage*15*lvl_modifier(attacker.level))
                 .run(damage => `${defender.name} lost ${damage} HP by a powerful kick with deadly impact`)
         }
     },{
@@ -30,7 +30,7 @@ const buushin_tree=[
                 `${attacker.name} used Guard Burst`
             )
             defender.takeDamage
-            .physical(attacker.attackDamage*35)
+            .physical(attacker.attackDamage*35*lvl_modifier(attacker.level))
             .run(damage => `${defender.name} lost ${damage} HP by a devastating blow that shattered the very foundation of defense, leaving them vulnerable to physical attacks.`)
             defender.armor=defender.armor*0.8
         }
@@ -60,7 +60,7 @@ const buushin_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Phantom Shower`)
             defender.takeDamage
-                .physical(attacker.attackDamage*50)
+                .physical(attacker.attackDamage*50*lvl_modifier(attacker.level))
                 .run(damage => `${defender.name} lost ${damage} HP by a barrage of ethereal punches rending through their flesh.`)
         }
     },{
@@ -93,7 +93,7 @@ const buushin_tree=[
             attacker.addLogMessage(`${attacker.name} used Defiance of Limit`)
             defender.armour=0.8*defender.armor
             defender.takeDamage
-                .physical(attacker.attackDamage*70)
+                .physical(attacker.attackDamage*70*lvl_modifier(attacker.level))
                 .run(damage => `${defender.name} lost ${damage} HP by a series of unstoppable strikes rendering their defense useless!`)
         }
     },{
@@ -108,7 +108,7 @@ const buushin_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Unseen Fist`)
             defender.takeDamage
-                .physical(attacker.attackDamage*85)
+                .physical(attacker.attackDamage*85*lvl_modifier(attacker.level))
                 .run(damage => `${attacker.name} disappears from sight and suddenly ${defender.name} loses ${damage} HP by an unstoppable strike at blinding speed caught completely by surprise.`)
         }
     },

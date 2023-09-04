@@ -3,6 +3,7 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { grainmiteTooth } from '../../items/grainmiteTeeth'
+import lvl_modifier from '../../../utils/lvl_modifier'
 
 export class grainMite extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -51,7 +52,7 @@ export class grainMite extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Cracker Bite`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*15)
+                            .physical(attacker.attackDamage*15*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by a deadly bite`)
                     }
                 },

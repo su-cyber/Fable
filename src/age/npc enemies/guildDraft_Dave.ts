@@ -4,6 +4,7 @@ import { Dropper } from '../dropper'
 import generateXP from '../../utils/generateXP'
 import { shadowCat_tuft } from '../items/shadowCat_tuft'
 import { calculateSTAB } from '../../../commands/fight'
+import lvl_modifier from '../../utils/lvl_modifier'
 
 export class  Fiskille extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -90,7 +91,7 @@ export class  Fiskille extends MonsterEntity {
                         let stab = calculateSTAB("volt",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Zap Cut`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*26*mod*stab)
+                            .physical(attacker.attackDamage*26*mod*stab*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by a lightning imbued slash`)
                     }
                 },

@@ -1,7 +1,7 @@
 
 import { emoji } from '../../lib/utils/emoji'
 import { bleeding } from '../effects/bleeding'
-
+import lvl_modifier from '../../utils/lvl_modifier'
 
 const gladius_tree=[
     {
@@ -16,7 +16,7 @@ const gladius_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Flashing Strike`)
             defender.takeDamage
-                .physical(attacker.attackDamage*15)
+                .physical(attacker.attackDamage*15*lvl_modifier(attacker.level))
                 .run(damage => `${defender.name} lost ${damage} HP by a lightning fast strike!`)
         }
     },{
@@ -47,7 +47,7 @@ const gladius_tree=[
                 `${attacker.name} used Bloodletting`
             )
             defender.takeDamage
-            .physical(attacker.attackDamage*35)
+            .physical(attacker.attackDamage*35*lvl_modifier(attacker.level))
             .run(damage => `${defender.name} lost ${damage} HP by a deadly strike breaking through defences.\n${defender.name} is bleeding!`)
         }
     },{
@@ -62,7 +62,7 @@ const gladius_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Feasting in Agony`)
             defender.takeDamage
-                .physical(attacker.attackDamage*25)
+                .physical(attacker.attackDamage*25*lvl_modifier(attacker.level))
                 .run(damage => `${defender.name} lost ${damage} HP by a swift sword strike`)
         }
     },{
@@ -81,7 +81,7 @@ const gladius_tree=[
             }
             attacker.addLogMessage(`${attacker.name} used Master at Work`)
             defender.takeDamage
-                .physical(attacker.attackDamage*50*mod)
+                .physical(attacker.attackDamage*50*mod*lvl_modifier(attacker.level))
                 .run(damage => `${defender.name} lost ${damage} HP by getting pierced at various vital points as you deal critical damage with surgical precision!`)
         }
     },{
@@ -125,7 +125,7 @@ const gladius_tree=[
                 .end(() => defender.removeEffect(bleeding))
                 .run(() =>
                     defender.takeDamage
-                        .physical(attacker.attackDamage*10)
+                        .physical(attacker.attackDamage*10*lvl_modifier(attacker.level))
                         .run(
                             damage =>
                                 `${defender.name} lost ${damage} HP due to ${emoji.BLEED}`
@@ -137,7 +137,7 @@ const gladius_tree=[
                 `${attacker.name} used Blood Fountain`
             )
             defender.takeDamage
-            .physical(attacker.attackDamage*70)
+            .physical(attacker.attackDamage*70*lvl_modifier(attacker.level))
             .run(damage => `You perfectly parry ${defender.name}'s moves and land a perfect blow causing ${damage} dmg causing severe bleeding\n${defender.name} is bleeding!`)
         }
     },{
@@ -152,7 +152,7 @@ const gladius_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Death's Embrace`)
             defender.takeDamage
-                .physical(attacker.attackDamage*85)
+                .physical(attacker.attackDamage*85*lvl_modifier(attacker.level))
                 .run(damage => `You Become the harbinger of death, channeling its unyielding power to strike your enemy with a precise blow that brings them closer to death casing ${defender.name} to lose ${damage} HP`)
         }
     }

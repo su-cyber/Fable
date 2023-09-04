@@ -5,6 +5,8 @@ import generateXP from '../../../utils/generateXP'
 import { emberScale } from '../../items/Emberscale'
 import { calculateModifier } from '../../../../commands/fight'
 import { calculateSTAB } from '../../../../commands/fight'
+import lvl_modifier from '../../../utils/lvl_modifier'
+
 
 export class Emberbeast extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -56,7 +58,7 @@ export class Emberbeast extends MonsterEntity {
                         let stab = calculateSTAB("flame",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Jet Flame`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*26*mod*stab)
+                            .physical(attacker.attackDamage*26*mod*stab*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by a jet of scorching flames`)
                     }
                 },

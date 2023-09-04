@@ -3,6 +3,7 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { backBreaker } from '../../items/backbreaker'
+import lvl_modifier from '../../../utils/lvl_modifier'
 
 export class BeerBuccaneer2 extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -51,7 +52,7 @@ export class BeerBuccaneer2 extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Knife Stab`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*15)
+                            .physical(attacker.attackDamage*15*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by Knife Stab`)
                     }
                 },

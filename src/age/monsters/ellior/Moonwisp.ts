@@ -5,6 +5,7 @@ import generateXP from '../../../utils/generateXP'
 import { glowingEssence } from '../../items/glowingEssence'
 import { calculateModifier } from '../../../../commands/fight'
 import { calculateSTAB } from '../../../../commands/fight'
+import lvl_modifier from '../../../utils/lvl_modifier'
 
 export class Moonwisp extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -55,7 +56,7 @@ export class Moonwisp extends MonsterEntity {
                         let stab = calculateSTAB("light",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Wisp Illusion`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*22*mod*stab)
+                            .magical(attacker.magicPower*22*mod*stab*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by mental trauma caused by illusion`)
                     }
                 },

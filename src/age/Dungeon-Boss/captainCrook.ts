@@ -4,6 +4,7 @@ import { Dropper } from '../dropper'
 import generateXP from '../../utils/generateXP'
 import { goldenTelescope } from '../items/goldenTelescope'
 import { calculateSTAB } from '../../../commands/fight'
+import lvl_modifier from '../../utils/lvl_modifier'
 
 
 export class captainCrook extends MonsterEntity {
@@ -107,7 +108,7 @@ export class captainCrook extends MonsterEntity {
             let stab = calculateSTAB("wave",attacker.element)
             attacker.addLogMessage(`**${attacker.name}** used Wave Slash`)
             defender.takeDamage
-                .magical((attacker.magicPower*35)*mod*stab)
+                .magical((attacker.magicPower*35)*mod*stab*lvl_modifier(attacker.level))
                 .run(damage => `**${defender.name}** lost ${damage} HP by a fast water imbued slash`)
                     }
                 },

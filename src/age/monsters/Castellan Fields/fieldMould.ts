@@ -4,6 +4,7 @@ import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { dronerAcid } from '../../items/dronerAcid'
 import { calculateSTAB } from '../../../../commands/fight'
+import lvl_modifier from '../../../utils/lvl_modifier'
 
 export class fieldMould extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -91,7 +92,7 @@ export class fieldMould extends MonsterEntity {
             let stab = calculateSTAB("venom",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Toxic Spores`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*15*stab*mod)
+                            .magical(attacker.magicPower*15*stab*mod*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by beathing in some of the toxic spores.`)
                     }
                 },

@@ -4,6 +4,7 @@ import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import profileModel from '../../../../models/profileSchema'
 import { backBreaker } from '../../items/backbreaker'
+import lvl_modifier from '../../../utils/lvl_modifier'
 
 
 export class BeerBuccsDuo extends MonsterEntity {
@@ -55,7 +56,7 @@ export class BeerBuccsDuo extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Dual Slash`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*20)
+                            .physical(attacker.attackDamage*20*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by a Dual knife slash`)
                     }
                 },

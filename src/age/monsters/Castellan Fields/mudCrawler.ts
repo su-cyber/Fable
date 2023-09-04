@@ -3,6 +3,7 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { silkBlob } from '../../items/silkblob'
+import lvl_modifier from '../../../utils/lvl_modifier'
 
 export class mudCrawler extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -51,7 +52,7 @@ export class mudCrawler extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Slip Bite`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*15)
+                            .physical(attacker.attackDamage*15*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by a sharp bite`)
                     }
                 },

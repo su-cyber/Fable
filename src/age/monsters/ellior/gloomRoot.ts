@@ -5,6 +5,7 @@ import generateXP from '../../../utils/generateXP'
 import { gloomRoot_branch } from '../../items/gloomRootBranch'
 import { calculateModifier } from '../../../../commands/fight'
 import { calculateSTAB } from '../../../../commands/fight'
+import lvl_modifier from '../../../utils/lvl_modifier'
 
 export class gloomRoot extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -55,7 +56,7 @@ export class gloomRoot extends MonsterEntity {
                         let stab = calculateSTAB("bloom",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Dark Tendrils`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*26*mod*stab)
+                            .physical(attacker.attackDamage*26*mod*stab*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by getting crushed by dark tendrils`)
                     }
                 },

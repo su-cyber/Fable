@@ -5,6 +5,7 @@ import generateXP from '../../../utils/generateXP'
 import { dronerAcid } from '../../items/dronerAcid'
 import { buzzHoney } from '../../items/buzz_honey'
 import { calculateSTAB } from '../../../../commands/fight'
+import lvl_modifier from '../../../utils/lvl_modifier'
 
 export class Droner extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -95,7 +96,7 @@ export class Droner extends MonsterEntity {
             let stab = calculateSTAB("venom",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Acid Sting`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*20*mod*stab)
+                            .magical(attacker.magicPower*20*mod*stab*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by getting stung by the Droner`)
                     }
                 },

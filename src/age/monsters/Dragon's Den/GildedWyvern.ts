@@ -4,6 +4,7 @@ import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { gildedScale } from '../../items/GildedScale'
 import { calculateSTAB } from '../../../../commands/fight'
+import lvl_modifier from '../../../utils/lvl_modifier'
 
 export class Gildedwyvern extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -91,7 +92,7 @@ export class Gildedwyvern extends MonsterEntity {
             let stab = calculateSTAB("flame",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Gilded Flame`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*28*mod*stab)
+                            .magical(attacker.magicPower*28*mod*stab*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by a burst of flames`)
                     }
                 },
@@ -107,7 +108,7 @@ export class Gildedwyvern extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Razor Slash`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*30)
+                            .physical(attacker.attackDamage*30*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by getting slashed by the Wyvern's sharp claws`)
                     }
                 },

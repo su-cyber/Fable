@@ -1,5 +1,6 @@
 
 import { calculateSTAB } from "../../../commands/fight"
+import lvl_modifier from "../../utils/lvl_modifier"
 const flame_tree=[
     {
         name: 'Flame Whip',
@@ -51,7 +52,7 @@ const flame_tree=[
             let stab = calculateSTAB("flame",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Flame Whip`)
             defender.takeDamage
-                .physical((attacker.attackDamage*stab*20)*mod)
+                .physical((attacker.attackDamage*stab*lvl_modifier(attacker.level)*20)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by being hit with a Flaming Whip`)
         }
     },{
@@ -106,7 +107,7 @@ const flame_tree=[
             
             attacker.addLogMessage(`${attacker.name} used Flare Breath`)
             defender.takeDamage
-                .magical((attacker.magicPower*stab*20)*mod)
+                .magical((attacker.magicPower*stab*lvl_modifier(attacker.level)*20)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a burst of flames`)
         }
     },{
@@ -159,7 +160,7 @@ const flame_tree=[
             let stab = calculateSTAB("flame",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Erupting Fist`)
             defender.takeDamage
-                .physical((attacker.attackDamage*stab*45)*mod)
+                .physical((attacker.attackDamage*stab*lvl_modifier(attacker.level)*45)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by the explosive fists of ${attacker.name}`)
         }
     },{
@@ -212,7 +213,7 @@ const flame_tree=[
             let stab = calculateSTAB("flame",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Scattering Flame Bullet`)
             defender.takeDamage
-                .magical((attacker.magicPower*stab*45)*mod)
+                .magical((attacker.magicPower*stab*lvl_modifier(attacker.level)*45)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a barrage of flame projectiles`)
         }
     },
@@ -312,7 +313,7 @@ const flame_tree=[
             let stab = calculateSTAB("flame",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Searing Slash`)
             defender.takeDamage
-                .physical((attacker.attackDamage*stab*65)*mod)
+                .physical((attacker.attackDamage*stab*lvl_modifier(attacker.level)*65)*mod)
                 .run(damage => `${attacker.name} imbues their weapon in flames and attacks ${defender.name} causing ${damage} damage`)
         }
     },{
@@ -365,7 +366,7 @@ const flame_tree=[
             let stab = calculateSTAB("flame",attacker.element)
             attacker.addLogMessage(`${attacker.name} used Flame Tornado`)
             defender.takeDamage
-                .magical((attacker.magicPower*stab*65)*mod)
+                .magical((attacker.magicPower*stab*lvl_modifier(attacker.level)*65)*mod)
                 .run(damage => `${defender.name} lost ${damage} HP by a flaming tornado`)
         }
     },

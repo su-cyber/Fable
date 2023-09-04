@@ -4,6 +4,7 @@ import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { solidifiedMagma } from '../../items/solidifiedMagma'
 import { calculateSTAB } from '../../../../commands/fight'
+import lvl_modifier from '../../../utils/lvl_modifier'
 
 export class MagmaGolem extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -90,7 +91,7 @@ export class MagmaGolem extends MonsterEntity {
             let stab = calculateSTAB("flame",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Magma Beam`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*30*mod*stab)
+                            .magical(attacker.magicPower*30*mod*stab*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by burning in hot magma`)
                     }
                 },
@@ -145,7 +146,7 @@ export class MagmaGolem extends MonsterEntity {
             let stab = calculateSTAB("flame",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Fiery Fist`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*32*mod*stab)
+                            .physical(attacker.attackDamage*32*mod*stab*lvl_modifier(attacker.level))
                             .run(damage => `${attacker.name} covers it's arm with scorching flames and punches ${defender.name} causing ${damage} damage`)
                     }
                 },

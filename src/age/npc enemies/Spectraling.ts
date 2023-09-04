@@ -3,6 +3,7 @@ import { MonsterEntity, ClassEntity } from '../classes'
 import { Dropper } from '../dropper'
 import generateXP from '../../utils/generateXP'
 import { shadowCat_tuft } from '../items/shadowCat_tuft'
+import lvl_modifier from '../../utils/lvl_modifier'
 
 export class  Spectraling extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -51,7 +52,7 @@ export class  Spectraling extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Phantom Hold`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*22)
+                            .physical(attacker.attackDamage*22*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by being crushed by the spectral grip`)
                     }
                 },

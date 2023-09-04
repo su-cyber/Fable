@@ -5,6 +5,7 @@ import generateXP from '../../../utils/generateXP'
 import { starHound_tooth } from '../../items/starHound_tooth'
 import { calculateModifier } from '../../../../commands/fight'
 import { calculateSTAB } from '../../../../commands/fight'
+import lvl_modifier from '../../../utils/lvl_modifier'
 
 export class starHound extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -55,7 +56,7 @@ export class starHound extends MonsterEntity {
                         let stab = calculateSTAB("light",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Blinding Light`)
                         defender.takeDamage
-                            .magical(attacker.attackDamage*26*mod*stab)
+                            .magical(attacker.attackDamage*26*mod*stab*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by Blinding Light`)
                     }
                 },

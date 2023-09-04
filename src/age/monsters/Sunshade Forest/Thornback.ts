@@ -4,6 +4,7 @@ import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { treemickBranch } from '../../items/treemickBranch'
 import { thornbackShell } from '../../items/thornback_shell'
+import lvl_modifier from '../../../utils/lvl_modifier'
 
 export class Thornback extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -52,7 +53,7 @@ export class Thornback extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Spiked Charge`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*24)
+                            .physical(attacker.attackDamage*24*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by Spiked Charge`)
                     }
                 },

@@ -5,6 +5,7 @@ import generateXP from '../../../utils/generateXP'
 import { treemickBranch } from '../../items/treemickBranch'
 import { calculateModifier } from '../../../../commands/fight'
 import { calculateSTAB } from '../../../../commands/fight'
+import lvl_modifier from '../../../utils/lvl_modifier'
 
 export class Treemick extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -55,7 +56,7 @@ export class Treemick extends MonsterEntity {
                         let stab = calculateSTAB("bloom",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Wood Spike`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*20*mod*stab)
+                            .physical(attacker.attackDamage*20*stab*mod*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by Wood Spikes`)
                     }
                 },

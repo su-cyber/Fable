@@ -1,6 +1,7 @@
 
 import { calculate } from "../classes"
 import { anti_physical } from "../effects/anti-physical"
+import lvl_modifier from "../../utils/lvl_modifier"
 const magus_tree=[
     {
         name: 'Force Push',
@@ -14,7 +15,7 @@ const magus_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Force Push`)
             defender.takeDamage
-                .magical(attacker.magicPower*15)
+                .magical(attacker.magicPower*15*lvl_modifier(attacker.level))
                 .run(damage => `${defender.name} lost ${damage} HP by a powerful magic thrust propelling them backwards`)
         }
     },{
@@ -32,7 +33,7 @@ const magus_tree=[
                 `${attacker.name} used Missile Barrage`
             )
             defender.takeDamage
-            .magical(attacker.magicPower*35)
+            .magical(attacker.magicPower*35*lvl_modifier(attacker.level))
             .run(damage => `${defender.name} lost ${damage} HP by a barrage of magic missiles`)
         }
     },{
@@ -71,7 +72,7 @@ const magus_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Mind Blast`)
             defender.takeDamage
-                .magical(attacker.magicPower*50)
+                .magical(attacker.magicPower*50*lvl_modifier(attacker.level))
                 .run(damage => `${defender.name} lost ${damage} HP by a jolting surge of psychic energy overwhelming them`)
         }
     },{
@@ -127,7 +128,7 @@ const magus_tree=[
             attacker.health = attacker.health+heal
         }
             defender.takeDamage
-                .magical(attacker.magicPower*70)
+                .magical(attacker.magicPower*70*lvl_modifier(attacker.level))
                 .run(damage => `${defender.name} lost ${damage} HP by having their life force drained by the magus\n${attacker.name} recovers ${heal}HP!`)
         }
     },{
@@ -142,7 +143,7 @@ const magus_tree=[
         use: (attacker, defender) =>{
             attacker.addLogMessage(`${attacker.name} used Eternal Oblivion`)
             defender.takeDamage
-                .magical(attacker.magicPower*85)
+                .magical(attacker.magicPower*85*lvl_modifier(attacker.level))
                 .run(damage => `You bend the dimensions with your arcane energy casting ${defender.name} into the eternal oblivion causing ${damage} dmg`)
         }
     },

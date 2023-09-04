@@ -3,6 +3,7 @@ import { MonsterEntity, ClassEntity } from '../../classes'
 import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { crystalShard } from '../../items/crystalShard'
+import lvl_modifier from '../../../utils/lvl_modifier'
 
 export class Crystalcrawler extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -51,7 +52,7 @@ export class Crystalcrawler extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Shard Barrage`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*26)
+                            .physical(attacker.attackDamage*26*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by a barrage of sharp crystals`)
                     }
                 },
