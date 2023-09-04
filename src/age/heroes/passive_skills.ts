@@ -1,5 +1,5 @@
 
-
+import lvl_modifier from "../../utils/lvl_modifier"
 const passive_skills = [
     {
         cooldown: 0,
@@ -73,7 +73,7 @@ const passive_skills = [
                 .end(() => {})
                 .run(() =>{
                 defender.takeDamage
-                .physical(120)
+                .physical(120*lvl_modifier(attacker.level))
                 .run(damage => `${defender.name} lost ${damage} HP by the attacks of the Goblins`)
                 }
                     
