@@ -172,7 +172,7 @@ let stab = calculateSTAB("wave",attacker.element)
     use: (attacker, defender) =>{
         attacker.addLogMessage(`${attacker.name} used Mutilate`)
         defender.takeDamage
-            .physical(attacker.attackDamage*45)
+            .physical(attacker.attackDamage*45*lvl_modifier(attacker.level))
             .run(damage => `${defender.name} lost ${damage} HP by a series of critical strikes to their vitals`)
     }
 },]
