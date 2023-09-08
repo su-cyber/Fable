@@ -94,7 +94,7 @@ class DuelBuilder {
                 .addOptions(
                     skills.map(skill => ({
                         label: skill.name,
-                        description: skill.description,
+                        description: ``,
                         value: skill.name,
                     }))
                 )
