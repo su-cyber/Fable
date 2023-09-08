@@ -89,16 +89,16 @@ class DuelBuilder {
     createDuelComponent(skills: Skill[], disabled: boolean = false) {
         return new MessageActionRow().addComponents([
             new MessageSelectMenu()
-                .setCustomId(`${this.interaction.id}_selectMenuSkills`)
+                .setCustomId(`combat_select`)
                 .setPlaceholder(`Select a skill ${this.attacker.name}`)
                 .addOptions(
-                    skills.map(skill => ({
+                    this.attacker.skills.map(skill => ({
                         label: skill.name,
                         description: skill.description,
-                        value: `${this.interaction.id}_${skill.name}`,
+                        value: skill.name,
                     }))
                 )
-                .setDisabled(disabled),
+                .setDisabled(false),
                 
                
                 ]
@@ -210,11 +210,11 @@ class DuelBuilder {
         this.logMessages.push(...text)
     }
 
-    async sendInfoMessage(skills: Skill[], disableComponent: boolean = false) {
+    async sendInfoMessage(skills: Skill[], disableComponent: boolean = false,components:any = []) {
        await this.replyOrEdit({
             content: null,
             embeds: this.duelMessageEmbeds(),
-            components: [],
+            components: [components],
             
         })
     }

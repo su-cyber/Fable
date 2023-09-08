@@ -15,6 +15,8 @@ import { Client, Interaction, MessageEmbed } from 'discord.js'
 import { calculate } from '../src/age/classes'
 import hunting_contracts from '../src/utils/allHuntingContracts'
 import { Bot } from '../src/bot'
+import { MessageActionRow, MessageSelectMenu } from 'discord.js'
+import { MessageComponentInteraction,CacheType  } from 'discord.js'
 
 export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
@@ -252,7 +254,18 @@ export class PvEDuel extends DuelBuilder {
         }
         
         await sleep(1.2)
+
+        let filter_select = (interaction : any) => interaction.user.id === this.attacker.id && interaction.customId == "combat_select"
+        let combat_collector = this.interaction.channel.createMessageComponentCollector({ filter:filter_select})
         
+        combat_collector.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+            collected.deferUpdate().catch(() => null)
+            const skillName = collected.values[0]
+            const skill = allskills.find(skill => skill.name == skillName)
+            await this.attacker.useSkill(this.attacker,this.defender,skill)
+            
+            this.locker.unlock()
+        })
         
     }
     
@@ -436,10 +449,10 @@ export class PvEDuel extends DuelBuilder {
             
         } 
         else {
-           if(turn == 15 || turn == 16){
-            await this.deleteInfoMessages()
-           }
-            await this.sendInfoMessage(this.attacker.skills, true)
+           
+            await this.sendInfoMessage(this.attacker.skills, true,this.createDuelComponent(this.attacker.skills))
+            await this.locker.wait()
+            this.locker.lock()
             // const max = this.skill_len
             
             // const min = 0
@@ -451,171 +464,7 @@ export class PvEDuel extends DuelBuilder {
             // this.attacker.useSkill(this.attacker,this.defender,skill)
             // await sleep(1.5)
             
-            if(turn == 0 || turn==1){
-                let skills = this.attacker.skills
-                this.attacker.skills=[]
-                damage_order = []
-                for(let j=0;j<skills.length;j++){
-                    
-                    let val = allskills.find(skill => skill.name === skills[j].name)
-                    if(val.type == "physical"){
-                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
-                    }
-                    else if(val.type == "magical"){
-                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
-                    }
-                    
-                    let mod = calculateModifier(val.element,this.defender.element)
-                    let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
-                    
-                    skill_dmg = skill_dmg * mod * stab
-                    damage_order.push(skill_dmg)
-                    damage_order.sort(function(a,b){return a - b})
-                    const index = damage_order.indexOf(skill_dmg)
-                    this.attacker.skills.splice(index,0,val)
-                    
-                    
-
-                }
-                this.attacker.skills.reverse()
-                  
-
-                if(this.attacker.passive_skills.length !=0){
-                    let i
-                    for(i=0;i<this.attacker.passive_skills.length;i++){
-                        const passive_skill = passive_skills.find(skill => skill.name === this.attacker.passive_skills[i].name)
-                        this.attacker.useSkill(this.attacker,this.defender,passive_skill)
-                        
-                        
-                    } 
-                }
-                
-            }
-            if(turn == 0 || turn==1){
-                let skill = this.attacker.skills.find(skill => skill.type === "buff" && skill.mana_cost<=this.attacker.mana)
-                if(skill){
-                    this.attacker.useSkill(this.attacker,this.defender,skill)
-                    await sleep(this.speed)
-                }
-                else{
-                    
-                    
-                        skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
-                                if(skill){
-                                    this.attacker.useSkill(this.attacker,this.defender,skill)
-                                    await sleep(this.speed)
-                                }
-                                else{
-                                    this.attacker.useSkill(this.attacker,this.defender,sample(skills))
-                                    await sleep(this.speed)
-                                }
-                               
-                       
-            
-                        
-                    
-
-                }
-            }
-            else if(this.attacker.health <= 0.5*this.attacker.maxHealth){
-                let skill = this.attacker.skills.find(skill => skill.type === "heal" && skill.mana_cost<=this.attacker.mana)
-                if(skill){
-                    
-                        this.attacker.useSkill(this.attacker,this.defender,skill)
-                        await sleep(this.speed)
-                    
-                   
-                }
-                else{
-                skills = this.attacker.skills
-                this.attacker.skills=[]
-                damage_order = []
-                for(let j=0;j<skills.length;j++){
-                    
-                    let val = allskills.find(skill => skill.name === skills[j].name)
-                    if(val.type == "physical"){
-                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
-                    }
-                    else if(val.type == "magical"){
-                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
-                    }
-                    
-                    let mod = calculateModifier(val.element,this.defender.element)
-                    let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
-                    
-                    skill_dmg = skill_dmg * mod * stab
-                    damage_order.push(skill_dmg)
-                    damage_order.sort(function(a,b){return a - b})
-                    const index = damage_order.indexOf(skill_dmg)
-                    this.attacker.skills.splice(index,0,val)
-                    
-                    
-
-                }
-                this.attacker.skills.reverse()
-                  
-                    skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
-                            if(skill){
-                                this.attacker.useSkill(this.attacker,this.defender,skill)
-                                await sleep(this.speed)
-                            }
-                            else{
-                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
-                                await sleep(this.speed)
-                            }
-                           
-                   
-                }
-            }
-            else{
-                skills = this.attacker.skills
-                this.attacker.skills=[]
-                damage_order = []
-                for(let j=0;j<skills.length;j++){
-                    
-                    let val = allskills.find(skill => skill.name === skills[j].name)
-                    if(val.type == "physical"){
-                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
-                    }
-                    else if(val.type == "magical"){
-                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
-                    }
-                    
-                    let mod = calculateModifier(val.element,this.defender.element)
-                    let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
-                    
-                    skill_dmg = skill_dmg * mod * stab
-                    damage_order.push(skill_dmg)
-                    damage_order.sort(function(a,b){return a - b})
-                    const index = damage_order.indexOf(skill_dmg)
-                    this.attacker.skills.splice(index,0,val)
-                    
-                    
-
-                }
-                this.attacker.skills.reverse()
-                  
-                let skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
-                            if(skill){
-                                this.attacker.useSkill(this.attacker,this.defender,skill)
-                                await sleep(this.speed)
-                            }
-                            else{
-                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
-                                await sleep(this.speed)
-                            }
-                           
-               
-            }
-                
-            
-            
-            
-        
-            
-            
-            
-            
+           
         }
 
         await this.sendInfoMessage(this.attacker.skills,true)
