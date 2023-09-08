@@ -92,13 +92,13 @@ class DuelBuilder {
                 .setCustomId(`combat_select`)
                 .setPlaceholder(`Select a skill ${this.attacker.name}`)
                 .addOptions(
-                    this.attacker.skills.map(skill => ({
+                    skills.map(skill => ({
                         label: skill.name,
                         description: skill.description,
                         value: skill.name,
                     }))
                 )
-                .setDisabled(false),
+                .setDisabled(disabled),
                 
                
                 ]
@@ -210,11 +210,11 @@ class DuelBuilder {
         this.logMessages.push(...text)
     }
 
-    async sendInfoMessage(skills: Skill[], disableComponent: boolean = false,components:any = []) {
+    async sendInfoMessage(skills: Skill[], disableComponent: boolean = true) {
        await this.replyOrEdit({
             content: null,
             embeds: this.duelMessageEmbeds(),
-            components: [components],
+            components: [this.createDuelComponent(skills,disableComponent)],
             
         })
     }

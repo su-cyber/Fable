@@ -255,17 +255,9 @@ export class PvEDuel extends DuelBuilder {
         
         await sleep(1.2)
 
-        let filter_select = (interaction : any) => interaction.user.id === this.attacker.id && interaction.customId == "combat_select"
-        let combat_collector = this.interaction.channel.createMessageComponentCollector({ filter:filter_select})
+       
         
-        combat_collector.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
-            collected.deferUpdate().catch(() => null)
-            const skillName = collected.values[0]
-            const skill = allskills.find(skill => skill.name == skillName)
-            await this.attacker.useSkill(this.attacker,this.defender,skill)
-            
-            this.locker.unlock()
-        })
+        
         
     }
     
@@ -449,8 +441,36 @@ export class PvEDuel extends DuelBuilder {
             
         } 
         else {
+            if(turn == 1 || turn == 0){
+                const filter_select = (interaction : any) => interaction.user.id === this.attacker.id && interaction.customId == "combat_select"
+                const combat_collector = this.interaction.channel.createMessageComponentCollector({ filter:filter_select})
+                combat_collector.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                    collected.deferUpdate().catch(() => null)
+                    const skillName = collected.values[0]
+                    const skill = allskills.find(skill => skill.name == skillName)
+                    await this.attacker.useSkill(this.attacker,this.defender,skill)
+                    
+                    this.locker.unlock()
+                    combat_collector.stop()
+                })
+            }
+            else{
+                const filter_select = (interaction : any) => interaction.user.id === this.attacker.id && interaction.customId == "combat_select"
+                const combat_collector = this.interaction.channel.createMessageComponentCollector({ filter:filter_select})
+                combat_collector.collect(this.interaction)
+                combat_collector.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                    collected.deferUpdate().catch(() => null)
+                    const skillName = collected.values[0]
+                    const skill = allskills.find(skill => skill.name == skillName)
+                    await this.attacker.useSkill(this.attacker,this.defender,skill)
+                    
+                    this.locker.unlock()
+                    combat_collector.stop()
+                })
+            }
+            
            
-            await this.sendInfoMessage(this.attacker.skills, true,this.createDuelComponent(this.attacker.skills))
+            await this.sendInfoMessage(this.attacker.skills, false)
             await this.locker.wait()
             this.locker.lock()
             // const max = this.skill_len
@@ -472,6 +492,7 @@ export class PvEDuel extends DuelBuilder {
     }
 
     async onEnd(winner: any, loser: any) {
+    
     await this.sendInfoMessage(this.attacker.skills,true)
        const authorID = this.interaction.user.id
        var user = this.interaction.user
