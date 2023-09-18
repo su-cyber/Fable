@@ -5,6 +5,7 @@ import generateXP from '../../utils/generateXP'
 import { goldenTelescope } from '../items/goldenTelescope'
 import { calculateSTAB } from '../../../commands/fight'
 import lvl_modifier from '../../utils/lvl_modifier'
+import { emoji } from '../../lib/utils/emoji'
 
 
 export class captainCrook extends MonsterEntity {
@@ -24,7 +25,7 @@ export class captainCrook extends MonsterEntity {
 
     static create() {
         return new captainCrook({
-            name: 'Captain Crook',
+            name: `Captain Crook ${emoji.WAVE}`,
             description:`the leader of Beer Buccaneers`,
             spawnRate: 0.5,
             health: 120,

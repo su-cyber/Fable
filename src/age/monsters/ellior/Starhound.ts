@@ -6,6 +6,7 @@ import { starHound_tooth } from '../../items/starHound_tooth'
 import { calculateModifier } from '../../../../commands/fight'
 import { calculateSTAB } from '../../../../commands/fight'
 import lvl_modifier from '../../../utils/lvl_modifier'
+import { emoji } from '../../../lib/utils/emoji'
 
 export class starHound extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -24,7 +25,7 @@ export class starHound extends MonsterEntity {
 
     static create() {
         return new starHound({
-            name: 'Starhound',
+            name: `Starhound ${emoji.LIGHT}`,
             description:`A sleek, wolf-like creature with shimmering silver fur and bright, glowing eyes. The Starhound is fast and agile, able to run at incredible speeds through the forest. Its skill is to emit a bright, blinding light that can disorient its prey. Its drop is a Starhound tooth, which is highly valued for its ability to enhance magical spells.`,
             spawnRate: 0.1,
             health: 180,

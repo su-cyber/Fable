@@ -4,6 +4,7 @@ import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { shadowCat_tuft } from '../../items/shadowCat_tuft'
 import lvl_modifier from '../../../utils/lvl_modifier'
+import { emoji } from '../../../lib/utils/emoji'
 
 export class shadowCat extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -22,7 +23,7 @@ export class shadowCat extends MonsterEntity {
 
     static create() {
         return new shadowCat({
-            name: 'Shadow Cat',
+            name: `Shadow Cat ${emoji.BLOOM}`,
             description:`A large, black feline with eyes that glow an eerie green. The Shadowcat is known for its stealth and ability to disappear into the shadows. Its attack is a powerful swipe with its razor-sharp claws. Its drop is a tuft of its fur, which is highly sought after for use in invisibility potions.`,
             spawnRate: 0.35,
             health: 120,

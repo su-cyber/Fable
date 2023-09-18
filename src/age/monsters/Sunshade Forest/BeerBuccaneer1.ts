@@ -4,6 +4,7 @@ import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { backBreaker } from '../../items/backbreaker'
 import lvl_modifier from '../../../utils/lvl_modifier'
+import { emoji } from '../../../lib/utils/emoji'
 
 export class BeerBuccaneer1 extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -22,7 +23,7 @@ export class BeerBuccaneer1 extends MonsterEntity {
 
     static create() {
         return new BeerBuccaneer1({
-            name: 'BeerBuccaneer [Lvl 1]',
+            name: `BeerBuccaneer [Lvl 1] ${emoji.WAVE}`,
             description:`Local pirates who are engaged in the theivery of Backbreaker around Aube Town`,
             spawnRate: 0.25,
             fileName:'beerbuccaneer1.jpeg',

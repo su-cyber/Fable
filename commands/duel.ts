@@ -13,6 +13,7 @@ import passive_skills from '../src/age/heroes/passive_skills'
 import { calculate } from '../src/age/classes'
 import { MessageEmbed } from 'discord.js'
 import { MessageActionRow, MessageButton } from 'discord.js'
+import { getEmoji } from './fight'
 
 export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with a player' })
     .addUserOption((option: SlashCommandUserOption) =>
@@ -81,6 +82,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                 attacker.passive_skills = foundUser.passiveskills
                                 attacker.maxMana = foundUser.mana
                                 attacker.level = foundUser.level
+                                attacker.name = `${attacker.name} ${getEmoji(attacker.element)}`
                                 
                                 
                                 inventory.findOne({userID:authorId},async function(err,foundProfile) {
@@ -126,6 +128,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         
                                         defender.skills=foundUser.currentskills
                                         defender.element = defender.element.toLowerCase()
+                                        defender.name = `${defender.name} ${getEmoji(defender.element)}`
                                         
                                     }
                                 })
@@ -224,6 +227,10 @@ class PvPDuel extends DuelBuilder {
             
         } 
         else {
+            this.attacker.mana += Math.round(this.attacker.maxMana/2)
+           if(this.attacker.mana > this.attacker.maxMana){
+            this.attacker.mana = this.attacker.maxMana
+           }
             if(turn == 15 || turn == 16){
                 await this.deleteInfoMessages()
                }

@@ -15,6 +15,7 @@ import { Client, Interaction, MessageEmbed } from 'discord.js'
 import { calculate } from '../src/age/classes'
 import hunting_contracts from '../src/utils/allHuntingContracts'
 import { Bot } from '../src/bot'
+import { emoji } from '../src/lib/utils/emoji'
 
 export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
@@ -66,6 +67,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                 attacker.maxMana = foundUser.mana
                                 attacker.speed = foundUser.speed
                                 attacker.level = foundUser.level
+                                attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
                                 
                                 inventory.findOne({userID:authorId},async function(err,foundProfile) {
                                     if(foundProfile.inventory.potions.length !=0){
@@ -1152,4 +1154,45 @@ export function calculateSTAB(skill_element: string,attacker_element: string){
         stab = 1.2
     }
     return stab
+}
+
+export function getEmoji(element:string){
+    let user_emoji
+    if(element == "flame"){
+        user_emoji = emoji.FLAME
+    }
+    else if(element == "wave"){
+        user_emoji = emoji.WAVE
+    }
+    else if(element == "volt"){
+        user_emoji = emoji.VOLT
+    }
+    else if(element == "venom"){
+        user_emoji = emoji.VENOM
+    }
+    else if(element == "terra"){
+        user_emoji = emoji.TERRA
+    }
+    else if(element == "frost"){
+        user_emoji = emoji.FROST
+    }
+    else if(element == "bloom"){
+        user_emoji = emoji.BLOOM
+    }
+    else if(element == "alloy"){
+        user_emoji = emoji.ALLOY
+    }
+    else if(element == "gale"){
+        user_emoji = emoji.GALE
+    }
+    else if(element == "draco"){
+        user_emoji = emoji.DRACO
+    }
+    else if(element == "ruin"){
+        user_emoji = emoji.RUIN
+    }
+    else if(element == "light"){
+        user_emoji = emoji.LIGHT
+    }
+    return user_emoji
 }

@@ -5,6 +5,7 @@ import generateXP from '../../../utils/generateXP'
 import { dronerAcid } from '../../items/dronerAcid'
 import { calculateSTAB } from '../../../../commands/fight'
 import lvl_modifier from '../../../utils/lvl_modifier'
+import { emoji } from '../../../lib/utils/emoji'
 
 export class fieldMould extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -23,7 +24,7 @@ export class fieldMould extends MonsterEntity {
 
     static create() {
         return new fieldMould({
-            name: 'Field Mould',
+            name: `Field Mould ${emoji.VENOM}`,
             description:`A fungus that usually grows upon dead crops and has poisonous spores. They are hostile to any living creature that approaches them, they are immobile and their spores are not fatal. Any living thing killed by their spores become a host for new molds`,
             spawnRate: 0.1,
             health: 45,

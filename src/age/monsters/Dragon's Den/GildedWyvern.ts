@@ -5,6 +5,7 @@ import generateXP from '../../../utils/generateXP'
 import { gildedScale } from '../../items/GildedScale'
 import { calculateSTAB } from '../../../../commands/fight'
 import lvl_modifier from '../../../utils/lvl_modifier'
+import { emoji } from '../../../lib/utils/emoji'
 
 export class Gildedwyvern extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -23,7 +24,7 @@ export class Gildedwyvern extends MonsterEntity {
 
     static create() {
         return new Gildedwyvern({
-            name: 'Gilded Wyvern',
+            name: `Gilded Wyvern ${emoji.FLAME}`,
             description:`A majestic creature covered in shimmering golden scales, the Gilded Wyvern possesses a powerful breath of gilded flames that melts even the sturdiest defenses. It attacks with swift aerial maneuvers and slashes from its razor-sharp talons. Its drop is a Gilded Scale, a valuable golden scale sought after by alchemists for its transmutation properties.`,
             spawnRate: 0.2,
             health: 200,

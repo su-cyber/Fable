@@ -4,6 +4,7 @@ import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { grainmiteTooth } from '../../items/grainmiteTeeth'
 import lvl_modifier from '../../../utils/lvl_modifier'
+import { emoji } from '../../../lib/utils/emoji'
 
 export class grainMite extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -22,7 +23,7 @@ export class grainMite extends MonsterEntity {
 
     static create() {
         return new grainMite({
-            name: 'Grain Mite',
+            name: `Grain Mite ${emoji.TERRA}`,
             description:`Common rodents in crop fields known for destroying crops and lay waste on godowns in swarms. They have sharp claws and teeths strong enough to crack the hardest grains and nuts.`,
             spawnRate: 0.1,
             fileName:'grainmite.jpeg',

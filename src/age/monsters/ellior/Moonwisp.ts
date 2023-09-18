@@ -6,6 +6,7 @@ import { glowingEssence } from '../../items/glowingEssence'
 import { calculateModifier } from '../../../../commands/fight'
 import { calculateSTAB } from '../../../../commands/fight'
 import lvl_modifier from '../../../utils/lvl_modifier'
+import { emoji } from '../../../lib/utils/emoji'
 
 export class Moonwisp extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -24,7 +25,7 @@ export class Moonwisp extends MonsterEntity {
 
     static create() {
         return new Moonwisp({
-            name: 'Moonwisp',
+            name: `Moonwisp ${emoji.LIGHT}`,
             description:`A small, glowing creature that floats through the forest on a trail of mist. The Moonwisp can be mischievous and lead travelers astray. Its skill is to create illusions that can confuse and disorient its prey. Its drop is a vial of its glowing essence, which can be used in healing potions.`,
             spawnRate: 0.35,
             health: 120,

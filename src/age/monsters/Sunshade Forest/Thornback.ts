@@ -5,6 +5,7 @@ import generateXP from '../../../utils/generateXP'
 import { treemickBranch } from '../../items/treemickBranch'
 import { thornbackShell } from '../../items/thornback_shell'
 import lvl_modifier from '../../../utils/lvl_modifier'
+import { emoji } from '../../../lib/utils/emoji'
 
 export class Thornback extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -23,7 +24,7 @@ export class Thornback extends MonsterEntity {
 
     static create() {
         return new Thornback({
-            name: 'Thornback',
+            name: `Thornback ${emoji.BLOOM}`,
             spawnRate: 0.1,
             description:`A large, armored reptile covered in sharp thorns. The Thornback is slow-moving but extremely powerful. Its attack is a charge with its heavy, spiked tail. Its drop is a Thornback shell, which can be crafted into sturdy armor.`,
             health: 100,

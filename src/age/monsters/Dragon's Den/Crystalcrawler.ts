@@ -4,6 +4,7 @@ import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { crystalShard } from '../../items/crystalShard'
 import lvl_modifier from '../../../utils/lvl_modifier'
+import { emoji } from '../../../lib/utils/emoji'
 
 export class Crystalcrawler extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -22,7 +23,7 @@ export class Crystalcrawler extends MonsterEntity {
 
     static create() {
         return new Crystalcrawler({
-            name: 'Crystalcrawler',
+            name: `Crystalcrawler ${emoji.LIGHT}`,
             description:`A creature made entirely of sparkling, translucent crystals, the Crystalcrawler skitters across the cave walls with incredible agility. It attacks by launching razor-sharp crystal shards at its foes. Its drop is a Crystal Shard, a gemstone-like fragment that can be used in the creation of magical artifacts.`,
             spawnRate: 0.35,
             health: 135,

@@ -5,6 +5,7 @@ import generateXP from '../../../utils/generateXP'
 import { solidifiedMagma } from '../../items/solidifiedMagma'
 import { calculateSTAB } from '../../../../commands/fight'
 import lvl_modifier from '../../../utils/lvl_modifier'
+import { emoji } from '../../../lib/utils/emoji'
 
 export class MagmaGolem extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -23,7 +24,7 @@ export class MagmaGolem extends MonsterEntity {
 
     static create() {
         return new MagmaGolem({
-            name: 'Magma Golem',
+            name: `Magma Golem ${emoji.FLAME}`,
             description:`A towering creature composed of molten rock and magma, the Magma Golem can unleash scorching waves of lava that engulf its adversaries. It can also deliver devastating punches with its fiery fists. Its drop is a Globs of Solidified Magma, which can be used by blacksmiths to create heat-resistant armor.`,
             spawnRate: 0.1,
             health: 290,

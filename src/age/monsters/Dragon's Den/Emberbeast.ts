@@ -6,6 +6,7 @@ import { emberScale } from '../../items/Emberscale'
 import { calculateModifier } from '../../../../commands/fight'
 import { calculateSTAB } from '../../../../commands/fight'
 import lvl_modifier from '../../../utils/lvl_modifier'
+import { emoji } from '../../../lib/utils/emoji'
 
 
 export class Emberbeast extends MonsterEntity {
@@ -25,7 +26,7 @@ export class Emberbeast extends MonsterEntity {
 
     static create() {
         return new Emberbeast({
-            name: 'Emberbeast',
+            name: `Emberbeast ${emoji.FLAME}`,
             description:`A fearsome creature with smoldering red scales and flaming spines, the Emberbeast breathes jets of searing flames that engulf its foes. It charges with scorching speed, leaving trails of fire in its wake. Its drop is an Ember Scale, a fire-imbued scale renowned for its use in forging powerful flame-based weapons.`,
             spawnRate: 0.35,
             health: 135,

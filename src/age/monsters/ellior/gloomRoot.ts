@@ -6,6 +6,7 @@ import { gloomRoot_branch } from '../../items/gloomRootBranch'
 import { calculateModifier } from '../../../../commands/fight'
 import { calculateSTAB } from '../../../../commands/fight'
 import lvl_modifier from '../../../utils/lvl_modifier'
+import { emoji } from '../../../lib/utils/emoji'
 
 export class gloomRoot extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -24,7 +25,7 @@ export class gloomRoot extends MonsterEntity {
 
     static create() {
         return new gloomRoot({
-            name: 'Gloomroot',
+            name: `Gloomroot ${emoji.BLOOM}`,
             description:`A massive, twisted tree with gnarled branches and glowing purple flowers. The Gloomroot is said to possess ancient magic and can manipulate the forest around it. Its skill is to create tendrils of darkness that can ensnare and trap its prey. Its drop is a Gloomroot branch, which can be used in the creation of powerful magical orbes.`,
             spawnRate: 0.2,
             health: 120,

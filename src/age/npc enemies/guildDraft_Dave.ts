@@ -5,6 +5,7 @@ import generateXP from '../../utils/generateXP'
 import { shadowCat_tuft } from '../items/shadowCat_tuft'
 import { calculateSTAB } from '../../../commands/fight'
 import lvl_modifier from '../../utils/lvl_modifier'
+import { emoji } from '../../lib/utils/emoji'
 
 export class  Fiskille extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -23,7 +24,7 @@ export class  Fiskille extends MonsterEntity {
 
     static create() {
         return new Fiskille({
-            name: 'Fiskille',
+            name: `Fiskille ${emoji.VOLT}`,
             description:`The Opponent in Guild Draft`,
             spawnRate: 0.35,
             health: 120,

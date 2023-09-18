@@ -4,6 +4,7 @@ import { Dropper } from '../../dropper'
 import generateXP from '../../../utils/generateXP'
 import { silkBlob } from '../../items/silkblob'
 import lvl_modifier from '../../../utils/lvl_modifier'
+import { emoji } from '../../../lib/utils/emoji'
 
 export class mudCrawler extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -22,7 +23,7 @@ export class mudCrawler extends MonsterEntity {
 
     static create() {
         return new mudCrawler({
-            name: 'Mud Crawler',
+            name: `Mud Crawler ${emoji.WAVE}`,
             description:`Worm like creatures with sharp teeths who blend in the mud and attack their prey. They often mark their hunting grounds with threads of silk produced from their salivary glands, although this silk is of low grade, it still fetches a decent price.`,
             spawnRate: 0.15,
             health: 60,

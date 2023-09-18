@@ -5,6 +5,7 @@ import generateXP from '../../../utils/generateXP'
 import profileModel from '../../../../models/profileSchema'
 import { backBreaker } from '../../items/backbreaker'
 import lvl_modifier from '../../../utils/lvl_modifier'
+import { emoji } from '../../../lib/utils/emoji'
 
 
 export class BeerBuccsDuo extends MonsterEntity {
@@ -26,7 +27,7 @@ export class BeerBuccsDuo extends MonsterEntity {
 
     static create() {
         return new BeerBuccsDuo({
-            name: 'Beer Buccuneers Duo',
+            name: `Beer Buccuneers Duo ${emoji.WAVE}`,
             description:`a duo of Beer Buccaneers`,
             spawnRate: 0.4,
             health: 45,

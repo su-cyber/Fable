@@ -4,6 +4,7 @@ import { Dropper } from '../dropper'
 import generateXP from '../../utils/generateXP'
 import { shadowCat_tuft } from '../items/shadowCat_tuft'
 import lvl_modifier from '../../utils/lvl_modifier'
+import { emoji } from '../../lib/utils/emoji'
 
 export class  Spectraling extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -22,7 +23,7 @@ export class  Spectraling extends MonsterEntity {
 
     static create() {
         return new Spectraling({
-            name: 'Spectraling',
+            name:`Spectraling ${emoji.GALE}`,
             description:`The Opponent in Guild Draft`,
             spawnRate: 0.35,
             health: 105,

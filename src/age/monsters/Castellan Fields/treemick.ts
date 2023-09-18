@@ -6,6 +6,7 @@ import { treemickBranch } from '../../items/treemickBranch'
 import { calculateModifier } from '../../../../commands/fight'
 import { calculateSTAB } from '../../../../commands/fight'
 import lvl_modifier from '../../../utils/lvl_modifier'
+import { emoji } from '../../../lib/utils/emoji'
 
 export class Treemick extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
@@ -24,7 +25,7 @@ export class Treemick extends MonsterEntity {
 
     static create() {
         return new Treemick({
-            name: 'Treemick',
+            name: `Treemick ${emoji.BLOOM}`,
             description:`Small stump like monsters who attack with wood splinters protruding from their bodies`,
             spawnRate: 0.65,
             health: 60,
