@@ -106,7 +106,8 @@ class DuelBuilder {
     }
 
     duelMessageEmbeds() {
-        const messages = this.logMessages.join('\n')
+        this.logMessages.unshift('```')
+        const messages = this.logMessages.join('```\n')
 
         const p1 = this.player1
         const p2 = this.player2
