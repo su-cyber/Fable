@@ -13,6 +13,7 @@ import { MessageAttachment } from 'discord.js'
 import { BeerBuccaneer1 } from '../src/age/monsters/Sunshade Forest/BeerBuccaneer1'
 import { BeerBuccaneer2 } from '../src/age/monsters/Sunshade Forest/BeerBuccaneer2'
 import { TextChannel } from 'discord.js'
+import { getEmoji } from './fight'
 
 
 export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 'Move in the Dungeon' })
@@ -99,6 +100,9 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                     attacker.maxMana = foundUser.mana
                                                     attacker.speed = foundUser.speed
                                                     attacker.skills=foundUser.currentskills
+                                                    attacker.level = foundUser.level
+                                                    attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
                                             if(attacker.speed >= monster.speed){
                                                 await new PvEDuel({
                                                     interaction,
@@ -141,6 +145,9 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                         attacker.maxMana = foundUser.mana
                                                         attacker.speed = foundUser.speed
                                                         attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
                                                 if(attacker.speed >= monster.speed){
                                                     await new PvEDuel({
                                                         interaction,
@@ -237,6 +244,9 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                     attacker.maxMana = foundUser.mana
                                                     attacker.speed = foundUser.speed
                                                     attacker.skills=foundUser.currentskills
+                                                    attacker.level = foundUser.level
+                                                    attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
                                             if(attacker.speed >= monster.speed){
                                                 await new PvEDuel({
                                                     interaction,
@@ -279,6 +289,9 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                         attacker.maxMana = foundUser.mana
                                                         attacker.speed = foundUser.speed
                                                         attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
                                                 if(attacker.speed >= monster.speed){
                                                     await new PvEDuel({
                                                         interaction,
@@ -357,6 +370,9 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                         attacker.maxMana = foundUser.mana
                                                         attacker.speed = foundUser.speed
                                                         attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
                                                 if(attacker.speed >= monster.speed){
                                                     await new PvEDuel({
                                                         interaction,
@@ -451,6 +467,9 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                         attacker.maxMana = foundUser.mana
                                                         attacker.speed = foundUser.speed
                                                         attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
                                                 if(attacker.speed >= monster.speed){
                                                     await new PvEDuel({
                                                         interaction,
@@ -557,6 +576,9 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                         attacker.maxMana = foundUser.mana
                                                         attacker.speed = foundUser.speed
                                                         attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
                                                 if(attacker.speed >= monster.speed){
                                                     await new PvEDuel({
                                                         interaction,

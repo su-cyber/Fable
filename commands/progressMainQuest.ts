@@ -15,6 +15,7 @@ import { gilthunder_boltgun } from '../src/age/weapons/gilthunder_boltgun'
 import { amberRing } from '../src/age/items/amber_ring'
 import { Spectraling } from '../src/age/npc enemies/Spectraling'
 import { TextChannel } from 'discord.js'
+import { getEmoji } from './fight'
 
 
 export default new MyCommandSlashBuilder({ name: 'progressmainquest', description: 'progress your main quest progress' }).setDo(
@@ -912,6 +913,9 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                                 attacker.maxMana = foundUser.mana
                                                 attacker.speed = foundUser.speed
                                                 attacker.skills=foundUser.currentskills
+                                                attacker.level = foundUser.level
+                                                attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
                                         if(attacker.speed >= monster.speed){
                                             await new PvEDuel_MQuest({
                                                 interaction,
@@ -1071,6 +1075,9 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                             attacker.maxMana = foundUser.mana
                                             attacker.speed = foundUser.speed
                                             attacker.skills=foundUser.currentskills
+                                            attacker.level = foundUser.level
+                                            attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
                                     if(attacker.speed >= monster.speed){
                                         await new PvEDuel_MQuest({
                                             interaction,
