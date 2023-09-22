@@ -11,8 +11,8 @@ import { emoji } from '../../lib/utils/emoji'
 export class captainCrook extends MonsterEntity {
     async onDeath(interaction: CommandInteraction, killer: ClassEntity) {
         const messages = {
-            withoutDropMessages: ['The struggling pirate falls on his knees coughing blood as you look down on him with a triumphant look aiming your weapon on his neck.'],
-            withDropMessages: ['The struggling pirate falls on his knees coughing blood as you look down on him with a triumphant look aiming your weapon on his neck.'],
+            withoutDropMessages: ['The struggling pirate falls on his knees coughing blood as you look down on him with a triumphant look aiming your weapon at his neck.'],
+            withDropMessages: ['The struggling pirate falls on his knees coughing blood as you look down on him with a triumphant look aiming your weapon at  his neck.'],
         }
 
         await new Dropper([

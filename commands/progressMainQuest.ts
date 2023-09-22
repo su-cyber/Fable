@@ -907,7 +907,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                                 attacker.magicResistance = foundUser.magicResistance
                                                 attacker.attackDamage=foundUser.attackDamage
                                                 attacker.evasion=foundUser.evasion
-                                                attacker.element = foundUser.elements[0]
+                                                attacker.element = foundUser.elements[0].toLowerCase();
                                                 attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
                                                 attacker.passive_skills = foundUser.passiveskills
                                                 attacker.maxMana = foundUser.mana
@@ -1069,7 +1069,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                             attacker.attackDamage=foundUser.attackDamage
                                             attacker.magicResistance = foundUser.magicResistance
                                             attacker.evasion=foundUser.evasion
-                                            attacker.element = foundUser.elements[0]
+                                            attacker.element = foundUser.elements[0].toLowerCase();
                                             attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
                                             attacker.passive_skills = foundUser.passiveskills
                                             attacker.maxMana = foundUser.mana
