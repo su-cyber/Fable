@@ -456,7 +456,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     .setColor('RANDOM')
                                     .setTitle(`Exploring ${location}...`)
                                     .setImage('attachment://Abandoned_Castle.jpg')
-                                    .setDescription(`As you approach the Abandoned Castle, a sense of mystery and melancholy washes over you. Its imposing silhouette stands as a testament to a bygone era, where echoes of battles and whispers of forgotten tales linger in the air. The weathered stones bear the weight of history, each crack and crevice whispering secrets lost to time. The once-majestic architecture now wears a cloak of solitude, the windows like empty eyes that have seen the passage of ages.\n\nYou are about to enter a dungeon!\nDo you wish to proceed?`)
+                                    .setDescription(`As you approach the Abandoned Castle, a sense of mystery and melancholy washes over you. Its imposing silhouette stands as a testament to a bygone era, where echoes of battles and whispers of forgotten tales linger in the air. The weathered stones bear the weight of history, each crack and crevice whispering secrets lost to time. The once-majestic architecture now wears a cloak of solitude, the windows like empty eyes that have seen the passage of ages.\n\nYou are about to enter a dungeon!\nDo you wish to proceed?\n\n**Recommeded Level: 4**`)
                 
                                     let acceptEmbed = new MessageEmbed()
                                     .setColor('GREEN')

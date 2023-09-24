@@ -138,7 +138,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Castellan_Fields.jpeg')
-                    .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 2**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'The Badlands'){
@@ -158,7 +158,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://sunshade_forest.jpg')
-                    .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 2**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Zorya'){
@@ -335,7 +335,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://sunshade_forest.jpg')
-                    .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 2**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 
@@ -480,7 +480,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Castellan_Fields.jpeg')
-                    .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 2**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 
@@ -616,7 +616,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://sunshade_forest.jpg')
-                    .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 2**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Castellan Fields'){
@@ -626,7 +626,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Castellan_Fields.jpeg')
-                    .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 2**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 
@@ -856,7 +856,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://ellior_forest.jpg')
-                    .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 5**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == `Dragon's Den`){
@@ -866,7 +866,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://dragon_den.jpg')
-                    .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 7**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Sunstone Mines'){
@@ -1127,7 +1127,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://ellior_forest.jpg')
-                    .setDescription(`you visited ${location},The enchanted forest of Ellior\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 5**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == `Dragon's Den`){
@@ -1137,7 +1137,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://dragon_den.jpg')
-                    .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 7**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Zephyr Mountain'){
@@ -1328,7 +1328,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://ellior_forest.jpg')
-                    .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 5**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Zephyr Mountain'){
@@ -1519,7 +1519,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://dragon_den.jpg')
-                    .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 7**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Zephyr Mountain'){
@@ -1539,7 +1539,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://ellior_forest.jpg')
-                    .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 5**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Orld Tree Husk'){
@@ -1711,7 +1711,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://dragon_den.jpg')
-                    .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 7**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Sunstone Mines'){
@@ -1731,7 +1731,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://ellior_forest.jpg')
-                    .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 5**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Orld Tree Husk'){
@@ -1902,7 +1902,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://dragon_den.jpg')
-                    .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 7**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Sunstone Mines'){
@@ -1922,7 +1922,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://ellior_forest.jpg')
-                    .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 5**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Zephyr Mountain'){
