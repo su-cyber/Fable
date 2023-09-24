@@ -53,7 +53,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                 await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
                             }
                             else{
-                                const attacker = Warrior.create(author)
+                                const attacker = await Warrior.create(author)
                                 attacker.health=foundUser.health
                                 attacker.mana=foundUser.mana
                                 attacker.armor=foundUser.armour
@@ -757,7 +757,7 @@ class PvEDuel_Quest extends PvEDuel {
 }
 
 export function calculateModifier(skill_element: string,defender_element: string){
-    let mod
+    let mod = 1
     if(skill_element == null){
         mod = 1
     }

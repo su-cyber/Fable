@@ -80,8 +80,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                         }
                                         else if(dungeon.step == 2){
                                             
-                                            const attacker = Warrior.create(author)
-                                            const monster = BeerBuccaneer2.create()
+                                            const attacker = await Warrior.create(author)
+                                            const monster = await BeerBuccaneer2.create()
                                             const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                             await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                             
@@ -126,8 +126,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                         else if(dungeon.step == 3){
                                             const pick = weightedRandom(["En1","En2","En3","En4"],[0.5,0.2,0.2,0.09])
                                             if(pick == "En1"){
-                                                const attacker = Warrior.create(author)
-                                                const monster = BeerBuccaneer1.create()
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await BeerBuccaneer1.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                                 await sleep(1.5)
@@ -225,8 +225,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                         }
                                         else if(dungeon.step == 5){
                                             
-                                            const attacker = Warrior.create(author)
-                                            const monster = BeerBuccaneer2.create()
+                                            const attacker = await Warrior.create(author)
+                                            const monster = await BeerBuccaneer2.create()
                                             const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                             await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                             await sleep(1.5)
@@ -270,8 +270,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                         else if(dungeon.step == 6){
                                             const pick = weightedRandom(["En1","En2","En3","En4"],[0.5,0.2,0.2,0.09])
                                             if(pick == "En1"){
-                                                const attacker = Warrior.create(author)
-                                                const monster = BeerBuccaneer1.create()
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await BeerBuccaneer1.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                                 await sleep(1.5)
@@ -351,8 +351,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                         else if(dungeon.step == 7){
                                             const pick = weightedRandom(["En1","En2","En3","En4"],[0.5,0.2,0.2,0.09])
                                             if(pick == "En1"){
-                                                const attacker = Warrior.create(author)
-                                                const monster = BeerBuccaneer1.create()
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await BeerBuccaneer1.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                                 await sleep(1.5)
@@ -448,8 +448,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                         else if(dungeon.step == 9){
                                             const pick = weightedRandom(["En1","En2","En3","En4"],[0.5,0.2,0.2,0.09])
                                             if(pick == "En1"){
-                                                const attacker = Warrior.create(author)
-                                                const monster = BeerBuccaneer1.create()
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await BeerBuccaneer1.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                                 await sleep(1.5)
@@ -557,8 +557,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                             
                                         }
                                         else if(dungeon.step == 10){
-                                            const attacker = Warrior.create(author)
-                                                const monster = captainCrook.create()
+                                            const attacker = await Warrior.create(author)
+                                                const monster = await captainCrook.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                                 await sleep(2.5)

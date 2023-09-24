@@ -548,7 +548,7 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
 
                 }
                 else{
-                    interaction.reply({content:`it seems you have not awakened yet!`,ephemeral:true})
+                    await interaction.reply({content:"It seems you are not awakened yet!\n```use /awaken to begin your Fable```",ephemeral:true})
                 }
             }
         })

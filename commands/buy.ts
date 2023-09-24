@@ -408,7 +408,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
   
                 }
                 else{
-                    await interaction.reply({content:"it seems you are not an awakened yet",ephemeral:true})
+                    await interaction.reply({content:"It seems you are not awakened yet!\n```use /awaken to begin your Fable```",ephemeral:true})
                 }
             }
         })

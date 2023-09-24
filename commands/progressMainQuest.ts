@@ -897,8 +897,8 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                         await btn.deferUpdate().catch(e => {})
                                         await interaction.editReply({files:[]})
                                         
-                                        const attacker = Warrior.create(author)
-                                        const monster = Spectraling.create()
+                                        const attacker = await Warrior.create(author)
+                                        const monster = await Spectraling.create()
                                         
                                         attacker.health=foundUser.health
                                                 attacker.mana=foundUser.mana
@@ -1060,8 +1060,8 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 if(btn.customId === "btn_accept"){
                                     await btn.deferUpdate().catch(e => {})
                                     await interaction.editReply({files:[]})
-                                    const attacker = Warrior.create(author)
-                                    const monster = Fiskille.create()
+                                    const attacker = await Warrior.create(author)
+                                    const monster = await Fiskille.create()
                                     attacker.health=foundUser.health
                                             attacker.mana=foundUser.mana
                                             attacker.armor=foundUser.armour

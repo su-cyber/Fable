@@ -109,7 +109,7 @@ export default new MyCommandSlashBuilder({ name: 'choose_sidequest', description
                 })
                 }
                 else{
-                    interaction.reply({content:`it seemes you have not awakened yet!`,ephemeral:true})
+                    await interaction.reply({content:"It seems you are not awakened yet!\n```use /awaken to begin your Fable```",ephemeral:true})
                 }
             }
         })

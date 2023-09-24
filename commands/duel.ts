@@ -180,7 +180,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                         
                             }
                             else{
-                                interaction.reply({content:"it seems that the user you selected is not an awakened yet!",ephemeral:true})
+                                await interaction.reply({content:"It seems that the user you selected is not awakened yet!\n```they must use /awaken to begin their Fable```",ephemeral:true})
                             }
                         }
                     })
@@ -188,7 +188,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                     
                 }
                 else{
-                    interaction.reply({content:"it seems that you are not an awakened yet!",ephemeral:true})
+                    await interaction.reply({content:"It seems you are not awakened yet!\n```use /awaken to begin your Fable```",ephemeral:true})
                 }
             }
 

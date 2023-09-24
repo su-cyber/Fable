@@ -797,6 +797,9 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                     
                     }
                 }
+                else{
+                    await interaction.reply({content:"It seems you are not awakened yet!\n```use /awaken to begin your Fable```",ephemeral:true})
+                }
             }
         })
     })

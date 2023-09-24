@@ -178,7 +178,7 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'see your
                     
                 }
                 else{
-                    interaction.reply({content:`It seems that you are not awakened yet!`,ephemeral:true},)
+                    await interaction.reply({content:"It seems you are not awakened yet!\n```use /awaken to begin your Fable```",ephemeral:true})
                 }
             }
         })

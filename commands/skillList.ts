@@ -2,6 +2,7 @@ import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
 import allskills from '../src/age/skills/skills'
 import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
+import { getEmoji } from './fight'
 
 export default new MyCommandSlashBuilder({ name: 'listskills', description: 'list all your skills' }).setDo(
     async (bot, interaction) => {
@@ -61,7 +62,7 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
             else{
                 use = `Uses Arcana`
             }
-            return `__**Name**__: ${skill.name}\n__**Description**__:${skill.description}\n__**POW**__: ${foundSkill.damage}\n**(${use})**`
+            return `__**Name**__: ${skill.name} ${getEmoji(foundSkill.element)}\n__**Description**__:${skill.description}\n__**POW**__: ${foundSkill.damage}\n__**AP Cost**__: ${foundSkill.mana_cost}\n**(${use})**`
         }).join("\n\n")
         const newEmbed = new MessageEmbed()
         .setColor('RANDOM')
@@ -92,7 +93,7 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
             else{
                 use = `Uses Arcana`
             }
-            return `__**Name**__: ${skill.name}\n__**Description**__:${skill.description}\n__**POW**__: ${foundSkill.damage}\n**(${use})**`
+            return `__**Name**__: ${skill.name} ${getEmoji(foundSkill.element)}\n__**Description**__:${skill.description}\n__**POW**__: ${foundSkill.damage}\n__**AP Cost**__: ${foundSkill.mana_cost}\n**(${use})**`
         }).join("\n\n")
         const newEmbed = new MessageEmbed()
         .setColor('RANDOM')
@@ -162,7 +163,7 @@ interaction.deleteReply()
                     })
                 }
                 else{
-                    await interaction.reply({content:"you are not awakened yet!",ephemeral:true})
+                    await interaction.reply({content:"It seems you are not awakened yet!\n```use /awaken to begin your Fable```",ephemeral:true})
                 }
             }
         })

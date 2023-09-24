@@ -146,7 +146,7 @@ option.setName('user').setDescription(`View user's license`).setRequired(false)
 
                 }
                 else{
-                    interaction.reply({content:`It seems that you are not awakened yet!`,ephemeral:true},)
+                    await interaction.reply({content:"It seems you are not awakened yet!\n```use /awaken to begin your Fable```",ephemeral:true})
                 }
             }
         })

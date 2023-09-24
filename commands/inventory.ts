@@ -177,7 +177,7 @@ interaction.deleteReply()
             
                 }
                 else{
-                    interaction.reply({content:`It seems you have not awakened yet!`,ephemeral:true})
+                    await interaction.reply({content:"It seems you are not awakened yet!\n```use /awaken to begin your Fable```",ephemeral:true})
                 }
             }
         })
