@@ -144,7 +144,7 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Crofters_Market.jpg')
-                    .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\nuse **/explore** to explore this location\n\nuse**/shop** to access the shops`)
+                    .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Aube Town Guild Outpost'){
@@ -385,7 +385,7 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://siewelle_port.jpg')
-                    .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Black Market'){
@@ -394,7 +394,7 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://black_market.jpg')
-                    .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                
