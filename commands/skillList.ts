@@ -62,7 +62,11 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
             else{
                 use = `Uses Arcana`
             }
-            return `__**Name**__: ${skill.name} ${getEmoji(foundSkill.element)}\n__**Description**__:${skill.description}\n__**POW**__: ${foundSkill.damage}\n__**AP Cost**__: ${foundSkill.mana_cost}\n**(${use})**`
+            let emoji = getEmoji(foundSkill.element)
+            if(emoji === undefined){
+                emoji = ""
+            }
+            return `__**Name**__: ${skill.name} ${emoji}\n__**Description**__:${skill.description}\n__**POW**__: ${foundSkill.damage}\n__**AP Cost**__: ${foundSkill.mana_cost}\n**(${use})**`
         }).join("\n\n")
         const newEmbed = new MessageEmbed()
         .setColor('RANDOM')
@@ -93,7 +97,11 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
             else{
                 use = `Uses Arcana`
             }
-            return `__**Name**__: ${skill.name} ${getEmoji(foundSkill.element)}\n__**Description**__:${skill.description}\n__**POW**__: ${foundSkill.damage}\n__**AP Cost**__: ${foundSkill.mana_cost}\n**(${use})**`
+            let emoji = getEmoji(foundSkill.element)
+            if(emoji === undefined){
+                emoji = ""
+            }
+            return `__**Name**__: ${skill.name} ${emoji}\n__**Description**__:${skill.description}\n__**POW**__: ${foundSkill.damage}\n__**AP Cost**__: ${foundSkill.mana_cost}\n**(${use})**`
         }).join("\n\n")
         const newEmbed = new MessageEmbed()
         .setColor('RANDOM')
