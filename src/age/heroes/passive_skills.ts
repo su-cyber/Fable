@@ -73,7 +73,7 @@ const passive_skills = [
                 .end(() => {})
                 .run(() =>{
                 defender.takeDamage
-                .physical(120*lvl_modifier(attacker.level))
+                .physical(500*lvl_modifier(attacker.level))
                 .run(damage => `${defender.name} lost ${damage} HP by the attacks of the Goblins`)
                 }
                     
