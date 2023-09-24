@@ -55,7 +55,7 @@ export class captainCrook extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`**${attacker.name}** used Swift Cleave`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*24)
+                            .physical(attacker.attackDamage*24*lvl_modifier(attacker.level))
                             .run(damage => `**${defender.name}** lost ${damage} HP by a swift slash`)
                     }
                 },{
