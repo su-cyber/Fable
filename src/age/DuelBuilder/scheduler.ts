@@ -234,7 +234,7 @@ class Scheduler {
             const h = a.length
 
             while (true) {
-                if (r + 1 === h || a[r + 1][c].options.id != x.options.id) {
+                if (r + 1 === h || (a[r + 1][c] && a[r + 1][c].options.id != x.options.id)) {
                     break
                 }
 
