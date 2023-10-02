@@ -172,7 +172,7 @@ export default new MyCommandSlashBuilder({ name: 'unequip', description: 'Unequi
 
                                                 const foundSkill = foundUser.passiveskills.find(skill => skill.name == foundObject.skills[i])
                                                 const index2 = foundUser.passiveskills.indexOf(foundSkill)
-                                                foundUser.passiveskills.splice(index2,1)
+                                                await foundUser.passiveskills.splice(index2,1)
 
                                                 
                                             }
