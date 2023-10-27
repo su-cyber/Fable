@@ -27,9 +27,9 @@ export class MagmaGolem extends MonsterEntity {
             name: `Magma Golem ${emoji.FLAME}`,
             description:`A towering creature composed of molten rock and magma, the Magma Golem can unleash scorching waves of lava that engulf its adversaries. It can also deliver devastating punches with its fiery fists. Its drop is a Globs of Solidified Magma, which can be used by blacksmiths to create heat-resistant armor.`,
             spawnRate: 0.1,
-            health: 290,
+            health: 300,
             level:8,
-            mana:4,
+            mana:5,
             xp: generateXP(42,46),
             evasion: 0.05,
             attackDamage: 35,
@@ -104,7 +104,7 @@ export class MagmaGolem extends MonsterEntity {
                     type: 'physical',
                     element:"flame", 
                     damage:32,
-                    mana_cost: 0,
+                    mana_cost: 3,
                     use: (attacker, defender) =>{
                         let mod
                         defender.element = defender.element.toLowerCase()

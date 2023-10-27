@@ -4,10 +4,10 @@ import { Entity } from './entity'
 
 export const calculate = {
     physicalDamage: (damage: number, armor: number): number => {
-        return Math.round(((damage/(armor*60))) + 1)
+        return Math.round(((damage/(armor))) + 1)
     },
     magicDamage: (damage: number, resistance: number): number => {
-        return Math.round(((damage/(resistance*60))) + 1)
+        return Math.round(((damage/(resistance))) + 1)
     },
 
     damage: (attack: Attack, defender: Entity): number => {

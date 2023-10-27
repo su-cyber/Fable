@@ -31,8 +31,16 @@ import { bottleWine } from './BottleWine'
 import { smokeBomb } from './smokeBomb'
 import { steamedBread } from './steamedBread'
 import { amberRing } from './amber_ring'
+import { SunbleachedBones } from '../flora/The Badlands/sunbleached_bones'
+import { WindblownFeather } from '../flora/The Badlands/windblown_feather'
+import { MirageCrystal } from '../flora/The Badlands/mirage_crystal'
+import { CrimsonFruit } from '../flora/The Badlands/crimson_fruit'
+import { QuakecoreCrystal } from './quakecore_crystal'
+import { LithoFragment } from './ltho_fragment'
+import { Siroccowraith_essence } from './sirroco_essence'
+import { Thornweaver_Thorns } from './thornweaver_thorns'
 
 export default [Chorusbloom.create(),
     SunshadeWood.create(),Dreamlily.create(),ArgentenumLeaves.create(),solarCorn,Radiantura_milk,steamShovel,guildTshirt,salePoster,treemickBranch,silkBlob,
     dronerAcid,RayleighFlower.create(),backBreaker,buzzHoney,thornbackShell,shadowCat_tuft,glowingEssence,starHound_tooth,gloomRoot_branch,
-    crystalShard,gildedScale,solidifiedMagma,emberScale,shadowViel,solBracelet,goblinWhistle,Glimmerroot.create(),bottleWine,smokeBomb,steamedBread,amberRing]
+    crystalShard,gildedScale,solidifiedMagma,emberScale,shadowViel,solBracelet,goblinWhistle,Glimmerroot.create(),bottleWine,smokeBomb,steamedBread,amberRing,SunbleachedBones.create(),WindblownFeather.create(),MirageCrystal.create(),CrimsonFruit.create(),QuakecoreCrystal,LithoFragment,Siroccowraith_essence,Thornweaver_Thorns]

@@ -60,5 +60,19 @@ const allQuests = [{
     rewards:"???",
     info:`It is finally time you became a Ranger and met with fellow Rangers from your Guild. Your life has changed forever, but an important task awaits your attention.`
 
+},{
+    name:"Aube Town's Water Crisis",
+    description:"Aube Town is suffering from a water crisis",
+    quest_id:"KS-TA-SQ6",
+    rewards:"1500🪙 || 35 Merit",
+    info:`The player is asked by the mayor of Aube Town to investigate a recent shortage of water in the town. The player must explore the badlands and find the source of the problem, which could be due to a drought, a blocked aqueduct, or even sabotage.`
+
+},{
+    name:"Helping Set Sail",
+    description:"Help the shipwrights in Auriga Sails Company",
+    quest_id:"KS-ZS-SQ2",
+    rewards:"1500🪙 || 35 Merit",
+    info:`The Shipwrights at Auriga Sails Company are running behind schedule in finishing a new ship for the Golden Dutchman Fleet. And to rub salt on the wound, one of their best workers has fallen ill. The Player must fill in for the helper by assisting the shipwrights in various tasks around the Port, and help them in completing the project on time.`
+
 }]
 export default allQuests

@@ -30,7 +30,7 @@ export class starHound extends MonsterEntity {
             spawnRate: 0.1,
             health: 180,
             level:7,
-            mana:0,
+            mana:4,
             xp: generateXP(20,23),
             evasion: 0.05,
             attackDamage: 7,

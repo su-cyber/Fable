@@ -30,7 +30,7 @@ export class Treemick extends MonsterEntity {
             spawnRate: 0.65,
             health: 60,
             level:2,
-            mana:0,
+            mana:1,
             xp: 7,
             evasion: 0.05,
             attackDamage: 12,

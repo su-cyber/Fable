@@ -29,7 +29,7 @@ export class BeerBuccaneer2 extends MonsterEntity {
             fileName:'beerbuccaneer2.jpeg',
             health: 60,
             level:2,
-            mana:0,
+            mana:1,
             xp: 9,
             evasion: 0.03,
             attackDamage: 18,

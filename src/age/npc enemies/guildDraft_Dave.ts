@@ -29,7 +29,7 @@ export class  Fiskille extends MonsterEntity {
             spawnRate: 0.35,
             health: 120,
             level:4,
-            mana:3,
+            mana:2,
             xp: generateXP(15,18),
             evasion: 0.05,
             attackDamage: 24,

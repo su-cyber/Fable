@@ -28,7 +28,7 @@ export class Crystalcrawler extends MonsterEntity {
             spawnRate: 0.35,
             health: 135,
             level:7,
-            mana:0,
+            mana:4,
             fileName:'crystalcrawler.jpeg',
             xp: generateXP(26,30),
             evasion: 0.05,

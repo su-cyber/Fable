@@ -29,7 +29,7 @@ export class Gildedwyvern extends MonsterEntity {
             spawnRate: 0.2,
             health: 200,
             level:8,
-            mana:0,
+            mana:5,
             xp: generateXP(32,35),
             evasion: 0.05,
             fileName:'guildedwyvern.jpeg',
@@ -50,7 +50,7 @@ export class Gildedwyvern extends MonsterEntity {
                     type: 'magical',
                     element:"flame",
                     damage:28,
-                    mana_cost: 0,
+                    mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod
                         defender.element = defender.element.toLowerCase()
@@ -105,7 +105,7 @@ export class Gildedwyvern extends MonsterEntity {
                     type: 'physical',
                     element:"normal",
                     damage:30,
-                    mana_cost: 0,
+                    mana_cost: 3,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Razor Slash`)
                         defender.takeDamage

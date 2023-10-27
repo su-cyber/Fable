@@ -437,6 +437,138 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                     }
      
                 }
+                else if(city_town == "The Badlands"){
+                
+                    const pick = weightedRandom(["flora","monster"],[0.4,0.6])
+
+                    if(pick == "flora"){
+                        await interaction.reply({ content: '\u200b', components: [] })
+                        const flora = (await getRandomFlora(city_town))
+                        let floraEmbed = new MessageEmbed()
+                            .setColor('GREEN')
+                            .setTitle('ENCOUNTER')
+                            .addFields([
+                                {
+                                    name: `Description:`,
+                                    value:`${flora.description}`
+                                }
+                            ])
+                            .setDescription(`You found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
+                        await interaction.editReply({embeds:[floraEmbed],files:[]})
+                        inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                            if(err){
+                                console.log(err);
+                                
+                            }
+                            else{
+                                const foundItem = foundUser.inventory.items.find(item => item.name.name === flora.name)
+                                if (foundItem){
+                
+                                    foundItem.quantity+=flora.quantity
+                                }
+                                else{
+                                    const newItem = {
+                                        name:flora,
+                                        description:flora.description,
+                                        quantity:Number(flora.quantity)
+                                    }
+                                    foundUser.inventory.items.push(newItem)
+                                }
+                                await inventory.updateOne({userID:authorId},foundUser)
+                            }
+                            
+                        })
+                    }
+                    else if(pick == "monster"){
+                            await interaction.reply({ content: '\u200b', components: [] })
+                            const monster = (await getRandomMonster(city_town))
+                            
+    
+                            
+                            foundUser.encounter = []
+                           
+                       
+                            let btnraw= new MessageActionRow().addComponents([
+                                new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Fight"),
+                                new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Run"),])
+    
+                                let d_btnraw = new MessageActionRow().addComponents([
+                                    new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Fight").setDisabled(true),
+                                    new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Run").setDisabled(true),
+                                ])
+    
+                                
+                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                let fightEmbed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle('ENCOUNTER')
+                                .setImage('attachment://' + monster.fileName)
+                                .setDescription(`🔎 you found a ${monster.name}!\n\nDescription:${monster.description}`)
+        
+                            let acceptEmbed = new MessageEmbed()
+                            .setColor('GREEN')
+                            .setTitle('ACCEPTED')
+                            .setDescription('You have decided to fight!\ncheck your private message')
+        
+                            let rejectEmbed = new MessageEmbed()
+                            .setColor('RED')
+                            .setTitle('RAN AWAY')
+                            .setDescription('You ran away!')
+                            
+                        
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
+                        let filter = i => i.user.id === authorId
+                            let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
+                    
+                            collector.on('collect',async (btn) => {
+                                if(btn.isButton()){
+                                    if(btn.customId === "btn_accept"){
+                                        await btn.deferUpdate().catch(e => {})
+                                        await interaction.editReply({embeds:[acceptEmbed],files:[]})
+                                        const encounter = {
+                                            name: monster.name,
+                                            time : Date.now(),
+                                            location:foundUser.city_town
+    
+                                        }
+                                        
+                                        foundUser.encounter.push(encounter)
+                                        await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
+                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`})})
+    
+                                        
+                                   
+                                    collector.stop()
+                                        
+                                    }
+                                    else if(btn.customId === "btn_reject"){
+                                        await btn.deferUpdate().catch(e => {})
+                                        await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]})
+                                         foundUser.encounter = []
+                                    
+                                        await profileModel.updateOne({userID:authorId},foundUser)
+    
+                                        collector.stop()
+                                    }
+    
+                                    
+                                    
+                                }
+                                  
+                    
+                       
+                       
+                        })
+    
+                        collector.on('end', () => {
+                            interaction.editReply({components: [d_btnraw]})
+                        })
+    
+                            
+                       
+                    }
+     
+                }
                 else if(city_town == "aube"){
                      if(location == "Abandoned Castle"){
                         if(foundUser.completed_dungeons.includes("Abandoned Castle")){

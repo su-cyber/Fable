@@ -30,7 +30,7 @@ export class gloomRoot extends MonsterEntity {
             spawnRate: 0.2,
             health: 120,
             level:6,
-            mana:0,
+            mana:3,
             xp: generateXP(26,30),
             evasion: 0.05,
             attackDamage: 30,

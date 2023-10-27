@@ -234,7 +234,7 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                                                 value:`**Description**:A bustling travel hub with majestic steam engine trains.\n`
                                             },
                                             {
-                                                name: `Castle of Chariots`,
+                                                name: `Castle Luminar`,
                                                 value:`**Description**:An imposing fortress residence of Earl Auriga.\n`
                                             },
                                             {
@@ -279,9 +279,9 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                         description: ``,
                         value: `Golden Terminal`,
                     },{
-                        label: `Castle of Chariots`,
+                        label: `Castle Luminar`,
                         description: ``,
-                        value: `Castle of Chariots`,
+                        value: `Castle Luminar`,
                     },{
                         label: `Siewelle Port`,
                         description: ``,
@@ -370,13 +370,13 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                     .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\nuse **/explore** to explore this location`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
-                else if(location == 'Castle of Chariots'){
+                else if(location == 'Castle Luminar'){
                     const attachment = new MessageAttachment('assets/Zorya/castle_chariots.jpg')
                     let successembed = new MessageEmbed()
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://castle_chariots.jpg')
-                    .setDescription(` As you arrive at the Castle of Chariots, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\nuse **/explore** to explore this location`)
+                    .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\nuse **/explore** to explore this location`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Siewelle Port'){

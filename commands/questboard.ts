@@ -50,6 +50,10 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
                                 .setTitle('Stumped!')
                                 .setDescription(`The local Solarii are having trouble cutting down Sunshade Trees in Sunshade Forest, due to a wild group of Treemics that have mixed themselves among the leftover tree stumps. Whenever a person traverses near the tree stumps’, the Treemics attack them. A few lives have already been lost.\n\n__Rewards__:**Goblin Whistle(Trinket)**`)
 
+                                let Quest_embed_6 = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`Aube Town's Water Crisis`)
+                                .setDescription(`The player is asked by the mayor of Aube Town to investigate a recent shortage of water in the town. The player must explore the badlands and find the source of the problem, which could be due to a drought, a blocked aqueduct, or even sabotage.\n\n__Rewards__:**1500🪙**`)
                                 
                             
                                 
@@ -60,7 +64,14 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
         
     ])
     let filtered_menu = []
-    let board = [Quest_embed_1,Quest_embed_2,Quest_embed_4]
+    let board
+    if(foundUser.completed_quests.includes("Tutorial")){
+        board = [Quest_embed_1,Quest_embed_2,Quest_embed_4,Quest_embed_6]
+    }
+    else{
+        board = [Quest_embed_1,Quest_embed_2,Quest_embed_4]
+    }
+    
     shuffleArray(board)
     let board_copy = []
     for(let i=0;i<board.length;i++){
@@ -179,12 +190,12 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
 let Quest_embed_1 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('Heirloom Missing')
-                                .setDescription(`The player is hired by a wealthy citizen of Zorya to find their missing astrolabe. The astrolabe is a family heirloom that is believed to bring good fortune to its owner. The player must search the city and interview locals to find out where the astrolabe may have ended up\n\nRequired Guild Class: **E**\nRecommended Level: **Lvl 6**`)
+                                .setDescription(`The player is hired by a wealthy citizen of Zorya to find their missing astrolabe. The astrolabe is a family heirloom that is believed to bring good fortune to its owner. The player must search the city and interview locals to find out where the astrolabe may have ended up\n\nRequired Guild Class: **E**\nRecommended Level: **Any**`)
 
                                 let Quest_embed_2 = new MessageEmbed()
                                 .setColor('RANDOM')
-                                .setTitle('Lost Bussiness')
-                                .setDescription(`A local shop owner's steam generator has broken down,The shop owner relies on the generator to power their machinery and without it, they are losing business. You must investigate the cause of the malfunction and repair the generator.\n\nRequired Guild Class: **E**\nRecommended Level: **Lvl 6**`)
+                                .setTitle('Helping Set Sail')
+                                .setDescription(`The Shipwrights at Auriga Sails Company are running behind schedule in finishing a new ship for the Golden Dutchman Fleet. And to rub salt on the wound, one of their best workers has fallen ill. The Player must fill in for the helper by assisting the shipwrights in various tasks around the Port, and help them in completing the project on time.\n\nRequired Guild Class: **E**\nRecommended Level: **Lvl 8**`)
 
                                 
 
@@ -209,7 +220,7 @@ let Quest_embed_1 = new MessageEmbed()
     let filtered_menu = []
     let board
     if(foundUser.ranger_grade == "E"){
-        board = [Quest_embed_1]
+        board = [Quest_embed_1,Quest_embed_2]
     }
     else{
         board = [Quest_embed_1,Quest_embed_2,Quest_embed_3,Quest_embed_4]

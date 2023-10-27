@@ -28,7 +28,7 @@ export class  Spectraling extends MonsterEntity {
             spawnRate: 0.35,
             health: 105,
             level:5,
-            mana:0,
+            mana:3,
             xp: generateXP(15,18),
             evasion: 0.05,
             attackDamage: 24,
@@ -49,7 +49,7 @@ export class  Spectraling extends MonsterEntity {
                     type: 'physical',
                     element:"normal", 
                     damage:22,
-                    mana_cost: 0,
+                    mana_cost: 2,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Phantom Hold`)
                         defender.takeDamage
