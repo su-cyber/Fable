@@ -66,7 +66,7 @@ export class Siroccowraith extends MonsterEntity {
                         let stab = calculateSTAB("gale",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Sand Blast`);
                         defender.takeDamage
-                            .magical(attacker.attackDamage * 20 * lvl_modifier(attacker.level)*mod*stab)
+                            .magical(attacker.magicPower * 20 * lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `${defender.name} was hit by a blast of sand, losing ${damage} HP`);
                     }
                 },
@@ -84,7 +84,7 @@ export class Siroccowraith extends MonsterEntity {
                         let stab = calculateSTAB("terra",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Scorching Sandstorm`);
                         defender.takeDamage
-                            .magical(attacker.attackDamage * 45 * lvl_modifier(attacker.level)*mod*stab)
+                            .magical(attacker.magicPower * 45 * lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `${defender.name} was engulfed in a scorching sandstorm, losing ${damage} HP`);
                     }
                 },

@@ -41,7 +41,7 @@ export class Lithogolem extends MonsterEntity {
             spawnRate: 0.15,
             health: 279,
             level: 10,
-            mana: 2,
+            mana: 6,
             fileName: 'lithogolem.jpeg',
             xp: generateXP(40, 45),
             evasion: 0.02,

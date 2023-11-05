@@ -16,7 +16,8 @@ import { jailer_chain } from "./jailer_chain";
 import { brass_shovel } from "./brass_shovel";
 import { gilthunder_boltgun } from "./gilthunder_boltgun";
 import { gilthunder_spear } from "./gilthunder_spear";
+import { kabuto } from "./kabuto";
 
 
-const allWeapons = [Sword,steelDagger,leather_gauntlets,Farmer_scythe,carved_bow,bronze_orbe,tachi_katana,crookcutlass,metal_mallet,broad_axe,jailer_chain,brass_shovel,gilthunder_boltgun,gilthunder_spear,brass_pistol,longSword,soldierSpear,twinKatar]
+const allWeapons = [Sword,steelDagger,leather_gauntlets,Farmer_scythe,carved_bow,bronze_orbe,tachi_katana,crookcutlass,metal_mallet,broad_axe,jailer_chain,brass_shovel,gilthunder_boltgun,gilthunder_spear,brass_pistol,longSword,soldierSpear,twinKatar,kabuto]
 export default allWeapons

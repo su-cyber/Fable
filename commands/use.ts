@@ -136,6 +136,7 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                                         }
                                                         
                                                     }
+                                                    
                                                     else{
                                                         
                                                         if(foundProfile.status_effects.status.length == 0){
@@ -184,6 +185,28 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
                                             }
                                             
                                         })
+                                    }
+                                    else if(foundItem.type === "grimoire"){
+                                        profileModel.findOne({userID:authorId},async function(err,foundProfile){
+                                            if(err){
+                                                console.log(err);
+                                                
+                                            }
+                                            else{
+                                                foundObject.quantity-=1
+                                                if(foundObject.quantity===0){
+                                                    const index = foundUser.inventory.items.indexOf(foundObject)
+                                                    foundUser.inventory.items.splice(index,1)
+                                                }
+                                                interaction.reply({content:`${foundItem.use_string}`})
+
+                                                foundProfile.allskills.push(foundItem.skills[0])
+                                                await profileModel.updateOne({userID:authorId},foundProfile)
+                                                await inventory.updateOne({userID:authorId},foundUser)
+                                            }
+                                        })
+                                       
+                                                        
                                     }
                                     else{
                                         interaction.reply({content:"this item is not Usable!",ephemeral:true})

@@ -776,16 +776,78 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setDescription(` As you step into the Golden Terminal, the gleam of copper architecture surrounds you, casting a warm and inviting glow. The air hums with anticipation as crowds of citizens and travelers converge, their eyes filled with wanderlust. The bustling atmosphere embraces you, echoing the excitement of those embarking on new adventures. Your gaze is drawn to the majestic Steam Train, standing proud on the platform, its billowing plumes of steam whispering tales of distant lands. In this vibrant hub of exploration, you become a part of a tapestry of dreams, ready to embark on a journey that will weave unforgettable memories into the fabric of your soul.`)
                         await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
-                    else if(location == 'Castle of Chariots'){
+                    else if(location == 'Castle Luminar'){
                         const attachment = new MessageAttachment('assets/Zorya/castle_chariots.jpg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle(`Now Exploring ${location}...`)
                         .setImage('attachment://castle_chariots.jpg')
-                        .setDescription(`As you step into the grand Castle of Chariots, a sense of awe washes over you. The halls echo with whispers of history, and every corner is adorned with regal splendor. You find yourself captivated by the intricate tapestries and the ornate craftsmanship that adorns the walls. The air is filled with an air of authority and purpose, a testament to Earl Auriga's vigilant guardianship over the state. In this fortress of power and grace, you walk in the footsteps of legends, feeling a deep reverence for the responsibilities and secrets held within these ancient walls.`)
+                        .setDescription(`As you step into the grand Castle Luminar, a sense of awe washes over you. The halls echo with whispers of history, and every corner is adorned with regal splendor. You find yourself captivated by the intricate tapestries and the ornate craftsmanship that adorns the walls. The air is filled with an air of authority and purpose, a testament to Earl Auriga's vigilant guardianship over the state. In this fortress of power and grace, you walk in the footsteps of legends, feeling a deep reverence for the responsibilities and secrets held within these ancient walls.`)
                         await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Siewelle Port'){
+                        if(foundUser.side_quest[0] == "KS-ZS-SQ3" && foundUser.side_quest_phase == "4"){
+                            let btnraw= new MessageActionRow().addComponents([
+                                new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Enter"),
+                                new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Cancel"),])
+        
+                                let d_btnraw = new MessageActionRow().addComponents([
+                                    new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Enter").setDisabled(true),
+                                    new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Cancel").setDisabled(true),
+                                ])
+                                const attachment = new MessageAttachment('assets/AubeTown/Aqua_canal.jpeg')
+                            let dungeonEmbed = new MessageEmbed()
+                                    .setColor('RANDOM')
+                                    .setTitle(`Exploring Aque Canals...`)
+                                    .setImage('attachment://Aqua_canal.jpeg')
+                                    .setDescription(`As you venture into the Aque Canals, you are transported to a fantastical realm. The labyrinthine stone pathways were adorned with luminescent moss, casting an eerie, ethereal glow, while mysterious, ancient symbols adorned the walls. The air was thick with the scent of enchanted flora, and as they looked down, the shallow waters seemed to reflect distant constellations, turning each step into a journey through the stars themselves.\n\nYou are about to enter a dungeon!\nDo you wish to proceed?\n\n**Recommeded Level: 13**`)
+                
+                                    let acceptEmbed = new MessageEmbed()
+                                    .setColor('GREEN')
+                                    .setTitle('ENTERED DUNGEON')
+                                    .setDescription('You have decided to enter!\npress /proceeddungeon in DMs to move forward')
+                
+                                    let rejectEmbed = new MessageEmbed()
+                                    .setColor('RED')
+                                    .setTitle('RETREAT')
+                                    .setDescription('You decided to retreat!')
+                                    
+                                
+                                await interaction.reply({content: null,embeds:[dungeonEmbed],components:[btnraw],files:[attachment]})
+                                let filter = i => i.user.id === authorId
+                                    let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 300})
+                            
+                                    collector.on('collect',async (btn) => {
+                                        if(btn.isButton()){
+                                            if(btn.customId === "btn_accept"){
+                                                await btn.deferUpdate().catch(e => {})
+                                                await interaction.editReply({embeds:[acceptEmbed]})
+                                                foundUser.dungeon.status = true
+                                                foundUser.dungeon.name = "Aqua Canals"
+                                                foundUser.dungeon.step = 1 
+                                                await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                                                interaction.user.send(`You are now inside a dungeon!\npress /proceeddungeon to move forward`)
+            
+                                                
+                                           
+                                            collector.stop()
+                                                
+                                            }
+                                            else if(btn.customId === "btn_reject"){
+                                                await btn.deferUpdate().catch(e => {})
+                                                await interaction.editReply({embeds:[rejectEmbed],components:[]})
+        
+                                            
+            
+                                                collector.stop()
+                                            }
+  
+                                        }
+                                    })
+                                       
+                        
+                    }
+                    else{
                         const attachment = new MessageAttachment('assets/Zorya/siewelle_port.jpg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
@@ -794,6 +856,8 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setDescription(`As you step into the vibrant Siewelle Port, the symphony of maritime activity envelops you. The air is thick with the scent of saltwater and the sound of creaking ships. Your gaze dances from one pier to another, captivated by the bustling docks and the constant flow of goods being loaded and unloaded. The colossal sea gates stand like silent guardians, their imposing presence a testament to the port's significance. The air is filled with a sense of adventure and possibility as you envision the far-reaching destinations these ships will embark upon. In the Siewelle Port, you become a part of the bustling trade and seafaring dreams, igniting your own wanderlust and stoking the fires of your imagination.`)
                         await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
+                }
+                
                     else if(location == 'Black Market'){
                         const attachment = new MessageAttachment('assets/Zorya/black_market.jpg')
                         let successembed = new MessageEmbed()

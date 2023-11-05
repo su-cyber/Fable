@@ -201,8 +201,8 @@ let Quest_embed_1 = new MessageEmbed()
 
                                 let Quest_embed_3 = new MessageEmbed()
                                 .setColor('RANDOM')
-                                .setTitle('Quest 3')
-                                .setDescription(`The player is asked by the local farmer to help set up a farmer's market in Aube Town. The player must gather ingredients like Radiantura’s Milk, Argentum Leaf, Sale Poster, Steam Shovel, & I Love Guild t-shirts to help the farmer set up a stall, and attract customers to the market`)
+                                .setTitle('Mysterious Seagate Malfunction')
+                                .setDescription(`One of the State's sea-gates has malfunctioned, causing dangerous Sea Spyriths to enter the State at the Aqueduct Canals. If not stopped, they will reach the Siewelle Port very soon. Many Rangers have already responded to the call, and many are still going there to provide aid. If you partake, you must stop the Sea Spyriths from entering the State.`)
 
                                 let Quest_embed_4 = new MessageEmbed()
                                 .setColor('RANDOM')
@@ -220,7 +220,7 @@ let Quest_embed_1 = new MessageEmbed()
     let filtered_menu = []
     let board
     if(foundUser.ranger_grade == "E"){
-        board = [Quest_embed_1,Quest_embed_2]
+        board = [Quest_embed_1,Quest_embed_2,Quest_embed_3]
     }
     else{
         board = [Quest_embed_1,Quest_embed_2,Quest_embed_3,Quest_embed_4]

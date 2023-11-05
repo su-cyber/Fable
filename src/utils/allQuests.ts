@@ -74,5 +74,12 @@ const allQuests = [{
     rewards:"1500🪙 || 35 Merit",
     info:`The Shipwrights at Auriga Sails Company are running behind schedule in finishing a new ship for the Golden Dutchman Fleet. And to rub salt on the wound, one of their best workers has fallen ill. The Player must fill in for the helper by assisting the shipwrights in various tasks around the Port, and help them in completing the project on time.`
 
+},{
+    name:"Mysterious Seagate Malfunction",
+    description:"Investigate the seagates",
+    quest_id:"KS-ZS-SQ3",
+    rewards:"2500🪙 || 45 Merit",
+    info:`One of the State's sea-gates has malfunctioned, causing dangerous Sea Spyriths to enter the State at the Aqueduct Canals. If not stopped, they will reach the Siewelle Port very soon. Many Rangers have already responded to the call, and many are still going there to provide aid. If you partake, you must stop the Sea Spyriths from entering the State.`
+
 }]
 export default allQuests

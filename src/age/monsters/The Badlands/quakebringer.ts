@@ -60,7 +60,7 @@ export class Quakebringer extends MonsterEntity {
                     type: 'magical',
                     element: "terra",
                     damage: 25,
-                    mana_cost: 1,
+                    mana_cost: 2,
                     use: (attacker, defender) => {
                         let mod = calculateModifier("terra",defender.element)
                         let stab = calculateSTAB("terra",attacker.element)
@@ -78,7 +78,7 @@ export class Quakebringer extends MonsterEntity {
                     type: 'physical',
                     element: "terra",
                     damage: 45,
-                    mana_cost: 3,
+                    mana_cost: 4,
                     use: (attacker, defender) => {
                         let mod = calculateModifier("terra",defender.element)
                         let stab = calculateSTAB("terra",attacker.element)

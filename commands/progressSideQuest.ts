@@ -518,7 +518,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
 
                             }
                             else if(foundUser.side_quest_phase == "2"){
-                                if(foundUser.location == "The Badlands"){
+                                if(foundUser.city_town == "The Badlands"){
                                     const attachment = new MessageAttachment('assets/AubeTown/SQ61.jpg')
                                     let quest_embed = new MessageEmbed()
                                 .setColor('RANDOM')
@@ -1094,6 +1094,101 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 interaction.reply({content:`You must help the shipwrights in Auriga Sails Company to continue`,ephemeral:true})
                             }
 
+                            }
+                        }
+                        else if(foundUser.side_quest[0] == "KS-ZS-SQ3"){
+                            if(foundUser.side_quest_phase == "1"){
+                                let quest_embed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`Mysterious Seagate Malfunction`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .addFields([
+                                    {
+                                        name: `Current Objective:`,
+                                        value:`**Press "/progresssidequest" at the SIEWELLE PORT to continue.**`
+                                    }
+                                ])
+                                .setDescription(`One of the State's sea-gates has malfunctioned, causing dangerous Sea Spyriths to enter the State at the Aqueduct Canals. If not stopped, they will reach the Siewelle Port very soon. Many Rangers have already responded to the call, and many are still going there to provide aid. If you partake, you must stop the Sea Spyriths from entering the State.This is a Dungeon.\n\n**Go to Siewelle Port to continue**`)
+                            
+                                await interaction.reply({embeds:[quest_embed]})
+                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"2"})
+                            }
+                            else if(foundUser.side_quest_phase == "2"){
+                                if(foundUser.location === "Siewelle Port"){
+                                    let quest_embed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`Mysterious Seagate Malfunction`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .addFields([
+                                    {
+                                        name: `Current Objective:`,
+                                        value:`**Press "/progresssidequest" at the SIEWELLE PORT to continue.**`
+                                    }
+                                ])
+                                .setDescription(`You arrive at the port, and notice that the crowd there felt scarcer than normal. Perhaps the news about Sea Spyriths entering into Zorya had alarmed the shoppers. Soldiers from the Empral Brigade were running around and slowly sweeping the area. But there was a small group you spotted on the Eurus Pier. On closer inspection, you found out that this small group consisted of Rangers who had responded to the help-request just like you.\n\n“Hey! You must be ${interaction.user.username}! I was notified that you had also accepted this help-request. My name is Jetta the Shark Whip, I am the highest ranking Ranger here. It basically means I am in-charge of the operation even though it is a joint event. Don’t worry, I am an expert in slaying Sea Spyriths, so you’re in good hands! Now, please hop on this boat, we are going to the Aque Canals just at the edge of Zorya. That’s where we will find our culprits.” Jetta said.\n\n**Go to Siewelle Port to continue**`)
+                            
+                                await interaction.reply({embeds:[quest_embed]})
+                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"3"})
+                                }
+                                else{
+                                    interaction.reply({content:`You must go the Siewelle Port immediately to begin the investigation!`,ephemeral:true})
+                                }
+                                
+                            }
+                            else if(foundUser.side_quest_phase == "3"){
+                                if(foundUser.location === "Siewelle Port"){
+                                    let quest_embed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`Mysterious Seagate Malfunction`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .addFields([
+                                    {
+                                        name: `Current Objective:`,
+                                        value:`**Press "/progresssidequest" at the SIEWELLE PORT to continue.**`
+                                    }
+                                ])
+                                .setDescription(`On your way to the Aque Canals, Jetta tells you that the place is a giant network of Aqueducts which make it seem like a maze. This is because Zorya is one of the largest Stateships in the Kingdom, and its population requires a lot of drinkable water. Jetta also requests everyone to stay alert at all times because Sea Spyriths are the most violent kind of Spyriths. This is the reason Solarstrio grew so large when they built the Airships. It changed everything in the trade sector when you could send and deliver goods and avoid the Sea Spyriths altogether. The innovation generated immense wealth for the Kingdom.\n\nJetta was a really cool Ranger. He imparted knowledge that a Rookie Ranger such as yourself would not find out about. As you spent your time soaking all the knowledge Jetta imparted, the time had come. You had arrived at the Aque Canals. True to their description, the Aque Canals resembled a true stone labyrinth with overgrowth everywhere, and shallow water for land. Due to this reason, all the Rangers get off their boats and decide to progress on foot.\n\nJetta’s strategy was to split in two groups, as the Canals were shaped like a giant circle, at least the part that carries water. Most Sea Spyriths must be in this space, but even some of them that could potentially use land to move, must be near the sources of water. The two groups would each take a side and kill the Sea Spyriths they find on their way, until they meet again at the other end of the Aque Canals. In shallow waters, you will not be able to row your boats, in which case one person in the group has to drag the boat behind them until you are back in deep waters again.\n\n“Myself and these gentlemen shall take the right side. You guys take the left. You’re in-charge! Show us what the Hero of Aube Town can do! I am counting on you!” Saying only this much with a glowing grin, you see Jetta’s group vanish into the distance. His remark leaves you with a burst of confidence.\n\n**Proceed in Siewelle Port to continue**`)
+                            
+                                await interaction.reply({embeds:[quest_embed]})
+                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"4"})
+                                }
+                                else{
+                                    interaction.reply({content:`You must go the Siewelle Port immediately to begin the investigation!`,ephemeral:true})
+                                }
+                                
+                            }
+                            else if(foundUser.side_quest_phase == "4"){
+                                if(foundUser.location === "Siewelle Port"){
+                                    let quest_embed = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`Mysterious Seagate Malfunction`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .addFields([
+                                    {
+                                        name: `Current Objective:`,
+                                        value:`**Press "/explore" at the SIEWELLE PORT to continue.**`
+                                    }
+                                ])
+                                .setDescription(`Before launching yourself deeper into the Aque Canals, you decide to discuss strategy with your group. Fortunately, Jetta left you with some tips on your way over.\n\n“Don’t leave the boat, unless you’re in shallow waters.”\n\n“In case the boat is damaged in your fight, repair it as soon as you can. Without a boat, you will just be a bait.”\n\n“Sea-Spyriths are evil, and they will never spare land-dwellers. But they take their time in deep waters. If you must rest, rest then”\n\nThese were the instructions left behind by Jetta to your group. With these in mind, you began your quest.\n\n**Explore Siewelle Port to continue**`)
+                            
+                                await interaction.reply({embeds:[quest_embed]})
+                                }
+                                else{
+                                    interaction.reply({content:`You must go the Siewelle Port immediately to begin the investigation!`,ephemeral:true})
+                                }
+                                
                             }
                         }
                         else{

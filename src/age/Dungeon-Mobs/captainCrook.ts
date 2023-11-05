@@ -63,7 +63,7 @@ export class captainCrook extends MonsterEntity {
                     name: 'Wave Slash',
                     description: 'wave elemental slash',
                     canEvade: true,
-                    type: 'magical',
+                    type: 'physical',
                     element:"wave", 
                     damage:35,
                     mana_cost: 2,
@@ -109,7 +109,7 @@ export class captainCrook extends MonsterEntity {
             let stab = calculateSTAB("wave",attacker.element)
             attacker.addLogMessage(`**${attacker.name}** used Wave Slash`)
             defender.takeDamage
-                .magical((attacker.magicPower*35)*mod*stab*lvl_modifier(attacker.level))
+                .physical((attacker.attackDamage*35)*mod*stab*lvl_modifier(attacker.level))
                 .run(damage => `**${defender.name}** lost ${damage} HP by a fast water imbued slash`)
                     }
                 },
