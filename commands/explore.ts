@@ -795,7 +795,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Enter").setDisabled(true),
                                     new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Cancel").setDisabled(true),
                                 ])
-                                const attachment = new MessageAttachment('assets/AubeTown/Aqua_canal.jpeg')
+                                const attachment = new MessageAttachment('assets/Zorya/Aqua_canal.jpeg')
                             let dungeonEmbed = new MessageEmbed()
                                     .setColor('RANDOM')
                                     .setTitle(`Exploring Aque Canals...`)
