@@ -2,6 +2,7 @@
 import { emoji } from '../../lib/utils/emoji'
 import { poisoning } from '../effects/poisoning'
 import lvl_modifier from '../../utils/lvl_modifier'
+import { calculateModifier } from '../../../commands/fight'
 
 
 const noir_tree=[
@@ -30,13 +31,14 @@ const noir_tree=[
         element:"normal",
         type: 'physical',
         use: (attacker, defender) =>{
+            let mod = calculateModifier("venom",defender.element)
             const VenomousSerpent = attacker.scheduler.task
                 .turns(3)
                 .all.effect(poisoning)
                 .end(() => defender.removeEffect(poisoning))
                 .run(() =>
                     defender.takeDamage
-                        .physical(attacker.attackDamage*5)
+                        .physical(attacker.attackDamage*5*mod*lvl_modifier(attacker.level))
                         .run(
                             damage =>
                                 `${defender.name} lost ${damage} HP due to ${emoji.POISON}`

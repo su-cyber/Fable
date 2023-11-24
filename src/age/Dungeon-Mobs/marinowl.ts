@@ -34,7 +34,7 @@ export class Marinowl extends MonsterEntity {
             level:11,
             mana:7,
             xp: generateXP(50, 62),
-            evasion: 0.05,
+            evasion: 0.065,
             attackDamage: 45,
             fileName:'marinowl.jpeg',
             magicPower: 43,

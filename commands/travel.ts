@@ -67,19 +67,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Castellan Fields`,
-                                                value:`**Travelled on Mount**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Sunshade Forest`,
-                                                value:`**Travelled on Mount**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `The Badlands`,
-                                                value:`**Travelled on Mount**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `State of Zorya`,
-                                                value:`**Travelled on Mount**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.a\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.a\n**Cost**:0 🪙\n`
                                             }
                                         ])
     
@@ -251,15 +251,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Aube Town`,
-                                                value:`**Travelled on Mount**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Sunshade Forest`,
-                                                value:`**Travelled on Mount**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `The Badlands`,
-                                                value:`**Travelled on Mount**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
                                             },
                                             
                                         ])
@@ -397,15 +397,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Aube Town`,
-                                                value:`**Travelled on Mount**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Castellan Fields`,
-                                                value:`**Travelled on Mount**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `The Badlands`,
-                                                value:`**Travelled on Mount**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
                                             },
                                             
                                         ])
@@ -542,15 +542,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Aube Town`,
-                                                value:`**Travelled on Mount**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Castellan Fields`,
-                                                value:`**Travelled on Mount**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Sunshade Forest`,
-                                                value:`**Travelled on Mount**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
                                             },
                                             
                                         ])
@@ -698,7 +698,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             },
                                             {
                                                 name: `Township of Werfall`,
-                                                value:`**Travelled on Stage Coach**\n**Description**:The Township of Werfall\n**Cost**:150 🪙`
+                                                value:`**Travelled on Stage Coach**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**:150 🪙`
                                             },
                                            
                                         ])
@@ -712,39 +712,39 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Ellior Forest`,
-                                                value:`**Travelled on Mount**\n**Description**:The enchanting Forest of Ellior\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The enchanting Forest of Ellior\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Dragon's Den`,
-                                                value:`**Travelled on Mount**\n**Description**:The Den of an Ancient Dragon\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Den of an Ancient Dragon\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Sunstone Mines`,
-                                                value:`**Travelled on Mount**\n**Description**:The minefield where sunstones are mined\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The minefield where sunstones are mined\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Township of Aube`,
-                                                value:`**Travelled on Mount**\n**Description**:The township of Aube\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The township of Aube\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Zephyr Mountain`,
-                                                value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `State of Tethys`,
-                                                value:`**Travelled on Mount**\n**Description**:The Stateship of Tethys\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Stateship of Tethys\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Capital State of Gloaming`,
-                                                value:`**Travelled on Mount**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Mount**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Township of Werfall`,
-                                                value:`**Travelled on Mount**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**:150 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**:0 🪙\n`
                                             },
                                            
                                             
@@ -1036,23 +1036,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Mount**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Dragon's Den`,
-                                                value:`**Travelled on Mount**\n**Description**:The den of an ancient Dragon\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The den of an ancient Dragon\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Sunstone Mines`,
-                                                value:`**Travelled on Mount**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Zephyr Mountain`,
-                                                value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
                                             },
                                            
                                         ])
@@ -1237,23 +1237,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Mount**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Ellior Forest`,
-                                                value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Sunstone Mines`,
-                                                value:`**Travelled on Mount**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Zephyr Mountain`,
-                                                value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                                value:`**Travelled on Spyralink**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
                                             },
                                            
                                         ])
@@ -1428,23 +1428,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Mount**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Ellior Forest`,
-                                                value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Dragon's Den`,
-                                                value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Zephyr Mountain`,
-                                                value:`**Travelled on Mount**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
                                             },
                                            
                                         ])
@@ -1619,23 +1619,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Mount**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Ellior Forest`,
-                                                value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Dragon's Den`,
-                                                value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Sunstone Mines`,
-                                                value:`**Travelled on Mount**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Mount**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                                value:`**Travelled on Spyralink**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
                                             },
                                            
                                         ])
@@ -1811,23 +1811,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Mount**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Ellior Forest`,
-                                                value:`**Travelled on Mount**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Dragon's Den`,
-                                                value:`**Travelled on Mount**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Sunstone Mines`,
-                                                value:`**Travelled on Mount**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Zephyr Mountain`,
-                                                value:`**Travelled on Mount**\n**Description**:The great mountains of the Zephyr range\n**Cost**:0 🪙`
+                                                value:`**Travelled on Spyralink**\n**Description**:The great mountains of the Zephyr range\n**Cost**:0 🪙`
                                             },
                                            
                                         ])
@@ -1973,6 +1973,9 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             {
                                                 name: `Stateship of Zorya`,
                                                 value:`**Travelled on Stagecoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:150 🪙\n`
+                                            },{
+                                                name: `Stateship of Vigia`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**:150 🪙\n`
                                             },
                                             
                                         ])
@@ -1986,7 +1989,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Mount**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Vigia`,
+                                                value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**:0 🪙\n`
                                             },
                                             
                                         ])
@@ -2007,6 +2014,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         label: `Stateship of Zorya`,
                         description: ``,
                         value: `Zorya`,
+                    },
+                    {
+                        label: `Stateship of Vigia`,
+                        description: ``,
+                        value: `Vigia`,
                     },
                     )
                     .setDisabled(false),
@@ -2051,6 +2063,641 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     }
                     
                 }
+                else if(location == 'Vigia'){
+                    if(foundUser.coins >=150 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-150,location:"None"})
+                    const attachment = new MessageAttachment('assets/Vigia/vigia_main.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://vigia_main.jpg')
+                    .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(foundUser.mount != "None"){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                    const attachment = new MessageAttachment('assets/Vigia/vigia_main.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://vigia_main.jpg')
+                    .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else{
+                        interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                    }
+                    
+                }
+                
+                
+        
+                
+                collector_select.stop()
+                collector_cancel.stop()
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+        
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+            })
+        
+        
+                }
+                else if(city_town == "Vigia"){
+                    let embed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            embed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Township of Werfall`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**:150 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Kafig`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for magical flying beasts.\n**Cost**:100 🪙\n`
+                                            },
+                                            {
+                                                name: `Asche Peak`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:A charred hill crowned in perpetual darkness, its soot-blackened soil radiating intense heat, home to a rich variety of Avian Spyriths.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Deathrust Forest`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:DeathRust Forest, a forsaken realm devoid of life, haunted by the relentless menace of mindless iron zombies known as Ferromites, where the very air carries an infectious rust turning all who breathe it into rusted husks with burning cores.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            embed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Township of Werfall`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Kafig`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for magical flying beasts.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Asche Peak`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A charred hill crowned in perpetual darkness, its soot-blackened soil radiating intense heat, home to a rich variety of Avian Spyriths.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Deathrust Forest`,
+                                                value:`**Travelled on Spyralink**\n**Description**:DeathRust Forest, a forsaken realm devoid of life, haunted by the relentless menace of mindless iron zombies known as Ferromites, where the very air carries an infectious rust turning all who breathe it into rusted husks with burning cores.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+    
+                                        }
+                                        
+                                   
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
+        
+        let select =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Township of Werfall`,
+                        description: ``,
+                        value: `Werfall`,
+                    },
+                    {
+                        label: `Township of Kafig`,
+                        description: ``,
+                        value: `Kafig`,
+                    },
+                    {
+                        label: `Asche Peak`,
+                        description: ``,
+                        value: `Asche Peak`,
+                    },
+                    {
+                        label: `Deathrust Forest`,
+                        description: ``,
+                        value: `Deathrust Forest`,
+                    },
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+    
+        
+        
+            await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                
+                if(location == 'Werfall'){
+                    if(foundUser.coins >=150 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-150,location:"None"})
+                    const attachment = new MessageAttachment('assets/Werfall/werfall_main.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://werfall_main.jpg')
+                    .setDescription(`As You approached the outskirts of Werfall, an eerie transformation was evident. Once a thriving hub of commerce, the town now exuded an air of bleakness and despair. Tents, emblazoned with the emblem of the "Emperal Brigade," sprawled across the landscape, housing a mix of rangers and medics in a poignant display of organized chaos. The streets, once teeming with life, were now pathways of decay and abandonment. The atmosphere was heavy with a sense of death that had permeated every corner of the town, leaving behind an indelible mark of loss. The toll of this ruinous affliction was evident in the haunted gazes of those who moved among the tents, their once-strong spirits shattered by the unforgiving grip of the town's tragic fate.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(foundUser.mount != "None"){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                    const attachment = new MessageAttachment('assets/Werfall/werfall_main.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://werfall_main.jpg')
+                    .setDescription(`As You approached the outskirts of Werfall, an eerie transformation was evident. Once a thriving hub of commerce, the town now exuded an air of bleakness and despair. Tents, emblazoned with the emblem of the "Emperal Brigade," sprawled across the landscape, housing a mix of rangers and medics in a poignant display of organized chaos. The streets, once teeming with life, were now pathways of decay and abandonment. The atmosphere was heavy with a sense of death that had permeated every corner of the town, leaving behind an indelible mark of loss. The toll of this ruinous affliction was evident in the haunted gazes of those who moved among the tents, their once-strong spirits shattered by the unforgiving grip of the town's tragic fate.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else{
+                        interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                    }
+                    
+                }
+                else if(location == 'Kafig'){
+                    if(foundUser.coins >=100 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                    const attachment = new MessageAttachment('assets/Kafig/kafig_main.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://kafig_main.jpg')
+                    .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for magical flying beasts, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(foundUser.mount != "None"){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                    const attachment = new MessageAttachment('assets/Kafig/kafig_main.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://vigia_main.jpg')
+                    .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for magical flying beasts, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else{
+                        interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                    }
+                    
+                }
+                else if(location == 'Asche Peak'){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                    const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://zephyr_mountain.jpg')
+                    .setDescription(`As you reach Asche Peak, the landscape transforms into a surreal panorama of charred hills and blackened soil. The air is thick with an intense heat, radiating from the ground that gives the hill its soot-like black color. Avian Spyriths, both friendly and hostile, fill the skies, adding life to the mysterious hill. The legend of Radohn, the flame-draped ruler of the skies, lingers in the atmosphere, shrouding Asche Peak in an aura of mythical beauty.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == 'Deathrust Forest'){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                    const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://zephyr_mountain.jpg')
+                    .setDescription(`As you enter DeathRust Forest, the sight is eerie and still. Tall, old trees stand like ghostly statues, their branches reaching out like twisted fingers against a gray, lifeless sky. The ground is covered in dry leaves and brittle plants, creating a carpet of quiet decay. A hazy mist hangs in the air, giving the whole place a ghostly atmosphere. The once-green forest now seems like a graveyard, with rusted figures scattered around—those mindless iron zombies, the Ferromites, blending into the haunting scenery, their skeletal shapes telling a tale of a place forgotten and left to rust.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                
+                
+        
+                
+                collector_select.stop()
+                collector_cancel.stop()
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+        
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+            })
+        
+        
+                }
+                else if(city_town == "Kafig"){
+                    let embed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            embed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Asche Peak`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:A charred hill crowned in perpetual darkness, its soot-blackened soil radiating intense heat, home to a rich variety of Avian Spyriths.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Vigia`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            embed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Asche Peak`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A charred hill crowned in perpetual darkness, its soot-blackened soil radiating intense heat, home to a rich variety of Avian Spyriths.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Vigia`,
+                                                value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 🪙\n`
+                                            },
+                                            
+                                        ])
+    
+                                        }
+                                        
+                                   
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
+        
+        let select =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Asche Peak`,
+                        description: ``,
+                        value: `Asche Peak`,
+                    },
+                    {
+                        label: `Stateship of Vigia`,
+                        description: ``,
+                        value: `Vigia`,
+                    },
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+    
+        
+        
+            await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                
+                if(location == 'Vigia'){
+                    if(foundUser.coins >=100 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                    const attachment = new MessageAttachment('assets/Vigia/vigia_main.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://vigia_main.jpg')
+                    .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(foundUser.mount != "None"){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                    const attachment = new MessageAttachment('assets/Vigia/vigia_main.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://vigia_main.jpg')
+                    .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else{
+                        interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                    }
+                    
+                }
+                
+                else if(location == 'Asche Peak'){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                    const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://zephyr_mountain.jpg')
+                    .setDescription(`As you reach Asche Peak, the landscape transforms into a surreal panorama of charred hills and blackened soil. The air is thick with an intense heat, radiating from the ground that gives the hill its soot-like black color. Avian Spyriths, both friendly and hostile, fill the skies, adding life to the mysterious hill. The legend of Radohn, the flame-draped ruler of the skies, lingers in the atmosphere, shrouding Asche Peak in an aura of mythical beauty.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                
+                
+                
+        
+                
+                collector_select.stop()
+                collector_cancel.stop()
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+        
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+            })
+        
+        
+                }
+                else if(city_town == "Asche Peak"){
+                                        let embed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            embed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Township of Kafig`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for magical flying beasts.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Vigia`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            embed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Township of Kafig`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for magical flying beasts.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Vigia`,
+                                                value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 🪙\n`
+                                            },
+                                            
+                                        ])
+    
+                                        }
+                                        
+                                   
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
+        
+        let select =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Township of Kafig`,
+                        description: ``,
+                        value: `Kafig`,
+                    },
+                    {
+                        label: `Stateship of Vigia`,
+                        description: ``,
+                        value: `Vigia`,
+                    },
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+    
+        
+        
+            await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                
+                if(location == 'Vigia'){
+                    if(foundUser.coins >=0 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                    const attachment = new MessageAttachment('assets/Vigia/vigia_main.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://vigia_main.jpg')
+                    .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(foundUser.mount != "None"){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                    const attachment = new MessageAttachment('assets/Vigia/vigia_main.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://vigia_main.jpg')
+                    .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else{
+                        interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                    }
+                    
+                }
+                
+                else if(location == 'Kafig'){
+                    if(foundUser.coins >=0 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                    const attachment = new MessageAttachment('assets/Vigia/vigia_main.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://vigia_main.jpg')
+                    .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for magical flying beasts, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(foundUser.mount != "None"){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                    const attachment = new MessageAttachment('assets/Vigia/vigia_main.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://vigia_main.jpg')
+                    .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for magical flying beasts, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else{
+                        interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                    }
+                    
+                }
+                
+                
+                
+        
+                
+                collector_select.stop()
+                collector_cancel.stop()
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+        
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+            })
+        
+        
+                }
+                else if(city_town == "Deathrust Forest"){
+                                        let embed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            embed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            
+                                            {
+                                                name: `Stateship of Vigia`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            embed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Stateship of Vigia`,
+                                                value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 🪙\n`
+                                            },
+                                            
+                                        ])
+    
+                                        }
+                                        
+                                   
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
+        
+        let select =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Stateship of Vigia`,
+                        description: ``,
+                        value: `Vigia`,
+                    },
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+    
+        
+        
+            await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                
+                if(location == 'Vigia'){
+                    if(foundUser.coins >=0 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                    const attachment = new MessageAttachment('assets/Vigia/vigia_main.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://vigia_main.jpg')
+                    .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(foundUser.mount != "None"){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                    const attachment = new MessageAttachment('assets/Vigia/vigia_main.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://vigia_main.jpg')
+                    .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else{
+                        interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                    }
+                    
+                }
+                
+                
                 
                 
         

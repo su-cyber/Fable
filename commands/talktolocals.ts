@@ -240,6 +240,56 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                 .setTitle('Dialogue Initiated')
                                                 .setDescription(`${dialogue}`)
                                         }
+                                        else if(foundUser.city_town == "Vigia"){
+                                            if(foundUser.location == "Ruins of Eldorath"){
+                                                dialogue = sample([
+                                                    `Endana: "Ah, a visitor! I'm Endana, lead archaeologist for this site. Careful where you step - we've only just uncovered these wonders. What do you make of our find here? Some believe this imagery depicts the three Eldruid tribes merging, perhaps at this very spot."`,
+                                                    `Magnus: "Our latest finds suggest Eldorath's fall coincided with a virulent contagion its healers called the 'Iron Death'. Could it be connected to whatever magic now plagues DeathRust?"`,
+                                                    `Grace: "Our latest finds beneath the ruins have unearthed strange carvings matching none of the known Eldruid tribes. I fear there remains much about this city's origins still cloaked in mystery. The archives under my museum hold untold histories just waiting to be discovered."`,
+ 
+                                                ])
+                                            }
+                                            dialogue = sample([
+                                                `Zoya: "In desperate times, many come seek solace in Morozh's tears. With DeathRust so near, is it any wonder despair darkens men's hearts? His waters may not slake thirst but can calm our deepest fears. All are welcome within the temple of the God of Despair."`,
+                                                `Gaius:  "Some nights when the moon is full, I swear I can still see the shades of the Eldruid chieftains battling upon this hallowed ground. Their alliance holds even in death, Vigia's history is long indeed."`,
+                                                `Brock: "My lad Boris did well holding the forest's edge yesterday. Not many can say they've faced the undead and lived to tell. SolGate is the last line against the rust should they ever breach the Gate. The city owes its safety to the Sol Crusaders alone!"`,
+                                                `Mica: "Business is booming with travelers - some come simply to marvel at our defenses, others seek relics of the north. But all find comfort within my walls. As long as the Crusaders hold the wall, Vigia remains a safe haven between here and DeathRust."`,
+                                                `Grumio: "Earl Arvid pores over battlefield strategies late into the night, determined to bolster our defenses. With DeathRust so near, no precaution is too great. The Crusaders live and die by his word, and Vigia's fate remains tied to the SolGate."`,
+                                                `Carlsen[Sol Crusader]: "The Ferromites press ever closer to the wall. For over a thousand years the Crusaders have held firm, all that stands between Vigia and the curse of DeathRust. Our order was forged in those dark woods, and there our watch shall endure until the world's end."`,
+                                                `Noah: "The Word is that there are increased movements in the forest - seems the dead march in greater numbers of late. Legend says DeathRust was once a thriving land, before some dark magic turned its populace feral and decaying. Now only rust and ruin remain…"`,
+                                                `Ethan: "Have you been to the trinity plateau yet? As long as those swords stand vigil, Eldorath's legacy survives. Its people may be dust, but their deeds of unity against a greater menace live on through the alliance they forged. Perhaps one day the archaeologists will uncover what desperate evil they combined to defeat…"`,
+                                                `Mason: "The Sol Crusaders are one of the many knight chapters we have in Solarstrio, the knights serve and live for the people! It is the might of our king and the knights that has made Solarstrio so great, all hail king Helios!"`,
+                                                `Olivia: "Hello! Can you please give me the directions to the Esparta Museum? I am a huge enthusiast of history and archaeology, I heard Esparta Museum houses some of the rarest artifacts and relics in existence!"`
+                                            ])
+                                            dialogueembed = new MessageEmbed()
+                                                .setColor('RANDOM')
+                                                .setTitle('Dialogue Initiated')
+                                                .setDescription(`${dialogue}`)
+                                        }
+                                        else if(foundUser.city_town == "Vigia"){
+                                            if(foundUser.location == "The Guilded Cage"){
+                                                dialogue = sample([
+                                                    `Leif [Bartender]: "Welcome to The Gilded Cage, Ranger. Care for a drink? Our tavern has been a gathering place for rangers and locals alike for generations. Sit back, relax, and let the tales of Kafig wash over you like the wind through Radohn's wings."`,
+                                                    `Nora: "You know, Orin was a true legend around these parts. The stories say he had an uncanny bond with Avian Spyriths, like no other beastmaster. With Radohn's blessings, he commanded the skies and was the founder of our township. His bravery still echoes in our hearts."`,
+                                                    `Felix: "Ya ever heard of Basil, the Vice Master of Eterna Guild? They're a force to be reckoned with, even among the S Grades. I've seen him fight…His skills are unmatched, his technique feels like he is the incarnation of Radohn Himself! No wonder they gave him the Ephitet of "Demon Bird".`,
+                                                    `Danna [Bard]:\n"In the realm of Vearth, a tale to be told,\nOf a hero named Orin, brave and bold.\nWith Avian Spyriths, he took to the skies,\nProtector of Kafig, where legends arise.\n\nOh, Orin, master of the winged domain,\nWith Radohn's grace, he ruled without restrain.\nThrough battles and storms, he stood tall,\nA beacon of hope for one and all."`
+ 
+                                                ])
+                                            }
+                                            dialogue = sample([
+                                                `Dora: "Welcome to Kafig, traveler! Did you know that our town is famous for its Avian Spyriths? We believe they are descendants of the mighty Radohn, the ruler of skies. It's a sight to behold when they take to the air!"`,
+                                                `Evanko: "You seem to be a Ranger, did you try venturing into Asche Peak? The soil there has turned to soot and radiates intense heat.The legend that Radohn slumbers in Asche Peak might as well be true!"`,
+                                                `Amelia : "Ah, the Avian Square! It's the heart of our town, where we gather to honor Radohn. We leave offerings at the statue's feet to show our respect. The legend says Radohn's flames turned Asche Peak black, giving it a mystical aura."`,
+                                                `Lucas: "Have you visited the Cloud Haven yet? It's a remarkable cylindrical building that resembles a giant bird cage. Many exotic Spyriths find refuge there, coming from Asche Peak or even migrating from distant lands. It's a testament to our town's love for these magnificent creatures."`,
+                                                `Sophie: "If you're looking for a thrilling adventure, try forging a spyralink contract in the Cloud Haven! Rangers visit there to bond with the fantastic Avian Spyriths and gain a loyal companion for their travels. But be warned, it's not an easy task and requires great skill."`,
+                                                `Bella: "Don't forget to visit the Radohn Roost, the hillside temple above our town. It's a sacred place with small shrines dedicated to Radohn. Climb the steep steps and reach the main altar with an eternal flame, symbolizing Radohn's eternal rule over the skies. The view from there is breathtaking."`,
+                                                `Hedge: "We take great pride in our own Basil, the Vice Master of Eterna Guild. Basil is a prodigy and one of the strongest rangers you'll ever meet. Born and raised right here in Kafig, the town cherishes and celebrates their achievements. It's a testament to the strength and spirit of our community."`,
+                                                ])
+                                            dialogueembed = new MessageEmbed()
+                                                .setColor('RANDOM')
+                                                .setTitle('Dialogue Initiated')
+                                                .setDescription(`${dialogue}`)
+                                        }
                                         else{
                                             dialogueembed = new MessageEmbed()
                                             .setColor('RANDOM')

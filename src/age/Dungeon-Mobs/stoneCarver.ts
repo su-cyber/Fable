@@ -36,7 +36,7 @@ export class stoneCarver extends MonsterEntity {
             xp: generateXP(70, 80),
             evasion: 0.067,
             attackDamage: 73,
-            fileName:'stonecarver.jpeg',
+            fileName:'stonecarver.jpeg',                        
             magicPower: 5,
             run_chance: 0.02,
             armor: 25,
@@ -84,4 +84,4 @@ export class stoneCarver extends MonsterEntity {
             ],
         })
     }
-}
+} 

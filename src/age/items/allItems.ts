@@ -39,8 +39,14 @@ import { QuakecoreCrystal } from './quakecore_crystal'
 import { LithoFragment } from './ltho_fragment'
 import { Siroccowraith_essence } from './sirroco_essence'
 import { Thornweaver_Thorns } from './thornweaver_thorns'
+import { staticTalon } from './staticTalon'
+import { embercrestAsh } from './embercrestAsh'
+import { venomousPlume } from './venomousPlume'
+import { cosmoFeather } from './cosmicFeather'
 
 export default [Chorusbloom.create(),
     SunshadeWood.create(),Dreamlily.create(),ArgentenumLeaves.create(),solarCorn,Radiantura_milk,steamShovel,guildTshirt,salePoster,treemickBranch,silkBlob,
     dronerAcid,RayleighFlower.create(),backBreaker,buzzHoney,thornbackShell,shadowCat_tuft,glowingEssence,starHound_tooth,gloomRoot_branch,
-    crystalShard,gildedScale,solidifiedMagma,emberScale,shadowViel,solBracelet,goblinWhistle,Glimmerroot.create(),bottleWine,smokeBomb,steamedBread,amberRing,SunbleachedBones.create(),WindblownFeather.create(),MirageCrystal.create(),CrimsonFruit.create(),QuakecoreCrystal,LithoFragment,Siroccowraith_essence,Thornweaver_Thorns]
+    crystalShard,gildedScale,solidifiedMagma,emberScale,shadowViel,solBracelet,goblinWhistle,Glimmerroot.create(),bottleWine,smokeBomb,steamedBread,amberRing,SunbleachedBones.create(),WindblownFeather.create(),MirageCrystal.create(),CrimsonFruit.create(),QuakecoreCrystal,LithoFragment,Siroccowraith_essence,Thornweaver_Thorns,
+    staticTalon,embercrestAsh,venomousPlume,cosmoFeather
+]

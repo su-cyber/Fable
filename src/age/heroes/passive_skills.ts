@@ -1,6 +1,6 @@
 
 import lvl_modifier from "../../utils/lvl_modifier"
-const passive_skills = [
+const other_passive_skills = [
     {
         cooldown: 0,
         name: 'Regeneration',
@@ -116,4 +116,4 @@ const passive_skills = [
 
 ]
 
-export default passive_skills
+export default other_passive_skills

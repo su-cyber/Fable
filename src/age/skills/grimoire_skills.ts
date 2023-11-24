@@ -16,7 +16,7 @@ const Grimoireskills = [{
         let stab = calculateSTAB("bloom",attacker.element)
         attacker.addLogMessage(`${attacker.name} used Pop Greens`);
         defender.takeDamage
-            .magical(attacker.magicPower * 45 * lvl_modifier(attacker.level)*mod*stab)
+            .magical(attacker.magicPower * 40 * lvl_modifier(attacker.level)*mod*stab)
             .run(damage => `${defender.name} was attacked by several vines that grew out of seeds shot by ${attacker.name} causing ${damage} HP`);
     }
 },]

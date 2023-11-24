@@ -708,16 +708,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                      }
 
                 }
-                else if(city_town == "Badlands"){
-            
-                const attachment = new MessageAttachment('assets/AubeTown/Badlands.jpg')
-                let successembed = new MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle('LOCATION REACHED')
-                .setImage('attachment://Badlands.jpg')
-                .setDescription(`You venture into the Badlands, where the merciless sun beats down upon your weary shoulders, each step an arduous journey across the treacherous desert expanse. The air is a stifling furnace, the relentless heat mirroring the challenges that await. The land is strewn with rocky outcrops and shifting sands, a harsh reminder of the unforgiving nature of this desolate realm. As you navigate through this wasteland, the secrets of the Badlands whisper in the wind, urging caution and resilience. In this land of extreme adversity, you become a solitary figure, forever humbled by the power and fragility of life.\n\nuse **/explore** to explore this location`)
-                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
-                }
+                
                 else if(city_town == "Zorya"){
                     if(location == 'Guild District'){
                         const attachment = new MessageAttachment('assets/Zorya/guild_district.jpg')
@@ -785,6 +776,24 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setDescription(`As you step into the grand Castle Luminar, a sense of awe washes over you. The halls echo with whispers of history, and every corner is adorned with regal splendor. You find yourself captivated by the intricate tapestries and the ornate craftsmanship that adorns the walls. The air is filled with an air of authority and purpose, a testament to Earl Auriga's vigilant guardianship over the state. In this fortress of power and grace, you walk in the footsteps of legends, feeling a deep reverence for the responsibilities and secrets held within these ancient walls.`)
                         await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
+                    else if(location == 'Sun Archives'){
+                        const attachment = new MessageAttachment('assets/Zorya/sun_archives.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`Now Exploring ${location}...`)
+                        .setImage('attachment://sun_archives.jpg')
+                        .setDescription(`As you wander deeper into the archives, you discover scholars and researchers engrossed in their studies, pouring over intricate diagrams and handwritten manuscripts. The atmosphere is one of quiet intensity, with the occasional hushed conversation and the gentle rustling of pages. Each shelf seems to hold secrets waiting to be unlocked, and the sheer breadth of knowledge is awe-inspiring.`)
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Cloud Gardens'){
+                        const attachment = new MessageAttachment('assets/Zorya/cloud_gardens.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`Now Exploring ${location}...`)
+                        .setImage('attachment://cloud_gardens.jpg')
+                        .setDescription(`Moving on to the Cloud Gardens, you find yourself entering a realm of enchantment and tranquility. The air is filled with a delicate mist, created by the gentle release of steam from ornate fountains. Lush greenery surrounds you, with vibrant flowers and exotic plants that seem to defy gravity, suspended in mid-air by intricate gears and pulleys. Their petals shimmer with vivid hues, casting a magical ambiance.`)
+                        await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                    }
                     else if(location == 'Siewelle Port'){
                         if(foundUser.side_quest[0] == "KS-ZS-SQ3" && foundUser.side_quest_phase == "4"){
                             let btnraw= new MessageActionRow().addComponents([
@@ -821,7 +830,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         if(btn.isButton()){
                                             if(btn.customId === "btn_accept"){
                                                 await btn.deferUpdate().catch(e => {})
-                                                await interaction.editReply({embeds:[acceptEmbed]})
+                                                await interaction.editReply({embeds:[acceptEmbed],files:[],components:[d_btnraw]})
                                                 foundUser.dungeon.status = true
                                                 foundUser.dungeon.name = "Aqua Canals"
                                                 foundUser.dungeon.step = 1 
@@ -853,7 +862,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setColor('RANDOM')
                         .setTitle(`Now Exploring ${location}...`)
                         .setImage('attachment://siewelle_port.jpg')
-                        .setDescription(`As you step into the vibrant Siewelle Port, the symphony of maritime activity envelops you. The air is thick with the scent of saltwater and the sound of creaking ships. Your gaze dances from one pier to another, captivated by the bustling docks and the constant flow of goods being loaded and unloaded. The colossal sea gates stand like silent guardians, their imposing presence a testament to the port's significance. The air is filled with a sense of adventure and possibility as you envision the far-reaching destinations these ships will embark upon. In the Siewelle Port, you become a part of the bustling trade and seafaring dreams, igniting your own wanderlust and stoking the fires of your imagination.`)
+                        .setDescription(`As you step into the vibrant Siewelle Port, the symphony of maritime activity envelops you. The air is thick with the scent of saltwater and the sound of creaking ships. Your gaze dances from one pier to another, captivated by the bustling docks and the constant flow of goods being loaded and unloaded. The colossal sea gates stand like silent guardians, their imposing presence a testament to the port's significance. The air is filled with a sense of adventure and possibility as you envision the far-reaching destinations these ships will embark upon. In the Siewelle Port, you become a part of the bustling trade and seafaring dreams, igniting your own wanderlust and stoking the fires of your imagination.\n\n**This is a shop location, press /shop to access shop**`)
                         await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                     }
                 }
@@ -1072,6 +1081,301 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
                             }
                 }
+                else if(city_town == "Vigia"){
+                if(location == "None"){
+               const attachment = new MessageAttachment('assets/Vigia/vigia_main.jpg')
+               let successembed = new MessageEmbed()
+               .setColor('RANDOM')
+               .setTitle(`Now Exploring ${city_town}...`)
+               .setImage('attachment://vigia_main.jpg')
+               .setDescription(`As you wander through the charming streets of Aube Town, a sense of serenity embraces you. The warm glow of the rising sun bathes the quaint buildings, casting long shadows that dance upon the cobblestones. The town awakens with a gentle buzz of activity, as locals exchange friendly greetings and prepare for the day ahead. From the inviting aroma of freshly baked goods wafting from the local dairy to the cheerful chatter echoing from the town center, every corner reveals the tight-knit community that thrives in this idyllic haven. In Aube Town, you feel a sense of belonging and discover the simple joys of life in a place where the dawn brings not just a new day, but a promise of camaraderie and the embrace of a vibrant community.`)
+               await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+           
+                   }
+                   else if(location == 'Trinity Plateau'){
+                       const attachment = new MessageAttachment('assets/AubeTown/Town_Centre.jpg')
+                       let successembed = new MessageEmbed()
+                       .setColor('RANDOM')
+                       .setImage('attachment://Town_Centre.jpg')
+                       .setTitle(`Exploring ${location}...`)
+                       .setDescription(`Hiking up the windswept Trinity Plateau, you behold the weathered swords jutting from the earth, marking the alliance that ended Eldorath's bloodshed. Placing a hand on each sword, you can feel the fading enchantments pulsing within, hinting at the awesome power these chieftains wielded. Looking out across the plateau, you picture the climactic battle, giants clashing with earth-shaking force until united against true darkness.`)
+                       await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                   }
+                   else if(location == 'Temple of Tears '){
+                       const attachment = new MessageAttachment('assets/AubeTown/Aube_outpost.jpg')
+                       let successembed = new MessageEmbed()
+                       .setColor('RANDOM')
+                       .setImage('attachment://Aube_outpost.jpg')
+                       .setTitle(`Exploring ${location}...`)
+                       .setDescription(`Approaching the carved visage of Morozh, you watch rivulets of water stream from the statue's eyes and mouth. Entering the dim temple, flickering candles cast dancing shadows on the walls. Kneeling before the weeping likeness, you close your eyes and let droplets fall on your face, cleansing away sadness and despair. Rising renewed, you leave offerings of flowers and coins for the god who bleeds anguish itself.`)
+                       await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                   }
+                   else if(location == `Esparta Museum`){
+                       const attachment = new MessageAttachment('assets/AubeTown/Crofters_Market.jpg')
+                       let successembed = new MessageEmbed()
+                       .setColor('RANDOM')
+                       .setTitle(`Exploring ${location}...`)
+                       .setImage('attachment://Crofters_Market.jpg')
+                       .setDescription(`Stepping into the hallowed Esparta Museum, you marvel at the greatest trove of artifacts in the kingdom. Priceless relics sit encased in glass as you wander wide-eyed through the vast halls. Strange mechanical objects whir and click as if from another world. Lifelike statues depict ancient heroes and monsters long turned to dust.`)
+                       await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                   }
+                   else if(location == `Sol Barracks`){
+                       const attachment = new MessageAttachment('assets/AubeTown/Lager_Estate.jpg')
+                       let successembed = new MessageEmbed()
+                       .setColor('RANDOM')
+                       .setTitle(`Exploring ${location}...`)
+                       .setImage('attachment://Lager_Estate.jpg')
+                       .setDescription(`The smell of oil and ringing of hammers on steel greet you in the Sol Crusaders' barracks. Weapon racks brim with meticulously maintained arms of every shape and size. Testing the weight of a mythril axe, you know no better equipped force guards the kingdom. In the dining hall, boisterous knights regale you with bawdy tales between bites of roasted game. Though weary from ceaseless vigilance, their spirits remain unbroken in brotherhood.`)
+                       await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                   }
+                   else if(location == `Fort Primis`){
+                       const attachment = new MessageAttachment('assets/AubeTown/Terrific_Troll_Tavern.jpg')
+                       let successembed = new MessageEmbed()
+                       .setColor('RANDOM')
+                       .setTitle(`Exploring ${location}...`)
+                       .setImage('attachment://Terrific_Troll_Tavern.jpg')
+                       .setDescription(`As you enter the headquarters of the legendary Sol Crusaders, you are greeted by the sight of grizzled soldiers in glinting armor marching in formation. The clanging of swords and axes on whetstones echoes through the courtyard as recruits train. You glimpse the imposing Quarantrain station, the armored steam engine that safely transports prisoners, before being ushered through grand wooden doors into the war room. A large map sprawls across the table, markers denoting critical strongholds.`)
+                       await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                   }
+                   else if(location == `Castle Arcemis`){
+                    const attachment = new MessageAttachment('assets/AubeTown/Terrific_Troll_Tavern.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle(`Exploring ${location}...`)
+                    .setImage('attachment://Terrific_Troll_Tavern.jpg')
+                    .setDescription(`Entering Earl Arvid's stately castle, you walk down halls lined with woven tapestries recounting Vigia's rich history. The throne room inspires awe with its soaring marble pillars and stained glass casting rainbow prisms on the floor. As you bow before the Earl, his piercing eyes regard you shrewdly as you understand the weight of responsibility on one man's shoulders to protect this city from those who would destroy it.`)
+                    await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == `Ruins of Eldorath`){
+                    const attachment = new MessageAttachment('assets/AubeTown/Terrific_Troll_Tavern.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle(`Exploring ${location}...`)
+                    .setImage('attachment://Terrific_Troll_Tavern.jpg')
+                    .setDescription(`The crumbling ruins of the lost city of Eldorath speak of past glory and knowledge vanished from memory. Wandering the abandoned streets, you trace carved runes and murals worn by time, grasping to reconstruct a forgotten language. Deep in the ruins, intricate carvings lie undisturbed, daring intrepid explorers to unravel its secrets. What wonders and perils still remain hidden in this city lost to history?`)
+                    await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == `Vigia Ranger Centre`){
+                    const attachment = new MessageAttachment('assets/AubeTown/Terrific_Troll_Tavern.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle(`Exploring ${location}...`)
+                    .setImage('attachment://Terrific_Troll_Tavern.jpg')
+                    .setDescription(`As you push open the large oaken doors, you find yourself standing at the threshold of a bustling hub of Ranger activity. Before you, an expansive training yard fills with the sounds of steel on steel as warriors and rogues spar under the watchful eye of stern combat instructors. To your left, a library stacks towering with tomes of war, history and arcana sees scholars and sages deep in study. Ahead, the canteen buzzes with lively tales from the road told over flagons of ale around its many fireplaces and tables. A web of staircases leads up and around the perimeter, beyond which you glimpse lodgings, enchanting rooms and more.`)
+                    await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                   else{
+                       await interaction.reply({content:`you are not in a particular location!`,ephemeral:true})
+                    }
+
+               }
+               else if(city_town == "Deathrust Forest"){
+                const attachment = new MessageAttachment('assets/Vigia/deathrust.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(`Now Exploring ${city_town}...`)
+                .setImage('attachment://deathrust.jpg')
+                .setDescription(`As you venture into DeathRust Forest, a group of solemn Sol Crusaders halts you in your tracks. Their eyes carry a weight of caution as they emphasize the peril ahead – the relentless Ferromites and the rust that transforms the unwary. With a grave tone, they stress that you, with your current strength, aren't equipped to face the impending danger. Their warning echoes in the stillness, underscoring the stark reality that proceeding further may lead to a fate you're not strong enough to defy.`)
+                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+            
+                }
+               else if(city_town == "Asche Peak"){
+                
+                const pick = weightedRandom(["flora","monster"],[0.4,0.6])
+
+                if(pick == "flora"){
+                    await interaction.reply({ content: '\u200b', components: [] })
+                    const flora = (await getRandomFlora(city_town))
+                    let floraEmbed = new MessageEmbed()
+                        .setColor('GREEN')
+                        .setTitle('ENCOUNTER')
+                        .addFields([
+                            {
+                                name: `Description:`,
+                                value:`${flora.description}`
+                            }
+                        ])
+                        .setDescription(`You found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
+                    await interaction.editReply({embeds:[floraEmbed],files:[]})
+                    inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
+                        if(err){
+                            console.log(err);
+                            
+                        }
+                        else{
+                            const foundItem = foundUser.inventory.items.find(item => item.name.name === flora.name)
+                            if (foundItem){
+            
+                                foundItem.quantity+=flora.quantity
+                            }
+                            else{
+                                const newItem = {
+                                    name:flora,
+                                    description:flora.description,
+                                    quantity:Number(flora.quantity)
+                                }
+                                foundUser.inventory.items.push(newItem)
+                            }
+                            await inventory.updateOne({userID:authorId},foundUser)
+                        }
+                        
+                    })
+                }
+                else if(pick == "monster"){
+                
+                
+                   
+                        await interaction.reply({ content: '\u200b', components: [] })
+                        const monster = (await getRandomMonster(city_town))
+                        
+
+                        
+                        foundUser.encounter = []
+                       
+                   
+                        let btnraw= new MessageActionRow().addComponents([
+                            new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Fight"),
+                            new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Run"),])
+
+                            let d_btnraw = new MessageActionRow().addComponents([
+                                new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Fight").setDisabled(true),
+                                new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Run").setDisabled(true),
+                            ])
+
+                            
+                            const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                            let fightEmbed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('ENCOUNTER')
+                            .setImage('attachment://' + monster.fileName)
+                            .setDescription(`🔎 you found a ${monster.name}!\n\nDescription:${monster.description}`)
+    
+                        let acceptEmbed = new MessageEmbed()
+                        .setColor('GREEN')
+                        .setTitle('ACCEPTED')
+                        .setDescription('You have decided to fight!\ncheck your private message')
+    
+                        let rejectEmbed = new MessageEmbed()
+                        .setColor('RED')
+                        .setTitle('RAN AWAY')
+                        .setDescription('You ran away!')
+                        
+                    
+                    await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
+                    let filter = i => i.user.id === authorId
+                        let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
+                
+                        collector.on('collect',async (btn) => {
+                            if(btn.isButton()){
+                                if(btn.customId === "btn_accept"){
+                                    await btn.deferUpdate().catch(e => {})
+                                    await interaction.editReply({embeds:[acceptEmbed],files:[]})
+                                    const encounter = {
+                                        name: monster.name,
+                                        time : Date.now(),
+                                        location:foundUser.city_town
+
+                                    }
+                                    
+                                    foundUser.encounter.push(encounter)
+                                    await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
+                                    interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`})})
+
+                                    
+                               
+                                collector.stop()
+                                    
+                                }
+                                else if(btn.customId === "btn_reject"){
+                                    await btn.deferUpdate().catch(e => {})
+                                    await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]})
+                                     foundUser.encounter = []
+                                
+                                    await profileModel.updateOne({userID:authorId},foundUser)
+
+                                    collector.stop()
+                                }
+
+                                
+                                
+                            }
+                              
+                
+                   
+                   
+                    })
+
+                    collector.on('end', () => {
+                        interaction.editReply({components: [d_btnraw]})
+                    })
+
+                        
+                   
+                }
+            }
+
+            else if(city_town == "Kafig"){
+                if(location == "None"){
+               const attachment = new MessageAttachment('assets/Kafig/kafig_main.jpg')
+               let successembed = new MessageEmbed()
+               .setColor('RANDOM')
+               .setTitle(`Now Exploring ${city_town}...`)
+               .setImage('attachment://kafig_main.jpg')
+               .setDescription(`
+               As you explore Kafig, the welcoming townsfolk gently guide you, sharing tales of the Avian Spyriths and advising against venturing too close to the hostile yet Holy, Asche Peak. They emphasize the importance of respect for Radohn, the legendary bird ruler. While the atmosphere is warm and inviting, a subtle caution lingers, suggesting that the heart of Kafig's charm lies in embracing its legends and traditions rather than wandering into the unknown.`)
+               await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+           
+                   }
+                   else if(location == 'Avian Square'){
+                       const attachment = new MessageAttachment('assets/AubeTown/Town_Centre.jpg')
+                       let successembed = new MessageEmbed()
+                       .setColor('RANDOM')
+                       .setImage('attachment://Town_Centre.jpg')
+                       .setTitle(`Exploring ${location}...`)
+                       .setDescription(`As you venture deeper into Avian Square, you discover vibrant market stalls selling an array of goods related to magical flying beasts. The air is alive with the sounds of chirping birds and the scent of freshly bloomed flowers. The atmosphere is filled with reverence and excitement, as people gather to share tales and knowledge about avians and their connection to Radohn.`)
+                       await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                   }
+                   else if(location == 'Cloud Haven'){
+                       const attachment = new MessageAttachment('assets/AubeTown/Aube_outpost.jpg')
+                       let successembed = new MessageEmbed()
+                       .setColor('RANDOM')
+                       .setImage('attachment://Aube_outpost.jpg')
+                       .setTitle(`Exploring ${location}...`)
+                       .setDescription(`Stepping inside Cloud Haven, you are greeted by an awe-inspiring sight. The vast interior is divided into individual climate-controlled stables, each tailored to accommodate the needs of specific Spyriths. The spaciousness allows the magnificent creatures to soar and glide freely within their designated areas. Workers diligently attend to the needs of the Spyriths, ensuring their well-being and comfort. The air is filled with a medley of chirps, trills, and the occasional gusts of wind as the Spyriths gracefully navigate the space.`)
+                       await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                   }
+                   else if(location == `The Gilded Cage`){
+                       const attachment = new MessageAttachment('assets/AubeTown/Crofters_Market.jpg')
+                       let successembed = new MessageEmbed()
+                       .setColor('RANDOM')
+                       .setTitle(`Exploring ${location}...`)
+                       .setImage('attachment://Crofters_Market.jpg')
+                       .setDescription(`As you make your way through the tavern, you notice the walls adorned with paintings depicting avian creatures and the Epic of Orin. The bar is bustling with activity, as rangers and locals mingle, sharing stories and experiences. The bartenders skillfully mix drinks, serving up specialties inspired by the flavors of Kafig. The air is filled with a sense of camaraderie and celebration, creating an atmosphere where bonds are forged and memories are made.`)
+                       await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                   }
+                   else if(location == `Radohn Roost`){
+                       const attachment = new MessageAttachment('assets/AubeTown/Lager_Estate.jpg')
+                       let successembed = new MessageEmbed()
+                       .setColor('RANDOM')
+                       .setTitle(`Exploring ${location}...`)
+                       .setImage('attachment://Lager_Estate.jpg')
+                       .setDescription(`As you enter Radohn Roost, you find yourself surrounded by a collection of small shrines adorned with intricate carvings and offerings. The main altar, bathed in soft light, holds an eternal flame, symbolizing Radohn's eternal rule over the skies. From here, you are treated to a panoramic view of Kafig below, with its bustling streets and vibrant rooftops, while in the distance, the majestic silhouette of Asche Peak looms. The tranquility of the temple and the sweeping vistas evoke a profound sense of connection with the natural world and the mythical realm of Radohn.`)
+                       await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                   }
+                else if(location == `Kafig Guild Outpost`){
+                    const attachment = new MessageAttachment('assets/AubeTown/Terrific_Troll_Tavern.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle(`Exploring ${location}...`)
+                    .setImage('attachment://Terrific_Troll_Tavern.jpg')
+                    .setDescription(`As you wander through Kafig Guild Outpost, you find a lively place with Rangers and locals chatting and sharing stories. The walls are covered in maps and trophies, telling cool adventure tales. In the middle, there's a busy spot where Rangers make plans and chat. A small desk in the corner has important papers and feathers, showing that it's a place for messages and organizing stuff. The vibe is friendly and busy, and a big picture of the leegndary "Demon Bird" Basil hangs, watching over everything.`)
+                    await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                   else{
+                       await interaction.reply({content:`you are not in a particular location!`,ephemeral:true})
+                    }
+
+               }
                 
             }
           

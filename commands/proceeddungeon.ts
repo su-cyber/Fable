@@ -91,7 +91,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                             const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                             await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
                                             
-                                            await sleep(1.5)
+                                            await sleep(5)
                                             await interaction.editReply({files:[]})
                                                     attacker.health=foundUser.health
                                                     attacker.mana=foundUser.mana
@@ -136,7 +136,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await BeerBuccaneer1.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -235,7 +235,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                             const monster = await BeerBuccaneer2.create()
                                             const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                             await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
-                                            await sleep(1.5)
+                                            await sleep(5)
                                             await interaction.editReply({files:[]})
                                             attacker.health=foundUser.health
                                                     attacker.mana=foundUser.mana
@@ -280,7 +280,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await BeerBuccaneer1.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -361,7 +361,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await BeerBuccaneer1.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -458,7 +458,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await BeerBuccaneer1.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You encountered ${monster.name}!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -719,7 +719,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await stoneCarver.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You Accidentally Step on a Stonecarver while walking in shallow water. It doesn't look happy and attacks you!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -762,7 +762,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await Marinowl.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You spot a Marinowl nibbling on the remains of another boat. It sees you, and it is hungry. It is gliding swiftly towards you!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -805,7 +805,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await Hydragon.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`Your boat shakes aggressively, and stops moving. It is a Hydragon and it refuses to let go!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -857,7 +857,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await stoneCarver.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You Accidentally Step on a Stonecarver while walking in shallow water. It doesn't look happy and attacks you!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -900,7 +900,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await Marinowl.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You spot a Marinowl nibbling on the remains of another boat. It sees you, and it is hungry. It is gliding swiftly towards you!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -943,7 +943,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await Hydragon.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`Your boat shakes aggressively, and stops moving. It is a Hydragon and it refuses to let go!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -996,7 +996,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await stoneCarver.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You Accidentally Step on a Stonecarver while walking in shallow water. It doesn't look happy and attacks you!!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -1039,7 +1039,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await Marinowl.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You spot a Marinowl nibbling on the remains of another boat. It sees you, and it is hungry. It is gliding swiftly towards you!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -1082,7 +1082,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await Hydragon.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`Your boat shakes aggressively, and stops moving. It is a Hydragon and it refuses to let go!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -1251,7 +1251,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await stoneCarver.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You Accidentally Step on a Stonecarver while walking in shallow water. It doesn't look happy and attacks you!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -1294,7 +1294,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await Marinowl.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You spot a Marinowl nibbling on the remains of another boat. It sees you, and it is hungry. It is gliding swiftly towards you!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -1337,7 +1337,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await Hydragon.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`Your boat shakes aggressively, and stops moving. It is a Hydragon and it refuses to let go!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -1386,7 +1386,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await stoneCarver.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You Accidentally Step on a Stonecarver while walking in shallow water. It doesn't look happy and attacks you!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -1429,7 +1429,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await Marinowl.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You spot a Marinowl nibbling on the remains of another boat. It sees you, and it is hungry. It is gliding swiftly towards you!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -1472,7 +1472,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await Hydragon.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`Your boat shakes aggressively, and stops moving. It is a Hydragon and it refuses to let go!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -1565,7 +1565,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await stoneCarver.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You Accidentally Step on a Stonecarver while walking in shallow water. It doesn't look happy and attacks you!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -1608,7 +1608,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await Marinowl.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You spot a Marinowl nibbling on the remains of another boat. It sees you, and it is hungry. It is gliding swiftly towards you!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -1651,7 +1651,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await Hydragon.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`Your boat shakes aggressively, and stops moving. It is a Hydragon and it refuses to let go!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -1759,7 +1759,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await stoneCarver.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You Accidentally Step on a Stonecarver while walking in shallow water. It doesn't look happy and attacks you!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -1802,7 +1802,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await Marinowl.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`You spot a Marinowl nibbling on the remains of another boat. It sees you, and it is hungry. It is gliding swiftly towards you!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -1845,7 +1845,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 const monster = await Hydragon.create()
                                                 const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
                                                 await interaction.reply({content:`Your boat shakes aggressively, and stops moving. It is a Hydragon and it refuses to let go!`,files:[attachment]})
-                                                await sleep(1.5)
+                                                await sleep(5)
                                                 await interaction.editReply({files:[]})
                                                 attacker.health=foundUser.health
                                                         attacker.mana=foundUser.mana
@@ -1921,7 +1921,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                             await profileModel.updateOne({userID:authorId},{health:health,dungeon:dungeon,energy:energy})
 
                                         }
-                                        if(dungeon.step == 1){
+                                        else if(dungeon.step == 19){
                                             let stepembed = new MessageEmbed()
                                             .setColor('RED')
                                             .setTitle('STEP #19')
@@ -2002,31 +2002,8 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                         speed:2
                                                     }).start()
                                                 }
-                                               
-                                                    let fableLog = new MessageEmbed()
-                                                    .setColor('RANDOM')
-                                                    .setTitle('FABLE LOG')
-                                                    .setDescription(`${interaction.user.username} has Cleared the Dungeon **"Abandoned Castle"** and also managed to retrieve a rare weapon **"Captain Crook's Cutlass"**!`)
-                                                    await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
-                                                    
-                                                    
-                                                
-                                            
-                                                    
-                                    
-                                                         
-                                                    
-                                                    
-                                                
-                                            
-                                            dungeon.step = 0
-                                            dungeon.name = ""
-                                            dungeon.status = false
-                                            foundUser.completed_dungeons.push("Abandoned Castle")
-                                            foundUser.completed_quests.push("KS-TA-SQ5")
-                                            foundUser.side_quest.splice(0,1)
-                                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon,completed_dungeons:foundUser.completed_dungeons,completed_quests:foundUser.completed_quests,side_quest_phase:"1",side_quest:foundUser.side_quest})
-                    
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
                                         }
                                         else if(dungeon.step === 21){
                                             let stepembed = new MessageEmbed()

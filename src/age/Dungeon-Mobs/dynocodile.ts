@@ -74,7 +74,7 @@ export class Dinocodile extends MonsterEntity {
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("wave",defender.element)
             let stab = calculateSTAB("wave",attacker.element)
-            attacker.addLogMessage(`**${attacker.name}** used Stonecarver Slash`)
+            attacker.addLogMessage(`**${attacker.name}** used Torrential Maw`)
             defender.takeDamage
                 .physical((attacker.attackDamage*57)*mod*stab*lvl_modifier(attacker.level))
                 .run(damage => `**${defender.name}** lost ${damage} HP by being crushed by the collosal torrent imbued tail of Dynocodile`)

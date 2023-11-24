@@ -6,7 +6,7 @@ import { Warrior } from '../src/age/heroes/warrior'
 import { MonsterEntity, Entity } from '../src/age/classes'
 import profileModel from '../models/profileSchema'
 import allskills from '../src/age/skills/skills'
-import passive_skills from '../src/age/heroes/passive_skills'
+import passive_skills from '../src/age/heroes/allPassives'
 import inventory from '../models/InventorySchema'
 import sample from 'lodash.sample'
 import { SlashCommandIntegerOption} from '@discordjs/builders'
@@ -687,7 +687,7 @@ export class PvEDuel extends DuelBuilder {
                         if(foundUser.quest_quantity == 0){
                             const foundContract = await hunting_contracts.find(quest => quest.quest_id == foundUser.quest)
                             if(foundContract != undefined){
-                                console.log(foundContract);
+
                                 
                                 let huntEmbed = new MessageEmbed()
                                 .setColor('GREEN')

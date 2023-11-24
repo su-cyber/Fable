@@ -244,6 +244,14 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                                             {
                                                 name: `Black Market`,
                                                 value:`**Description**:An underground network of illicit and experimental wares.\n`
+                                            },
+                                            {
+                                                name: `Sun Archives`,
+                                                value:`**Description**:A vast repository of knowledge and blueprints, where the echoes of history and innovation come alive.\n`
+                                            },
+                                            {
+                                                name: `Cloud Gardens`,
+                                                value:`**Description**:A mesmerizing fusion of nature and steam-powered marvels, where vibrant flowers bloom suspended in mid-air, creating an enchanting and tranquil visual.\n`
                                             }
                                         ])
                                         
@@ -290,6 +298,14 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                         label: `Black Market`,
                         description: ``,
                         value: `Black Market`,
+                    },{
+                        label: `Sun Archives`,
+                        description: ``,
+                        value: `Sun Archives`,
+                    },{
+                        label: `Cloud Gardens`,
+                        description: ``,
+                        value: `Cloud Gardens`,
                     },
                     
                     )
@@ -337,7 +353,7 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://guild_office.jpg')
-                        .setDescription(`you visited ${foundUser.guild}'s ${location}, As you enter the guild hall, you observe a bustling atmosphere filled with Rangers of varying ranks. The walls are adorned with faded banners and worn-out mission reports, a testament to the guild's history. The sound of camaraderie and training drills fills the air, as Rangers of different divisions hone their skills. Despite the lack of grandeur, there is an undeniable sense of determination and unity among the members, each striving to prove their worth and make their mark in the Ranger Association.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`you visited ${foundUser.guild}'s ${location}, As you enter the guild hall, you observe a bustling atmosphere filled with Rangers of varying ranks. The walls are adorned with faded banners and worn-out mission reports, a testament to the guild's history. The sound of camaraderie and training drills fills the air, as Rangers of different divisions hone their skills. Despite the lack of grandeur, there is an undeniable sense of determination and unity among the members, each striving to prove their worth and make their mark in the Ranger Association.\n\nuse **/explore** to explore this location.\n\n**use /questboard to view the Questboard**`)
                          
                     }
                     await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
@@ -397,7 +413,24 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                     .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
-               
+                else if(location == 'Sun Archives'){
+                    const attachment = new MessageAttachment('assets/Zorya/sun_archives.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://sun_archives.jpg')
+                    .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == 'Cloud Gardens'){
+                    const attachment = new MessageAttachment('assets/Zorya/cloud_gardens.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://cloud_gardens.jpg')
+                    .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
                 
                 
         
@@ -510,10 +543,378 @@ export default new MyCommandSlashBuilder({ name: 'walk', description: 'visit a l
                         successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://ranger_centre.jpeg.jpg')
+                        .setImage('attachment://ranger_centre.jpeg')
                         .setDescription(`Your footsteps lead you to the heart of Werfall, where the Werfall Ranger Centre stands resolute. Its weathered walls, bearing witness to the town's tumultuous history, exude an air of defiance. Stepping through its entrance, you are met with a scene of purposeful activity. The scent of herbs and ink fills the air, a reminder of the centre's dual roles in both healing and planning. Rangers and medics work in harmony, exchanging nods and soft words as they carry out their duties. The centre pulses with an unyielding spirit, a symbol of resilience in the face of the unrelenting challenges that have befallen Werfall.\n\n**use /explore to explore this location**`)
                          
                    
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                
+
+                collector_select.stop()
+                collector_cancel.stop()
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+        
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+            })
+        
+        
+        
+            }
+            else if(city_town == "Vigia"){
+                
+                                        let embed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT LOCATION')
+                                        .setDescription(`Choose a location to visit in ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Trinity Plateau`,
+                                                value:`**Description**: A Monument where three swords remain sheathed in a pact between warriors long forgotten.\n`
+                                            },
+                                            {
+                                                name: `Temple of Tears`,
+                                                value:`**Description**:  A temple within weeping stone carved in tears of a God\n`
+                                            },
+                                            {
+                                                name: `Esparta Museum`,
+                                                value:`**Description**:  A treasure trove of history within Vigia's hallowed halls. One of the biggest Museums on Vearth.\n`
+                                            },
+                                            {
+                                                name: `Sol Barracks`,
+                                                value:`**Description**:  The Armory,Training Grounds and Residential Quarters of the Sol Crusaders.Military Grade equipment are also sold to licensed Rangers.\n`
+                                            },
+                                            {
+                                                name: `Fort Primis`,
+                                                value:`**Description**:  The imposing bastion where the Sol Crusaders hold vigil against the Death Rust. It is the first fort of the Sol Gate and the HQ of Sol Crusaders.\n`
+                                            },
+                                            {
+                                                name: `Castle Arcemis`,
+                                                value:`**Description**:   Earl Arvid's towering seat of power overlooking the city.\n`
+                                            },
+                                            {
+                                                name: `Ruins of Eldorath`,
+                                                value:`**Description**:   Crumbling fragments of a lost civilization faded in history.\n`
+                                            },
+                                            {
+                                                name: `Vigia Ranger Centre`,
+                                                value:`**Description**:   Vigia's official Ranger Centre bold rangers gather for quests on the frontier's edge.\n`
+                                            }
+                                        ])
+                                        
+                                   
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
+        
+        let select =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Trinity Plateau`,
+                        description: ``,
+                        value: `Trinity Plateau`,
+                    },{
+                        label: `Temple of Tears`,
+                        description: ``,
+                        value: `Temple of Tears`,
+                    },{
+                        label: `Esparta Museum`,
+                        description: ``,
+                        value: `Esparta Museum`,
+                    },{
+                        label: `Sol Barracks`,
+                        description: ``,
+                        value: `Sol Barracks`,
+                    },{
+                        label: `Fort Primis`,
+                        description: ``,
+                        value: `Fort Primis`,
+                    },{
+                        label: `Castle Arcemis`,
+                        description: ``,
+                        value: `Castle Arcemis`,
+                    },{
+                        label: `Ruins of Eldorath`,
+                        description: ``,
+                        value: `Ruins of Eldorath`,
+                    },{
+                        label: `Vigia Ranger Centre`,
+                        description: ``,
+                        value: `Vigia Ranger Centre`,
+                    }
+                    
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            collector_select.setMaxListeners(Infinity)
+            collector_cancel.setMaxListeners(Infinity)
+        
+        
+            await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                await profileModel.updateOne({userID:authorId},{location:location})
+               
+                if(location == 'Trinity Plateau'){
+                    const attachment = new MessageAttachment('assets/Vigia/trinity_plateau.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://trinity_plateau.jpg')
+                    .setDescription(`Climbing the switchback path, the plateau emerges like an oasis amid Vigia's stone walls. Three great swords stand frozen in combat atop grassy banks. In the distance, the SolGate stands eternal vigil, and beyond - the ominous shadow of DeathRust looms.\n\n**use /explore to explore this location**`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == 'Temple of Tears'){
+                    const attachment = new MessageAttachment('assets/Vigia/templeoftears.jpg')
+                    let successembed
+                        successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage(`attachment://ranger_centre.jpg`)
+                        .setDescription(`Dark and foreboding, Morozh's temple is hewn from age-old stone. Weeping faces spout an endless stream upon which solace seekers float candles in tribute. Shadows dance as you enter, feeling suddenly small beneath the arched passages. What rest may be found in despair's domain?\n\n**use /explore to explore this location**`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == 'Esparta Museum'){
+                    const attachment = new MessageAttachment('assets/Vigia/esparta.jpg')
+                    let successembed
+                        successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://esparta.jpg')
+                        .setDescription(`Soaring pillars greet you at the threshold of the towering building. Displays of artifacts line the high-ceilinged halls - from ancient weapons to pottery with pictographs unknown. Scholars talk in hushed whispers, stooped over crumbling books.\n\n**use /explore to explore this location**`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == 'Sol Barracks'){
+                    const attachment = new MessageAttachment('assets/Vigia/ranger_centre.jpeg')
+                    let successembed
+                        successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ranger_centre.jpeg')
+                        .setDescription(` As you pass under the towering stone archway, the pounding of sparring knights fills your ears. Rows of neat barracks lines either side of the central courtyard. Bellowing drills instructors put recruits through their paces with spear, shield and sword. Sweat-slicked trainees grunt and parry under the noon sun.At the far end, an imposing armory bears the banners of past battles. Veterans hone and maintain the garrison's formidable arms within.\n\n**use /explore to explore this location**\n\n**This is a Shop location, you can use /shop here**`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == 'Fort Primis'){
+                    const attachment = new MessageAttachment('assets/Vigia/fort_primis.jpg')
+                    let successembed
+                        successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage(`attachment://fort_primis.jpg`)
+                        .setDescription(`As you arrive at the fort, you see soldiers in full armor marching about on patrol.Approaching the looming gatehouse, you crane your neck to take in the height of Primis' fortified walls. Arrow slits peer out like eyes, ever vigilant for signs of threat. As the portcullis clanks up, you glimpse Sol Crusaders manning post and patrol atop the battlements.\n\n**use /explore to explore this location**`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == 'Castle Arcemis'){
+                    const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
+                    let successembed
+                        successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ranger_centre.jpeg')
+                        .setDescription(`As you approach the imposing fortress of castle Arcemis, you crane your neck to take in its sheer scale. Perched atop a hill overlooking the city, its weathered ramparts and towers loom large, dominating the landscape. The last rays of the setting sun paint the stone walls in hues of gold and crimson. Banners with Earl Arvid's crest snap in the wind above parapets manned by watchful guards. Reaching the enormous gate, you glimpse the bustling activity inside - soldiers drilling in the courtyard, stewards rushing about on errands.Though you have not yet entered its halls, the castle radiates power and purpose, an indomitable guardian that has safeguarded Vigia for centuries.\n\n**use /explore to explore this location**`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == 'Ruins of Eldorath'){
+                    const attachment = new MessageAttachment('assets/Vigia/ruinsofeldorath.jpg')
+                    let successembed
+                        successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ruinsofeldorath.jpg')
+                        .setDescription(`As you make your way to the sealed off ruins of Eldorath, you notice remnants of a once great civilization. Broken pillars and crumbled walls tower above you, now reclaimed by vines and moss. You peel back curtains of creeping plants and peer into ancient halls, glimpsing faded murals depicting the lives of the Eldruids who constructed this place. Ghosts of the past seem to lurk around every corner, daring you to uncover their secrets. Stepping carefully over reckless from fallen domes and arched ceilings, you puzzle over symbols and writings in a long forgotten language. All around you, clues remain to stitch together the faded tapestry of this lost world, if only you can decipher its long held silence.\n\n**use /explore to explore this location**`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == 'Vigia Ranger Centre'){
+                    const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
+                    let successembed
+                        successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ranger_centre.jpeg')
+                        .setDescription(`Upon entering the Vigia Ranger Centre, you are met with the buzz of activity as rangers mingle, share tales of adventure and peruse the many posted jobs and deeds. Over by the quest board, parties debate undertakings in Deathrust forest or across the rugged landscape beyond the SolGate. In the back of the spacious hall, trainees spar and show off newly learned skills.\n\n**use /explore to explore this location**\n\n**use /questboard to view the Questboard**`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                
+
+                collector_select.stop()
+                collector_cancel.stop()
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+        
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+            })
+        
+        
+        
+            }
+            else if(city_town == "Asche Peak"){
+                interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
+            }
+            else if(city_town == "Deathrust Forest"){
+                interaction.reply({content:`The place you are in is an explorable location in it's own!`,ephemeral:true})
+            }
+
+            else if(city_town == "Kafig"){
+                
+                                        let embed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT LOCATION')
+                                        .setDescription(`Choose a location to visit in ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Avian Square`,
+                                                value:`**Description**: The central hub of Kafig where commerce florishes, adorned with a statue of Radohn\n`
+                                            },
+                                            {
+                                                name: `Cloud Haven`,
+                                                value:`**Description**:  A cylindrical building resembling a bird cage, serving as a sanctuary for exotic Spyriths.\n`
+                                            },
+                                            {
+                                                name: `The Gilded Cage`,
+                                                value:`**Description**:  Kafig's beloved tavern, where locals and rangers come together to unwind and celebrate.\n`
+                                            },
+                                            {
+                                                name: `Radohn Roost`,
+                                                value:`**Description**:  A hillside temple above Kafig, dedicated to Radohn burning with the flame of eternity.\n`
+                                            },
+                                            {
+                                                name: `Kafig Guild Outpost`,
+                                                value:`**Description**:  The Guild Outpost of Kafig, one of the many outposts under the jurisdiction of Eterna Guild and serves as the central hub for rangers around.\n`
+                                            }
+   
+                                        ])
+                                        
+                                   
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
+        
+        let select =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Avian Square`,
+                        description: ``,
+                        value: `Avian Square`,
+                    },{
+                        label: `Cloud Haven`,
+                        description: ``,
+                        value: `Cloud Haven`,
+                    },{
+                        label: `The Gilded Cage`,
+                        description: ``,
+                        value: `The Gilded Cage`,
+                    },{
+                        label: `Radohn Roost`,
+                        description: ``,
+                        value: `Radohn Roost`,
+                    },{
+                        label: `Kafig Guild Outpost`,
+                        description: ``,
+                        value: `Kafig Guild Outpost`,
+                    }
+                    
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            collector_select.setMaxListeners(Infinity)
+            collector_cancel.setMaxListeners(Infinity)
+        
+        
+            await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                await profileModel.updateOne({userID:authorId},{location:location})
+               
+                if(location == 'Avian Square'){
+                    const attachment = new MessageAttachment('assets/Kafig/avian_square.jpeg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://avian_square.jpeg')
+                    .setDescription(`As you step into Avian Square, your eyes are immediately drawn to the towering statue of Radohn, crafted from obsidian. The square bustles with townsfolk and visitors, paying their respects and leaving offerings at the base of the statue.\n\n**use /explore to explore this location**`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == 'Cloud Haven'){
+                    const attachment = new MessageAttachment('assets/Kafig/cloudhaven.jpeg')
+                    let successembed
+                        successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://cloudhaven.jpeg')
+                        .setDescription(`You approach Cloud Haven and marvel at its imposing structure. The cylindrical building, with its intricate lattice design and large open windows, stands as a testament to the town's dedication to the avian creatures. The sound of wings fluttering and distant bird calls fills the air, enticing you to enter and explore further.\n\n**use /explore to explore this location**`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == 'The Guilded Cage'){
+                    const attachment = new MessageAttachment('assets/Kafig/ranger_centre.jpeg')
+                    let successembed
+                        successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ranger_centre.jpeg')
+                        .setDescription(`The warm glow emanating from The Gilded Cage invites you inside. As you enter, the cozy ambiance welcomes you, with wooden tables and benches filling the space. Laughter and lively conversations fill the air, accompanied by the aroma of delicious local cuisine and the clinking of glasses. The sound of a bard's melodious voice can be heard, captivating the audience.\n\n**use /explore to explore this location**\n\n**This is a Shop location, you can use /shop here**`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == 'Radohn Roost'){
+                    const attachment = new MessageAttachment('assets/Werfall/radohn_roost.jpeg')
+                    let successembed
+                        successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://radohn_roost.jpeg')
+                        .setDescription(`Climbing the steep steps leading to Radohn Roost, you feel a sense of serenity and reverence in the air. The temple emerges, nestled on the hillside above the town. The gentle breeze carries the fragrance of incense, inviting you to explore further. From this elevated vantage point, you can already catch glimpses of the breathtaking views awaiting you.\n\n**use /explore to explore this location**`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == 'Kafig Guild Outpost'){
+                    const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
+                    let successembed
+                        successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ranger_centre.jpeg')
+                        .setDescription(`As you enter the Kafig Guild Outpost, you see a lively and quite well maintained place. People are talking and sharing stories. On the walls, there are maps and trophies from adventures and the Insignia of the Eterna Guild. In the middle, there's a space where plans are made. A small desk in the corner has important papers and messages. The atmosphere feels friendly and busy, showing that the outpost is a key spot where everyone works together, The Front wall is adorned with the portrait of the revered ranger "Demon Bird" Basil.\n\n**use /explore to explore this location**\n\n**use /questboard to view the Questboard**`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 
