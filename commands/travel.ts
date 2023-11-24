@@ -265,7 +265,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     }
                     
                 }
-                else if(collected.customId == "select_exterior"){
+                else if(collected.customId == "select_interior"){
                     await profileModel.updateOne({userID:authorId},{location:location})
                
                 if(location == 'The Terrific Troll Tavern'){
