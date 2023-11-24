@@ -152,7 +152,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
 
             let Interiorselect =  new MessageActionRow().addComponents([
                 new MessageSelectMenu()
-                .setCustomId('select')
+                .setCustomId('select_interior')
                     .setPlaceholder(`Select a location ${interaction.user.username}`)
                     .addOptions({
                         label: `The Terrific Troll Tavern`,
@@ -198,7 +198,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 collected.deferUpdate().catch(() => null)
                 const location = collected.values[0]
                 
-                if(collected.customId == "Exteriorselect"){
+                if(collected.customId == "select_exterior"){
                     if(location == 'Castellan Fields'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                         const attachment = new MessageAttachment('assets/AubeTown/Castellan_Fields.jpeg')
@@ -254,6 +254,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         else{
                             interaction.editReply(`You do not have enough coins to pay for the Stagecoach`)
                         }
+                collector_select.stop()
+                collector_cancel.stop()
                 }
                 
                     
@@ -263,7 +265,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     }
                     
                 }
-                else if(collected.customId == "Interiorselect"){
+                else if(collected.customId == "select_exterior"){
                     await profileModel.updateOne({userID:authorId},{location:location})
                
                 if(location == 'The Terrific Troll Tavern'){
@@ -321,14 +323,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\nuse **/explore** to explore this location`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
+                collector_select.stop()
+                collector_cancel.stop()
                
                 }
                 
                 
         
                 
-                collector_select.stop()
-                collector_cancel.stop()
+                
             })
         
             collector_cancel.on('collect', async j => {
@@ -350,6 +353,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(j.customId == "exterior"){
                     
                         await interaction.editReply({embeds:[Exteriorembed],components:[btn_cancel,Exteriorselect]})
+
                         }
                     
                 
