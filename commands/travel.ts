@@ -348,11 +348,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[btn_cancel,Interiorselect]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
                     }
                 else if(j.customId == "exterior"){
                     
-                        await interaction.editReply({embeds:[Exteriorembed],components:[btn_cancel,Exteriorselect]})
+                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
 
                         }
                     
