@@ -254,8 +254,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         else{
                             interaction.editReply(`You do not have enough coins to pay for the Stagecoach`)
                         }
-                collector_select.stop()
-                collector_cancel.stop()
+                
                 }
                 
                     
@@ -263,6 +262,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     else{
                        await interaction.editReply({content:`The Route to Zorya is Blocked by the Emperal Brigade due to the ongoing Nightmare, You cannot proceed right now`,embeds:[],components:[]}) 
                     }
+                collector_select.stop()
+                collector_cancel.stop()
                     
                 }
                 else if(collected.customId == "select_interior"){
@@ -362,11 +363,33 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
         
                         }
-                        else if(city_town == "Castellan Fields"){
-                                        let embed
+                        else if(city_town == "Castelan Fields"){
+                                        let Interiorembed
+                                        let Exteriorembed
                                         let mount = "None"
                                         if(mount == "None"){
-                                            embed = new MessageEmbed()
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Aube Town`,
+                                                value:`**Travelled on Foot**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
+                                            },
+                                            {
+                                                name: `Sunshade Forest`,
+                                                value:`**Travelled on Foot**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
+                                            },
+                                            {
+                                                name: `The Badlands`,
+                                                value:`**Travelled on Foot**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
+                                            },
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
                                         .setDescription(`choose a place to travel from ${city_town}`)
@@ -383,42 +406,50 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                                 name: `The Badlands`,
                                                 value:`**Travelled on Foot**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
                                             },
-                                           
-                                        ])
-                                        
-                                        }
-                                        else{
-                                            embed = new MessageEmbed()
-                                        .setColor('RANDOM')
-                                        .setTitle('SELECT PLACE')
-                                        .setDescription(`choose a place to travel from ${city_town}`)
-                                        .addFields([
-                                            {
-                                                name: `Aube Town`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
-                                            },
-                                            {
-                                                name: `Sunshade Forest`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
-                                            },
-                                            {
-                                                name: `The Badlands`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
-                                            },
-                                            
                                         ])
     
                                         }
                                         
-                                   
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION IN AUBE TOWN')
+                                   .setDescription(`Choose a location to visit in Aube`)
+                                   .addFields([
+                                       {
+                                           name: `The Terrific Troll Tavern`,
+                                           value:`**Description**:The Terrific Troll Tavern is a place of the rumors of halls and chatter of inns\n`
+                                       },
+                                       {
+                                           name: `The Lager Estate`,
+                                           value:`**Description**:Home to the famous Lager Family and their legendary Backbreaker Beer.\n`
+                                       },
+                                       {
+                                           name: `Crofter's Market`,
+                                           value:`**Description**:The Crofter’s Market is a place for craftsmanship to find new homes.\n`
+                                       },
+                                       {
+                                           name: `Aube Town Guild Outpost`,
+                                           value:`**Description**:The Guild Outpost is home to the unwavering and dedicated Guild Rangers.\n`
+                                       },
+                                       {
+                                           name: `Town Centre`,
+                                           value:`**Description**:The Town Center is a place of importance, gathering and sometimes entertainment.\n`
+                                       },
+                                       {
+                                           name: `Abandoned Castle`,
+                                           value:`**Description**:An important architecture of the past, that has since become irrelevant\n`
+                                       }
+                                   ])
         
         
         let btn_cancel = new MessageActionRow().addComponents([
-            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),])
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Aube Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
         
-        let select =  new MessageActionRow().addComponents([
+        let Exteriorselect =  new MessageActionRow().addComponents([
                 new MessageSelectMenu()
-                .setCustomId('select')
+                .setCustomId('select_exterior')
                     .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
                     .addOptions({
                         label: `Aube Town`,
@@ -436,65 +467,163 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     },
                     )
                     .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `The Terrific Troll Tavern`,
+                        description: ``,
+                        value: `The Terrific Troll Tavern`,
+                    },{
+                        label: `The Lager Estate`,
+                        description: ``,
+                        value: `The Lager Estate`,
+                    },
+                    {
+                        label: `Crofter's Market`,
+                        description: ``,
+                        value: `Crofter's Market`,
+                    },{
+                        label: `Aube Town Guild Outpost`,
+                        description: ``,
+                        value: `Aube Town Guild Outpost`,
+                    },{
+                        label: `Town Centre`,
+                        description: ``,
+                        value: `Town Centre`,
+                    },{
+                        label: `Abandoned Castle`,
+                        description: ``,
+                        value: `Abandoned Castle`,
+                    },
+                    
+                    )
+                    .setDisabled(false),
             ])  
-            let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
-            let filter_cancel = (interaction : any) => interaction.user.id === authorId && interaction.customId == "cancel"    
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
             let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
             let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
         
             
         
         
-            await interaction.reply({content: null,embeds:[embed],components:[select,btn_cancel]})
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
         
             collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                 collected.deferUpdate().catch(() => null)
                 const location = collected.values[0]
                 
-                
-                if(location == 'aube'){
-                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                    const attachment = new MessageAttachment('assets/AubeTown/Aube_Town.jpg')
+                if(collected.customId == "select_exterior"){
+                    if(location == 'aube'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/AubeTown/Aube_Town.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://Aube_Town.jpg')
+                        .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\nuse **/explore** to explore this location`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'The Badlands'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/AubeTown/Badlands.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://Badlands.jpg')
+                        .setDescription(`As your gaze falls upon the Badlands in Aube Town, you behold a scorching desert realm where relentless heat engulfs the treacherous landscape, concealing untold secrets and lurking death at every precarious step, warning you of the unforgiving nature of this desolate domain.\n\nuse **/explore** to explore this location`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Sunshade Forest'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/AubeTown/sunshade_forest.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://sunshade_forest.jpg')
+                        .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 2**`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                if(location == 'The Terrific Troll Tavern'){
+                    const attachment = new MessageAttachment('assets/AubeTown/Terrific_Troll_Tavern.jpg')
                     let successembed = new MessageEmbed()
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
-                    .setImage('attachment://Aube_Town.jpg')
-                    .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\nuse **/explore** to explore this location`)
+                    .setImage('attachment://Terrific_Troll_Tavern.jpg')
+                    .setDescription(`As you cast your gaze upon the Terrific Troll Tavern in Aube Town, you witness a haven where both the burdened find solace, and the troubled find empathy, as laughter intertwines with heartfelt tales, creating an atmosphere that embraces both escapism and catharsis.You take a room at the Tavern and rest.\n\nuse **/explore** to explore this location`)
+                    await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
-                else if(location == 'The Badlands'){
-                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                    const attachment = new MessageAttachment('assets/AubeTown/Badlands.jpg')
+                else if(location == 'The Lager Estate'){
+                    const attachment = new MessageAttachment('assets/AubeTown/Lager_Estate.jpg')
                     let successembed = new MessageEmbed()
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
-                    .setImage('attachment://Badlands.jpg')
-                    .setDescription(`As your gaze falls upon the Badlands in Aube Town, you behold a scorching desert realm where relentless heat engulfs the treacherous landscape, concealing untold secrets and lurking death at every precarious step, warning you of the unforgiving nature of this desolate domain.\n\nuse **/explore** to explore this location`)
+                    .setImage('attachment://Lager_Estate.jpg')
+                    .setDescription(`As your eyes wander across the Lager Estate in Aube Town, you witness the renowned Lager family's brewers diligently crafting the legendary "Backbreaker Beer" using Solarcorn, a golden elixir that glows with the sun's essence, immersing you in a realm of tantalizing tastes and its twisted aftermath.\n\nuse **/explore** to explore this location`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
-                else if(location == 'Sunshade Forest'){
-                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                    const attachment = new MessageAttachment('assets/AubeTown/sunshade_forest.jpg')
+                else if(location == `Crofter's Market`){
+                    const attachment = new MessageAttachment('assets/AubeTown/Crofters_Market.jpg')
                     let successembed = new MessageEmbed()
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
-                    .setImage('attachment://sunshade_forest.jpg')
-                    .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 2**`)
+                    .setImage('attachment://Crofters_Market.jpg')
+                    .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
-                
-                
+                else if(location == 'Aube Town Guild Outpost'){
+                    const attachment = new MessageAttachment('assets/AubeTown/Aube_outpost.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://Aube_outpost.jpg')
+                    .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of magical beasts and bandits, while the air hums with a sense of shared purpose and safety\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == 'Town Centre'){
+                    const attachment = new MessageAttachment('assets/AubeTown/Town_Centre.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://Town_Centre.jpg')
+                    .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(location == 'Abandoned Castle'){
+                    const attachment = new MessageAttachment('assets/AubeTown/Abandoned_Castle.jpg')
+                    let successembed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('LOCATION REACHED')
+                    .setImage('attachment://Abandoned_Castle.jpg')
+                    .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\nuse **/explore** to explore this location`)
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
                 
                 
         
                 
-                collector_select.stop()
-                collector_cancel.stop()
+                
             })
         
             collector_cancel.on('collect', async j => {
                 j.deferUpdate().catch(() => null)
-        
+                if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle('CANCELLED')
@@ -503,11 +632,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 await interaction.editReply({embeds:[delembed],components:[]})
                 collector_cancel.stop()
                 collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    }
+                else if(j.customId == "exterior"){
+                    
+                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+
+                        }
+                    
+                
             })
         
         
         
-                }
+                        }
                  else if(city_town == "Sunshade Forest"){
                                         let embed
                                         let mount = "None"
