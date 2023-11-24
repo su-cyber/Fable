@@ -363,7 +363,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
         
                         }
-                        else if(city_town == "Castelan Fields"){
+                        else if(city_town == "Castellan Fields"){
                                         let Interiorembed
                                         let Exteriorembed
                                         let mount = "None"
@@ -553,7 +553,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 collector_cancel.stop()
                 }
                 else if(collected.customId == "select_interior"){
-                    await profileModel.updateOne({userID:authorId},{location:location})
+                    await profileModel.updateOne({userID:authorId},{location:location,city_town:"aube"})
                
                 if(location == 'The Terrific Troll Tavern'){
                     const attachment = new MessageAttachment('assets/AubeTown/Terrific_Troll_Tavern.jpg')
