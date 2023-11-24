@@ -299,7 +299,7 @@ export class PvEDuel extends DuelBuilder {
                     } 
                 }
                 
-                let skill = this.attacker.skills.find(skill => skill.type === "buff" && skill.mana_cost<=this.attacker.mana)
+                let skill = this.attacker.skills.find(skill => (skill.type === "buff" || skill.type === "debuff") && skill.mana_cost<=this.attacker.mana)
                 if(skill){
                     this.attacker.useSkill(this.attacker,this.defender,skill)
                     await sleep(this.speed)

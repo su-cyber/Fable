@@ -74,7 +74,7 @@ export class Starwing extends MonsterEntity {
                     mana_cost: 4,
                     use: (attacker, defender) =>{
                         defender.attackDamage -=20
-                        defender.armor -=20
+                        defender.armor -=10
                         attacker.addLogMessage(`${attacker.name} used Cosmic Gaze`,
                         `${attacker.name} stares at you with it's ethereal gaze as you feel your body lose strength and endurance`
                         )
