@@ -491,8 +491,23 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                         }
                         else if(foundUser.side_quest[0] == "KS-TA-SQ6"){
                             if(foundUser.side_quest_phase == "1"){
+                                let btnraw= new MessageActionRow().addComponents([
+                                    new MessageButton().setCustomId("backward_quest").setStyle("PRIMARY").setLabel("⏪"),
+                                    new MessageButton().setCustomId("proceed_quest").setStyle("DANGER").setLabel("Proceed"),
+                                    new MessageButton().setCustomId("forward_quest").setStyle("PRIMARY").setLabel("⏩"),
+                                    
+                                ])
                                 if(foundUser.location == "Aube Town Guild Outpost"){
-                                    let quest_embed = new MessageEmbed()
+                                let quest_embed1 = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`AUBE TOWN'S WATER CRISIS`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .setDescription(`The Mayor of Aube Town is concerned due to the sudden shortened supply of fresh water coming to their town. It is a real problem for a Town that depends heavily on its produce. He insists that the problem lies with the Aqueduct coming in from Spezia Cliffs through the Badlands. The Badlands are an extremely treacherous and scorching landscape. It is the only way of traveling to the Mirazh Empire on land from Solarstrio, yet it is completely isolated. Sure, some merchants who have lost their minds may venture forth, and some Ajin who wish to explore it. But the general agreement between the Solarii is that it is an unstable environment.`)
+                            
+                                let quest_embed2 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle(`AUBE TOWN'S WATER CRISIS`)
                                 .setAuthor({
@@ -505,10 +520,16 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                         value:`**press /progresssidequest in Badlands to proceed**`
                                     }
                                 ])
-                                .setDescription(`The Mayor of Aube Town is concerned due to the sudden shortened supply of fresh water coming to their town. It is a real problem for a Town that depends heavily on its produce. He insists that the problem lies with the Aqueduct coming in from Spezia Cliffs through the Badlands. The Badlands are an extremely treacherous and scorching landscape. It is the only way of traveling to the Mirazh Empire on land from Solarstrio, yet it is completely isolated. Sure, some merchants who have lost their minds may venture forth, and some Ajin who wish to explore it. But the general agreement between the Solarii is that it is an unstable environment.\n\nLuckily, the Aqueduct is at the edge of the Badlands, so investigating it will not be as rough. However, anyone venturing into the Badlands is told to be vary of the Spyriths that call it home, and especially the “Silthunters' that dwell there. They are dangerous hunters who rule the Badlands and all of its treasures. Aube Town shares their supply of fresh water with the Silthunters in exchange for peace. Your objective is to investigate the Aqueduct in the Badlands.`)
-                            
-                                await interaction.reply({embeds:[quest_embed]})
-                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"2"})
+                                .setDescription(`Luckily, the Aqueduct is at the edge of the Badlands, so investigating it will not be as rough. However, anyone venturing into the Badlands is told to be vary of the Spyriths that call it home, and especially the “Silthunters' that dwell there. They are dangerous hunters who rule the Badlands and all of its treasures. Aube Town shares their supply of fresh water with the Silthunters in exchange for peace. Your objective is to investigate the Aqueduct in the Badlands.`)
+                                
+                                let totalEmbeds = [quest_embed1,quest_embed2]
+                                for(let j =0;j<totalEmbeds.length;j++){
+                                    totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
+                                }
+                                await interaction.deferReply()
+                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw]})
+                                await Sendpages(totalEmbeds,"2",btnraw,null)
+                                
 
                                 }
                                 else{
@@ -1270,6 +1291,68 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                         }
                     
                     }
+
+                    async function Sendpages(totalEmbeds: MessageEmbed[],phase: string,components: MessageActionRow, files: MessageAttachment = null ){
+                    let filter = i => i.user.id === authorId
+                    let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 600})
+                    
+                    let count = 0
+                    collector.on('collect', async i => {
+                        if(i.customId === 'forward_quest'){
+                            await i.deferUpdate().catch(e => {})
+                            if(count== totalEmbeds.length-1){
+                                count=0
+                            }
+                            else{
+                                count +=1
+                            }
+                            
+                            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[files]})
+                        }
+                        else if(i.customId === 'backward_quest'){
+                            await i.deferUpdate().catch(e => {})
+                            if(count== 0){
+                                count=totalEmbeds.length-1
+                            }
+                            else{
+                                count-=1
+                            }
+                            
+                            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[files]})
+                
+                        }
+                        else if(i.customId === 'proceed_quest'){
+                            await profileModel.updateOne({userID:authorId},{side_quest_phase:`${phase}`})
+                            collector.stop()
+                            
+                        }
+                        else{
+                
+                        }
+                
+                  
+            collector.on('end',async () => {
+                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:[files]})
+                })
+    
+                    
+                    })
+                
+                
+                
+                
+                
+                
+                    
+                
+                
+                
+                
+                
+                
+                        
+                
+                }
                 }
                 else{
                     await interaction.reply({content:"It seems you are not awakened yet!\n```use /awaken to begin your Fable```",ephemeral:true})
