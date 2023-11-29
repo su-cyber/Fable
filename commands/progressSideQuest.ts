@@ -585,7 +585,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 }
                                 await interaction.deferReply()
                                 await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw]})
-                                await Sendpages(totalEmbeds,"3",btnraw)
+                                await Sendpages(totalEmbeds,"3",btnraw,attachment)
 
                                 }
                                 else{
