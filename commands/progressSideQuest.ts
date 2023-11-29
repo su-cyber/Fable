@@ -547,8 +547,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                         
                                     ])
                                     const attachment1 = new MessageAttachment('assets/AubeTown/SQ61.jpg')
-                                    const attachment2 = new MessageAttachment('assets/AubeTown/SQ62.jpg')
-                                    let files = [attachment1,attachment2]
+                                    let files = [attachment1]
                                     let quest_embed1 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle(`AUBE TOWN'S WATER CRISIS`)
@@ -556,12 +555,6 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                     iconURL:interaction.user.displayAvatarURL(),
                                     name:interaction.user.tag
                                 })
-                                .addFields([
-                                    {
-                                        name: `Current Objective:`,
-                                        value:`**press /progresssidequest in Town Centre to proceed**`
-                                    }
-                                ])
                                 .setImage('attachment://SQ61.jpg')
                                 .setDescription(`Even though you were only at the edge of the Badlands, the heat you felt was quite intense. But, after a little exploration, you were able to locate the Aqueduct hidden among a small group of trees, carrying fresh water from the Spezia Cliffs. As you closely inspected it, you noticed that one of its legs had been chipped away heavily, making the flow of water unstable enough that it burst out from a place. This had caused plantations to grow on and around the Aqueduct which you normally would not see in the Badlands. It was somewhat of an Oasis now. Surely this was the cause of Aube’s short supply of fresh water.`)
                             
@@ -578,7 +571,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                         value:`**press /progresssidequest in Town Centre to proceed**`
                                     }
                                 ])
-                                .setImage('attachment://SQ62.jpg')
+                                .setImage('attachment://SQ61.jpg')
                                 .setDescription(` Upon further investigation, you saw that the other legs of the Aqueduct were far from being chipped. This meant that the Aqueduct had been damaged by a third party. It could have been a Spyrith…or someone else.\n\nYou decide to bring this information to the Mayor.`)
                             
                                 let totalEmbeds = [quest_embed1,quest_embed2]
@@ -598,7 +591,22 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                             }
                             else if(foundUser.side_quest_phase == "3"){
                                 if(foundUser.location == "Town Centre"){
-                                    let quest_embed = new MessageEmbed()
+                                    let btnraw= new MessageActionRow().addComponents([
+                                        new MessageButton().setCustomId("backward_quest").setStyle("PRIMARY").setLabel("⏪"),
+                                        new MessageButton().setCustomId("proceed_quest").setStyle("DANGER").setLabel("Proceed"),
+                                        new MessageButton().setCustomId("forward_quest").setStyle("PRIMARY").setLabel("⏩"),
+                                        
+                                    ])
+                                    let quest_embed1 = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`AUBE TOWN'S WATER CRISIS`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .setDescription(`You meet up with the Mayor and explain to him about your findings on the Aqueduct. He is at first, extremely delighted to meet you, and at ease since their Hero had come to their aid yet again. After hearing your findings, the Mayor cannot help but show his nervousness regarding the situation.\n\n“It must be the Silthunters. If the Aqueduct had broken and they hadn’t known of it, they would have already sent a Zephyrite my way asking about it.” The Mayor said.`)
+                            
+                                let quest_embed2 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle(`AUBE TOWN'S WATER CRISIS`)
                                 .setAuthor({
@@ -611,11 +619,15 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                         value:`**Press "/progresssidequest" at the Castle Luminar to continue.**`
                                     }
                                 ])
-                                .setDescription(`You meet up with the Mayor and explain to him about your findings on the Aqueduct. He is at first, extremely delighted to meet you, and at ease since their Hero had come to their aid yet again. After hearing your findings, the Mayor cannot help but show his nervousness regarding the situation.\n\n“It must be the Silthunters. If the Aqueduct had broken and they hadn’t known of it, they would have already sent a Zephyrite my way asking about it.” The Mayor said.\n\nYou concluded that it was indeed the Silthunters who had sabotaged the Aqueduct. Although their motive was unclear, the Mayor theorized they may have been paid by the Sultan of the Mirazh Empire. It may be his way of showing his discontent with King Helios and our disputes over trade routes with their empire.\n\nHe requests you to deliver a letter from him to the Earl of Zorya. The Mayor believes something sinister is at play, and Earl Auriga must know of these developments at the earliest. He cannot send Sebas, as he may require his aid to investigate the issue further.\n\n**Received Letter for Earl Auriga x1**`)
+                                .setDescription(`You concluded that it was indeed the Silthunters who had sabotaged the Aqueduct. Although their motive was unclear, the Mayor theorized they may have been paid by the Sultan of the Mirazh Empire. It may be his way of showing his discontent with King Helios and our disputes over trade routes with their empire.\n\nHe requests you to deliver a letter from him to the Earl of Zorya. The Mayor believes something sinister is at play, and Earl Auriga must know of these developments at the earliest. He cannot send Sebas, as he may require his aid to investigate the issue further.\n\n**Received Letter for Earl Auriga x1**`)
                             
-                                await interaction.reply({embeds:[quest_embed]})
-                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"4"})
-
+                                let totalEmbeds = [quest_embed1,quest_embed2]
+                                for(let j =0;j<totalEmbeds.length;j++){
+                                    totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
+                                }
+                                await interaction.deferReply()
+                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw]})
+                                await Sendpages(totalEmbeds,"4",btnraw)
                                 }
                                 else{
                                     interaction.reply({content:`**(Press /progresssidequest in Town Centre to continue)**`,ephemeral:true})
@@ -625,8 +637,35 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                             }
                             else if(foundUser.side_quest_phase == "4"){
                                 if(foundUser.location == "Castle Luminar"){
+                                    let btnraw= new MessageActionRow().addComponents([
+                                        new MessageButton().setCustomId("backward_quest").setStyle("PRIMARY").setLabel("⏪"),
+                                        new MessageButton().setCustomId("proceed_quest").setStyle("DANGER").setLabel("Proceed"),
+                                        new MessageButton().setCustomId("forward_quest").setStyle("PRIMARY").setLabel("⏩"),
+                                        
+                                    ])
+                                    
                                     const attachment = new MessageAttachment('assets/AubeTown/SQ62.jpg')
-                                    let quest_embed = new MessageEmbed()
+                                    let files = [attachment]
+                                    let quest_embed1 = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`AUBE TOWN'S WATER CRISIS`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .setDescription(`As you reach towards Castle Luminar - the primary residence of Earl Auriga, you walk over an inclined stone bridge whose columns emerge from within the Dragon Pit Basin below. On your way to Earl Auriga’s Court, you come across many Solarii and tourists. Most of them had come to see the infamous “Moving Dragon Carcass”. You assumed that the rumor may have caused a lot of trouble for the Earl.\n\nBefore you knew it, you reached the main gates of the Castle. They were massive, and the fact that Castle Luminar was built upon a small hill, only accessible by the stone bridge or flight, it felt impregnable.`)
+                                
+                                let quest_embed2 = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`AUBE TOWN'S WATER CRISIS`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .setImage('attachment://SQ62.jpg')
+                                .setDescription(`You were stopped at the gates, frisked, and verified of your belongings and credentials, then let go deeper into Castle Luminar. Somehow, your weapons were not taken, which came as quite a shock to you. The Castle’s interior consisted of several smaller Castles, and buildings. But, the most important feature that stood out to you were the windows and the spires adorned in beautiful stained glass.\n\nYou were taken to a decent residence just beyond the Castle’s courtyard where you met up with Madam Cornelia, the leader of Aegis Luminis - a Knight Chapter consisting of Elite Soldiers that serve and obey Earl Auriga.`)
+                            
+                                let quest_embed3 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle(`AUBE TOWN'S WATER CRISIS`)
                                 .setAuthor({
@@ -640,10 +679,15 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                     }
                                 ])
                                 .setImage('attachment://SQ62.jpg')
-                                .setDescription(`As you reach towards Castle Luminar - the primary residence of Earl Auriga, you walk over an inclined stone bridge whose columns emerge from within the Dragon Pit Basin below. On your way to Earl Auriga’s Court, you come across many Solarii and tourists. Most of them had come to see the infamous “Moving Dragon Carcass”. You assumed that the rumor may have caused a lot of trouble for the Earl.\n\nBefore you knew it, you reached the main gates of the Castle. They were massive, and the fact that Castle Luminar was built upon a small hill, only accessible by the stone bridge or flight, it felt impregnable.\n\nYou were stopped at the gates, frisked, and verified of your belongings and credentials, then let go deeper into Castle Luminar. Somehow, your weapons were not taken, which came as quite a shock to you. The Castle’s interior consisted of several smaller Castles, and buildings. But, the most important feature that stood out to you were the windows and the spires adorned in beautiful stained glass.\n\nYou were taken to a decent residence just beyond the Castle’s courtyard where you met up with Madam Cornelia, the leader of Aegis Luminis - a Knight Chapter consisting of Elite Soldiers that serve and obey Earl Auriga.- a Knight Chapter consisting of Elite Soldiers that serve and obey Earl Auriga.\n\n“I see you’ve brought a letter from the Mayor of Aube Town. Tell me, how does a small town’s mayor afford to send a Guild Ranger just to deliver his letter? You would think he would be on the streets after paying that senile Sebas huh.” Cornelia commented as she stared you dead in the face.\n\nHer comments didn’t sit right with you, but you decided to hold your anger for the time being.\n\nUnlike Sebas and you other Rangers, we have ethics. We exist to serve people, not rob them.” Cornelia left another snarky comment.\n\nSomething didn’t feel right this time. Something hurt, and your expression changed.`)
+                                .setDescription(`“I see you’ve brought a letter from the Mayor of Aube Town. Tell me, how does a small town’s mayor afford to send a Guild Ranger just to deliver his letter? You would think he would be on the streets after paying that senile Sebas huh.” Cornelia commented as she stared you dead in the face.\n\nHer comments didn’t sit right with you, but you decided to hold your anger for the time being.\n\nUnlike Sebas and you other Rangers, we have ethics. We exist to serve people, not rob them.” Cornelia left another snarky comment.\n\nSomething didn’t feel right this time. Something hurt, and your expression changed.`)
                             
-                                await interaction.reply({embeds:[quest_embed],files:[attachment]})
-                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"5"})
+                                let totalEmbeds = [quest_embed1,quest_embed2,quest_embed3]
+                                for(let j =0;j<totalEmbeds.length;j++){
+                                    totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
+                                }
+                                await interaction.deferReply()
+                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw],files:files})
+                                await Sendpages(totalEmbeds,"5",btnraw,files)
 
                                 }
                                 else{
@@ -654,8 +698,35 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                             }
                             else if(foundUser.side_quest_phase == "5"){
                                 if(foundUser.location == "Castle Luminar"){
+                                    let btnraw= new MessageActionRow().addComponents([
+                                        new MessageButton().setCustomId("backward_quest").setStyle("PRIMARY").setLabel("⏪"),
+                                        new MessageButton().setCustomId("proceed_quest").setStyle("DANGER").setLabel("Proceed"),
+                                        new MessageButton().setCustomId("forward_quest").setStyle("PRIMARY").setLabel("⏩"),
+                                        
+                                    ])
+                                    
                                     const attachment = new MessageAttachment('assets/AubeTown/SQ63.jpg')
-                                    let quest_embed = new MessageEmbed()
+                                    let files = [attachment]
+                                    let quest_embed1 = new MessageEmbed()
+                                .setColor('GREEN')
+                                .setTitle(`AUBE TOWN'S WATER CRISIS-QUEST COMPLETED`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .setDescription(`Due to your renewed anger, a mass of Spyr began enveloping your body. Even though you were unaware of the past between Mr. Sebas and Madam Cornelia, her remarks were not right.\n\n“Oh! are we getting a little serious? Well then, it isn’t everyday we get to show up a Guild Ranger. Iris, come forward! Show this ignorant Ranger what a Super-Regular can do!” Says Madam Cornelia as a young trainee comes forward and assumes a combat stance.\n\nAs you got ready to fight, you sensed absolutely no traces of Spyr being harnessed by Iris. You worried about her safety, but the events had already taken a full turn. It would be foolish to turn your back now.`)
+                            
+                                let quest_embed2 = new MessageEmbed()
+                                .setColor('GREEN')
+                                .setTitle(`AUBE TOWN'S WATER CRISIS-QUEST COMPLETED`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .setImage('attachment://SQ63.jpg')
+                                .setDescription(`To show Iris respect, you also assume your stance and ready yourself to launch a devastating attack.\n\nHowever, you are surprised to see Iris walk slowly towards you without flinching or showing any ounce of fear. Shocked to see this, you lunge yourself forward to seal the deal once and for all, but Iris manages to dodge your strike. Even though it seemed you barely managed to graze her, you knew in your heart that you weren’t even close.\n\nSwiftly, she grabbed her sword, still in its scabbard and began striking you with it. Each hit was precise and strong. You felt crippled and immediately fell to your knees, eyes widened from the pain.`)
+                            
+                                let quest_embed3 = new MessageEmbed()
                                 .setColor('GREEN')
                                 .setTitle(`AUBE TOWN'S WATER CRISIS-QUEST COMPLETED`)
                                 .setAuthor({
@@ -668,10 +739,16 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                         value:`**You recieved 1500🪙!**\n**You recieved 35 Merit!**`
                                     }
                                 ])
-                                .setImage('attachment://SQ63.jpg')
-                                .setDescription(`Due to your renewed anger, a mass of Spyr began enveloping your body. Even though you were unaware of the past between Mr. Sebas and Madam Cornelia, her remarks were not right.\n\n“Oh! are we getting a little serious? Well then, it isn’t everyday we get to show up a Guild Ranger. Iris, come forward! Show this ignorant Ranger what a Super-Regular can do!” Says Madam Cornelia as a young trainee comes forward and assumes a combat stance.\n\nAs you got ready to fight, you sensed absolutely no traces of Spyr being harnessed by Iris. You worried about her safety, but the events had already taken a full turn. It would be foolish to turn your back now.\n\nTo show Iris respect, you also assume your stance and ready yourself to launch a devastating attack.\n\nHowever, you are surprised to see Iris walk slowly towards you without flinching or showing any ounce of fear. Shocked to see this, you lunge yourself forward to seal the deal once and for all, but Iris manages to dodge your strike. Even though it seemed you barely managed to graze her, you knew in your heart that you weren’t even close.\n\nSwiftly, she grabbed her sword, still in its scabbard and began striking you with it. Each hit was precise and strong. You felt crippled and immediately fell to your knees, eyes widened from the pain.\n\n“That was **Revok**. Those who have mastered it will have the vigour of a hundred men, the endurance of a blackstone, knowledge of the unseeable and the agility surpassing all reflexes. Such is the power of a **Super-Regular**.” Madam Cornelia commented as she paced around the room.\n\n“Do not drag your name any further in the mud, Ranger. You see, despite your loss here today, I am quite impressed with your loyalty and conviction. You don’t see that everyday. Look, Earl Auriga isn’t in Zorya at the moment. So for you, I will hand this letter to the Earl when he returns and convey the Mayor’s request for aid in his matter concerning Aube. You may be asked to present yourself in the Earl’s court in the future regarding this matter. I hope you will be stronger the next time we meet.\n\n You hand the Letter to Madam Cornelia and leave Castle Luminar, wondering about **“Revok”** and the reason for Madam Cornelia’s disliking towards the Guild Rangers.`)
+                                .setDescription(`“That was **Revok**. Those who have mastered it will have the vigour of a hundred men, the endurance of a blackstone, knowledge of the unseeable and the agility surpassing all reflexes. Such is the power of a **Super-Regular**.” Madam Cornelia commented as she paced around the room.\n\n“Do not drag your name any further in the mud, Ranger. You see, despite your loss here today, I am quite impressed with your loyalty and conviction. You don’t see that everyday. Look, Earl Auriga isn’t in Zorya at the moment. So for you, I will hand this letter to the Earl when he returns and convey the Mayor’s request for aid in his matter concerning Aube. You may be asked to present yourself in the Earl’s court in the future regarding this matter. I hope you will be stronger the next time we meet.\n\n You hand the Letter to Madam Cornelia and leave Castle Luminar, wondering about **“Revok”** and the reason for Madam Cornelia’s disliking towards the Guild Rangers.`)
                             
-                                await interaction.reply({embeds:[quest_embed],files:[attachment]})
+                                let totalEmbeds = [quest_embed1,quest_embed2,quest_embed3]
+                                for(let j =0;j<totalEmbeds.length;j++){
+                                    totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
+                                }
+                                await interaction.deferReply()
+                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw],files:files})
+
+                                async function final(){
                                 foundUser.completed_quests.push("KS-TA-SQ6")
                                 foundUser.side_quest.splice(0,1)
                                 await profileModel.updateOne({userID:authorId},{side_quest_phase:"1",completed_quests:foundUser.completed_quests,side_quest:foundUser.side_quest,merit:foundUser.merit+35,coins:foundUser.coins+1500})
@@ -681,6 +758,9 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                 .setDescription(`${interaction.user.username} has Completed the Side Quest **"Aube Town's Water Crisis"** and recieved **1500🪙**!`)
                                                 await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
 
+                                }
+                                await Sendpages(totalEmbeds,"1",btnraw,files,final)
+                                
                                 }
                                 else{
                                     interaction.reply({content:`**(Press /progresssidequest in Castle Luminar in Zorya to continue)**`,ephemeral:true})
@@ -1321,7 +1401,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                     
                     }
 
-                    async function Sendpages(totalEmbeds: MessageEmbed[],phase: string,components: MessageActionRow, files: MessageAttachment [] = null ){
+                    async function Sendpages(totalEmbeds: MessageEmbed[],phase: string,components: MessageActionRow, files: MessageAttachment [] = null, finalFunction:  () => Promise<void> = null){
                     let filter = i => i.user.id === authorId
                     let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 600})
                     
@@ -1361,6 +1441,11 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                         }
                         else if(i.customId === 'proceed_quest'){
                             await profileModel.updateOne({userID:authorId},{side_quest_phase:`${phase}`})
+                            collector.stop()
+                            
+                        }
+                        else if(i.customId === 'end_quest'){
+                            finalFunction()
                             collector.stop()
                             
                         }
