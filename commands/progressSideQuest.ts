@@ -746,7 +746,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                     totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
                                 }
                                 await interaction.deferReply()
-                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw],files:files})
+                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw],files:[]})
 
                                 async function final(){
                                 foundUser.completed_quests.push("KS-TA-SQ6")
@@ -1466,7 +1466,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                 
                   
             collector.on('end',async () => {
-
+                await i.deferUpdate().catch(e => {})
                 if(files == null){
                                 await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:[]})
                             }
