@@ -686,7 +686,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                     totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
                                 }
                                 await interaction.deferReply()
-                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw],files:files})
+                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw],files:[]})
                                 await Sendpages(totalEmbeds,"5",btnraw,files)
 
                                 }
@@ -1419,7 +1419,13 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
                             }
                             else{
-                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:files})
+                                if(totalEmbeds[count].image != null){
+                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:files})
+                                }
+                                else{
+                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
+                                }
+                                
                             }
                            
                         }
@@ -1436,7 +1442,12 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
                             }
                             else{
-                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:files})
+                                if(totalEmbeds[count].image != null){
+                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:files})
+                                }
+                                else{
+                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
+                                }
                             }
                         }
                         else if(i.customId === 'proceed_quest'){
@@ -1460,7 +1471,12 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:[]})
                             }
                             else{
-                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:files})
+                                if(totalEmbeds[count].image != null){
+                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:files})
+                                }
+                                else{
+                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
+                                }
                             }
                 })
     
