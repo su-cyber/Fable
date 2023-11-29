@@ -1465,19 +1465,15 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                         }
                 
                   
-            collector.on('end',async () => {
-                await i.deferUpdate().catch(e => {})
-                if(files == null){
-                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:[]})
-                            }
-                            else{
+            collector.on('end',async (collected) => {
+
                                 if(totalEmbeds[count].image != null){
-                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:files})
+                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:files})
                                 }
                                 else{
-                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
+                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:[]})
                                 }
-                            }
+                            
                 })
     
                     
