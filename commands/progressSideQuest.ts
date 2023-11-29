@@ -1307,7 +1307,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 count +=1
                             }
                             
-                            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[files]})
+                            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
                         }
                         else if(i.customId === 'backward_quest'){
                             await i.deferUpdate().catch(e => {})
@@ -1318,7 +1318,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 count-=1
                             }
                             
-                            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[files]})
+                            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
                 
                         }
                         else if(i.customId === 'proceed_quest'){
