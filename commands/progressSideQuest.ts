@@ -540,8 +540,14 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                             }
                             else if(foundUser.side_quest_phase == "2"){
                                 if(foundUser.city_town == "The Badlands"){
+                                    let btnraw= new MessageActionRow().addComponents([
+                                        new MessageButton().setCustomId("backward_quest").setStyle("PRIMARY").setLabel("⏪"),
+                                        new MessageButton().setCustomId("proceed_quest").setStyle("DANGER").setLabel("Proceed"),
+                                        new MessageButton().setCustomId("forward_quest").setStyle("PRIMARY").setLabel("⏩"),
+                                        
+                                    ])
                                     const attachment = new MessageAttachment('assets/AubeTown/SQ61.jpg')
-                                    let quest_embed = new MessageEmbed()
+                                    let quest_embed1 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle(`AUBE TOWN'S WATER CRISIS`)
                                 .setAuthor({
@@ -555,10 +561,31 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                     }
                                 ])
                                 .setImage('attachment://SQ61.jpg')
-                                .setDescription(`Even though you were only at the edge of the Badlands, the heat you felt was quite intense. But, after a little exploration, you were able to locate the Aqueduct hidden among a small group of trees, carrying fresh water from the Spezia Cliffs. As you closely inspected it, you noticed that one of its legs had been chipped away heavily, making the flow of water unstable enough that it burst out from a place. This had caused plantations to grow on and around the Aqueduct which you normally would not see in the Badlands. It was somewhat of an Oasis now. Surely this was the cause of Aube’s short supply of fresh water. Upon further investigation, you saw that the other legs of the Aqueduct were far from being chipped. This meant that the Aqueduct had been damaged by a third party. It could have been a Spyrith…or someone else.\n\nYou decide to bring this information to the Mayor.`)
+                                .setDescription(`Even though you were only at the edge of the Badlands, the heat you felt was quite intense. But, after a little exploration, you were able to locate the Aqueduct hidden among a small group of trees, carrying fresh water from the Spezia Cliffs. As you closely inspected it, you noticed that one of its legs had been chipped away heavily, making the flow of water unstable enough that it burst out from a place. This had caused plantations to grow on and around the Aqueduct which you normally would not see in the Badlands. It was somewhat of an Oasis now. Surely this was the cause of Aube’s short supply of fresh water.`)
                             
-                                await interaction.reply({embeds:[quest_embed],files:[attachment]})
-                                await profileModel.updateOne({userID:authorId},{side_quest_phase:"3"})
+                                let quest_embed2 = new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(`AUBE TOWN'S WATER CRISIS`)
+                                .setAuthor({
+                                    iconURL:interaction.user.displayAvatarURL(),
+                                    name:interaction.user.tag
+                                })
+                                .addFields([
+                                    {
+                                        name: `Current Objective:`,
+                                        value:`**press /progresssidequest in Town Centre to proceed**`
+                                    }
+                                ])
+                                .setImage('attachment://SQ61.jpg')
+                                .setDescription(` Upon further investigation, you saw that the other legs of the Aqueduct were far from being chipped. This meant that the Aqueduct had been damaged by a third party. It could have been a Spyrith…or someone else.\n\nYou decide to bring this information to the Mayor.`)
+                            
+                                let totalEmbeds = [quest_embed1,quest_embed2]
+                                for(let j =0;j<totalEmbeds.length;j++){
+                                    totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
+                                }
+                                await interaction.deferReply()
+                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw]})
+                                await Sendpages(totalEmbeds,"3",btnraw)
 
                                 }
                                 else{
@@ -1306,8 +1333,13 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                             else{
                                 count +=1
                             }
-                            
-                            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
+                            if(files == null){
+                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
+                            }
+                            else{
+                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[files]})
+                            }
+                           
                         }
                         else if(i.customId === 'backward_quest'){
                             await i.deferUpdate().catch(e => {})
@@ -1318,8 +1350,12 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 count-=1
                             }
                             
-                            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
-                
+                            if(files == null){
+                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
+                            }
+                            else{
+                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[files]})
+                            }
                         }
                         else if(i.customId === 'proceed_quest'){
                             await profileModel.updateOne({userID:authorId},{side_quest_phase:`${phase}`})
@@ -1332,7 +1368,13 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                 
                   
             collector.on('end',async () => {
-                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:[files]})
+
+                if(files == null){
+                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:[]})
+                            }
+                            else{
+                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:[files]})
+                            }
                 })
     
                     
