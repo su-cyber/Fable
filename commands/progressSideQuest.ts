@@ -546,7 +546,9 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                         new MessageButton().setCustomId("forward_quest").setStyle("PRIMARY").setLabel("⏩"),
                                         
                                     ])
-                                    const attachment = new MessageAttachment('assets/AubeTown/SQ61.jpg')
+                                    const attachment1 = new MessageAttachment('assets/AubeTown/SQ61.jpg')
+                                    const attachment2 = new MessageAttachment('assets/AubeTown/SQ62.jpg')
+                                    let files = [attachment1,attachment2]
                                     let quest_embed1 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle(`AUBE TOWN'S WATER CRISIS`)
@@ -576,7 +578,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                         value:`**press /progresssidequest in Town Centre to proceed**`
                                     }
                                 ])
-                                .setImage('attachment://SQ61.jpg')
+                                .setImage('attachment://SQ62.jpg')
                                 .setDescription(` Upon further investigation, you saw that the other legs of the Aqueduct were far from being chipped. This meant that the Aqueduct had been damaged by a third party. It could have been a Spyrith…or someone else.\n\nYou decide to bring this information to the Mayor.`)
                             
                                 let totalEmbeds = [quest_embed1,quest_embed2]
@@ -584,8 +586,8 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                     totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
                                 }
                                 await interaction.deferReply()
-                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw]})
-                                await Sendpages(totalEmbeds,"3",btnraw,attachment)
+                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw],files:files})
+                                await Sendpages(totalEmbeds,"3",btnraw,files)
 
                                 }
                                 else{
@@ -1319,7 +1321,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                     
                     }
 
-                    async function Sendpages(totalEmbeds: MessageEmbed[],phase: string,components: MessageActionRow, files: MessageAttachment = null ){
+                    async function Sendpages(totalEmbeds: MessageEmbed[],phase: string,components: MessageActionRow, files: MessageAttachment [] = null ){
                     let filter = i => i.user.id === authorId
                     let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 600})
                     
@@ -1337,7 +1339,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
                             }
                             else{
-                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[files]})
+                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:files})
                             }
                            
                         }
@@ -1354,7 +1356,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
                             }
                             else{
-                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[files]})
+                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:files})
                             }
                         }
                         else if(i.customId === 'proceed_quest'){
@@ -1373,7 +1375,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:[]})
                             }
                             else{
-                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:[files]})
+                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:files})
                             }
                 })
     
