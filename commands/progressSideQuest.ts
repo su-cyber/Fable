@@ -700,7 +700,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 if(foundUser.location == "Castle Luminar"){
                                     let btnraw= new MessageActionRow().addComponents([
                                         new MessageButton().setCustomId("backward_quest").setStyle("PRIMARY").setLabel("⏪"),
-                                        new MessageButton().setCustomId("proceed_quest").setStyle("DANGER").setLabel("Proceed"),
+                                        new MessageButton().setCustomId("end_quest").setStyle("DANGER").setLabel("End"),
                                         new MessageButton().setCustomId("forward_quest").setStyle("PRIMARY").setLabel("⏩"),
                                         
                                     ])
