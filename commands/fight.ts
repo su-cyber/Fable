@@ -120,22 +120,25 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                 .create()
                     
                     if(attacker.speed >= monster.speed){
+                        await explore.do(bot,interaction)
                         await new PvEDuel({
                             interaction,
                             player1: attacker,
                             player2: monster,
                             speed:setspeed,
                         }).start()
-                        await explore.do(bot,interaction)
+                        
+                        
                     }
                     else{
+                        await explore.do(bot,interaction)
                         await new PvEDuel({
                             interaction,
                             player1: monster,
                             player2: attacker,
                             speed:setspeed
                         }).start()
-                        await explore.do(bot,interaction)
+
                     }
                                 }
                                 else{
