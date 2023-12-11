@@ -126,7 +126,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                             player2: monster,
                             speed:setspeed,
                         }).start()
-                        explore.do(bot,interaction)
+                        await explore.do(bot,interaction)
                     }
                     else{
                         await new PvEDuel({
@@ -135,7 +135,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                             player2: attacker,
                             speed:setspeed
                         }).start()
-                        explore.do(bot,interaction)
+                        await explore.do(bot,interaction)
                     }
                                 }
                                 else{
