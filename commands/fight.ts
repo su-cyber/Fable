@@ -16,6 +16,7 @@ import { calculate } from '../src/age/classes'
 import hunting_contracts from '../src/utils/allHuntingContracts'
 import { Bot } from '../src/bot'
 import { emoji } from '../src/lib/utils/emoji'
+import explore from './explore'
 
 export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
@@ -125,7 +126,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                             player2: monster,
                             speed:setspeed,
                         }).start()
-                        
+                        explore.do(bot,interaction)
                     }
                     else{
                         await new PvEDuel({
@@ -134,6 +135,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                             player2: attacker,
                             speed:setspeed
                         }).start()
+                        explore.do(bot,interaction)
                     }
                                 }
                                 else{
@@ -722,6 +724,7 @@ export class PvEDuel extends DuelBuilder {
             }
         })
         await loser.onDeath(this.interaction, winner)
+
     }
 
     
