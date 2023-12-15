@@ -138,7 +138,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                         }).start()
 
                     }
-                                }
+                        }
                                 else{
                                     interaction.reply({content:`you are not in ${foundUser.encounter[0].location} where you encountered ${foundUser.encounter[0].name}`,ephemeral:true})
                                 }
