@@ -172,8 +172,8 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                     player2: monster,
                                     speed:setspeed,
                                 })
-                                foundUser.combat = {instance:combatInstance}
-                                await profileModel.updateOne({userID:authorId},{combat:foundUser.combat})
+                                let combat = {instance:combatInstance}
+                                await profileModel.updateOne({userID:authorId},{combat:combat})
                                 await combatInstance.start()
                                 console.log(combatInstance);
                                 console.log(foundUser.combat);
@@ -186,8 +186,8 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                     player2: attacker,
                                     speed:setspeed
                                 })
-                                foundUser.combat = {instance:combatInstance}
-                                await profileModel.updateOne({userID:authorId},{combat:foundUser.combat})
+                                let combat = {instance:combatInstance}
+                                await profileModel.updateOne({userID:authorId},{combat:combat})
                                 await combatInstance.start()
                                 console.log(combatInstance);
                                 console.log(foundUser.combat);
