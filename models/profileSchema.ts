@@ -50,7 +50,8 @@ const profileSchema = new mongoose.Schema({
     merit:{type: Number},
     titles:{type: Array},
     current_title:{type: Array},
-    mount:{type:String}
+    mount:{type:String},
+    combat:{type: Object}
 });
 
 const model = mongoose.model('ProfileModels',profileSchema);
