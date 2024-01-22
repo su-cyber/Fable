@@ -17,6 +17,7 @@ import hunting_contracts from '../src/utils/allHuntingContracts'
 import { Bot } from '../src/bot'
 import { emoji } from '../src/lib/utils/emoji'
 import explore from './explore'
+import cloneDeep from 'lodash.clonedeep'
 
 export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
@@ -172,12 +173,13 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                     player2: monster,
                                     speed:setspeed,
                                 })
-                                let combat = {instance:combatInstance}
+                                
+                                let combat = {instance:cloneDeep(combatInstance)}
                                 await profileModel.updateOne({userID:interaction.user.id},{combat:combat})
                                 await combatInstance.start()
                                 console.log(combatInstance);
                                 console.log(foundUser.combat);
-                                
+                            
                             }
                             else{
                                 let combatInstance = await new PvEDuel({
@@ -186,7 +188,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                     player2: attacker,
                                     speed:setspeed
                                 })
-                                let combat = {instance:combatInstance}
+                                let combat = {instance:cloneDeep(combatInstance)}
                                 await profileModel.updateOne({userID:interaction.user.id},{combat:combat})
                                 await combatInstance.start()
                                 console.log(combatInstance);
