@@ -168,7 +168,6 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                     speed:setspeed,
                                 })
                                 
-                                let combat = {instance:cloneDeep(combatInstance).defender}
                                 await combatInstance.start()
                             
                             }
@@ -180,7 +179,6 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                     speed:setspeed
                                 })
                                 
-                                let combat = {instance:cloneDeep(combatInstance).defender}
                                 await combatInstance.start()
                                 
                                 
