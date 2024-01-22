@@ -137,7 +137,8 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                             player2: attacker,
                             speed:setspeed
                         })
-                        await profileModel.updateOne({userID:authorId},{combat:combatInstance})
+                        foundUser.combat = {instance:combatInstance}
+                        await profileModel.updateOne({userID:authorId},{combat:foundUser.combat})
                         await combatInstance.start()
 
                     }
