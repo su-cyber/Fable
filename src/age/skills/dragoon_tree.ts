@@ -102,8 +102,6 @@ const dragoon_tree=[
                         
                         
                         defender.applyEffect(blindingflash)
-                        console.log(defender.effects);
-                        console.log(attacker.scheduler);
                         attacker.addLogMessage(`${attacker.name} used Blinding Flash`,
                         `${attacker.name} Ignited a radiant burst of light blinding ${defender.name}`
                         )
