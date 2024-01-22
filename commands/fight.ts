@@ -128,6 +128,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                         })
                         foundUser.combat = {instance:combatInstance}
                         await profileModel.updateOne({userID:authorId},{combat:foundUser.combat})
+                        await combatInstance.start()
                         console.log(combatInstance);
                         console.log(foundUser.combat);
                         
@@ -141,6 +142,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                         })
                         foundUser.combat = {instance:combatInstance}
                         await profileModel.updateOne({userID:authorId},{combat:foundUser.combat})
+                        await combatInstance.start()
                         console.log(combatInstance);
                         console.log(foundUser.combat);
                         
@@ -163,23 +165,36 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                     
                             foundUser.encounter = []
                             await profileModel.updateOne({userID:interaction.user.id},{encounter:foundUser.encounter})
-                        if(attacker.speed >= monster.speed){
-                            await new PvEDuel({
-                                interaction,
-                                player1: attacker,
-                                player2: monster,
-                                speed:setspeed,
-                            }).start()
-                            
-                        }
-                        else{
-                            await new PvEDuel({
-                                interaction,
-                                player1: monster,
-                                player2: attacker,
-                                speed:setspeed
-                            }).start()
-                        }
+                            if(attacker.speed >= monster.speed){
+                                let combatInstance = await new PvEDuel({
+                                    interaction,
+                                    player1: attacker,
+                                    player2: monster,
+                                    speed:setspeed,
+                                })
+                                foundUser.combat = {instance:combatInstance}
+                                await profileModel.updateOne({userID:authorId},{combat:foundUser.combat})
+                                await combatInstance.start()
+                                console.log(combatInstance);
+                                console.log(foundUser.combat);
+                                
+                            }
+                            else{
+                                let combatInstance = await new PvEDuel({
+                                    interaction,
+                                    player1: monster,
+                                    player2: attacker,
+                                    speed:setspeed
+                                })
+                                foundUser.combat = {instance:combatInstance}
+                                await profileModel.updateOne({userID:authorId},{combat:foundUser.combat})
+                                await combatInstance.start()
+                                console.log(combatInstance);
+                                console.log(foundUser.combat);
+                                
+                                
+        
+                            }
                                     }
                                     else{
                                         interaction.reply(`you are not in ${foundUser.encounter[0].location} where you encountered ${foundUser.encounter[0].name}`)
