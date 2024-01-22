@@ -456,7 +456,8 @@ class DuelBuilder {
             this.defender = a
 
             this.turn += 1
-            console.log(this.attacker.scheduler.scheduler);
+            console.log(this.attacker.scheduler.scheduler[0][0].options)
+
             
         }
 
