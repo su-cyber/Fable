@@ -169,8 +169,8 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                 })
                                 
                                 let combat = {instance:cloneDeep(combatInstance).attacker}
-                                await profileModel.updateOne({userID:interaction.user.id},{combat:combat.instance})
                                 await combatInstance.start()
+                                await profileModel.updateOne({userID:interaction.user.id},{combat:combat.instance.effects})
                                 console.log(combat);
                                 console.log(foundUser.combat);
                             
@@ -182,9 +182,10 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                     player2: attacker,
                                     speed:setspeed
                                 })
+                                
                                 let combat = {instance:cloneDeep(combatInstance).attacker}
-                                await profileModel.updateOne({userID:interaction.user.id},{combat:combat.instance})
                                 await combatInstance.start()
+                                await profileModel.updateOne({userID:interaction.user.id},{combat:combat.instance.effects})
                                 console.log(combat);
                                 console.log(foundUser.combat);
                                 
