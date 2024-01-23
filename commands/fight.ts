@@ -466,11 +466,13 @@ export class PvEDuel extends DuelBuilder {
                     await combat_collector.stop()
                     await combat_collector.removeAllListeners('collect')
                     const skillName = collected.values[0]
-                    console.log(combat_collector.users.each((user) => {return user.id == this.interaction.user.id}));
-                    const skill = allskills.find(skill => skill.name == skillName)
-                    await this.attacker.useSkill(this.attacker,this.defender,skill)
-                    
-                    this.locker.unlock()
+                    combat_collector.users.each(async (user) => {if(user.id == this.interaction.user.id){
+                        const skill = allskills.find(skill => skill.name == skillName)
+                        await this.attacker.useSkill(this.attacker,this.defender,skill)
+                        
+                        this.locker.unlock()
+                    }})
+                   
                     
                     
                     console.log("listeners:-",combat_collector.listeners('collect'));
@@ -490,13 +492,12 @@ export class PvEDuel extends DuelBuilder {
                     await combat_collector.stop()
                     await combat_collector.removeAllListeners('collect')
                     const skillName = collected.values[0]
-                    const skill = allskills.find(skill => skill.name == skillName)
-                    await this.attacker.useSkill(this.attacker,this.defender,skill)
-                    
-                    this.locker.unlock()
-                    console.log("listeners:-",combat_collector.listeners('collect'));
-                    console.log("listerner count:-",combat_collector.listenerCount('collect'));
-                    console.log("users:-",combat_collector.users);
+                    combat_collector.users.each(async (user) => {if(user.id == this.interaction.user.id){
+                        const skill = allskills.find(skill => skill.name == skillName)
+                        await this.attacker.useSkill(this.attacker,this.defender,skill)
+                        
+                        this.locker.unlock()
+                    }})
                 })
             }
             
