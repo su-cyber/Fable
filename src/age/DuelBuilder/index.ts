@@ -456,7 +456,6 @@ class DuelBuilder {
             this.defender = a
 
             this.turn += 1
-            await profileModel.updateOne({userID:this.interaction.user.id},{combat:{options:this.attacker.scheduler.scheduler[0][0].options}})
             
         }
 
