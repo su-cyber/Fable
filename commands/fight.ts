@@ -463,28 +463,28 @@ export class PvEDuel extends DuelBuilder {
                 const combat_collector = this.interaction.channel.createMessageComponentCollector({ filter:filter_select})
                 combat_collector.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                     collected.deferUpdate().catch(() => null)
+                    await combat_collector.stop()
+                    await combat_collector.removeAllListeners('collect')
                     const skillName = collected.values[0]
                     const skill = allskills.find(skill => skill.name == skillName)
                     await this.attacker.useSkill(this.attacker,this.defender,skill)
                     
                     this.locker.unlock()
-                    combat_collector.stop()
-                    combat_collector.removeAllListeners('collect')
+
                 })
             }
             else{
                 const filter_select = (interaction : any) => interaction.user.id === this.attacker.id && interaction.customId == "combat_select"
                 const combat_collector = this.interaction.channel.createMessageComponentCollector({ filter:filter_select})
-                combat_collector.collect(this.interaction)
                 combat_collector.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                     collected.deferUpdate().catch(() => null)
+                    await combat_collector.stop()
+                    await combat_collector.removeAllListeners('collect')
                     const skillName = collected.values[0]
                     const skill = allskills.find(skill => skill.name == skillName)
                     await this.attacker.useSkill(this.attacker,this.defender,skill)
                     
                     this.locker.unlock()
-                    combat_collector.stop()
-                    combat_collector.removeAllListeners('collect')
                 })
             }
             
