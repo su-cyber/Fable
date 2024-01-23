@@ -51,7 +51,6 @@ const profileSchema = new mongoose.Schema({
     titles:{type: Array},
     current_title:{type: Array},
     mount:{type:String},
-    combat:{type: Object}
 });
 
 const model = mongoose.model('ProfileModels',profileSchema);

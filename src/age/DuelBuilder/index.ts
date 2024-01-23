@@ -299,13 +299,7 @@ class DuelBuilder {
         }
 
 
-        const filter = (interaction: any) =>
-            
-        (interaction.customId === 'run_btn' || interaction.customId === 'use_btn'|| interaction.customId === `${this.interaction.id}_selectMenuSkills` || interaction.customId === 'use_menu') &&
-        interaction.user.id === this.attacker.id
 
-        
-        let collector = this.interaction.channel.createMessageComponentCollector({ filter })
 
        
         // collector.setMaxListeners(Infinity)
@@ -313,125 +307,7 @@ class DuelBuilder {
         
         const thisThis = this
 
-        collector.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
-            
-            collected.deferUpdate().catch(() => null)
-            if(collected.customId === `${this.interaction.id}_selectMenuSkills`){
-            if(collected.values[0].startsWith(this.interaction.id)){
-                
-                const skillName = collected.values[0].split('_')[1]
-
-                if(skillName == 'Run'){
-                     this.addLogMessage(`${this.attacker.name} is trying to run away...`)
-                     sleep(2)
-                    if(this.defender instanceof MonsterEntity){
-                        if(this.attacker.evasion > this.defender.run_chance){
-                            this.run = true
-                        }
-                        else{
-                            this.addLogMessage(`${this.attacker.name} couldnt run`)
-                        }
-                    }
-                    else{
-                        this.run = true
-                    }
-                }
-                else{
-                    await this.onSkillSelect(skillName)
-                }
-                
-                this.removeCollector()
-                this.locker.unlock()
-            }
-            
-            }
-             else if(collected.customId === 'use_btn'){
-                
-                    let interaction = this.interaction
-                   
-                    inventory.findOne({userID:collected.user.id},async function(err,foundUser){
-                        const potions = foundUser.inventory.potions
-                        let potions_filtered= []
-                        
-                        let useSelect
-                    if(foundUser.inventory.potions.length === 0){
-                        useSelect = new MessageActionRow().addComponents([
-                            new MessageSelectMenu()
-                            .setCustomId('use_menu')
-                                .setPlaceholder(`Select a potion ${collected.user.username}`)
-                                .addOptions({
-                                    
-                                        label: 'None',
-                                        description: 'you are out of potions',
-                                        value: 'None',
-                                }
-                                )
-                                .setDisabled(false),
-                        ]) 
-                    }
-                    else{
-                        
-                        useSelect = new MessageActionRow().addComponents([
-                            new MessageSelectMenu()
-                            .setCustomId('use_menu')
-                                .setPlaceholder(`Select a potion ${collected.user.username}`)
-                                .addOptions(
-                                    potions.map(item => ({
-                                        label: item.name.name,
-                                        description: item.name.description,
-                                        value: item.name.name,
-                                    }))
-                                )
-                                .setDisabled(false),
-                        ])
-                    }
-               
-               
-                    interaction.editReply({components:[useSelect]})
-                
-               
-                    
-                
-                
-                })
-    
-                 
-                
- 
-            }
-            else if(collected.customId === 'use_menu'){
-                collected.deferUpdate().catch(() => null)
-                //insert potions code here
-                inventory.findOne({userID:collected.user.id},async function(err,foundUser){
-                const PotionName = collected.values[0]
-                // await thisThis.onPotionSelect(PotionName)
-                
-                
-                thisThis.locker.unlock()
-                
-                if(PotionName == 'None'){
-
-                }
-                else{
-                    const foundPotion = foundUser.inventory.potions.find(object => object.name.name === PotionName)
-                    foundPotion.quantity-=1
-                    if(foundPotion.quantity===0){
-                        const index = foundUser.inventory.potions.indexOf(foundPotion)
-                        foundUser.inventory.potions.splice(index)
-                    }
-                }
-                    
-                    await inventory.updateOne({userID:collected.user.id},foundUser)
-            })
-        }
-        })
-       
-
         
-        this.removeCollector = () => {
-            collector.removeListener('collect',onCollect.bind(thisThis))
-
-        }
 
         this.player1.beforeDuelStart(this.player1, this.player2,this.interaction)
         this.player2.beforeDuelStart(this.player2, this.player1,this.interaction)
@@ -444,7 +320,6 @@ class DuelBuilder {
         await this.beforeDuelStart()
 
         while (!(this.player1.isDead() || this.player2.isDead()) && !this.run) {
-            this.removeCollector()
             const skipTurn = await this.scheduler.run(this.attacker, this.defender)
 
             await this.onTurn(skipTurn,this.turn)
@@ -458,7 +333,6 @@ class DuelBuilder {
             this.turn += 1
         }
 
-        this.removeCollector()
         
         
         
