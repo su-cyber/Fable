@@ -469,6 +469,7 @@ export class PvEDuel extends DuelBuilder {
                     
                     this.locker.unlock()
                     combat_collector.stop()
+                    combat_collector.removeAllListeners('collect')
                 })
             }
             else{
@@ -483,6 +484,7 @@ export class PvEDuel extends DuelBuilder {
                     
                     this.locker.unlock()
                     combat_collector.stop()
+                    combat_collector.removeAllListeners('collect')
                 })
             }
             

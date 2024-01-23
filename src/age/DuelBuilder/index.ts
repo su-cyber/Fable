@@ -271,35 +271,7 @@ class DuelBuilder {
     // }
 
     async beforeDuelStart() {
-        async function onCollect(collected: MessageComponentInteraction<CacheType> & { values: string[] }) {
-            collected.deferUpdate().catch(() => null)
-            const skillName = collected.values[0]
-            
-            if(skillName == 'Run'){
-                 this.addLogMessage(`${this.attacker.name} is trying to run away...`)
-                 await sleep(2)
-                if(this.defender instanceof MonsterEntity){
-                    if(this.attacker.evasion > this.defender.run_chance){
-                        this.run = true
-                    }
-                    else{
-                        this.addLogMessage(`${this.attacker.name} couldnt run`)
-                    }
-                }
-                else{
-                    this.run = true
-                }
-            }
-            else{
-                await this.onSkillSelect(skillName)
-            }
-            
-            
-            this.locker.unlock()
-        }
-
-
-
+        
 
        
         // collector.setMaxListeners(Infinity)
