@@ -11,7 +11,7 @@
         "canvas": "^2.11.0",
         "canvas-constructor": "^7.0.0",
         "discord-api-types": "^0.29.0",
-        "discord.js": "^14.14.1",
+        "discord.js": "^13.6.0",
         "dotenv": "^16.0.0",
         "jimp": "^0.22.4",
         "lodash.chunk": "^4.2.0",
