@@ -470,6 +470,12 @@ export class PvEDuel extends DuelBuilder {
                     await this.attacker.useSkill(this.attacker,this.defender,skill)
                     
                     this.locker.unlock()
+                    console.log("listeners:-",combat_collector.listeners('collect'));
+                    console.log("listerner count:-",combat_collector.listenerCount('collect'));
+                    console.log("users:-",combat_collector.users);
+                    
+                    
+                    
 
                 })
             }
@@ -485,6 +491,9 @@ export class PvEDuel extends DuelBuilder {
                     await this.attacker.useSkill(this.attacker,this.defender,skill)
                     
                     this.locker.unlock()
+                    console.log("listeners:-",combat_collector.listeners('collect'));
+                    console.log("listerner count:-",combat_collector.listenerCount('collect'));
+                    console.log("users:-",combat_collector.users);
                 })
             }
             
