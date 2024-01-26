@@ -13,7 +13,7 @@ export default function lvl_modifier(level:number){
         return 2;
       } else {
         
-        return 0; // or another default value
+        return 2.1; // or another default value
       }
     }
     

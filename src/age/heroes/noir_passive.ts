@@ -6,6 +6,7 @@ import lvl_modifier from "../../utils/lvl_modifier"
 import { emoji } from "../../lib/utils/emoji"
 
 
+
 const noir_passive = [{
     cooldown: 0,
     name: 'Venomous Touch',
@@ -17,13 +18,13 @@ const noir_passive = [{
     element:"normal", 
     use: (attacker, defender) => {
         const venomousTouch = attacker.scheduler.task.all
-            .turns(100)
+            .turns(20)
             .end(() => {})
             .run(() =>{
                 const chance = weightedRandom([true,false],[0.5,0.5])
                 if(chance){
                     defender.takeDamage
-                    .magical(attacker.magicPower*10*lvl_modifier(attacker.level))
+                    .magical(attacker.magicPower*10*lvl_modifier(attacker.level)*calculateModifier("venom",defender.element))
                     .run(damage => `${defender.name} lost ${damage} HP by ${emoji.POISON}`)
                 }
            

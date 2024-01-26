@@ -51,6 +51,8 @@ const profileSchema = new mongoose.Schema({
     titles:{type: Array},
     current_title:{type: Array},
     mount:{type:String},
+    all_passives:{type: Array},
+    innate_passive:{type: Array}
 });
 
 const model = mongoose.model('ProfileModels',profileSchema);

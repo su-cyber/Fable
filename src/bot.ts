@@ -20,6 +20,11 @@ import mongoose from "mongoose"
 import { sleep } from './utils'
 import getHealth from './utils/getHealth'
 import { TextChannel } from 'discord.js'
+import gladius_passive from './age/heroes/gladius_passive'
+import buushin_passive from './age/heroes/buushin_passive'
+import noir_passive from './age/heroes/noir_passive'
+import magus_passive from './age/heroes/magus_passive'
+import dragoon_passive from './age/heroes/dragoon_passive'
 
 type InteractionFn = (interaction: MessageComponentInteraction & { values: string[] }) => Promise<void>
 
@@ -78,6 +83,34 @@ class Bot extends Client {
                                                         .setDescription(`You have levelled up to Level ${i}!\n\nYou have unlocked ${sp} new spyr cores inside your body!\n\nYour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP\n\nYou can now learn a new skill! use /learnnewskill`)
                                             
                                         }
+                                        else if(i == 10 || i==20 || i==30 || i==40 || i==50){
+                                            let class_passive
+                                            if(foundUser.class == "Gladius"){
+                                                class_passive = gladius_passive[i/10-1]
+                                            }
+                                            else if(foundUser.class == "Buushin"){
+                                                class_passive = buushin_passive[i/10-1]
+                                            }
+                                            else if(foundUser.class == "Noir"){
+                                                class_passive = noir_passive[i/10-1]
+                                            }
+                                            else if(foundUser.class == "Magus"){
+                                                class_passive = magus_passive[i/10-1]
+                                            }
+                                            else if(foundUser.class == "Dragoon"){
+                                                class_passive = dragoon_passive[i/10-1]
+                                            }
+                                            const newpassive = {
+                                                name:class_passive.name,
+                                                description:class_passive.description
+
+                                            }
+                                            foundUser.all_passives.push(newpassive)
+                                            levelupEmbed= new MessageEmbed()
+                                                        .setColor('RANDOM')
+                                                        .setTitle('LEVEL UP!')
+                                                        .setDescription(`You have levelled up to Level ${i}!\n\nYou have unlocked ${sp} new spyr cores inside your body!\n\nYour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP\n\nYou have unlocked a new Passive Skill! use **/listskills** to check it out!`)
+                                        }
                                         else{
                                             levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')
@@ -88,7 +121,7 @@ class Bot extends Client {
                                         }
                                         foundUser.level=foundUser.level+1
                                         foundUser.skill_points += 3
-                                        await profileSchema.updateOne({userID:userID},{level:foundUser.level,skill_points:foundUser.skill_points,mana:foundUser.mana,skill_tree:foundUser.skill_tree,vitality:foundUser.vitality,health:foundUser.health})
+                                        await profileSchema.updateOne({userID:userID},{level:foundUser.level,skill_points:foundUser.skill_points,mana:foundUser.mana,skill_tree:foundUser.skill_tree,vitality:foundUser.vitality,health:foundUser.health,all_passives:foundUser.all_passives})
                                         await sleep(1)
                                         await interaction.channel.send({embeds:[levelupEmbed]})
                                         

@@ -17,7 +17,7 @@ const buushin_passive = [{
     element:"normal", 
     use: (attacker, defender) => {
         const Regeneration = attacker.scheduler.task.all
-        .turns(100)
+        .turns(20)
         .end(() => {})
         .run(() =>{
             attacker.health += Math.round(attacker.maxHealth/16)

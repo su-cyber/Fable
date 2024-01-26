@@ -17,7 +17,7 @@ const gladius_passive = [{
     element:"normal", 
     use: (attacker, defender) => {
         const berserk = attacker.scheduler.task.attacker
-        .turns(100)
+        .turns(20)
         .end(() => {})
         .run(() =>{
             if(attacker.health < 0.5*attacker.maxHealth){

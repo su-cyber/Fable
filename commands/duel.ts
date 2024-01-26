@@ -79,7 +79,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                 attacker.speed = foundUser.speed
                                 attacker.evasion=foundUser.evasion
                                 attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
-                                attacker.passive_skills = foundUser.passiveskills
+                                attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
                                 attacker.maxMana = foundUser.mana
                                 attacker.level = foundUser.level
                                 attacker.name = `${attacker.name} ${getEmoji(attacker.element)}`
@@ -121,7 +121,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         defender.speed = foundUser.speed
                                         defender.evasion=foundUser.evasion
                                         defender.maxHealth=getHealth(foundUser.level,foundUser.vitality)
-                                        defender.passive_skills = foundUser.passiveskills
+                                        defender.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
                                         defender.maxMana = foundUser.mana
                                         defender.level = foundUser.level
                                         

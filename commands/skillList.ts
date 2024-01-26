@@ -3,6 +3,7 @@ import profileModel from '../models/profileSchema'
 import allskills from '../src/age/skills/skills'
 import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 import { getEmoji } from './fight'
+import cloneDeep from 'lodash.clonedeep'
 
 export default new MyCommandSlashBuilder({ name: 'listskills', description: 'list all your skills' }).setDo(
     async (bot, interaction) => {
@@ -30,7 +31,7 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
                                 
                             ])
                             let currentSkills = foundUser.currentskills
-                            let passiveSkills = foundUser.passiveskills
+                            let passiveSkills = foundUser.all_passives
                             let allSkills = foundUser.allskills
 
 
@@ -51,7 +52,28 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
       let CurrentEmbeds = []
       let PassiveEmbeds = []
       let AllSkillEmbeds = []
+      
+      let innate_passive = cloneDeep(foundUser.innate_passive)
+      if(innate_passive.length == 0){
+        innate_passive = [{
+            name:"None",
+            description:"None"
+        }]
+      }
+      let external_passive = cloneDeep(foundUser.passiveskills)
+      let mapped_external = external_passive.map((skill) => {
+           
+        return `__**Name**__: ${skill.name}\n__**Description**__:${skill.description}`
+    }).join("\n\n")
 
+    if(external_passive.length == 0){
+        mapped_external = `__**Name**__: None\n__**Description**__:None`
+    }
+      const passive_home = new MessageEmbed()
+      .setColor('RANDOM')
+      .setTitle('CURRENT PASSIVE SKILLS')
+      .setDescription(`### INNATE:\n\n__**Name**__:${innate_passive[0].name}\n__**Description**__:${innate_passive[0].description}\n\n### EXTERNAL:\n\n${mapped_external}`)
+      PassiveEmbeds.push(passive_home)
       chunkedCurrent.map((data) => {
         const current=data.map((skill) => {
             let use
@@ -82,7 +104,7 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
         }).join("\n\n")
         const newEmbed = new MessageEmbed()
         .setColor('RANDOM')
-        .setTitle('PASSIVE SKILLS')
+        .setTitle('AVAILABLE PASSIVE SKILLS')
         .setDescription(`${passive}`)
         PassiveEmbeds.push(newEmbed)
          

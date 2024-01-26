@@ -12,7 +12,7 @@ const other_passive_skills = [
         element:"normal",
         use: (attacker, defender) => {
             const Regeneration = attacker.scheduler.task.all
-                .turns(1000)
+                .turns(20)
                 .end(() => {})
                 .run(() =>{
                     attacker.health += 5

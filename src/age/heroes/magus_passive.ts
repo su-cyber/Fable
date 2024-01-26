@@ -17,7 +17,7 @@ const magus_passive = [{
     element:"normal", 
     use: (attacker, defender) => {
         const prodigy = attacker.scheduler.task.attacker
-        .turns(100)
+        .turns(20)
         .end(() => {})
         .run(() =>{
             
