@@ -7,6 +7,6 @@ import noir_passive from "./noir_passive";
 import other_passive_skills from "./passive_skills";
 
 
-const passive_skills = other_passive_skills.concat(noir_passive,buushin_passive,gladius_passive,magus_passive,dragoon_passive)
+const passive_skills = other_passive_skills.concat(buushin_passive,gladius_passive,magus_passive,dragoon_passive,noir_passive)
 
 export default passive_skills
