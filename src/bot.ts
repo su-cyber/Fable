@@ -109,7 +109,7 @@ class Bot extends Client {
                                             levelupEmbed= new MessageEmbed()
                                                         .setColor('RANDOM')
                                                         .setTitle('LEVEL UP!')
-                                                        .setDescription(`You have levelled up to Level ${i}!\n\nYou have unlocked ${sp} new spyr cores inside your body!\n\nYour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP\n\nYou have unlocked a new Passive Skill! use **/listskills** to check it out!`)
+                                                        .setDescription(`You have levelled up to Level ${i}!\n\nYou have unlocked ${sp} new spyr cores inside your body!\n\nYour Maximum health has been increased to ${getHealth(i,foundUser.vitality)}HP\n\nYou have unlocked a new Innate Passive Skill! use **/listskills** to check it out! You can Equip your innate skill with **/equipinnate**.`)
                                         }
                                         else{
                                             levelupEmbed= new MessageEmbed()
