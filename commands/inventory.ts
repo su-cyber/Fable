@@ -52,7 +52,12 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
       const chunkedPotions = chunkArray(playerPotions,5);
 
       const strongest_Weapons = findHighestDamageWeapons(playerWeapons)
-      console.log(strongest_Weapons);
+     if(strongest_Weapons.melee.length == 0){
+        strongest_Weapons.melee.push({name:{name:'None'}})
+     }
+     if(strongest_Weapons.ranged.length == 0){
+        strongest_Weapons.ranged.push({name:{name:'None'}})
+     }
       
       let weaponEmbeds = []
       let ArmourEmbeds = []
