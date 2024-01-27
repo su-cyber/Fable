@@ -4290,17 +4290,17 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     else if(location == 'Kafig'){
                         if(foundUser.coins >=100 && foundUser.mount == "None"){
                             await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
-                        const attachment = new MessageAttachment('assets/Kafig/kafig_main.jpg')
+                        const attachment = new MessageAttachment('assets/Kafig/kafig_main.jpeg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://kafig_main.jpg')
+                        .setImage('attachment://kafig_main.jpeg')
                         .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for magical flying beasts, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\nuse **/explore** to explore this location`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                        const attachment = new MessageAttachment('assets/Kafig/kafig_main.jpg')
+                        const attachment = new MessageAttachment('assets/Kafig/kafig_main.jpeg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
