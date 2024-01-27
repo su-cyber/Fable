@@ -51,6 +51,7 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
       const chunkedItems = chunkArray(playerItems,5);
       const chunkedPotions = chunkArray(playerPotions,5);
 
+      const strongest_Weapons = findHighestDamageWeapons(playerWeapons)
       let weaponEmbeds = []
       let ArmourEmbeds = []
       let ItemEmbeds = []
@@ -63,7 +64,7 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
         const newEmbed = new MessageEmbed()
         .setColor('RANDOM')
         .setTitle('WEAPONS')
-        .setDescription(`${weapons}`)
+        .setDescription(`**Strongest Melee Weapon:** ${strongest_Weapons.melee[0].name.name}\n**Strongest Ranged Weapon:** ${strongest_Weapons.ranged[0].name.name}\n\n### Available Weapons:\n\n${weapons}`)
         weaponEmbeds.push(newEmbed)
          
       })
@@ -186,3 +187,39 @@ interaction.deleteReply()
 
       
     })
+
+
+    function findHighestDamageWeapons(weaponsArray) {
+        const result = {
+            melee: [],
+            ranged: [],
+        };
+    
+        let highestMeleeDamage = 0;
+        let highestRangedDamage = 0;
+    
+        // Find the highest damage for each type
+        weaponsArray.forEach(weapon => {
+            const { type, damage } = weapon.name;
+    
+            if (type === 'melee' && damage > highestMeleeDamage) {
+                highestMeleeDamage = damage;
+            } else if (type === 'ranged' && damage > highestRangedDamage) {
+                highestRangedDamage = damage;
+            }
+        });
+    
+        // Find weapons with the highest damage for each type
+        weaponsArray.forEach(weapon => {
+            const { type, damage } = weapon.name;
+    
+            if (type === 'melee' && damage === highestMeleeDamage) {
+                result.melee.push(weapon);
+            } else if (type === 'ranged' && damage === highestRangedDamage) {
+                result.ranged.push(weapon);
+            }
+        });
+    
+        return result;
+    }
+    

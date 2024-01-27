@@ -69,7 +69,7 @@ const other_passive_skills = [
         element:"normal", 
         use: (attacker, defender) => {
             const goblinSummon = attacker.scheduler.task.all
-                .turns(100)
+                .turns(20)
                 .end(() => {})
                 .run(() =>{
                 defender.takeDamage
