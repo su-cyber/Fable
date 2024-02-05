@@ -675,6 +675,84 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                            
                                            
                                         }
+                                        else if(foundUser.city_town == "Kafig"){
+                                            if(foundUser.location == "Avian Square"){
+                                                dialogue = [
+                                                    `Dora: "Welcome to Kafig, traveler! Did you know that our town is famous for its Avian Spyriths? We believe they are descendants of the mighty Radohn, the ruler of skies. It's a sight to behold when they take to the air!"`,
+                                                    `Evanko: "You seem to be a Ranger, did you try venturing into Asche Peak? The soil there has turned to soot and radiates intense heat.The legend that Radohn slumbers in Asche Peak might as well be true!"`,
+                                                    `Amelia : "Ah, the Avian Square! It's the heart of our town, where we gather to honor Radohn. We leave offerings at the statue's feet to show our respect. The legend says Radohn's flames turned Asche Peak black, giving it a mystical aura."`
+ 
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "the Guilded Cage"){
+                                                dialogue = [
+                                                    `Leif [Bartender]: "Welcome to The Gilded Cage, Ranger. Care for a drink? Our tavern has been a gathering place for rangers and locals alike for generations. Sit back, relax, and let the tales of Kafig wash over you like the wind through Radohn's wings."`,
+                                                    `Nora: "You know, Orin was a true legend around these parts. The stories say he had an uncanny bond with Avian Spyriths, like no other beastmaster. With Radohn's blessings, he commanded the skies and was the founder of our township. His bravery still echoes in our hearts."`,
+                                                    `Felix: "Ya ever heard of Basil, the Vice Master of Eterna Guild? They're a force to be reckoned with, even among the S Grades. I've seen him fight…His skills are unmatched, his technique feels like he is the incarnation of Radohn Himself! No wonder they gave him the Ephitet of "Demon Bird".`,
+                                                    `Danna [Bard]:\n"In the realm of Vearth, a tale to be told,\nOf a hero named Orin, brave and bold.\nWith Avian Spyriths, he took to the skies,\nProtector of Kafig, where legends arise.\n\nOh, Orin, master of the winged domain,\nWith Radohn's grace, he ruled without restrain.\nThrough battles and storms, he stood tall,\nA beacon of hope for one and all."`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Cloud Haven"){
+                                                dialogue = [
+                                                    `Lucas: "Are you visiting the Cloud Haven for the first time? It's a remarkable cylindrical building that resembles a giant bird cage. Many exotic Spyriths find refuge there, coming from Asche Peak or even migrating from distant lands. It's a testament to our town's love for these magnificent creatures."`,
+                                                    `Sophie: "If you're looking for a thrilling adventure, try forging a spyralink contract in the Cloud Haven! Rangers visit there to bond with the fantastic Avian Spyriths and gain a loyal companion for their travels. But be warned, it's not an easy task and requires great skill."`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Radohn Roost"){
+                                                dialogue = [
+                                                    `Bella: "Have you come to seek solace in the warm flames of Radohn? this place is a sacred place with small shrines dedicated to Radohn. Climb the steep steps and reach the main altar with an eternal flame, symbolizing Radohn's eternal rule over the skies. The view from there is breathtaking."`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Kafig Guild Outpost"){
+                                                dialogue = [
+                                                    `Hedge: "We take great pride in our own Basil, the Vice Master of Eterna Guild. Basil is a prodigy and one of the strongest rangers you'll ever meet. Born and raised right here in Kafig, the town cherishes and celebrates their achievements. It's a testament to the strength and spirit of our community."`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                        }
                                         
                                         else{
                                             dialogueembed = new MessageEmbed()
