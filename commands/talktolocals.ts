@@ -1,7 +1,7 @@
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
-import {MessageEmbed} from 'discord.js'
 import sample from 'lodash.sample'
+import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 
 export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 'talk to the locals of the place' }).setDo(
     async (bot, interaction) => {
@@ -30,17 +30,30 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                     interaction.reply({content:`You cannot use this command inside a dungeon!`,ephemeral:true})
                                    }
                                    else{
+                                    let btnraw= new MessageActionRow().addComponents([
+                                        new MessageButton().setCustomId("backward").setStyle("PRIMARY").setLabel("⏪"),
+                                        new MessageButton().setCustomId("stop").setStyle("DANGER").setLabel("stop"),
+                                        new MessageButton().setCustomId("forward").setStyle("PRIMARY").setLabel("⏩"),
+                                        
+                                    ])
                                     let dialogue
                                     let dialogueembed
+                                    let totalEmbeds = []
                                     if(foundUser.kingdom == "solarstrio"){
                                         if(foundUser.city_town == "aube"){
                                             if(foundUser.location == "The Terrific Troll Tavern"){
-                                                dialogue = sample([
+                                                dialogue = [
                                                     `Lafe: “The “Backbreaker” is the most famous choice of drink in all of Solarstrio, with its name originating from the fact that it takes away the ability to walk straight of even the sturdiest of Crofters and has at times, even knocked them out completely.”`,
                                                     `Hecuba: “Did you know that the Radiantura’s hooves glow in the dark? This allows the Radiantura to navigate through the dark, making it a popular animal among the people here in Aube Town, who often use them for transportation at night.`,
                                                     `Marcoh: I often come here to chat with Guild Rangers. That is because it is law that Tavern Owners must provide free food and lodging to Rangers who are passing by. Rangers use Taverns to rest up and heal. I mean, look at yourself, don’t you feel refreshed already?\n**[You can visit Taverns to heal yourself fully, You can visit them indefinitely.]**`
-                                                ])
-                                                
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
                                                 
                                                 }
                                             else if (foundUser.location == "The Lager Estate"){
@@ -90,10 +103,7 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                             else{
                                                 dialogue = `Unfortutanely no one could be found to talk in the proximity!`
                                             }
-                                            dialogueembed = new MessageEmbed()
-                                                    .setColor('RANDOM')
-                                                    .setTitle('Dialogue Initiated')
-                                                    .setDescription(`${dialogue}`)
+                                            
                                         }
                                         else if(foundUser.city_town == "ellior"){
                                             dialogueembed = new MessageEmbed()
@@ -407,8 +417,53 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                         }
                                     }
                                     
-                                   
-                                    await interaction.reply({embeds:[dialogueembed]});
+                                    let filter = i => i.user.id === authorId
+                                    let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 300})
+                                    for(let j =0;j<totalEmbeds.length;j++){
+                                        totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
+                                    }
+                                    await interaction.deferReply()
+                                    await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw]})
+                                    let count = 0
+                                    collector.on('collect', async i => {
+                                        if(i.customId === 'forward'){
+                                            await i.deferUpdate().catch(e => {})
+                                            if(count== totalEmbeds.length-1){
+                                                count=0
+                                            }
+                                            else{
+                                                count +=1
+                                            }
+                                            
+                                            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw]})
+                                        }
+                                        else if(i.customId === 'backward'){
+                                            await i.deferUpdate().catch(e => {})
+                                            if(count== 0){
+                                                count=totalEmbeds.length-1
+                                            }
+                                            else{
+                                                count-=1
+                                            }
+                                            
+                                            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw]})
+                                
+                                        }
+                                        else if(i.customId === 'stop'){
+                                            collector.stop()
+                                            
+                                        }
+                                        else{
+                                
+                                        }
+                                
+                                  
+                                    
+                                    })
+                                
+                                collector.on('end', () => {
+                                interaction.deleteReply()
+                                })
                                    }
                             }
                             
