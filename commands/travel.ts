@@ -206,7 +206,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Castellan_Fields.jpeg')
-                        .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 2**`)
+                        .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\n\n\n**Recommeded Level: 2**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'The Badlands'){
@@ -216,7 +216,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Badlands.jpg')
-                        .setDescription(`As your gaze falls upon the Badlands in Aube Town, you behold a scorching desert realm where relentless heat engulfs the treacherous landscape, concealing untold secrets and lurking death at every precarious step, warning you of the unforgiving nature of this desolate domain.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As your gaze falls upon the Badlands in Aube Town, you behold a scorching desert realm where relentless heat engulfs the treacherous landscape, concealing untold secrets and lurking death at every precarious step, warning you of the unforgiving nature of this desolate domain.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sunshade Forest'){
@@ -226,7 +226,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunshade_forest.jpg')
-                        .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 2**`)
+                        .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\n\n\n**Recommeded Level: 2**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Zorya'){
@@ -238,7 +238,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
-                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                             }
                         else if(foundUser.mount != "None"){
@@ -248,7 +248,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
-                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else{
@@ -275,7 +275,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Terrific_Troll_Tavern.jpg')
-                    .setDescription(`As you cast your gaze upon the Terrific Troll Tavern in Aube Town, you witness a haven where both the burdened find solace, and the troubled find empathy, as laughter intertwines with heartfelt tales, creating an atmosphere that embraces both escapism and catharsis.You take a room at the Tavern and rest.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you cast your gaze upon the Terrific Troll Tavern in Aube Town, you witness a haven where both the burdened find solace, and the troubled find empathy, as laughter intertwines with heartfelt tales, creating an atmosphere that embraces both escapism and catharsis.You take a room at the Tavern and rest.\n\n`)
                     await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
@@ -285,7 +285,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Lager_Estate.jpg')
-                    .setDescription(`As your eyes wander across the Lager Estate in Aube Town, you witness the renowned Lager family's brewers diligently crafting the legendary "Backbreaker Beer" using Solarcorn, a golden elixir that glows with the sun's essence, immersing you in a realm of tantalizing tastes and its twisted aftermath.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As your eyes wander across the Lager Estate in Aube Town, you witness the renowned Lager family's brewers diligently crafting the legendary "Backbreaker Beer" using Solarcorn, a golden elixir that glows with the sun's essence, immersing you in a realm of tantalizing tastes and its twisted aftermath.\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == `Crofter's Market`){
@@ -294,7 +294,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Crofters_Market.jpg')
-                    .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                    .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Aube Town Guild Outpost'){
@@ -303,7 +303,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Aube_outpost.jpg')
-                    .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of magical beasts and bandits, while the air hums with a sense of shared purpose and safety\n\nuse **/explore** to explore this location`)
+                    .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of magical beasts and bandits, while the air hums with a sense of shared purpose and safety\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Town Centre'){
@@ -312,7 +312,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Town_Centre.jpg')
-                    .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Abandoned Castle'){
@@ -321,7 +321,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Abandoned_Castle.jpg')
-                    .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 collector_select.stop()
@@ -525,7 +525,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Aube_Town.jpg')
-                        .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'The Badlands'){
@@ -535,7 +535,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Badlands.jpg')
-                        .setDescription(`As your gaze falls upon the Badlands in Aube Town, you behold a scorching desert realm where relentless heat engulfs the treacherous landscape, concealing untold secrets and lurking death at every precarious step, warning you of the unforgiving nature of this desolate domain.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As your gaze falls upon the Badlands in Aube Town, you behold a scorching desert realm where relentless heat engulfs the treacherous landscape, concealing untold secrets and lurking death at every precarious step, warning you of the unforgiving nature of this desolate domain.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sunshade Forest'){
@@ -545,7 +545,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunshade_forest.jpg')
-                        .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 2**`)
+                        .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\n\n\n**Recommeded Level: 2**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
@@ -561,7 +561,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Terrific_Troll_Tavern.jpg')
-                    .setDescription(`As you cast your gaze upon the Terrific Troll Tavern in Aube Town, you witness a haven where both the burdened find solace, and the troubled find empathy, as laughter intertwines with heartfelt tales, creating an atmosphere that embraces both escapism and catharsis.You take a room at the Tavern and rest.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you cast your gaze upon the Terrific Troll Tavern in Aube Town, you witness a haven where both the burdened find solace, and the troubled find empathy, as laughter intertwines with heartfelt tales, creating an atmosphere that embraces both escapism and catharsis.You take a room at the Tavern and rest.\n\n`)
                     await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
@@ -571,7 +571,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Lager_Estate.jpg')
-                    .setDescription(`As your eyes wander across the Lager Estate in Aube Town, you witness the renowned Lager family's brewers diligently crafting the legendary "Backbreaker Beer" using Solarcorn, a golden elixir that glows with the sun's essence, immersing you in a realm of tantalizing tastes and its twisted aftermath.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As your eyes wander across the Lager Estate in Aube Town, you witness the renowned Lager family's brewers diligently crafting the legendary "Backbreaker Beer" using Solarcorn, a golden elixir that glows with the sun's essence, immersing you in a realm of tantalizing tastes and its twisted aftermath.\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == `Crofter's Market`){
@@ -580,7 +580,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Crofters_Market.jpg')
-                    .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                    .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Aube Town Guild Outpost'){
@@ -589,7 +589,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Aube_outpost.jpg')
-                    .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of magical beasts and bandits, while the air hums with a sense of shared purpose and safety\n\nuse **/explore** to explore this location`)
+                    .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of magical beasts and bandits, while the air hums with a sense of shared purpose and safety\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Town Centre'){
@@ -598,7 +598,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Town_Centre.jpg')
-                    .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Abandoned Castle'){
@@ -607,7 +607,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Abandoned_Castle.jpg')
-                    .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 collector_select.stop()
@@ -811,7 +811,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Aube_Town.jpg')
-                        .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'The Badlands'){
@@ -821,7 +821,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Badlands.jpg')
-                        .setDescription(`As your gaze falls upon the Badlands in Aube Town, you behold a scorching desert realm where relentless heat engulfs the treacherous landscape, concealing untold secrets and lurking death at every precarious step, warning you of the unforgiving nature of this desolate domain.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As your gaze falls upon the Badlands in Aube Town, you behold a scorching desert realm where relentless heat engulfs the treacherous landscape, concealing untold secrets and lurking death at every precarious step, warning you of the unforgiving nature of this desolate domain.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Castellan Fields'){
@@ -831,7 +831,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Castellan_Fields.jpeg')
-                        .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 2**`)
+                        .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\n\n\n**Recommeded Level: 2**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
@@ -847,7 +847,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Terrific_Troll_Tavern.jpg')
-                    .setDescription(`As you cast your gaze upon the Terrific Troll Tavern in Aube Town, you witness a haven where both the burdened find solace, and the troubled find empathy, as laughter intertwines with heartfelt tales, creating an atmosphere that embraces both escapism and catharsis.You take a room at the Tavern and rest.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you cast your gaze upon the Terrific Troll Tavern in Aube Town, you witness a haven where both the burdened find solace, and the troubled find empathy, as laughter intertwines with heartfelt tales, creating an atmosphere that embraces both escapism and catharsis.You take a room at the Tavern and rest.\n\n`)
                     await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
@@ -857,7 +857,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Lager_Estate.jpg')
-                    .setDescription(`As your eyes wander across the Lager Estate in Aube Town, you witness the renowned Lager family's brewers diligently crafting the legendary "Backbreaker Beer" using Solarcorn, a golden elixir that glows with the sun's essence, immersing you in a realm of tantalizing tastes and its twisted aftermath.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As your eyes wander across the Lager Estate in Aube Town, you witness the renowned Lager family's brewers diligently crafting the legendary "Backbreaker Beer" using Solarcorn, a golden elixir that glows with the sun's essence, immersing you in a realm of tantalizing tastes and its twisted aftermath.\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == `Crofter's Market`){
@@ -866,7 +866,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Crofters_Market.jpg')
-                    .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                    .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Aube Town Guild Outpost'){
@@ -875,7 +875,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Aube_outpost.jpg')
-                    .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of magical beasts and bandits, while the air hums with a sense of shared purpose and safety\n\nuse **/explore** to explore this location`)
+                    .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of magical beasts and bandits, while the air hums with a sense of shared purpose and safety\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Town Centre'){
@@ -884,7 +884,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Town_Centre.jpg')
-                    .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Abandoned Castle'){
@@ -893,7 +893,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Abandoned_Castle.jpg')
-                    .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 collector_select.stop()
@@ -1096,7 +1096,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Aube_Town.jpg')
-                        .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sunshade Forest'){
@@ -1106,7 +1106,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunshade_forest.jpg')
-                        .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 2**`)
+                        .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\n\n\n**Recommeded Level: 2**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Castellan Fields'){
@@ -1116,7 +1116,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Castellan_Fields.jpeg')
-                        .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 2**`)
+                        .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\n\n\n**Recommeded Level: 2**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
@@ -1132,7 +1132,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Terrific_Troll_Tavern.jpg')
-                    .setDescription(`As you cast your gaze upon the Terrific Troll Tavern in Aube Town, you witness a haven where both the burdened find solace, and the troubled find empathy, as laughter intertwines with heartfelt tales, creating an atmosphere that embraces both escapism and catharsis.You take a room at the Tavern and rest.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you cast your gaze upon the Terrific Troll Tavern in Aube Town, you witness a haven where both the burdened find solace, and the troubled find empathy, as laughter intertwines with heartfelt tales, creating an atmosphere that embraces both escapism and catharsis.You take a room at the Tavern and rest.\n\n`)
                     await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
@@ -1142,7 +1142,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Lager_Estate.jpg')
-                    .setDescription(`As your eyes wander across the Lager Estate in Aube Town, you witness the renowned Lager family's brewers diligently crafting the legendary "Backbreaker Beer" using Solarcorn, a golden elixir that glows with the sun's essence, immersing you in a realm of tantalizing tastes and its twisted aftermath.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As your eyes wander across the Lager Estate in Aube Town, you witness the renowned Lager family's brewers diligently crafting the legendary "Backbreaker Beer" using Solarcorn, a golden elixir that glows with the sun's essence, immersing you in a realm of tantalizing tastes and its twisted aftermath.\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == `Crofter's Market`){
@@ -1151,7 +1151,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Crofters_Market.jpg')
-                    .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                    .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Aube Town Guild Outpost'){
@@ -1160,7 +1160,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Aube_outpost.jpg')
-                    .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of magical beasts and bandits, while the air hums with a sense of shared purpose and safety\n\nuse **/explore** to explore this location`)
+                    .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of magical beasts and bandits, while the air hums with a sense of shared purpose and safety\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Town Centre'){
@@ -1169,7 +1169,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Town_Centre.jpg')
-                    .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 else if(location == 'Abandoned Castle'){
@@ -1178,7 +1178,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setColor('RANDOM')
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Abandoned_Castle.jpg')
-                    .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\nuse **/explore** to explore this location`)
+                    .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\n`)
                     await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                 }
                 collector_select.stop()
@@ -1494,7 +1494,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Aube_Town.jpg')
-                        .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else if(foundUser.mount != "None"){
@@ -1504,7 +1504,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Aube_Town.jpg')
-                        .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else{
@@ -1519,7 +1519,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://ellior_forest.jpg')
-                        .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 5**`)
+                        .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\n\n\n**Recommeded Level: 5**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == `Dragon's Den`){
@@ -1529,7 +1529,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dragon_den.jpg')
-                        .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 7**`)
+                        .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\n\n\n**Recommeded Level: 7**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sunstone Mines'){
@@ -1539,7 +1539,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunstone_mines.jpg')
-                        .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Zephyr Mountain'){
@@ -1549,7 +1549,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zephyr_mountain.jpg')
-                        .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Tethys'){
@@ -1579,7 +1579,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://orld_husk.jpg')
-                        .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\nuse **/explore** to explore this location`)
+                        .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Werfall'){
@@ -1646,7 +1646,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://guild_district.jpg')
-                        .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Guild Office'){
@@ -1657,7 +1657,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://guild_office.jpg')
-                            .setDescription(`you visited a random ${location} but were restricted entry by the Guards\n\nuse **/explore** to explore this location`)
+                            .setDescription(`you visited a random ${location} but were restricted entry by the Guards\n\n`)
                              
                         }
                         else{
@@ -1665,7 +1665,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://guild_office.jpg')
-                            .setDescription(`you visited ${foundUser.guild}'s ${location}, As you enter the guild hall, you observe a bustling atmosphere filled with Rangers of varying ranks. The walls are adorned with faded banners and worn-out mission reports, a testament to the guild's history. The sound of camaraderie and training drills fills the air, as Rangers of different divisions hone their skills. Despite the lack of grandeur, there is an undeniable sense of determination and unity among the members, each striving to prove their worth and make their mark in the Ranger Association.\n\nuse **/explore** to explore this location.\n\n**use /questboard to view the Questboard**`)
+                            .setDescription(`you visited ${foundUser.guild}'s ${location}, As you enter the guild hall, you observe a bustling atmosphere filled with Rangers of varying ranks. The walls are adorned with faded banners and worn-out mission reports, a testament to the guild's history. The sound of camaraderie and training drills fills the air, as Rangers of different divisions hone their skills. Despite the lack of grandeur, there is an undeniable sense of determination and unity among the members, each striving to prove their worth and make their mark in the Ranger Association.\n\n.\n\n**use /questboard to view the Questboard**`)
                              
                         }
                         await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
@@ -1686,7 +1686,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://astro_avenue.jpg')
-                        .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Golden Terminal'){
@@ -1695,7 +1695,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://golden_terminal.jpg')
-                        .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Castle Luminar'){
@@ -1704,7 +1704,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://castle_chariots.jpg')
-                        .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\nuse **/explore** to explore this location`)
+                        .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Siewelle Port'){
@@ -1713,7 +1713,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://siewelle_port.jpg')
-                        .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                        .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Black Market'){
@@ -1722,7 +1722,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://black_market.jpg')
-                        .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                        .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sun Archives'){
@@ -1731,7 +1731,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sun_archives.jpg')
-                        .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Cloud Gardens'){
@@ -1740,7 +1740,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://cloud_gardens.jpg')
-                        .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                 collector_select.stop()
@@ -2002,7 +2002,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
-                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == `Dragon's Den`){
@@ -2012,7 +2012,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dragon_den.jpg')
-                        .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 7**`)
+                        .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\n\n\n**Recommeded Level: 7**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Zephyr Mountain'){
@@ -2022,7 +2022,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zephyr_mountain.jpg')
-                        .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sunstone Mines'){
@@ -2032,7 +2032,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunstone_mines.jpg')
-                        .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Orld Tree Husk'){
@@ -2042,7 +2042,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://orld_husk.jpg')
-                        .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\nuse **/explore** to explore this location`)
+                        .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
@@ -2059,7 +2059,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://guild_district.jpg')
-                        .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Guild Office'){
@@ -2070,7 +2070,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://guild_office.jpg')
-                            .setDescription(`you visited a random ${location} but were restricted entry by the Guards\n\nuse **/explore** to explore this location`)
+                            .setDescription(`you visited a random ${location} but were restricted entry by the Guards\n\n`)
                              
                         }
                         else{
@@ -2078,7 +2078,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://guild_office.jpg')
-                            .setDescription(`you visited ${foundUser.guild}'s ${location}, As you enter the guild hall, you observe a bustling atmosphere filled with Rangers of varying ranks. The walls are adorned with faded banners and worn-out mission reports, a testament to the guild's history. The sound of camaraderie and training drills fills the air, as Rangers of different divisions hone their skills. Despite the lack of grandeur, there is an undeniable sense of determination and unity among the members, each striving to prove their worth and make their mark in the Ranger Association.\n\nuse **/explore** to explore this location.\n\n**use /questboard to view the Questboard**`)
+                            .setDescription(`you visited ${foundUser.guild}'s ${location}, As you enter the guild hall, you observe a bustling atmosphere filled with Rangers of varying ranks. The walls are adorned with faded banners and worn-out mission reports, a testament to the guild's history. The sound of camaraderie and training drills fills the air, as Rangers of different divisions hone their skills. Despite the lack of grandeur, there is an undeniable sense of determination and unity among the members, each striving to prove their worth and make their mark in the Ranger Association.\n\n.\n\n**use /questboard to view the Questboard**`)
                              
                         }
                         await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
@@ -2099,7 +2099,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://astro_avenue.jpg')
-                        .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Golden Terminal'){
@@ -2108,7 +2108,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://golden_terminal.jpg')
-                        .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Castle Luminar'){
@@ -2117,7 +2117,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://castle_chariots.jpg')
-                        .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\nuse **/explore** to explore this location`)
+                        .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Siewelle Port'){
@@ -2126,7 +2126,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://siewelle_port.jpg')
-                        .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                        .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Black Market'){
@@ -2135,7 +2135,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://black_market.jpg')
-                        .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                        .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sun Archives'){
@@ -2144,7 +2144,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sun_archives.jpg')
-                        .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Cloud Gardens'){
@@ -2153,7 +2153,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://cloud_gardens.jpg')
-                        .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                 collector_select.stop()
@@ -2416,7 +2416,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
-                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'ellior'){
@@ -2426,7 +2426,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://ellior_forest.jpg')
-                        .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 5**`)
+                        .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\n\n\n**Recommeded Level: 5**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Zephyr Mountain'){
@@ -2436,7 +2436,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zephyr_mountain.jpg')
-                        .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sunstone Mines'){
@@ -2446,7 +2446,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunstone_mines.jpg')
-                        .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Orld Tree Husk'){
@@ -2456,7 +2456,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://orld_husk.jpg')
-                        .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\nuse **/explore** to explore this location`)
+                        .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
@@ -2473,7 +2473,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://guild_district.jpg')
-                        .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Guild Office'){
@@ -2484,7 +2484,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://guild_office.jpg')
-                            .setDescription(`you visited a random ${location} but were restricted entry by the Guards\n\nuse **/explore** to explore this location`)
+                            .setDescription(`you visited a random ${location} but were restricted entry by the Guards\n\n`)
                              
                         }
                         else{
@@ -2492,7 +2492,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://guild_office.jpg')
-                            .setDescription(`you visited ${foundUser.guild}'s ${location}, As you enter the guild hall, you observe a bustling atmosphere filled with Rangers of varying ranks. The walls are adorned with faded banners and worn-out mission reports, a testament to the guild's history. The sound of camaraderie and training drills fills the air, as Rangers of different divisions hone their skills. Despite the lack of grandeur, there is an undeniable sense of determination and unity among the members, each striving to prove their worth and make their mark in the Ranger Association.\n\nuse **/explore** to explore this location.\n\n**use /questboard to view the Questboard**`)
+                            .setDescription(`you visited ${foundUser.guild}'s ${location}, As you enter the guild hall, you observe a bustling atmosphere filled with Rangers of varying ranks. The walls are adorned with faded banners and worn-out mission reports, a testament to the guild's history. The sound of camaraderie and training drills fills the air, as Rangers of different divisions hone their skills. Despite the lack of grandeur, there is an undeniable sense of determination and unity among the members, each striving to prove their worth and make their mark in the Ranger Association.\n\n.\n\n**use /questboard to view the Questboard**`)
                              
                         }
                         await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
@@ -2513,7 +2513,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://astro_avenue.jpg')
-                        .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Golden Terminal'){
@@ -2522,7 +2522,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://golden_terminal.jpg')
-                        .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Castle Luminar'){
@@ -2531,7 +2531,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://castle_chariots.jpg')
-                        .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\nuse **/explore** to explore this location`)
+                        .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Siewelle Port'){
@@ -2540,7 +2540,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://siewelle_port.jpg')
-                        .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                        .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Black Market'){
@@ -2549,7 +2549,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://black_market.jpg')
-                        .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                        .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sun Archives'){
@@ -2558,7 +2558,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sun_archives.jpg')
-                        .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Cloud Gardens'){
@@ -2567,7 +2567,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://cloud_gardens.jpg')
-                        .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                 collector_select.stop()
@@ -2828,7 +2828,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
-                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'ellior'){
@@ -2838,7 +2838,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://ellior_forest.jpg')
-                        .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 5**`)
+                        .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\n\n\n**Recommeded Level: 5**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Zephyr Mountain'){
@@ -2848,7 +2848,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zephyr_mountain.jpg')
-                        .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == `Dragon's Den`){
@@ -2858,7 +2858,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dragon_den.jpg')
-                        .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 7**`)
+                        .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\n\n\n**Recommeded Level: 7**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Orld Tree Husk'){
@@ -2868,7 +2868,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://orld_husk.jpg')
-                        .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\nuse **/explore** to explore this location`)
+                        .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
@@ -2885,7 +2885,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://guild_district.jpg')
-                        .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Guild Office'){
@@ -2896,7 +2896,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://guild_office.jpg')
-                            .setDescription(`you visited a random ${location} but were restricted entry by the Guards\n\nuse **/explore** to explore this location`)
+                            .setDescription(`you visited a random ${location} but were restricted entry by the Guards\n\n`)
                              
                         }
                         else{
@@ -2904,7 +2904,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://guild_office.jpg')
-                            .setDescription(`you visited ${foundUser.guild}'s ${location}, As you enter the guild hall, you observe a bustling atmosphere filled with Rangers of varying ranks. The walls are adorned with faded banners and worn-out mission reports, a testament to the guild's history. The sound of camaraderie and training drills fills the air, as Rangers of different divisions hone their skills. Despite the lack of grandeur, there is an undeniable sense of determination and unity among the members, each striving to prove their worth and make their mark in the Ranger Association.\n\nuse **/explore** to explore this location.\n\n**use /questboard to view the Questboard**`)
+                            .setDescription(`you visited ${foundUser.guild}'s ${location}, As you enter the guild hall, you observe a bustling atmosphere filled with Rangers of varying ranks. The walls are adorned with faded banners and worn-out mission reports, a testament to the guild's history. The sound of camaraderie and training drills fills the air, as Rangers of different divisions hone their skills. Despite the lack of grandeur, there is an undeniable sense of determination and unity among the members, each striving to prove their worth and make their mark in the Ranger Association.\n\n.\n\n**use /questboard to view the Questboard**`)
                              
                         }
                         await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
@@ -2925,7 +2925,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://astro_avenue.jpg')
-                        .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Golden Terminal'){
@@ -2934,7 +2934,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://golden_terminal.jpg')
-                        .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Castle Luminar'){
@@ -2943,7 +2943,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://castle_chariots.jpg')
-                        .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\nuse **/explore** to explore this location`)
+                        .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Siewelle Port'){
@@ -2952,7 +2952,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://siewelle_port.jpg')
-                        .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                        .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Black Market'){
@@ -2961,7 +2961,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://black_market.jpg')
-                        .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                        .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sun Archives'){
@@ -2970,7 +2970,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sun_archives.jpg')
-                        .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Cloud Gardens'){
@@ -2979,7 +2979,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://cloud_gardens.jpg')
-                        .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                 collector_select.stop()
@@ -3242,7 +3242,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
-                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'ellior'){
@@ -3252,7 +3252,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://ellior_forest.jpg')
-                        .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 5**`)
+                        .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\n\n\n**Recommeded Level: 5**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sunstone Mines'){
@@ -3262,7 +3262,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunstone_mines.jpg')
-                        .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == `Dragon's Den`){
@@ -3272,7 +3272,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dragon_den.jpg')
-                        .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 7**`)
+                        .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\n\n\n**Recommeded Level: 7**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Orld Tree Husk'){
@@ -3282,7 +3282,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://orld_husk.jpg')
-                        .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\nuse **/explore** to explore this location`)
+                        .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
@@ -3299,7 +3299,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://guild_district.jpg')
-                        .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Guild Office'){
@@ -3310,7 +3310,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://guild_office.jpg')
-                            .setDescription(`you visited a random ${location} but were restricted entry by the Guards\n\nuse **/explore** to explore this location`)
+                            .setDescription(`you visited a random ${location} but were restricted entry by the Guards\n\n`)
                              
                         }
                         else{
@@ -3318,7 +3318,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://guild_office.jpg')
-                            .setDescription(`you visited ${foundUser.guild}'s ${location}, As you enter the guild hall, you observe a bustling atmosphere filled with Rangers of varying ranks. The walls are adorned with faded banners and worn-out mission reports, a testament to the guild's history. The sound of camaraderie and training drills fills the air, as Rangers of different divisions hone their skills. Despite the lack of grandeur, there is an undeniable sense of determination and unity among the members, each striving to prove their worth and make their mark in the Ranger Association.\n\nuse **/explore** to explore this location.\n\n**use /questboard to view the Questboard**`)
+                            .setDescription(`you visited ${foundUser.guild}'s ${location}, As you enter the guild hall, you observe a bustling atmosphere filled with Rangers of varying ranks. The walls are adorned with faded banners and worn-out mission reports, a testament to the guild's history. The sound of camaraderie and training drills fills the air, as Rangers of different divisions hone their skills. Despite the lack of grandeur, there is an undeniable sense of determination and unity among the members, each striving to prove their worth and make their mark in the Ranger Association.\n\n.\n\n**use /questboard to view the Questboard**`)
                              
                         }
                         await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
@@ -3339,7 +3339,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://astro_avenue.jpg')
-                        .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Golden Terminal'){
@@ -3348,7 +3348,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://golden_terminal.jpg')
-                        .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Castle Luminar'){
@@ -3357,7 +3357,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://castle_chariots.jpg')
-                        .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\nuse **/explore** to explore this location`)
+                        .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Siewelle Port'){
@@ -3366,7 +3366,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://siewelle_port.jpg')
-                        .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                        .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Black Market'){
@@ -3375,7 +3375,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://black_market.jpg')
-                        .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                        .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sun Archives'){
@@ -3384,7 +3384,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sun_archives.jpg')
-                        .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Cloud Gardens'){
@@ -3393,7 +3393,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://cloud_gardens.jpg')
-                        .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                 collector_select.stop()
@@ -3656,7 +3656,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
-                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'ellior'){
@@ -3666,7 +3666,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://ellior_forest.jpg')
-                        .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 5**`)
+                        .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\n\n\n**Recommeded Level: 5**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sunstone Mines'){
@@ -3676,7 +3676,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunstone_mines.jpg')
-                        .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == `Dragon's Den`){
@@ -3686,7 +3686,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dragon_den.jpg')
-                        .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\nuse **/explore** to explore this location\n\n**Recommeded Level: 7**`)
+                        .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\n\n\n**Recommeded Level: 7**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Zephyr Mountain'){
@@ -3696,7 +3696,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zephyr_mountain.jpg')
-                        .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
@@ -3713,7 +3713,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://guild_district.jpg')
-                        .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Guild Office'){
@@ -3724,7 +3724,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://guild_office.jpg')
-                            .setDescription(`you visited a random ${location} but were restricted entry by the Guards\n\nuse **/explore** to explore this location`)
+                            .setDescription(`you visited a random ${location} but were restricted entry by the Guards\n\n`)
                              
                         }
                         else{
@@ -3732,7 +3732,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://guild_office.jpg')
-                            .setDescription(`you visited ${foundUser.guild}'s ${location}, As you enter the guild hall, you observe a bustling atmosphere filled with Rangers of varying ranks. The walls are adorned with faded banners and worn-out mission reports, a testament to the guild's history. The sound of camaraderie and training drills fills the air, as Rangers of different divisions hone their skills. Despite the lack of grandeur, there is an undeniable sense of determination and unity among the members, each striving to prove their worth and make their mark in the Ranger Association.\n\nuse **/explore** to explore this location.\n\n**use /questboard to view the Questboard**`)
+                            .setDescription(`you visited ${foundUser.guild}'s ${location}, As you enter the guild hall, you observe a bustling atmosphere filled with Rangers of varying ranks. The walls are adorned with faded banners and worn-out mission reports, a testament to the guild's history. The sound of camaraderie and training drills fills the air, as Rangers of different divisions hone their skills. Despite the lack of grandeur, there is an undeniable sense of determination and unity among the members, each striving to prove their worth and make their mark in the Ranger Association.\n\n.\n\n**use /questboard to view the Questboard**`)
                              
                         }
                         await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
@@ -3753,7 +3753,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://astro_avenue.jpg')
-                        .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Golden Terminal'){
@@ -3762,7 +3762,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://golden_terminal.jpg')
-                        .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Castle Luminar'){
@@ -3771,7 +3771,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://castle_chariots.jpg')
-                        .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\nuse **/explore** to explore this location`)
+                        .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Siewelle Port'){
@@ -3780,7 +3780,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://siewelle_port.jpg')
-                        .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                        .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Black Market'){
@@ -3789,7 +3789,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://black_market.jpg')
-                        .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\nuse **/explore** to explore this location\n\nThis is a Shop location, you can use **/shop** here`)
+                        .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sun Archives'){
@@ -3798,7 +3798,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sun_archives.jpg')
-                        .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Cloud Gardens'){
@@ -3807,7 +3807,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://cloud_gardens.jpg')
-                        .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                 collector_select.stop()
@@ -3966,7 +3966,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
-                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else if(foundUser.mount != "None"){
@@ -3976,7 +3976,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
-                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else{
@@ -3992,7 +3992,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
-                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else if(foundUser.mount != "None"){
@@ -4002,7 +4002,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
-                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else{
@@ -4024,7 +4024,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://ranger_tents.jpeg')
-                        .setDescription(`Arriving at the heart of Werfall, you are met with the sight of the Ranger Tents. These canvas sanctuaries, bearing the distinctive marks of the "Emperal Brigade" and various Guilds dot the landscape, a stark contrast against the backdrop of ruin. Your footsteps echo softly as you navigate the narrow pathways between the tents. Rangers move with purpose, their faces etched with determination as they mend gear, resupply, and attend to their wounded companions. The atmosphere exudes a somber camaraderie, a testament to the unbreakable bonds forged amidst adversity, as the Rangers stand united against the encroaching darkness.\n\n**use /explore to explore this location**`)
+                        .setDescription(`Arriving at the heart of Werfall, you are met with the sight of the Ranger Tents. These canvas sanctuaries, bearing the distinctive marks of the "Emperal Brigade" and various Guilds dot the landscape, a stark contrast against the backdrop of ruin. Your footsteps echo softly as you navigate the narrow pathways between the tents. Rangers move with purpose, their faces etched with determination as they mend gear, resupply, and attend to their wounded companions. The atmosphere exudes a somber camaraderie, a testament to the unbreakable bonds forged amidst adversity, as the Rangers stand united against the encroaching darkness.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Werfall Ranger Centre'){
@@ -4034,7 +4034,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
-                            .setDescription(`Your footsteps lead you to the heart of Werfall, where the Werfall Ranger Centre stands resolute. Its weathered walls, bearing witness to the town's tumultuous history, exude an air of defiance. Stepping through its entrance, you are met with a scene of purposeful activity. The scent of herbs and ink fills the air, a reminder of the centre's dual roles in both healing and planning. Rangers and medics work in harmony, exchanging nods and soft words as they carry out their duties. The centre pulses with an unyielding spirit, a symbol of resilience in the face of the unrelenting challenges that have befallen Werfall.\n\n**use /explore to explore this location**`)
+                            .setDescription(`Your footsteps lead you to the heart of Werfall, where the Werfall Ranger Centre stands resolute. Its weathered walls, bearing witness to the town's tumultuous history, exude an air of defiance. Stepping through its entrance, you are met with a scene of purposeful activity. The scent of herbs and ink fills the air, a reminder of the centre's dual roles in both healing and planning. Rangers and medics work in harmony, exchanging nods and soft words as they carry out their duties. The centre pulses with an unyielding spirit, a symbol of resilience in the face of the unrelenting challenges that have befallen Werfall.\n\n`)
                              
                        
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
@@ -4093,7 +4093,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             },
                                             {
                                                 name: `Township of Kafig`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for magical flying beasts.\n**Cost**:100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**:100 🪙\n`
                                             },
                                             {
                                                 name: `Asche Peak`,
@@ -4118,7 +4118,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             },
                                             {
                                                 name: `Township of Kafig`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for magical flying beasts.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 🪙\n`
                                             },
                                             {
                                                 name: `Asche Peak`,
@@ -4269,7 +4269,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://werfall_main.jpg')
-                        .setDescription(`As You approached the outskirts of Werfall, an eerie transformation was evident. Once a thriving hub of commerce, the town now exuded an air of bleakness and despair. Tents, emblazoned with the emblem of the "Emperal Brigade," sprawled across the landscape, housing a mix of rangers and medics in a poignant display of organized chaos. The streets, once teeming with life, were now pathways of decay and abandonment. The atmosphere was heavy with a sense of death that had permeated every corner of the town, leaving behind an indelible mark of loss. The toll of this ruinous affliction was evident in the haunted gazes of those who moved among the tents, their once-strong spirits shattered by the unforgiving grip of the town's tragic fate.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As You approached the outskirts of Werfall, an eerie transformation was evident. Once a thriving hub of commerce, the town now exuded an air of bleakness and despair. Tents, emblazoned with the emblem of the "Emperal Brigade," sprawled across the landscape, housing a mix of rangers and medics in a poignant display of organized chaos. The streets, once teeming with life, were now pathways of decay and abandonment. The atmosphere was heavy with a sense of death that had permeated every corner of the town, leaving behind an indelible mark of loss. The toll of this ruinous affliction was evident in the haunted gazes of those who moved among the tents, their once-strong spirits shattered by the unforgiving grip of the town's tragic fate.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else if(foundUser.mount != "None"){
@@ -4279,7 +4279,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://werfall_main.jpg')
-                        .setDescription(`As You approached the outskirts of Werfall, an eerie transformation was evident. Once a thriving hub of commerce, the town now exuded an air of bleakness and despair. Tents, emblazoned with the emblem of the "Emperal Brigade," sprawled across the landscape, housing a mix of rangers and medics in a poignant display of organized chaos. The streets, once teeming with life, were now pathways of decay and abandonment. The atmosphere was heavy with a sense of death that had permeated every corner of the town, leaving behind an indelible mark of loss. The toll of this ruinous affliction was evident in the haunted gazes of those who moved among the tents, their once-strong spirits shattered by the unforgiving grip of the town's tragic fate.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As You approached the outskirts of Werfall, an eerie transformation was evident. Once a thriving hub of commerce, the town now exuded an air of bleakness and despair. Tents, emblazoned with the emblem of the "Emperal Brigade," sprawled across the landscape, housing a mix of rangers and medics in a poignant display of organized chaos. The streets, once teeming with life, were now pathways of decay and abandonment. The atmosphere was heavy with a sense of death that had permeated every corner of the town, leaving behind an indelible mark of loss. The toll of this ruinous affliction was evident in the haunted gazes of those who moved among the tents, their once-strong spirits shattered by the unforgiving grip of the town's tragic fate.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else{
@@ -4295,7 +4295,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://kafig_main.jpeg')
-                        .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for magical flying beasts, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else if(foundUser.mount != "None"){
@@ -4304,8 +4304,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://vigia_main.jpg')
-                        .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for magical flying beasts, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\nuse **/explore** to explore this location`)
+                        .setImage('attachment://kafig_main.jpg')
+                        .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else{
@@ -4315,12 +4315,12 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     }
                     else if(location == 'Asche Peak'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                        const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                        const attachment = new MessageAttachment('assets/Kafig/asche_peak.jpeg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://zephyr_mountain.jpg')
-                        .setDescription(`As you reach Asche Peak, the landscape transforms into a surreal panorama of charred hills and blackened soil. The air is thick with an intense heat, radiating from the ground that gives the hill its soot-like black color. Avian Spyriths, both friendly and hostile, fill the skies, adding life to the mysterious hill. The legend of Radohn, the flame-draped ruler of the skies, lingers in the atmosphere, shrouding Asche Peak in an aura of mythical beauty.\n\nuse **/explore** to explore this location`)
+                        .setImage('attachment://asche_peak.jpeg')
+                        .setDescription(`As you reach Asche Peak, the landscape transforms into a surreal panorama of charred hills and blackened soil. The air is thick with an intense heat, radiating from the ground that gives the hill its soot-like black color. Avian Spyriths, both friendly and hostile, fill the skies, adding life to the mysterious hill. The legend of Radohn, the flame-draped ruler of the skies, lingers in the atmosphere, shrouding Asche Peak in an aura of mythical beauty.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Deathrust Forest'){
@@ -4330,7 +4330,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zephyr_mountain.jpg')
-                        .setDescription(`As you enter DeathRust Forest, the sight is eerie and still. Tall, old trees stand like ghostly statues, their branches reaching out like twisted fingers against a gray, lifeless sky. The ground is covered in dry leaves and brittle plants, creating a carpet of quiet decay. A hazy mist hangs in the air, giving the whole place a ghostly atmosphere. The once-green forest now seems like a graveyard, with rusted figures scattered around—those mindless iron zombies, the Ferromites, blending into the haunting scenery, their skeletal shapes telling a tale of a place forgotten and left to rust.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you enter DeathRust Forest, the sight is eerie and still. Tall, old trees stand like ghostly statues, their branches reaching out like twisted fingers against a gray, lifeless sky. The ground is covered in dry leaves and brittle plants, creating a carpet of quiet decay. A hazy mist hangs in the air, giving the whole place a ghostly atmosphere. The once-green forest now seems like a graveyard, with rusted figures scattered around—those mindless iron zombies, the Ferromites, blending into the haunting scenery, their skeletal shapes telling a tale of a place forgotten and left to rust.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
@@ -4348,7 +4348,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://trinity_plateau.jpg')
-                        .setDescription(`Climbing the switchback path, the plateau emerges like an oasis amid Vigia's stone walls. Three great swords stand frozen in combat atop grassy banks. In the distance, the SolGate stands eternal vigil, and beyond - the ominous shadow of DeathRust looms.\n\n**use /explore to explore this location**`)
+                        .setDescription(`Climbing the switchback path, the plateau emerges like an oasis amid Vigia's stone walls. Three great swords stand frozen in combat atop grassy banks. In the distance, the SolGate stands eternal vigil, and beyond - the ominous shadow of DeathRust looms.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Temple of Tears'){
@@ -4358,7 +4358,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage(`attachment://ranger_centre.jpg`)
-                            .setDescription(`Dark and foreboding, Morozh's temple is hewn from age-old stone. Weeping faces spout an endless stream upon which solace seekers float candles in tribute. Shadows dance as you enter, feeling suddenly small beneath the arched passages. What rest may be found in despair's domain?\n\n**use /explore to explore this location**`)
+                            .setDescription(`Dark and foreboding, Morozh's temple is hewn from age-old stone. Weeping faces spout an endless stream upon which solace seekers float candles in tribute. Shadows dance as you enter, feeling suddenly small beneath the arched passages. What rest may be found in despair's domain?\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Esparta Museum'){
@@ -4368,7 +4368,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://esparta.jpg')
-                            .setDescription(`Soaring pillars greet you at the threshold of the towering building. Displays of artifacts line the high-ceilinged halls - from ancient weapons to pottery with pictographs unknown. Scholars talk in hushed whispers, stooped over crumbling books.\n\n**use /explore to explore this location**`)
+                            .setDescription(`Soaring pillars greet you at the threshold of the towering building. Displays of artifacts line the high-ceilinged halls - from ancient weapons to pottery with pictographs unknown. Scholars talk in hushed whispers, stooped over crumbling books.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sol Barracks'){
@@ -4378,7 +4378,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
-                            .setDescription(` As you pass under the towering stone archway, the pounding of sparring knights fills your ears. Rows of neat barracks lines either side of the central courtyard. Bellowing drills instructors put recruits through their paces with spear, shield and sword. Sweat-slicked trainees grunt and parry under the noon sun.At the far end, an imposing armory bears the banners of past battles. Veterans hone and maintain the garrison's formidable arms within.\n\n**use /explore to explore this location**\n\n**This is a Shop location, you can use /shop here**`)
+                            .setDescription(` As you pass under the towering stone archway, the pounding of sparring knights fills your ears. Rows of neat barracks lines either side of the central courtyard. Bellowing drills instructors put recruits through their paces with spear, shield and sword. Sweat-slicked trainees grunt and parry under the noon sun.At the far end, an imposing armory bears the banners of past battles. Veterans hone and maintain the garrison's formidable arms within.\n\n**This is a Shop location, you can use /shop here**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Fort Primis'){
@@ -4388,7 +4388,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage(`attachment://fort_primis.jpg`)
-                            .setDescription(`As you arrive at the fort, you see soldiers in full armor marching about on patrol.Approaching the looming gatehouse, you crane your neck to take in the height of Primis' fortified walls. Arrow slits peer out like eyes, ever vigilant for signs of threat. As the portcullis clanks up, you glimpse Sol Crusaders manning post and patrol atop the battlements.\n\n**use /explore to explore this location**`)
+                            .setDescription(`As you arrive at the fort, you see soldiers in full armor marching about on patrol.Approaching the looming gatehouse, you crane your neck to take in the height of Primis' fortified walls. Arrow slits peer out like eyes, ever vigilant for signs of threat. As the portcullis clanks up, you glimpse Sol Crusaders manning post and patrol atop the battlements.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Castle Arcemis'){
@@ -4398,7 +4398,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
-                            .setDescription(`As you approach the imposing fortress of castle Arcemis, you crane your neck to take in its sheer scale. Perched atop a hill overlooking the city, its weathered ramparts and towers loom large, dominating the landscape. The last rays of the setting sun paint the stone walls in hues of gold and crimson. Banners with Earl Arvid's crest snap in the wind above parapets manned by watchful guards. Reaching the enormous gate, you glimpse the bustling activity inside - soldiers drilling in the courtyard, stewards rushing about on errands.Though you have not yet entered its halls, the castle radiates power and purpose, an indomitable guardian that has safeguarded Vigia for centuries.\n\n**use /explore to explore this location**`)
+                            .setDescription(`As you approach the imposing fortress of castle Arcemis, you crane your neck to take in its sheer scale. Perched atop a hill overlooking the city, its weathered ramparts and towers loom large, dominating the landscape. The last rays of the setting sun paint the stone walls in hues of gold and crimson. Banners with Earl Arvid's crest snap in the wind above parapets manned by watchful guards. Reaching the enormous gate, you glimpse the bustling activity inside - soldiers drilling in the courtyard, stewards rushing about on errands.Though you have not yet entered its halls, the castle radiates power and purpose, an indomitable guardian that has safeguarded Vigia for centuries.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Ruins of Eldorath'){
@@ -4408,7 +4408,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ruinsofeldorath.jpg')
-                            .setDescription(`As you make your way to the sealed off ruins of Eldorath, you notice remnants of a once great civilization. Broken pillars and crumbled walls tower above you, now reclaimed by vines and moss. You peel back curtains of creeping plants and peer into ancient halls, glimpsing faded murals depicting the lives of the Eldruids who constructed this place. Ghosts of the past seem to lurk around every corner, daring you to uncover their secrets. Stepping carefully over reckless from fallen domes and arched ceilings, you puzzle over symbols and writings in a long forgotten language. All around you, clues remain to stitch together the faded tapestry of this lost world, if only you can decipher its long held silence.\n\n**use /explore to explore this location**`)
+                            .setDescription(`As you make your way to the sealed off ruins of Eldorath, you notice remnants of a once great civilization. Broken pillars and crumbled walls tower above you, now reclaimed by vines and moss. You peel back curtains of creeping plants and peer into ancient halls, glimpsing faded murals depicting the lives of the Eldruids who constructed this place. Ghosts of the past seem to lurk around every corner, daring you to uncover their secrets. Stepping carefully over reckless from fallen domes and arched ceilings, you puzzle over symbols and writings in a long forgotten language. All around you, clues remain to stitch together the faded tapestry of this lost world, if only you can decipher its long held silence.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Vigia Ranger Centre'){
@@ -4418,7 +4418,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
-                            .setDescription(`Upon entering the Vigia Ranger Centre, you are met with the buzz of activity as rangers mingle, share tales of adventure and peruse the many posted jobs and deeds. Over by the quest board, parties debate undertakings in Deathrust forest or across the rugged landscape beyond the SolGate. In the back of the spacious hall, trainees spar and show off newly learned skills.\n\n**use /explore to explore this location**\n\n**use /questboard to view the Questboard**`)
+                            .setDescription(`Upon entering the Vigia Ranger Centre, you are met with the buzz of activity as rangers mingle, share tales of adventure and peruse the many posted jobs and deeds. Over by the quest board, parties debate undertakings in Deathrust forest or across the rugged landscape beyond the SolGate. In the back of the spacious hall, trainees spar and show off newly learned skills.\n\n**use /questboard to view the Questboard**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
@@ -4476,7 +4476,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Township of Kafig`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for magical flying beasts.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 🪙\n`
                                             },
                                             {
                                                 name: `Stateship of Vigia`,
@@ -4493,7 +4493,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Township of Kafig`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for magical flying beasts.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 🪙\n`
                                             },
                                             {
                                                 name: `Stateship of Vigia`,
@@ -4688,7 +4688,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
-                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else if(foundUser.mount != "None"){
@@ -4698,7 +4698,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
-                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else{
@@ -4710,22 +4710,22 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     else if(location == 'Kafig'){
                         if(foundUser.coins >=0 && foundUser.mount == "None"){
                             await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                        const attachment = new MessageAttachment('assets/Vigia/vigia_main.jpg')
+                        const attachment = new MessageAttachment('assets/Kafig/kafig_main.jpeg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://vigia_main.jpg')
-                        .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for magical flying beasts, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\nuse **/explore** to explore this location`)
+                        .setImage('attachment://kafig_main.jpeg')
+                        .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                        const attachment = new MessageAttachment('assets/Vigia/vigia_main.jpg')
+                        const attachment = new MessageAttachment('assets/Kafig/kafig_main.jpeg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://vigia_main.jpg')
-                        .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for magical flying beasts, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\nuse **/explore** to explore this location`)
+                        .setImage('attachment://kafig_main.jpeg')
+                        .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else{
@@ -4750,7 +4750,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://avian_square.jpeg')
-                        .setDescription(`As you step into Avian Square, your eyes are immediately drawn to the towering statue of Radohn, crafted from obsidian. The square bustles with townsfolk and visitors, paying their respects and leaving offerings at the base of the statue.\n\n**use /explore to explore this location**`)
+                        .setDescription(`As you step into Avian Square, your eyes are immediately drawn to the towering statue of Radohn, crafted from obsidian. The square bustles with townsfolk and visitors, paying their respects and leaving offerings at the base of the statue.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Cloud Haven'){
@@ -4760,7 +4760,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://cloudhaven.jpeg')
-                            .setDescription(`You approach Cloud Haven and marvel at its imposing structure. The cylindrical building, with its intricate lattice design and large open windows, stands as a testament to the town's dedication to the avian creatures. The sound of wings fluttering and distant bird calls fills the air, enticing you to enter and explore further.\n\n**use /explore to explore this location**`)
+                            .setDescription(`You approach Cloud Haven and marvel at its imposing structure. The cylindrical building, with its intricate lattice design and large open windows, stands as a testament to the town's dedication to the avian creatures. The sound of wings fluttering and distant bird calls fills the air, enticing you to enter and explore further.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'The Guilded Cage'){
@@ -4770,7 +4770,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
-                            .setDescription(`The warm glow emanating from The Gilded Cage invites you inside. As you enter, the cozy ambiance welcomes you, with wooden tables and benches filling the space. Laughter and lively conversations fill the air, accompanied by the aroma of delicious local cuisine and the clinking of glasses. The sound of a bard's melodious voice can be heard, captivating the audience.\n\n**use /explore to explore this location**\n\n**This is a Shop location, you can use /shop here**`)
+                            .setDescription(`The warm glow emanating from The Gilded Cage invites you inside. As you enter, the cozy ambiance welcomes you, with wooden tables and benches filling the space. Laughter and lively conversations fill the air, accompanied by the aroma of delicious local cuisine and the clinking of glasses. The sound of a bard's melodious voice can be heard, captivating the audience.\n\n**This is a Shop location, you can use /shop here**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Radohn Roost'){
@@ -4780,7 +4780,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://radohn_roost.jpeg')
-                            .setDescription(`Climbing the steep steps leading to Radohn Roost, you feel a sense of serenity and reverence in the air. The temple emerges, nestled on the hillside above the town. The gentle breeze carries the fragrance of incense, inviting you to explore further. From this elevated vantage point, you can already catch glimpses of the breathtaking views awaiting you.\n\n**use /explore to explore this location**`)
+                            .setDescription(`Climbing the steep steps leading to Radohn Roost, you feel a sense of serenity and reverence in the air. The temple emerges, nestled on the hillside above the town. The gentle breeze carries the fragrance of incense, inviting you to explore further. From this elevated vantage point, you can already catch glimpses of the breathtaking views awaiting you.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Kafig Guild Outpost'){
@@ -4790,7 +4790,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
-                            .setDescription(`As you enter the Kafig Guild Outpost, you see a lively and quite well maintained place. People are talking and sharing stories. On the walls, there are maps and trophies from adventures and the Insignia of the Eterna Guild. In the middle, there's a space where plans are made. A small desk in the corner has important papers and messages. The atmosphere feels friendly and busy, showing that the outpost is a key spot where everyone works together, The Front wall is adorned with the portrait of the revered ranger "Demon Bird" Basil.\n\n**use /explore to explore this location**\n\n**use /questboard to view the Questboard**`)
+                            .setDescription(`As you enter the Kafig Guild Outpost, you see a lively and quite well maintained place. People are talking and sharing stories. On the walls, there are maps and trophies from adventures and the Insignia of the Eterna Guild. In the middle, there's a space where plans are made. A small desk in the corner has important papers and messages. The atmosphere feels friendly and busy, showing that the outpost is a key spot where everyone works together, The Front wall is adorned with the portrait of the revered ranger "Demon Bird" Basil.\n\n**use /questboard to view the Questboard**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                 }
@@ -4803,7 +4803,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://trinity_plateau.jpg')
-                        .setDescription(`Climbing the switchback path, the plateau emerges like an oasis amid Vigia's stone walls. Three great swords stand frozen in combat atop grassy banks. In the distance, the SolGate stands eternal vigil, and beyond - the ominous shadow of DeathRust looms.\n\n**use /explore to explore this location**`)
+                        .setDescription(`Climbing the switchback path, the plateau emerges like an oasis amid Vigia's stone walls. Three great swords stand frozen in combat atop grassy banks. In the distance, the SolGate stands eternal vigil, and beyond - the ominous shadow of DeathRust looms.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Temple of Tears'){
@@ -4813,7 +4813,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage(`attachment://ranger_centre.jpg`)
-                            .setDescription(`Dark and foreboding, Morozh's temple is hewn from age-old stone. Weeping faces spout an endless stream upon which solace seekers float candles in tribute. Shadows dance as you enter, feeling suddenly small beneath the arched passages. What rest may be found in despair's domain?\n\n**use /explore to explore this location**`)
+                            .setDescription(`Dark and foreboding, Morozh's temple is hewn from age-old stone. Weeping faces spout an endless stream upon which solace seekers float candles in tribute. Shadows dance as you enter, feeling suddenly small beneath the arched passages. What rest may be found in despair's domain?\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Esparta Museum'){
@@ -4823,7 +4823,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://esparta.jpg')
-                            .setDescription(`Soaring pillars greet you at the threshold of the towering building. Displays of artifacts line the high-ceilinged halls - from ancient weapons to pottery with pictographs unknown. Scholars talk in hushed whispers, stooped over crumbling books.\n\n**use /explore to explore this location**`)
+                            .setDescription(`Soaring pillars greet you at the threshold of the towering building. Displays of artifacts line the high-ceilinged halls - from ancient weapons to pottery with pictographs unknown. Scholars talk in hushed whispers, stooped over crumbling books.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sol Barracks'){
@@ -4833,7 +4833,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
-                            .setDescription(` As you pass under the towering stone archway, the pounding of sparring knights fills your ears. Rows of neat barracks lines either side of the central courtyard. Bellowing drills instructors put recruits through their paces with spear, shield and sword. Sweat-slicked trainees grunt and parry under the noon sun.At the far end, an imposing armory bears the banners of past battles. Veterans hone and maintain the garrison's formidable arms within.\n\n**use /explore to explore this location**\n\n**This is a Shop location, you can use /shop here**`)
+                            .setDescription(` As you pass under the towering stone archway, the pounding of sparring knights fills your ears. Rows of neat barracks lines either side of the central courtyard. Bellowing drills instructors put recruits through their paces with spear, shield and sword. Sweat-slicked trainees grunt and parry under the noon sun.At the far end, an imposing armory bears the banners of past battles. Veterans hone and maintain the garrison's formidable arms within.\n\n**This is a Shop location, you can use /shop here**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Fort Primis'){
@@ -4843,7 +4843,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage(`attachment://fort_primis.jpg`)
-                            .setDescription(`As you arrive at the fort, you see soldiers in full armor marching about on patrol.Approaching the looming gatehouse, you crane your neck to take in the height of Primis' fortified walls. Arrow slits peer out like eyes, ever vigilant for signs of threat. As the portcullis clanks up, you glimpse Sol Crusaders manning post and patrol atop the battlements.\n\n**use /explore to explore this location**`)
+                            .setDescription(`As you arrive at the fort, you see soldiers in full armor marching about on patrol.Approaching the looming gatehouse, you crane your neck to take in the height of Primis' fortified walls. Arrow slits peer out like eyes, ever vigilant for signs of threat. As the portcullis clanks up, you glimpse Sol Crusaders manning post and patrol atop the battlements.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Castle Arcemis'){
@@ -4853,7 +4853,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
-                            .setDescription(`As you approach the imposing fortress of castle Arcemis, you crane your neck to take in its sheer scale. Perched atop a hill overlooking the city, its weathered ramparts and towers loom large, dominating the landscape. The last rays of the setting sun paint the stone walls in hues of gold and crimson. Banners with Earl Arvid's crest snap in the wind above parapets manned by watchful guards. Reaching the enormous gate, you glimpse the bustling activity inside - soldiers drilling in the courtyard, stewards rushing about on errands.Though you have not yet entered its halls, the castle radiates power and purpose, an indomitable guardian that has safeguarded Vigia for centuries.\n\n**use /explore to explore this location**`)
+                            .setDescription(`As you approach the imposing fortress of castle Arcemis, you crane your neck to take in its sheer scale. Perched atop a hill overlooking the city, its weathered ramparts and towers loom large, dominating the landscape. The last rays of the setting sun paint the stone walls in hues of gold and crimson. Banners with Earl Arvid's crest snap in the wind above parapets manned by watchful guards. Reaching the enormous gate, you glimpse the bustling activity inside - soldiers drilling in the courtyard, stewards rushing about on errands.Though you have not yet entered its halls, the castle radiates power and purpose, an indomitable guardian that has safeguarded Vigia for centuries.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Ruins of Eldorath'){
@@ -4863,7 +4863,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ruinsofeldorath.jpg')
-                            .setDescription(`As you make your way to the sealed off ruins of Eldorath, you notice remnants of a once great civilization. Broken pillars and crumbled walls tower above you, now reclaimed by vines and moss. You peel back curtains of creeping plants and peer into ancient halls, glimpsing faded murals depicting the lives of the Eldruids who constructed this place. Ghosts of the past seem to lurk around every corner, daring you to uncover their secrets. Stepping carefully over reckless from fallen domes and arched ceilings, you puzzle over symbols and writings in a long forgotten language. All around you, clues remain to stitch together the faded tapestry of this lost world, if only you can decipher its long held silence.\n\n**use /explore to explore this location**`)
+                            .setDescription(`As you make your way to the sealed off ruins of Eldorath, you notice remnants of a once great civilization. Broken pillars and crumbled walls tower above you, now reclaimed by vines and moss. You peel back curtains of creeping plants and peer into ancient halls, glimpsing faded murals depicting the lives of the Eldruids who constructed this place. Ghosts of the past seem to lurk around every corner, daring you to uncover their secrets. Stepping carefully over reckless from fallen domes and arched ceilings, you puzzle over symbols and writings in a long forgotten language. All around you, clues remain to stitch together the faded tapestry of this lost world, if only you can decipher its long held silence.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Vigia Ranger Centre'){
@@ -4873,7 +4873,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
-                            .setDescription(`Upon entering the Vigia Ranger Centre, you are met with the buzz of activity as rangers mingle, share tales of adventure and peruse the many posted jobs and deeds. Over by the quest board, parties debate undertakings in Deathrust forest or across the rugged landscape beyond the SolGate. In the back of the spacious hall, trainees spar and show off newly learned skills.\n\n**use /explore to explore this location**\n\n**use /questboard to view the Questboard**`)
+                            .setDescription(`Upon entering the Vigia Ranger Centre, you are met with the buzz of activity as rangers mingle, share tales of adventure and peruse the many posted jobs and deeds. Over by the quest board, parties debate undertakings in Deathrust forest or across the rugged landscape beyond the SolGate. In the back of the spacious hall, trainees spar and show off newly learned skills.\n\n**use /questboard to view the Questboard**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
 
@@ -5078,7 +5078,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
-                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else if(foundUser.mount != "None"){
@@ -5088,7 +5088,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
-                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else{
@@ -5114,7 +5114,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://trinity_plateau.jpg')
-                        .setDescription(`Climbing the switchback path, the plateau emerges like an oasis amid Vigia's stone walls. Three great swords stand frozen in combat atop grassy banks. In the distance, the SolGate stands eternal vigil, and beyond - the ominous shadow of DeathRust looms.\n\n**use /explore to explore this location**`)
+                        .setDescription(`Climbing the switchback path, the plateau emerges like an oasis amid Vigia's stone walls. Three great swords stand frozen in combat atop grassy banks. In the distance, the SolGate stands eternal vigil, and beyond - the ominous shadow of DeathRust looms.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Temple of Tears'){
@@ -5124,7 +5124,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage(`attachment://ranger_centre.jpg`)
-                            .setDescription(`Dark and foreboding, Morozh's temple is hewn from age-old stone. Weeping faces spout an endless stream upon which solace seekers float candles in tribute. Shadows dance as you enter, feeling suddenly small beneath the arched passages. What rest may be found in despair's domain?\n\n**use /explore to explore this location**`)
+                            .setDescription(`Dark and foreboding, Morozh's temple is hewn from age-old stone. Weeping faces spout an endless stream upon which solace seekers float candles in tribute. Shadows dance as you enter, feeling suddenly small beneath the arched passages. What rest may be found in despair's domain?\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Esparta Museum'){
@@ -5134,7 +5134,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://esparta.jpg')
-                            .setDescription(`Soaring pillars greet you at the threshold of the towering building. Displays of artifacts line the high-ceilinged halls - from ancient weapons to pottery with pictographs unknown. Scholars talk in hushed whispers, stooped over crumbling books.\n\n**use /explore to explore this location**`)
+                            .setDescription(`Soaring pillars greet you at the threshold of the towering building. Displays of artifacts line the high-ceilinged halls - from ancient weapons to pottery with pictographs unknown. Scholars talk in hushed whispers, stooped over crumbling books.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Sol Barracks'){
@@ -5144,7 +5144,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
-                            .setDescription(` As you pass under the towering stone archway, the pounding of sparring knights fills your ears. Rows of neat barracks lines either side of the central courtyard. Bellowing drills instructors put recruits through their paces with spear, shield and sword. Sweat-slicked trainees grunt and parry under the noon sun.At the far end, an imposing armory bears the banners of past battles. Veterans hone and maintain the garrison's formidable arms within.\n\n**use /explore to explore this location**\n\n**This is a Shop location, you can use /shop here**`)
+                            .setDescription(` As you pass under the towering stone archway, the pounding of sparring knights fills your ears. Rows of neat barracks lines either side of the central courtyard. Bellowing drills instructors put recruits through their paces with spear, shield and sword. Sweat-slicked trainees grunt and parry under the noon sun.At the far end, an imposing armory bears the banners of past battles. Veterans hone and maintain the garrison's formidable arms within.\n\n**This is a Shop location, you can use /shop here**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Fort Primis'){
@@ -5154,7 +5154,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage(`attachment://fort_primis.jpg`)
-                            .setDescription(`As you arrive at the fort, you see soldiers in full armor marching about on patrol.Approaching the looming gatehouse, you crane your neck to take in the height of Primis' fortified walls. Arrow slits peer out like eyes, ever vigilant for signs of threat. As the portcullis clanks up, you glimpse Sol Crusaders manning post and patrol atop the battlements.\n\n**use /explore to explore this location**`)
+                            .setDescription(`As you arrive at the fort, you see soldiers in full armor marching about on patrol.Approaching the looming gatehouse, you crane your neck to take in the height of Primis' fortified walls. Arrow slits peer out like eyes, ever vigilant for signs of threat. As the portcullis clanks up, you glimpse Sol Crusaders manning post and patrol atop the battlements.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Castle Arcemis'){
@@ -5164,7 +5164,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
-                            .setDescription(`As you approach the imposing fortress of castle Arcemis, you crane your neck to take in its sheer scale. Perched atop a hill overlooking the city, its weathered ramparts and towers loom large, dominating the landscape. The last rays of the setting sun paint the stone walls in hues of gold and crimson. Banners with Earl Arvid's crest snap in the wind above parapets manned by watchful guards. Reaching the enormous gate, you glimpse the bustling activity inside - soldiers drilling in the courtyard, stewards rushing about on errands.Though you have not yet entered its halls, the castle radiates power and purpose, an indomitable guardian that has safeguarded Vigia for centuries.\n\n**use /explore to explore this location**`)
+                            .setDescription(`As you approach the imposing fortress of castle Arcemis, you crane your neck to take in its sheer scale. Perched atop a hill overlooking the city, its weathered ramparts and towers loom large, dominating the landscape. The last rays of the setting sun paint the stone walls in hues of gold and crimson. Banners with Earl Arvid's crest snap in the wind above parapets manned by watchful guards. Reaching the enormous gate, you glimpse the bustling activity inside - soldiers drilling in the courtyard, stewards rushing about on errands.Though you have not yet entered its halls, the castle radiates power and purpose, an indomitable guardian that has safeguarded Vigia for centuries.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Ruins of Eldorath'){
@@ -5174,7 +5174,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ruinsofeldorath.jpg')
-                            .setDescription(`As you make your way to the sealed off ruins of Eldorath, you notice remnants of a once great civilization. Broken pillars and crumbled walls tower above you, now reclaimed by vines and moss. You peel back curtains of creeping plants and peer into ancient halls, glimpsing faded murals depicting the lives of the Eldruids who constructed this place. Ghosts of the past seem to lurk around every corner, daring you to uncover their secrets. Stepping carefully over reckless from fallen domes and arched ceilings, you puzzle over symbols and writings in a long forgotten language. All around you, clues remain to stitch together the faded tapestry of this lost world, if only you can decipher its long held silence.\n\n**use /explore to explore this location**`)
+                            .setDescription(`As you make your way to the sealed off ruins of Eldorath, you notice remnants of a once great civilization. Broken pillars and crumbled walls tower above you, now reclaimed by vines and moss. You peel back curtains of creeping plants and peer into ancient halls, glimpsing faded murals depicting the lives of the Eldruids who constructed this place. Ghosts of the past seem to lurk around every corner, daring you to uncover their secrets. Stepping carefully over reckless from fallen domes and arched ceilings, you puzzle over symbols and writings in a long forgotten language. All around you, clues remain to stitch together the faded tapestry of this lost world, if only you can decipher its long held silence.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Vigia Ranger Centre'){
@@ -5184,7 +5184,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
-                            .setDescription(`Upon entering the Vigia Ranger Centre, you are met with the buzz of activity as rangers mingle, share tales of adventure and peruse the many posted jobs and deeds. Over by the quest board, parties debate undertakings in Deathrust forest or across the rugged landscape beyond the SolGate. In the back of the spacious hall, trainees spar and show off newly learned skills.\n\n**use /explore to explore this location**\n\n**use /questboard to view the Questboard**`)
+                            .setDescription(`Upon entering the Vigia Ranger Centre, you are met with the buzz of activity as rangers mingle, share tales of adventure and peruse the many posted jobs and deeds. Over by the quest board, parties debate undertakings in Deathrust forest or across the rugged landscape beyond the SolGate. In the back of the spacious hall, trainees spar and show off newly learned skills.\n\n**use /questboard to view the Questboard**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
@@ -5243,6 +5243,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                                 name: `Stateship of Vigia`,
                                                 value:`**Travelled on Stagecoach**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 🪙\n`
                                             },
+                                            {
+                                                name: `Township of Raflese`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 100 🪙\n`
+                                            },
                                         ])
                                         
                                         }
@@ -5258,7 +5262,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             },
                                             {
                                                 name: `Stateship of Vigia`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Raflese`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 0 🪙\n`
                                             },
                                         ])
     
@@ -5310,6 +5318,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         label: `Stateship of Vigia`,
                         description: ``,
                         value: `Vigia`,
+                    },{
+                        label: `Township of Raflese`,
+                        description: ``,
+                        value: `Raflese`,
                     },
                     )
                     .setDisabled(false),
@@ -5367,7 +5379,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
-                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else if(foundUser.mount != "None"){
@@ -5377,7 +5389,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
-                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\nuse **/explore** to explore this location`)
+                        .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else{
@@ -5388,13 +5400,40 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     
                     else if(location == 'Asche Peak'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                        const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                        const attachment = new MessageAttachment('assets/Kafig/asche_peak.jpeg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://zephyr_mountain.jpg')
-                        .setDescription(`As you reach Asche Peak, the landscape transforms into a surreal panorama of charred hills and blackened soil. The air is thick with an intense heat, radiating from the ground that gives the hill its soot-like black color. Avian Spyriths, both friendly and hostile, fill the skies, adding life to the mysterious hill. The legend of Radohn, the flame-draped ruler of the skies, lingers in the atmosphere, shrouding Asche Peak in an aura of mythical beauty.\n\nuse **/explore** to explore this location`)
+                        .setImage('attachment://asche_peak.jpeg')
+                        .setDescription(`As you reach Asche Peak, the landscape transforms into a surreal panorama of charred hills and blackened soil. The air is thick with an intense heat, radiating from the ground that gives the hill its soot-like black color. Avian Spyriths, both friendly and hostile, fill the skies, adding life to the mysterious hill. The legend of Radohn, the flame-draped ruler of the skies, lingers in the atmosphere, shrouding Asche Peak in an aura of mythical beauty.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+
+                    else if(location == 'Raflese'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Raflese/raflese_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://raflese_main.jpg')
+                        .setDescription(`As you enter Raflese Town, you're greeted by a kaleidoscope of colors and fragrances: vibrant gardens, sweet floral scents, and the inviting allure of herbal shops. The imposing glass dome of the Green Keep lab stands on the outskirts, contrasting with the serene majesty of the Eden Garden and its iconic Tree of Life. In this botanical paradise, every corner teems with natural wonder, captivating your senses from the moment you arrive.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Raflese/raflese_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://raflese_main.jpg')
+                        .setDescription(`As you enter Raflese Town, you're greeted by a kaleidoscope of colors and fragrances: vibrant gardens, sweet floral scents, and the inviting allure of herbal shops. The imposing glass dome of the Green Keep lab stands on the outskirts, contrasting with the serene majesty of the Eden Garden and its iconic Tree of Life. In this botanical paradise, every corner teems with natural wonder, captivating your senses from the moment you arrive.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
                     }
                     
                     
@@ -5411,7 +5450,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://avian_square.jpeg')
-                        .setDescription(`As you step into Avian Square, your eyes are immediately drawn to the towering statue of Radohn, crafted from obsidian. The square bustles with townsfolk and visitors, paying their respects and leaving offerings at the base of the statue.\n\n**use /explore to explore this location**`)
+                        .setDescription(`As you step into Avian Square, your eyes are immediately drawn to the towering statue of Radohn, crafted from obsidian. The square bustles with townsfolk and visitors, paying their respects and leaving offerings at the base of the statue.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Cloud Haven'){
@@ -5421,7 +5460,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://cloudhaven.jpeg')
-                            .setDescription(`You approach Cloud Haven and marvel at its imposing structure. The cylindrical building, with its intricate lattice design and large open windows, stands as a testament to the town's dedication to the avian creatures. The sound of wings fluttering and distant bird calls fills the air, enticing you to enter and explore further.\n\n**use /explore to explore this location**`)
+                            .setDescription(`You approach Cloud Haven and marvel at its imposing structure. The cylindrical building, with its intricate lattice design and large open windows, stands as a testament to the town's dedication to the avian creatures. The sound of wings fluttering and distant bird calls fills the air, enticing you to enter and explore further.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'The Guilded Cage'){
@@ -5431,7 +5470,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
-                            .setDescription(`The warm glow emanating from The Gilded Cage invites you inside. As you enter, the cozy ambiance welcomes you, with wooden tables and benches filling the space. Laughter and lively conversations fill the air, accompanied by the aroma of delicious local cuisine and the clinking of glasses. The sound of a bard's melodious voice can be heard, captivating the audience.\n\n**use /explore to explore this location**\n\n**This is a Shop location, you can use /shop here**`)
+                            .setDescription(`The warm glow emanating from The Gilded Cage invites you inside. As you enter, the cozy ambiance welcomes you, with wooden tables and benches filling the space. Laughter and lively conversations fill the air, accompanied by the aroma of delicious local cuisine and the clinking of glasses. The sound of a bard's melodious voice can be heard, captivating the audience.\n\n**This is a Shop location, you can use /shop here**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Radohn Roost'){
@@ -5441,7 +5480,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://radohn_roost.jpeg')
-                            .setDescription(`Climbing the steep steps leading to Radohn Roost, you feel a sense of serenity and reverence in the air. The temple emerges, nestled on the hillside above the town. The gentle breeze carries the fragrance of incense, inviting you to explore further. From this elevated vantage point, you can already catch glimpses of the breathtaking views awaiting you.\n\n**use /explore to explore this location**`)
+                            .setDescription(`Climbing the steep steps leading to Radohn Roost, you feel a sense of serenity and reverence in the air. The temple emerges, nestled on the hillside above the town. The gentle breeze carries the fragrance of incense, inviting you to explore further. From this elevated vantage point, you can already catch glimpses of the breathtaking views awaiting you.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Kafig Guild Outpost'){
@@ -5451,7 +5490,561 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
-                            .setDescription(`As you enter the Kafig Guild Outpost, you see a lively and quite well maintained place. People are talking and sharing stories. On the walls, there are maps and trophies from adventures and the Insignia of the Eterna Guild. In the middle, there's a space where plans are made. A small desk in the corner has important papers and messages. The atmosphere feels friendly and busy, showing that the outpost is a key spot where everyone works together, The Front wall is adorned with the portrait of the revered ranger "Demon Bird" Basil.\n\n**use /explore to explore this location**\n\n**use /questboard to view the Questboard**`)
+                            .setDescription(`As you enter the Kafig Guild Outpost, you see a lively and quite well maintained place. People are talking and sharing stories. On the walls, there are maps and trophies from adventures and the Insignia of the Eterna Guild. In the middle, there's a space where plans are made. A small desk in the corner has important papers and messages. The atmosphere feels friendly and busy, showing that the outpost is a key spot where everyone works together, The Front wall is adorned with the portrait of the revered ranger "Demon Bird" Basil.\n\n**use /questboard to view the Questboard**`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    
+                    
+    
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Raflese"){
+                    let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Stateship of Dremenlond`,
+                                                value:`**Travelled on Stagecoach**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Kafig`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Bleeding Gorge`,
+                                                value:`**Travelled on Stagecoach**\n**Description**: A hauntingly beautiful canyon, where blood red streams cascade through rugged cliffs\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Stateship of Dremenlond`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Kafig`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Bleeding Gorge`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A hauntingly beautiful canyon, where blood red streams cascade through rugged cliffs\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Vita Street`,
+                                        value:`**Description**: A bustling Raflese street known for magical potions and herbs.\n`
+                                    },
+                                    {
+                                        name: `Eden Garden`,
+                                        value:`**Description**: A central botanical haven with the legendary Tree of Life.\n`
+                                    },
+                                    {
+                                        name: `The Green Keep`,
+                                        value:`**Description**: A guarded, glass-domed research facility headed by Dr. Rosalie.\n`
+                                    },
+                                    {
+                                        name: `The Plantastic Inn`,
+                                        value:`**Description**: A renowned inn in Raflese, celebrated for its exquisite vegetarian cuisine and floral-spiced tea.\n`
+                                    },
+                                    {
+                                        name: `Raflese Guild Outpost`,
+                                        value:`**Description**:  The Guild Outpost of Raflese, one of the many outposts under the jurisdiction of Eterna Guild and serves as the central hub for rangers around.\n`
+                                    }
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Stateship of Dremenlond`,
+                        description: ``,
+                        value: `Dremenlond`,
+                    },
+                    {
+                        label: `Township of Kafig`,
+                        description: ``,
+                        value: `Kafig`,
+                    },{
+                        label: `Bleeding Gorge`,
+                        description: ``,
+                        value: `Bleeding Gorge`,
+                    },
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Vita Street`,
+                        description: ``,
+                        value: `Vita Street`,
+                    },{
+                        label: `Eden Garden`,
+                        description: ``,
+                        value: `Eden Garden`,
+                    },{
+                        label: `Plantastic Inn`,
+                        description: ``,
+                        value: `Plantastic Inn`,
+                    },{
+                        label: `The Green Keep`,
+                        description: ``,
+                        value: `The Green Keep`,
+                    },{
+                        label: `Raflese Guild Outpost`,
+                        description: ``,
+                        value: `Raflese Guild Outpost`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+                    if(location == 'Dremenlond'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Dremenlond/dremenlond_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://dremenlond_main.jpg')
+                        .setDescription(`As you enter Dremenlond, you're immediately immersed in a realm of grandeur and ambition. Towering spires, bustling streets, and opulent displays beckon, offering a glimpse into a world of wealth and refinement. Yet, beneath the surface, you sense a palpable tension between privilege and aspiration, fueling your curiosity to explore further.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Dremenlond/dremenlond_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://dremenlond_main.jpg')
+                        .setDescription(`As you enter Dremenlond, you're immediately immersed in a realm of grandeur and ambition. Towering spires, bustling streets, and opulent displays beckon, offering a glimpse into a world of wealth and refinement. Yet, beneath the surface, you sense a palpable tension between privilege and aspiration, fueling your curiosity to explore further.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                    
+                    else if(location == 'Bleeding Gorge'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Raflese/bleeding_gorge.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://bleeding_gorge.jpeg')
+                        .setDescription(`As you arrive at the edge of Bleeding Gorge, a breathtaking panorama unfolds before you. Towering cliffs, weathered by time, enclose a deep chasm where a river of crimson water flows with an otherworldly grace. The air is heavy with the scent of damp earth and the distant echo of rushing water. As you peer into the depths below, shadows dance amidst the crimson currents, hinting at the enigmatic depths of this ancient gorge.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+
+                    else if(location == 'Kafig'){
+                        if(foundUser.coins >=0 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Kafig/kafig_main.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://kafig_main.jpeg')
+                        .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Kafig/kafig_main.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://kafig_main.jpeg')
+                        .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Vita Street'){
+                        const attachment = new MessageAttachment('assets/Raflese/vita_street.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://vita_street.jpeg')
+                        .setDescription(`As you arrive at Vita Street, it's like stepping into a lively painting. The air is filled with the sweet smell of magical potions and unique herbs. Colorful shops line the street, like Elixir Emporium with its shiny bottles and Sage's Gardenia showcasing amazing plants and herbs.\n\n**This is a shop location use /shop to open the shop**`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Eden Garden'){
+                        const attachment = new MessageAttachment('assets/Raflese/eden_garden.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://eden_garden.jpeg')
+                            .setDescription(`Entering Eden Garden feels like stepping into a magical tapestry. The air is filled with the sweet fragrance of exotic herbs and blossoms. At the heart stands the awe-inspiring Tree of Life, a towering testament to Raflese's transformation from barren land to flourishing paradise.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'The Green Keep'){
+                        const attachment = new MessageAttachment('assets/Raflese/green_keep.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://green_keep.jpeg')
+                            .setDescription(`The Green Keep on the outskirts is a transparent dome, hinting at secretive research within. Guards stand watch at the entrance, creating an atmosphere charged with scientific curiosity and whispered ethical concerns.**`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Plantastic Inn'){
+                        const attachment = new MessageAttachment('assets/Werfall/radohn_roost.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://radohn_roost.jpeg')
+                            .setDescription(`Plantastic Inn welcomes you with a charming exterior adorned with hanging baskets of flowers. The air carries the mouthwatering aroma of plant-based delicacies, and the subtle melody of laughter drifts from within, inviting you to experience the town's renowned vegetarian cuisine.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Raflese Guild Outpost'){
+                        const attachment = new MessageAttachment('assets/Raflese/raflese_guildoutpost.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://raflese_guildoutpost.jpeg')
+                            .setDescription(`The Raflese Guild Outpost buzzes with excitement. The quest-board promises adventure, and the lively chatter of adventurers creates an energetic atmosphere. It becomes a gateway, connecting Raflese to the power of Ajins.\n\n**use /questboard to view the Questboard**`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    
+                    
+    
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Bleeding Gorge"){
+                    let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Township of Raflese`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Township of Raflese`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Vita Street`,
+                                        value:`**Description**: A bustling Raflese street known for magical potions and herbs.\n`
+                                    },
+                                    {
+                                        name: `Eden Garden`,
+                                        value:`**Description**: A central botanical haven with the legendary Tree of Life.\n`
+                                    },
+                                    {
+                                        name: `The Green Keep`,
+                                        value:`**Description**: A guarded, glass-domed research facility headed by Dr. Rosalie.\n`
+                                    },
+                                    {
+                                        name: `The Plantastic Inn`,
+                                        value:`**Description**: A renowned inn in Raflese, celebrated for its exquisite vegetarian cuisine and floral-spiced tea.\n`
+                                    },
+                                    {
+                                        name: `Raflese Guild Outpost`,
+                                        value:`**Description**:  The Guild Outpost of Raflese, one of the many outposts under the jurisdiction of Eterna Guild and serves as the central hub for rangers around.\n`
+                                    }
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Township of Raflese`,
+                        description: ``,
+                        value: `Raflese`,
+                    },
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Vita Street`,
+                        description: ``,
+                        value: `Vita Street`,
+                    },{
+                        label: `Eden Garden`,
+                        description: ``,
+                        value: `Eden Garden`,
+                    },{
+                        label: `Plantastic Inn`,
+                        description: ``,
+                        value: `Plantastic Inn`,
+                    },{
+                        label: `The Green Keep`,
+                        description: ``,
+                        value: `The Green Keep`,
+                    },{
+                        label: `Raflese Guild Outpost`,
+                        description: ``,
+                        value: `Raflese Guild Outpost`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+                    
+
+                    if(location == 'Raflese'){
+                        if(foundUser.coins >=0 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Raflese/raflese_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://raflese_main.jpg')
+                        .setDescription(`As you enter Raflese Town, you're greeted by a kaleidoscope of colors and fragrances: vibrant gardens, sweet floral scents, and the inviting allure of herbal shops. The imposing glass dome of the Green Keep lab stands on the outskirts, contrasting with the serene majesty of the Eden Garden and its iconic Tree of Life. In this botanical paradise, every corner teems with natural wonder, captivating your senses from the moment you arrive.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Raflese/raflese_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://raflese_main.jpg')
+                        .setDescription(`As you enter Raflese Town, you're greeted by a kaleidoscope of colors and fragrances: vibrant gardens, sweet floral scents, and the inviting allure of herbal shops. The imposing glass dome of the Green Keep lab stands on the outskirts, contrasting with the serene majesty of the Eden Garden and its iconic Tree of Life. In this botanical paradise, every corner teems with natural wonder, captivating your senses from the moment you arrive.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Vita Street'){
+                        const attachment = new MessageAttachment('assets/Raflese/vita_street.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://vita_street.jpeg')
+                        .setDescription(`As you arrive at Vita Street, it's like stepping into a lively painting. The air is filled with the sweet smell of magical potions and unique herbs. Colorful shops line the street, like Elixir Emporium with its shiny bottles and Sage's Gardenia showcasing amazing plants and herbs.\n\n**This is a shop location use /shop to open the shop**`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Eden Garden'){
+                        const attachment = new MessageAttachment('assets/Raflese/eden_garden.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://eden_garden.jpeg')
+                            .setDescription(`Entering Eden Garden feels like stepping into a magical tapestry. The air is filled with the sweet fragrance of exotic herbs and blossoms. At the heart stands the awe-inspiring Tree of Life, a towering testament to Raflese's transformation from barren land to flourishing paradise.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'The Green Keep'){
+                        const attachment = new MessageAttachment('assets/Raflese/green_keep.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://green_keep.jpeg')
+                            .setDescription(`The Green Keep on the outskirts is a transparent dome, hinting at secretive research within. Guards stand watch at the entrance, creating an atmosphere charged with scientific curiosity and whispered ethical concerns.**`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Plantastic Inn'){
+                        const attachment = new MessageAttachment('assets/Werfall/radohn_roost.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://radohn_roost.jpeg')
+                            .setDescription(`Plantastic Inn welcomes you with a charming exterior adorned with hanging baskets of flowers. The air carries the mouthwatering aroma of plant-based delicacies, and the subtle melody of laughter drifts from within, inviting you to experience the town's renowned vegetarian cuisine.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Raflese Guild Outpost'){
+                        const attachment = new MessageAttachment('assets/Raflese/raflese_guildoutpost.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://raflese_guildoutpost.jpeg')
+                            .setDescription(`The Raflese Guild Outpost buzzes with excitement. The quest-board promises adventure, and the lively chatter of adventurers creates an energetic atmosphere. It becomes a gateway, connecting Raflese to the power of Ajins.\n\n**use /questboard to view the Questboard**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     

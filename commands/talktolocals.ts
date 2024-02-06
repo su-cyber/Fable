@@ -675,6 +675,83 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                            
                                            
                                         }
+                                        else if(foundUser.city_town == "Raflese"){
+                                            if(foundUser.location == "Vita Street"){
+                                                dialogue = [
+                                                    `Elysia : "Woah, a Ranger! Are you here for our herbs and potions? Our Vita Street is known for the best concoctions and herbal remedies in all of solarstrio! Make sure to try them out, I'm sure they will help you in your quests."`,
+                                                    `Cesile : "My family has been a resident of raflese for generations, The town's devotion to Goddess Rayelle and the Maiden of Purity is deeply rooted in our traditions. We believe in the power of purity and the sacred bond between humans and nature. It's a legacy we carry with pride, for it is what saved our beloved town from desolation. Our current maiden is just the best! She works really hard to make our town flourish and sustain it's purity."`,
+                                                    `Gorin : "You see all these channels of water streams running through our entire town? They irrigate our plants and helps all us residents grow as many plants and flowers as we want in our personal gardens! Visit mine when you have time!"`,
+                                                    `Genella : "The Apothecaries in our town are known for their generational talent and knowledge of herbs and medicines. You can find many herbalists and clinics in the Vita Street, as we have a saying that you can never get sick in Raflese haha! It's sad that many of our best talents are leaving Raflese to pursue a life of luxury in the bigger states and even other countries."`
+ 
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Eden Garden"){
+                                                dialogue = [
+                                                    `Rudy : "Have you met lady Silla yet? She is our current Maiden of Purity, our town has always been governed by not a mayor but our beloved Maidens. Lady Silla's beauty is really otherworldly! However, she lives a cruel fate of remaining a virgin and serving goddess Rayelle for eternity."`,
+                                                    `Professor Thorne: “Greetings, traveler! I'm Professor Thorne, a botanist studying the wonders of Eden Garden, The exotic plants, flowers and spices that grow here is nothing short of divine! Legend has it that a saintess named Rafflesia sacrificed herself to invoke the goddess Rayelle, transforming the barren land into this vibrant paradise. The Tree of Life, standing at the garden's heart, symbolizes her selfless act and the town's gratitude. It's truly a testament to the power of nature and the divine."`,
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Plantastic Inn"){
+                                                dialogue = [
+                                                    `Amelia : "You seem to be new around here aren't you? Make sure to try out Our vegetarian cuisine which is renowned for its fusion of flavors and the creative use of plants and herbs. The Plantastic Inn serves dishes like "Herbal Bliss Stew" and "Blossom Salad," tantalizing your taste buds with aromatic spices and unique combinations. Raflese's spices, carefully cultivated in our gardens, add a touch of enchantment to every dish."`,
+                                                    `Kasilla : "Ugh! I hate those researchers at the Green Keep, first they invaded our culture, our land and now they are freely using our resources for their selfish research and experiments! Only if they were not backed by the state, lady Silla would have driven them out ages ago!"`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "The Green Keep"){
+                                                dialogue = [
+                                                    `Guard: "You over there! where do you think you are trespassing? Even if you are a ranger, access to the Green Keep is restricted at this time. Only those with higher ranger rank or clearance from Dr. Rosalie, our head researcher, may enter."`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Raflese Guild Outpost"){
+                                                dialogue = [
+                                                    `Curie : "Have you heard about the Bleeding Gorge? It's a cursed place located nearby, why cursed you say? The water that flows there is blood red ya know and no one knows the reason! What's worse is that the place is completely infested with carnivorous mangroves and dangerous spyriths. Good thing that the Emperal Brigade has restricted access to the place now, you seem like a ranger…You should be good to go then, be careful though!"`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                        }
                                         else if(foundUser.city_town == "Kafig"){
                                             if(foundUser.location == "Avian Square"){
                                                 dialogue = [
