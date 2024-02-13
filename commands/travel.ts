@@ -4774,7 +4774,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Radohn Roost'){
-                        const attachment = new MessageAttachment('assets/Werfall/radohn_roost.jpeg')
+                        const attachment = new MessageAttachment('assets/Kafig/radohn_roost.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
@@ -5474,7 +5474,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Radohn Roost'){
-                        const attachment = new MessageAttachment('assets/Werfall/radohn_roost.jpeg')
+                        const attachment = new MessageAttachment('assets/Kafig/radohn_roost.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
@@ -5484,7 +5484,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Kafig Guild Outpost'){
-                        const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
+                        const attachment = new MessageAttachment('assets/Kafig/ranger_centre.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
@@ -5781,12 +5781,12 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Plantastic Inn'){
-                        const attachment = new MessageAttachment('assets/Werfall/radohn_roost.jpeg')
+                        const attachment = new MessageAttachment('assets/Raflese/plantastic_inn.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
-                            .setImage('attachment://radohn_roost.jpeg')
+                            .setImage('attachment://plantastic_inn.jpeg')
                             .setDescription(`Plantastic Inn welcomes you with a charming exterior adorned with hanging baskets of flowers. The air carries the mouthwatering aroma of plant-based delicacies, and the subtle melody of laughter drifts from within, inviting you to experience the town's renowned vegetarian cuisine.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
@@ -6028,12 +6028,12 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Plantastic Inn'){
-                        const attachment = new MessageAttachment('assets/Werfall/radohn_roost.jpeg')
+                        const attachment = new MessageAttachment('assets/Raflese/plantastic_inn.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
-                            .setImage('attachment://radohn_roost.jpeg')
+                            .setImage('attachment://plantastic_inn.jpeg')
                             .setDescription(`Plantastic Inn welcomes you with a charming exterior adorned with hanging baskets of flowers. The air carries the mouthwatering aroma of plant-based delicacies, and the subtle melody of laughter drifts from within, inviting you to experience the town's renowned vegetarian cuisine.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
@@ -6048,6 +6048,363 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
+                    
+    
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Dremenlond"){
+                    let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Capital of Gloaming`,
+                                                value:`**Travelled on Stagecoach**\n**Description**: Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Kafig`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Nottfall`,
+                                                value:`**Travelled on Stagecoach**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Capital of Gloaming`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Kafig`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Nottfall`,
+                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Royal District`,
+                                        value:`**Description**: A fancy area with grand palaces and beautiful gardens, where rich and nobility live.\n`
+                                    },
+                                    {
+                                        name: `Marché Royale`,
+                                        value:`**Description**: Dremenlond's diverse and premium marketplace to suite the tastes of the Nobility\n`
+                                    },
+                                    {
+                                        name: `Reich Auction House`,
+                                        value:`**Description**: The grandest auction house Vearth has ever seen.\n`
+                                    },
+                                    {
+                                        name: `Lumiere Academy`,
+                                        value:`**Description**: The most Renowned educational institution in Solarstrio.\n`
+                                    },
+                                    {
+                                        name: `Hotel Sapphire Star`,
+                                        value:`**Description**: Luxurious accommodation and dining in the heart of Dremenlond.\n`
+                                    },
+                                    {
+                                        name: `The Royal Council`,
+                                        value:`**Description**: The Administrative headquarters of Solarstrio.\n`
+                                    },
+                                    {
+                                        name: `Dremenlond Ranger Centre`,
+                                        value:`**Description**: Headquarters of Ranger Association in Solarstrio branch.\n`
+                                    }
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Capital of Gloaming`,
+                        description: ``,
+                        value: `Gloaming`,
+                    },
+                    {
+                        label: `Township of Kafig`,
+                        description: ``,
+                        value: `Kafig`,
+                    },{
+                        label: `Stateship of Nottfall`,
+                        description: ``,
+                        value: `Nottfall`,
+                    },
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Royal District`,
+                        description: ``,
+                        value: `Royal District`,
+                    },{
+                        label: `Marché Royale`,
+                        description: ``,
+                        value: `Marché Royale`,
+                    },{
+                        label: `Reich Auction House`,
+                        description: ``,
+                        value: `Reich Auction House`,
+                    },{
+                        label: `Lumiere Academy`,
+                        description: ``,
+                        value: `Lumiere Academy`,
+                    },{
+                        label: `Hotel Sapphire Star`,
+                        description: ``,
+                        value: `Hotel Sapphire Star`,
+                    },{
+                        label: `The Royal Council`,
+                        description: ``,
+                        value: `The Royal Council`,
+                    },{
+                        label: `Dremenlond Ranger Centre`,
+                        description: ``,
+                        value: `Dremenlond Ranger Centre`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+                    if(location == 'Gloaming'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Gloaming/gloaming_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://gloaming_main.jpg')
+                        .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Dremenlond/dremenlond_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://dremenlond_main.jpg')
+                        .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                    else if(location == 'Nottfall'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://nottfall_main.jpg')
+                        .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Dremenlond/dremenlond_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://dremenlond_main.jpg')
+                        .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+
+                    else if(location == 'Kafig'){
+                        if(foundUser.coins >=0 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Kafig/kafig_main.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://kafig_main.jpeg')
+                        .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Kafig/kafig_main.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://kafig_main.jpeg')
+                        .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Royal District'){
+                        const attachment = new MessageAttachment('assets/Dremenlond/royal_district.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://royal_district.jpeg')
+                        .setDescription(`As you enter the Royal District, you are greeted by tall, ornate gates. The streets are wide and well-maintained, lined with lavish mansions and elegant gardens. Walking through the Royal District, you see magnificent mansions belonging to the noble houses. Each house has its own distinctive architecture and style, showcasing the wealth and power of Dremenlond's nobility.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Marché Royale'){
+                        const attachment = new MessageAttachment('assets/Dremenlond/marche_royale.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://marche_royale.jpeg')
+                            .setDescription(`Upon entering Marché Royale, you are greeted by a bustling and vibrant atmosphere. The market is filled with a wide variety of shops, each offering unique goods and delicacies. Exploring Marché Royale, you find an array of shops selling exquisite items, from magical artifacts to luxurious clothing. The market caters to the refined tastes of the nobility, offering high-quality products that are sought after in Solarstrio.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Reich Auction House'){
+                        const attachment = new MessageAttachment('assets/Dremenlond/reich_auction.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://reich_auction.jpeg')
+                            .setDescription(`The Green Keep on the outskirts is a transparent dome, hinting at secretive research within. Guards stand watch at the entrance, creating an atmosphere charged with scientific curiosity and whispered ethical concerns.**`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Lumiere Academy'){
+                        const attachment = new MessageAttachment('assets/Dremenlond/lumiere_academy.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://lumiere_academy.jpeg')
+                            .setDescription(`As you approach Lumiere Academy, you see a sprawling campus with impressive buildings and beautifully landscaped grounds. The architecture exudes a sense of knowledge and wisdom. Inside Lumiere Academy, you discover a vibrant academic environment. Students can be seen engaged in various disciplines, from spyr and weapon training to research and politics. The classrooms and lecture halls are filled with eager learners, and the air is buzzing with intellectual curiosity.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Dremenlond Ranger Centre'){
+                        const attachment = new MessageAttachment('assets/Dremenlond/dremenlond_rangercentre.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://dremenlond_rangercentre.jpeg')
+                            .setDescription(`As you approach the Dremenlond Ranger Centre, you are welcomed by a majestic building adorned with the emblems of the three big guilds of solarstrio. The architecture reflects a sense of grandeur and regality, befitting the esteemed nature of the rangers of noble blood. Inside the Dremenlond Ranger Centre, you step into a world of luxury and elegance. The interior is tastefully decorated, with lavish furnishings and intricate details. The walls proudly display the emblems of the three major guilds, defining their dominion over all the rangers in Solarstrio.\n\n**use /questboard to view the Questboard**`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Hotel Sapphire Star'){
+                        const attachment = new MessageAttachment('assets/Dremenlond/sapphire_star.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://saphire_star.jpeg')
+                            .setDescription(`As you reach Hotel Sapphire Star, you are greeted by an elegant and imposing facade. The hotel stands tall, exuding a sense of sophistication and grandeur. Stepping into Hotel Sapphire Star, you find yourself in a world of luxury and comfort. The lobby is adorned with exquisite chandeliers and plush furnishings, creating an atmosphere of opulence. The courteous staff welcomes you warmly and attends to your every need. The hotel offers a range of lavish rooms and suites, each tastefully decorated and equipped with modern amenities. The dining area boasts a fine selection of gourmet cuisine, prepared by skilled chefs.\n\n**use /questboard to view the Questboard**`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'The Royal Council'){
+                        const attachment = new MessageAttachment('assets/Dremenlond/royal_council.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://royal_council.jpeg')
+                            .setDescription(`Upon reaching the Royal Council, you find a majestic building that once served as the royal palace. Its architecture reflects a blend of regality and functionality, symbolizing the council's authority. As you approach the gates, you are stopped by Guards each belonging to the four great houses, each an elite in their own right. You are restricted access to the royal council without a proper permit.\n\n**use /questboard to view the Questboard**`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
                     
     
                 collector_select.stop()

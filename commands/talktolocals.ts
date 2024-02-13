@@ -769,7 +769,7 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                     totalEmbeds.push(dialogueembed)
                                                 })
                                             }
-                                            else if(foundUser.location == "the Guilded Cage"){
+                                            else if(foundUser.location == "The Guilded Cage"){
                                                 dialogue = [
                                                     `Leif [Bartender]: "Welcome to The Gilded Cage, Ranger. Care for a drink? Our tavern has been a gathering place for rangers and locals alike for generations. Sit back, relax, and let the tales of Kafig wash over you like the wind through Radohn's wings."`,
                                                     `Nora: "You know, Orin was a true legend around these parts. The stories say he had an uncanny bond with Avian Spyriths, like no other beastmaster. With Radohn's blessings, he commanded the skies and was the founder of our township. His bravery still echoes in our hearts."`,
@@ -820,6 +820,106 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                     `Hedge: "We take great pride in our own Basil, the Vice Master of Eterna Guild. Basil is a prodigy and one of the strongest rangers you'll ever meet. Born and raised right here in Kafig, the town cherishes and celebrates their achievements. It's a testament to the strength and spirit of our community."`
                                                     
                                                     
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                        }
+                                        else if(foundUser.city_town == "Dremenlond"){
+                                            if(foundUser.location == "Royal District"){
+                                                dialogue = [
+                                                    `Fernand : "Tch, what is filth such as you doing in this zone!? This is why I don't like you rangers, stepping foot in places you don't belong. I don't understand how common filth even awakens as an Ajin, It's a realm reserved for us of the Noble Bloodline. Now scram!"`,
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Marché Royale"){
+                                                dialogue = [
+                                                    `Forger: "Yo fellow Ranger! Are you here for the Equipments at Marché Royale? It doesn't seem like you can afford them though, only Ajins belonging to nobility or that of Higher Grades can imagine buying those stuff. Anyways you should definitely stay at the Sapphire Star hotel! It's a premium hotel with the best ambience and food in all of the kingdom, free lodging anywhere is one of the best perks of being a ranger haha."`
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Lumiere Academy"){
+                                                dialogue = [
+                                                    `Matilda: "Welcome to the Zone of Excellence good mister, Lumiere Academy's huge campus makes up most of the zone from college of Medicine to fine Arts there is a reputed college for every field there is! The facilities and wisdom it possesses far surpasses any of those in the entirety of Vearth, However unranked scholars like me can't even get enough books to study. I will keep working hard and I'm sure I will someday get ranked!"`,
+                                                    `Cassandra: "Greetings, fellow seeker of knowledge. Lumiere Academy is the beacon of enlightenment in Dremenlond. Our esteemed scholars delve into Spyr, relics, politics, and more. Oh, and the Infinite Library... it holds the wisdom of ages.If it is wisdom or the lifestyle of your dreams, then you have come to the right place."`,
+                                                    `Eza : "Um sorry, I'm just an intern working under lady Lynda, she is the best in all of solarstrio when it comes to Medical knowledge, she is the 5th seat of lumiere! It's not glamorous working as an intern, but uhm… it's a stepping stone to greatness. I hope to contribute to research and gain recognition someday! Now if you'll excuse me, or lady Lynda might get angry."`,
+                                                    `Jasper: "Leave me alone, I need to study and research as hard as I can for the coming 'Joint Evaluation'. What? You don't know about it? It is the annual examination of Lumiere Academy which evaluates the full potential of all the students and scholars in the zone of excellence, even the professors are not an exemption. Based on the results the top rankers are given a rank from 1-5000 which is tattoo'd on their face, just you watch I'll become a Ranked Scholar soon!" `
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Hotel Sapphire Star"){
+                                                dialogue = [
+                                                    `Quentin : "Did you hear? The second seat of Lumiere Mr. Felski was recently rewarded with Baronship by the Royal Council for his Unbelievable Contribution to Spyr theory and energy management, he was also the Incharge of the team that built  the Magitech Tower in Ingenia."`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Reich Auction House"){
+                                                dialogue = [
+                                                    `Denise: "I heard the Reich Auction House is going to hold another grand auction next week and the sixth heaven of Haganeshiro 'Venom Fang' Akira is coming to attend it. He's one of the richest men on Vearth and the sect leader of one of the Six Great Sects of Haganeshiro, the rumors about him and his sect are….scary, I hope he doesn't brew any trouble over here."`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Dremenlond Ranger Centre"){
+                                                dialogue = [
+                                                    `Desmond: "New to Dremenlond are we? this place reeks of wealth and power. The state is divided into the 'Zone of Noblesse' and 'Zone of Excellence' commoners like me can't even think of stepping foot inside the gates of Noblesse. However, restrictions such as that don't matter to you rangers do they? I'm so damn envious.Be careful though, those so called Nobles are not fond of foreign blood into their territory."`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "The Royal Council"){
+                                                dialogue = [
+                                                    `Penelope: "Oi you ranger over there! Where do you think you are heading? It's the Royal Council's palace! Can't you see the statues of the four Earls carved on the walls? It's the council of the great four elders who rule and administer solarstrio on that usur- I mean our king's behalf, their authority is second only to king Helios.The four elders were the former Earls and heads of the four great houses and the pinnacle of all Royalty. Be grateful that you are in presence of me, lady Penelope of the house of Luka, directly affiliated to the House of Noxilus! Now go away and don't sully the statue of our lord Solis."`
+   
                                                 ]
                                                 dialogue.map((diag) => {
                                                     dialogueembed = new MessageEmbed()
