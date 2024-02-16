@@ -256,12 +256,13 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         }
                 
                 }
+                else{
+                    await interaction.editReply({content:`The Route to Zorya is Blocked by the Emperal Brigade due to the ongoing Nightmare, You cannot proceed right now`,embeds:[],components:[]}) 
+                 }
                 
                     
                     }
-                    else{
-                       await interaction.editReply({content:`The Route to Zorya is Blocked by the Emperal Brigade due to the ongoing Nightmare, You cannot proceed right now`,embeds:[],components:[]}) 
-                    }
+                    
                 collector_select.stop()
                 collector_cancel.stop()
                     
@@ -3437,7 +3438,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
                 }
                 else if(city_town == "Orld Tree Husk"){
-                                        let Interiorembed
+                                        let Interiorembed1
+                                        let Interiorembed2
                                         let Exteriorembed
                                         let mount = "None"
                                         if(mount == "None"){
@@ -3465,6 +3467,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             {
                                                 name: `Zephyr Mountain`,
                                                 value:`**Travelled on Foot**\n**Description**:The great mountains of the Zephyr range\n**Cost**:0 🪙`
+                                            },
+                                            {
+                                                name: `Capital of Gloaming`,
+                                                value:`**Travelled on Stagecoach**\n**Description**: Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 🪙\n`
                                             },
                                         ])
                                         
@@ -3495,11 +3501,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                                 name: `Zephyr Mountain`,
                                                 value:`**Travelled on Spyralink**\n**Description**:The great mountains of the Zephyr range\n**Cost**:0 🪙`
                                             },
+                                            {
+                                                name: `Capital of Gloaming`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 0 🪙\n`
+                                            },
                                         ])
     
                                         }
                                         
-                                   Interiorembed = new MessageEmbed()
+                                   Interiorembed1 = new MessageEmbed()
                                    .setColor('RANDOM')
                                    .setTitle('SELECT INTERIOR LOCATION')
                                    .setDescription(`Choose a location to visit in Zorya`)
@@ -3545,12 +3555,49 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         value:`**Description**:A mesmerizing fusion of nature and steam-powered marvels, where vibrant flowers bloom suspended in mid-air, creating an enchanting and tranquil visual.\n`
                                     }
                                    ])
+
+                                   Interiorembed2 = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Capitol Central`,
+                                        value:`**Description**:  A bustling hub of governance and diplomacy, where the kingdom's affairs are conducted.\n`
+                                    },
+                                    {
+                                        name: `Badshahi Bazaar`,
+                                        value:`**Description**: The vibrant heart of commerce and culture, where the sights beckon eager shoppers and curious wanderers alike.\n`
+                                    },
+                                    {
+                                        name: `Spirit Arsenal`,
+                                        value:`**Description**: A majestic tribute to valor and heritage, where legendary weapons of myth and legend stand.\n`
+                                    },
+                                    {
+                                        name: `Gloaming Ranger Centre`,
+                                        value:`**Description**: The hub of Ranger Activities under the jurisdiction of the Ranger Association.\n`
+                                    },
+                                    {
+                                        name: `Solar Vault`,
+                                        value:`**Description**: A secured bank where the wealth of the realm is safeguarded.\n`
+                                    },
+                                    {
+                                        name: `Castle Heliad`,
+                                        value:`**Description**: The majestic seat of Solarstrio's revered ruler King Helios\n`
+                                    },
+                                    {
+                                        name: `Shahi Quila`,
+                                        value:`**Description**: A culinary paradise where the rich flavors of the Mirazh Empire mingle with Solarstrio's hospitality.\n`
+                                    }
+                                   ])
         
         
-        let btn_cancel = new MessageActionRow().addComponents([
-            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
-            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("interior"),
-            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+        
+                                   let btn_cancel = new MessageActionRow().addComponents([
+                                    new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+                                    new MessageButton().setCustomId("interior1").setStyle("PRIMARY").setLabel("Zorya Interior"),
+                                    new MessageButton().setCustomId("interior2").setStyle("PRIMARY").setLabel("Gloaming Interior"),
+                                    new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
         
         let Exteriorselect =  new MessageActionRow().addComponents([
                 new MessageSelectMenu()
@@ -3580,11 +3627,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         description: ``,
                         value: `Zephyr Mountain`,
                     },
+                    {
+                        label: `Capital of Gloaming`,
+                        description: ``,
+                        value: `Gloaming`,
+                    }
                     )
                     .setDisabled(false),
             ]) 
 
-            let Interiorselect =  new MessageActionRow().addComponents([
+            let Interiorselect1 =  new MessageActionRow().addComponents([
                 new MessageSelectMenu()
                 .setCustomId('select_interior')
                     .setPlaceholder(`Select a location ${interaction.user.username}`)
@@ -3633,16 +3685,53 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     
                     )
                     .setDisabled(false),
+            ])
+            let Interiorselect2 =   new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior2')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Capitol Central`,
+                        description: ``,
+                        value: `Capitol Central`,
+                    },{
+                        label: `Badshahi Bazaar`,
+                        description: ``,
+                        value: `Badshahi Bazaar`,
+                    },{
+                        label: `Spirit Arsenal`,
+                        description: ``,
+                        value: `Spirit Arsenal`,
+                    },{
+                        label: `Gloaming Ranger Centre`,
+                        description: ``,
+                        value: `Gloaming Ranger Centre`,
+                    },{
+                        label: `Solar Vault`,
+                        description: ``,
+                        value: `Solar Vault`,
+                    },{
+                        label: `Castle Heliad`,
+                        description: ``,
+                        value: `Castle Heliad`,
+                    },{
+                        label: `Shahi Quila`,
+                        description: ``,
+                        value: `Shahi Quila`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
             ])  
-            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
-            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_interior2" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior1"|| interaction.customId == "interior2" || interaction.customId == "exterior")    
             let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
             let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
         
             
         
         
-            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+            await interaction.reply({content: null,embeds:[Interiorembed1],components:[Interiorselect1,btn_cancel]})
         
             collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                 collected.deferUpdate().catch(() => null)
@@ -3814,6 +3903,84 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 collector_cancel.stop()
                
                 }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Capitol Central'){
+                        const attachment = new MessageAttachment('assets/Gloaming/capitol_central.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://capitol_central.jpeg')
+                        .setDescription(`As you step into Capitol Central, the air is alive with the sound of hurried footsteps and the murmur of whispered conversations. Marble corridors adorned with intricate tapestries lead to vast chambers filled with ornate furnishings and imposing figures engaged in heated debates.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Badshahi Bazaar'){
+                        const attachment = new MessageAttachment('assets/Gloaming/badshahi_bazaar.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://badshahi_bazaar.jpeg')
+                            .setDescription(`Entering Badshahi Bazaar, you're immediately enveloped in a whirlwind of activity. Colorful stalls line bustling streets, their wares displayed in a riot of hues and textures. Merchants call out in melodic voices, extolling the virtues of their goods as shoppers haggle and bargain amidst the vibrant chaos.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Spirit Arsenal'){
+                        const attachment = new MessageAttachment('assets/Gloaming/spirit_arsenal.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://spirit_arsenal.jpeg')
+                            .setDescription(`Stepping into the Spirit Arsenal, you're greeted by a sense of awe and reverence. The Towering column of stone rise majestically, its surfaces adorned with intricately engraved weapons of every shape and size. Each blade tells a story of courage and sacrifice, its craftsmanship a testament to the skill of the ancient artisan.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Gloaming Ranger Centre'){
+                        const attachment = new MessageAttachment('assets/Gloaming/gloaming_rangercentre.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://gloaming_rangercentre.jpeg')
+                            .setDescription(`As you step into the Gloaming Ranger Centre, you're greeted by the sight of seasoned rangers clad in weathered armor and rugged attire. Rangers of every ilk and background bustle about, sharpening blades, mending gear, and trading tales of daring exploits.\n\n**use /questboard to view the Questboard**`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Solar Vault'){
+                        const attachment = new MessageAttachment('assets/Gloaming/solar_vault.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://solar_vault.jpeg')
+                            .setDescription(`Entering the Solar Vault, you're struck by the aura of wealth and power that permeates the air. Vaulted ceilings soar overhead, adorned with intricate carvings and gilded embellishments that speak of opulence and grandeur. Rows of polished teller stations stretch into the distance, attended by bankers.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    } 
+                    else if(location == 'Castle Heliad'){
+                        const attachment = new MessageAttachment('assets/Gloaming/castle_heliad.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://castle_heliad.jpeg')
+                            .setDescription(`Ascending into Castle Heliad, you're greeted by the imposing splendor of its architecture. Stone pillars rise skyward, supporting the weight of the castle above, while banners bearing the sigil of the king flutter in the breeze. Helios Aureus clad in gleaming armor stand sentinel at every corner, their vigilant watch speaking to the kingdom's unwavering military might`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Shahi Quila'){
+                        const attachment = new MessageAttachment('assets/Gloaming/shahi_quila.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://shahi_quila.jpeg')
+                            .setDescription(`Stepping into Shahi Quila, you're greeted by the tantalizing aroma of spices and sizzling meats, mingling with the warm glow of lanterns and the lively chatter of diners. Tables adorned with richly embroidered cloths beckon guests to indulge in savory delicacies, served with a generous side of hospitality by bustling waitstaff clad in traditional attire.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    
+    
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
                 
                 
         
@@ -3833,9 +4000,13 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 collector_cancel.stop()
                 collector_select.stop()
                 }
-                else if(j.customId == "interior"){
+                else if(j.customId == "interior1"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed1],components:[Interiorselect1,btn_cancel]})
+                    }
+                else if(j.customId == "interior2"){
+                    
+                        await interaction.editReply({embeds:[Interiorembed2],components:[Interiorselect2,btn_cancel]})
                     }
                 else if(j.customId == "exterior"){
                     
@@ -6105,9 +6276,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                                 value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 100 🪙\n`
                                             },
                                             {
-                                                name: `Stateship of Nottfall`,
-                                                value:`**Travelled on Stagecoach**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                                name: `Township of Raflese`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 100 🪙\n`
                                             },
+                                            
                                         ])
                                         
                                         }
@@ -6126,9 +6298,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                                 value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 🪙\n`
                                             },
                                             {
-                                                name: `Stateship of Nottfall`,
-                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
-                                            },
+                                                name: `Township of Raflese`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 0 🪙\n`
+                                        },
+                                        
                                         ])
     
                                         }
@@ -6188,9 +6361,9 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         description: ``,
                         value: `Kafig`,
                     },{
-                        label: `Stateship of Nottfall`,
+                        label: `Township of Raflese`,
                         description: ``,
-                        value: `Nottfall`,
+                        value: `Raflese`,
                     },
                     )
                     .setDisabled(false),
@@ -6274,25 +6447,25 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         }
                         
                     }
-                    else if(location == 'Nottfall'){
-                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                    else if(location == 'Raflese'){
+                        if(foundUser.coins >=0 && foundUser.mount == "None"){
                             await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
-                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.jpg')
+                        const attachment = new MessageAttachment('assets/Raflese/raflese_main.jpg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://nottfall_main.jpg')
-                        .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
+                        .setImage('attachment://raflese_main.jpg')
+                        .setDescription(`As you enter Raflese Town, you're greeted by a kaleidoscope of colors and fragrances: vibrant gardens, sweet floral scents, and the inviting allure of herbal shops. The imposing glass dome of the Green Keep lab stands on the outskirts, contrasting with the serene majesty of the Eden Garden and its iconic Tree of Life. In this botanical paradise, every corner teems with natural wonder, captivating your senses from the moment you arrive.`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                        const attachment = new MessageAttachment('assets/Dremenlond/dremenlond_main.jpg')
+                        const attachment = new MessageAttachment('assets/Raflese/raflese_main.jpg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://dremenlond_main.jpg')
-                        .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
+                        .setImage('attachment://raflese_main.jpg')
+                        .setDescription(`As you enter Raflese Town, you're greeted by a kaleidoscope of colors and fragrances: vibrant gardens, sweet floral scents, and the inviting allure of herbal shops. The imposing glass dome of the Green Keep lab stands on the outskirts, contrasting with the serene majesty of the Eden Garden and its iconic Tree of Life. In this botanical paradise, every corner teems with natural wonder, captivating your senses from the moment you arrive.`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else{
@@ -6392,7 +6565,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://saphire_star.jpeg')
-                            .setDescription(`As you reach Hotel Sapphire Star, you are greeted by an elegant and imposing facade. The hotel stands tall, exuding a sense of sophistication and grandeur. Stepping into Hotel Sapphire Star, you find yourself in a world of luxury and comfort. The lobby is adorned with exquisite chandeliers and plush furnishings, creating an atmosphere of opulence. The courteous staff welcomes you warmly and attends to your every need. The hotel offers a range of lavish rooms and suites, each tastefully decorated and equipped with modern amenities. The dining area boasts a fine selection of gourmet cuisine, prepared by skilled chefs.\n\n**use /questboard to view the Questboard**`)
+                            .setDescription(`As you reach Hotel Sapphire Star, you are greeted by an elegant and imposing facade. The hotel stands tall, exuding a sense of sophistication and grandeur. Stepping into Hotel Sapphire Star, you find yourself in a world of luxury and comfort. The lobby is adorned with exquisite chandeliers and plush furnishings, creating an atmosphere of opulence. The courteous staff welcomes you warmly and attends to your every need. The hotel offers a range of lavish rooms and suites, each tastefully decorated and equipped with modern amenities. The dining area boasts a fine selection of gourmet cuisine, prepared by skilled chefs.`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'The Royal Council'){
@@ -6402,7 +6575,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://royal_council.jpeg')
-                            .setDescription(`Upon reaching the Royal Council, you find a majestic building that once served as the royal palace. Its architecture reflects a blend of regality and functionality, symbolizing the council's authority. As you approach the gates, you are stopped by Guards each belonging to the four great houses, each an elite in their own right. You are restricted access to the royal council without a proper permit.\n\n**use /questboard to view the Questboard**`)
+                            .setDescription(`Upon reaching the Royal Council, you find a majestic building that once served as the royal palace. Its architecture reflects a blend of regality and functionality, symbolizing the council's authority. As you approach the gates, you are stopped by Guards each belonging to the four great houses, each an elite in their own right. You are restricted access to the royal council without a proper permit.`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
@@ -6443,6 +6616,434 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })              
        
                 }
+                else if(city_town == "Gloaming"){
+                    let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Stateship of Dremenlond`,
+                                                value:`**Travelled on Stagecoach**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Orld Tree's Husk`,
+                                                value:`**Travelled on Foot**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**:0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Zorya`,
+                                                value:`**Travelled on StageCoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:100 🪙`
+                                            },
+                                            {
+                                                name: `Stateship of Nottfall`,
+                                                value:`**Travelled on Stagecoach**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Vesper`,
+                                                value:`**Travelled on Stagecoach**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 100 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Stateship of Dremenlond`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Orld Tree's Husk`,
+                                                value:`**Travelled on Spyralink**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Zorya`,
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**: 0 🪙`
+                                            },
+                                            {
+                                                name: `Stateship of Nottfall`,
+                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Vesper`,
+                                                value:`**Travelled on Stagecoach**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 🪙\n`
+                                            },
+                                        
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Capitol Central`,
+                                        value:`**Description**:  A bustling hub of governance and diplomacy, where the kingdom's affairs are conducted.\n`
+                                    },
+                                    {
+                                        name: `Badshahi Bazaar`,
+                                        value:`**Description**: The vibrant heart of commerce and culture, where the sights beckon eager shoppers and curious wanderers alike.\n`
+                                    },
+                                    {
+                                        name: `Spirit Arsenal`,
+                                        value:`**Description**: A majestic tribute to valor and heritage, where legendary weapons of myth and legend stand.\n`
+                                    },
+                                    {
+                                        name: `Gloaming Ranger Centre`,
+                                        value:`**Description**: The hub of Ranger Activities under the jurisdiction of the Ranger Association.\n`
+                                    },
+                                    {
+                                        name: `Solar Vault`,
+                                        value:`**Description**: A secured bank where the wealth of the realm is safeguarded.\n`
+                                    },
+                                    {
+                                        name: `Castle Heliad`,
+                                        value:`**Description**: The majestic seat of Solarstrio's revered ruler King Helios\n`
+                                    },
+                                    {
+                                        name: `Shahi Quila`,
+                                        value:`**Description**: A culinary paradise where the rich flavors of the Mirazh Empire mingle with Solarstrio's hospitality.\n`
+                                    }
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Stateship of Dremenlond`,
+                        description: ``,
+                        value: `Dremenlond`,
+                    },
+                    {
+                        label: `Orld Tree's Husk`,
+                        description: ``,
+                        value: `Orld Tree Husk`,
+                    },
+                    {
+                        label: `Stateship of Zorya`,
+                        description: ``,
+                        value: `Zorya`,
+                    },
+                    {
+                        label: `Stateship of Nottfall`,
+                        description: ``,
+                        value: `Nottfall`,
+                    },
+                    {
+                        label: `Township of Vesper`,
+                        description: ``,
+                        value: `Vesper`,
+                    },
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Capitol Central`,
+                        description: ``,
+                        value: `Capitol Central`,
+                    },{
+                        label: `Badshahi Bazaar`,
+                        description: ``,
+                        value: `Badshahi Bazaar`,
+                    },{
+                        label: `Spirit Arsenal`,
+                        description: ``,
+                        value: `Spirit Arsenal`,
+                    },{
+                        label: `Gloaming Ranger Centre`,
+                        description: ``,
+                        value: `Gloaming Ranger Centre`,
+                    },{
+                        label: `Solar Vault`,
+                        description: ``,
+                        value: `Solar Vault`,
+                    },{
+                        label: `Castle Heliad`,
+                        description: ``,
+                        value: `Castle Heliad`,
+                    },{
+                        label: `Shahi Quila`,
+                        description: ``,
+                        value: `Shahi Quila`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+                    if(location == 'Dremenlond'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Dremenlond/dremenlond_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://dremenlond_main.jpg')
+                        .setDescription(`As you enter Dremenlond, you're immediately immersed in a realm of grandeur and ambition. Towering spires, bustling streets, and opulent displays beckon, offering a glimpse into a world of wealth and refinement. Yet, beneath the surface, you sense a palpable tension between privilege and aspiration, fueling your curiosity to explore further.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Dremenlond/dremenlond_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://dremenlond_main.jpg')
+                        .setDescription(`As you enter Dremenlond, you're immediately immersed in a realm of grandeur and ambition. Towering spires, bustling streets, and opulent displays beckon, offering a glimpse into a world of wealth and refinement. Yet, beneath the surface, you sense a palpable tension between privilege and aspiration, fueling your curiosity to explore further.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                    else if(location == 'Nottfall'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://nottfall_main.jpg')
+                        .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://nottfall_main.jpg')
+                        .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+
+                    else if(location == 'Zorya'){
+                        if(foundUser.completed_quests.includes( "KS-TA-SQ5")){
+                            if(foundUser.coins>=100 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://zorya_main.jpg')
+                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://zorya_main.jpg')
+                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You do not have enough coins to pay for the Stagecoach`)
+                        }
+                
+                }
+            }
+            else if(location == 'Orld Tree Husk'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://orld_husk.jpg')
+                .setDescription(`Approaching the husk of the Orld Tree, you're struck by its sheer size and presence. Though now dead, its colossal form still looms large, casting shadows that seem to stretch endlessly across the land. The ground beneath your feet feels charged with energy, a testament to the tree's ancient power, which still pulses faintly through the soil. Standing in its shadow, you can't help but feel a sense of awe and wonder at the history and secrets this ancient relic holds.\n\n`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'Vesper'){
+                if(foundUser.coins >=100 && foundUser.mount == "None"){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                const attachment = new MessageAttachment('assets/Vesper/vesper_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://vesper_main.jpg')
+                .setDescription(`
+                As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(foundUser.mount != "None"){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Vesper/vesper_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://vesper_main.jpg')
+                .setDescription(`
+                As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else{
+                    interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                }
+                
+            }
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Capitol Central'){
+                        const attachment = new MessageAttachment('assets/Gloaming/capitol_central.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://capitol_central.jpeg')
+                        .setDescription(`As you step into Capitol Central, the air is alive with the sound of hurried footsteps and the murmur of whispered conversations. Marble corridors adorned with intricate tapestries lead to vast chambers filled with ornate furnishings and imposing figures engaged in heated debates.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Badshahi Bazaar'){
+                        const attachment = new MessageAttachment('assets/Gloaming/badshahi_bazaar.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://badshahi_bazaar.jpeg')
+                            .setDescription(`Entering Badshahi Bazaar, you're immediately enveloped in a whirlwind of activity. Colorful stalls line bustling streets, their wares displayed in a riot of hues and textures. Merchants call out in melodic voices, extolling the virtues of their goods as shoppers haggle and bargain amidst the vibrant chaos.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Spirit Arsenal'){
+                        const attachment = new MessageAttachment('assets/Gloaming/spirit_arsenal.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://spirit_arsenal.jpeg')
+                            .setDescription(`Stepping into the Spirit Arsenal, you're greeted by a sense of awe and reverence. The Towering column of stone rise majestically, its surfaces adorned with intricately engraved weapons of every shape and size. Each blade tells a story of courage and sacrifice, its craftsmanship a testament to the skill of the ancient artisan.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Gloaming Ranger Centre'){
+                        const attachment = new MessageAttachment('assets/Gloaming/gloaming_rangercentre.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://gloaming_rangercentre.jpeg')
+                            .setDescription(`As you step into the Gloaming Ranger Centre, you're greeted by the sight of seasoned rangers clad in weathered armor and rugged attire. Rangers of every ilk and background bustle about, sharpening blades, mending gear, and trading tales of daring exploits.\n\n**use /questboard to view the Questboard**`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Solar Vault'){
+                        const attachment = new MessageAttachment('assets/Gloaming/solar_vault.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://solar_vault.jpeg')
+                            .setDescription(`Entering the Solar Vault, you're struck by the aura of wealth and power that permeates the air. Vaulted ceilings soar overhead, adorned with intricate carvings and gilded embellishments that speak of opulence and grandeur. Rows of polished teller stations stretch into the distance, attended by bankers.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    } 
+                    else if(location == 'Castle Heliad'){
+                        const attachment = new MessageAttachment('assets/Gloaming/castle_heliad.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://castle_heliad.jpeg')
+                            .setDescription(`Ascending into Castle Heliad, you're greeted by the imposing splendor of its architecture. Stone pillars rise skyward, supporting the weight of the castle above, while banners bearing the sigil of the king flutter in the breeze. Helios Aureus clad in gleaming armor stand sentinel at every corner, their vigilant watch speaking to the kingdom's unwavering military might`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Shahi Quila'){
+                        const attachment = new MessageAttachment('assets/Gloaming/shahi_quila.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://shahi_quila.jpeg')
+                            .setDescription(`Stepping into Shahi Quila, you're greeted by the tantalizing aroma of spices and sizzling meats, mingling with the warm glow of lanterns and the lively chatter of diners. Tables adorned with richly embroidered cloths beckon guests to indulge in savory delicacies, served with a generous side of hospitality by bustling waitstaff clad in traditional attire.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    
+    
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                
                     
                                 }
                                }
