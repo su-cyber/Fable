@@ -1298,10 +1298,6 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                                 value:`**Travelled on Spyralink**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                             },
                                             {
-                                                name: `State of Tethys`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The Stateship of Tethys\n**Cost**:0 🪙\n`
-                                            },
-                                            {
                                                 name: `Capital State of Gloaming`,
                                                 value:`**Travelled on Spyralink**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:0 🪙\n`
                                             },
@@ -1397,11 +1393,6 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         label: `Zephyr Mountain`,
                         description: ``,
                         value: `Zephyr Mountain`,
-                    },
-                    {
-                        label: `State of Tethys`,
-                        description: ``,
-                        value: `Tethys`,
                     },
                     {
                         label: `Capital State of Gloaming`,
@@ -1553,25 +1544,32 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
-                    else if(location == 'Tethys'){
-                        
-                        const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
-                        let successembed = new MessageEmbed()
-                        .setColor('RED')
-                        .setTitle('ERROR!')
-                        .setImage('attachment://tethys_main.jpg')
-                        .setDescription(`The road to state of Tethys is currently Blocked!`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
-                    }
+                    
                     else if(location == 'Gloaming'){
-                        
-                        const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Gloaming/gloaming_main.jpg')
                         let successembed = new MessageEmbed()
-                        .setColor('RED')
-                        .setTitle('ERROR!')
-                        .setImage('attachment://tethys_main.jpg')
-                        .setDescription(`The road to the capital state of Gloaming is currently Blocked!`)
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://gloaming_main.jpg')
+                        .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Dremenlond/dremenlond_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://dremenlond_main.jpg')
+                        .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
                     }
                     else if(location == 'Orld Tree Husk'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
