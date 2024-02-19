@@ -4590,7 +4590,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`Upon entering the Vigia Ranger Centre, you are met with the buzz of activity as rangers mingle, share tales of adventure and peruse the many posted jobs and deeds. Over by the quest board, parties debate undertakings in Deathrust forest or across the rugged landscape beyond the SolGate. In the back of the spacious hall, trainees spar and show off newly learned skills.\n\n**use /questboard to view the Questboard**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
     
@@ -4942,7 +4943,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`The warm glow emanating from The Gilded Cage invites you inside. As you enter, the cozy ambiance welcomes you, with wooden tables and benches filling the space. Laughter and lively conversations fill the air, accompanied by the aroma of delicious local cuisine and the clinking of glasses. The sound of a bard's melodious voice can be heard, captivating the audience.\n\n**This is a Shop location, you can use /shop here**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Radohn Roost'){
                         const attachment = new MessageAttachment('assets/Kafig/radohn_roost.jpeg')
@@ -4962,7 +4964,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`As you enter the Kafig Guild Outpost, you see a lively and quite well maintained place. People are talking and sharing stories. On the walls, there are maps and trophies from adventures and the Insignia of the Eterna Guild. In the middle, there's a space where plans are made. A small desk in the corner has important papers and messages. The atmosphere feels friendly and busy, showing that the outpost is a key spot where everyone works together, The Front wall is adorned with the portrait of the revered ranger "Demon Bird" Basil.\n\n**use /questboard to view the Questboard**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                 }
                 else if(collected.customId == "select_interior"){
@@ -5045,7 +5048,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`Upon entering the Vigia Ranger Centre, you are met with the buzz of activity as rangers mingle, share tales of adventure and peruse the many posted jobs and deeds. Over by the quest board, parties debate undertakings in Deathrust forest or across the rugged landscape beyond the SolGate. In the back of the spacious hall, trainees spar and show off newly learned skills.\n\n**use /questboard to view the Questboard**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
 
                     
@@ -5356,7 +5360,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`Upon entering the Vigia Ranger Centre, you are met with the buzz of activity as rangers mingle, share tales of adventure and peruse the many posted jobs and deeds. Over by the quest board, parties debate undertakings in Deathrust forest or across the rugged landscape beyond the SolGate. In the back of the spacious hall, trainees spar and show off newly learned skills.\n\n**use /questboard to view the Questboard**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
     
@@ -5642,7 +5647,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`The warm glow emanating from The Gilded Cage invites you inside. As you enter, the cozy ambiance welcomes you, with wooden tables and benches filling the space. Laughter and lively conversations fill the air, accompanied by the aroma of delicious local cuisine and the clinking of glasses. The sound of a bard's melodious voice can be heard, captivating the audience.\n\n**This is a Shop location, you can use /shop here**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Radohn Roost'){
                         const attachment = new MessageAttachment('assets/Kafig/radohn_roost.jpeg')
@@ -5662,7 +5668,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`As you enter the Kafig Guild Outpost, you see a lively and quite well maintained place. People are talking and sharing stories. On the walls, there are maps and trophies from adventures and the Insignia of the Eterna Guild. In the middle, there's a space where plans are made. A small desk in the corner has important papers and messages. The atmosphere feels friendly and busy, showing that the outpost is a key spot where everyone works together, The Front wall is adorned with the portrait of the revered ranger "Demon Bird" Basil.\n\n**use /questboard to view the Questboard**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
                     
@@ -5959,7 +5966,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://plantastic_inn.jpeg')
                             .setDescription(`Plantastic Inn welcomes you with a charming exterior adorned with hanging baskets of flowers. The air carries the mouthwatering aroma of plant-based delicacies, and the subtle melody of laughter drifts from within, inviting you to experience the town's renowned vegetarian cuisine.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Raflese Guild Outpost'){
                         const attachment = new MessageAttachment('assets/Raflese/raflese_guildoutpost.jpeg')
@@ -5969,7 +5977,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://raflese_guildoutpost.jpeg')
                             .setDescription(`The Raflese Guild Outpost buzzes with excitement. The quest-board promises adventure, and the lively chatter of adventurers creates an energetic atmosphere. It becomes a gateway, connecting Raflese to the power of Ajins.\n\n**use /questboard to view the Questboard**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
                     
@@ -6206,7 +6215,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://plantastic_inn.jpeg')
                             .setDescription(`Plantastic Inn welcomes you with a charming exterior adorned with hanging baskets of flowers. The air carries the mouthwatering aroma of plant-based delicacies, and the subtle melody of laughter drifts from within, inviting you to experience the town's renowned vegetarian cuisine.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Raflese Guild Outpost'){
                         const attachment = new MessageAttachment('assets/Raflese/raflese_guildoutpost.jpeg')
@@ -6216,7 +6226,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://raflese_guildoutpost.jpeg')
                             .setDescription(`The Raflese Guild Outpost buzzes with excitement. The quest-board promises adventure, and the lively chatter of adventurers creates an energetic atmosphere. It becomes a gateway, connecting Raflese to the power of Ajins.\n\n**use /questboard to view the Questboard**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
                     
@@ -6258,7 +6269,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
        
                 }
                 else if(city_town == "Dremenlond"){
-                    let Interiorembed
+                                        let Interiorembed
                                         let Exteriorembed
                                         let mount = "None"
                                         if(mount == "None"){
@@ -6556,7 +6567,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://dremenlond_rangercentre.jpeg')
                             .setDescription(`As you approach the Dremenlond Ranger Centre, you are welcomed by a majestic building adorned with the emblems of the three big guilds of solarstrio. The architecture reflects a sense of grandeur and regality, befitting the esteemed nature of the rangers of noble blood. Inside the Dremenlond Ranger Centre, you step into a world of luxury and elegance. The interior is tastefully decorated, with lavish furnishings and intricate details. The walls proudly display the emblems of the three major guilds, defining their dominion over all the rangers in Solarstrio.\n\n**use /questboard to view the Questboard**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Hotel Sapphire Star'){
                         const attachment = new MessageAttachment('assets/Dremenlond/sapphire_star.jpeg')
@@ -6566,7 +6578,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://saphire_star.jpeg')
                             .setDescription(`As you reach Hotel Sapphire Star, you are greeted by an elegant and imposing facade. The hotel stands tall, exuding a sense of sophistication and grandeur. Stepping into Hotel Sapphire Star, you find yourself in a world of luxury and comfort. The lobby is adorned with exquisite chandeliers and plush furnishings, creating an atmosphere of opulence. The courteous staff welcomes you warmly and attends to your every need. The hotel offers a range of lavish rooms and suites, each tastefully decorated and equipped with modern amenities. The dining area boasts a fine selection of gourmet cuisine, prepared by skilled chefs.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'The Royal Council'){
                         const attachment = new MessageAttachment('assets/Dremenlond/royal_council.jpeg')
@@ -6674,7 +6687,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             },
                                             {
                                                 name: `Township of Vesper`,
-                                                value:`**Travelled on Stagecoach**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 🪙\n`
                                             },
                                         
                                         ])
@@ -6836,21 +6849,21 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     else if(location == 'Nottfall'){
                         if(foundUser.coins >=100 && foundUser.mount == "None"){
                             await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
-                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.jpg')
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.png')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://nottfall_main.jpg')
+                        .setImage('attachment://nottfall_main.png')
                         .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.jpg')
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.png')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://nottfall_main.jpg')
+                        .setImage('attachment://nottfall_main.png')
                         .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
@@ -6973,7 +6986,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://gloaming_rangercentre.jpeg')
                             .setDescription(`As you step into the Gloaming Ranger Centre, you're greeted by the sight of seasoned rangers clad in weathered armor and rugged attire. Rangers of every ilk and background bustle about, sharpening blades, mending gear, and trading tales of daring exploits.\n\n**use /questboard to view the Questboard**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     else if(location == 'Solar Vault'){
                         const attachment = new MessageAttachment('assets/Gloaming/solar_vault.jpeg')
@@ -7003,9 +7017,981 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://shahi_quila.jpeg')
                             .setDescription(`Stepping into Shahi Quila, you're greeted by the tantalizing aroma of spices and sizzling meats, mingling with the warm glow of lanterns and the lively chatter of diners. Tables adorned with richly embroidered cloths beckon guests to indulge in savory delicacies, served with a generous side of hospitality by bustling waitstaff clad in traditional attire.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
                     
+    
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Vesper"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Swamp of Abyss`,
+                                                value:`**Travelled on Foot**\n**Description**:A misty, foreboding swamp with an indefinite depth, shrouded in mystery and danger.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stellaris Temple Ruins`,
+                                                value:`**Travelled on Foot**\n**Description**:The remains of a once-sacred temple where a monstrous transformation unfolded.\n**Cost**:0 🪙\n`
+                                            },
+                                            {
+                                                name: `Capital of Gloaming`,
+                                                value:`**Travelled on StageCoach**\n**Description**:Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Nottfall`,
+                                                value:`**Travelled on Stagecoach**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Lucens`,
+                                                value:`**Travelled on Stagecoach**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 100 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Swamp of Abyss`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A misty, foreboding swamp with an indefinite depth, shrouded in mystery and danger.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stellaris Temple Ruins`,
+                                                value:`**Travelled on Spyralink**\n**Description**:The remains of a once-sacred temple where a monstrous transformation unfolded.\n**Cost**:0 🪙\n`
+                                            },
+                                            {
+                                                name: `Capital of Gloaming`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Nottfall`,
+                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Lucens`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 🪙\n`
+                                            },
+                                        
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Gaiyo Plaza`,
+                                        value:`**Description**: A bustling town center at the heart of Vesper.\n`
+                                    },
+                                    {
+                                        name: `Veinwalk Quarters`,
+                                        value:`**Description**: The main residential area where lizardmen, humans, and guests reside.\n`
+                                    },
+                                    {
+                                        name: `Starglow Overlook`,
+                                        value:`**Description**: A vantage point offering a breathtaking view of nebula flowers.\n`
+                                    },
+                                    {
+                                        name: `Vesper Guild Outpost`,
+                                        value:`**Description**: An outpost regulating seekers of nebula flowers and maintaining order.\n`
+                                    },
+                                    {
+                                        name: `Komodo's Rest`,
+                                        value:`**Description**: The guarded location where the powerful monster Komodo slumbers.\n`
+                                    },
+                                    {
+                                        name: `Mudcape Tavern`,
+                                        value:`**Description**: A gathering spot where tales are exchanged over swamp-inspired drinks.\n`
+                                    },
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Swamp of Abyss`,
+                        description: ``,
+                        value: `Swamp of Abyss`,
+                    },
+                    {
+                        label: `Stellaris Temple Ruins`,
+                        description: ``,
+                        value: `Stellaris Temple Ruins`,
+                    },
+                    {
+                        label: `Capital of Gloaming`,
+                        description: ``,
+                        value: `Gloaming`,
+                    },
+                    {
+                        label: `Stateship of Nottfall`,
+                        description: ``,
+                        value: `Nottfall`,
+                    },
+                    {
+                        label: `Township of Lucens`,
+                        description: ``,
+                        value: `Lucens`,
+                    },
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Gaiyo Plaza`,
+                        description: ``,
+                        value: `Gaiyo Plaza`,
+                    },{
+                        label: `Veinwalk Quarters`,
+                        description: ``,
+                        value: `Veinwalk Quarters`,
+                    },{
+                        label: `Starglow Overlook`,
+                        description: ``,
+                        value: `Starglow Overlook`,
+                    },{
+                        label: `Komodo's Rest`,
+                        description: ``,
+                        value: `Komodo's Rest`,
+                    },{
+                        label: `Vesper Guild Outpost`,
+                        description: ``,
+                        value: `Vesper Guild Outpost`,
+                    },{
+                        label: `Mudcape Tavern`,
+                        description: ``,
+                        value: `Mudcape Tavern`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+                    if(location == 'Gloaming'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Gloaming/gloaming_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://gloaming_main.jpg')
+                        .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Dremenlond/dremenlond_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://dremenlond_main.jpg')
+                        .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                    else if(location == 'Lucens'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Lucens/lucens_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://lucens_main.jpg')
+                        .setDescription(`As you arrive in Lucens, the salty air and colorful streets welcome you. The Lighthouse Plateau stands tall, its statue of Captain Basilica a symbol of the town's maritime legacy. Nearby, the Temple of Still Water offers a serene retreat, while the Seabreeze Pavilion hosts lively performances celebrating local legends. Everywhere you turn, sculptures of Marvory Stone tell tales of the sea, inviting you to explore Lucens' rich history.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Lucens/lucens_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://lucens_main.jpg')
+                        .setDescription(`As you arrive in Lucens, the salty air and colorful streets welcome you. The Lighthouse Plateau stands tall, its statue of Captain Basilica a symbol of the town's maritime legacy. Nearby, the Temple of Still Water offers a serene retreat, while the Seabreeze Pavilion hosts lively performances celebrating local legends. Everywhere you turn, sculptures of Marvory Stone tell tales of the sea, inviting you to explore Lucens' rich history.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                    else if(location == 'Nottfall'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.png')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://nottfall_main.png')
+                        .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.png')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://nottfall_main.png')
+                        .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+            else if(location == 'Swamp of Abyss'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Vesper/swamp_of_abyss.jpeg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://swamp_of_abyss.jpeg')
+                .setDescription(`Entering the Swamp of Abyss, visibility diminishes as fog clings to the air. The ground feels spongy beneath your feet, and the distant croaking of unseen creatures adds an eerie soundtrack to your exploration.\n\n`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'Stellaris Temple Ruins'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Vesper/stellaris_temple.jpeg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://stellaris_temple.jpeg')
+                .setDescription(`The air thickens with the weight of history as you approach Stellaris Temple Ruins. Crumbled structures hint at former grandeur, and the echoes of ancient prayers linger. A hushed reverence fills the air, disrupted only by the occasional rustle of vegetation.\n\n`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Gaiyo Plaza'){
+                        const attachment = new MessageAttachment('assets/Vesper/gaiyo_plaza.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://gaiyo_plaza.jpeg')
+                        .setDescription(`As you step into Gaiyo Plaza, you're surrounded by a vibrant mix of lizardmen and humans, weaving through shops and stalls. The Gaiyo Shroom veins overhead form intricate patterns, casting a surreal glow over the lively marketplace.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Veinwalk Quarters'){
+                        const attachment = new MessageAttachment('assets/Vesper/veinwalk_quarters.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://veinwalk_quarters.jpeg')
+                            .setDescription(`Entering Veinwalk Quarters, you find homes nestled beneath the Gaiyo Shroom veins. The veins form ever-shifting patterns, casting shadows that dance across houses. Lively chatter echoes through the quarters as residents coexist in this unique habitat.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Starglow Overlook'){
+                        const attachment = new MessageAttachment('assets/Vesper/starglow_overlook.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://starglow_overlook.jpeg')
+                            .setDescription(`Climbing to Starglow Overlook, you're greeted by the mesmerizing sight of nebula flowers glimmering like stars. The lounge, adorned with mirrors reflecting the flowers' light, creates an otherworldly atmosphere, inducing a sense of tranquility and wonder.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Vesper Guild Outpost'){
+                        const attachment = new MessageAttachment('assets/Vesper/vesper_guildoutpost.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://vesper_guildoutpost.jpeg')
+                            .setDescription(`The outpost stands as a bastion against the greed-driven chaos. Guards inspect those entering Vesper, and a board displays regulations. In the courtyard, Ajins and mercenaries strategize, some eyeing the tempting allure of the Nebula Flowers.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == `Komodo's Rest`){
+                        const attachment = new MessageAttachment('assets/Vesper/komodo_rest.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://komodo_rest.jpeg')
+                            .setDescription(`Approaching Komodo's Rest, you encounter elite Lizardmen guards, their eyes watchful. The atmosphere is tense, and the place exudes an aura of ancient protection. Nebula flowers, carefully fed to appease Komodo, surround the area, emitting an almost ethereal energy.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    } 
+                    else if(location == 'Mudcape Tavern'){
+                        const attachment = new MessageAttachment('assets/Vesper/mudcape_tavern.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://mudcape_tavern.jpeg')
+                            .setDescription(`Stepping into Mudcape Tavern, you're enveloped in the scent of exotic herbs. Lively conversations mix with the occasional clinking of glasses. The tavern, adorned with swamp-themed decor, becomes a hub where stories of Nebula Flowers and swamp exploits unfold.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+    
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Swamp of Abyss"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Stellaris Temple Ruins`,
+                                                value:`**Travelled on Foot**\n**Description**:The remains of a once-sacred temple where a monstrous transformation unfolded.\n**Cost**:0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Vesper`,
+                                                value:`**Travelled on Foot**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Stellaris Temple Ruins`,
+                                                value:`**Travelled on Spyralink**\n**Description**:The remains of a once-sacred temple where a monstrous transformation unfolded.\n**Cost**:0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Vesper`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Gaiyo Plaza`,
+                                        value:`**Description**: A bustling town center at the heart of Vesper.\n`
+                                    },
+                                    {
+                                        name: `Veinwalk Quarters`,
+                                        value:`**Description**: The main residential area where lizardmen, humans, and guests reside.\n`
+                                    },
+                                    {
+                                        name: `Starglow Overlook`,
+                                        value:`**Description**: A vantage point offering a breathtaking view of nebula flowers.\n`
+                                    },
+                                    {
+                                        name: `Vesper Guild Outpost`,
+                                        value:`**Description**: An outpost regulating seekers of nebula flowers and maintaining order.\n`
+                                    },
+                                    {
+                                        name: `Komodo's Rest`,
+                                        value:`**Description**: The guarded location where the powerful monster Komodo slumbers.\n`
+                                    },
+                                    {
+                                        name: `Mudcape Tavern`,
+                                        value:`**Description**: A gathering spot where tales are exchanged over swamp-inspired drinks.\n`
+                                    },
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Vesper Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Stellaris Temple Ruins`,
+                        description: ``,
+                        value: `Stellaris Temple Ruins`,
+                    },
+                    {
+                        label: `Township of Vesper`,
+                        description: ``,
+                        value: `Vesper`,
+                    },
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Gaiyo Plaza`,
+                        description: ``,
+                        value: `Gaiyo Plaza`,
+                    },{
+                        label: `Veinwalk Quarters`,
+                        description: ``,
+                        value: `Veinwalk Quarters`,
+                    },{
+                        label: `Starglow Overlook`,
+                        description: ``,
+                        value: `Starglow Overlook`,
+                    },{
+                        label: `Komodo's Rest`,
+                        description: ``,
+                        value: `Komodo's Rest`,
+                    },{
+                        label: `Vesper Guild Outpost`,
+                        description: ``,
+                        value: `Vesper Guild Outpost`,
+                    },{
+                        label: `Mudcape Tavern`,
+                        description: ``,
+                        value: `Mudcape Tavern`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+                    
+           if(location == 'Stellaris Temple Ruins'){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Vesper/stellaris_temple.jpeg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://stellaris_temple.jpeg')
+                .setDescription(`The air thickens with the weight of history as you approach Stellaris Temple Ruins. Crumbled structures hint at former grandeur, and the echoes of ancient prayers linger. A hushed reverence fills the air, disrupted only by the occasional rustle of vegetation.\n\n`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+            }
+            else if(location == 'Vesper'){
+                if(foundUser.coins >=100 && foundUser.mount == "None"){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                const attachment = new MessageAttachment('assets/Vesper/vesper_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://vesper_main.jpg')
+                .setDescription(`
+                As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(foundUser.mount != "None"){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Vesper/vesper_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://vesper_main.jpg')
+                .setDescription(`
+                As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else{
+                    interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                }
+                
+            }
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Gaiyo Plaza'){
+                        const attachment = new MessageAttachment('assets/Vesper/gaiyo_plaza.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://gaiyo_plaza.jpeg')
+                        .setDescription(`As you step into Gaiyo Plaza, you're surrounded by a vibrant mix of lizardmen and humans, weaving through shops and stalls. The Gaiyo Shroom veins overhead form intricate patterns, casting a surreal glow over the lively marketplace.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Veinwalk Quarters'){
+                        const attachment = new MessageAttachment('assets/Vesper/veinwalk_quarters.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://veinwalk_quarters.jpeg')
+                            .setDescription(`Entering Veinwalk Quarters, you find homes nestled beneath the Gaiyo Shroom veins. The veins form ever-shifting patterns, casting shadows that dance across houses. Lively chatter echoes through the quarters as residents coexist in this unique habitat.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Starglow Overlook'){
+                        const attachment = new MessageAttachment('assets/Vesper/starglow_overlook.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://starglow_overlook.jpeg')
+                            .setDescription(`Climbing to Starglow Overlook, you're greeted by the mesmerizing sight of nebula flowers glimmering like stars. The lounge, adorned with mirrors reflecting the flowers' light, creates an otherworldly atmosphere, inducing a sense of tranquility and wonder.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Vesper Guild Outpost'){
+                        const attachment = new MessageAttachment('assets/Vesper/vesper_guildoutpost.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://vesper_guildoutpost.jpeg')
+                            .setDescription(`The outpost stands as a bastion against the greed-driven chaos. Guards inspect those entering Vesper, and a board displays regulations. In the courtyard, Ajins and mercenaries strategize, some eyeing the tempting allure of the Nebula Flowers.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == `Komodo's Rest`){
+                        const attachment = new MessageAttachment('assets/Vesper/komodo_rest.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://komodo_rest.jpeg')
+                            .setDescription(`Approaching Komodo's Rest, you encounter elite Lizardmen guards, their eyes watchful. The atmosphere is tense, and the place exudes an aura of ancient protection. Nebula flowers, carefully fed to appease Komodo, surround the area, emitting an almost ethereal energy.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    } 
+                    else if(location == 'Mudcape Tavern'){
+                        const attachment = new MessageAttachment('assets/Vesper/mudcape_tavern.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://mudcape_tavern.jpeg')
+                            .setDescription(`Stepping into Mudcape Tavern, you're enveloped in the scent of exotic herbs. Lively conversations mix with the occasional clinking of glasses. The tavern, adorned with swamp-themed decor, becomes a hub where stories of Nebula Flowers and swamp exploits unfold.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+    
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Stellaris Temple Ruins"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Swamp of Abyss`,
+                                                value:`**Travelled on Foot**\n**Description**:A misty, foreboding swamp with an indefinite depth, shrouded in mystery and danger.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Vesper`,
+                                                value:`**Travelled on Foot**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Swamp of Abyss`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A misty, foreboding swamp with an indefinite depth, shrouded in mystery and danger.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Vesper`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Gaiyo Plaza`,
+                                        value:`**Description**: A bustling town center at the heart of Vesper.\n`
+                                    },
+                                    {
+                                        name: `Veinwalk Quarters`,
+                                        value:`**Description**: The main residential area where lizardmen, humans, and guests reside.\n`
+                                    },
+                                    {
+                                        name: `Starglow Overlook`,
+                                        value:`**Description**: A vantage point offering a breathtaking view of nebula flowers.\n`
+                                    },
+                                    {
+                                        name: `Vesper Guild Outpost`,
+                                        value:`**Description**: An outpost regulating seekers of nebula flowers and maintaining order.\n`
+                                    },
+                                    {
+                                        name: `Komodo's Rest`,
+                                        value:`**Description**: The guarded location where the powerful monster Komodo slumbers.\n`
+                                    },
+                                    {
+                                        name: `Mudcape Tavern`,
+                                        value:`**Description**: A gathering spot where tales are exchanged over swamp-inspired drinks.\n`
+                                    },
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Vesper Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Swamp of Abyss`,
+                        description: ``,
+                        value: `Swamp of Abyss`,
+                    },
+                    {
+                        label: `Township of Vesper`,
+                        description: ``,
+                        value: `Vesper`,
+                    },
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Gaiyo Plaza`,
+                        description: ``,
+                        value: `Gaiyo Plaza`,
+                    },{
+                        label: `Veinwalk Quarters`,
+                        description: ``,
+                        value: `Veinwalk Quarters`,
+                    },{
+                        label: `Starglow Overlook`,
+                        description: ``,
+                        value: `Starglow Overlook`,
+                    },{
+                        label: `Komodo's Rest`,
+                        description: ``,
+                        value: `Komodo's Rest`,
+                    },{
+                        label: `Vesper Guild Outpost`,
+                        description: ``,
+                        value: `Vesper Guild Outpost`,
+                    },{
+                        label: `Mudcape Tavern`,
+                        description: ``,
+                        value: `Mudcape Tavern`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+                    
+                    if(location == 'Swamp of Abyss'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Vesper/swamp_of_abyss.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://swamp_of_abyss.jpeg')
+                        .setDescription(`Entering the Swamp of Abyss, visibility diminishes as fog clings to the air. The ground feels spongy beneath your feet, and the distant croaking of unseen creatures adds an eerie soundtrack to your exploration.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+            else if(location == 'Vesper'){
+                if(foundUser.coins >=100 && foundUser.mount == "None"){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                const attachment = new MessageAttachment('assets/Vesper/vesper_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://vesper_main.jpg')
+                .setDescription(`
+                As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(foundUser.mount != "None"){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Vesper/vesper_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://vesper_main.jpg')
+                .setDescription(`
+                As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else{
+                    interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                }
+                
+            }
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Gaiyo Plaza'){
+                        const attachment = new MessageAttachment('assets/Vesper/gaiyo_plaza.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://gaiyo_plaza.jpeg')
+                        .setDescription(`As you step into Gaiyo Plaza, you're surrounded by a vibrant mix of lizardmen and humans, weaving through shops and stalls. The Gaiyo Shroom veins overhead form intricate patterns, casting a surreal glow over the lively marketplace.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Veinwalk Quarters'){
+                        const attachment = new MessageAttachment('assets/Vesper/veinwalk_quarters.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://veinwalk_quarters.jpeg')
+                            .setDescription(`Entering Veinwalk Quarters, you find homes nestled beneath the Gaiyo Shroom veins. The veins form ever-shifting patterns, casting shadows that dance across houses. Lively chatter echoes through the quarters as residents coexist in this unique habitat.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Starglow Overlook'){
+                        const attachment = new MessageAttachment('assets/Vesper/starglow_overlook.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://starglow_overlook.jpeg')
+                            .setDescription(`Climbing to Starglow Overlook, you're greeted by the mesmerizing sight of nebula flowers glimmering like stars. The lounge, adorned with mirrors reflecting the flowers' light, creates an otherworldly atmosphere, inducing a sense of tranquility and wonder.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Vesper Guild Outpost'){
+                        const attachment = new MessageAttachment('assets/Vesper/vesper_guildoutpost.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://vesper_guildoutpost.jpeg')
+                            .setDescription(`The outpost stands as a bastion against the greed-driven chaos. Guards inspect those entering Vesper, and a board displays regulations. In the courtyard, Ajins and mercenaries strategize, some eyeing the tempting allure of the Nebula Flowers.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == `Komodo's Rest`){
+                        const attachment = new MessageAttachment('assets/Vesper/komodo_rest.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://komodo_rest.jpeg')
+                            .setDescription(`Approaching Komodo's Rest, you encounter elite Lizardmen guards, their eyes watchful. The atmosphere is tense, and the place exudes an aura of ancient protection. Nebula flowers, carefully fed to appease Komodo, surround the area, emitting an almost ethereal energy.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    } 
+                    else if(location == 'Mudcape Tavern'){
+                        const attachment = new MessageAttachment('assets/Vesper/mudcape_tavern.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://mudcape_tavern.jpeg')
+                            .setDescription(`Stepping into Mudcape Tavern, you're enveloped in the scent of exotic herbs. Lively conversations mix with the occasional clinking of glasses. The tavern, adorned with swamp-themed decor, becomes a hub where stories of Nebula Flowers and swamp exploits unfold.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
     
                 collector_select.stop()
                 collector_cancel.stop()

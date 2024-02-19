@@ -227,7 +227,7 @@ class PvPDuel extends DuelBuilder {
             
         } 
         else {
-            this.attacker.mana += Math.round(this.attacker.maxMana/2)
+            this.attacker.mana += Math.round(this.attacker.maxMana/4)
            if(this.attacker.mana > this.attacker.maxMana){
             this.attacker.mana = this.attacker.maxMana
            }

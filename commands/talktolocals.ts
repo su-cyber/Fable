@@ -930,11 +930,11 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                 })
                                             }
                                         }
-                                        else if(foundUser.city_town == "Gloaming"){
-                                            if(foundUser.location == "Capitol Central"){
+                                        else if(foundUser.city_town == "Vesper"){
+                                            if(foundUser.location == "Gaiyo Plaza"){
                                                 dialogue = [
-                                                    `Elara: “Welcome to Capitol Central. This is the very center of the capital state where most of the 'Real' work is done, we have the Kingdom hall right over there where you can see the upcoming projects and laws that are going to be undertaken by our king, you can also enroll there for community service or even register a complaint of any kind, the King's Army will take care of it in no time. Remember in Solarstrio, order is maintained by the King's Army…I wouldn't dare do anything funny over here if I was you.”`,
-                                                    `Iza : "You seem new over here, are you a tourist or perhaps you need Citizenship? Visit the Solarstrio Bureau in the main street. They manage bureaucratic tasks and ensure a smooth process for tourists and refugees. Serving the Kingdom's needs. Any official work from owning a business or property in solarstrio has to go through the Solarstrio Bureau for processing, they are really quick tho so don't worry about waiting in long lines!"`
+                                                    `Godrëk : "You ssseem to be new around here, I am on my way to the ssstarfall well have you heard about it? It's right in the middle of the plaza, we toss a coin in it to make a wish to the nebula. It's said any wish made with the pure of heart comes true, we believe in since the age of our ancestors. I just wish people consumed by greed stop tainting our sssacred town and ssswamp."`,
+                                                    `Tomäk : "The old Stellaris Temple was a revered place of worship for our ancestors who used to worship a giant Nebula flower. Today the temple lies in ruins but is plagued by dangerous swamp spyriths due to high Spyr concentration. It is almost like the temple is retaliating in response to our greed."`
                                                     
                                                 ]
                                                 dialogue.map((diag) => {
@@ -945,10 +945,11 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                     totalEmbeds.push(dialogueembed)
                                                 })
                                             }
-                                            else if(foundUser.location == "Badshahi Bazaar"){
+                                            else if(foundUser.location == "Veinwalk Quarters"){
                                                 dialogue = [
-                                                    `Farid: “You appear to be new in these alluring streets of the Bazaar, this is the largest Market in all of Solarstrio famous for it's textiles, spices and equipments, You can get anything you want just name it! Here, look at this fine piece of cloth..it's made of Mirage Silk, a special silk cultivated in villages near the banks of the seven waves. It has a unique property to regulate the body temperature in response to the climate making it hugely popular all over solarstrio and within the burning heat of the Mirazh Empire. You know, over the decades there is an entire trade route dedicated to mirage silk from solarstrio to Mirazh Empire now known as the Mirage Route. Gloaming lies at the Center of it!”`,
-                                                    `Zara : "Welcome, esteemed traveler, to Zara's Spice Emporium! Behold the jewel of Solarstrio – our finest Zaffran, nurtured in the mountains of Tethys. This spice transcends mere flavor; it's an exquisite essence, a spice loved by the royalty. The Zaffran only grows in cold and mountainous regions and the northern state of Tethys grows some of the best! The Mirazh Empire gives us a lofty amount for it and in return we get some of their best spices, Trade is all about intermixing cultures! Try some of these spices and you'll know for yourself."`
+                                                    `Krona : "You know there are many tribes of Lizardmen living in Vesper and all the tribes signed a treaty with the humans to allow them to take as many Nebula Flowers they can as long as there is enough to feed Komodo. In exchange we only ask for food and resources as the swamp and lack of sunlight makes it almost impossible for us to grow anything."`,
+                                                    `Ojila : "The weather here is so good isn't it? always cold and cozy as it is always night over here. Wanna accompany me to the Starglow Overlook? Looking at the flowers from up there gives a high and makes me stress free! Let's grab a coffee in the Gazer's Lounge over there, the view is just fantastic!"`,
+                                                    `Guma : "Ah it's that time of the year again, the shedding season is almost upon us. When these flowers fall, they do a lot of damage to the skybridge and it becomes unusable for a while…good thing our bridge menders can fix them pretty quick or the entire town would be brought to a standstill!"`
                                                 ]
                                                 dialogue.map((diag) => {
                                                     dialogueembed = new MessageEmbed()
@@ -958,28 +959,11 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                     totalEmbeds.push(dialogueembed)
                                                 })
                                             }
-                                            else if(foundUser.location == "Spirit Arsenal"){
+                                            else if(foundUser.location == "Starglow Overlook"){
                                                 dialogue = [
-                                                    `Sylas: “Gloaming's Architecture is so mesmerizing isn't it? The State has various stone pillars all over the place which are interconnected by stone arches and bridges creating an entire floor at the top, these stone pillars also house the barracks of various Helios Aureus units, you have heard of them right? The King's Army? And this my friend is the Largest stone pillar atop which our Great King's Castle rest, the Castle Heliad. This stone pillar looks weird doesn't it? That's because there are several superior weapons engraved on it's walls, 1001 to be exact.”`,
-                                                    `Caius : " Look at those shiny weapons, each one of them is an expertly crafted weapon by the ancient master swordsmith of Haganeshiro known as the 'God of Steel'. All these weapons are imbued with an ancient Spyr art that invokes a spirit to these weapons giving them the name 'Spirit Blades. Every warrior in Vearth dreams of wielding a spirit blade but one must be chosen by the blade itself to wield it, I have been training for years to become worthy of them. I am sure I will be chosen this time in the Steel Spirit Festival!"`,
-                                                    `Elestria : "This pillar might look majestic because of the weapons it holds but its history is even more intriguing. It is said that the first shogun of Haganeshiro gave the Spirit Arsenal and Castle Heliad as a gift to the Monarch of Solarstrio centuries ago for helping him unite the various warring provinces of Haganeshiro once and for all. Those were terrible times of war and bloodshed termed as the "Era of Eternal War" by us historians, there are a total of 3 Jade grade weapons in the Spirit Arsenal out of the 12 ever known to Vearth. However their wielders are either never chosen or are unknown till this day."`,
+                                                    `Goruk: "You after the Nebula Flowers too? I wouldn't be shocked if you were, they are among the rarest of flowers afterall. Look up, it's pretty isn't it? Those are all Nebula Flowers hanging at the edges of the veins of Gaiyo Shrooms that look like stars in the night sky, don't attempt to pick them up from up there though…You'll get devoured whole by the Shrooms."`,
+                                                    `Jakhar : "The Constellation Mirrors in the Starglow Overlook are a marvel! The reflections create mesmerizing patterns from the glimmering nebula flowers in the sky. The local lizardmen have weaved legends and tales around each one of them, they say there are a total of 139 of them! I go there everyday to try to explore a new one."`,
                                                     
-                                                    
-                                                ]
-                                                dialogue.map((diag) => {
-                                                    dialogueembed = new MessageEmbed()
-                                                    .setColor('RANDOM')
-                                                    .setTitle('Dialogue Initiated')
-                                                    .setDescription(`${diag}`)
-                                                    totalEmbeds.push(dialogueembed)
-                                                })
-                                            }
-                                            else if(foundUser.location == "Shahi Quila"){
-                                                dialogue = [
-                                                    `Parvez: “Hello there Ranger! I am the manager of Shahi Quila, welcome to our centuries old establishment. We have the most exquisite Kebabs and Curries in all of Vearth. Shahi Quila is directly funded and sponsored by the King, it is said that centuries ago when the monarch went to visit Mirazh Empire, he got so infatuated with the food that the Sultan gifted his royal cooks to the Monarch who came here and set up the Shahi Quila. We serve centuries old recipes passed on as legacy and we never charge more than you can afford, pay whatever you'd like! We even distribute food for free to the needy.”`,
-                                                    `Nadia : "You look like you are new here, a traveler perhaps? Gloaming has never been so prosperous before, all thanks to our great king Helios! Be it trade, order or science Solarstrio leads in everything. But it was not always the same, Solarstrio suffered the tyranny of the mad King and the nobles before King Helios appeared out of nowhere decades ago and led a revolution to overthrow the monarchy. He even changed the capital from Dremenlond to Gloaming to show his disgust for the Nobility, he is a true king I tell you!"`,
-                                                    `Rajesh : "Man, the curries of Shahi Quila are just the best! By the way you look like a warrior…are you here for the Steel Spirit Festival this year? Man I hope I could participate in it too, I envy the warriors who prove their worth to the spirit blades and get chosen by them! It's said the spirit blades are some of the strongest weapons in Vearth today."`,
-
                                                     
                                                     
                                                 ]
@@ -991,9 +975,9 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                     totalEmbeds.push(dialogueembed)
                                                 })
                                             }
-                                            else if(foundUser.location == "Solar Vault"){
+                                            else if(foundUser.location == "Komodo's Rest"){
                                                 dialogue = [
-                                                    `Drul: “Greetings Patron! Welcome to the Solar Vault, Solarstrio's esteemed central bank. We provide various facilities like safeguarding your surplus money, giving out loans and even give you interest on the deposits! Would you like to open an account, sir? Kindly head this way.”`
+                                                    `Dokra : "Human, Your Spyr flow is different…what do they call you people again…Ajin was it? Anyhow, I wouldn't dare wandering over there, it is where Komodo Sleeps. Komodo is an ancient catastrophe that struck us ages ago, A monster so frightening that even the combined efforts of all the lizardmen tribes couldn't fend it off and here we are, living in fear of it's shadow above the swamp."`,
                                                     
                                                     
                                                 ]
@@ -1005,10 +989,10 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                     totalEmbeds.push(dialogueembed)
                                                 })
                                             }
-                                            else if(foundUser.location == "Gloaming Ranger Centre"){
+                                            else if(foundUser.location == "Mudcape Tavern"){
                                                 dialogue = [
-                                                    `Nalin: “Hey fellow Ranger! There is not much to do here for us rangers to be honest, crime rate here is close to none because of the King's Army and their Militaristic Regime, they are very strict but act towards people's interests. Those guys are really powerful even close to us Ajins, try not to mess with them. If you are looking for hunting, you should head to the Orld Tree's husk…The Spyriths there are crazy strong.”`,
-
+                                                    `Dogür : "The Swamp of Abyss earned that ephitet because of it's indefinite depth, we live up here on the legs of the Gaiyo shrooms because of the dangers of the swamp, we lizardmen can survive much longer in the swamp compared to you humans but no one who has delved much deeper has ever returned alive to tell the tale."`,
+                                                    `Damian : "Hahaha I will be so rich when the shedding season comes, I'm gonna make a haul out of all the flowers mark my words! And don't you dare try to touch them, they are all mine! Even the finest of gold is priceless before these babies. If I can collect them before they sink too deep, I won't even have to risk my life to those swamp spyriths."`
                                                     
                                                     
                                                 ]
@@ -1020,11 +1004,12 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                     totalEmbeds.push(dialogueembed)
                                                 })
                                             }
-                                            else if(foundUser.location == "Castle Heliad"){
+                                            else if(foundUser.location == "Vesper Guild Outpost"){
                                                 dialogue = [
-                                                    `Nalin: “Halt! Ranger or not, The Castle is off limits. This is a sanctuary for our king, only those with a purpose may enter, Anyway our king doesn't wish to have audience with anyone at the moment. State your purpose or turn away, you surely might not want to force the wrath of the Helios Aureus upon yourself, Ajin. We are the strongest force of Solarstrio.”`,
-                                                    `Bryn : "Ah! Did you get turned away by the castle guards as well? They are quite strict aren't they…But they are good people, Helios Aureus, a knight chapter created by King Helios himself to serve him. They are extremely loyal to him and can go to any lengths to do his bidding, therefore they are termed as the 'King's Army'. There are barracks of Helios Aureus above every stone pillar in Gloaming, they jump down from them using their turbine boots that allows them to fly and stop any crime in no time. Our people often revere them as superheroes! The Headquarters of Helios Aureus is also inside Castle Heliad."`,
-                                                    `Theron: "Have you ever heard the story of the Orld Tree? It is an ancient tree albeit the oldest in existence, it was so huge that it could cover an entire state…people used to worship it until it turned out to be parasitic in nature that sucked out Spyr from the living beings around it. Legend has it that someone who shone like sun rid it by annihilating it until only it's husk remained, it's said that inside the tree there was a unique seed which King Helios planted in his garden at Castle Heliad, it grew out to be a bonsai Orld Tree! Anyways that incident is still a legend and no one knows who it was."`
+                                                    `Gabriel : "You know the ancient Lizardmen tribes used to worship a spyrith deity out of pure fear. No one knows what it looks like anymore but they refer it as the "King of Abyss", many rangers over the years have claimed to see it deep in the swamps and only few have ever lived to tell the tale. Whoever we have heard it from claimed to have seen different elemental skills, I can't believe it…spyriths don't usually possess so many elemental affinities"`,
+                                                    `Yosha : "Yo, fellow Ranger! Are you looking to go into the depths of the swamp too? it's almost like a dungeon there. You know the swamp of Abyss has a deep intricate network of tunnels that have formed due to the nebula flowers falling down and sinking deep due to their heavy weight, although they are small God knows where all that weight comes from.Anyways, good luck! I might try to go to the swamp tomorrow and try my luck on getting my hands on a nebula flower, if I return alive that is haha."`
+                                                    
+                                                    
                                                 ]
                                                 dialogue.map((diag) => {
                                                     dialogueembed = new MessageEmbed()
@@ -1034,6 +1019,7 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                     totalEmbeds.push(dialogueembed)
                                                 })
                                             }
+                                            
                                         }
                                         
                                         else{
