@@ -7601,8 +7601,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
             }
             else if(location == 'Vesper'){
-                if(foundUser.coins >=100 && foundUser.mount == "None"){
-                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                if(foundUser.coins >=0 && foundUser.mount == "None"){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                 const attachment = new MessageAttachment('assets/Vesper/vesper_main.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -7892,8 +7892,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
             else if(location == 'Vesper'){
-                if(foundUser.coins >=100 && foundUser.mount == "None"){
-                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                if(foundUser.coins >=0 && foundUser.mount == "None"){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                 const attachment = new MessageAttachment('assets/Vesper/vesper_main.jpg')
                 let successembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -7991,6 +7991,895 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                     }
     
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Lucens"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Buccaneer Shipwreck`,
+                                                value:`**Travelled on Foot**\n**Description**:A shipwreck lies abandoned on the sandy shores, a relic of a bygone era of piracy and adventure.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Marvory Cove`,
+                                                value:`**Travelled on Foot**\n**Description**: Marvory Cove, with its shimmering waters and ivory sands, offers a serene escape amidst the rugged coastline, captivating visitors with its natural beauty and tranquility.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Vesper`,
+                                                value:`**Travelled on Stagecoach**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 100 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Buccaneer Shipwreck`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A shipwreck lies abandoned on the sandy shores, a relic of a bygone era of piracy and adventure.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Marvory Cove`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Marvory Cove, with its shimmering waters and ivory sands, offers a serene escape amidst the rugged coastline, captivating visitors with its natural beauty and tranquility.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Vesper`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Betta Market Square`,
+                                        value:`**Description**: A vibrant coastal marketplace nestled alongside the beach.\n`
+                                    },
+                                    {
+                                        name: `Lighthouse Plateau`,
+                                        value:`**Description**: A coastal sanctuary of divine with a towering lighthouse.\n`
+                                    },
+                                    {
+                                        name: `Makun-Ochi Fishing`,
+                                        value:`**Description**: The historic Makun-Ochi Fishing spot.\n`
+                                    },
+                                    {
+                                        name: `Seaside Sculpture Garden`,
+                                        value:`**Description**: A shoreline sanctuary of Living Legends.\n`
+                                    },
+                                    {
+                                        name: `Seabreeze Pavillion`,
+                                        value:`**Description**: A cliffside stage for legendary tales.\n`
+                                    },
+                                    {
+                                        name: `Lucens Guild Outpost`,
+                                        value:`**Description**: The Guild Outpost is home to the unwavering and dedicated Guild Rangers.\n`
+                                    },
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Buccaneer Shipwreck`,
+                        description: ``,
+                        value: `Buccaneer Shipwreck`,
+                    },
+                    {
+                        label: `Marvory Cove`,
+                        description: ``,
+                        value: `Marvory Cove`,
+                    },
+                    {
+                        label: `Township of Vesper`,
+                        description: ``,
+                        value: `Vesper`,
+                    },
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Betta Market Square`,
+                        description: ``,
+                        value: `Betta Market Square`,
+                    },{
+                        label: `Lighthouse Plateau`,
+                        description: ``,
+                        value: `Lighthouse Plateau`,
+                    },{
+                        label: `Makun-Ochi Fishing`,
+                        description: ``,
+                        value: `Makun-Ochi Fishing`,
+                    },{
+                        label: `Seaside Sculpture Garden`,
+                        description: ``,
+                        value: `Seaside Sculpture Garden`,
+                    },{
+                        label: `Seabreeze Pavillion`,
+                        description: ``,
+                        value: `Seabreeze Pavillion`,
+                    },{
+                        label: `Lucens Guild Outpost`,
+                        description: ``,
+                        value: `Lucens Guild Outpost`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+                    
+                    if(location == 'Buccaneer Shipwreck'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Lucens/buccaneer_shipwreck.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://buccaneer_shipwreck.jpeg')
+                        .setDescription(`As you approach the Buccaneer Shipwreck, the salty breeze carries whispers of tales long past. The skeletal remains of the once-majestic vessel emerge from the sands, its timeworn hull adorned with barnacles and seaweed, a haunting reminder of the maritime adventures that ended in tragedy. Rusty cannons peek through the wreckage, hinting at a tumultuous history lost to the depths of the ocean.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Marvory Cove'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Lucens/marvory_cove.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://marvory_cove.jpg')
+                        .setDescription(`As you step onto the shores of Marvory Cove, the gentle lapping of waves against the smooth, ivory sands welcomes you. The coastline is adorned with majestic cliffs, their pale hues mirroring the pristine Marvory Stone that gives the cove its name. Sunlight dances upon the crystal-clear waters, revealing a myriad of vibrant marine life swimming beneath the surface.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+            else if(location == 'Vesper'){
+                if(foundUser.coins >=100 && foundUser.mount == "None"){
+                    await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                const attachment = new MessageAttachment('assets/Vesper/vesper_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://vesper_main.jpg')
+                .setDescription(`
+                As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else if(foundUser.mount != "None"){
+                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                const attachment = new MessageAttachment('assets/Vesper/vesper_main.jpg')
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('LOCATION REACHED')
+                .setImage('attachment://vesper_main.jpg')
+                .setDescription(`
+                As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                }
+                else{
+                    interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                }
+                
+            }
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Betta Market Square'){
+                        const attachment = new MessageAttachment('assets/Lucens/betta_market.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://betta_market.jpg')
+                        .setDescription(`As you step into Betta Market Square, the salty breeze carries the tantalizing aroma of exotic fruits and the rhythmic sounds of traders haggling. The sun bathes the stalls in a warm glow, casting a golden hue over the sandy sword-shaped center, inviting you to explore the coastal wonders laid out before you.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Lighthouse Plateau'){
+                        const attachment = new MessageAttachment('assets/Lucens/lighthouse_plateau.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://lighthouse_plateau.jpg')
+                            .setDescription(`Approaching the Lighthouse Plateau, the sound of crashing waves crescendos, and the silhouette of Captain Basilica emerges against the coastal horizon. The monumental lighthouse, held steadfast in his arms, casts its guiding beam over the tumultuous sea, while the nearby Temple of Still Water beckons with a promise of serenity.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Makun-Ochi Fishing'){
+                        const attachment = new MessageAttachment('assets/Lucens/makun_ochi.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://makun_ochi.jpg')
+                            .setDescription(`Arriving at Makun-Ochi Fishing, the air is thick with the salty scent of the sea. Fishing boats bob gently in the harbor, and the distant calls of fishermen preparing for the next competition echo through the air.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Lucens Guild Outpost'){
+                        const attachment = new MessageAttachment('assets/Lucens/lucens_guildoutpost.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://lucens_guildoutpost.jpeg')
+                            .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of sea spyriths and bandits, while the air hums with a sense of shared purpose and safety.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == `Seaside Sculpture Garden`){
+                        const attachment = new MessageAttachment('assets/Lucens/seaside_sculpture.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://seaside_sculpture.jpeg')
+                            .setDescription(`Upon arriving at the Seaside Sculpture Garden, the sun casts a warm glow on the intricately carved statues that line the coastal path. The rhythmic sound of chisels and the laughter of families working together in sculpting new statues fill the air.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    } 
+                    else if(location == 'Seabreeze Pavillion'){
+                        const attachment = new MessageAttachment('assets/Lucens/seabreeze_pavillion.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://seabreeze_pavillion.jpeg')
+                            .setDescription(`As you arrive at Seabreeze Pavilion, the distant murmur of the sea merges with the lively atmosphere of anticipation. The cliffside stage stands adorned with maritime decor, and locals prepare for the upcoming performance, their enthusiasm contagious.`)
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+    
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Buccaneer Shipwreck"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Marvory Cove`,
+                                                value:`**Travelled on Foot**\n**Description**: Marvory Cove, with its shimmering waters and ivory sands, offers a serene escape amidst the rugged coastline, captivating visitors with its natural beauty and tranquility.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Lucens`,
+                                                value:`**Travelled on Foot**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Marvory Cove`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Marvory Cove, with its shimmering waters and ivory sands, offers a serene escape amidst the rugged coastline, captivating visitors with its natural beauty and tranquility.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Lucens`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Betta Market Square`,
+                                        value:`**Description**: A vibrant coastal marketplace nestled alongside the beach.\n`
+                                    },
+                                    {
+                                        name: `Lighthouse Plateau`,
+                                        value:`**Description**: A coastal sanctuary of divine with a towering lighthouse.\n`
+                                    },
+                                    {
+                                        name: `Makun-Ochi Fishing`,
+                                        value:`**Description**: The historic Makun-Ochi Fishing spot.\n`
+                                    },
+                                    {
+                                        name: `Seaside Sculpture Garden`,
+                                        value:`**Description**: A shoreline sanctuary of Living Legends.\n`
+                                    },
+                                    {
+                                        name: `Seabreeze Pavillion`,
+                                        value:`**Description**: A cliffside stage for legendary tales.\n`
+                                    },
+                                    {
+                                        name: `Lucens Guild Outpost`,
+                                        value:`**Description**: The Guild Outpost is home to the unwavering and dedicated Guild Rangers.\n`
+                                    },
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Marvory Cove`,
+                        description: ``,
+                        value: `Marvory Cove`,
+                    },
+                    {
+                        label: `Township of Lucens`,
+                        description: ``,
+                        value: `Lucens`,
+                    },
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Betta Market Square`,
+                        description: ``,
+                        value: `Betta Market Square`,
+                    },{
+                        label: `Lighthouse Plateau`,
+                        description: ``,
+                        value: `Lighthouse Plateau`,
+                    },{
+                        label: `Makun-Ochi Fishing`,
+                        description: ``,
+                        value: `Makun-Ochi Fishing`,
+                    },{
+                        label: `Seaside Sculpture Garden`,
+                        description: ``,
+                        value: `Seaside Sculpture Garden`,
+                    },{
+                        label: `Seabreeze Pavillion`,
+                        description: ``,
+                        value: `Seabreeze Pavillion`,
+                    },{
+                        label: `Lucens Guild Outpost`,
+                        description: ``,
+                        value: `Lucens Guild Outpost`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+
+                    if(location == 'Marvory Cove'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Lucens/marvory_cove.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://marvory_cove.jpg')
+                        .setDescription(`As you step onto the shores of Marvory Cove, the gentle lapping of waves against the smooth, ivory sands welcomes you. The coastline is adorned with majestic cliffs, their pale hues mirroring the pristine Marvory Stone that gives the cove its name. Sunlight dances upon the crystal-clear waters, revealing a myriad of vibrant marine life swimming beneath the surface.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Lucens'){
+                        if(foundUser.coins >=0 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Lucens/lucens_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://lucens_main.jpg')
+                        .setDescription(`As you arrive in Lucens, the salty air and colorful streets welcome you. The Lighthouse Plateau stands tall, its statue of Captain Basilica a symbol of the town's maritime legacy. Nearby, the Temple of Still Water offers a serene retreat, while the Seabreeze Pavilion hosts lively performances celebrating local legends. Everywhere you turn, sculptures of Marvory Stone tell tales of the sea, inviting you to explore Lucens' rich history.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Lucens/lucens_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://lucens_main.jpg')
+                        .setDescription(`As you arrive in Lucens, the salty air and colorful streets welcome you. The Lighthouse Plateau stands tall, its statue of Captain Basilica a symbol of the town's maritime legacy. Nearby, the Temple of Still Water offers a serene retreat, while the Seabreeze Pavilion hosts lively performances celebrating local legends. Everywhere you turn, sculptures of Marvory Stone tell tales of the sea, inviting you to explore Lucens' rich history.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Betta Market Square'){
+                        const attachment = new MessageAttachment('assets/Lucens/betta_market.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://betta_market.jpg')
+                        .setDescription(`As you step into Betta Market Square, the salty breeze carries the tantalizing aroma of exotic fruits and the rhythmic sounds of traders haggling. The sun bathes the stalls in a warm glow, casting a golden hue over the sandy sword-shaped center, inviting you to explore the coastal wonders laid out before you.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Lighthouse Plateau'){
+                        const attachment = new MessageAttachment('assets/Lucens/lighthouse_plateau.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://lighthouse_plateau.jpg')
+                            .setDescription(`Approaching the Lighthouse Plateau, the sound of crashing waves crescendos, and the silhouette of Captain Basilica emerges against the coastal horizon. The monumental lighthouse, held steadfast in his arms, casts its guiding beam over the tumultuous sea, while the nearby Temple of Still Water beckons with a promise of serenity.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Makun-Ochi Fishing'){
+                        const attachment = new MessageAttachment('assets/Lucens/makun_ochi.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://makun_ochi.jpg')
+                            .setDescription(`Arriving at Makun-Ochi Fishing, the air is thick with the salty scent of the sea. Fishing boats bob gently in the harbor, and the distant calls of fishermen preparing for the next competition echo through the air.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Lucens Guild Outpost'){
+                        const attachment = new MessageAttachment('assets/Lucens/lucens_guildoutpost.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://lucens_guildoutpost.jpeg')
+                            .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of sea spyriths and bandits, while the air hums with a sense of shared purpose and safety.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == `Seaside Sculpture Garden`){
+                        const attachment = new MessageAttachment('assets/Lucens/seaside_sculpture.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://seaside_sculpture.jpeg')
+                            .setDescription(`Upon arriving at the Seaside Sculpture Garden, the sun casts a warm glow on the intricately carved statues that line the coastal path. The rhythmic sound of chisels and the laughter of families working together in sculpting new statues fill the air.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    } 
+                    else if(location == 'Seabreeze Pavillion'){
+                        const attachment = new MessageAttachment('assets/Lucens/seabreeze_pavillion.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://seabreeze_pavillion.jpeg')
+                            .setDescription(`As you arrive at Seabreeze Pavilion, the distant murmur of the sea merges with the lively atmosphere of anticipation. The cliffside stage stands adorned with maritime decor, and locals prepare for the upcoming performance, their enthusiasm contagious.`)
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+    
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(() => null)
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Marvory Cove"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Buccaneer Shipwreck`,
+                                                value:`**Travelled on Foot**\n**Description**:A shipwreck shrouded in mystery, lies abandoned on the sandy shores, a relic of a bygone era of piracy and adventure.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Lucens`,
+                                                value:`**Travelled on Foot**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Buccaneer Shipwreck`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A shipwreck shrouded in mystery, lies abandoned on the sandy shores, a relic of a bygone era of piracy and adventure.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Lucens`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Betta Market Square`,
+                                        value:`**Description**: A vibrant coastal marketplace nestled alongside the beach.\n`
+                                    },
+                                    {
+                                        name: `Lighthouse Plateau`,
+                                        value:`**Description**: A coastal sanctuary of divine with a towering lighthouse.\n`
+                                    },
+                                    {
+                                        name: `Makun-Ochi Fishing`,
+                                        value:`**Description**: The historic Makun-Ochi Fishing spot.\n`
+                                    },
+                                    {
+                                        name: `Seaside Sculpture Garden`,
+                                        value:`**Description**: A shoreline sanctuary of Living Legends.\n`
+                                    },
+                                    {
+                                        name: `Seabreeze Pavillion`,
+                                        value:`**Description**: A cliffside stage for legendary tales.\n`
+                                    },
+                                    {
+                                        name: `Lucens Guild Outpost`,
+                                        value:`**Description**: The Guild Outpost is home to the unwavering and dedicated Guild Rangers.\n`
+                                    },
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Marvory Cove`,
+                        description: ``,
+                        value: `Marvory Cove`,
+                    },
+                    {
+                        label: `Township of Lucens`,
+                        description: ``,
+                        value: `Lucens`,
+                    },
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Betta Market Square`,
+                        description: ``,
+                        value: `Betta Market Square`,
+                    },{
+                        label: `Lighthouse Plateau`,
+                        description: ``,
+                        value: `Lighthouse Plateau`,
+                    },{
+                        label: `Makun-Ochi Fishing`,
+                        description: ``,
+                        value: `Makun-Ochi Fishing`,
+                    },{
+                        label: `Seaside Sculpture Garden`,
+                        description: ``,
+                        value: `Seaside Sculpture Garden`,
+                    },{
+                        label: `Seabreeze Pavillion`,
+                        description: ``,
+                        value: `Seabreeze Pavillion`,
+                    },{
+                        label: `Lucens Guild Outpost`,
+                        description: ``,
+                        value: `Lucens Guild Outpost`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+
+                    if(location == 'Buccaneer Shipwreck'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Lucens/buccaneer_shipwreck.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://buccaneer_shipwreck.jpeg')
+                        .setDescription(`As you approach the Buccaneer Shipwreck, the salty breeze carries whispers of tales long past. The skeletal remains of the once-majestic vessel emerge from the sands, its timeworn hull adorned with barnacles and seaweed, a haunting reminder of the maritime adventures that ended in tragedy. Rusty cannons peek through the wreckage, hinting at a tumultuous history lost to the depths of the ocean.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Lucens'){
+                        if(foundUser.coins >=0 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Lucens/lucens_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://lucens_main.jpg')
+                        .setDescription(`As you arrive in Lucens, the salty air and colorful streets welcome you. The Lighthouse Plateau stands tall, its statue of Captain Basilica a symbol of the town's maritime legacy. Nearby, the Temple of Still Water offers a serene retreat, while the Seabreeze Pavilion hosts lively performances celebrating local legends. Everywhere you turn, sculptures of Marvory Stone tell tales of the sea, inviting you to explore Lucens' rich history.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Lucens/lucens_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://lucens_main.jpg')
+                        .setDescription(`As you arrive in Lucens, the salty air and colorful streets welcome you. The Lighthouse Plateau stands tall, its statue of Captain Basilica a symbol of the town's maritime legacy. Nearby, the Temple of Still Water offers a serene retreat, while the Seabreeze Pavilion hosts lively performances celebrating local legends. Everywhere you turn, sculptures of Marvory Stone tell tales of the sea, inviting you to explore Lucens' rich history.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Betta Market Square'){
+                        const attachment = new MessageAttachment('assets/Lucens/betta_market.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://betta_market.jpg')
+                        .setDescription(`As you step into Betta Market Square, the salty breeze carries the tantalizing aroma of exotic fruits and the rhythmic sounds of traders haggling. The sun bathes the stalls in a warm glow, casting a golden hue over the sandy sword-shaped center, inviting you to explore the coastal wonders laid out before you.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Lighthouse Plateau'){
+                        const attachment = new MessageAttachment('assets/Lucens/lighthouse_plateau.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://lighthouse_plateau.jpg')
+                            .setDescription(`Approaching the Lighthouse Plateau, the sound of crashing waves crescendos, and the silhouette of Captain Basilica emerges against the coastal horizon. The monumental lighthouse, held steadfast in his arms, casts its guiding beam over the tumultuous sea, while the nearby Temple of Still Water beckons with a promise of serenity.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Makun-Ochi Fishing'){
+                        const attachment = new MessageAttachment('assets/Lucens/makun_ochi.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://makun_ochi.jpg')
+                            .setDescription(`Arriving at Makun-Ochi Fishing, the air is thick with the salty scent of the sea. Fishing boats bob gently in the harbor, and the distant calls of fishermen preparing for the next competition echo through the air.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == 'Lucens Guild Outpost'){
+                        const attachment = new MessageAttachment('assets/Lucens/lucens_guildoutpost.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://lucens_guildoutpost.jpeg')
+                            .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of sea spyriths and bandits, while the air hums with a sense of shared purpose and safety.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    else if(location == `Seaside Sculpture Garden`){
+                        const attachment = new MessageAttachment('assets/Lucens/seaside_sculpture.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://seaside_sculpture.jpeg')
+                            .setDescription(`Upon arriving at the Seaside Sculpture Garden, the sun casts a warm glow on the intricately carved statues that line the coastal path. The rhythmic sound of chisels and the laughter of families working together in sculpting new statues fill the air.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    } 
+                    else if(location == 'Seabreeze Pavillion'){
+                        const attachment = new MessageAttachment('assets/Lucens/seabreeze_pavillion.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://seabreeze_pavillion.jpeg')
+                            .setDescription(`As you arrive at Seabreeze Pavilion, the distant murmur of the sea merges with the lively atmosphere of anticipation. The cliffside stage stands adorned with maritime decor, and locals prepare for the upcoming performance, their enthusiasm contagious.`)
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    }
+                    
                 collector_select.stop()
                 collector_cancel.stop()
                

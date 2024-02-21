@@ -1021,6 +1021,95 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                             }
                                             
                                         }
+                                        else if(foundUser.city_town == "Lucens"){
+                                            if(foundUser.location == "Betta Market Square"){
+                                                dialogue = [
+                                                    `Hawley: “Hey there! Welcome to Lucens! What do you think of our vibrant little town? It's as cool as the seabreeze…ha! Most people think it's paint but it's really not. Most houses, and other structures were made from the Marvory Stone found near Lucens. It is a special stone that gives it a unique outer hue when we lather it with seawater. Each house in Lucens has its own unique look and a unique hue! We lather it every month so if you return in the future, the town may look totally different!”`,
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Lighthouse Plateau"){
+                                                dialogue = [
+                                                    `Buck: “Did you know that Lucens is at the southernmost tip of the Gabalt Continent? In fact, our famed Lighthouse Plateau is also quite literally known as the “Southern Tip of Gabalt”. Isn’t that awesome?`,
+                                                    `Camille: “Blessings. Ranger. I am on my way to pray at the Temple Adhuc Ecclesia. You should visit it at least once while you’re in town. The Temple was built to pay respects to the Goddess of Sea - Calmara, who in myths, would often visit the locals in times of the past, warning them about the arrival of turbulent times. There is a fountain inside the temple that never stops flowing and contains within it the cleanest water in the world, despite drawing in seawater. Another thing of note is that, even during the arrival of violent sea storms, the flow of the water never changes and stays still. It is believed that the still water would begin to show ripples when harsh times are upon us.”`,
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Makun-Ochi Fishing"){
+                                                dialogue = [
+                                                    `Crusty: “Ahoy Ranger! Are you here for the Fishing Contest as well? You seem like you can handle your sword, but I wouldn’t say the same about the rod you see here in my hands. I would have you know I am quite famous back in my hometown. But this contest isn’t just for skill, I also need to handle some nasty Sea Spyriths before I can have a glorious catch. How about you team up with me and we split the prize 50-50? I’ve posted a request back at the ‘ol Guild Outpost. See ya!”`,
+                                                    `Rosalind: “You didn’t hear this from me but the owner of Tideswept Treasures in the Betta Market Square is full of it. My husband recently caught a rare Sea Spyrith and dumped all his earnings in exchange for a watch which was supposedly owned by Captain Basilica’s Chef crewmate’s uncle. I told my husband he got played by the owner but he said I had gone insane. Women be sane, I’ll prove it to him someday. Until then, I will keep warning travelers such as yourself.”`,
+                                                    
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Seaside Sculpture Garden"){
+                                                dialogue = [
+                                                    `Gilmer: “Lucens’ most famous attraction is the Lighthouse Plateau standing as the true edge of the south, but most importantly it is held by the giant stone sculpture of the world renowned Captain Basilica who completed several famous voyages around the world and drew the map of the world. Just like how our town has stood the test of time, the statue of Basilica has withheld the beacon of hope of many voyagers - the lighthouse in his arms for several hundred years, despite the violent waves crashing into it. The statue itself resembles Basilica’s determination to face the strongest of waves in his pursuit of new discoveries.”`,
+                                                    `Digby: “The Amphitheatre over at the Seabreeze Pavillion on that cliff there is a hotspot for tourists and other travelers! It is a must visit! They enact stories of voyages left behind by Captain Basilica during his days of exploration. We townsfolk actually each have a family member who is an active participant of the play! In fact, our roles are passed down from generation to generation! I inherited the role from my Father who inherited the role from his father. I play the role of Tree 1. It ain’t bad but I wish my predecessor could’ve inherited a more prominent role like the Beach Rock.”`
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Seabreeze Pavilion"){
+                                                dialogue = [
+                                                    `Cecilia: “I am just so tired of being stuck in a bad role for the play. I am soooo much better than Carrie. Why should she earn more just because her family inherited that role, even though I would be way better for the role? This is outrageous! And I want to change it. I will make a petition and have other families with bad roles sign it. Then the Mayor will have to act! You should help me, please. I have posted a request at the Local Guild Outpost!”`,
+                                                    `Yorick: “You there, have you visited the Seaside Sculpture Garden yet? If you ever visit, please drop by the statue that has my face on it! Yeah, there’s a statue with my face on it. I play as one of Captain Basilica’s crewmates! Since I inherited that role, my family looks after the statue and they very recently chiseled my face over my uncle’s who played the same role before I started. We do this because none of us actually know how Captain Basilica’s crewmates or he himself looked like. I think it is a great concept. We have a share in the play’s earnings and we have to maintain the Statue for the role we’re playing. So yeah, you should drop by.”`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Lucens Guild Outpost"){
+                                                dialogue = [
+                                                    `Ronni: “Hey, aren’t you a Ranger? I guess you’re really enjoying the scenery huh? Unfortunately I cannot say the same. Have you perhaps heard about the Marvory Stone? The locals wouldn’t shut up about it, ugh. But ever since I heard about them, I cannot stop thinking about them. I mean how can houses made from the same stone, lathered with the same seawater show different hues? And why the hell does that giant Statue not even have a hue, even though it is quite literally half-sunk in the sea? Just thinking of a possible reason is making my head hurt. I was planning to research the Marvory Stone closely but the Marvory Cove is dangerous for me to be traveling alone. How about you tag along? I’ve posted a request at the Guild Outpost. So, I’ll see you soon?”`,
+                                                    `Gresham: “I came here to meet Jetta cause I heard he had just returned from Zorya but I couldn’t find him anywhere. Then I heard from the attendant at the Outpost that Jetta immediately left for the shore near the shipwreck. Man loves work. So I am sticking around in the hopes of encountering him once. He is a true inspiration for many in Lucens, his hometown.”`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            
+                                        }
                                         
                                         else{
                                             dialogueembed = new MessageEmbed()

@@ -17,8 +17,6 @@ export default new MyCommandSlashBuilder({ name: 'use', description: 'use an ite
         const authorId = interaction.user.id;
         const userobject = interaction.options.getString('object').toLowerCase()
 
-      
-
         inventory.exists({userID:authorId}, async function(err,res){
             if(err){
                 console.log(err);
