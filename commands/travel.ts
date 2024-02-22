@@ -342,7 +342,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -628,7 +628,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -914,7 +914,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -1199,7 +1199,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -1759,7 +1759,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -2172,7 +2172,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -2586,7 +2586,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -2998,7 +2998,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -3412,7 +3412,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -3992,7 +3992,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -4225,7 +4225,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -4610,7 +4610,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -5071,7 +5071,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -5380,7 +5380,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -5689,7 +5689,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -5998,7 +5998,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -6247,7 +6247,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -6608,7 +6608,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -7037,7 +7037,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -7426,7 +7426,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -7717,7 +7717,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -8008,7 +8008,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -8321,7 +8321,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -8609,7 +8609,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
@@ -8897,7 +8897,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })
         
             collector_cancel.on('collect', async j => {
-                j.deferUpdate().catch(() => null)
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 if(j.customId == "cancel"){
                 let delembed = new MessageEmbed()
                 .setColor('RANDOM')
