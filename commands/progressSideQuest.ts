@@ -24,7 +24,11 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
         
         const authorId = interaction.user.id;
         const guildID = interaction.guildId;
-
+        const exceptionEmbed = new MessageEmbed()
+        .setColor('RED')
+        .setTitle('INTERACTION TIMED OUT')
+        .setDescription(`Oops! your interaction has been timed out as it has crossed the waiting limit for your action.\n\nHowever, don't worry! simply use the command again to restart.`)
+        
         profileModel.exists({userID: authorId},async function(err,res){
             if(err){
                 console.log(err);
@@ -527,7 +531,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                     totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
                                 }
                                 await interaction.deferReply()
-                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw]})
+                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 await Sendpages(totalEmbeds,"2",btnraw,null)
                                 
 
@@ -579,7 +583,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                     totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
                                 }
                                 await interaction.deferReply()
-                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw],files:files})
+                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw],files:files}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 await Sendpages(totalEmbeds,"3",btnraw,files)
 
                                 }
@@ -626,7 +630,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                     totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
                                 }
                                 await interaction.deferReply()
-                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw]})
+                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 await Sendpages(totalEmbeds,"4",btnraw)
                                 }
                                 else{
@@ -686,7 +690,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                     totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
                                 }
                                 await interaction.deferReply()
-                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw],files:[]})
+                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 await Sendpages(totalEmbeds,"5",btnraw,files)
 
                                 }
@@ -746,7 +750,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                     totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
                                 }
                                 await interaction.deferReply()
-                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw],files:[]})
+                                await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                                 async function final(){
                                 foundUser.completed_quests.push("KS-TA-SQ6")
@@ -1416,14 +1420,14 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 count +=1
                             }
                             if(files == null){
-                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
+                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                             }
                             else{
                                 if(totalEmbeds[count].image != null){
-                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:files})
+                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:files}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 }
                                 else{
-                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
+                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 }
                                 
                             }
@@ -1439,14 +1443,14 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                             }
                             
                             if(files == null){
-                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
+                                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                             }
                             else{
                                 if(totalEmbeds[count].image != null){
-                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:files})
+                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:files}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 }
                                 else{
-                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]})
+                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[components],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 }
                             }
                         }
@@ -1468,10 +1472,10 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
             collector.on('end',async (collected) => {
 
                                 if(totalEmbeds[count].image != null){
-                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:files})
+                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:files}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 }
                                 else{
-                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:[]})
+                                    await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 }
                             
                 })

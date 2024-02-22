@@ -21,6 +21,10 @@ import { TextChannel } from 'discord.js'
 export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken to your story' }).setDo(
     async (bot, interaction) => {
         
+        const exceptionEmbed = new MessageEmbed()
+        .setColor('RED')
+        .setTitle('INTERACTION TIMED OUT')
+        .setDescription(`Oops! your interaction has been timed out as it has crossed the waiting limit for your action.\n\nHowever, don't worry! simply use the command again to restart.`)
         
         const authorId = interaction.user.id;
         const guildID = interaction.guildId;
@@ -222,7 +226,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         .setDescription('an error was encountered while creating your profile! kindly /awaken again')
 
                    await interaction.deferReply()
-                    await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw],files:[attachment]})
+                    await interaction.editReply({content: null,embeds:[ProceedEmbed],components:[btnraw],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     let filter = i => i.user.id === authorId 
                     let filter_select_class = i => (i.customId === 'select_class') && i.user.id === authorId
                     let filter_select_element = i => (i.customId === 'select_element') && i.user.id === authorId
@@ -330,13 +334,13 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 // }
                                 else if(btn.customId === "btn_reject"){
                                     await btn.deferUpdate().catch(e => {})
-                                    await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]})
+                                    await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                     collector.stop()
                                 }
                                 else if(btn.customId == "prologue_accept"){
                     
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({content: null,embeds:[acceptEmbed],components:[],files:[]})
+                                        await interaction.editReply({content: null,embeds:[acceptEmbed],components:[],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                         const query =  profileModel.findOne({userID:interaction.user.id})
                                         const foundUser = await query.exec()
                                         let fableLog = new MessageEmbed()
@@ -482,7 +486,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                 foundInventory.inventory.weapons.push(class_weapon)
 
                                await collected.deferUpdate().catch(e => {})
-                                await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]})
+                                await interaction.editReply({content: null,embeds:[elementEmbed1],components:[select_element]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 await profileModel.updateOne({userID:authorId},{class:foundUser.class,attackDamage:foundUser.attackDamage,armour:foundUser.armour,speed:foundUser.speed,magicPower:foundUser.magicPower,vitality:foundUser.vitality,magicResistance:foundUser.magicResistance,evasion:foundUser.evasion,currentskills:foundUser.currentskills,allskills:foundUser.allskills,health:foundUser.health})
                                 await inventory.updateOne({userID:authorId},{inventory:foundInventory.inventory})
                                 
@@ -506,13 +510,13 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                   
                                     profileModel.findOne({userID:authorId},async (err,foundUser) => {
                                         if(foundUser.class =="" || foundUser.elements.length !=1){
-                                            await interaction.editReply({content: null,embeds:[errorEmbed],components:[]})
+                                            await interaction.editReply({content: null,embeds:[errorEmbed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                             await profileModel.deleteOne({userID:authorId})
                                             await inventory.deleteOne({userID:authorId})
                                         }
                                         else{
                                             await collected.deferUpdate().catch(e => {})
-                                            await interaction.editReply({content: null,embeds:[prologueEmbed],components:[prologuebtn],files:[attachment2]})
+                                            await interaction.editReply({content: null,embeds:[prologueEmbed],components:[prologuebtn],files:[attachment2]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                             
                                         }
                                     })

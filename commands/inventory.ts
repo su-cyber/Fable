@@ -9,7 +9,11 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
     async (bot, interaction) => {
         const authorId = interaction.user.id;
         const guildID = interaction.guildId;
-
+        const exceptionEmbed = new MessageEmbed()
+        .setColor('RED')
+        .setTitle('INTERACTION TIMED OUT')
+        .setDescription(`Oops! your interaction has been timed out as it has crossed the waiting limit for your action.\n\nHowever, don't worry! simply use the command again to restart.`)
+        
 
         profileModel.exists({userID: authorId},async function(err,res){
             if(err){
@@ -120,7 +124,7 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
         totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
     }
     await interaction.deferReply()
-    await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw]})
+    await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
     let count = 0
     collector.on('collect', async i => {
         if(i.customId === 'forward'){
@@ -132,7 +136,7 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
                 count +=1
             }
             
-            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw]})
+            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
         }
         else if(i.customId === 'backward'){
             await i.deferUpdate().catch(e => {})
@@ -143,7 +147,7 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
                 count-=1
             }
             
-            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw]})
+            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
         }
         else if(i.customId === 'stop'){

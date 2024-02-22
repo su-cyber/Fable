@@ -7,6 +7,10 @@ import getHealth from '../src/utils/getHealth'
 export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'invest stat points' }).setDo(
     async (bot, interaction) => {
         
+        const exceptionEmbed = new MessageEmbed()
+        .setColor('RED')
+        .setTitle('INTERACTION TIMED OUT')
+        .setDescription(`Oops! your interaction has been timed out as it has crossed the waiting limit for your action.\n\nHowever, don't worry! simply use the command again to restart.`)
         
         const authorId = interaction.user.id;
         profileModel.exists({userID:authorId},async function(err,res){
@@ -63,7 +67,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                     //     ]) 
                 
                     await interaction.deferReply()
-                    await interaction.editReply({content: null,embeds:[embed],components:[btnraw]})
+                    await interaction.editReply({content: null,embeds:[embed],components:[btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 
                     let filter_btn = (interaction : any) => interaction.user.id === authorId && interaction.isButton()
                     // let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select"
@@ -81,7 +85,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                     const num = 1
                 
                                     if(num>foundUser.skill_points){
-                                        interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]})
+                                        interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                     }
                                     else{
                                         foundUser.attackDamage += 5*Number(num)
@@ -92,7 +96,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                         .setTitle('STAT INVEST')
                                         .setDescription(`Your Vigour has been increased! Your body feels more powerful as strength courses through you.`)
                                     await profileModel.updateOne({userID:authorId},{attackDamage:foundUser.attackDamage,skill_points:foundUser.skill_points})
-                                    await interaction.editReply({embeds:[successembed],components:[]})
+                                    await interaction.editReply({embeds:[successembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                     
                                     collector_btn.stop()
                                     
@@ -104,7 +108,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                 const num = 1
                 
                                     if(num>foundUser.skill_points){
-                                        interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]})
+                                        interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                     }
                                     else{
                                         foundUser.magicPower += 5*Number(num)
@@ -115,7 +119,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                         .setTitle('STAT INVEST')
                                         .setDescription(`Your Arcana has been increased! You can feel your arcane powers increase as more spyr flows through your spyr circuits.`)
                                     await profileModel.updateOne({userID:authorId},{magicPower:foundUser.magicPower,skill_points:foundUser.skill_points})
-                                    await interaction.editReply({embeds:[successembed],components:[]})
+                                    await interaction.editReply({embeds:[successembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                     
                                     collector_btn.stop()
                                     
@@ -127,7 +131,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                 const num = 1
                 
                                 if(num>foundUser.skill_points){
-                                    interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]})
+                                    interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 }
                                 else{
                                     foundUser.armour += 5*Number(num)
@@ -138,7 +142,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                     .setTitle('STAT INVEST')
                                     .setDescription(`Your Durability has been increased! You can feel your body get sturdy and more resistant to physical attacks`)
                                 await profileModel.updateOne({userID:authorId},{armour:foundUser.armour,skill_points:foundUser.skill_points})
-                                await interaction.editReply({embeds:[successembed],components:[]})
+                                await interaction.editReply({embeds:[successembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 
                                 collector_btn.stop()
                                 
@@ -148,7 +152,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                 const num = 1
                 
                                     if(num>foundUser.skill_points){
-                                        interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]})
+                                        interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                     }
                                     else{
                                         foundUser.magicResistance += 5*Number(num)
@@ -159,7 +163,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                         .setTitle('STAT INVEST')
                                         .setDescription(`Your Knowledge has been increased! You are now more resistant to attacks conjured with spyr`)
                                     await profileModel.updateOne({userID:authorId},{magicResistance:foundUser.magicResistance,skill_points:foundUser.skill_points})
-                                    await interaction.editReply({embeds:[successembed],components:[]})
+                                    await interaction.editReply({embeds:[successembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                     
                                     collector_btn.stop()
                                     
@@ -170,7 +174,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                 const num = 1
                 
                                     if(num>foundUser.skill_points){
-                                        interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]})
+                                        interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                     }
                                     else{
                                         foundUser.speed += 5*Number(num)
@@ -182,7 +186,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                                         .setTitle('STAT INVEST')
                                         .setDescription(`Your Agility has been increased! You can feel that your body is more light and your reflexes have been increased`)
                                     await profileModel.updateOne({userID:authorId},{speed:foundUser.speed,evasion:foundUser.evasion,skill_points:foundUser.skill_points})
-                                    await interaction.editReply({embeds:[successembed],components:[]})
+                                    await interaction.editReply({embeds:[successembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                     
                                     collector_btn.stop()
                                     

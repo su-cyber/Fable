@@ -16,6 +16,10 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
     async (bot, interaction) => {
         const authorId = interaction.user.id
         
+        const exceptionEmbed = new MessageEmbed()
+        .setColor('RED')
+        .setTitle('INTERACTION TIMED OUT')
+        .setDescription(`Oops! your interaction has been timed out as it has crossed the waiting limit for your action.\n\nHowever, don't worry! simply use the command again to restart.`)
         
         
         
@@ -52,7 +56,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 }
                             ])
                             .setDescription(`You found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
-                        await interaction.editReply({embeds:[floraEmbed],files:[]})
+                        await interaction.editReply({embeds:[floraEmbed],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
     
                         inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
                             if(err){
@@ -117,7 +121,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setDescription('You ran away!')
                             
                         
-                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         let filter = i => i.user.id === authorId
                             let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                     
@@ -125,7 +129,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 if(btn.isButton()){
                                     if(btn.customId === "btn_accept"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[acceptEmbed],files:[]})
+                                        await interaction.editReply({embeds:[acceptEmbed],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                         const encounter = {
                                             name: monster.name,
                                             time : Date.now(),
@@ -135,7 +139,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         
                                         foundUser.encounter.push(encounter)
                                         await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
-                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`})})
+                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`,embeds:[],components:[]})})
     
                                         
                                    
@@ -144,7 +148,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     }
                                     else if(btn.customId === "btn_reject"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]})
+                                        await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                          foundUser.encounter = []
                                     
                                         await profileModel.updateOne({userID:authorId},foundUser)
@@ -162,7 +166,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         })
     
                         collector.on('end', () => {
-                            interaction.editReply({components: [d_btnraw]})
+                            interaction.editReply({components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         })
     
                             
@@ -187,7 +191,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 }
                             ])
                             .setDescription(`You found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
-                            await interaction.editReply({embeds:[floraEmbed],files:[]})
+                            await interaction.editReply({embeds:[floraEmbed],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
                             if(err){
                                 console.log(err);
@@ -252,7 +256,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setDescription('You ran away!')
                             
                         
-                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         let filter = i => i.user.id === authorId
                             let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                     
@@ -260,7 +264,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 if(btn.isButton()){
                                     if(btn.customId === "btn_accept"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[acceptEmbed],files:[]})
+                                        await interaction.editReply({embeds:[acceptEmbed],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                         const encounter = {
                                             name: monster.name,
                                             time : Date.now(),
@@ -270,7 +274,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         
                                         foundUser.encounter.push(encounter)
                                         await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
-                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`})})
+                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`,embeds:[],components:[]})})
     
                                         
                                    
@@ -279,7 +283,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     }
                                     else if(btn.customId === "btn_reject"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]})
+                                        await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                          foundUser.encounter = []
                                     
                                         await profileModel.updateOne({userID:authorId},foundUser)
@@ -297,7 +301,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         })
     
                         collector.on('end', () => {
-                            interaction.editReply({components: [d_btnraw]})
+                            interaction.editReply({components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         })
     
                             
@@ -322,7 +326,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 }
                             ])
                             .setDescription(`You found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
-                        await interaction.editReply({embeds:[floraEmbed],files:[]})
+                        await interaction.editReply({embeds:[floraEmbed],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
                             if(err){
                                 console.log(err);
@@ -384,7 +388,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setDescription('You ran away!')
                             
                         
-                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         let filter = i => i.user.id === authorId
                             let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                     
@@ -392,7 +396,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 if(btn.isButton()){
                                     if(btn.customId === "btn_accept"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[acceptEmbed],files:[]})
+                                        await interaction.editReply({embeds:[acceptEmbed],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                         const encounter = {
                                             name: monster.name,
                                             time : Date.now(),
@@ -402,7 +406,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         
                                         foundUser.encounter.push(encounter)
                                         await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
-                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`})})
+                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`,embeds:[],components:[]})})
     
                                         
                                    
@@ -411,7 +415,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     }
                                     else if(btn.customId === "btn_reject"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]})
+                                        await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                          foundUser.encounter = []
                                     
                                         await profileModel.updateOne({userID:authorId},foundUser)
@@ -429,7 +433,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         })
     
                         collector.on('end', () => {
-                            interaction.editReply({components: [d_btnraw]})
+                            interaction.editReply({components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         })
     
                             
@@ -454,7 +458,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 }
                             ])
                             .setDescription(`You found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
-                        await interaction.editReply({embeds:[floraEmbed],files:[]})
+                        await interaction.editReply({embeds:[floraEmbed],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
                             if(err){
                                 console.log(err);
@@ -516,7 +520,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setDescription('You ran away!')
                             
                         
-                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         let filter = i => i.user.id === authorId
                             let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                     
@@ -524,7 +528,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 if(btn.isButton()){
                                     if(btn.customId === "btn_accept"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[acceptEmbed],files:[]})
+                                        await interaction.editReply({embeds:[acceptEmbed],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                         const encounter = {
                                             name: monster.name,
                                             time : Date.now(),
@@ -534,7 +538,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         
                                         foundUser.encounter.push(encounter)
                                         await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
-                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`})})
+                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`,embeds:[],components:[]})})
     
                                         
                                    
@@ -543,7 +547,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     }
                                     else if(btn.customId === "btn_reject"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]})
+                                        await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                          foundUser.encounter = []
                                     
                                         await profileModel.updateOne({userID:authorId},foundUser)
@@ -561,7 +565,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         })
     
                         collector.on('end', () => {
-                            interaction.editReply({components: [d_btnraw]})
+                            interaction.editReply({components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         })
     
                             
@@ -640,7 +644,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 })
             
                                 collector.on('end', () => {
-                                    interaction.editReply({components: [d_btnraw]})
+                                    interaction.editReply({components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 })
                         }
                         else{
@@ -702,7 +706,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         if(btn.isButton()){
                                             if(btn.customId === "btn_accept"){
                                                 await btn.deferUpdate().catch(e => {})
-                                                await interaction.editReply({embeds:[acceptEmbed],files:[],components:[d_btnraw]})
+                                                await interaction.editReply({embeds:[acceptEmbed],files:[],components:[d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                                 foundUser.dungeon.status = true
                                                 foundUser.dungeon.name = "Aqua Canals"
                                                 foundUser.dungeon.step = 1 
@@ -716,7 +720,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                             }
                                             else if(btn.customId === "btn_reject"){
                                                 await btn.deferUpdate().catch(e => {})
-                                                await interaction.editReply({embeds:[rejectEmbed],components:[]})
+                                                await interaction.editReply({embeds:[rejectEmbed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
         
                                             
             
@@ -784,7 +788,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 }
                             ])
                             .setDescription(`You found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
-                        await interaction.editReply({embeds:[floraEmbed],files:[]})
+                        await interaction.editReply({embeds:[floraEmbed],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
                             if(err){
                                 console.log(err);
@@ -849,7 +853,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             .setDescription('You ran away!')
                             
                         
-                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
+                        await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         let filter = i => i.user.id === authorId
                             let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                     
@@ -857,7 +861,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 if(btn.isButton()){
                                     if(btn.customId === "btn_accept"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[acceptEmbed],files:[]})
+                                        await interaction.editReply({embeds:[acceptEmbed],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                         const encounter = {
                                             name: monster.name,
                                             time : Date.now(),
@@ -867,7 +871,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         
                                         foundUser.encounter.push(encounter)
                                         await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
-                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`})})
+                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`,embeds:[],components:[]})})
     
                                         
                                    
@@ -876,7 +880,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     }
                                     else if(btn.customId === "btn_reject"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]})
+                                        await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                          foundUser.encounter = []
                                     
                                         await profileModel.updateOne({userID:authorId},foundUser)
@@ -894,7 +898,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         })
     
                         collector.on('end', () => {
-                            interaction.editReply({components: [d_btnraw]})
+                            interaction.editReply({components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         })
     
                             
@@ -958,7 +962,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             }
                         ])
                         .setDescription(`You found a ${flora.fake_name}\n${flora.name} X ${flora.quantity} has been added to inventory!`)
-                    await interaction.editReply({embeds:[floraEmbed],files:[]})
+                    await interaction.editReply({embeds:[floraEmbed],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     inventory.findOne({userID:interaction.user.id},async function(err,foundUser){
                         if(err){
                             console.log(err);
@@ -1023,7 +1027,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         .setDescription('You ran away!')
                         
                     
-                    await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]})
+                    await interaction.editReply({content: null,embeds:[fightEmbed],components:[btnraw],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     let filter = i => i.user.id === authorId
                         let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
                 
@@ -1031,7 +1035,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             if(btn.isButton()){
                                 if(btn.customId === "btn_accept"){
                                     await btn.deferUpdate().catch(e => {})
-                                    await interaction.editReply({embeds:[acceptEmbed],files:[]})
+                                    await interaction.editReply({embeds:[acceptEmbed],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                     const encounter = {
                                         name: monster.name,
                                         time : Date.now(),
@@ -1041,7 +1045,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                     
                                     foundUser.encounter.push(encounter)
                                     await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
-                                    interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`})})
+                                    interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`,embeds:[],components:[]})})
 
                                     
                                
@@ -1050,7 +1054,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                 }
                                 else if(btn.customId === "btn_reject"){
                                     await btn.deferUpdate().catch(e => {})
-                                    await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]})
+                                    await interaction.editReply({embeds:[rejectEmbed],components:[],files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                      foundUser.encounter = []
                                 
                                     await profileModel.updateOne({userID:authorId},foundUser)
@@ -1068,7 +1072,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                     })
 
                     collector.on('end', () => {
-                        interaction.editReply({components: [d_btnraw]})
+                        interaction.editReply({components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     })
 
                         

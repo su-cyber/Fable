@@ -25,6 +25,11 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
         const authorId = interaction.user.id;
         const guildID = interaction.guildId;
         const author = await bot.users.fetch(authorId)
+        const exceptionEmbed = new MessageEmbed()
+        .setColor('RED')
+        .setTitle('INTERACTION TIMED OUT')
+        .setDescription(`Oops! your interaction has been timed out as it has crossed the waiting limit for your action.\n\nHowever, don't worry! simply use the command again to restart.`)
+        
 
         profileModel.exists({userID: authorId},async function(err,res){
             if(err){
@@ -101,7 +106,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                     if(btn.isButton()){
                                         if(btn.customId === "btn_accept"){
                                             await btn.deferUpdate().catch(e => {})
-                                            await interaction.editReply({embeds:[acceptEmbed],files:[],components:[]})
+                                            await interaction.editReply({embeds:[acceptEmbed],files:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                             const encounter = {
                                                 name: 'BeerBuccsDuo',
                                                 time : new Date(),
@@ -110,7 +115,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                             
                                             foundUser.encounter.push(encounter)
                                             await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
-                                            await interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`})})
+                                            await interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`,embeds:[],components:[]})})
                                             
         
                                             
@@ -120,7 +125,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                         }
                                         else if(btn.customId === "btn_reject"){
                                             await btn.deferUpdate().catch(e => {})
-                                            await interaction.editReply({embeds:[rejectEmbed]})
+                                            await interaction.editReply({embeds:[rejectEmbed]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                              foundUser.encounter = []
                                         
                                             await profileModel.updateOne({userID:authorId},foundUser)
@@ -138,7 +143,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             })
         
                             collector.on('end', () => {
-                                interaction.editReply({components: [d_btnraw]})
+                                interaction.editReply({components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                             })
 
 
@@ -208,7 +213,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                     if(btn.isButton()){
                                         if(btn.customId === "btn_accept"){
                                             await btn.deferUpdate().catch(e => {})
-                                            await interaction.editReply({embeds:[acceptEmbed],files:[attachment2],components:[]})
+                                            await interaction.editReply({embeds:[acceptEmbed],files:[attachment2],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                             
                                             
                                             await profileModel.updateOne({userID:interaction.user.id},{location:"Town Centre",main_quest_phase:"3"})
@@ -219,7 +224,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                         }
                                         else if(btn.customId === "btn_reject"){
                                             await btn.deferUpdate().catch(e => {})
-                                            await interaction.editReply({embeds:[rejectEmbed],files:[attachment]})
+                                            await interaction.editReply({embeds:[rejectEmbed],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                             
         
                                             collector.stop()
@@ -235,7 +240,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             })
         
                             collector.on('end', () => {
-                                interaction.editReply({components: [d_btnraw]})
+                                interaction.editReply({components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                             })
 
 
@@ -491,7 +496,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                                 }
                                                 foundInventory.inventory.weapons.push(newWeapon)
                                                 await inventory.updateOne({userID:authorId},foundInventory)
-                                                await interaction.editReply({embeds:[proceedembed],components:[]})
+                                                await interaction.editReply({embeds:[proceedembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                                 foundUser.side_quest.push("KS-TA-SQ5")
                                                 await profileModel.updateOne({userID:authorId},{main_quest_phase:"10",side_quest:foundUser.side_quest})
                                             })
@@ -526,7 +531,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                                 }
                                                 foundInventory.inventory.weapons.push(newWeapon)
                                                 await inventory.updateOne({userID:authorId},foundInventory)
-                                                await interaction.editReply({embeds:[proceedembed],components:[]})
+                                                await interaction.editReply({embeds:[proceedembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                                 foundUser.side_quest.push("KS-TA-SQ5")
                                                 await profileModel.updateOne({userID:authorId},{main_quest_phase:"10",side_quest:foundUser.side_quest})
                                             })
@@ -821,7 +826,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                     if(btn.isButton()){
                                         if(btn.customId === "btn_accept"){
                                             await btn.deferUpdate().catch(e => {})
-                                            await interaction.editReply({embeds:[acceptEmbed],components:[]})
+                                            await interaction.editReply({embeds:[acceptEmbed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                             
                                             
                                             await profileModel.updateOne({userID:interaction.user.id},{main_quest_phase:"4"})
@@ -837,7 +842,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                     }
 
                                     collector.on('end', () => {
-                                        interaction.editReply({components: [d_btnraw]})
+                                        interaction.editReply({components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                     })
                                 })
                             
@@ -895,7 +900,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 if(btn.isButton()){
                                     if(btn.customId === "btn_accept"){
                                         await btn.deferUpdate().catch(e => {})
-                                        await interaction.editReply({files:[]})
+                                        await interaction.editReply({files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                         
                                         const attacker = await Warrior.create(author)
                                         const monster = await Spectraling.create()
@@ -947,7 +952,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                 }
 
                                 collector.on('end', () => {
-                                    interaction.editReply({components: [d_btnraw]})
+                                    interaction.editReply({components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 })
                             })
                         
@@ -1059,7 +1064,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             if(btn.isButton()){
                                 if(btn.customId === "btn_accept"){
                                     await btn.deferUpdate().catch(e => {})
-                                    await interaction.editReply({files:[]})
+                                    await interaction.editReply({files:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                     const attacker = await Warrior.create(author)
                                     const monster = await Fiskille.create()
                                     attacker.health=foundUser.health
@@ -1109,7 +1114,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                             }
 
                             collector.on('end', () => {
-                                interaction.editReply({components: [d_btnraw]})
+                                interaction.editReply({components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                             })
                         })
                     

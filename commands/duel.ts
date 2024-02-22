@@ -20,6 +20,11 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
         option.setName('user').setDescription('Player to duel with').setRequired(true)
     )
     .setDo(async (bot, interaction) => {
+        const exceptionEmbed = new MessageEmbed()
+        .setColor('RED')
+        .setTitle('INTERACTION TIMED OUT')
+        .setDescription(`Oops! your interaction has been timed out as it has crossed the waiting limit for your action.\n\nHowever, don't worry! simply use the command again to restart.`)
+        
         const authorId = interaction.user.id
         const opponentId = interaction.options.getUser('user').id
 
@@ -158,7 +163,7 @@ export default new MyCommandSlashBuilder({ name: 'duel', description: 'Duel with
                                         }
                                         else if(btn.customId === "reject"){
                                             await btn.deferUpdate().catch(e => {})
-                                            interaction.editReply({content:`${opponent.username} rejected the Duel Request!`,embeds:[],components:[]})
+                                            interaction.editReply({content:`${opponent.username} rejected the Duel Request!`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                             collector.stop()
                                         }
                                         

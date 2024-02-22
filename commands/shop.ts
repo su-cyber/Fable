@@ -10,6 +10,11 @@ export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access th
     async (bot, interaction) => {
         const authorId = interaction.user.id;
         const guildID = interaction.guildId;
+        const exceptionEmbed = new MessageEmbed()
+        .setColor('RED')
+        .setTitle('INTERACTION TIMED OUT')
+        .setDescription(`Oops! your interaction has been timed out as it has crossed the waiting limit for your action.\n\nHowever, don't worry! simply use the command again to restart.`)
+        
 
         profileModel.exists({userID:authorId},async function(err,res){
             if(err){
@@ -41,7 +46,7 @@ if(foundUser.location == "Crofter's Market"){
     .setTitle(`CROFTER'S MARKET`)
     .setDescription(`user: ${interaction.user.username}\n\nAs you step into the lively market of Aube town, you see various shops selling a wide collection of products prepared by the hardworking crofters.You look around and scan through the various shops in the crowded market and your gaze falls onto these 3 shops:-\n\n## Brass Shovel\n*A Weapon shop selling some standard quality weapons, maybe you could find something ineteresting there that can fit your fighting style*\n\n## Artright’s Wares\n*A shop selling some well designed local wearables,There is always some room for fashion!*\n\n## Spring Radiance Dairy\n*A dairy shop selling fresh dairy products prepared from healthy Radiantura milk and ofcourse fresh Radiatura's milk*\n\n**Where will you go?**`)
     await interaction.deferReply()
-    await interaction.editReply({content: null,embeds:[homeembed],components:[btnraw]})
+    await interaction.editReply({content: null,embeds:[homeembed],components:[btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
     let filter = i => i.user.id === authorId
     let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
@@ -78,19 +83,19 @@ if(foundUser.location == "Crofter's Market"){
         if(btn.isButton()){
             if(btn.customId === "brass_shovel"){
                 await btn.deferUpdate().catch(e => {})
-                interaction.editReply({embeds: [brassShovelEmbed]})
+                interaction.editReply({embeds: [brassShovelEmbed]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 
                 
             }
             else if(btn.customId === "artright_wares"){
                 await btn.deferUpdate().catch(e => {})
-                interaction.editReply({embeds: [artwright_waresEmbed]})
+                interaction.editReply({embeds: [artwright_waresEmbed]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 
                 
             }
             else if(btn.customId === "spring_radiance"){
                 await btn.deferUpdate().catch(e => {})
-                interaction.editReply({embeds: [radianceEmbed]})
+                interaction.editReply({embeds: [radianceEmbed]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
             }
             
             
@@ -102,7 +107,7 @@ if(foundUser.location == "Crofter's Market"){
 })
 
 collector.on('end', () => {
-interaction.editReply({embeds: [homeembed], components: [d_btnraw]})
+interaction.editReply({embeds: [homeembed], components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 })
 
 }
@@ -124,7 +129,7 @@ else if(foundUser.location == "Siewelle Port"){
     .setTitle(`SIEWELLE PORT`)
     .setDescription(`user: ${interaction.user.username}\n\nAs you step into the famous and lively Port of Zorya, you see various merchants selling a wide collection of products in the various piers of the dock.You look around and scan through the various piers in the crowded port and your gaze falls onto these 3 piers:-\n\n## Vulkun Pier\n*A Pier where the merchants are selling some standard quality weapons and armour,you could find something ineteresting there that can appease your taste of armour and weapons*\n\n## Arcturus Pier\n*A Pier where the merchants are selling some useful items and trinkets,you should look for something that can aid you in battle!*\n\n## Hexos Pier\n*A Pier where the merchants are selling various food items, look for something that suits your appetite*\n\n**Where will you go?**`)
     await interaction.deferReply()
-    await interaction.editReply({content: null,embeds:[homeembed],components:[btnraw]})
+    await interaction.editReply({content: null,embeds:[homeembed],components:[btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
     let filter = i => i.user.id === authorId
     let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
@@ -161,19 +166,19 @@ else if(foundUser.location == "Siewelle Port"){
         if(btn.isButton()){
             if(btn.customId === "vulkun_pier"){
                 await btn.deferUpdate().catch(e => {})
-                interaction.editReply({embeds: [vulkunEmbed]})
+                interaction.editReply({embeds: [vulkunEmbed]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 
                 
             }
             else if(btn.customId === "arcturus_pier"){
                 await btn.deferUpdate().catch(e => {})
-                interaction.editReply({embeds: [arcturusEmbed]})
+                interaction.editReply({embeds: [arcturusEmbed]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 
                 
             }
             else if(btn.customId === "hexos_pier"){
                 await btn.deferUpdate().catch(e => {})
-                interaction.editReply({embeds: [hexosEmbed]})
+                interaction.editReply({embeds: [hexosEmbed]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
             }
             
             
@@ -185,7 +190,7 @@ else if(foundUser.location == "Siewelle Port"){
 })
 
 collector.on('end', () => {
-interaction.editReply({embeds: [homeembed], components: [d_btnraw]})
+interaction.editReply({embeds: [homeembed], components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 })
 
 }
@@ -203,7 +208,7 @@ else if(foundUser.location == "Black Market"){
     .setTitle(`BLACK MARKET`)
     .setDescription(`user: ${interaction.user.username}\n\nAs you venture into the concealed depths of the Black Market, a shroud of secrecy envelops you. Dimly lit stalls line the labyrinthine corridors, revealing a treasure trove of forbidden wonders. The air crackles with whispered negotiations and the scent of intrigue. Your heart races as you feast your eyes on rare artifacts and experimental weapons, each whispering tales of untold power and peril. In this clandestine realm, the allure of the forbidden intertwines with the thrill of the unknown, beckoning you to immerse yourself in a world where shadows hold hidden treasures and the line between legality and chaos blurs.`)
     await interaction.deferReply()
-    await interaction.editReply({content: null,embeds:[homeembed],components:[btnraw]})
+    await interaction.editReply({content: null,embeds:[homeembed],components:[btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
     let filter = i => i.user.id === authorId
     let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
@@ -225,7 +230,7 @@ else if(foundUser.location == "Black Market"){
         if(btn.isButton()){
             if(btn.customId === "enter_market"){
                 await btn.deferUpdate().catch(e => {})
-                interaction.editReply({embeds: [blackMarketEmbed]})
+                interaction.editReply({embeds: [blackMarketEmbed]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 
                 
             }
@@ -239,7 +244,7 @@ else if(foundUser.location == "Black Market"){
 })
 
 collector.on('end', () => {
-interaction.editReply({embeds: [homeembed], components: [d_btnraw]})
+interaction.editReply({embeds: [homeembed], components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 })
 
 }

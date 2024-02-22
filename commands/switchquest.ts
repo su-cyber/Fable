@@ -10,6 +10,11 @@ export default new MyCommandSlashBuilder({ name: 'choose_sidequest', description
     async (bot, interaction) => {
         const authorId = interaction.user.id
         const guildID = interaction.guildId;
+        const exceptionEmbed = new MessageEmbed()
+        .setColor('RED')
+        .setTitle('INTERACTION TIMED OUT')
+        .setDescription(`Oops! your interaction has been timed out as it has crossed the waiting limit for your action.\n\nHowever, don't worry! simply use the command again to restart.`)
+        
 
         profileModel.exists({userID: authorId},async function(err,res){
             if(err){
@@ -79,7 +84,7 @@ export default new MyCommandSlashBuilder({ name: 'choose_sidequest', description
                                 .setTitle('QUEST SWITCHED')
                                 .setDescription(`your quest has been switched!`)
                     
-                                await interaction.editReply({embeds:[successembed],components:[]})
+                                await interaction.editReply({embeds:[successembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 collector_select.stop()
                                 collector_cancel.stop()
                             })
@@ -92,7 +97,7 @@ export default new MyCommandSlashBuilder({ name: 'choose_sidequest', description
                                 .setTitle('CANCELLED')
                                 .setDescription(`quest switch cancelled!`)
                                 
-                                await interaction.editReply({embeds:[delembed],components:[]})
+                                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                                 collector_cancel.stop()
                                 collector_select.stop()
                             })

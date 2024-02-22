@@ -11,6 +11,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
     async (bot, interaction) => {
         const authorId = interaction.user.id
         const guildID = interaction.guildId;
+        const exceptionEmbed = new MessageEmbed()
+        .setColor('RED')
+        .setTitle('INTERACTION TIMED OUT')
+        .setDescription(`Oops! your interaction has been timed out as it has crossed the waiting limit for your action.\n\nHowever, don't worry! simply use the command again to restart.`)
+        
 
         profileModel.exists({userID: authorId},async function(err,res){
             if(err){
@@ -207,7 +212,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Castellan_Fields.jpeg')
                         .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\n\n\n**Recommeded Level: 2**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'The Badlands'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -217,7 +222,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Badlands.jpg')
                         .setDescription(`As your gaze falls upon the Badlands in Aube Town, you behold a scorching desert realm where relentless heat engulfs the treacherous landscape, concealing untold secrets and lurking death at every precarious step, warning you of the unforgiving nature of this desolate domain.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sunshade Forest'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -227,7 +232,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunshade_forest.jpg')
                         .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\n\n\n**Recommeded Level: 2**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Zorya'){
                         if(foundUser.completed_quests.includes( "KS-TA-SQ5")){
@@ -239,7 +244,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
                         .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                             }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -249,15 +254,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
                         .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You do not have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                 
                 }
                 else{
-                    await interaction.editReply({content:`The Route to Zorya is Blocked by the Emperal Brigade due to the ongoing Nightmare, You cannot proceed right now`,embeds:[],components:[]}) 
+                    await interaction.editReply({content:`The Route to Zorya is Blocked by the Emperal Brigade due to the ongoing Nightmare, You cannot proceed right now`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})}) 
                  }
                 
                     
@@ -278,7 +283,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setImage('attachment://Terrific_Troll_Tavern.jpg')
                     .setDescription(`As you cast your gaze upon the Terrific Troll Tavern in Aube Town, you witness a haven where both the burdened find solace, and the troubled find empathy, as laughter intertwines with heartfelt tales, creating an atmosphere that embraces both escapism and catharsis.You take a room at the Tavern and rest.\n\n`)
                     await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'The Lager Estate'){
                     const attachment = new MessageAttachment('assets/AubeTown/Lager_Estate.jpg')
@@ -287,7 +292,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Lager_Estate.jpg')
                     .setDescription(`As your eyes wander across the Lager Estate in Aube Town, you witness the renowned Lager family's brewers diligently crafting the legendary "Backbreaker Beer" using Solarcorn, a golden elixir that glows with the sun's essence, immersing you in a realm of tantalizing tastes and its twisted aftermath.\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == `Crofter's Market`){
                     const attachment = new MessageAttachment('assets/AubeTown/Crofters_Market.jpg')
@@ -296,7 +301,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Crofters_Market.jpg')
                     .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'Aube Town Guild Outpost'){
                     const attachment = new MessageAttachment('assets/AubeTown/Aube_outpost.jpg')
@@ -305,7 +310,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Aube_outpost.jpg')
                     .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of magical beasts and bandits, while the air hums with a sense of shared purpose and safety\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'Town Centre'){
                     const attachment = new MessageAttachment('assets/AubeTown/Town_Centre.jpg')
@@ -314,7 +319,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Town_Centre.jpg')
                     .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'Abandoned Castle'){
                     const attachment = new MessageAttachment('assets/AubeTown/Abandoned_Castle.jpg')
@@ -323,7 +328,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Abandoned_Castle.jpg')
                     .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 collector_select.stop()
                 collector_cancel.stop()
@@ -344,17 +349,17 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
                     
-                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -527,7 +532,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Aube_Town.jpg')
                         .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'The Badlands'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -537,7 +542,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Badlands.jpg')
                         .setDescription(`As your gaze falls upon the Badlands in Aube Town, you behold a scorching desert realm where relentless heat engulfs the treacherous landscape, concealing untold secrets and lurking death at every precarious step, warning you of the unforgiving nature of this desolate domain.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sunshade Forest'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -547,7 +552,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunshade_forest.jpg')
                         .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\n\n\n**Recommeded Level: 2**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
                 collector_select.stop()
@@ -564,7 +569,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setImage('attachment://Terrific_Troll_Tavern.jpg')
                     .setDescription(`As you cast your gaze upon the Terrific Troll Tavern in Aube Town, you witness a haven where both the burdened find solace, and the troubled find empathy, as laughter intertwines with heartfelt tales, creating an atmosphere that embraces both escapism and catharsis.You take a room at the Tavern and rest.\n\n`)
                     await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'The Lager Estate'){
                     const attachment = new MessageAttachment('assets/AubeTown/Lager_Estate.jpg')
@@ -573,7 +578,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Lager_Estate.jpg')
                     .setDescription(`As your eyes wander across the Lager Estate in Aube Town, you witness the renowned Lager family's brewers diligently crafting the legendary "Backbreaker Beer" using Solarcorn, a golden elixir that glows with the sun's essence, immersing you in a realm of tantalizing tastes and its twisted aftermath.\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == `Crofter's Market`){
                     const attachment = new MessageAttachment('assets/AubeTown/Crofters_Market.jpg')
@@ -582,7 +587,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Crofters_Market.jpg')
                     .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'Aube Town Guild Outpost'){
                     const attachment = new MessageAttachment('assets/AubeTown/Aube_outpost.jpg')
@@ -591,7 +596,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Aube_outpost.jpg')
                     .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of magical beasts and bandits, while the air hums with a sense of shared purpose and safety\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'Town Centre'){
                     const attachment = new MessageAttachment('assets/AubeTown/Town_Centre.jpg')
@@ -600,7 +605,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Town_Centre.jpg')
                     .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'Abandoned Castle'){
                     const attachment = new MessageAttachment('assets/AubeTown/Abandoned_Castle.jpg')
@@ -609,7 +614,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Abandoned_Castle.jpg')
                     .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 collector_select.stop()
                 collector_cancel.stop()
@@ -630,17 +635,17 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
                     
-                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -813,7 +818,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Aube_Town.jpg')
                         .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'The Badlands'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -823,7 +828,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Badlands.jpg')
                         .setDescription(`As your gaze falls upon the Badlands in Aube Town, you behold a scorching desert realm where relentless heat engulfs the treacherous landscape, concealing untold secrets and lurking death at every precarious step, warning you of the unforgiving nature of this desolate domain.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Castellan Fields'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -833,7 +838,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Castellan_Fields.jpeg')
                         .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\n\n\n**Recommeded Level: 2**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
                 collector_select.stop()
@@ -850,7 +855,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setImage('attachment://Terrific_Troll_Tavern.jpg')
                     .setDescription(`As you cast your gaze upon the Terrific Troll Tavern in Aube Town, you witness a haven where both the burdened find solace, and the troubled find empathy, as laughter intertwines with heartfelt tales, creating an atmosphere that embraces both escapism and catharsis.You take a room at the Tavern and rest.\n\n`)
                     await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'The Lager Estate'){
                     const attachment = new MessageAttachment('assets/AubeTown/Lager_Estate.jpg')
@@ -859,7 +864,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Lager_Estate.jpg')
                     .setDescription(`As your eyes wander across the Lager Estate in Aube Town, you witness the renowned Lager family's brewers diligently crafting the legendary "Backbreaker Beer" using Solarcorn, a golden elixir that glows with the sun's essence, immersing you in a realm of tantalizing tastes and its twisted aftermath.\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == `Crofter's Market`){
                     const attachment = new MessageAttachment('assets/AubeTown/Crofters_Market.jpg')
@@ -868,7 +873,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Crofters_Market.jpg')
                     .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'Aube Town Guild Outpost'){
                     const attachment = new MessageAttachment('assets/AubeTown/Aube_outpost.jpg')
@@ -877,7 +882,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Aube_outpost.jpg')
                     .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of magical beasts and bandits, while the air hums with a sense of shared purpose and safety\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'Town Centre'){
                     const attachment = new MessageAttachment('assets/AubeTown/Town_Centre.jpg')
@@ -886,7 +891,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Town_Centre.jpg')
                     .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'Abandoned Castle'){
                     const attachment = new MessageAttachment('assets/AubeTown/Abandoned_Castle.jpg')
@@ -895,7 +900,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Abandoned_Castle.jpg')
                     .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 collector_select.stop()
                 collector_cancel.stop()
@@ -916,17 +921,17 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
                     
-                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -1098,7 +1103,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Aube_Town.jpg')
                         .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sunshade Forest'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -1108,7 +1113,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunshade_forest.jpg')
                         .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\n\n\n**Recommeded Level: 2**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Castellan Fields'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -1118,7 +1123,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Castellan_Fields.jpeg')
                         .setDescription(`As your eyes sweep across the Castellan Fields in Aube Town, you behold a vast expanse of golden plains where diligent crofters toil, their sweat transforming ordinary dust into a bountiful harvest of precious riches, painting a scene of perseverance and prosperity.\n\n\n\n**Recommeded Level: 2**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
                 collector_select.stop()
@@ -1135,7 +1140,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setImage('attachment://Terrific_Troll_Tavern.jpg')
                     .setDescription(`As you cast your gaze upon the Terrific Troll Tavern in Aube Town, you witness a haven where both the burdened find solace, and the troubled find empathy, as laughter intertwines with heartfelt tales, creating an atmosphere that embraces both escapism and catharsis.You take a room at the Tavern and rest.\n\n`)
                     await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'The Lager Estate'){
                     const attachment = new MessageAttachment('assets/AubeTown/Lager_Estate.jpg')
@@ -1144,7 +1149,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Lager_Estate.jpg')
                     .setDescription(`As your eyes wander across the Lager Estate in Aube Town, you witness the renowned Lager family's brewers diligently crafting the legendary "Backbreaker Beer" using Solarcorn, a golden elixir that glows with the sun's essence, immersing you in a realm of tantalizing tastes and its twisted aftermath.\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == `Crofter's Market`){
                     const attachment = new MessageAttachment('assets/AubeTown/Crofters_Market.jpg')
@@ -1153,7 +1158,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Crofters_Market.jpg')
                     .setDescription(`As you cast your eyes upon the bustling market in Aube Town, crofters proudly display an eclectic array of wares, including intricate weapons, sturdy armor, and a cornucopia of items, creating a vibrant tapestry of commerce and craftsmanship.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'Aube Town Guild Outpost'){
                     const attachment = new MessageAttachment('assets/AubeTown/Aube_outpost.jpg')
@@ -1162,7 +1167,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Aube_outpost.jpg')
                     .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of magical beasts and bandits, while the air hums with a sense of shared purpose and safety\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'Town Centre'){
                     const attachment = new MessageAttachment('assets/AubeTown/Town_Centre.jpg')
@@ -1171,7 +1176,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Town_Centre.jpg')
                     .setDescription(`As you step into the town center of Aube, a bustling community awaits your gaze. Vibrant colors intertwine with enchanting melodies as the tight-knit community of residents and travelers unite, creating a mesmerizing tapestry of joyous events and captivating festivals that dance before your eyes.\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(location == 'Abandoned Castle'){
                     const attachment = new MessageAttachment('assets/AubeTown/Abandoned_Castle.jpg')
@@ -1180,7 +1185,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     .setTitle('LOCATION REACHED')
                     .setImage('attachment://Abandoned_Castle.jpg')
                     .setDescription(`As you cast your gaze upon the towering Abandoned Castle in Aube Town, you witness a haunting relic of forgotten wars, its grandeur and scars visible to all, a solemn reminder of a turbulent past that continues to resonate in the hearts of those who call this town home.\n\n`)
-                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                    await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 collector_select.stop()
                 collector_cancel.stop()
@@ -1201,17 +1206,17 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
                     
-                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -1487,7 +1492,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Aube_Town.jpg')
                         .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -1497,7 +1502,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://Aube_Town.jpg')
                         .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
                             interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
@@ -1512,7 +1517,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://ellior_forest.jpg')
                         .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\n\n\n**Recommeded Level: 5**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Dragon's Den`){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -1522,7 +1527,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dragon_den.jpg')
                         .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\n\n\n**Recommeded Level: 7**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sunstone Mines'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -1532,7 +1537,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunstone_mines.jpg')
                         .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Zephyr Mountain'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -1542,7 +1547,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zephyr_mountain.jpg')
                         .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
                     else if(location == 'Gloaming'){
@@ -1554,7 +1559,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://gloaming_main.jpg')
                         .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -1564,10 +1569,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dremenlond_main.jpg')
                         .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -1579,7 +1584,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://orld_husk.jpg')
                         .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Werfall'){
                         if(foundUser.coins>=150 && foundUser.mount == "None"){
@@ -1602,7 +1607,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         }
                         
                         
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                             let successembed
@@ -1625,7 +1630,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             }
                             
                             
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
                             interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
@@ -1646,7 +1651,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://guild_district.jpg')
                         .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Guild Office'){
                         const attachment = new MessageAttachment('assets/Zorya/guild_office.jpg')
@@ -1668,7 +1673,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                              
                         }
                         await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Auriga Sails Company`){
                         const attachment = new MessageAttachment('assets/Zorya/auriga_company.jpg')
@@ -1677,7 +1682,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://auriga_company.jpg')
                         .setDescription(`As you step into the Auriga Sails Company, your eyes are greeted by a bustling workshop where the world's most renowned shipwrights craft the sturdiest airships ever known. Their fame resonates in the Golden Dutchman Fleet, a majestic collection of merchant ships owned by the wealthiest of merchant families, proudly showcasing the shipwrights' unparalleled talent.\n\n use **/explore** to explore the location.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Astro Avenue'){
                         const attachment = new MessageAttachment('assets/Zorya/astro_avenue.jpg')
@@ -1686,7 +1691,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://astro_avenue.jpg')
                         .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Golden Terminal'){
                         const attachment = new MessageAttachment('assets/Zorya/golden_terminal.jpg')
@@ -1695,7 +1700,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://golden_terminal.jpg')
                         .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Castle Luminar'){
                         const attachment = new MessageAttachment('assets/Zorya/castle_chariots.jpg')
@@ -1704,7 +1709,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://castle_chariots.jpg')
                         .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Siewelle Port'){
                         const attachment = new MessageAttachment('assets/Zorya/siewelle_port.jpg')
@@ -1713,7 +1718,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://siewelle_port.jpg')
                         .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Black Market'){
                         const attachment = new MessageAttachment('assets/Zorya/black_market.jpg')
@@ -1722,7 +1727,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://black_market.jpg')
                         .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sun Archives'){
                         const attachment = new MessageAttachment('assets/Zorya/sun_archives.jpg')
@@ -1731,7 +1736,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sun_archives.jpg')
                         .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Cloud Gardens'){
                         const attachment = new MessageAttachment('assets/Zorya/cloud_gardens.jpg')
@@ -1740,7 +1745,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://cloud_gardens.jpg')
                         .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 collector_select.stop()
                 collector_cancel.stop()
@@ -1761,17 +1766,17 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
                     
-                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -2002,7 +2007,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
                         .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Dragon's Den`){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -2012,7 +2017,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dragon_den.jpg')
                         .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\n\n\n**Recommeded Level: 7**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Zephyr Mountain'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -2022,7 +2027,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zephyr_mountain.jpg')
                         .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sunstone Mines'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -2032,7 +2037,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunstone_mines.jpg')
                         .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Orld Tree Husk'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -2042,7 +2047,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://orld_husk.jpg')
                         .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
                 collector_select.stop()
@@ -2059,7 +2064,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://guild_district.jpg')
                         .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Guild Office'){
                         const attachment = new MessageAttachment('assets/Zorya/guild_office.jpg')
@@ -2081,7 +2086,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                              
                         }
                         await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Auriga Sails Company`){
                         const attachment = new MessageAttachment('assets/Zorya/auriga_company.jpg')
@@ -2090,7 +2095,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://auriga_company.jpg')
                         .setDescription(`As you step into the Auriga Sails Company, your eyes are greeted by a bustling workshop where the world's most renowned shipwrights craft the sturdiest airships ever known. Their fame resonates in the Golden Dutchman Fleet, a majestic collection of merchant ships owned by the wealthiest of merchant families, proudly showcasing the shipwrights' unparalleled talent.\n\n use **/explore** to explore the location.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Astro Avenue'){
                         const attachment = new MessageAttachment('assets/Zorya/astro_avenue.jpg')
@@ -2099,7 +2104,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://astro_avenue.jpg')
                         .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Golden Terminal'){
                         const attachment = new MessageAttachment('assets/Zorya/golden_terminal.jpg')
@@ -2108,7 +2113,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://golden_terminal.jpg')
                         .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Castle Luminar'){
                         const attachment = new MessageAttachment('assets/Zorya/castle_chariots.jpg')
@@ -2117,7 +2122,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://castle_chariots.jpg')
                         .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Siewelle Port'){
                         const attachment = new MessageAttachment('assets/Zorya/siewelle_port.jpg')
@@ -2126,7 +2131,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://siewelle_port.jpg')
                         .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Black Market'){
                         const attachment = new MessageAttachment('assets/Zorya/black_market.jpg')
@@ -2135,7 +2140,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://black_market.jpg')
                         .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sun Archives'){
                         const attachment = new MessageAttachment('assets/Zorya/sun_archives.jpg')
@@ -2144,7 +2149,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sun_archives.jpg')
                         .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Cloud Gardens'){
                         const attachment = new MessageAttachment('assets/Zorya/cloud_gardens.jpg')
@@ -2153,7 +2158,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://cloud_gardens.jpg')
                         .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 collector_select.stop()
                 collector_cancel.stop()
@@ -2174,17 +2179,17 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
                     
-                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -2416,7 +2421,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
                         .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'ellior'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -2426,7 +2431,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://ellior_forest.jpg')
                         .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\n\n\n**Recommeded Level: 5**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Zephyr Mountain'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -2436,7 +2441,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zephyr_mountain.jpg')
                         .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sunstone Mines'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -2446,7 +2451,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunstone_mines.jpg')
                         .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Orld Tree Husk'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -2456,7 +2461,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://orld_husk.jpg')
                         .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
                 collector_select.stop()
@@ -2473,7 +2478,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://guild_district.jpg')
                         .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Guild Office'){
                         const attachment = new MessageAttachment('assets/Zorya/guild_office.jpg')
@@ -2495,7 +2500,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                              
                         }
                         await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Auriga Sails Company`){
                         const attachment = new MessageAttachment('assets/Zorya/auriga_company.jpg')
@@ -2504,7 +2509,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://auriga_company.jpg')
                         .setDescription(`As you step into the Auriga Sails Company, your eyes are greeted by a bustling workshop where the world's most renowned shipwrights craft the sturdiest airships ever known. Their fame resonates in the Golden Dutchman Fleet, a majestic collection of merchant ships owned by the wealthiest of merchant families, proudly showcasing the shipwrights' unparalleled talent.\n\n use **/explore** to explore the location.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Astro Avenue'){
                         const attachment = new MessageAttachment('assets/Zorya/astro_avenue.jpg')
@@ -2513,7 +2518,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://astro_avenue.jpg')
                         .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Golden Terminal'){
                         const attachment = new MessageAttachment('assets/Zorya/golden_terminal.jpg')
@@ -2522,7 +2527,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://golden_terminal.jpg')
                         .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Castle Luminar'){
                         const attachment = new MessageAttachment('assets/Zorya/castle_chariots.jpg')
@@ -2531,7 +2536,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://castle_chariots.jpg')
                         .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Siewelle Port'){
                         const attachment = new MessageAttachment('assets/Zorya/siewelle_port.jpg')
@@ -2540,7 +2545,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://siewelle_port.jpg')
                         .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Black Market'){
                         const attachment = new MessageAttachment('assets/Zorya/black_market.jpg')
@@ -2549,7 +2554,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://black_market.jpg')
                         .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sun Archives'){
                         const attachment = new MessageAttachment('assets/Zorya/sun_archives.jpg')
@@ -2558,7 +2563,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sun_archives.jpg')
                         .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Cloud Gardens'){
                         const attachment = new MessageAttachment('assets/Zorya/cloud_gardens.jpg')
@@ -2567,7 +2572,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://cloud_gardens.jpg')
                         .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 collector_select.stop()
                 collector_cancel.stop()
@@ -2588,17 +2593,17 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
                     
-                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -2828,7 +2833,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
                         .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'ellior'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -2838,7 +2843,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://ellior_forest.jpg')
                         .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\n\n\n**Recommeded Level: 5**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Zephyr Mountain'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -2848,7 +2853,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zephyr_mountain.jpg')
                         .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Dragon's Den`){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -2858,7 +2863,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dragon_den.jpg')
                         .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\n\n\n**Recommeded Level: 7**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Orld Tree Husk'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -2868,7 +2873,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://orld_husk.jpg')
                         .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
                 collector_select.stop()
@@ -2885,7 +2890,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://guild_district.jpg')
                         .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Guild Office'){
                         const attachment = new MessageAttachment('assets/Zorya/guild_office.jpg')
@@ -2907,7 +2912,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                              
                         }
                         await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Auriga Sails Company`){
                         const attachment = new MessageAttachment('assets/Zorya/auriga_company.jpg')
@@ -2916,7 +2921,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://auriga_company.jpg')
                         .setDescription(`As you step into the Auriga Sails Company, your eyes are greeted by a bustling workshop where the world's most renowned shipwrights craft the sturdiest airships ever known. Their fame resonates in the Golden Dutchman Fleet, a majestic collection of merchant ships owned by the wealthiest of merchant families, proudly showcasing the shipwrights' unparalleled talent.\n\n use **/explore** to explore the location.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Astro Avenue'){
                         const attachment = new MessageAttachment('assets/Zorya/astro_avenue.jpg')
@@ -2925,7 +2930,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://astro_avenue.jpg')
                         .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Golden Terminal'){
                         const attachment = new MessageAttachment('assets/Zorya/golden_terminal.jpg')
@@ -2934,7 +2939,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://golden_terminal.jpg')
                         .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Castle Luminar'){
                         const attachment = new MessageAttachment('assets/Zorya/castle_chariots.jpg')
@@ -2943,7 +2948,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://castle_chariots.jpg')
                         .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Siewelle Port'){
                         const attachment = new MessageAttachment('assets/Zorya/siewelle_port.jpg')
@@ -2952,7 +2957,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://siewelle_port.jpg')
                         .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Black Market'){
                         const attachment = new MessageAttachment('assets/Zorya/black_market.jpg')
@@ -2961,7 +2966,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://black_market.jpg')
                         .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sun Archives'){
                         const attachment = new MessageAttachment('assets/Zorya/sun_archives.jpg')
@@ -2970,7 +2975,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sun_archives.jpg')
                         .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Cloud Gardens'){
                         const attachment = new MessageAttachment('assets/Zorya/cloud_gardens.jpg')
@@ -2979,7 +2984,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://cloud_gardens.jpg')
                         .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 collector_select.stop()
                 collector_cancel.stop()
@@ -3000,17 +3005,17 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
                     
-                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -3242,7 +3247,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
                         .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'ellior'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -3252,7 +3257,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://ellior_forest.jpg')
                         .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\n\n\n**Recommeded Level: 5**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sunstone Mines'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -3262,7 +3267,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunstone_mines.jpg')
                         .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Dragon's Den`){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -3272,7 +3277,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dragon_den.jpg')
                         .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\n\n\n**Recommeded Level: 7**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Orld Tree Husk'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -3282,7 +3287,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://orld_husk.jpg')
                         .setDescription(`you visited ${location},The Husk of the ancient Orld Tree\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
                 collector_select.stop()
@@ -3299,7 +3304,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://guild_district.jpg')
                         .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Guild Office'){
                         const attachment = new MessageAttachment('assets/Zorya/guild_office.jpg')
@@ -3321,7 +3326,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                              
                         }
                         await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Auriga Sails Company`){
                         const attachment = new MessageAttachment('assets/Zorya/auriga_company.jpg')
@@ -3330,7 +3335,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://auriga_company.jpg')
                         .setDescription(`As you step into the Auriga Sails Company, your eyes are greeted by a bustling workshop where the world's most renowned shipwrights craft the sturdiest airships ever known. Their fame resonates in the Golden Dutchman Fleet, a majestic collection of merchant ships owned by the wealthiest of merchant families, proudly showcasing the shipwrights' unparalleled talent.\n\n use **/explore** to explore the location.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Astro Avenue'){
                         const attachment = new MessageAttachment('assets/Zorya/astro_avenue.jpg')
@@ -3339,7 +3344,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://astro_avenue.jpg')
                         .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Golden Terminal'){
                         const attachment = new MessageAttachment('assets/Zorya/golden_terminal.jpg')
@@ -3348,7 +3353,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://golden_terminal.jpg')
                         .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Castle Luminar'){
                         const attachment = new MessageAttachment('assets/Zorya/castle_chariots.jpg')
@@ -3357,7 +3362,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://castle_chariots.jpg')
                         .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Siewelle Port'){
                         const attachment = new MessageAttachment('assets/Zorya/siewelle_port.jpg')
@@ -3366,7 +3371,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://siewelle_port.jpg')
                         .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Black Market'){
                         const attachment = new MessageAttachment('assets/Zorya/black_market.jpg')
@@ -3375,7 +3380,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://black_market.jpg')
                         .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sun Archives'){
                         const attachment = new MessageAttachment('assets/Zorya/sun_archives.jpg')
@@ -3384,7 +3389,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sun_archives.jpg')
                         .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Cloud Gardens'){
                         const attachment = new MessageAttachment('assets/Zorya/cloud_gardens.jpg')
@@ -3393,7 +3398,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://cloud_gardens.jpg')
                         .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 collector_select.stop()
                 collector_cancel.stop()
@@ -3414,17 +3419,17 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
                     
-                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -3744,7 +3749,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
                         .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'ellior'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -3754,7 +3759,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://ellior_forest.jpg')
                         .setDescription(`As you enter the foreboding Ellior Forest, an eerie silence descends upon the air. Sinister shadows dance among the gnarled trees, whispering tales of malevolence and treachery, warning of the evil that lurks within its depths.\n\n\n\n**Recommeded Level: 5**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sunstone Mines'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -3764,7 +3769,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sunstone_mines.jpg')
                         .setDescription(`As you arrive at the Sunstone Mines, a mesmerizing sight awaits. Sunlight dances upon the glistening walls, revealing veins of the coveted Sunstone, whose radiant glow fuels the Kingdom of Solarstrio's technological advancements and casts a warm aura of progress upon the land.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Dragon's Den`){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -3774,7 +3779,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dragon_den.jpg')
                         .setDescription(`As you enter the ominous Dragon's Den, a sense of awe and trepidation engulfs you. The remnants of the fallen Greater Dragon's lair echo with tales of unimaginable wealth and hidden perils, a haunting testament to the power that once dwelled within these hallowed grounds\n\n\n\n**Recommeded Level: 7**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Zephyr Mountain'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -3784,7 +3789,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zephyr_mountain.jpg')
                         .setDescription(`As you arrive at the majestic Zephyr Mountain, its towering presence commands your attention. A formidable barrier between kingdoms, its treacherous slopes hold both danger and allure, but a safe gondola ride offers a breathtaking ascent, allowing you to admire the grandeur of the world below without facing the perils within.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
                 collector_select.stop()
@@ -3801,7 +3806,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://guild_district.jpg')
                         .setDescription(`As you step into the Guild District of the Stateship of Zorya, the bustling streets unfold before you, lined with branches of the world's most renowned guilds. Dedicated guild rangers, sworn to safeguard the common-folk and brave perilous quests, traverse the vibrant thoroughfares. At the heart of it all, the colossal Colosseum looms, where the roads of the district converge, a testament to the unity and valor of these guilds.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Guild Office'){
                         const attachment = new MessageAttachment('assets/Zorya/guild_office.jpg')
@@ -3823,7 +3828,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                              
                         }
                         await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Auriga Sails Company`){
                         const attachment = new MessageAttachment('assets/Zorya/auriga_company.jpg')
@@ -3832,7 +3837,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://auriga_company.jpg')
                         .setDescription(`As you step into the Auriga Sails Company, your eyes are greeted by a bustling workshop where the world's most renowned shipwrights craft the sturdiest airships ever known. Their fame resonates in the Golden Dutchman Fleet, a majestic collection of merchant ships owned by the wealthiest of merchant families, proudly showcasing the shipwrights' unparalleled talent.\n\n use **/explore** to explore the location.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Astro Avenue'){
                         const attachment = new MessageAttachment('assets/Zorya/astro_avenue.jpg')
@@ -3841,7 +3846,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://astro_avenue.jpg')
                         .setDescription(`As you step onto Astro Avenue, a vibrant tapestry of sights and sounds envelops you. The bustling heart of the state comes alive with captivating attractions, lively street performers, and a plethora of delights, beckoning you to immerse yourself in its enchanting atmosphere.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Golden Terminal'){
                         const attachment = new MessageAttachment('assets/Zorya/golden_terminal.jpg')
@@ -3850,7 +3855,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://golden_terminal.jpg')
                         .setDescription(`As you arrive at the Golden Terminal, the sight of its magnificent copper architecture dazzles your eyes, reflecting the sunlight in a resplendent display. This bustling hub serves as a gateway for citizens and travelers seeking to embark on thrilling journeys across the Kingdom of Solarstrio, where the iconic Steam Train awaits, promising adventures beyond imagination, and roads unriddled with evils.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Castle Luminar'){
                         const attachment = new MessageAttachment('assets/Zorya/castle_chariots.jpg')
@@ -3859,7 +3864,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://castle_chariots.jpg')
                         .setDescription(` As you arrive at the Castle Luminar, your eyes behold a majestic fortress nestled in the heart of the Stateship of Zorya, serving as both the residence and administrative center for Earl Auriga, who oversees every facet of the state with unwavering dedication.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Siewelle Port'){
                         const attachment = new MessageAttachment('assets/Zorya/siewelle_port.jpg')
@@ -3868,7 +3873,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://siewelle_port.jpg')
                         .setDescription(`As you arrive at the bustling Siewelle Port, your eyes widen at the sight of its grandeur. The expansive harbor stretches before you, adorned with seven imposing piers, each protected by a towering sea gate, standing as sentinels of maritime trade and adventure.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Black Market'){
                         const attachment = new MessageAttachment('assets/Zorya/black_market.jpg')
@@ -3877,7 +3882,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://black_market.jpg')
                         .setDescription(`As you descend into the shadowy depths beneath the Golden Terminal, your eyes widen at the sight of the clandestine Black Market. A hidden realm of intrigue and forbidden dealings, it offers a tantalizing array of rare artifacts and perilous experimental weapons, whispering secrets that promise power and danger.\n\n\n\nThis is a Shop location, you can use **/shop** here`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sun Archives'){
                         const attachment = new MessageAttachment('assets/Zorya/sun_archives.jpg')
@@ -3886,7 +3891,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://sun_archives.jpg')
                         .setDescription(`When you reach the Sun Archives, you are greeted by an awe-inspiring sight. The grand entrance, adorned with intricate carvings and golden accents, opens up to a vast hall filled with rows upon rows of towering bookshelves. The air is filled with a faint scent of ancient parchment and the whispers of knowledge that seem to echo through the space. Sunlight streams in through stained glass windows, casting colorful patterns on the marble floor below.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Cloud Gardens'){
                         const attachment = new MessageAttachment('assets/Zorya/cloud_gardens.jpg')
@@ -3895,7 +3900,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://cloud_gardens.jpg')
                         .setDescription(`As you enter the Cloud Gardens, you find yourself immersed in a realm of beauty and innovation. The gardens are a marvel of engineering, with an intricate network of steam-powered mechanisms creating a breathtaking spectacle. Vibrant flowers, suspended in mid-air by delicate gears and pistons, bloom in a mesmerizing display of colors. Steam gently billows from ornate fountains, filling the air with a soothing mist.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 collector_select.stop()
                 collector_cancel.stop()
@@ -3911,7 +3916,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://capitol_central.jpeg')
                         .setDescription(`As you step into Capitol Central, the air is alive with the sound of hurried footsteps and the murmur of whispered conversations. Marble corridors adorned with intricate tapestries lead to vast chambers filled with ornate furnishings and imposing figures engaged in heated debates.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Badshahi Bazaar'){
                         const attachment = new MessageAttachment('assets/Gloaming/badshahi_bazaar.jpeg')
@@ -3921,7 +3926,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://badshahi_bazaar.jpeg')
                             .setDescription(`Entering Badshahi Bazaar, you're immediately enveloped in a whirlwind of activity. Colorful stalls line bustling streets, their wares displayed in a riot of hues and textures. Merchants call out in melodic voices, extolling the virtues of their goods as shoppers haggle and bargain amidst the vibrant chaos.\n\nThis is a shop location, use **/shop** to open the shop`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Spirit Arsenal'){
                         const attachment = new MessageAttachment('assets/Gloaming/spirit_arsenal.jpeg')
@@ -3931,7 +3936,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://spirit_arsenal.jpeg')
                             .setDescription(`Stepping into the Spirit Arsenal, you're greeted by a sense of awe and reverence. The Towering column of stone rise majestically, its surfaces adorned with intricately engraved weapons of every shape and size. Each blade tells a story of courage and sacrifice, its craftsmanship a testament to the skill of the ancient artisan.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Gloaming Ranger Centre'){
                         const attachment = new MessageAttachment('assets/Gloaming/gloaming_rangercentre.jpeg')
@@ -3941,7 +3946,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://gloaming_rangercentre.jpeg')
                             .setDescription(`As you step into the Gloaming Ranger Centre, you're greeted by the sight of seasoned rangers clad in weathered armor and rugged attire. Rangers of every ilk and background bustle about, sharpening blades, mending gear, and trading tales of daring exploits.\n\n**use /questboard to view the Questboard**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Solar Vault'){
                         const attachment = new MessageAttachment('assets/Gloaming/solar_vault.jpeg')
@@ -3951,7 +3956,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://solar_vault.jpeg')
                             .setDescription(`Entering the Solar Vault, you're struck by the aura of wealth and power that permeates the air. Vaulted ceilings soar overhead, adorned with intricate carvings and gilded embellishments that speak of opulence and grandeur. Rows of polished teller stations stretch into the distance, attended by bankers.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     } 
                     else if(location == 'Castle Heliad'){
                         const attachment = new MessageAttachment('assets/Gloaming/castle_heliad.jpeg')
@@ -3961,7 +3966,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://castle_heliad.jpeg')
                             .setDescription(`Ascending into Castle Heliad, you're greeted by the imposing splendor of its architecture. Stone pillars rise skyward, supporting the weight of the castle above, while banners bearing the sigil of the king flutter in the breeze. Helios Aureus clad in gleaming armor stand sentinel at every corner, their vigilant watch speaking to the kingdom's unwavering military might`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Shahi Quila'){
                         const attachment = new MessageAttachment('assets/Gloaming/shahi_quila.jpeg')
@@ -3971,7 +3976,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://shahi_quila.jpeg')
                             .setDescription(`Stepping into Shahi Quila, you're greeted by the tantalizing aroma of spices and sizzling meats, mingling with the warm glow of lanterns and the lively chatter of diners. Tables adorned with richly embroidered cloths beckon guests to indulge in savory delicacies, served with a generous side of hospitality by bustling waitstaff clad in traditional attire.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
     
@@ -3994,7 +3999,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
@@ -4008,7 +4013,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     }
                 else if(j.customId == "exterior"){
                     
-                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -4136,7 +4141,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
                         .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -4146,10 +4151,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
                         .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -4162,7 +4167,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
                         .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -4172,10 +4177,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
                         .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -4194,7 +4199,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://ranger_tents.jpeg')
                         .setDescription(`Arriving at the heart of Werfall, you are met with the sight of the Ranger Tents. These canvas sanctuaries, bearing the distinctive marks of the "Emperal Brigade" and various Guilds dot the landscape, a stark contrast against the backdrop of ruin. Your footsteps echo softly as you navigate the narrow pathways between the tents. Rangers move with purpose, their faces etched with determination as they mend gear, resupply, and attend to their wounded companions. The atmosphere exudes a somber camaraderie, a testament to the unbreakable bonds forged amidst adversity, as the Rangers stand united against the encroaching darkness.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Werfall Ranger Centre'){
                         const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
@@ -4206,7 +4211,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setDescription(`Your footsteps lead you to the heart of Werfall, where the Werfall Ranger Centre stands resolute. Its weathered walls, bearing witness to the town's tumultuous history, exude an air of defiance. Stepping through its entrance, you are met with a scene of purposeful activity. The scent of herbs and ink fills the air, a reminder of the centre's dual roles in both healing and planning. Rangers and medics work in harmony, exchanging nods and soft words as they carry out their duties. The centre pulses with an unyielding spirit, a symbol of resilience in the face of the unrelenting challenges that have befallen Werfall.\n\n`)
                              
                        
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 collector_select.stop()
                 collector_cancel.stop()
@@ -4227,17 +4232,17 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
                     
-                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -4439,7 +4444,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://werfall_main.jpg')
                         .setDescription(`As You approached the outskirts of Werfall, an eerie transformation was evident. Once a thriving hub of commerce, the town now exuded an air of bleakness and despair. Tents, emblazoned with the emblem of the "Emperal Brigade," sprawled across the landscape, housing a mix of rangers and medics in a poignant display of organized chaos. The streets, once teeming with life, were now pathways of decay and abandonment. The atmosphere was heavy with a sense of death that had permeated every corner of the town, leaving behind an indelible mark of loss. The toll of this ruinous affliction was evident in the haunted gazes of those who moved among the tents, their once-strong spirits shattered by the unforgiving grip of the town's tragic fate.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -4449,10 +4454,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://werfall_main.jpg')
                         .setDescription(`As You approached the outskirts of Werfall, an eerie transformation was evident. Once a thriving hub of commerce, the town now exuded an air of bleakness and despair. Tents, emblazoned with the emblem of the "Emperal Brigade," sprawled across the landscape, housing a mix of rangers and medics in a poignant display of organized chaos. The streets, once teeming with life, were now pathways of decay and abandonment. The atmosphere was heavy with a sense of death that had permeated every corner of the town, leaving behind an indelible mark of loss. The toll of this ruinous affliction was evident in the haunted gazes of those who moved among the tents, their once-strong spirits shattered by the unforgiving grip of the town's tragic fate.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -4465,7 +4470,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://kafig_main.jpeg')
                         .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -4475,10 +4480,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://kafig_main.jpg')
                         .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -4490,7 +4495,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://asche_peak.jpeg')
                         .setDescription(`As you reach Asche Peak, the landscape transforms into a surreal panorama of charred hills and blackened soil. The air is thick with an intense heat, radiating from the ground that gives the hill its soot-like black color. Avian Spyriths, both friendly and hostile, fill the skies, adding life to the mysterious hill. The legend of Radohn, the flame-draped ruler of the skies, lingers in the atmosphere, shrouding Asche Peak in an aura of mythical beauty.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Deathrust Forest'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -4500,7 +4505,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zephyr_mountain.jpg')
                         .setDescription(`As you enter DeathRust Forest, the sight is eerie and still. Tall, old trees stand like ghostly statues, their branches reaching out like twisted fingers against a gray, lifeless sky. The ground is covered in dry leaves and brittle plants, creating a carpet of quiet decay. A hazy mist hangs in the air, giving the whole place a ghostly atmosphere. The once-green forest now seems like a graveyard, with rusted figures scattered around—those mindless iron zombies, the Ferromites, blending into the haunting scenery, their skeletal shapes telling a tale of a place forgotten and left to rust.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
                     
@@ -4518,7 +4523,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://trinity_plateau.jpg')
                         .setDescription(`Climbing the switchback path, the plateau emerges like an oasis amid Vigia's stone walls. Three great swords stand frozen in combat atop grassy banks. In the distance, the SolGate stands eternal vigil, and beyond - the ominous shadow of DeathRust looms.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Temple of Tears'){
                         const attachment = new MessageAttachment('assets/Vigia/templeoftears.jpg')
@@ -4528,7 +4533,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage(`attachment://ranger_centre.jpg`)
                             .setDescription(`Dark and foreboding, Morozh's temple is hewn from age-old stone. Weeping faces spout an endless stream upon which solace seekers float candles in tribute. Shadows dance as you enter, feeling suddenly small beneath the arched passages. What rest may be found in despair's domain?\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Esparta Museum'){
                         const attachment = new MessageAttachment('assets/Vigia/esparta.jpg')
@@ -4538,7 +4543,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://esparta.jpg')
                             .setDescription(`Soaring pillars greet you at the threshold of the towering building. Displays of artifacts line the high-ceilinged halls - from ancient weapons to pottery with pictographs unknown. Scholars talk in hushed whispers, stooped over crumbling books.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sol Barracks'){
                         const attachment = new MessageAttachment('assets/Vigia/ranger_centre.jpeg')
@@ -4548,7 +4553,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(` As you pass under the towering stone archway, the pounding of sparring knights fills your ears. Rows of neat barracks lines either side of the central courtyard. Bellowing drills instructors put recruits through their paces with spear, shield and sword. Sweat-slicked trainees grunt and parry under the noon sun.At the far end, an imposing armory bears the banners of past battles. Veterans hone and maintain the garrison's formidable arms within.\n\n**This is a Shop location, you can use /shop here**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Fort Primis'){
                         const attachment = new MessageAttachment('assets/Vigia/fort_primis.jpg')
@@ -4558,7 +4563,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage(`attachment://fort_primis.jpg`)
                             .setDescription(`As you arrive at the fort, you see soldiers in full armor marching about on patrol.Approaching the looming gatehouse, you crane your neck to take in the height of Primis' fortified walls. Arrow slits peer out like eyes, ever vigilant for signs of threat. As the portcullis clanks up, you glimpse Sol Crusaders manning post and patrol atop the battlements.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Castle Arcemis'){
                         const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
@@ -4568,7 +4573,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`As you approach the imposing fortress of castle Arcemis, you crane your neck to take in its sheer scale. Perched atop a hill overlooking the city, its weathered ramparts and towers loom large, dominating the landscape. The last rays of the setting sun paint the stone walls in hues of gold and crimson. Banners with Earl Arvid's crest snap in the wind above parapets manned by watchful guards. Reaching the enormous gate, you glimpse the bustling activity inside - soldiers drilling in the courtyard, stewards rushing about on errands.Though you have not yet entered its halls, the castle radiates power and purpose, an indomitable guardian that has safeguarded Vigia for centuries.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Ruins of Eldorath'){
                         const attachment = new MessageAttachment('assets/Vigia/ruinsofeldorath.jpg')
@@ -4578,7 +4583,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ruinsofeldorath.jpg')
                             .setDescription(`As you make your way to the sealed off ruins of Eldorath, you notice remnants of a once great civilization. Broken pillars and crumbled walls tower above you, now reclaimed by vines and moss. You peel back curtains of creeping plants and peer into ancient halls, glimpsing faded murals depicting the lives of the Eldruids who constructed this place. Ghosts of the past seem to lurk around every corner, daring you to uncover their secrets. Stepping carefully over reckless from fallen domes and arched ceilings, you puzzle over symbols and writings in a long forgotten language. All around you, clues remain to stitch together the faded tapestry of this lost world, if only you can decipher its long held silence.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Vigia Ranger Centre'){
                         const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
@@ -4589,7 +4594,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`Upon entering the Vigia Ranger Centre, you are met with the buzz of activity as rangers mingle, share tales of adventure and peruse the many posted jobs and deeds. Over by the quest board, parties debate undertakings in Deathrust forest or across the rugged landscape beyond the SolGate. In the back of the spacious hall, trainees spar and show off newly learned skills.\n\n**use /questboard to view the Questboard**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
     
@@ -4612,16 +4617,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
-                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -4859,7 +4864,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
                         .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -4869,10 +4874,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
                         .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -4886,7 +4891,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://kafig_main.jpeg')
                         .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -4896,10 +4901,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://kafig_main.jpeg')
                         .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -4921,7 +4926,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://avian_square.jpeg')
                         .setDescription(`As you step into Avian Square, your eyes are immediately drawn to the towering statue of Radohn, crafted from obsidian. The square bustles with townsfolk and visitors, paying their respects and leaving offerings at the base of the statue.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Cloud Haven'){
                         const attachment = new MessageAttachment('assets/Kafig/cloudhaven.jpeg')
@@ -4931,7 +4936,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://cloudhaven.jpeg')
                             .setDescription(`You approach Cloud Haven and marvel at its imposing structure. The cylindrical building, with its intricate lattice design and large open windows, stands as a testament to the town's dedication to the avian creatures. The sound of wings fluttering and distant bird calls fills the air, enticing you to enter and explore further.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'The Guilded Cage'){
                         const attachment = new MessageAttachment('assets/Kafig/ranger_centre.jpeg')
@@ -4942,7 +4947,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`The warm glow emanating from The Gilded Cage invites you inside. As you enter, the cozy ambiance welcomes you, with wooden tables and benches filling the space. Laughter and lively conversations fill the air, accompanied by the aroma of delicious local cuisine and the clinking of glasses. The sound of a bard's melodious voice can be heard, captivating the audience.\n\n**This is a Shop location, you can use /shop here**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Radohn Roost'){
                         const attachment = new MessageAttachment('assets/Kafig/radohn_roost.jpeg')
@@ -4952,7 +4957,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://radohn_roost.jpeg')
                             .setDescription(`Climbing the steep steps leading to Radohn Roost, you feel a sense of serenity and reverence in the air. The temple emerges, nestled on the hillside above the town. The gentle breeze carries the fragrance of incense, inviting you to explore further. From this elevated vantage point, you can already catch glimpses of the breathtaking views awaiting you.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Kafig Guild Outpost'){
                         const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
@@ -4963,7 +4968,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`As you enter the Kafig Guild Outpost, you see a lively and quite well maintained place. People are talking and sharing stories. On the walls, there are maps and trophies from adventures and the Insignia of the Eterna Guild. In the middle, there's a space where plans are made. A small desk in the corner has important papers and messages. The atmosphere feels friendly and busy, showing that the outpost is a key spot where everyone works together, The Front wall is adorned with the portrait of the revered ranger "Demon Bird" Basil.\n\n**use /questboard to view the Questboard**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 }
                 else if(collected.customId == "select_interior"){
@@ -4976,7 +4981,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://trinity_plateau.jpg')
                         .setDescription(`Climbing the switchback path, the plateau emerges like an oasis amid Vigia's stone walls. Three great swords stand frozen in combat atop grassy banks. In the distance, the SolGate stands eternal vigil, and beyond - the ominous shadow of DeathRust looms.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Temple of Tears'){
                         const attachment = new MessageAttachment('assets/Vigia/templeoftears.jpg')
@@ -4986,7 +4991,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage(`attachment://ranger_centre.jpg`)
                             .setDescription(`Dark and foreboding, Morozh's temple is hewn from age-old stone. Weeping faces spout an endless stream upon which solace seekers float candles in tribute. Shadows dance as you enter, feeling suddenly small beneath the arched passages. What rest may be found in despair's domain?\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Esparta Museum'){
                         const attachment = new MessageAttachment('assets/Vigia/esparta.jpg')
@@ -4996,7 +5001,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://esparta.jpg')
                             .setDescription(`Soaring pillars greet you at the threshold of the towering building. Displays of artifacts line the high-ceilinged halls - from ancient weapons to pottery with pictographs unknown. Scholars talk in hushed whispers, stooped over crumbling books.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sol Barracks'){
                         const attachment = new MessageAttachment('assets/Vigia/ranger_centre.jpeg')
@@ -5006,7 +5011,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(` As you pass under the towering stone archway, the pounding of sparring knights fills your ears. Rows of neat barracks lines either side of the central courtyard. Bellowing drills instructors put recruits through their paces with spear, shield and sword. Sweat-slicked trainees grunt and parry under the noon sun.At the far end, an imposing armory bears the banners of past battles. Veterans hone and maintain the garrison's formidable arms within.\n\n**This is a Shop location, you can use /shop here**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Fort Primis'){
                         const attachment = new MessageAttachment('assets/Vigia/fort_primis.jpg')
@@ -5016,7 +5021,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage(`attachment://fort_primis.jpg`)
                             .setDescription(`As you arrive at the fort, you see soldiers in full armor marching about on patrol.Approaching the looming gatehouse, you crane your neck to take in the height of Primis' fortified walls. Arrow slits peer out like eyes, ever vigilant for signs of threat. As the portcullis clanks up, you glimpse Sol Crusaders manning post and patrol atop the battlements.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Castle Arcemis'){
                         const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
@@ -5026,7 +5031,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`As you approach the imposing fortress of castle Arcemis, you crane your neck to take in its sheer scale. Perched atop a hill overlooking the city, its weathered ramparts and towers loom large, dominating the landscape. The last rays of the setting sun paint the stone walls in hues of gold and crimson. Banners with Earl Arvid's crest snap in the wind above parapets manned by watchful guards. Reaching the enormous gate, you glimpse the bustling activity inside - soldiers drilling in the courtyard, stewards rushing about on errands.Though you have not yet entered its halls, the castle radiates power and purpose, an indomitable guardian that has safeguarded Vigia for centuries.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Ruins of Eldorath'){
                         const attachment = new MessageAttachment('assets/Vigia/ruinsofeldorath.jpg')
@@ -5036,7 +5041,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ruinsofeldorath.jpg')
                             .setDescription(`As you make your way to the sealed off ruins of Eldorath, you notice remnants of a once great civilization. Broken pillars and crumbled walls tower above you, now reclaimed by vines and moss. You peel back curtains of creeping plants and peer into ancient halls, glimpsing faded murals depicting the lives of the Eldruids who constructed this place. Ghosts of the past seem to lurk around every corner, daring you to uncover their secrets. Stepping carefully over reckless from fallen domes and arched ceilings, you puzzle over symbols and writings in a long forgotten language. All around you, clues remain to stitch together the faded tapestry of this lost world, if only you can decipher its long held silence.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Vigia Ranger Centre'){
                         const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
@@ -5047,7 +5052,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`Upon entering the Vigia Ranger Centre, you are met with the buzz of activity as rangers mingle, share tales of adventure and peruse the many posted jobs and deeds. Over by the quest board, parties debate undertakings in Deathrust forest or across the rugged landscape beyond the SolGate. In the back of the spacious hall, trainees spar and show off newly learned skills.\n\n**use /questboard to view the Questboard**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
 
                     
@@ -5073,7 +5078,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
@@ -5087,7 +5092,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     }
                 else if(j.customId == "exterior"){
                     
-                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -5252,7 +5257,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
                         .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -5262,10 +5267,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
                         .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -5288,7 +5293,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://trinity_plateau.jpg')
                         .setDescription(`Climbing the switchback path, the plateau emerges like an oasis amid Vigia's stone walls. Three great swords stand frozen in combat atop grassy banks. In the distance, the SolGate stands eternal vigil, and beyond - the ominous shadow of DeathRust looms.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Temple of Tears'){
                         const attachment = new MessageAttachment('assets/Vigia/templeoftears.jpg')
@@ -5298,7 +5303,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage(`attachment://ranger_centre.jpg`)
                             .setDescription(`Dark and foreboding, Morozh's temple is hewn from age-old stone. Weeping faces spout an endless stream upon which solace seekers float candles in tribute. Shadows dance as you enter, feeling suddenly small beneath the arched passages. What rest may be found in despair's domain?\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Esparta Museum'){
                         const attachment = new MessageAttachment('assets/Vigia/esparta.jpg')
@@ -5308,7 +5313,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://esparta.jpg')
                             .setDescription(`Soaring pillars greet you at the threshold of the towering building. Displays of artifacts line the high-ceilinged halls - from ancient weapons to pottery with pictographs unknown. Scholars talk in hushed whispers, stooped over crumbling books.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sol Barracks'){
                         const attachment = new MessageAttachment('assets/Vigia/ranger_centre.jpeg')
@@ -5318,7 +5323,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(` As you pass under the towering stone archway, the pounding of sparring knights fills your ears. Rows of neat barracks lines either side of the central courtyard. Bellowing drills instructors put recruits through their paces with spear, shield and sword. Sweat-slicked trainees grunt and parry under the noon sun.At the far end, an imposing armory bears the banners of past battles. Veterans hone and maintain the garrison's formidable arms within.\n\n**This is a Shop location, you can use /shop here**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Fort Primis'){
                         const attachment = new MessageAttachment('assets/Vigia/fort_primis.jpg')
@@ -5328,7 +5333,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage(`attachment://fort_primis.jpg`)
                             .setDescription(`As you arrive at the fort, you see soldiers in full armor marching about on patrol.Approaching the looming gatehouse, you crane your neck to take in the height of Primis' fortified walls. Arrow slits peer out like eyes, ever vigilant for signs of threat. As the portcullis clanks up, you glimpse Sol Crusaders manning post and patrol atop the battlements.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Castle Arcemis'){
                         const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
@@ -5338,7 +5343,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`As you approach the imposing fortress of castle Arcemis, you crane your neck to take in its sheer scale. Perched atop a hill overlooking the city, its weathered ramparts and towers loom large, dominating the landscape. The last rays of the setting sun paint the stone walls in hues of gold and crimson. Banners with Earl Arvid's crest snap in the wind above parapets manned by watchful guards. Reaching the enormous gate, you glimpse the bustling activity inside - soldiers drilling in the courtyard, stewards rushing about on errands.Though you have not yet entered its halls, the castle radiates power and purpose, an indomitable guardian that has safeguarded Vigia for centuries.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Ruins of Eldorath'){
                         const attachment = new MessageAttachment('assets/Vigia/ruinsofeldorath.jpg')
@@ -5348,7 +5353,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://ruinsofeldorath.jpg')
                             .setDescription(`As you make your way to the sealed off ruins of Eldorath, you notice remnants of a once great civilization. Broken pillars and crumbled walls tower above you, now reclaimed by vines and moss. You peel back curtains of creeping plants and peer into ancient halls, glimpsing faded murals depicting the lives of the Eldruids who constructed this place. Ghosts of the past seem to lurk around every corner, daring you to uncover their secrets. Stepping carefully over reckless from fallen domes and arched ceilings, you puzzle over symbols and writings in a long forgotten language. All around you, clues remain to stitch together the faded tapestry of this lost world, if only you can decipher its long held silence.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Vigia Ranger Centre'){
                         const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
@@ -5359,7 +5364,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`Upon entering the Vigia Ranger Centre, you are met with the buzz of activity as rangers mingle, share tales of adventure and peruse the many posted jobs and deeds. Over by the quest board, parties debate undertakings in Deathrust forest or across the rugged landscape beyond the SolGate. In the back of the spacious hall, trainees spar and show off newly learned skills.\n\n**use /questboard to view the Questboard**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
     
@@ -5382,16 +5387,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
-                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -5554,7 +5559,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
                         .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -5564,10 +5569,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vigia_main.jpg')
                         .setDescription(`As you arrive in the state of Vigia, a fortified sanctuary nestled in the heart of Solarstrio, the cityscape unfolds before your eyes, showcasing a harmonious fusion of history and resilience. The towering walls of Vigia, known as the SolGate, stand as a testament to the city's unwavering defense against the menacing DeathRust forest. Within its protective embrace, Vigia thrives as a vibrant hub, where echoes of the past reverberate through its streets. The city's charm lies in its lively atmosphere, adorned with museums, monuments, and a sense of time-honored significance.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -5580,7 +5585,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://asche_peak.jpeg')
                         .setDescription(`As you reach Asche Peak, the landscape transforms into a surreal panorama of charred hills and blackened soil. The air is thick with an intense heat, radiating from the ground that gives the hill its soot-like black color. Avian Spyriths, both friendly and hostile, fill the skies, adding life to the mysterious hill. The legend of Radohn, the flame-draped ruler of the skies, lingers in the atmosphere, shrouding Asche Peak in an aura of mythical beauty.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
 
                     else if(location == 'Raflese'){
@@ -5592,7 +5597,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://raflese_main.jpg')
                         .setDescription(`As you enter Raflese Town, you're greeted by a kaleidoscope of colors and fragrances: vibrant gardens, sweet floral scents, and the inviting allure of herbal shops. The imposing glass dome of the Green Keep lab stands on the outskirts, contrasting with the serene majesty of the Eden Garden and its iconic Tree of Life. In this botanical paradise, every corner teems with natural wonder, captivating your senses from the moment you arrive.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -5602,10 +5607,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://raflese_main.jpg')
                         .setDescription(`As you enter Raflese Town, you're greeted by a kaleidoscope of colors and fragrances: vibrant gardens, sweet floral scents, and the inviting allure of herbal shops. The imposing glass dome of the Green Keep lab stands on the outskirts, contrasting with the serene majesty of the Eden Garden and its iconic Tree of Life. In this botanical paradise, every corner teems with natural wonder, captivating your senses from the moment you arrive.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -5625,7 +5630,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://avian_square.jpeg')
                         .setDescription(`As you step into Avian Square, your eyes are immediately drawn to the towering statue of Radohn, crafted from obsidian. The square bustles with townsfolk and visitors, paying their respects and leaving offerings at the base of the statue.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Cloud Haven'){
                         const attachment = new MessageAttachment('assets/Kafig/cloudhaven.jpeg')
@@ -5635,7 +5640,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://cloudhaven.jpeg')
                             .setDescription(`You approach Cloud Haven and marvel at its imposing structure. The cylindrical building, with its intricate lattice design and large open windows, stands as a testament to the town's dedication to the avian creatures. The sound of wings fluttering and distant bird calls fills the air, enticing you to enter and explore further.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'The Guilded Cage'){
                         const attachment = new MessageAttachment('assets/Kafig/ranger_centre.jpeg')
@@ -5646,7 +5651,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`The warm glow emanating from The Gilded Cage invites you inside. As you enter, the cozy ambiance welcomes you, with wooden tables and benches filling the space. Laughter and lively conversations fill the air, accompanied by the aroma of delicious local cuisine and the clinking of glasses. The sound of a bard's melodious voice can be heard, captivating the audience.\n\n**This is a Shop location, you can use /shop here**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Radohn Roost'){
                         const attachment = new MessageAttachment('assets/Kafig/radohn_roost.jpeg')
@@ -5656,7 +5661,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://radohn_roost.jpeg')
                             .setDescription(`Climbing the steep steps leading to Radohn Roost, you feel a sense of serenity and reverence in the air. The temple emerges, nestled on the hillside above the town. The gentle breeze carries the fragrance of incense, inviting you to explore further. From this elevated vantage point, you can already catch glimpses of the breathtaking views awaiting you.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Kafig Guild Outpost'){
                         const attachment = new MessageAttachment('assets/Kafig/ranger_centre.jpeg')
@@ -5667,7 +5672,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://ranger_centre.jpeg')
                             .setDescription(`As you enter the Kafig Guild Outpost, you see a lively and quite well maintained place. People are talking and sharing stories. On the walls, there are maps and trophies from adventures and the Insignia of the Eterna Guild. In the middle, there's a space where plans are made. A small desk in the corner has important papers and messages. The atmosphere feels friendly and busy, showing that the outpost is a key spot where everyone works together, The Front wall is adorned with the portrait of the revered ranger "Demon Bird" Basil.\n\n**use /questboard to view the Questboard**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
                     
@@ -5691,16 +5696,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
-                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -5863,7 +5868,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dremenlond_main.jpg')
                         .setDescription(`As you enter Dremenlond, you're immediately immersed in a realm of grandeur and ambition. Towering spires, bustling streets, and opulent displays beckon, offering a glimpse into a world of wealth and refinement. Yet, beneath the surface, you sense a palpable tension between privilege and aspiration, fueling your curiosity to explore further.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -5873,10 +5878,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dremenlond_main.jpg')
                         .setDescription(`As you enter Dremenlond, you're immediately immersed in a realm of grandeur and ambition. Towering spires, bustling streets, and opulent displays beckon, offering a glimpse into a world of wealth and refinement. Yet, beneath the surface, you sense a palpable tension between privilege and aspiration, fueling your curiosity to explore further.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -5889,7 +5894,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://bleeding_gorge.jpeg')
                         .setDescription(`As you arrive at the edge of Bleeding Gorge, a breathtaking panorama unfolds before you. Towering cliffs, weathered by time, enclose a deep chasm where a river of crimson water flows with an otherworldly grace. The air is heavy with the scent of damp earth and the distant echo of rushing water. As you peer into the depths below, shadows dance amidst the crimson currents, hinting at the enigmatic depths of this ancient gorge.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
 
                     else if(location == 'Kafig'){
@@ -5901,7 +5906,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://kafig_main.jpeg')
                         .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -5911,10 +5916,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://kafig_main.jpeg')
                         .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -5934,7 +5939,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vita_street.jpeg')
                         .setDescription(`As you arrive at Vita Street, it's like stepping into a lively painting. The air is filled with the sweet smell of magical potions and unique herbs. Colorful shops line the street, like Elixir Emporium with its shiny bottles and Sage's Gardenia showcasing amazing plants and herbs.\n\n**This is a shop location use /shop to open the shop**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Eden Garden'){
                         const attachment = new MessageAttachment('assets/Raflese/eden_garden.jpeg')
@@ -5944,7 +5949,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://eden_garden.jpeg')
                             .setDescription(`Entering Eden Garden feels like stepping into a magical tapestry. The air is filled with the sweet fragrance of exotic herbs and blossoms. At the heart stands the awe-inspiring Tree of Life, a towering testament to Raflese's transformation from barren land to flourishing paradise.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'The Green Keep'){
                         const attachment = new MessageAttachment('assets/Raflese/green_keep.jpeg')
@@ -5954,7 +5959,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://green_keep.jpeg')
                             .setDescription(`The Green Keep on the outskirts is a transparent dome, hinting at secretive research within. Guards stand watch at the entrance, creating an atmosphere charged with scientific curiosity and whispered ethical concerns.**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Plantastic Inn'){
                         const attachment = new MessageAttachment('assets/Raflese/plantastic_inn.jpeg')
@@ -5965,7 +5970,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://plantastic_inn.jpeg')
                             .setDescription(`Plantastic Inn welcomes you with a charming exterior adorned with hanging baskets of flowers. The air carries the mouthwatering aroma of plant-based delicacies, and the subtle melody of laughter drifts from within, inviting you to experience the town's renowned vegetarian cuisine.\n\n`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Raflese Guild Outpost'){
                         const attachment = new MessageAttachment('assets/Raflese/raflese_guildoutpost.jpeg')
@@ -5976,7 +5981,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://raflese_guildoutpost.jpeg')
                             .setDescription(`The Raflese Guild Outpost buzzes with excitement. The quest-board promises adventure, and the lively chatter of adventurers creates an energetic atmosphere. It becomes a gateway, connecting Raflese to the power of Ajins.\n\n**use /questboard to view the Questboard**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
                     
@@ -6000,16 +6005,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
-                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -6150,7 +6155,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://raflese_main.jpg')
                         .setDescription(`As you enter Raflese Town, you're greeted by a kaleidoscope of colors and fragrances: vibrant gardens, sweet floral scents, and the inviting allure of herbal shops. The imposing glass dome of the Green Keep lab stands on the outskirts, contrasting with the serene majesty of the Eden Garden and its iconic Tree of Life. In this botanical paradise, every corner teems with natural wonder, captivating your senses from the moment you arrive.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -6160,10 +6165,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://raflese_main.jpg')
                         .setDescription(`As you enter Raflese Town, you're greeted by a kaleidoscope of colors and fragrances: vibrant gardens, sweet floral scents, and the inviting allure of herbal shops. The imposing glass dome of the Green Keep lab stands on the outskirts, contrasting with the serene majesty of the Eden Garden and its iconic Tree of Life. In this botanical paradise, every corner teems with natural wonder, captivating your senses from the moment you arrive.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -6183,7 +6188,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://vita_street.jpeg')
                         .setDescription(`As you arrive at Vita Street, it's like stepping into a lively painting. The air is filled with the sweet smell of magical potions and unique herbs. Colorful shops line the street, like Elixir Emporium with its shiny bottles and Sage's Gardenia showcasing amazing plants and herbs.\n\n**This is a shop location use /shop to open the shop**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Eden Garden'){
                         const attachment = new MessageAttachment('assets/Raflese/eden_garden.jpeg')
@@ -6193,7 +6198,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://eden_garden.jpeg')
                             .setDescription(`Entering Eden Garden feels like stepping into a magical tapestry. The air is filled with the sweet fragrance of exotic herbs and blossoms. At the heart stands the awe-inspiring Tree of Life, a towering testament to Raflese's transformation from barren land to flourishing paradise.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'The Green Keep'){
                         const attachment = new MessageAttachment('assets/Raflese/green_keep.jpeg')
@@ -6203,7 +6208,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://green_keep.jpeg')
                             .setDescription(`The Green Keep on the outskirts is a transparent dome, hinting at secretive research within. Guards stand watch at the entrance, creating an atmosphere charged with scientific curiosity and whispered ethical concerns.**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Plantastic Inn'){
                         const attachment = new MessageAttachment('assets/Raflese/plantastic_inn.jpeg')
@@ -6214,7 +6219,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://plantastic_inn.jpeg')
                             .setDescription(`Plantastic Inn welcomes you with a charming exterior adorned with hanging baskets of flowers. The air carries the mouthwatering aroma of plant-based delicacies, and the subtle melody of laughter drifts from within, inviting you to experience the town's renowned vegetarian cuisine.\n\n`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Raflese Guild Outpost'){
                         const attachment = new MessageAttachment('assets/Raflese/raflese_guildoutpost.jpeg')
@@ -6225,7 +6230,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://raflese_guildoutpost.jpeg')
                             .setDescription(`The Raflese Guild Outpost buzzes with excitement. The quest-board promises adventure, and the lively chatter of adventurers creates an energetic atmosphere. It becomes a gateway, connecting Raflese to the power of Ajins.\n\n**use /questboard to view the Questboard**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
                     
@@ -6249,16 +6254,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
-                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -6439,7 +6444,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://gloaming_main.jpg')
                         .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -6449,10 +6454,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dremenlond_main.jpg')
                         .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -6465,7 +6470,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://raflese_main.jpg')
                         .setDescription(`As you enter Raflese Town, you're greeted by a kaleidoscope of colors and fragrances: vibrant gardens, sweet floral scents, and the inviting allure of herbal shops. The imposing glass dome of the Green Keep lab stands on the outskirts, contrasting with the serene majesty of the Eden Garden and its iconic Tree of Life. In this botanical paradise, every corner teems with natural wonder, captivating your senses from the moment you arrive.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -6475,10 +6480,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://raflese_main.jpg')
                         .setDescription(`As you enter Raflese Town, you're greeted by a kaleidoscope of colors and fragrances: vibrant gardens, sweet floral scents, and the inviting allure of herbal shops. The imposing glass dome of the Green Keep lab stands on the outskirts, contrasting with the serene majesty of the Eden Garden and its iconic Tree of Life. In this botanical paradise, every corner teems with natural wonder, captivating your senses from the moment you arrive.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -6492,7 +6497,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://kafig_main.jpeg')
                         .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -6502,10 +6507,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://kafig_main.jpeg')
                         .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -6525,7 +6530,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://royal_district.jpeg')
                         .setDescription(`As you enter the Royal District, you are greeted by tall, ornate gates. The streets are wide and well-maintained, lined with lavish mansions and elegant gardens. Walking through the Royal District, you see magnificent mansions belonging to the noble houses. Each house has its own distinctive architecture and style, showcasing the wealth and power of Dremenlond's nobility.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Marché Royale'){
                         const attachment = new MessageAttachment('assets/Dremenlond/marche_royale.jpeg')
@@ -6535,7 +6540,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://marche_royale.jpeg')
                             .setDescription(`Upon entering Marché Royale, you are greeted by a bustling and vibrant atmosphere. The market is filled with a wide variety of shops, each offering unique goods and delicacies. Exploring Marché Royale, you find an array of shops selling exquisite items, from magical artifacts to luxurious clothing. The market caters to the refined tastes of the nobility, offering high-quality products that are sought after in Solarstrio.\n\nThis is a shop location, use **/shop** to open the shop`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Reich Auction House'){
                         const attachment = new MessageAttachment('assets/Dremenlond/reich_auction.jpeg')
@@ -6545,7 +6550,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://reich_auction.jpeg')
                             .setDescription(`The Green Keep on the outskirts is a transparent dome, hinting at secretive research within. Guards stand watch at the entrance, creating an atmosphere charged with scientific curiosity and whispered ethical concerns.**`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Lumiere Academy'){
                         const attachment = new MessageAttachment('assets/Dremenlond/lumiere_academy.jpeg')
@@ -6555,7 +6560,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://lumiere_academy.jpeg')
                             .setDescription(`As you approach Lumiere Academy, you see a sprawling campus with impressive buildings and beautifully landscaped grounds. The architecture exudes a sense of knowledge and wisdom. Inside Lumiere Academy, you discover a vibrant academic environment. Students can be seen engaged in various disciplines, from spyr and weapon training to research and politics. The classrooms and lecture halls are filled with eager learners, and the air is buzzing with intellectual curiosity.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Dremenlond Ranger Centre'){
                         const attachment = new MessageAttachment('assets/Dremenlond/dremenlond_rangercentre.jpeg')
@@ -6566,7 +6571,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://dremenlond_rangercentre.jpeg')
                             .setDescription(`As you approach the Dremenlond Ranger Centre, you are welcomed by a majestic building adorned with the emblems of the three big guilds of solarstrio. The architecture reflects a sense of grandeur and regality, befitting the esteemed nature of the rangers of noble blood. Inside the Dremenlond Ranger Centre, you step into a world of luxury and elegance. The interior is tastefully decorated, with lavish furnishings and intricate details. The walls proudly display the emblems of the three major guilds, defining their dominion over all the rangers in Solarstrio.\n\n**use /questboard to view the Questboard**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Hotel Sapphire Star'){
                         const attachment = new MessageAttachment('assets/Dremenlond/sapphire_star.jpeg')
@@ -6577,7 +6582,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://saphire_star.jpeg')
                             .setDescription(`As you reach Hotel Sapphire Star, you are greeted by an elegant and imposing facade. The hotel stands tall, exuding a sense of sophistication and grandeur. Stepping into Hotel Sapphire Star, you find yourself in a world of luxury and comfort. The lobby is adorned with exquisite chandeliers and plush furnishings, creating an atmosphere of opulence. The courteous staff welcomes you warmly and attends to your every need. The hotel offers a range of lavish rooms and suites, each tastefully decorated and equipped with modern amenities. The dining area boasts a fine selection of gourmet cuisine, prepared by skilled chefs.`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'The Royal Council'){
                         const attachment = new MessageAttachment('assets/Dremenlond/royal_council.jpeg')
@@ -6587,7 +6592,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://royal_council.jpeg')
                             .setDescription(`Upon reaching the Royal Council, you find a majestic building that once served as the royal palace. Its architecture reflects a blend of regality and functionality, symbolizing the council's authority. As you approach the gates, you are stopped by Guards each belonging to the four great houses, each an elite in their own right. You are restricted access to the royal council without a proper permit.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
     
@@ -6610,16 +6615,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
-                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -6827,7 +6832,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dremenlond_main.jpg')
                         .setDescription(`As you enter Dremenlond, you're immediately immersed in a realm of grandeur and ambition. Towering spires, bustling streets, and opulent displays beckon, offering a glimpse into a world of wealth and refinement. Yet, beneath the surface, you sense a palpable tension between privilege and aspiration, fueling your curiosity to explore further.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -6837,10 +6842,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dremenlond_main.jpg')
                         .setDescription(`As you enter Dremenlond, you're immediately immersed in a realm of grandeur and ambition. Towering spires, bustling streets, and opulent displays beckon, offering a glimpse into a world of wealth and refinement. Yet, beneath the surface, you sense a palpable tension between privilege and aspiration, fueling your curiosity to explore further.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -6853,7 +6858,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://nottfall_main.png')
                         .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -6863,10 +6868,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://nottfall_main.png')
                         .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -6881,7 +6886,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
                         .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                             }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -6891,10 +6896,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://zorya_main.jpg')
                         .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You do not have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                 
                 }
@@ -6907,7 +6912,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://orld_husk.jpg')
                 .setDescription(`Approaching the husk of the Orld Tree, you're struck by its sheer size and presence. Though now dead, its colossal form still looms large, casting shadows that seem to stretch endlessly across the land. The ground beneath your feet feels charged with energy, a testament to the tree's ancient power, which still pulses faintly through the soil. Standing in its shadow, you can't help but feel a sense of awe and wonder at the history and secrets this ancient relic holds.\n\n`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
             }
             else if(location == 'Vesper'){
                 if(foundUser.coins >=100 && foundUser.mount == "None"){
@@ -6919,7 +6924,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setImage('attachment://vesper_main.jpg')
                 .setDescription(`
                 As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(foundUser.mount != "None"){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -6930,10 +6935,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setImage('attachment://vesper_main.jpg')
                 .setDescription(`
                 As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else{
-                    interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                    interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 
             }
@@ -6954,7 +6959,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://capitol_central.jpeg')
                         .setDescription(`As you step into Capitol Central, the air is alive with the sound of hurried footsteps and the murmur of whispered conversations. Marble corridors adorned with intricate tapestries lead to vast chambers filled with ornate furnishings and imposing figures engaged in heated debates.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Badshahi Bazaar'){
                         const attachment = new MessageAttachment('assets/Gloaming/badshahi_bazaar.jpeg')
@@ -6964,7 +6969,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://badshahi_bazaar.jpeg')
                             .setDescription(`Entering Badshahi Bazaar, you're immediately enveloped in a whirlwind of activity. Colorful stalls line bustling streets, their wares displayed in a riot of hues and textures. Merchants call out in melodic voices, extolling the virtues of their goods as shoppers haggle and bargain amidst the vibrant chaos.\n\nThis is a shop location, use **/shop** to open the shop`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Spirit Arsenal'){
                         const attachment = new MessageAttachment('assets/Gloaming/spirit_arsenal.jpeg')
@@ -6974,7 +6979,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://spirit_arsenal.jpeg')
                             .setDescription(`Stepping into the Spirit Arsenal, you're greeted by a sense of awe and reverence. The Towering column of stone rise majestically, its surfaces adorned with intricately engraved weapons of every shape and size. Each blade tells a story of courage and sacrifice, its craftsmanship a testament to the skill of the ancient artisan.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Gloaming Ranger Centre'){
                         const attachment = new MessageAttachment('assets/Gloaming/gloaming_rangercentre.jpeg')
@@ -6985,7 +6990,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://gloaming_rangercentre.jpeg')
                             .setDescription(`As you step into the Gloaming Ranger Centre, you're greeted by the sight of seasoned rangers clad in weathered armor and rugged attire. Rangers of every ilk and background bustle about, sharpening blades, mending gear, and trading tales of daring exploits.\n\n**use /questboard to view the Questboard**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Solar Vault'){
                         const attachment = new MessageAttachment('assets/Gloaming/solar_vault.jpeg')
@@ -6995,7 +7000,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://solar_vault.jpeg')
                             .setDescription(`Entering the Solar Vault, you're struck by the aura of wealth and power that permeates the air. Vaulted ceilings soar overhead, adorned with intricate carvings and gilded embellishments that speak of opulence and grandeur. Rows of polished teller stations stretch into the distance, attended by bankers.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     } 
                     else if(location == 'Castle Heliad'){
                         const attachment = new MessageAttachment('assets/Gloaming/castle_heliad.jpeg')
@@ -7005,7 +7010,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://castle_heliad.jpeg')
                             .setDescription(`Ascending into Castle Heliad, you're greeted by the imposing splendor of its architecture. Stone pillars rise skyward, supporting the weight of the castle above, while banners bearing the sigil of the king flutter in the breeze. Helios Aureus clad in gleaming armor stand sentinel at every corner, their vigilant watch speaking to the kingdom's unwavering military might`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Shahi Quila'){
                         const attachment = new MessageAttachment('assets/Gloaming/shahi_quila.jpeg')
@@ -7016,7 +7021,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://shahi_quila.jpeg')
                             .setDescription(`Stepping into Shahi Quila, you're greeted by the tantalizing aroma of spices and sizzling meats, mingling with the warm glow of lanterns and the lively chatter of diners. Tables adorned with richly embroidered cloths beckon guests to indulge in savory delicacies, served with a generous side of hospitality by bustling waitstaff clad in traditional attire.`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
     
@@ -7039,16 +7044,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
-                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -7248,7 +7253,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://gloaming_main.jpg')
                         .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -7258,10 +7263,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://dremenlond_main.jpg')
                         .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -7274,7 +7279,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://lucens_main.jpg')
                         .setDescription(`As you arrive in Lucens, the salty air and colorful streets welcome you. The Lighthouse Plateau stands tall, its statue of Captain Basilica a symbol of the town's maritime legacy. Nearby, the Temple of Still Water offers a serene retreat, while the Seabreeze Pavilion hosts lively performances celebrating local legends. Everywhere you turn, sculptures of Marvory Stone tell tales of the sea, inviting you to explore Lucens' rich history.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -7284,10 +7289,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://lucens_main.jpg')
                         .setDescription(`As you arrive in Lucens, the salty air and colorful streets welcome you. The Lighthouse Plateau stands tall, its statue of Captain Basilica a symbol of the town's maritime legacy. Nearby, the Temple of Still Water offers a serene retreat, while the Seabreeze Pavilion hosts lively performances celebrating local legends. Everywhere you turn, sculptures of Marvory Stone tell tales of the sea, inviting you to explore Lucens' rich history.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -7300,7 +7305,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://nottfall_main.png')
                         .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -7310,10 +7315,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://nottfall_main.png')
                         .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -7325,7 +7330,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://swamp_of_abyss.jpeg')
                 .setDescription(`Entering the Swamp of Abyss, visibility diminishes as fog clings to the air. The ground feels spongy beneath your feet, and the distant croaking of unseen creatures adds an eerie soundtrack to your exploration.\n\n`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
             }
             else if(location == 'Stellaris Temple Ruins'){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -7335,7 +7340,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://stellaris_temple.jpeg')
                 .setDescription(`The air thickens with the weight of history as you approach Stellaris Temple Ruins. Crumbled structures hint at former grandeur, and the echoes of ancient prayers linger. A hushed reverence fills the air, disrupted only by the occasional rustle of vegetation.\n\n`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
             }
 
                     
@@ -7354,7 +7359,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://gaiyo_plaza.jpeg')
                         .setDescription(`As you step into Gaiyo Plaza, you're surrounded by a vibrant mix of lizardmen and humans, weaving through shops and stalls. The Gaiyo Shroom veins overhead form intricate patterns, casting a surreal glow over the lively marketplace.\n\nThis is a shop location, use **/shop** to open the shop`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Veinwalk Quarters'){
                         const attachment = new MessageAttachment('assets/Vesper/veinwalk_quarters.jpeg')
@@ -7364,7 +7369,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://veinwalk_quarters.jpeg')
                             .setDescription(`Entering Veinwalk Quarters, you find homes nestled beneath the Gaiyo Shroom veins. The veins form ever-shifting patterns, casting shadows that dance across houses. Lively chatter echoes through the quarters as residents coexist in this unique habitat.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Starglow Overlook'){
                         const attachment = new MessageAttachment('assets/Vesper/starglow_overlook.jpeg')
@@ -7374,7 +7379,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://starglow_overlook.jpeg')
                             .setDescription(`Climbing to Starglow Overlook, you're greeted by the mesmerizing sight of nebula flowers glimmering like stars. The lounge, adorned with mirrors reflecting the flowers' light, creates an otherworldly atmosphere, inducing a sense of tranquility and wonder.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Vesper Guild Outpost'){
                         const attachment = new MessageAttachment('assets/Vesper/vesper_guildoutpost.jpeg')
@@ -7385,7 +7390,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://vesper_guildoutpost.jpeg')
                             .setDescription(`The outpost stands as a bastion against the greed-driven chaos. Guards inspect those entering Vesper, and a board displays regulations. In the courtyard, Ajins and mercenaries strategize, some eyeing the tempting allure of the Nebula Flowers.\n\n**use /questboard to view the Questboard**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Komodo's Rest`){
                         const attachment = new MessageAttachment('assets/Vesper/komodo_rest.jpeg')
@@ -7395,7 +7400,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://komodo_rest.jpeg')
                             .setDescription(`Approaching Komodo's Rest, you encounter elite Lizardmen guards, their eyes watchful. The atmosphere is tense, and the place exudes an aura of ancient protection. Nebula flowers, carefully fed to appease Komodo, surround the area, emitting an almost ethereal energy.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     } 
                     else if(location == 'Mudcape Tavern'){
                         const attachment = new MessageAttachment('assets/Vesper/mudcape_tavern.jpeg')
@@ -7406,7 +7411,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://mudcape_tavern.jpeg')
                             .setDescription(`Stepping into Mudcape Tavern, you're enveloped in the scent of exotic herbs. Lively conversations mix with the occasional clinking of glasses. The tavern, adorned with swamp-themed decor, becomes a hub where stories of Nebula Flowers and swamp exploits unfold.`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
     
                 collector_select.stop()
@@ -7428,16 +7433,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
-                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -7598,7 +7603,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('LOCATION REACHED')
                 .setImage('attachment://stellaris_temple.jpeg')
                 .setDescription(`The air thickens with the weight of history as you approach Stellaris Temple Ruins. Crumbled structures hint at former grandeur, and the echoes of ancient prayers linger. A hushed reverence fills the air, disrupted only by the occasional rustle of vegetation.\n\n`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
             }
             else if(location == 'Vesper'){
                 if(foundUser.coins >=0 && foundUser.mount == "None"){
@@ -7610,7 +7615,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setImage('attachment://vesper_main.jpg')
                 .setDescription(`
                 As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(foundUser.mount != "None"){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -7621,10 +7626,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setImage('attachment://vesper_main.jpg')
                 .setDescription(`
                 As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else{
-                    interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                    interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 
             }
@@ -7645,7 +7650,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://gaiyo_plaza.jpeg')
                         .setDescription(`As you step into Gaiyo Plaza, you're surrounded by a vibrant mix of lizardmen and humans, weaving through shops and stalls. The Gaiyo Shroom veins overhead form intricate patterns, casting a surreal glow over the lively marketplace.\n\nThis is a shop location, use **/shop** to open the shop`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Veinwalk Quarters'){
                         const attachment = new MessageAttachment('assets/Vesper/veinwalk_quarters.jpeg')
@@ -7655,7 +7660,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://veinwalk_quarters.jpeg')
                             .setDescription(`Entering Veinwalk Quarters, you find homes nestled beneath the Gaiyo Shroom veins. The veins form ever-shifting patterns, casting shadows that dance across houses. Lively chatter echoes through the quarters as residents coexist in this unique habitat.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Starglow Overlook'){
                         const attachment = new MessageAttachment('assets/Vesper/starglow_overlook.jpeg')
@@ -7665,7 +7670,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://starglow_overlook.jpeg')
                             .setDescription(`Climbing to Starglow Overlook, you're greeted by the mesmerizing sight of nebula flowers glimmering like stars. The lounge, adorned with mirrors reflecting the flowers' light, creates an otherworldly atmosphere, inducing a sense of tranquility and wonder.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Vesper Guild Outpost'){
                         const attachment = new MessageAttachment('assets/Vesper/vesper_guildoutpost.jpeg')
@@ -7676,7 +7681,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://vesper_guildoutpost.jpeg')
                             .setDescription(`The outpost stands as a bastion against the greed-driven chaos. Guards inspect those entering Vesper, and a board displays regulations. In the courtyard, Ajins and mercenaries strategize, some eyeing the tempting allure of the Nebula Flowers.\n\n**use /questboard to view the Questboard**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Komodo's Rest`){
                         const attachment = new MessageAttachment('assets/Vesper/komodo_rest.jpeg')
@@ -7686,7 +7691,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://komodo_rest.jpeg')
                             .setDescription(`Approaching Komodo's Rest, you encounter elite Lizardmen guards, their eyes watchful. The atmosphere is tense, and the place exudes an aura of ancient protection. Nebula flowers, carefully fed to appease Komodo, surround the area, emitting an almost ethereal energy.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     } 
                     else if(location == 'Mudcape Tavern'){
                         const attachment = new MessageAttachment('assets/Vesper/mudcape_tavern.jpeg')
@@ -7697,7 +7702,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://mudcape_tavern.jpeg')
                             .setDescription(`Stepping into Mudcape Tavern, you're enveloped in the scent of exotic herbs. Lively conversations mix with the occasional clinking of glasses. The tavern, adorned with swamp-themed decor, becomes a hub where stories of Nebula Flowers and swamp exploits unfold.`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
     
                 collector_select.stop()
@@ -7719,16 +7724,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
-                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -7889,7 +7894,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://swamp_of_abyss.jpeg')
                         .setDescription(`Entering the Swamp of Abyss, visibility diminishes as fog clings to the air. The ground feels spongy beneath your feet, and the distant croaking of unseen creatures adds an eerie soundtrack to your exploration.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
             else if(location == 'Vesper'){
                 if(foundUser.coins >=0 && foundUser.mount == "None"){
@@ -7901,7 +7906,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setImage('attachment://vesper_main.jpg')
                 .setDescription(`
                 As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(foundUser.mount != "None"){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -7912,10 +7917,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setImage('attachment://vesper_main.jpg')
                 .setDescription(`
                 As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else{
-                    interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                    interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 
             }
@@ -7936,7 +7941,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://gaiyo_plaza.jpeg')
                         .setDescription(`As you step into Gaiyo Plaza, you're surrounded by a vibrant mix of lizardmen and humans, weaving through shops and stalls. The Gaiyo Shroom veins overhead form intricate patterns, casting a surreal glow over the lively marketplace.\n\nThis is a shop location, use **/shop** to open the shop`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Veinwalk Quarters'){
                         const attachment = new MessageAttachment('assets/Vesper/veinwalk_quarters.jpeg')
@@ -7946,7 +7951,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://veinwalk_quarters.jpeg')
                             .setDescription(`Entering Veinwalk Quarters, you find homes nestled beneath the Gaiyo Shroom veins. The veins form ever-shifting patterns, casting shadows that dance across houses. Lively chatter echoes through the quarters as residents coexist in this unique habitat.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Starglow Overlook'){
                         const attachment = new MessageAttachment('assets/Vesper/starglow_overlook.jpeg')
@@ -7956,7 +7961,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://starglow_overlook.jpeg')
                             .setDescription(`Climbing to Starglow Overlook, you're greeted by the mesmerizing sight of nebula flowers glimmering like stars. The lounge, adorned with mirrors reflecting the flowers' light, creates an otherworldly atmosphere, inducing a sense of tranquility and wonder.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Vesper Guild Outpost'){
                         const attachment = new MessageAttachment('assets/Vesper/vesper_guildoutpost.jpeg')
@@ -7967,7 +7972,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://vesper_guildoutpost.jpeg')
                             .setDescription(`The outpost stands as a bastion against the greed-driven chaos. Guards inspect those entering Vesper, and a board displays regulations. In the courtyard, Ajins and mercenaries strategize, some eyeing the tempting allure of the Nebula Flowers.\n\n**use /questboard to view the Questboard**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Komodo's Rest`){
                         const attachment = new MessageAttachment('assets/Vesper/komodo_rest.jpeg')
@@ -7977,7 +7982,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://komodo_rest.jpeg')
                             .setDescription(`Approaching Komodo's Rest, you encounter elite Lizardmen guards, their eyes watchful. The atmosphere is tense, and the place exudes an aura of ancient protection. Nebula flowers, carefully fed to appease Komodo, surround the area, emitting an almost ethereal energy.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     } 
                     else if(location == 'Mudcape Tavern'){
                         const attachment = new MessageAttachment('assets/Vesper/mudcape_tavern.jpeg')
@@ -7988,7 +7993,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://mudcape_tavern.jpeg')
                             .setDescription(`Stepping into Mudcape Tavern, you're enveloped in the scent of exotic herbs. Lively conversations mix with the occasional clinking of glasses. The tavern, adorned with swamp-themed decor, becomes a hub where stories of Nebula Flowers and swamp exploits unfold.`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
     
                 collector_select.stop()
@@ -8010,16 +8015,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
-                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -8193,7 +8198,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://buccaneer_shipwreck.jpeg')
                         .setDescription(`As you approach the Buccaneer Shipwreck, the salty breeze carries whispers of tales long past. The skeletal remains of the once-majestic vessel emerge from the sands, its timeworn hull adorned with barnacles and seaweed, a haunting reminder of the maritime adventures that ended in tragedy. Rusty cannons peek through the wreckage, hinting at a tumultuous history lost to the depths of the ocean.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Marvory Cove'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -8203,7 +8208,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://marvory_cove.jpg')
                         .setDescription(`As you step onto the shores of Marvory Cove, the gentle lapping of waves against the smooth, ivory sands welcomes you. The coastline is adorned with majestic cliffs, their pale hues mirroring the pristine Marvory Stone that gives the cove its name. Sunlight dances upon the crystal-clear waters, revealing a myriad of vibrant marine life swimming beneath the surface.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
             else if(location == 'Vesper'){
                 if(foundUser.coins >=100 && foundUser.mount == "None"){
@@ -8215,7 +8220,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setImage('attachment://vesper_main.jpg')
                 .setDescription(`
                 As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else if(foundUser.mount != "None"){
                 await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -8226,10 +8231,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setImage('attachment://vesper_main.jpg')
                 .setDescription(`
                 As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
-                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else{
-                    interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                    interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 
             }
@@ -8250,7 +8255,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://betta_market.jpg')
                         .setDescription(`As you step into Betta Market Square, the salty breeze carries the tantalizing aroma of exotic fruits and the rhythmic sounds of traders haggling. The sun bathes the stalls in a warm glow, casting a golden hue over the sandy sword-shaped center, inviting you to explore the coastal wonders laid out before you.\n\nThis is a shop location, use **/shop** to open the shop`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Lighthouse Plateau'){
                         const attachment = new MessageAttachment('assets/Lucens/lighthouse_plateau.jpg')
@@ -8260,7 +8265,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://lighthouse_plateau.jpg')
                             .setDescription(`Approaching the Lighthouse Plateau, the sound of crashing waves crescendos, and the silhouette of Captain Basilica emerges against the coastal horizon. The monumental lighthouse, held steadfast in his arms, casts its guiding beam over the tumultuous sea, while the nearby Temple of Still Water beckons with a promise of serenity.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Makun-Ochi Fishing'){
                         const attachment = new MessageAttachment('assets/Lucens/makun_ochi.jpg')
@@ -8270,7 +8275,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://makun_ochi.jpg')
                             .setDescription(`Arriving at Makun-Ochi Fishing, the air is thick with the salty scent of the sea. Fishing boats bob gently in the harbor, and the distant calls of fishermen preparing for the next competition echo through the air.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Lucens Guild Outpost'){
                         const attachment = new MessageAttachment('assets/Lucens/lucens_guildoutpost.jpeg')
@@ -8281,7 +8286,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://lucens_guildoutpost.jpeg')
                             .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of sea spyriths and bandits, while the air hums with a sense of shared purpose and safety.\n\n**use /questboard to view the Questboard**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Seaside Sculpture Garden`){
                         const attachment = new MessageAttachment('assets/Lucens/seaside_sculpture.jpeg')
@@ -8291,7 +8296,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://seaside_sculpture.jpeg')
                             .setDescription(`Upon arriving at the Seaside Sculpture Garden, the sun casts a warm glow on the intricately carved statues that line the coastal path. The rhythmic sound of chisels and the laughter of families working together in sculpting new statues fill the air.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     } 
                     else if(location == 'Seabreeze Pavillion'){
                         const attachment = new MessageAttachment('assets/Lucens/seabreeze_pavillion.jpeg')
@@ -8301,7 +8306,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://seabreeze_pavillion.jpeg')
                             .setDescription(`As you arrive at Seabreeze Pavilion, the distant murmur of the sea merges with the lively atmosphere of anticipation. The cliffside stage stands adorned with maritime decor, and locals prepare for the upcoming performance, their enthusiasm contagious.`)
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
     
                 collector_select.stop()
@@ -8323,16 +8328,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
-                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -8493,7 +8498,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://marvory_cove.jpg')
                         .setDescription(`As you step onto the shores of Marvory Cove, the gentle lapping of waves against the smooth, ivory sands welcomes you. The coastline is adorned with majestic cliffs, their pale hues mirroring the pristine Marvory Stone that gives the cove its name. Sunlight dances upon the crystal-clear waters, revealing a myriad of vibrant marine life swimming beneath the surface.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Lucens'){
                         if(foundUser.coins >=0 && foundUser.mount == "None"){
@@ -8504,7 +8509,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://lucens_main.jpg')
                         .setDescription(`As you arrive in Lucens, the salty air and colorful streets welcome you. The Lighthouse Plateau stands tall, its statue of Captain Basilica a symbol of the town's maritime legacy. Nearby, the Temple of Still Water offers a serene retreat, while the Seabreeze Pavilion hosts lively performances celebrating local legends. Everywhere you turn, sculptures of Marvory Stone tell tales of the sea, inviting you to explore Lucens' rich history.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -8514,10 +8519,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://lucens_main.jpg')
                         .setDescription(`As you arrive in Lucens, the salty air and colorful streets welcome you. The Lighthouse Plateau stands tall, its statue of Captain Basilica a symbol of the town's maritime legacy. Nearby, the Temple of Still Water offers a serene retreat, while the Seabreeze Pavilion hosts lively performances celebrating local legends. Everywhere you turn, sculptures of Marvory Stone tell tales of the sea, inviting you to explore Lucens' rich history.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -8538,7 +8543,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://betta_market.jpg')
                         .setDescription(`As you step into Betta Market Square, the salty breeze carries the tantalizing aroma of exotic fruits and the rhythmic sounds of traders haggling. The sun bathes the stalls in a warm glow, casting a golden hue over the sandy sword-shaped center, inviting you to explore the coastal wonders laid out before you.\n\nThis is a shop location, use **/shop** to open the shop`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Lighthouse Plateau'){
                         const attachment = new MessageAttachment('assets/Lucens/lighthouse_plateau.jpg')
@@ -8548,7 +8553,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://lighthouse_plateau.jpg')
                             .setDescription(`Approaching the Lighthouse Plateau, the sound of crashing waves crescendos, and the silhouette of Captain Basilica emerges against the coastal horizon. The monumental lighthouse, held steadfast in his arms, casts its guiding beam over the tumultuous sea, while the nearby Temple of Still Water beckons with a promise of serenity.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Makun-Ochi Fishing'){
                         const attachment = new MessageAttachment('assets/Lucens/makun_ochi.jpg')
@@ -8558,7 +8563,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://makun_ochi.jpg')
                             .setDescription(`Arriving at Makun-Ochi Fishing, the air is thick with the salty scent of the sea. Fishing boats bob gently in the harbor, and the distant calls of fishermen preparing for the next competition echo through the air.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Lucens Guild Outpost'){
                         const attachment = new MessageAttachment('assets/Lucens/lucens_guildoutpost.jpeg')
@@ -8569,7 +8574,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://lucens_guildoutpost.jpeg')
                             .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of sea spyriths and bandits, while the air hums with a sense of shared purpose and safety.\n\n**use /questboard to view the Questboard**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Seaside Sculpture Garden`){
                         const attachment = new MessageAttachment('assets/Lucens/seaside_sculpture.jpeg')
@@ -8579,7 +8584,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://seaside_sculpture.jpeg')
                             .setDescription(`Upon arriving at the Seaside Sculpture Garden, the sun casts a warm glow on the intricately carved statues that line the coastal path. The rhythmic sound of chisels and the laughter of families working together in sculpting new statues fill the air.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     } 
                     else if(location == 'Seabreeze Pavillion'){
                         const attachment = new MessageAttachment('assets/Lucens/seabreeze_pavillion.jpeg')
@@ -8589,7 +8594,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://seabreeze_pavillion.jpeg')
                             .setDescription(`As you arrive at Seabreeze Pavilion, the distant murmur of the sea merges with the lively atmosphere of anticipation. The cliffside stage stands adorned with maritime decor, and locals prepare for the upcoming performance, their enthusiasm contagious.`)
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
     
                 collector_select.stop()
@@ -8611,16 +8616,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
-                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     
@@ -8781,7 +8786,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://buccaneer_shipwreck.jpeg')
                         .setDescription(`As you approach the Buccaneer Shipwreck, the salty breeze carries whispers of tales long past. The skeletal remains of the once-majestic vessel emerge from the sands, its timeworn hull adorned with barnacles and seaweed, a haunting reminder of the maritime adventures that ended in tragedy. Rusty cannons peek through the wreckage, hinting at a tumultuous history lost to the depths of the ocean.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Lucens'){
                         if(foundUser.coins >=0 && foundUser.mount == "None"){
@@ -8792,7 +8797,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://lucens_main.jpg')
                         .setDescription(`As you arrive in Lucens, the salty air and colorful streets welcome you. The Lighthouse Plateau stands tall, its statue of Captain Basilica a symbol of the town's maritime legacy. Nearby, the Temple of Still Water offers a serene retreat, while the Seabreeze Pavilion hosts lively performances celebrating local legends. Everywhere you turn, sculptures of Marvory Stone tell tales of the sea, inviting you to explore Lucens' rich history.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
@@ -8802,10 +8807,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://lucens_main.jpg')
                         .setDescription(`As you arrive in Lucens, the salty air and colorful streets welcome you. The Lighthouse Plateau stands tall, its statue of Captain Basilica a symbol of the town's maritime legacy. Nearby, the Temple of Still Water offers a serene retreat, while the Seabreeze Pavilion hosts lively performances celebrating local legends. Everywhere you turn, sculptures of Marvory Stone tell tales of the sea, inviting you to explore Lucens' rich history.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -8826,7 +8831,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setTitle('LOCATION REACHED')
                         .setImage('attachment://betta_market.jpg')
                         .setDescription(`As you step into Betta Market Square, the salty breeze carries the tantalizing aroma of exotic fruits and the rhythmic sounds of traders haggling. The sun bathes the stalls in a warm glow, casting a golden hue over the sandy sword-shaped center, inviting you to explore the coastal wonders laid out before you.\n\nThis is a shop location, use **/shop** to open the shop`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Lighthouse Plateau'){
                         const attachment = new MessageAttachment('assets/Lucens/lighthouse_plateau.jpg')
@@ -8836,7 +8841,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://lighthouse_plateau.jpg')
                             .setDescription(`Approaching the Lighthouse Plateau, the sound of crashing waves crescendos, and the silhouette of Captain Basilica emerges against the coastal horizon. The monumental lighthouse, held steadfast in his arms, casts its guiding beam over the tumultuous sea, while the nearby Temple of Still Water beckons with a promise of serenity.\n\n`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Makun-Ochi Fishing'){
                         const attachment = new MessageAttachment('assets/Lucens/makun_ochi.jpg')
@@ -8846,7 +8851,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://makun_ochi.jpg')
                             .setDescription(`Arriving at Makun-Ochi Fishing, the air is thick with the salty scent of the sea. Fishing boats bob gently in the harbor, and the distant calls of fishermen preparing for the next competition echo through the air.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Lucens Guild Outpost'){
                         const attachment = new MessageAttachment('assets/Lucens/lucens_guildoutpost.jpeg')
@@ -8857,7 +8862,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setImage('attachment://lucens_guildoutpost.jpeg')
                             .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of sea spyriths and bandits, while the air hums with a sense of shared purpose and safety.\n\n**use /questboard to view the Questboard**`)
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == `Seaside Sculpture Garden`){
                         const attachment = new MessageAttachment('assets/Lucens/seaside_sculpture.jpeg')
@@ -8867,7 +8872,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://seaside_sculpture.jpeg')
                             .setDescription(`Upon arriving at the Seaside Sculpture Garden, the sun casts a warm glow on the intricately carved statues that line the coastal path. The rhythmic sound of chisels and the laughter of families working together in sculpting new statues fill the air.`)
-                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     } 
                     else if(location == 'Seabreeze Pavillion'){
                         const attachment = new MessageAttachment('assets/Lucens/seabreeze_pavillion.jpeg')
@@ -8877,9 +8882,9 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://seabreeze_pavillion.jpeg')
                             .setDescription(`As you arrive at Seabreeze Pavilion, the distant murmur of the sea merges with the lively atmosphere of anticipation. The cliffside stage stands adorned with maritime decor, and locals prepare for the upcoming performance, their enthusiasm contagious.`)
-                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
-                    
+
                 collector_select.stop()
                 collector_cancel.stop()
                
@@ -8899,16 +8904,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 .setTitle('CANCELLED')
                 .setDescription(`location visit cancelled!`)
                 
-                await interaction.editReply({embeds:[delembed],components:[]})
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 collector_cancel.stop()
                 collector_select.stop()
                 }
                 else if(j.customId == "interior"){
                     
-                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                 else if(j.customId == "exterior"){
-                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]})
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
                         }
                     

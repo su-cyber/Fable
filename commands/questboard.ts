@@ -18,7 +18,11 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
 .setDo(
     async (bot, interaction) => {
         const authorId = interaction.user.id
-
+        const exceptionEmbed = new MessageEmbed()
+        .setColor('RED')
+        .setTitle('INTERACTION TIMED OUT')
+        .setDescription(`Oops! your interaction has been timed out as it has crossed the waiting limit for your action.\n\nHowever, don't worry! simply use the command again to restart.`)
+        
         profileModel.exists({userID: authorId},async function(err,res){
             if(err){
                 console.log(err);
@@ -104,7 +108,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
         ]) 
    
     await interaction.deferReply()
-    await interaction.editReply({content: null,embeds:[board_copy[0]],components:[btnraw,select]})
+    await interaction.editReply({content: null,embeds:[board_copy[0]],components:[btnraw,select]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
     let filter_btn = (interaction : any) => interaction.user.id === authorId && interaction.isButton()
     let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select_quest"
@@ -117,7 +121,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
         collected.deferUpdate().catch(() => null)
         const quest = collected.values[0]
         if(foundUser.side_quest.includes(quest)){
-            interaction.editReply({content: `you have already taken this quest!`,embeds:[],components:[]})
+            interaction.editReply({content: `you have already taken this quest!`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
         }
         else{
             let quest_selected = new MessageEmbed()
@@ -134,7 +138,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
                 await profileModel.updateOne({userID:authorId},{side_quest:foundUser.side_quest})
             }
             
-            interaction.editReply({content: null,embeds:[quest_selected],components:[]})
+            interaction.editReply({content: null,embeds:[quest_selected],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
             
           
         }
@@ -153,7 +157,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
                 count +=1
             }
             
-            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]})
+            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
         }
         else if(i.customId === 'backward'){
             if(count== 0){
@@ -163,7 +167,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
                 count-=1
             }
             
-            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]})
+            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
         }
         else if(i.customId === 'stop'){
@@ -258,7 +262,7 @@ let Quest_embed_1 = new MessageEmbed()
         ]) 
    
     await interaction.deferReply()
-    await interaction.editReply({content: null,embeds:[board_copy[0]],components:[btnraw,select]})
+    await interaction.editReply({content: null,embeds:[board_copy[0]],components:[btnraw,select]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
     let filter_btn = (interaction : any) => interaction.user.id === authorId && interaction.isButton()
     let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select_quest"
@@ -271,7 +275,7 @@ let Quest_embed_1 = new MessageEmbed()
         collected.deferUpdate().catch(() => null)
         const quest = collected.values[0]
         if(foundUser.side_quest.includes(quest)){
-            interaction.editReply({content: `you have already taken this quest!`,embeds:[],components:[]})
+            interaction.editReply({content: `you have already taken this quest!`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
         }
         else{
             let quest_selected = new MessageEmbed()
@@ -286,10 +290,10 @@ let Quest_embed_1 = new MessageEmbed()
             if(foundUser.side_quest_phase == 1 || foundUser.side_quest_phase == ""){
                 foundUser.side_quest.push(quest)
                 await profileModel.updateOne({userID:authorId},{side_quest:foundUser.side_quest,side_quest_phase:"1"})
-                interaction.editReply({content: null,embeds:[quest_selected],components:[]})
+                interaction.editReply({content: null,embeds:[quest_selected],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
             }
             else{
-                interaction.editReply({content: null,embeds:[quest_cancel],components:[]})
+                interaction.editReply({content: null,embeds:[quest_cancel],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
             }
         }
     
@@ -308,7 +312,7 @@ let Quest_embed_1 = new MessageEmbed()
                 count +=1
             }
             
-            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]})
+            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
         }
         else if(i.customId === 'backward'){
             if(count== 0){
@@ -318,7 +322,7 @@ let Quest_embed_1 = new MessageEmbed()
                 count-=1
             }
             
-            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]})
+            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
         }
         else if(i.customId === 'stop'){

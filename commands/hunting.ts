@@ -19,7 +19,11 @@ export default new MyCommandSlashBuilder({ name: 'hunting_contract', description
 .setDo(
     async (bot, interaction) => {
         const authorId = interaction.user.id
-
+        const exceptionEmbed = new MessageEmbed()
+        .setColor('RED')
+        .setTitle('INTERACTION TIMED OUT')
+        .setDescription(`Oops! your interaction has been timed out as it has crossed the waiting limit for your action.\n\nHowever, don't worry! simply use the command again to restart.`)
+        
         profileModel.exists({userID: authorId},async function(err,res){
             if(err){
                 console.log(err);
@@ -90,7 +94,7 @@ export default new MyCommandSlashBuilder({ name: 'hunting_contract', description
         ]) 
    
     await interaction.deferReply()
-    await interaction.editReply({content: null,embeds:[board_copy[0]],components:[btnraw,select]})
+    await interaction.editReply({content: null,embeds:[board_copy[0]],components:[btnraw,select]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
     let filter_btn = (interaction : any) => interaction.user.id === authorId && interaction.isButton()
     let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select_hunt"
@@ -103,7 +107,7 @@ export default new MyCommandSlashBuilder({ name: 'hunting_contract', description
         collected.deferUpdate().catch(() => null)
         const quest = collected.values[0]
         if(foundUser.quest_quantity > 0){
-            interaction.editReply({content: `you already have an ongoing hunting contract!`,embeds:[],components:[]})
+            interaction.editReply({content: `you already have an ongoing hunting contract!`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
         }
         else{
             let quest_selected = new MessageEmbed()
@@ -118,7 +122,7 @@ export default new MyCommandSlashBuilder({ name: 'hunting_contract', description
             await profileModel.updateOne({userID:authorId},{quest:foundUser.quest,quest_mob:foundhunt.target,quest_quantity:foundhunt.quantity})
             
             
-            interaction.editReply({content: null,embeds:[quest_selected],components:[]})
+            interaction.editReply({content: null,embeds:[quest_selected],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
             
           
         }
@@ -137,7 +141,7 @@ export default new MyCommandSlashBuilder({ name: 'hunting_contract', description
                 count +=1
             }
             
-            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]})
+            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
         }
         else if(i.customId === 'backward'){
             if(count== 0){
@@ -147,7 +151,7 @@ export default new MyCommandSlashBuilder({ name: 'hunting_contract', description
                 count-=1
             }
             
-            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]})
+            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
         }
         else if(i.customId === 'stop'){
@@ -228,7 +232,7 @@ export default new MyCommandSlashBuilder({ name: 'hunting_contract', description
         ]) 
    
     await interaction.deferReply()
-    await interaction.editReply({content: null,embeds:[board_copy[0]],components:[btnraw,select]})
+    await interaction.editReply({content: null,embeds:[board_copy[0]],components:[btnraw,select]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
     let filter_btn = (interaction : any) => interaction.user.id === authorId && interaction.isButton()
     let filter_select = (interaction : any) => interaction.user.id === authorId && interaction.customId == "select_hunt"
@@ -241,7 +245,7 @@ export default new MyCommandSlashBuilder({ name: 'hunting_contract', description
         collected.deferUpdate().catch(() => null)
         const quest = collected.values[0]
         if(foundUser.quest_quantity > 0){
-            interaction.editReply({content: `you already have an ongoing hunting contract!`,embeds:[],components:[]})
+            interaction.editReply({content: `you already have an ongoing hunting contract!`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
         }
         else{
             let quest_selected = new MessageEmbed()
@@ -256,7 +260,7 @@ export default new MyCommandSlashBuilder({ name: 'hunting_contract', description
             await profileModel.updateOne({userID:authorId},{quest:foundUser.quest,quest_mob:foundhunt.target,quest_quantity:foundhunt.quantity})
             
             
-            interaction.editReply({content: null,embeds:[quest_selected],components:[]})
+            interaction.editReply({content: null,embeds:[quest_selected],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
             
           
         }
@@ -275,7 +279,7 @@ export default new MyCommandSlashBuilder({ name: 'hunting_contract', description
                 count +=1
             }
             
-            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]})
+            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
         }
         else if(i.customId === 'backward'){
             if(count== 0){
@@ -285,7 +289,7 @@ export default new MyCommandSlashBuilder({ name: 'hunting_contract', description
                 count-=1
             }
             
-            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]})
+            interaction.editReply({content: null,embeds:[board_copy[count]],components:[btnraw,select]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
 
         }
         else if(i.customId === 'stop'){

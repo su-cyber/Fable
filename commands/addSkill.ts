@@ -12,6 +12,11 @@ export default new MyCommandSlashBuilder({ name: 'addskill', description: 'add a
 .setDo(
     async (bot, interaction) => {
         
+        const exceptionEmbed = new MessageEmbed()
+        .setColor('RED')
+        .setTitle('INTERACTION TIMED OUT')
+        .setDescription(`Oops! your interaction has been timed out as it has crossed the waiting limit for your action.\n\nHowever, don't worry! simply use the command again to restart.`)
+        
         
         const authorId = interaction.user.id;
         const userSkill = interaction.options.getString('skill').toLowerCase()
@@ -112,8 +117,7 @@ export default new MyCommandSlashBuilder({ name: 'addskill', description: 'add a
             .setTitle('REPLACE SKILL')
             .setDescription(`${foundskill.name} has been replaced with ${replace} in skill cycle!`)
 
-            await interaction.editReply({embeds:[successembed],components:[]})
-            collector_select.stop()
+            await interaction.editReply({embeds:[successembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
             collector_cancel.stop()
         })
 
@@ -125,7 +129,7 @@ export default new MyCommandSlashBuilder({ name: 'addskill', description: 'add a
             .setTitle('REPLACE SKILL')
             .setDescription(`skill replacement cancelled!`)
             
-            await interaction.editReply({embeds:[delembed],components:[]})
+            await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]}); console.log(err);})
             collector_cancel.stop()
             collector_select.stop()
         })
