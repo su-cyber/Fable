@@ -1116,6 +1116,104 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                             }
                                             
                                         }
+                                        else if(foundUser.city_town == "Nottfall"){
+                                            if(foundUser.location == "Castle Aurum"){
+                                                dialogue = [
+                                                    `Lucia: "Castle Aurum, where Earl Solis resides, is the heart of our nightly spectacle. I'm Lucia, the fireworks artisan. All the mesmerizing bursts of color and light that paint the sky come from there. If you want a true display of Nottfall's beauty, be sure to catch the nightly show. It's a sight you won't forget."`,
+                                                    `James: “Psst. Just walk away, don’t stand here and draw attention. You see I’m a lookout for Banishing Light. Well…it's unofficial and I’ve yet to actually contribute anything but I aspire to join that group one day!”`
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Solis Island Park"){
+                                                dialogue = [
+                                                    `Leander: “Did you know that Earl Solis is the only female with that position in Solarstrio? Now you may draw some conclusions from that statement but what if I told you that she’s been in that position for the longest period. Now where’s your judgment?”`,
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Charbar"){
+                                                dialogue = [
+                                                    `Sterling: "Early riser, are you? Nottfall might seem like a ghost town in the morning, but that's when our Earl Solis's Banishing Daylight task force is at work. We raid the night movers, trying to banish Daydream from our streets. Keep an eye out if you're up with the sun; things can get lively in unexpected ways."`,
+                                                    `Gil: "Psst... heard about Daydream? The dream-inducing ecstasy that makes this city buzz in the moonlight. Rumor has it Earl Solis is cracking down on it with her Banishing Daylight task force. Keep your ears open and your eyes peeled, adventurer. Things might get interesting around here. Just…don’t get caught having a daydream…"`    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Fire Dragon’s Street"){
+                                                dialogue = [
+                                                    `Hank: "Ah, you must be new in state! No worries, just make your way to the Saddledome, friend. It's where the heart of Nottfall beats the loudest. We've got rodeo competitions that'll leave you on the edge of your seat. Watch the locals tame wild beasts or try your luck in the Catalan event. A wild thrill for every adventurer!"`,
+                                                    `Ada: "Ready to party, stranger? Nottfall truly comes alive at night. The Fire Dragon’s Street is where the locals gather for live music, carnival rides, and, of course, the best views for fireworks. If you're feeling fancy, Druid Hill Hall at Solis Island Park is the place to see and be seen, although not everyone is allowed there. So just follow the lights and let the night take you!"`
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Seafood District"){
+                                                dialogue = [
+                                                    `Esther: "You've got to try the seafood here, darling! Our river is teeming with exotic fish, and the Gunpowder Spice from Spezia Cliffs adds a zesty kick. Head to Sunk at Sea for a dining experience like no other. Your taste buds will thank you for the explosion of flavors and you shall thank me!"`,
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Ekstase Market"){
+                                                dialogue = [
+                                                    `Harry: "You need to come with me to the Ekstase Market, Ranger! Here in Nottfall, our potions are as diverse as the moons above. Need a healing elixir, a charm to bewitch your troubles away, or something more exotic? Take a seat at the floating table, and I'll show you the wonders of our potioncraft. Just beware, don't mix 'em up unless you're ready for a surprise!"`,
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Nottfall Ranger Centre"){
+                                                dialogue = [
+                                                    `Clem: “Ah, don’t mind me Ranger, I’m just heading to the infirmary due to my drunk friend who entered the rodeo competition and broke his back trying to ride a Thorox. Those things are no joke. But if you’re headed there anyway, just don’t be like my friend! Good luck.”`,
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            
+                                        }
                                         
                                         else{
                                             dialogueembed = new MessageEmbed()

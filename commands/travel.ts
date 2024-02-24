@@ -1563,11 +1563,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                        const attachment = new MessageAttachment('assets/Dremenlond/dremenlond_main.jpg')
+                        const attachment = new MessageAttachment('assets/Gloaming/gloaming_main.jpg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://dremenlond_main.jpg')
+                        .setImage('attachment://gloaming_main.jpg')
                         .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
@@ -6448,11 +6448,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                        const attachment = new MessageAttachment('assets/Dremenlond/dremenlond_main.jpg')
+                        const attachment = new MessageAttachment('assets/Gloaming/gloaming_main.jpg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://dremenlond_main.jpg')
+                        .setImage('attachment://gloaming_main.jpg')
                         .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
@@ -7257,11 +7257,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         }
                         else if(foundUser.mount != "None"){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                        const attachment = new MessageAttachment('assets/Dremenlond/dremenlond_main.jpg')
+                        const attachment = new MessageAttachment('assets/Gloaming/gloaming_main.jpg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://dremenlond_main.jpg')
+                        .setImage('attachment://gloaming_main.jpg')
                         .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
@@ -8882,6 +8882,1038 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setTitle('LOCATION REACHED')
                             .setImage('attachment://seabreeze_pavillion.jpeg')
                             .setDescription(`As you arrive at Seabreeze Pavilion, the distant murmur of the sea merges with the lively atmosphere of anticipation. The cliffside stage stands adorned with maritime decor, and locals prepare for the upcoming performance, their enthusiasm contagious.`)
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Nottfall"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Spezia Cliffs`,
+                                                value:`**Travelled on Foot**\n**Description**:Spezia Cliffs tower above the coastline, their rugged cliffsides bathed in the warm glow of the setting sun.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Riverside Ruins`,
+                                                value:`**Travelled on Foot**\n**Description**: Ruins stand as silent sentinels amidst the tranquil beauty of the forest, their weathered stones whispering secrets of a bygone era.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Capital of Gloaming`,
+                                                value:`**Travelled on StageCoach**\n**Description**:Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Vesper`,
+                                                value:`**Travelled on Stagecoach**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Ingenia`,
+                                                value:`**Travelled on Stagecoach**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 100 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Spezia Cliffs`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Spezia Cliffs tower above the coastline, their rugged cliffsides bathed in the warm glow of the setting sun.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Riverside Ruins`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Ruins stand as silent sentinels amidst the tranquil beauty of the forest, their weathered stones whispering secrets of a bygone era.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Capital of Gloaming`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Vesper`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Ingenia`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 100 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Castle Aurum`,
+                                        value:`**Description**: The majestic residence of Earl Solis, overseeing the affairs of Nottfall with opulence and authority.\n`
+                                    },
+                                    {
+                                        name: `Solis Island Park`,
+                                        value:`**Description**: A secluded oasis in the heart of Nottfall, hosting exclusive gatherings and events for the city's elite.\n`
+                                    },
+                                    {
+                                        name: `Charbar`,
+                                        value:`**Description**: Renowned as the premier pub in Nottfall, serving up savory dishes and a lively atmosphere.\n`
+                                    },
+                                    {
+                                        name: `Fire Dragon’s Street`,
+                                        value:`**Description**: A bustling thoroughfare alive with music, carnival attractions, and delectable street food.\n`
+                                    },
+                                    {
+                                        name: `Seafood District`,
+                                        value:`**Description**: A culinary haven where the freshest catches from Nottfall's river are transformed into exquisite dishes.\n`
+                                    },
+                                    {
+                                        name: `Ekstase Market`,
+                                        value:`**Description**: An exotic marketplace offering a wide array of potions and magical concoctions to enchant the senses.\n`
+                                    },
+                                    {
+                                        name: `Nottfall Ranger Centre`,
+                                        value:`**Description**: The hub for adventurers and guardians, ensuring the safety and security of Nottfall and its surrounding regions.\n`
+                                    },
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Spezia Cliffs`,
+                        description: ``,
+                        value: `Spezia Cliffs`,
+                    },
+                    {
+                        label: `Riverside Ruins`,
+                        description: ``,
+                        value: `Riverside Ruins`,
+                    },
+                    {
+                        label: `Capital of Gloaming`,
+                        description: ``,
+                        value: `Gloaming`,
+                    },
+                    {
+                        label: `Township of Vesper`,
+                        description: ``,
+                        value: `Vesper`,
+                    },
+                    {
+                        label: `Township of Ingenia`,
+                        description: ``,
+                        value: `Ingenia`,
+                    },
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Castle Aurum`,
+                        description: ``,
+                        value: `Castle Aurum`,
+                    },{
+                        label: `Solis Island Park`,
+                        description: ``,
+                        value: `Solis Island Park`,
+                    },{
+                        label: `Charbar`,
+                        description: ``,
+                        value: `Charbar`,
+                    },{
+                        label: `Fire Dragon’s Street`,
+                        description: ``,
+                        value: `Fire Dragon’s Street`,
+                    },{
+                        label: `Seafood District`,
+                        description: ``,
+                        value: `Seafood District`,
+                    },{
+                        label: `Ekstase Market`,
+                        description: ``,
+                        value: `Ekstase Market`,
+                    },{
+                        label: `Nottfall Ranger Centre`,
+                        description: ``,
+                        value: `Nottfall Ranger Centre`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+
+                    if(location == 'Spezia Cliffs'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Nottfall/spezia_cliffs.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://spezia_cliffs.jpg')
+                        .setDescription(`Standing at Spezia Cliffs, you feel the wind tousle your hair, carrying hints of Gunpowder Spice from below. The rugged cliffs stretch before you, meeting crashing waves, while seabirds glide overhead. Amidst this beauty, the aroma of sizzling seafood beckons from nearby eateries, offering a taste of Spezia's renowned spice.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Riverside Ruins'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Nottfall/riverside_ruins.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://riverside_ruins.jpg')
+                        .setDescription(`Exploring Riverside Ruins, silence envelops you, broken by rustling leaves and distant water. Moss-covered structures stand as remnants of the past, intertwined with nature's embrace. Each stone holds secrets of civilizations long gone, weaving a silent narrative of bygone eras.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Vesper'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Vesper/vesper_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://vesper_main.jpg')
+                        .setDescription(`
+                        As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Vesper/vesper_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://vesper_main.jpg')
+                        .setDescription(`
+                        As you arrive in Vesper, you're greeted by a unique sight. The town sits atop a foggy swamp, with roofs covered in mysterious mushrooms. People bustle about, a mix of lizard-like creatures and humans. The air is thick with anticipation, as traders and adventurers seek rare treasures amidst the murky landscape. Despite the dangers, there's an undeniable sense of intrigue in this bustling hub of activity.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                    else if(location == 'Gloaming'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Gloaming/gloaming_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://gloaming_main.jpg')
+                        .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Gloaming/gloaming_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://gloaming_main.jpg')
+                        .setDescription(`As you enter Gloaming, you're greeted by bustling streets lined with towering stone columns and bridges. In the distance, the majestic Castle of Heliad stands tall against the sky. Below, the vibrant Badshahi Bazaar offers a colorful array of goods, while the King's personal military patrol with purpose. Everywhere, the city pulses with energy, a testament to its rich history and lively atmosphere.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        
+                    }
+                    else if(location == 'Ingenia'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Ingenia/ingenia_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ingenia_main.jpg')
+                        .setDescription(`Stepping into Ingenia Town, you're greeted by a bustling hub of creativity, where makeshift homes and tinkering workshops line the streets, and the air hums with the energy of invention.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Ingenia/ingenia_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ingenia_main.jpg')
+                        .setDescription(`Stepping into Ingenia Town, you're greeted by a bustling hub of creativity, where makeshift homes and tinkering workshops line the streets, and the air hums with the energy of invention.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        
+                    }
+                        
+                    
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Ekstase Market'){
+                        const attachment = new MessageAttachment('assets/Nottfall/ekstase_market.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ekstase_market.jpg')
+                        .setDescription(`The Ekstase Market beckons with its enchanting display of magical wares, floating tables adorned with shimmering potions and exotic artifacts. Alchemists and enchanters ply their trade, offering potions of healing, invisibility, and transformation, each vial brimming with mystical energy. Aromas of rare herbs and spices fill the air, while vendors regale passersby with tales of ancient spells and hidden wonders, tempting you to explore the secrets that lie within.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Castle Aurum'){
+                        const attachment = new MessageAttachment('assets/Nottfall/castle_aurum.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://castle_aurum.jpg')
+                            .setDescription(`As you approach Castle Aurum, its formidable stone walls rise majestically, adorned with intricate golden accents that catch the moonlight. The sound of music and laughter emanates from within, hinting at the lively gatherings held within its grand halls, where nobles and dignitaries convene under the watchful eye of Earl Solis.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Solis Island Park'){
+                        const attachment = new MessageAttachment('assets/Nottfall/solis_islandpark.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://solis_islandpark.jpg')
+                            .setDescription(`tepping onto the tranquil island of Solis Island Park, you find yourself enveloped in a verdant oasis amidst the urban sprawl of Nottfall. Towering trees sway gently in the night breeze, their branches casting dancing shadows upon well-manicured lawns and flower beds. Lanterns of soft, warm light guide your path, leading you towards secluded benches and serene ponds, offering respite from the city's bustling energy.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Nottfall Ranger Centre'){
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_rangercentre.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://nottfall_rangercentre.jpeg')
+                            .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of sea spyriths and bandits, while the air hums with a sense of shared purpose and safety.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Charbar`){
+                        const attachment = new MessageAttachment('assets/Nottfall/charbar.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://charbar.jpeg')
+                            .setDescription(`Entering Charbar, you're greeted by the lively buzz of conversation and the tantalizing aroma of sizzling meats and savory dishes. The interior is adorned with nautical decor, from ship wheels to fishing nets, creating a cozy atmosphere reminiscent of a seafarer's tavern. Patrons gather around wooden tables, clinking glasses in celebration as live musicians fill the air with upbeat melodies, adding to the jovial ambiance of this popular establishment.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    } 
+                    else if(location == 'Fire Dragon’s Street'){
+                        const attachment = new MessageAttachment('assets/Nottfall/firedragon_street.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://firedragon_street.jpeg')
+                            .setDescription(`Walking down Fire Dragon’s Street, you're dazzled by a kaleidoscope of color and light, with vibrant banners fluttering overhead and strings of lanterns illuminating the bustling thoroughfare. Food vendors line the cobblestone streets, their stalls overflowing with exotic delicacies and aromatic spices, enticing passersby with promises of culinary delights. Musicians and street performers entertain the crowds, adding to the festive atmosphere as laughter and merriment fill the night air.`)
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Seafood District'){
+                        const attachment = new MessageAttachment('assets/Nottfall/seafood_district.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://seafood_district.jpeg')
+                            .setDescription(`Your senses are overwhelmed by the sights and sounds of the Seafood District, where the salty tang of the ocean mingles with the intoxicating aroma of freshly caught fish and seafood. Market stalls overflow with an abundance of marine treasures, from gleaming silver fish to succulent shellfish and colorful crustaceans. Fishmongers call out their wares while expert chefs demonstrate their culinary skills, tantalizing your taste buds and igniting your appetite for the sea's bounty.`)
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Spezia Cliffs"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Riverside Ruins`,
+                                                value:`**Travelled on Foot**\n**Description**: Ruins stand as silent sentinels amidst the tranquil beauty of the forest, their weathered stones whispering secrets of a bygone era.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Nottfall`,
+                                                value:`**Travelled on Foot**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Riverside Ruins`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Ruins stand as silent sentinels amidst the tranquil beauty of the forest, their weathered stones whispering secrets of a bygone era.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Nottfall`,
+                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Castle Aurum`,
+                                        value:`**Description**: The majestic residence of Earl Solis, overseeing the affairs of Nottfall with opulence and authority.\n`
+                                    },
+                                    {
+                                        name: `Solis Island Park`,
+                                        value:`**Description**: A secluded oasis in the heart of Nottfall, hosting exclusive gatherings and events for the city's elite.\n`
+                                    },
+                                    {
+                                        name: `Charbar`,
+                                        value:`**Description**: Renowned as the premier pub in Nottfall, serving up savory dishes and a lively atmosphere.\n`
+                                    },
+                                    {
+                                        name: `Fire Dragon’s Street`,
+                                        value:`**Description**: A bustling thoroughfare alive with music, carnival attractions, and delectable street food.\n`
+                                    },
+                                    {
+                                        name: `Seafood District`,
+                                        value:`**Description**: A culinary haven where the freshest catches from Nottfall's river are transformed into exquisite dishes.\n`
+                                    },
+                                    {
+                                        name: `Ekstase Market`,
+                                        value:`**Description**: An exotic marketplace offering a wide array of potions and magical concoctions to enchant the senses.\n`
+                                    },
+                                    {
+                                        name: `Nottfall Ranger Centre`,
+                                        value:`**Description**: The hub for adventurers and guardians, ensuring the safety and security of Nottfall and its surrounding regions.\n`
+                                    },
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Riverside Ruins`,
+                        description: ``,
+                        value: `Riverside Ruins`,
+                    },
+                    {
+                        label: `Stateship of Nottfall`,
+                        description: ``,
+                        value: `Nottfall`,
+                    },
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Castle Aurum`,
+                        description: ``,
+                        value: `Castle Aurum`,
+                    },{
+                        label: `Solis Island Park`,
+                        description: ``,
+                        value: `Solis Island Park`,
+                    },{
+                        label: `Charbar`,
+                        description: ``,
+                        value: `Charbar`,
+                    },{
+                        label: `Fire Dragon’s Street`,
+                        description: ``,
+                        value: `Fire Dragon’s Street`,
+                    },{
+                        label: `Seafood District`,
+                        description: ``,
+                        value: `Seafood District`,
+                    },{
+                        label: `Ekstase Market`,
+                        description: ``,
+                        value: `Ekstase Market`,
+                    },{
+                        label: `Nottfall Ranger Centre`,
+                        description: ``,
+                        value: `Nottfall Ranger Centre`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+
+                    if(location == 'Riverside Ruins'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Nottfall/riverside_ruins.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://riverside_ruins.jpg')
+                        .setDescription(`Exploring Riverside Ruins, silence envelops you, broken by rustling leaves and distant water. Moss-covered structures stand as remnants of the past, intertwined with nature's embrace. Each stone holds secrets of civilizations long gone, weaving a silent narrative of bygone eras.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Nottfall'){
+                        if(foundUser.coins >=0 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.png')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://nottfall_main.png')
+                        .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.png')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://nottfall_main.png')
+                        .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                        
+                    
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Ekstase Market'){
+                        const attachment = new MessageAttachment('assets/Nottfall/ekstase_market.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ekstase_market.jpg')
+                        .setDescription(`The Ekstase Market beckons with its enchanting display of magical wares, floating tables adorned with shimmering potions and exotic artifacts. Alchemists and enchanters ply their trade, offering potions of healing, invisibility, and transformation, each vial brimming with mystical energy. Aromas of rare herbs and spices fill the air, while vendors regale passersby with tales of ancient spells and hidden wonders, tempting you to explore the secrets that lie within.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Castle Aurum'){
+                        const attachment = new MessageAttachment('assets/Nottfall/castle_aurum.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://castle_aurum.jpg')
+                            .setDescription(`As you approach Castle Aurum, its formidable stone walls rise majestically, adorned with intricate golden accents that catch the moonlight. The sound of music and laughter emanates from within, hinting at the lively gatherings held within its grand halls, where nobles and dignitaries convene under the watchful eye of Earl Solis.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Solis Island Park'){
+                        const attachment = new MessageAttachment('assets/Nottfall/solis_islandpark.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://solis_islandpark.jpg')
+                            .setDescription(`tepping onto the tranquil island of Solis Island Park, you find yourself enveloped in a verdant oasis amidst the urban sprawl of Nottfall. Towering trees sway gently in the night breeze, their branches casting dancing shadows upon well-manicured lawns and flower beds. Lanterns of soft, warm light guide your path, leading you towards secluded benches and serene ponds, offering respite from the city's bustling energy.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Nottfall Ranger Centre'){
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_rangercentre.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://nottfall_rangercentre.jpeg')
+                            .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of sea spyriths and bandits, while the air hums with a sense of shared purpose and safety.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Charbar`){
+                        const attachment = new MessageAttachment('assets/Nottfall/charbar.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://charbar.jpeg')
+                            .setDescription(`Entering Charbar, you're greeted by the lively buzz of conversation and the tantalizing aroma of sizzling meats and savory dishes. The interior is adorned with nautical decor, from ship wheels to fishing nets, creating a cozy atmosphere reminiscent of a seafarer's tavern. Patrons gather around wooden tables, clinking glasses in celebration as live musicians fill the air with upbeat melodies, adding to the jovial ambiance of this popular establishment.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    } 
+                    else if(location == 'Fire Dragon’s Street'){
+                        const attachment = new MessageAttachment('assets/Nottfall/firedragon_street.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://firedragon_street.jpeg')
+                            .setDescription(`Walking down Fire Dragon’s Street, you're dazzled by a kaleidoscope of color and light, with vibrant banners fluttering overhead and strings of lanterns illuminating the bustling thoroughfare. Food vendors line the cobblestone streets, their stalls overflowing with exotic delicacies and aromatic spices, enticing passersby with promises of culinary delights. Musicians and street performers entertain the crowds, adding to the festive atmosphere as laughter and merriment fill the night air.`)
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Seafood District'){
+                        const attachment = new MessageAttachment('assets/Nottfall/seafood_district.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://seafood_district.jpeg')
+                            .setDescription(`Your senses are overwhelmed by the sights and sounds of the Seafood District, where the salty tang of the ocean mingles with the intoxicating aroma of freshly caught fish and seafood. Market stalls overflow with an abundance of marine treasures, from gleaming silver fish to succulent shellfish and colorful crustaceans. Fishmongers call out their wares while expert chefs demonstrate their culinary skills, tantalizing your taste buds and igniting your appetite for the sea's bounty.`)
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Riverside Ruins"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Spezia Cliffs`,
+                                                value:`**Travelled on Foot**\n**Description**: Spezia Cliffs tower above the coastline, their rugged cliffsides bathed in the warm glow of the setting sun.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Nottfall`,
+                                                value:`**Travelled on Foot**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Spezia Cliffs`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Spezia Cliffs tower above the coastline, their rugged cliffsides bathed in the warm glow of the setting sun.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Nottfall`,
+                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Castle Aurum`,
+                                        value:`**Description**: The majestic residence of Earl Solis, overseeing the affairs of Nottfall with opulence and authority.\n`
+                                    },
+                                    {
+                                        name: `Solis Island Park`,
+                                        value:`**Description**: A secluded oasis in the heart of Nottfall, hosting exclusive gatherings and events for the city's elite.\n`
+                                    },
+                                    {
+                                        name: `Charbar`,
+                                        value:`**Description**: Renowned as the premier pub in Nottfall, serving up savory dishes and a lively atmosphere.\n`
+                                    },
+                                    {
+                                        name: `Fire Dragon’s Street`,
+                                        value:`**Description**: A bustling thoroughfare alive with music, carnival attractions, and delectable street food.\n`
+                                    },
+                                    {
+                                        name: `Seafood District`,
+                                        value:`**Description**: A culinary haven where the freshest catches from Nottfall's river are transformed into exquisite dishes.\n`
+                                    },
+                                    {
+                                        name: `Ekstase Market`,
+                                        value:`**Description**: An exotic marketplace offering a wide array of potions and magical concoctions to enchant the senses.\n`
+                                    },
+                                    {
+                                        name: `Nottfall Ranger Centre`,
+                                        value:`**Description**: The hub for adventurers and guardians, ensuring the safety and security of Nottfall and its surrounding regions.\n`
+                                    },
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Riverside Ruins`,
+                        description: ``,
+                        value: `Riverside Ruins`,
+                    },
+                    {
+                        label: `Stateship of Nottfall`,
+                        description: ``,
+                        value: `Nottfall`,
+                    },
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Castle Aurum`,
+                        description: ``,
+                        value: `Castle Aurum`,
+                    },{
+                        label: `Solis Island Park`,
+                        description: ``,
+                        value: `Solis Island Park`,
+                    },{
+                        label: `Charbar`,
+                        description: ``,
+                        value: `Charbar`,
+                    },{
+                        label: `Fire Dragon’s Street`,
+                        description: ``,
+                        value: `Fire Dragon’s Street`,
+                    },{
+                        label: `Seafood District`,
+                        description: ``,
+                        value: `Seafood District`,
+                    },{
+                        label: `Ekstase Market`,
+                        description: ``,
+                        value: `Ekstase Market`,
+                    },{
+                        label: `Nottfall Ranger Centre`,
+                        description: ``,
+                        value: `Nottfall Ranger Centre`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+
+                    if(location == 'Spezia Cliffs'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Nottfall/spezia_cliffs.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://spezia_cliffs.jpg')
+                        .setDescription(`Standing at Spezia Cliffs, you feel the wind tousle your hair, carrying hints of Gunpowder Spice from below. The rugged cliffs stretch before you, meeting crashing waves, while seabirds glide overhead. Amidst this beauty, the aroma of sizzling seafood beckons from nearby eateries, offering a taste of Spezia's renowned spice.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Nottfall'){
+                        if(foundUser.coins >=0 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.png')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://nottfall_main.png')
+                        .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.png')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://nottfall_main.png')
+                        .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                        
+                    
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Ekstase Market'){
+                        const attachment = new MessageAttachment('assets/Nottfall/ekstase_market.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ekstase_market.jpg')
+                        .setDescription(`The Ekstase Market beckons with its enchanting display of magical wares, floating tables adorned with shimmering potions and exotic artifacts. Alchemists and enchanters ply their trade, offering potions of healing, invisibility, and transformation, each vial brimming with mystical energy. Aromas of rare herbs and spices fill the air, while vendors regale passersby with tales of ancient spells and hidden wonders, tempting you to explore the secrets that lie within.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Castle Aurum'){
+                        const attachment = new MessageAttachment('assets/Nottfall/castle_aurum.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://castle_aurum.jpg')
+                            .setDescription(`As you approach Castle Aurum, its formidable stone walls rise majestically, adorned with intricate golden accents that catch the moonlight. The sound of music and laughter emanates from within, hinting at the lively gatherings held within its grand halls, where nobles and dignitaries convene under the watchful eye of Earl Solis.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Solis Island Park'){
+                        const attachment = new MessageAttachment('assets/Nottfall/solis_islandpark.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://solis_islandpark.jpg')
+                            .setDescription(`tepping onto the tranquil island of Solis Island Park, you find yourself enveloped in a verdant oasis amidst the urban sprawl of Nottfall. Towering trees sway gently in the night breeze, their branches casting dancing shadows upon well-manicured lawns and flower beds. Lanterns of soft, warm light guide your path, leading you towards secluded benches and serene ponds, offering respite from the city's bustling energy.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Nottfall Ranger Centre'){
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_rangercentre.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://nottfall_rangercentre.jpeg')
+                            .setDescription(`There is something about the Guild Outpost where the Guild Rangers, stalwart protectors, can be seen offering aid to the locals, their presence a shield against the dangers of sea spyriths and bandits, while the air hums with a sense of shared purpose and safety.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Charbar`){
+                        const attachment = new MessageAttachment('assets/Nottfall/charbar.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://charbar.jpeg')
+                            .setDescription(`Entering Charbar, you're greeted by the lively buzz of conversation and the tantalizing aroma of sizzling meats and savory dishes. The interior is adorned with nautical decor, from ship wheels to fishing nets, creating a cozy atmosphere reminiscent of a seafarer's tavern. Patrons gather around wooden tables, clinking glasses in celebration as live musicians fill the air with upbeat melodies, adding to the jovial ambiance of this popular establishment.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    } 
+                    else if(location == 'Fire Dragon’s Street'){
+                        const attachment = new MessageAttachment('assets/Nottfall/firedragon_street.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://firedragon_street.jpeg')
+                            .setDescription(`Walking down Fire Dragon’s Street, you're dazzled by a kaleidoscope of color and light, with vibrant banners fluttering overhead and strings of lanterns illuminating the bustling thoroughfare. Food vendors line the cobblestone streets, their stalls overflowing with exotic delicacies and aromatic spices, enticing passersby with promises of culinary delights. Musicians and street performers entertain the crowds, adding to the festive atmosphere as laughter and merriment fill the night air.`)
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Seafood District'){
+                        const attachment = new MessageAttachment('assets/Nottfall/seafood_district.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://seafood_district.jpeg')
+                            .setDescription(`Your senses are overwhelmed by the sights and sounds of the Seafood District, where the salty tang of the ocean mingles with the intoxicating aroma of freshly caught fish and seafood. Market stalls overflow with an abundance of marine treasures, from gleaming silver fish to succulent shellfish and colorful crustaceans. Fishmongers call out their wares while expert chefs demonstrate their culinary skills, tantalizing your taste buds and igniting your appetite for the sea's bounty.`)
                             await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
 
