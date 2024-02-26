@@ -882,7 +882,7 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                             }
                                             else if(foundUser.location == "Hotel Sapphire Star"){
                                                 dialogue = [
-                                                    `Quentin : "Did you hear? The second seat of Lumiere Mr. Felski was recently rewarded with Baronship by the Royal Council for his Unbelievable Contribution to Spyr theory and energy management, he was also the Incharge of the team that built  the Magitech Tower in Ingenia."`
+                                                    `Quentin : "Did you hear? The second seat of Lumiere Mr. Felski was recently rewarded with Baronship by the Royal Council for his Unbelievable Contribution to Spyr theory and energy management, he was also the Incharge of the team that built the Storm Collider Tower in Ingenia."`
                                                     
                                                     
                                                 ]

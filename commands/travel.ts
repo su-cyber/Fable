@@ -62,7 +62,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             {
                                                 name: `State of Zorya`,
                                                 value:`**Travelled on StageCoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:100 🪙`
-                                            }
+                                            },
+                                            {
+                                                name: `Township of Ingenia`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 100 🪙\n`
+                                            },
                                         ])
                                         
                                         }
@@ -87,7 +91,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             {
                                                 name: `State of Zorya`,
                                                 value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.a\n**Cost**:0 🪙\n`
-                                            }
+                                            },
+                                            {
+                                                name: `Township of Ingenia`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 🪙\n`
+                                            },
                                         ])
     
                                         }
@@ -146,10 +154,16 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         label: `The Badlands`,
                         description: ``,
                         value: `The Badlands`,
-                    },{
+                    },
+                    {
                         label: `State of Zorya`,
                         description: ``,
                         value: `Zorya`,
+                    },
+                    {
+                        label: `Township of Ingenia`,
+                        description: ``,
+                        value: `Ingenia`,
                     }
                     )
                     .setDisabled(false),
@@ -233,6 +247,41 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         .setImage('attachment://sunshade_forest.jpg')
                         .setDescription(`As your eyes penetrate the Sunshade Forest in Aube Town, you encounter a foreboding realm cloaked in darkness, where the drought-resistant Sunshade Trees, adorned with broad silver leaves that reflect sunlight, create an eerie and treacherous ambiance, concealing lurking dangers within its depths.\n\n\n\n**Recommeded Level: 2**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    
+                    else if(location == 'Ingenia'){
+                        if(foundUser.completed_quests.includes( "KS-TA-SQ5")){
+                            if(foundUser.coins >=100 && foundUser.mount == "None"){
+                                await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                            const attachment = new MessageAttachment('assets/Ingenia/ingenia_main.jpg')
+                            let successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://ingenia_main.jpg')
+                            .setDescription(`Stepping into Ingenia Town, you're greeted by a bustling hub of creativity, where makeshift homes and tinkering workshops line the streets, and the air hums with the energy of invention.`)
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            }
+                            else if(foundUser.mount != "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                            const attachment = new MessageAttachment('assets/Ingenia/ingenia_main.jpg')
+                            let successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://ingenia_main.jpg')
+                            .setDescription(`Stepping into Ingenia Town, you're greeted by a bustling hub of creativity, where makeshift homes and tinkering workshops line the streets, and the air hums with the energy of invention.`)
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            }
+                            else{
+                                interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            }
+                            
+                
+                }
+                else{
+                    await interaction.editReply({content:`The Route to Ingenia is Blocked by the Emperal Brigade due to the ongoing Nightmare, You cannot proceed right now`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})}) 
+                 }
+                
+                    
                     }
                     else if(location == 'Zorya'){
                         if(foundUser.completed_quests.includes( "KS-TA-SQ5")){
@@ -1251,15 +1300,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             },
                                             {
                                                 name: `Township of Aube`,
-                                                value:`**Travelled on Stage Coach**\n**Description**:The township of Aube\n**Cost**:100 🪙\n`
+                                                value:`**Travelled on Stage Coach**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**:100 🪙\n`
                                             },
                                             {
-                                                name: `Zephyr Mountain`,
-                                                value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
+                                                name: `Township of Ingenia`,
+                                                value:`**Travelled on Stage Coach**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 100 🪙\n`
                                             },
                                             {
-                                                name: `State of Tethys`,
-                                                value:`**Travelled on Stage Coach**\n**Description**:The Stateship of Tethys\n**Cost**:300 🪙\n`
+                                                name: `Township of Underdagen`,
+                                                value:`**Travelled on Stage Coach**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**:100 🪙\n`
                                             },
                                             {
                                                 name: `Capital State of Gloaming`,
@@ -1296,11 +1345,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             },
                                             {
                                                 name: `Township of Aube`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The township of Aube\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**: 0 🪙\n`
                                             },
                                             {
-                                                name: `Zephyr Mountain`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
+                                                name: `Township of Ingenia`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Underdagen`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 🪙\n`
                                             },
                                             {
                                                 name: `Capital State of Gloaming`,
@@ -1395,9 +1448,14 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         value: `Sunstone Mines`,
                     },
                     {
-                        label: `Zephyr Mountain`,
+                        label: `Township of Underdagen`,
                         description: ``,
-                        value: `Zephyr Mountain`,
+                        value: `Underdagen`,
+                    },
+                    {
+                        label: `Township of Ingenia`,
+                        description: ``,
+                        value: `Ingenia`,
                     },
                     {
                         label: `Capital State of Gloaming`,
@@ -1576,6 +1634,58 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         }
                         
                     }
+                    else if(location == 'Ingenia'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Ingenia/ingenia_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ingenia_main.jpg')
+                        .setDescription(`Stepping into Ingenia Town, you're greeted by a bustling hub of creativity, where makeshift homes and tinkering workshops line the streets, and the air hums with the energy of invention.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Ingenia/ingenia_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ingenia_main.jpg')
+                        .setDescription(`Stepping into Ingenia Town, you're greeted by a bustling hub of creativity, where makeshift homes and tinkering workshops line the streets, and the air hums with the energy of invention.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        
+                    }
+                    else if(location == 'Underdagen'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        
+                    }
                     else if(location == 'Orld Tree Husk'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                         const attachment = new MessageAttachment('assets/Zorya/orld_husk.jpg')
@@ -1612,7 +1722,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         else if(foundUser.mount != "None"){
                             let successembed
                             
-                            const attachment = new MessageAttachment('assets/Tethys/werfall_main.jpg')
+                            const attachment = new MessageAttachment('assets/Werfall/werfall_main.jpg')
                             if(foundUser.completed_quests.includes("KS-ZS-MQ1")){
                             await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
                             successembed = new MessageEmbed()
@@ -8419,8 +8529,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
         let btn_cancel = new MessageActionRow().addComponents([
             new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
-            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Interior"),
-            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Lucens Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
         
         let Exteriorselect =  new MessageActionRow().addComponents([
                 new MessageSelectMenu()
@@ -8707,8 +8817,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
         let btn_cancel = new MessageActionRow().addComponents([
             new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
-            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Interior"),
-            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Lucens Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
         
         let Exteriorselect =  new MessageActionRow().addComponents([
                 new MessageSelectMenu()
@@ -9245,12 +9355,12 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Solis Island Park'){
-                        const attachment = new MessageAttachment('assets/Nottfall/solis_islandpark.jpg')
+                        const attachment = new MessageAttachment('assets/Nottfall/solis_islandpark.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
-                            .setImage('attachment://solis_islandpark.jpg')
+                            .setImage('attachment://solis_islandpark.jpeg')
                             .setDescription(`tepping onto the tranquil island of Solis Island Park, you find yourself enveloped in a verdant oasis amidst the urban sprawl of Nottfall. Towering trees sway gently in the night breeze, their branches casting dancing shadows upon well-manicured lawns and flower beds. Lanterns of soft, warm light guide your path, leading you towards secluded benches and serene ponds, offering respite from the city's bustling energy.`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
@@ -9412,8 +9522,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
         let btn_cancel = new MessageActionRow().addComponents([
             new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
-            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Interior"),
-            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Nottfall Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
         
         let Exteriorselect =  new MessageActionRow().addComponents([
                 new MessageSelectMenu()
@@ -9555,12 +9665,12 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Solis Island Park'){
-                        const attachment = new MessageAttachment('assets/Nottfall/solis_islandpark.jpg')
+                        const attachment = new MessageAttachment('assets/Nottfall/solis_islandpark.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
-                            .setImage('attachment://solis_islandpark.jpg')
+                            .setImage('attachment://solis_islandpark.jpeg')
                             .setDescription(`tepping onto the tranquil island of Solis Island Park, you find yourself enveloped in a verdant oasis amidst the urban sprawl of Nottfall. Towering trees sway gently in the night breeze, their branches casting dancing shadows upon well-manicured lawns and flower beds. Lanterns of soft, warm light guide your path, leading you towards secluded benches and serene ponds, offering respite from the city's bustling energy.`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
@@ -9722,8 +9832,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
         let btn_cancel = new MessageActionRow().addComponents([
             new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
-            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Interior"),
-            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Nottfall Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
         
         let Exteriorselect =  new MessageActionRow().addComponents([
                 new MessageSelectMenu()
@@ -9865,12 +9975,12 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Solis Island Park'){
-                        const attachment = new MessageAttachment('assets/Nottfall/solis_islandpark.jpg')
+                        const attachment = new MessageAttachment('assets/Nottfall/solis_islandpark.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
-                            .setImage('attachment://solis_islandpark.jpg')
+                            .setImage('attachment://solis_islandpark.jpeg')
                             .setDescription(`tepping onto the tranquil island of Solis Island Park, you find yourself enveloped in a verdant oasis amidst the urban sprawl of Nottfall. Towering trees sway gently in the night breeze, their branches casting dancing shadows upon well-manicured lawns and flower beds. Lanterns of soft, warm light guide your path, leading you towards secluded benches and serene ponds, offering respite from the city's bustling energy.`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
@@ -9916,6 +10026,1012 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setDescription(`Your senses are overwhelmed by the sights and sounds of the Seafood District, where the salty tang of the ocean mingles with the intoxicating aroma of freshly caught fish and seafood. Market stalls overflow with an abundance of marine treasures, from gleaming silver fish to succulent shellfish and colorful crustaceans. Fishmongers call out their wares while expert chefs demonstrate their culinary skills, tantalizing your taste buds and igniting your appetite for the sea's bounty.`)
                             await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
+
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Ingenia"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Stella Vallis`,
+                                                value:`**Travelled on Foot**\n**Description**: A scenic valley on the outskirts, surrounded by the inventive energy of Ingenia.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Ingenia Dump`,
+                                                value:`**Travelled on Foot**\n**Description**: The repository of discarded inventions and experiments.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Nottfall`,
+                                                value:`**Travelled on Stagecoach**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Zorya`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Aube`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Stella Vallis`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A scenic valley on the outskirts, surrounded by the inventive energy of Ingenia.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Ingenia Dump`,
+                                                value:`**Travelled on Spyralink**\n**Description**: The repository of discarded inventions and experiments.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Nottfall`,
+                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Zorya`,
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Aube`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Storm Collider Tower`,
+                                        value:`**Description**: A mysterious tower harnessing raw Spyr energy in the heart of Ingenia.\n`
+                                    },
+                                    {
+                                        name: `Gear-Dream Plaza`,
+                                        value:`**Description**: A vibrant marketplace at the town's core where ideas and machines converge.\n`
+                                    },
+                                    {
+                                        name: `Maker’s Asylum`,
+                                        value:`**Description**: A haven for tinkering minds, where residents reshape their homes for creation.\n`
+                                    },
+                                    {
+                                        name: `Railpark Nexus`,
+                                        value:`**Description**: A critical hub for the Quarantrain inspections and repairs.\n`
+                                    },
+                                    {
+                                        name: `Flavor Forge`,
+                                        value:`**Description**:  The heart of Ingenia's culinary delights, where Enerjava flows freely\n`
+                                    },
+                                    {
+                                        name: `Ingenia Guild Outpost`,
+                                        value:`**Description**: A regulating outpost ensuring order amidst the inventive chaos.\n`
+                                    },
+                                    
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Nottfall Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Stella Vallis`,
+                        description: ``,
+                        value: `Stella Vallis`,
+                    },
+                    {
+                        label: `Ingenia Dump`,
+                        description: ``,
+                        value: `Ingenia Dump`,
+                    },
+                    {
+                        label: `Stateship of Zorya`,
+                        description: ``,
+                        value: `Zorya`,
+                    },
+                    {
+                        label: `Stateship of Nottfall`,
+                        description: ``,
+                        value: `Nottfall`,
+                    },
+                    {
+                        label: `Township of Aube`,
+                        description: ``,
+                        value: `aube`,
+                    },
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Storm Collider Tower`,
+                        description: ``,
+                        value: `Storm Collider Tower`,
+                    },{
+                        label: `Gear-Dream Plaza`,
+                        description: ``,
+                        value: `Gear-Dream Plaza`,
+                    },{
+                        label: `Maker’s Asylum`,
+                        description: ``,
+                        value: `Maker’s Asylum`,
+                    },{
+                        label: `Railpark Nexus`,
+                        description: ``,
+                        value: `Railpark Nexus`,
+                    },{
+                        label: `Flavor Forge`,
+                        description: ``,
+                        value: `Flavor Forge`,
+                    },{
+                        label: `Ingenia Guild Outpost`,
+                        description: ``,
+                        value: `Ingenia Guild Outpost`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+
+                    if(location == 'Stella Vallis'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Ingenia/stella_vallis.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://stella_vallis.jpg')
+                        .setDescription(`Entering Stella Vallis, you're greeted by the sight of rolling hills and the distant hum of machinery from Ingenia. The valley serves as a tranquil escape, yet the inventive spirit of Ingenia is palpable in the air.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Ingenia Dump'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Ingenia/ingenia_dump.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ingenia_dump.jpeg')
+                        .setDescription(`Venturing into Ingenia Dump, you encounter a landscape of scrapped ideas and inventions. Discarded parts form a mosaic of creativity, a testament to the town's relentless pursuit of innovation. Residents occasionally sift through the dump, seeking hidden treasures amid the discarded.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Nottfall'){
+                        if(foundUser.coins >=0 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.png')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://nottfall_main.png')
+                        .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Nottfall/nottfall_main.png')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://nottfall_main.png')
+                        .setDescription(`As you arrive in Nottfall, you're immersed in a nocturnal spectacle. The streets are submerged beneath a shimmering lake, while the moonlight illuminates the festivities. Flying carpets glide overhead, transporting revelers through the vibrant city. The air is filled with the aroma of exotic potions and seafood delicacies, and the sounds of live music and laughter echo through the Fire Dragon's Street. In the Royal District, Earl Solis's Castle Aurum casts a regal glow, overseeing the city's lively night. Nottfall comes alive after dark, a magical realm where dreams and reality intertwine.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
+                        }
+                        else{
+                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                    else if(location == 'aube'){
+                        if(foundUser.coins>=100 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/AubeTown/Aube_Town.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://Aube_Town.jpg')
+                        .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/AubeTown/Aube_Town.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://Aube_Town.jpg')
+                        .setDescription(`As you arrive in Aube Town, the tranquil beauty of the quaint settlement unfolds before you. Nestled at the eastern edge of the Kingdom, it holds the distinction of being the place where the first rays of the morning sun touch the land, casting a golden glow upon the town and awakening a sense of hope and possibility within your heart.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                    else if(location == 'Zorya'){
+                        if(foundUser.completed_quests.includes( "KS-TA-SQ5")){
+                            if(foundUser.coins>=100 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://zorya_main.jpg')
+                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://zorya_main.jpg')
+                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                
+                }
+                else{
+                    await interaction.editReply({content:`The Route to Zorya is Blocked by the Emperal Brigade due to the ongoing Nightmare, You cannot proceed right now`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})}) 
+                 }
+                
+                    
+                    }
+                        
+                    
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Storm Collider Tower'){
+                        const attachment = new MessageAttachment('assets/Ingenia/stormcollider_tower.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://stormcollider_tower.jpeg')
+                        .setDescription(`Approaching the Storm Collider Tower, you're greeted by humming energy and faint sparks. The tower's structure, adorned with enigmatic symbols, emits an aura of intrigue. Locals move around with purpose, handling devices that seem to channel the tower's energy into various machines.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    if(location == 'Gear-Dream Plaza'){
+                        const attachment = new MessageAttachment('assets/Ingenia/geardream_plaza.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://geardream_plaza.jpg')
+                        .setDescription(`Stepping into Gear-Dream Plaza, you're surrounded by stalls showcasing inventions and spare parts. The air buzzes with discussions about contraptions, and the mish-mash of inventive clothing worn by residents adds a surreal touch to the bustling atmosphere.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Maker’s Asylum'){
+                        const attachment = new MessageAttachment('assets/Ingenia/maker_asylum.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://maker_asylum.jpg')
+                            .setDescription(`Entering Maker’s Asylum, you find homes transformed into inventive workshops. Residents clad in peculiar attire engrossed in their projects. Walls adorned with blueprints and machines whirring, this enclave is a testament to the town's commitment to constant innovation.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Ingenia Guild Outpost'){
+                        const attachment = new MessageAttachment('assets/Ingenia/ingenia_guildoutpost.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://ingenia_guildoutpost.jpeg')
+                            .setDescription(`The outpost stands as a sentinel at the town's edge. Guards inspect newcomers, and a board displays regulations. The air resonates with the sounds of machinery and innovation, contrasting with the order maintained by the outpost.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Flavor Forge`){
+                        const attachment = new MessageAttachment('assets/Ingenia/flavor_forge.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://flavor_forge.jpg')
+                            .setDescription(`Walking into Flavor Forge, you're met with the aroma of Enerjava. The unique layout is dotted with delivery stations, baffling to outsiders. Hiacoons and humans collaborate, processing Enerex Beans to create the beloved drink. Locals eagerly await their Enerjava deliveries in the vibrant atmosphere.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    } 
+                    else if(location == 'Railpark Nexus'){
+                        const attachment = new MessageAttachment('assets/Ingenia/railpark_nexus.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://railpark_nexus.jpg')
+                            .setDescription(`Approaching Railpark Nexus, you see a vast terminal surrounded by tracks. Guards monitor access, emphasizing the facility's importance. The Quarantrain rests, undergoing meticulous inspections, and engineers scurry around with tools, ensuring the technological marvel is at its peak.`)
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    
+
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Stella Vallis"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            
+                                            {
+                                                name: `Ingenia Dump`,
+                                                value:`**Travelled on Foot**\n**Description**: The repository of discarded inventions and experiments.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Ingenia`,
+                                                value:`**Travelled on Foot**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Ingenia Dump`,
+                                                value:`**Travelled on Spyralink**\n**Description**: The repository of discarded inventions and experiments.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Ingenia`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Storm Collider Tower`,
+                                        value:`**Description**: A mysterious tower harnessing raw Spyr energy in the heart of Ingenia.\n`
+                                    },
+                                    {
+                                        name: `Gear-Dream Plaza`,
+                                        value:`**Description**: A vibrant marketplace at the town's core where ideas and machines converge.\n`
+                                    },
+                                    {
+                                        name: `Maker’s Asylum`,
+                                        value:`**Description**: A haven for tinkering minds, where residents reshape their homes for creation.\n`
+                                    },
+                                    {
+                                        name: `Railpark Nexus`,
+                                        value:`**Description**: A critical hub for the Quarantrain inspections and repairs.\n`
+                                    },
+                                    {
+                                        name: `Flavor Forge`,
+                                        value:`**Description**:  The heart of Ingenia's culinary delights, where Enerjava flows freely\n`
+                                    },
+                                    {
+                                        name: `Ingenia Guild Outpost`,
+                                        value:`**Description**: A regulating outpost ensuring order amidst the inventive chaos.\n`
+                                    },
+                                    
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Nottfall Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Ingenia Dump`,
+                        description: ``,
+                        value: `Ingenia Dump`,
+                    },
+                    {
+                        label: `Township of Ingenia`,
+                        description: ``,
+                        value: `Ingenia`,
+                    }
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Storm Collider Tower`,
+                        description: ``,
+                        value: `Storm Collider Tower`,
+                    },{
+                        label: `Gear-Dream Plaza`,
+                        description: ``,
+                        value: `Gear-Dream Plaza`,
+                    },{
+                        label: `Maker’s Asylum`,
+                        description: ``,
+                        value: `Maker’s Asylum`,
+                    },{
+                        label: `Railpark Nexus`,
+                        description: ``,
+                        value: `Railpark Nexus`,
+                    },{
+                        label: `Flavor Forge`,
+                        description: ``,
+                        value: `Flavor Forge`,
+                    },{
+                        label: `Ingenia Guild Outpost`,
+                        description: ``,
+                        value: `Ingenia Guild Outpost`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+
+                    if(location == 'Stella Vallis'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Ingenia/stella_vallis.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://stella_vallis.jpg')
+                        .setDescription(`Entering Stella Vallis, you're greeted by the sight of rolling hills and the distant hum of machinery from Ingenia. The valley serves as a tranquil escape, yet the inventive spirit of Ingenia is palpable in the air.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Ingenia Dump'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Ingenia/ingenia_dump.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ingenia_dump.jpeg')
+                        .setDescription(`Venturing into Ingenia Dump, you encounter a landscape of scrapped ideas and inventions. Discarded parts form a mosaic of creativity, a testament to the town's relentless pursuit of innovation. Residents occasionally sift through the dump, seeking hidden treasures amid the discarded.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Ingenia'){
+                        if(foundUser.coins >=0 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Ingenia/ingenia_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ingenia_main.jpg')
+                        .setDescription(`Stepping into Ingenia Town, you're greeted by a bustling hub of creativity, where makeshift homes and tinkering workshops line the streets, and the air hums with the energy of invention.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Ingenia/ingenia_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ingenia_main.jpg')
+                        .setDescription(`Stepping into Ingenia Town, you're greeted by a bustling hub of creativity, where makeshift homes and tinkering workshops line the streets, and the air hums with the energy of invention.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        
+                    }
+                        
+                    
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Storm Collider Tower'){
+                        const attachment = new MessageAttachment('assets/Ingenia/stormcollider_tower.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://stormcollider_tower.jpeg')
+                        .setDescription(`Approaching the Storm Collider Tower, you're greeted by humming energy and faint sparks. The tower's structure, adorned with enigmatic symbols, emits an aura of intrigue. Locals move around with purpose, handling devices that seem to channel the tower's energy into various machines.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    if(location == 'Gear-Dream Plaza'){
+                        const attachment = new MessageAttachment('assets/Ingenia/geardream_plaza.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://geardream_plaza.jpg')
+                        .setDescription(`Stepping into Gear-Dream Plaza, you're surrounded by stalls showcasing inventions and spare parts. The air buzzes with discussions about contraptions, and the mish-mash of inventive clothing worn by residents adds a surreal touch to the bustling atmosphere.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Maker’s Asylum'){
+                        const attachment = new MessageAttachment('assets/Ingenia/maker_asylum.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://maker_asylum.jpg')
+                            .setDescription(`Entering Maker’s Asylum, you find homes transformed into inventive workshops. Residents clad in peculiar attire engrossed in their projects. Walls adorned with blueprints and machines whirring, this enclave is a testament to the town's commitment to constant innovation.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Ingenia Guild Outpost'){
+                        const attachment = new MessageAttachment('assets/Ingenia/ingenia_guildoutpost.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://ingenia_guildoutpost.jpeg')
+                            .setDescription(`The outpost stands as a sentinel at the town's edge. Guards inspect newcomers, and a board displays regulations. The air resonates with the sounds of machinery and innovation, contrasting with the order maintained by the outpost.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Flavor Forge`){
+                        const attachment = new MessageAttachment('assets/Ingenia/flavor_forge.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://flavor_forge.jpg')
+                            .setDescription(`Walking into Flavor Forge, you're met with the aroma of Enerjava. The unique layout is dotted with delivery stations, baffling to outsiders. Hiacoons and humans collaborate, processing Enerex Beans to create the beloved drink. Locals eagerly await their Enerjava deliveries in the vibrant atmosphere.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    } 
+                    else if(location == 'Railpark Nexus'){
+                        const attachment = new MessageAttachment('assets/Ingenia/railpark_nexus.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://railpark_nexus.jpg')
+                            .setDescription(`Approaching Railpark Nexus, you see a vast terminal surrounded by tracks. Guards monitor access, emphasizing the facility's importance. The Quarantrain rests, undergoing meticulous inspections, and engineers scurry around with tools, ensuring the technological marvel is at its peak.`)
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    
+
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Ingenia Dump"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            
+                                            {
+                                                name: `Stella Vallis`,
+                                                value:`**Travelled on Foot**\n**Description**: A scenic valley on the outskirts, surrounded by the inventive energy of Ingenia.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Ingenia`,
+                                                value:`**Travelled on Foot**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Stella Vallis`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A scenic valley on the outskirts, surrounded by the inventive energy of Ingenia.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Ingenia`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 100 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Storm Collider Tower`,
+                                        value:`**Description**: A mysterious tower harnessing raw Spyr energy in the heart of Ingenia.\n`
+                                    },
+                                    {
+                                        name: `Gear-Dream Plaza`,
+                                        value:`**Description**: A vibrant marketplace at the town's core where ideas and machines converge.\n`
+                                    },
+                                    {
+                                        name: `Maker’s Asylum`,
+                                        value:`**Description**: A haven for tinkering minds, where residents reshape their homes for creation.\n`
+                                    },
+                                    {
+                                        name: `Railpark Nexus`,
+                                        value:`**Description**: A critical hub for the Quarantrain inspections and repairs.\n`
+                                    },
+                                    {
+                                        name: `Flavor Forge`,
+                                        value:`**Description**:  The heart of Ingenia's culinary delights, where Enerjava flows freely\n`
+                                    },
+                                    {
+                                        name: `Ingenia Guild Outpost`,
+                                        value:`**Description**: A regulating outpost ensuring order amidst the inventive chaos.\n`
+                                    },
+                                    
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Nottfall Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Stella Vallis`,
+                        description: ``,
+                        value: `Stella Vallis`,
+                    },
+                    {
+                        label: `Township of Ingenia`,
+                        description: ``,
+                        value: `Ingenia`,
+                    }
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Storm Collider Tower`,
+                        description: ``,
+                        value: `Storm Collider Tower`,
+                    },{
+                        label: `Gear-Dream Plaza`,
+                        description: ``,
+                        value: `Gear-Dream Plaza`,
+                    },{
+                        label: `Maker’s Asylum`,
+                        description: ``,
+                        value: `Maker’s Asylum`,
+                    },{
+                        label: `Railpark Nexus`,
+                        description: ``,
+                        value: `Railpark Nexus`,
+                    },{
+                        label: `Flavor Forge`,
+                        description: ``,
+                        value: `Flavor Forge`,
+                    },{
+                        label: `Ingenia Guild Outpost`,
+                        description: ``,
+                        value: `Ingenia Guild Outpost`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+
+                    if(location == 'Stella Vallis'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Ingenia/stella_vallis.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://stella_vallis.jpg')
+                        .setDescription(`Entering Stella Vallis, you're greeted by the sight of rolling hills and the distant hum of machinery from Ingenia. The valley serves as a tranquil escape, yet the inventive spirit of Ingenia is palpable in the air.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Ingenia Dump'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Ingenia/ingenia_dump.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ingenia_dump.jpeg')
+                        .setDescription(`Venturing into Ingenia Dump, you encounter a landscape of scrapped ideas and inventions. Discarded parts form a mosaic of creativity, a testament to the town's relentless pursuit of innovation. Residents occasionally sift through the dump, seeking hidden treasures amid the discarded.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Ingenia'){
+                        if(foundUser.coins >=0 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Ingenia/ingenia_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ingenia_main.jpg')
+                        .setDescription(`Stepping into Ingenia Town, you're greeted by a bustling hub of creativity, where makeshift homes and tinkering workshops line the streets, and the air hums with the energy of invention.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Ingenia/ingenia_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://ingenia_main.jpg')
+                        .setDescription(`Stepping into Ingenia Town, you're greeted by a bustling hub of creativity, where makeshift homes and tinkering workshops line the streets, and the air hums with the energy of invention.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        
+                    }
+                        
+                    
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Storm Collider Tower'){
+                        const attachment = new MessageAttachment('assets/Ingenia/stormcollider_tower.jpeg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://stormcollider_tower.jpeg')
+                        .setDescription(`Approaching the Storm Collider Tower, you're greeted by humming energy and faint sparks. The tower's structure, adorned with enigmatic symbols, emits an aura of intrigue. Locals move around with purpose, handling devices that seem to channel the tower's energy into various machines.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    if(location == 'Gear-Dream Plaza'){
+                        const attachment = new MessageAttachment('assets/Ingenia/geardream_plaza.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://geardream_plaza.jpg')
+                        .setDescription(`Stepping into Gear-Dream Plaza, you're surrounded by stalls showcasing inventions and spare parts. The air buzzes with discussions about contraptions, and the mish-mash of inventive clothing worn by residents adds a surreal touch to the bustling atmosphere.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Maker’s Asylum'){
+                        const attachment = new MessageAttachment('assets/Ingenia/maker_asylum.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://maker_asylum.jpg')
+                            .setDescription(`Entering Maker’s Asylum, you find homes transformed into inventive workshops. Residents clad in peculiar attire engrossed in their projects. Walls adorned with blueprints and machines whirring, this enclave is a testament to the town's commitment to constant innovation.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Ingenia Guild Outpost'){
+                        const attachment = new MessageAttachment('assets/Ingenia/ingenia_guildoutpost.jpeg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://ingenia_guildoutpost.jpeg')
+                            .setDescription(`The outpost stands as a sentinel at the town's edge. Guards inspect newcomers, and a board displays regulations. The air resonates with the sounds of machinery and innovation, contrasting with the order maintained by the outpost.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Flavor Forge`){
+                        const attachment = new MessageAttachment('assets/Ingenia/flavor_forge.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://flavor_forge.jpg')
+                            .setDescription(`Walking into Flavor Forge, you're met with the aroma of Enerjava. The unique layout is dotted with delivery stations, baffling to outsiders. Hiacoons and humans collaborate, processing Enerex Beans to create the beloved drink. Locals eagerly await their Enerjava deliveries in the vibrant atmosphere.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    } 
+                    else if(location == 'Railpark Nexus'){
+                        const attachment = new MessageAttachment('assets/Ingenia/railpark_nexus.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://railpark_nexus.jpg')
+                            .setDescription(`Approaching Railpark Nexus, you see a vast terminal surrounded by tracks. Guards monitor access, emphasizing the facility's importance. The Quarantrain rests, undergoing meticulous inspections, and engineers scurry around with tools, ensuring the technological marvel is at its peak.`)
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    
 
                 collector_select.stop()
                 collector_cancel.stop()
