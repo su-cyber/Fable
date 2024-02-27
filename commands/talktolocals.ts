@@ -1214,6 +1214,96 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                             }
                                             
                                         }
+                                        else if(foundUser.city_town == "Ingenia"){
+                                            if(foundUser.location == "Storm Collider Tower"){
+                                                dialogue = [
+                                                    `Yandalf: “That tower over there looks impressive doesn't it?  What does it do you ask? Well, that's the Storm Collider Tower, a marvel harnessing Spyr energy. Classified tech, but it powers the Voltivores, giant herbivores, who convert it into energy for the Kingdom of Solarstrio. Ingenia's contribution to the world, you could say.”`,
+                                                    `Skywalker: “The noise in Ingenia can be overwhelming with all the tinkering and inventing. Fortunately, we’ve got a veil that produces sound waves to help cancel out the chaos, keeping us focused on our work. They might not be the safest, but they get the job done.”`
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Gear-Dream Plaza"){
+                                                dialogue = [
+                                                    `Lackerman: “Hey there, you. Yeah you. Don’t be staring at people of Ingenia like we’re a bunch of weirdos. Our clothing is what defines us. You people refer to us as odd-dressers but our dresses are inspired from imaginary heroes and villains from various tales and comics. It may be odd to you, but it is the norm of Ingenia.”`,
+                                                    `Swenpai: “What's the deal with all these weird-looking warehouses? Oh, those? They are our homes. We believe in constant innovation here. If a home lacks something, we just add it ourselves. Walls? Well, we hate them. Any extra space means more room for our projects!”`,
+                                                    `Bluebird: “The marketplace here is unlike any I've seen. You want to know what's the story behind it? This place is Ingenia's heart! The market grew organically around the homes of the first inventors. Each street you see is technically part of the market. The locals prefer selling from stalls right outside their homes, keeping things efficient.”`
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Maker’s Asylum"){
+                                                dialogue = [
+                                                    `Midori: “At the Maker’s Asylum, we encourage inventors from all walks of life to turn their passion into a vision. We supply our members with state-of-the-art machinery, hold competitions, help them procure grants from the Kingdom and connect them with like-minded individuals.”`,
+                                                    `Shatman: “Ingenia Town is a town where ideas come to life. It is filled with mad scientists and engineers who wish to bring about a better world by solving problems of the society in their own way.”`,
+                                                    `Birito: “There are no houses in Ingenia, only warehouses. I mean we don’t even think toilets are that important so we have them in the backyard like a normal person. We don’t have any windows or even comfortable beds, as those things take up space for shelves and storage. Although I have heard that the employees working at the Storm Collider Tower sleep in the most comfortable beds imaginable. It made me wonder if that helped them get better results in research but honestly we don’t see them doing much, while the rest of us are making new inventions everyday.”`
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Railpark Nexus"){
+                                                dialogue = [
+                                                    `Nexus Guardian #1: “The Quarantrain has arrived for inspections and repairs. We can't risk any interference. Outsiders and non-employees aren't allowed access. Security is a top priority.”`,
+                                                    `Nexus Guardian #2: “Are you seriously asking me why such a sturdy invention like the Quarantrain needs repairs? Well…the reason it is sturdy is because of these frequent repairs. You see, unlike regular trains, which travel in protected zones, the Quarantrain travels long distances in the wilds, and often through dangerous zones where it is often targeted by agitated Spyriths without being able to retaliate. Thus, it is in constant need of repairs, sometimes which are quickly done, but other times, you wouldn’t be able to believe what Spyrith attacked it to deal such damage. The outdoors are really scary, Ranger, and for making them safer, I respect you guys.”`
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Flavor Forge"){
+                                                dialogue = [
+                                                    `Darklord: “No bars around here huh? What do we drink you ask? You see, alcohol is not our thing. We're all about Enerjava. It's made from Enerex Beans, grown by the Hiacoons in their burrows. Keeps us energized and hyper-focused on our inventions.”`,
+                                                    `Brobocop: “Taverns? Nah, not our style. But fast food ‘straunts? They're booming. People don't like to cook, so eating out is a thing. Slicezza even delivers straight to your doorstep, which is an astounding feat considering there are no named streets or addresses in Ingenia.”`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Ingenia Guild Outpost"){
+                                                dialogue = [
+                                                    `Windiana Bones: “Hey there, nice to meet you! Not a lot of faces around here in the outpost I must say. Everyday there are less and less of us. I guess most of us Rangers got tired trying to find rare items from the book, but I have been doing it for years now. I am not as strong to go out and fight Spyriths, but I’ve gotten a few promotions by completing the quests here! I may not look like it, but I am quite good!”`,
+                                                    `Kamiari: “The richest man in Ingenia who is also our Mayor - Mr. Weller made his immense wealth by creating a book cataloging every invention from Ingenia from large machines down to the smallest screw, and segmented them into “sets” which the locals began collecting. Mr. Weller set lucrative rewards for every set a person completed/owned in its entirety. The book known as “Inventor’s Quest” quickly turned into a game and its popularity rose to the skies and the locals poured a lot of money to partake in this game. They would even barter rare parts of immense value just to complete a set from the game. That is why there aren’t many Rangers in Ingenia, because most requests are to help people with their collecting, haha!”`,
+                                                    `Boku: “I accidentally attacked an Hiacoon mistaking them for a wild Spyrith and now I am waiting for my Guild to decide on how long they want me suspended…”`
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            
+                                            
+                                        }
                                         
                                         else{
                                             dialogueembed = new MessageEmbed()
