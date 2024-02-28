@@ -10162,7 +10162,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
         let btn_cancel = new MessageActionRow().addComponents([
             new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
-            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Nottfall Interior"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Interior"),
             new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
         
         let Exteriorselect =  new MessageActionRow().addComponents([
@@ -10539,7 +10539,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
         let btn_cancel = new MessageActionRow().addComponents([
             new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
-            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Nottfall Interior"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Ingenia Interior"),
             new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
         
         let Exteriorselect =  new MessageActionRow().addComponents([
@@ -10842,7 +10842,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
         let btn_cancel = new MessageActionRow().addComponents([
             new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
-            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Nottfall Interior"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Ingenia Interior"),
             new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
         
         let Exteriorselect =  new MessageActionRow().addComponents([
@@ -11031,6 +11031,923 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             .setDescription(`Approaching Railpark Nexus, you see a vast terminal surrounded by tracks. Guards monitor access, emphasizing the facility's importance. The Quarantrain rests, undergoing meticulous inspections, and engineers scurry around with tools, ensuring the technological marvel is at its peak.`)
                             await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
+                    
+
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Underdagen"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            
+                                            {
+                                                name: `Zephyr Mountains`,
+                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Crystal Mines`,
+                                                value:`**Travelled on Foot**\n**Description**: A subterranean labyrinth where Dwarven miners extract coveted hex crystals for Solastrio's elite.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Zorya`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**: 100 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Tethys`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 100 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Zephyr Mountains`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Crystal Mines`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A subterranean labyrinth where Dwarven miners extract coveted hex crystals for Solastrio's elite.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Zorya`,
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Tethys`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Grand Khan Smithy`,
+                                        value:`**Description**: The heart of Underdagen's industry, where the master hexsmith forges wonders from the rare Hex Crystals, his legacy echoing through the ages.\n`
+                                    },
+                                    {
+                                        name: `The Bloody Embers`,
+                                        value:`**Description**: Ancient stones whisper tales of a fiery god's wrath, now a haunting relic shrouded in mystery and reverence.\n`
+                                    },
+                                    {
+                                        name: `Sindri Spa`,
+                                        value:`**Description**: Enveloped in billowing steam, weary travelers find solace in the mystical waters, rumored to possess age-defying properties.\n`
+                                    },
+                                    {
+                                        name: `3-16 STONE Bar`,
+                                        value:`**Description**: All the customers say is HELL YEAH!\n`
+                                    },
+                                    {
+                                        name: `Underdagen Guild Outpost`,
+                                        value:`**Description**: The Guild Outpost is home to the unwavering and dedicated Guild Rangers.\n`
+                                    },
+                                    
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Zephyr Mountains`,
+                        description: ``,
+                        value: `Zephyr Mountains`,
+                    },
+                    {
+                        label: `Crystal Mines`,
+                        description: ``,
+                        value: `Crystal Mines`,
+                    },
+                    {
+                        label: `Stateship of Zorya`,
+                        description: ``,
+                        value: `Zorya`,
+                    },
+                    {
+                        label: `Stateship of Tethys`,
+                        description: ``,
+                        value: `Tethys`,
+                    }
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Grand Khan Smithy`,
+                        description: ``,
+                        value: `Grand Khan Smithy`,
+                    },{
+                        label: `The Bloody Embers`,
+                        description: ``,
+                        value: `The Bloody Embers`,
+                    },{
+                        label: `Sindri Spa`,
+                        description: ``,
+                        value: `Sindri Spa`,
+                    },{
+                        label: `3-16 STONE Bar`,
+                        description: ``,
+                        value: `3-16 STONE Bar`,
+                    },{
+                        label: `Underdagen Guild Outpost`,
+                        description: ``,
+                        value: `Underdagen Guild Outpost`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+
+                    if(location == `Crystal Mines`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/crystal_mines.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://crystal_mines.jpg')
+                        .setDescription(`As you delve into the dimly lit tunnels with anticipation, you hear the echoing rhythmic chipping of pickaxes against the rocky walls. Here, amidst the small passages, veins of glistening crystals emerge, their multifaceted surfaces reflecting the torchlight in a dazzling display of colors. The miners, stoic and determined, work tirelessly to unearth these treasures, their efforts fueled by the promise of untold riches and the enduring legacy of their people.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Zephyr Mountains'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`LOCATION REACHED`)
+                        .setImage('attachment://zephyr_mountain.jpg')
+                        .setDescription(`As you embark on the journey to explore Zephyr Mountain, a sense of awe washes over you. The air grows crisper, and the surroundings transform into a realm of rugged beauty. Towering cliffs and cascading waterfalls paint a breathtaking backdrop, while the distant echo of wind whispers tales of ancient secrets. With each step, the terrain becomes more challenging, urging you to push beyond your limits. Yet, as you ascend the mountain's slopes, a sense of accomplishment fills your being, knowing that you are conquering nature's formidable playground. From the summit, you witness a panorama of majestic landscapes, a testament to the boundless wonders that await those who dare to venture into the heart of Zephyr Mountain.`)
+                       await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Zorya'){
+                        if(foundUser.completed_quests.includes( "KS-TA-SQ5")){
+                            if(foundUser.coins>=100 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://zorya_main.jpg')
+                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://zorya_main.jpg')
+                        .setDescription(`As you arrive in the Stateship of Zorya, one of the kingdom's largest states, the skyline greets you with a mesmerizing blend of architectural marvels, where progress and modernity have woven themselves into the very fabric of this bustling metropolis.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                
+                }
+                else{
+                    await interaction.editReply({content:`The Route to Zorya is Blocked by the Emperal Brigade due to the ongoing Nightmare, You cannot proceed right now`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})}) 
+                 }
+                
+                    
+                    }
+                    else if(location == 'Tethys'){
+                        if(foundUser.coins>=100 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://tethys_main.jpg')
+                        .setDescription(`As you approach Tethys, the grandeur of the Zephyr Mountains looms before you, their snow-capped peaks piercing the heavens. Cascading waterfalls cascade down the rocky cliffs, feeding the lush greenery below. Suspended between the cliffs, Haven's Bazaar teems with life, offering a dizzying array of sights and sounds. The air is tinged with the scent of exotic spices from the Zaffran Plains, hinting at the riches that await within this bustling mining state.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://tethys_main.jpg')
+                        .setDescription(`As you approach Tethys, the grandeur of the Zephyr Mountains looms before you, their snow-capped peaks piercing the heavens. Cascading waterfalls cascade down the rocky cliffs, feeding the lush greenery below. Suspended between the cliffs, Haven's Bazaar teems with life, offering a dizzying array of sights and sounds. The air is tinged with the scent of exotic spices from the Zaffran Plains, hinting at the riches that await within this bustling mining state.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                        
+                    
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Grand Khan Smithy'){
+                        const attachment = new MessageAttachment('assets/Underdagen/khan_smithy.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://khan_smithy.jpg')
+                        .setDescription(`As you step into the Grand Smithy, the clang of hammers against anvils fills the air, resonating through the cavernous space. Amidst the flickering glow of the forge fires, you catch sight of the legendary hexsmith Khan, his sturdy frame bent over his work with unwavering focus. Hex crystals adorn every corner, testifying to Khan's unparalleled mastery. It's a place where tradition meets innovation, where the legacy of generations past intertwines with the promise of tomorrow's wonders.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    if(location == 'The Bloody Embers'){
+                        const attachment = new MessageAttachment('assets/Underdagen/bloody_embers.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://bloody_embers.jpg')
+                        .setDescription(`Arriving at the outskirts of town, a mesmerizing sight greets you. the 'Bloody Embers,' a river of molten lava flowing beneath the earth's surface, casting an eerie glow upon the land. Despite the inherent danger, a steady stream of pilgrims still flock here. What transpired to shatter the sanctity of this sacred place? The answers, perhaps, lie in the cryptic symbols and enigmatic glyphs that adorn the chamber walls, awaiting decipherment by those brave enough to delve into the depths of history's mysteries.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Sindri Spa'){
+                        const attachment = new MessageAttachment('assets/Underdagen/sindri_spa.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://sindri_spa.jpg')
+                            .setDescription(`Stepping into the tranquil haven of Sindri Spa, a symphony of bubbling springs and whispered tales fills the air, welcoming weary souls seeking respite. The promise of rejuvenation awaits, as the owner Sindri hints at the mythical potency of these healing waters.Emerging from the depths of Sindri Spa's soothing waters, Your senses are alight with the mingling scents of earth and steam.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Underdagen Guild Outpost'){
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_guildoutpost.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://underdagen_guildoutpost.jpg')
+                            .setDescription(`At the guild outpost in Underdagen, Rangers gather, their spirits alight with the promise of protection. Within sturdy stone walls, preparations hum with purpose, steam powered torch light flickering against the cavern's embrace.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `3-16 STONE Bar`){
+                        const attachment = new MessageAttachment('assets/Underdagen/stone_bar.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://stone_bar.jpg')
+                            .setDescription(`Approaching the bar, you catch sight of Cold Stone, the enigmatic owner, bustling behind the counter. His reputation precedes him, drawing a steady stream of weary travelers and exhausted miners seeking solace after a hard day's labor. You  find yourself swept up in the jovial atmosphere with fellow patrons and reveling in the sense of community that permeates the bar over the ashy Bottom Line.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    } 
+                    
+                    
+
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Crystal Mines"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            
+                                            {
+                                                name: `Zephyr Mountains`,
+                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Underdagen`,
+                                                value:`**Travelled on Foot**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Zephyr Mountains`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Underdagen`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Grand Khan Smithy`,
+                                        value:`**Description**: The heart of Underdagen's industry, where the master hexsmith forges wonders from the rare Hex Crystals, his legacy echoing through the ages.\n`
+                                    },
+                                    {
+                                        name: `The Bloody Embers`,
+                                        value:`**Description**: Ancient stones whisper tales of a fiery god's wrath, now a haunting relic shrouded in mystery and reverence.\n`
+                                    },
+                                    {
+                                        name: `Sindri Spa`,
+                                        value:`**Description**: Enveloped in billowing steam, weary travelers find solace in the mystical waters, rumored to possess age-defying properties.\n`
+                                    },
+                                    {
+                                        name: `3-16 STONE Bar`,
+                                        value:`**Description**: All the customers say is HELL YEAH!\n`
+                                    },
+                                    {
+                                        name: `Underdagen Guild Outpost`,
+                                        value:`**Description**: The Guild Outpost is home to the unwavering and dedicated Guild Rangers.\n`
+                                    },
+                                    
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Zephyr Mountains`,
+                        description: ``,
+                        value: `Zephyr Mountains`,
+                    },
+                    {
+                        label: `Township of Underdagen`,
+                        description: ``,
+                        value: `Underdagen`,
+                    }
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Grand Khan Smithy`,
+                        description: ``,
+                        value: `Grand Khan Smithy`,
+                    },{
+                        label: `The Bloody Embers`,
+                        description: ``,
+                        value: `The Bloody Embers`,
+                    },{
+                        label: `Sindri Spa`,
+                        description: ``,
+                        value: `Sindri Spa`,
+                    },{
+                        label: `3-16 STONE Bar`,
+                        description: ``,
+                        value: `3-16 STONE Bar`,
+                    },{
+                        label: `Underdagen Guild Outpost`,
+                        description: ``,
+                        value: `Underdagen Guild Outpost`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+
+                    if(location == `Crystal Mines`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/crystal_mines.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://crystal_mines.jpg')
+                        .setDescription(`As you delve into the dimly lit tunnels with anticipation, you hear the echoing rhythmic chipping of pickaxes against the rocky walls. Here, amidst the small passages, veins of glistening crystals emerge, their multifaceted surfaces reflecting the torchlight in a dazzling display of colors. The miners, stoic and determined, work tirelessly to unearth these treasures, their efforts fueled by the promise of untold riches and the enduring legacy of their people.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Zephyr Mountains'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`LOCATION REACHED`)
+                        .setImage('attachment://zephyr_mountain.jpg')
+                        .setDescription(`As you embark on the journey to explore Zephyr Mountain, a sense of awe washes over you. The air grows crisper, and the surroundings transform into a realm of rugged beauty. Towering cliffs and cascading waterfalls paint a breathtaking backdrop, while the distant echo of wind whispers tales of ancient secrets. With each step, the terrain becomes more challenging, urging you to push beyond your limits. Yet, as you ascend the mountain's slopes, a sense of accomplishment fills your being, knowing that you are conquering nature's formidable playground. From the summit, you witness a panorama of majestic landscapes, a testament to the boundless wonders that await those who dare to venture into the heart of Zephyr Mountain.`)
+                       await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Underdagen'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        
+                    }
+                        
+                    
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Grand Khan Smithy'){
+                        const attachment = new MessageAttachment('assets/Underdagen/khan_smithy.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://khan_smithy.jpg')
+                        .setDescription(`As you step into the Grand Smithy, the clang of hammers against anvils fills the air, resonating through the cavernous space. Amidst the flickering glow of the forge fires, you catch sight of the legendary hexsmith Khan, his sturdy frame bent over his work with unwavering focus. Hex crystals adorn every corner, testifying to Khan's unparalleled mastery. It's a place where tradition meets innovation, where the legacy of generations past intertwines with the promise of tomorrow's wonders.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    if(location == 'The Bloody Embers'){
+                        const attachment = new MessageAttachment('assets/Underdagen/bloody_embers.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://bloody_embers.jpg')
+                        .setDescription(`Arriving at the outskirts of town, a mesmerizing sight greets you. the 'Bloody Embers,' a river of molten lava flowing beneath the earth's surface, casting an eerie glow upon the land. Despite the inherent danger, a steady stream of pilgrims still flock here. What transpired to shatter the sanctity of this sacred place? The answers, perhaps, lie in the cryptic symbols and enigmatic glyphs that adorn the chamber walls, awaiting decipherment by those brave enough to delve into the depths of history's mysteries.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Sindri Spa'){
+                        const attachment = new MessageAttachment('assets/Underdagen/sindri_spa.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://sindri_spa.jpg')
+                            .setDescription(`Stepping into the tranquil haven of Sindri Spa, a symphony of bubbling springs and whispered tales fills the air, welcoming weary souls seeking respite. The promise of rejuvenation awaits, as the owner Sindri hints at the mythical potency of these healing waters.Emerging from the depths of Sindri Spa's soothing waters, Your senses are alight with the mingling scents of earth and steam.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Underdagen Guild Outpost'){
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_guildoutpost.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://underdagen_guildoutpost.jpg')
+                            .setDescription(`At the guild outpost in Underdagen, Rangers gather, their spirits alight with the promise of protection. Within sturdy stone walls, preparations hum with purpose, steam powered torch light flickering against the cavern's embrace.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `3-16 STONE Bar`){
+                        const attachment = new MessageAttachment('assets/Underdagen/stone_bar.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://stone_bar.jpg')
+                            .setDescription(`Approaching the bar, you catch sight of Cold Stone, the enigmatic owner, bustling behind the counter. His reputation precedes him, drawing a steady stream of weary travelers and exhausted miners seeking solace after a hard day's labor. You  find yourself swept up in the jovial atmosphere with fellow patrons and reveling in the sense of community that permeates the bar over the ashy Bottom Line.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    } 
+                    
+                    
+
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Zephyr Mountains"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            
+                                            {
+                                                name: `Crystal Mines`,
+                                                value:`**Travelled on Foot**\n**Description**: A subterranean labyrinth where Dwarven miners extract coveted hex crystals for Solastrio's elite.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Underdagen`,
+                                                value:`**Travelled on Foot**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Crystal Mines`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A subterranean labyrinth where Dwarven miners extract coveted hex crystals for Solastrio's elite.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Underdagen`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .addFields([
+                                    {
+                                        name: `Grand Khan Smithy`,
+                                        value:`**Description**: The heart of Underdagen's industry, where the master hexsmith forges wonders from the rare Hex Crystals, his legacy echoing through the ages.\n`
+                                    },
+                                    {
+                                        name: `The Bloody Embers`,
+                                        value:`**Description**: Ancient stones whisper tales of a fiery god's wrath, now a haunting relic shrouded in mystery and reverence.\n`
+                                    },
+                                    {
+                                        name: `Sindri Spa`,
+                                        value:`**Description**: Enveloped in billowing steam, weary travelers find solace in the mystical waters, rumored to possess age-defying properties.\n`
+                                    },
+                                    {
+                                        name: `3-16 STONE Bar`,
+                                        value:`**Description**: All the customers say is HELL YEAH!\n`
+                                    },
+                                    {
+                                        name: `Underdagen Guild Outpost`,
+                                        value:`**Description**: The Guild Outpost is home to the unwavering and dedicated Guild Rangers.\n`
+                                    },
+                                    
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Crystal Mines`,
+                        description: ``,
+                        value: `Crystal Mines`,
+                    },
+                    {
+                        label: `Township of Underdagen`,
+                        description: ``,
+                        value: `Underdagen`,
+                    }
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Grand Khan Smithy`,
+                        description: ``,
+                        value: `Grand Khan Smithy`,
+                    },{
+                        label: `The Bloody Embers`,
+                        description: ``,
+                        value: `The Bloody Embers`,
+                    },{
+                        label: `Sindri Spa`,
+                        description: ``,
+                        value: `Sindri Spa`,
+                    },{
+                        label: `3-16 STONE Bar`,
+                        description: ``,
+                        value: `3-16 STONE Bar`,
+                    },{
+                        label: `Underdagen Guild Outpost`,
+                        description: ``,
+                        value: `Underdagen Guild Outpost`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+
+                    if(location == `Crystal Mines`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/crystal_mines.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://crystal_mines.jpg')
+                        .setDescription(`As you delve into the dimly lit tunnels with anticipation, you hear the echoing rhythmic chipping of pickaxes against the rocky walls. Here, amidst the small passages, veins of glistening crystals emerge, their multifaceted surfaces reflecting the torchlight in a dazzling display of colors. The miners, stoic and determined, work tirelessly to unearth these treasures, their efforts fueled by the promise of untold riches and the enduring legacy of their people.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Zephyr Mountains'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`LOCATION REACHED`)
+                        .setImage('attachment://zephyr_mountain.jpg')
+                        .setDescription(`As you embark on the journey to explore Zephyr Mountain, a sense of awe washes over you. The air grows crisper, and the surroundings transform into a realm of rugged beauty. Towering cliffs and cascading waterfalls paint a breathtaking backdrop, while the distant echo of wind whispers tales of ancient secrets. With each step, the terrain becomes more challenging, urging you to push beyond your limits. Yet, as you ascend the mountain's slopes, a sense of accomplishment fills your being, knowing that you are conquering nature's formidable playground. From the summit, you witness a panorama of majestic landscapes, a testament to the boundless wonders that await those who dare to venture into the heart of Zephyr Mountain.`)
+                       await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Underdagen'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        
+                    }
+                        
+                    
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Grand Khan Smithy'){
+                        const attachment = new MessageAttachment('assets/Underdagen/khan_smithy.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://khan_smithy.jpg')
+                        .setDescription(`As you step into the Grand Smithy, the clang of hammers against anvils fills the air, resonating through the cavernous space. Amidst the flickering glow of the forge fires, you catch sight of the legendary hexsmith Khan, his sturdy frame bent over his work with unwavering focus. Hex crystals adorn every corner, testifying to Khan's unparalleled mastery. It's a place where tradition meets innovation, where the legacy of generations past intertwines with the promise of tomorrow's wonders.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    if(location == 'The Bloody Embers'){
+                        const attachment = new MessageAttachment('assets/Underdagen/bloody_embers.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://bloody_embers.jpg')
+                        .setDescription(`Arriving at the outskirts of town, a mesmerizing sight greets you. the 'Bloody Embers,' a river of molten lava flowing beneath the earth's surface, casting an eerie glow upon the land. Despite the inherent danger, a steady stream of pilgrims still flock here. What transpired to shatter the sanctity of this sacred place? The answers, perhaps, lie in the cryptic symbols and enigmatic glyphs that adorn the chamber walls, awaiting decipherment by those brave enough to delve into the depths of history's mysteries.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Sindri Spa'){
+                        const attachment = new MessageAttachment('assets/Underdagen/sindri_spa.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://sindri_spa.jpg')
+                            .setDescription(`Stepping into the tranquil haven of Sindri Spa, a symphony of bubbling springs and whispered tales fills the air, welcoming weary souls seeking respite. The promise of rejuvenation awaits, as the owner Sindri hints at the mythical potency of these healing waters.Emerging from the depths of Sindri Spa's soothing waters, Your senses are alight with the mingling scents of earth and steam.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Underdagen Guild Outpost'){
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_guildoutpost.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://underdagen_guildoutpost.jpg')
+                            .setDescription(`At the guild outpost in Underdagen, Rangers gather, their spirits alight with the promise of protection. Within sturdy stone walls, preparations hum with purpose, steam powered torch light flickering against the cavern's embrace.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `3-16 STONE Bar`){
+                        const attachment = new MessageAttachment('assets/Underdagen/stone_bar.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://stone_bar.jpg')
+                            .setDescription(`Approaching the bar, you catch sight of Cold Stone, the enigmatic owner, bustling behind the counter. His reputation precedes him, drawing a steady stream of weary travelers and exhausted miners seeking solace after a hard day's labor. You  find yourself swept up in the jovial atmosphere with fellow patrons and reveling in the sense of community that permeates the bar over the ashy Bottom Line.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    } 
+                    
                     
 
                 collector_select.stop()

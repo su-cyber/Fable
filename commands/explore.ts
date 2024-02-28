@@ -652,16 +652,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         }
                         
                     }
-                    else if(location == "None"){
-                const attachment = new MessageAttachment('assets/AubeTown/Aube_Town.jpg')
-                let successembed = new MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle(`Now Exploring ${city_town}...`)
-                .setImage('attachment://Aube_Town.jpg')
-                .setDescription(`As you wander through the charming streets of Aube Town, a sense of serenity embraces you. The warm glow of the rising sun bathes the quaint buildings, casting long shadows that dance upon the cobblestones. The town awakens with a gentle buzz of activity, as locals exchange friendly greetings and prepare for the day ahead. From the inviting aroma of freshly baked goods wafting from the local dairy to the cheerful chatter echoing from the town center, every corner reveals the tight-knit community that thrives in this idyllic haven. In Aube Town, you feel a sense of belonging and discover the simple joys of life in a place where the dawn brings not just a new day, but a promise of camaraderie and the embrace of a vibrant community.`)
-                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
-            
-                    }
+                    
                     else{
                         await interaction.reply({content:`You are not in an explorable location!`,ephemeral:true})
                      }
@@ -736,16 +727,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                         await interaction.reply({content:`You are not in an explorable location!`,ephemeral:true})
                     }
                 }
-                else if(location == "None"){
-                const attachment = new MessageAttachment('assets/Zorya/zorya_main.jpg')
-                let successembed = new MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle(`Now Exploring ${city_town}...`)
-                .setImage('attachment://zorya_main.jpg')
-                .setDescription(`As you explore the Stateship of Zorya, your senses are dazzled by a symphony of modernity. Copper-hued buildings rise majestically, adorned with intricate astrolabes that catch the sunlight, casting a mesmerizing glow. The city pulsates with energy as bustling streets and vibrant markets beckon you to indulge in their wares. High above, airships grace the sky, their sleek forms sailing amidst the clouds, a testament to human ingenuity and adventure. In the Stateship of Zorya, the fusion of progress and innovation embraces you, inviting you to revel in the marvels of this thriving metropolis.\n\nuse **/explore** to explore this location`)
-                await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
-            
-                    }
+                
 
                     else{
                         await interaction.reply({content:`You are not in an explorable location!`,ephemeral:true})
@@ -918,23 +900,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 else if(city_town == "Werfall"){
                     await interaction.reply({content:`You are not in an explorable location!`,ephemeral:true})
                 }
-                else if(city_town == "Vigia"){
-                if(location == "None"){
-               const attachment = new MessageAttachment('assets/Vigia/vigia_main.jpg')
-               let successembed = new MessageEmbed()
-               .setColor('RANDOM')
-               .setTitle(`Now Exploring ${city_town}...`)
-               .setImage('attachment://vigia_main.jpg')
-               .setDescription(`As you wander through the charming streets of Aube Town, a sense of serenity embraces you. The warm glow of the rising sun bathes the quaint buildings, casting long shadows that dance upon the cobblestones. The town awakens with a gentle buzz of activity, as locals exchange friendly greetings and prepare for the day ahead. From the inviting aroma of freshly baked goods wafting from the local dairy to the cheerful chatter echoing from the town center, every corner reveals the tight-knit community that thrives in this idyllic haven. In Aube Town, you feel a sense of belonging and discover the simple joys of life in a place where the dawn brings not just a new day, but a promise of camaraderie and the embrace of a vibrant community.`)
-               await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
-           
-                   }
-                   
-                   else{
-                    await interaction.reply({content:`You are not in an explorable location!`,ephemeral:true})
-                    }
-
-               }
+                
                else if(city_town == "Deathrust Forest"){
                 const attachment = new MessageAttachment('assets/Vigia/deathrust.jpg')
                 let successembed = new MessageEmbed()
@@ -1080,24 +1046,9 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 }
             }
 
-            else if(city_town == "Kafig"){
-                if(location == "None"){
-               const attachment = new MessageAttachment('assets/Kafig/kafig_main.jpg')
-               let successembed = new MessageEmbed()
-               .setColor('RANDOM')
-               .setTitle(`Now Exploring ${city_town}...`)
-               .setImage('attachment://kafig_main.jpg')
-               .setDescription(`
-               As you explore Kafig, the welcoming townsfolk gently guide you, sharing tales of the Avian Spyriths and advising against venturing too close to the hostile yet Holy, Asche Peak. They emphasize the importance of respect for Radohn, the legendary bird ruler. While the atmosphere is warm and inviting, a subtle caution lingers, suggesting that the heart of Kafig's charm lies in embracing its legends and traditions rather than wandering into the unknown.`)
-               await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
-           
-                   }
-                  
-                   else{
-                    await interaction.reply({content:`You are not in an explorable location!`,ephemeral:true})
-                    }
-
-               }
+            else{
+                await interaction.reply({content:`You are not in an explorable location!`,ephemeral:true})
+             }
                 
             }
           

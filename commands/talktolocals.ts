@@ -1304,6 +1304,79 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                             
                                             
                                         }
+                                        else if(foundUser.city_town == "Underdagen"){
+                                            if(foundUser.location == "Grand Khan Smithy"){
+                                                dialogue = [
+                                                    `Trent “ WELCOME TO THE GRAND KHAN SMITHY! Yes sir, the very same legend your own local blacksmith told you about. If not for the old man, this place would have lost the means to be a functional town. Yes the other master smiths have a know-how of refining hex crystals too  but the end result always seems to be very crude unless they employ the techniques taught by old man Khan himself. What does he ask for in return? NOTHING.”`,
+                                                    `Luna “Did you know the only thing setting a mass production of hex crystals back at the moment is the fact that Khan himself chooses the ones he deems worthy of the knowledge of refinement? And there are less than ten people in the entire nation who know it. Heck i think a few of them ain’t even hexsmiths. The chosen ones repay him back with blood rune oaths, paying with their lives if they let the secret out. I wonder what makes him go to such great extents”`
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Sindri Spa"){
+                                                dialogue = [
+                                                    `Grey: “AHHHH. This is just what one needs after a long day of hardwork at those mines. I can already feel those scratches and pain on my joints fading away. I'm gonna set right out for the Bottom line next at 3-16. A perfect way to end the day. You should take a dip inside here  ranger! It will heal all your injuries right away and more than anything take away your stress. I'm sure life’s tough being in your job.”`,
+                                                    `Lizzy: “I love these spas so much. Every Time i need to go to Tethys I make sure to get a dip into these waters and it does wonders for my skin and body. I think some scholar I met here once told me that she had a hypothesis that  it was because of the effect of Bloody Ember’s lava mixing into the pure glacial waters of the seven waves. I don’t remember very well but it had something to do with Incendros? Pfft can you imagine that?! Gods blessing us mere beings like that? Not that it matters to me. Whoever made it, I'm just glad it exists.”`,
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "3-16 Stone Bar"){
+                                                dialogue = [
+                                                    `Austin: “Have a sip ranger. The ashy texture, the chilled  state and the amazing taste. You sit there, and you thump your chest, and you say your prayers, and how it didn't get you anywhere. Talk about your hardships, talk about your pains WELL COLD STONE 3:16 SAYS I JUST WHIPPED YOUR LACKS! All you gotta do is go buy yourself a cheap bottle at 3-16 and try to get back some of that courage. And that's the Bottom line because Cold Stone said so!”`,
+                                                    `Rocky: “Don’t tell anyone else but I think Mr. Cold Stone is probably one of the people Khan told the secret of crystal refinement. I’ve never seen Khan come to any other place except 3-16 and him and Cold act like childhood buddies just a few mugs of  Bottom Line down. Not to mention how Mr Cold used to work under Khan back in the day. You see that cold storage over there? I heard Khan gave him  a frost-hex cooler that can go on cooling for a decade without fail!”`,
+                                                      ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Underdagen Guild Outpost"){
+                                                dialogue = [
+                                                    `Wagner: “How are you enjoying the town ranger? Did you swing by the ruins yet? Man that place gives me the creeps. Not to mention how the temperature is always so high, you might wanna use a sol bracelet if you wanna go anywhere near that river of lava unscathed.”`,
+                                                    `Yuri “Oh so you wanna know about the bloody embers? Well I don't know much either but there’s this girl called Lisa who’s researching for the cause. You’ll find her hanging around those ruins for the majority of her day. Either there or at the Sindri Spa when she’s not busy. She’s always looking for some sorta help anyway so maybe do some work for her and she might feed you some bits of the information you’re curious about.”`
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "The Bloody Embers"){
+                                                dialogue = [
+                                                    `Lisa: “Everyday here feels like a new adventure. Oh hello there. Are you an ajin? Mind helping me out a bit? I posted a request at the guild and it seems like it isn’t catching anyone’s eyes and I need it for my research! Some people call me a weirdo but I don’t think they take notice of the number 537 branded on my face. I'm almost among the top 10% of the Lumiere academy! With this research complete I’m sure I’ll push into the top 500 and gain more access to the infinite library. I might even let you in on some information if you take up that quest ranger~”`,
+                                                   
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                           
+                                            
+                                            
+                                        }
                                         
                                         else{
                                             dialogueembed = new MessageEmbed()
