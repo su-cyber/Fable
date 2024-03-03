@@ -268,8 +268,8 @@ export class PvEDuel extends DuelBuilder {
     
     
     async onTurn(skipTurn: boolean,turn:number) {
+        this.addLogMessage(`Turn: ${this.attacker.name}\n`)
         const isMonsterTurn = this.attacker instanceof MonsterEntity
-        this.addLogMessage(`\n\n`)
         if (skipTurn) {
             if (isMonsterTurn) {
                 await sleep(this.speed)
@@ -280,7 +280,6 @@ export class PvEDuel extends DuelBuilder {
         }
         
         if (this.attacker instanceof MonsterEntity) {
-            
            this.attacker.mana += Math.round(this.attacker.maxMana/4)
            if(this.attacker.mana > this.attacker.maxMana){
             this.attacker.mana = this.attacker.maxMana
@@ -623,7 +622,7 @@ export class PvEDuel extends DuelBuilder {
             
         
             
-            
+        this.addLogMessage(`\n`)  
             
             
         }
