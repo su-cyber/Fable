@@ -8,6 +8,7 @@ import { emoji } from '../../../lib/utils/emoji'
 import { calculateModifier } from '../../../../commands/fight'
 import { hydroScale } from '../../items/hydroScale'
 import { staticTalon } from '../../items/staticTalon'
+import { bloodStainedHide } from '../../items/bloodStained_hide'
 
 
 
@@ -31,7 +32,7 @@ export class bloodHound extends MonsterEntity {
 
         await new Dropper([
             {
-                item: staticTalon,
+                item: bloodStainedHide,
                 dropRate: 0.2,
             },
         ]).sendDeathMessage(messages, interaction, this,killer)

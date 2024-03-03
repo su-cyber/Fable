@@ -43,10 +43,15 @@ import { staticTalon } from './staticTalon'
 import { embercrestAsh } from './embercrestAsh'
 import { venomousPlume } from './venomousPlume'
 import { cosmoFeather } from './cosmicFeather'
+import { Bleedroot } from '../flora/Bleeding Gorge/bleedroot'
+import { Veinwood } from '../flora/Bleeding Gorge/veinwood'
+import { bloodGlobule } from './bloodGlobule'
+import { bloodStainedHide } from './bloodStained_hide'
+import { bloodwoodResin } from './bloodwoodResin'
 
 export default [Chorusbloom.create(),
     SunshadeWood.create(),Dreamlily.create(),ArgentenumLeaves.create(),solarCorn,Radiantura_milk,steamShovel,guildTshirt,salePoster,treemickBranch,silkBlob,
     dronerAcid,RayleighFlower.create(),backBreaker,buzzHoney,thornbackShell,shadowCat_tuft,glowingEssence,starHound_tooth,gloomRoot_branch,
     crystalShard,gildedScale,solidifiedMagma,emberScale,shadowViel,solBracelet,goblinWhistle,Glimmerroot.create(),bottleWine,smokeBomb,steamedBread,amberRing,SunbleachedBones.create(),WindblownFeather.create(),MirageCrystal.create(),CrimsonFruit.create(),QuakecoreCrystal,LithoFragment,Siroccowraith_essence,Thornweaver_Thorns,
-    staticTalon,embercrestAsh,venomousPlume,cosmoFeather
+    staticTalon,embercrestAsh,venomousPlume,cosmoFeather,Bleedroot.create(),Veinwood.create(),bloodGlobule,bloodStainedHide,bloodwoodResin
 ]

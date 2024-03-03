@@ -8,6 +8,7 @@ import { emoji } from '../../../lib/utils/emoji'
 import { calculateModifier } from '../../../../commands/fight'
 import { hydroScale } from '../../items/hydroScale'
 import { staticTalon } from '../../items/staticTalon'
+import { bloodwoodResin } from '../../items/bloodwoodResin'
 
 
 
@@ -29,7 +30,7 @@ export class scarletMarsh extends MonsterEntity {
 
         await new Dropper([
             {
-                item: staticTalon,
+                item: bloodwoodResin,
                 dropRate: 0.2,
             },
         ]).sendDeathMessage(messages, interaction, this,killer)
