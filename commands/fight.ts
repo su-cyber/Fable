@@ -269,7 +269,7 @@ export class PvEDuel extends DuelBuilder {
     
     async onTurn(skipTurn: boolean,turn:number) {
         const isMonsterTurn = this.attacker instanceof MonsterEntity
-
+        this.addLogMessage(`\n\n`)
         if (skipTurn) {
             if (isMonsterTurn) {
                 await sleep(this.speed)
