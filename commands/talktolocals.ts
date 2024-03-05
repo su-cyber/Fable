@@ -936,6 +936,116 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                                 })
                                             }
                                         }
+                                        else if(foundUser.city_town == "Gloaming"){
+                                            if(foundUser.location == "Capitol Central"){
+                                                dialogue = [
+                                                    `Elara: “Welcome to Capitol Central. This is the very center of the capital state where most of the 'Real' work is done, we have the Kingdom hall right over there where you can see the upcoming projects and laws that are going to be undertaken by our king, you can also enroll there for community service or even register a complaint of any kind, the King's Army will take care of it in no time. Remember in Solarstrio, order is maintained by the King's Army…I wouldn't dare do anything funny over here if I was you.”`,
+                                                    `Iza : "You seem new over here, are you a tourist or perhaps you need Citizenship? Visit the Solarstrio Bureau in the main street. They manage bureaucratic tasks and ensure a smooth process for tourists and refugees. Serving the Kingdom's needs. Any official work from owning a business or property in solarstrio has to go through the Solarstrio Bureau for processing, they are really quick tho so don't worry about waiting in long lines!"`
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Badshahi Bazaar"){
+                                                dialogue = [
+                                                    `Farid: “You appear to be new in these alluring streets of the Bazaar, this is the largest Market in all of Solarstrio famous for it's textiles, spices and equipments, You can get anything you want just name it! Here, look at this fine piece of cloth..it's made of Mirage Silk, a special silk cultivated in villages near the banks of the seven waves. It has a unique property to regulate the body temperature in response to the climate making it hugely popular all over solarstrio and within the burning heat of the Mirazh Empire. You know, over the decades there is an entire trade route dedicated to mirage silk from solarstrio to Mirazh Empire now known as the Mirage Route. Gloaming lies at the Center of it!”`,
+                                                    `Zara : "Welcome, esteemed traveler, to Zara's Spice Emporium! Behold the jewel of Solarstrio – our finest Zaffran, nurtured in the mountains of Tethys. This spice transcends mere flavor; it's an exquisite essence, a spice loved by the royalty. Zaffran only grows in cold and mountainous regions and the northern state of Tethys grows some of the best! The Mirazh Empire gives us a lofty amount for it and in return we get some of their best spices, Trade is all about intermixing cultures! Try some of these spices and you'll know for yourself."`,
+                                                    `Inka: "psst! Did you hear? The king's army caught some goons trying to mint fake crus and circulate them in the market. Make sure you always check the authenticity of the crystals by looking at them in light, you can see a beautiful pattern inside them if it's real!"`
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Spirit Arsenal"){
+                                                dialogue = [
+                                                    `Sylas: “Gloaming's Architecture is so mesmerizing isn't it? The State has various stone pillars all over the place which are interconnected by stone arches and bridges creating an entire floor at the top, these stone pillars also house the barracks of various Helios Aureus units, you have heard of them right? The King's Army? And this my friend is the Largest stone pillar atop which our Great King's Castle rest, the Castle Heliad. This stone pillar looks weird doesn't it? That's because there are several superior weapons engraved on it's walls, 1001 to be exact.”`,
+                                                    `Caius : " Look at those shiny weapons, each one of them is an expertly crafted weapon by the ancient master swordsmith of Haganeshiro known as the 'God of Steel'. All these weapons are imbued with an ancient Spyr art that invokes a spirit to these weapons giving them the name 'Spirit Blades. Every warrior in Vearth dreams of wielding a spirit blade but one must be chosen by the blade itself to wield it, I have been training for years to become worthy of them. I am sure I will be chosen this time in the Steel Spirit Festival!"`,
+                                                    `Elestria : "This pillar might look majestic because of the weapons it holds but its history is even more intriguing. It is said that the first shogun of Haganeshiro gave the Spirit Arsenal and Castle Heliad as a gift to the Monarch of Solarstrio centuries ago for helping him unite the various warring provinces of Haganeshiro once and for all. Those were terrible times of war and bloodshed termed as the "Era of Eternal War" by us historians, there are a total of 3 Jade grade weapons in the Spirit Arsenal out of the 12 ever known to Vearth. However their wielders are either never chosen or are unknown till this day."`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Shahi Quila"){
+                                                dialogue = [
+                                                    `Parvez: “Hello there Ranger! I am the manager of Shahi Quila, welcome to our centuries old establishment. We have the most exquisite Kebabs and Curries in all of Vearth. Shahi Quila is directly funded and sponsored by the King, it is said that centuries ago when the monarch went to visit Mirazh Empire, he got so infatuated with the food that the Sultan gifted his royal cooks to the Monarch who came here and set up the Shahi Quila. We serve centuries old recipes passed on as legacy and we never charge more than you can afford, pay whatever you'd like! We even distribute food for free to the needy.”`,
+                                                    `Nadia : "You look like you are new here, a traveler perhaps? Gloaming has never been so prosperous before, all thanks to our great king Helios! Be it trade, order or science Solarstrio leads in everything. But it was not always the same, Solarstrio suffered the tyranny of the mad King and the nobles before King Helios appeared out of nowhere decades ago and led a revolution to overthrow the monarchy. He even changed the capital from Dremenlond to Gloaming to show his disgust for the Nobility, he is a true king I tell you!"`,
+                                                    `Rajesh : "Man, the curries of Shahi Quila are just the best! By the way you look like a warrior…are you here for the Steel Spirit Festival this year? Man I hope I could participate in it too, I envy the warriors who prove their worth to the spirit blades and get chosen by them! It's said the spirit blades are some of the strongest weapons in Vearth today."`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Solar Vault"){
+                                                dialogue = [
+                                                    `Drul: “Greetings Patron! Welcome to the Solar Vault, Solarstrio's esteemed central bank. We provide various facilities like safeguarding your surplus crus, giving out loans and even give you interest on the deposits! Would you like to open an account, sir? Kindly head this way.”`,
+                                                    `Rad: "The shiny crystals in your hands that we call crus would have no value if the public didn't trust in the concept of money and currency. It is a common trust that has been created throughout the years to make crus the universal means of trade throughout Vearth! How fascinating is that?"`
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Gloaming Ranger Centre"){
+                                                dialogue = [
+                                                    `Nalin: “Hey fellow Ranger! There is not much to do here for us rangers to be honest, crime rate here is close to none because of the King's Army and their Militaristic Regime, they are very strict but act towards people's interests. Those guys are really powerful, try not to mess with them. If you are looking for hunting, you should head to the Orld Tree's husk…The Spyriths there are crazy strong.”`,
+                                                    `Dior:”Did you know,The Orld Tree is considered the oldest tree in existence it is as ancient as the Age of Beginning. The tree is said to be bigger than an entire stateship! Although it is practically dead now, the huge husk we see now is still so huge that the shadow it casts during different times of the day to the various regions makes it almost like night there!”`,
+                                                    `Abel: “Ah a fellow ranger! Are you planning to go Orld Tree's Husk hunting spyriths as well? I’m looking for some Tempesthorns, their horns fetch a good price! Beware of those Rockmaulers though, they are very strong! They usually live in tribes and are extremely aggressive, those with the red crystals are especially dangerous!”`
+                                                    
+                                                    
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Castle Heliad"){
+                                                dialogue = [
+                                                    `Nalin: “Halt! Ranger or not, The Castle is off limits. This is a sanctuary for our king, only those with a purpose may enter, Anyway our king doesn't wish to have audience with anyone at the moment. State your purpose or turn away, you surely might not want to force the wrath of the Helios Aureus upon yourself, Ajin. We are the strongest force of Solarstrio.”`,
+                                                    `Bryn : "Ah! Did you get turned away by the castle guards as well? They are quite strict aren't they…But they are good people, Helios Aureus, a knight chapter created by King Helios himself to serve him. They are extremely loyal to him and can go to any lengths to do his bidding, therefore they are termed as the 'King's Army'. There are barracks of Helios Aureus above every stone pillar in Gloaming, they jump down from them using their turbine boots that allows them to fly and stop any crime in no time. Our people often revere them as superheroes! The Headquarters of Helios Aureus is also inside Castle Heliad."`,
+                                                    `Theron: "Have you ever heard the story of the Orld Tree? It is an ancient tree albeit the oldest in existence, it was so huge that it could cover an entire state…people used to worship it until it turned out to be parasitic in nature that sucked out Spyr from the living beings around it. Legend has it that someone who shone like sun rid it by annihilating it until only it's husk remained, it's said that inside the tree there was a unique seed which King Helios planted in his garden at Castle Heliad, it grew out to be a bonsai Orld Tree! Anyways that incident is still a legend and no one knows who it was."`
+   
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                        }
                                         else if(foundUser.city_town == "Vesper"){
                                             if(foundUser.location == "Gaiyo Plaza"){
                                                 dialogue = [

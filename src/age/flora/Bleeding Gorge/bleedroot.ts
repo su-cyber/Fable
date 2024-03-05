@@ -8,7 +8,7 @@ export class Bleedroot extends Flora{
 
     id:"Bleedroot_bleedinGorge" ,
     name: "Bleedroot",
-    description: "These mushroom are an elusive species found hidden deep within the twisted network of the Ashroot tree's roots. It has a jet-black cap with iridescent blue markings, resembling moonlit shadows. Its gills appear as delicate, silvery threads that shimmer faintly in the darkness. Consuming the Shadowgill mushroom grants temporary night vision and a heightened sense of perception in low-light environments.",
+    description: "A root-like vegetable that grows in the marshy lands of the bleeding gorge, the vegetable gives off blood like juices rich in iron and nutrients and a popular vegetarian delicacy.",
     spawnRate: 0.7,
     type: "flora",
     cost:200,

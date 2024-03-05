@@ -8,7 +8,7 @@ export class Veinwood extends Flora{
 
     id:"Veinwood_bleedinGorge" ,
     name: "Veinwood Bark",
-    description: "These mushroom are an elusive species found hidden deep within the twisted network of the Ashroot tree's roots. It has a jet-black cap with iridescent blue markings, resembling moonlit shadows. Its gills appear as delicate, silvery threads that shimmer faintly in the darkness. Consuming the Shadowgill mushroom grants temporary night vision and a heightened sense of perception in low-light environments.",
+    description: "The Veinwood Tree is a towering, ancient tree with bark that resembles the texture of human veins. Its leaves are a deep burgundy color, and it draws sustenance from the rich, iron-laden soil of the Bleeding Gorge.",
     spawnRate: 0.3,
     type: "flora",
     cost:800,

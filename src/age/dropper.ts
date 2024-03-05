@@ -90,7 +90,7 @@ export class Dropper {
        ${killer.name} gained ${gainedXP} XP!
        
        ${drop ? `${killer.name} found ${drop.name}! 
-       ${drop.emoji} X ${1}` : ''}
+       ${drop.name} X ${1}` : ''}
        `
         let deathEmbed = new MessageEmbed()
         .setColor('GREEN')
