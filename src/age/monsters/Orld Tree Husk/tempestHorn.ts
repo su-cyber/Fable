@@ -75,7 +75,7 @@ export class Tempesthorn extends MonsterEntity {
                         let stab = calculateSTAB("gale",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Tempest Charge`)
                         defender.takeDamage
-                            .magical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .magical(attacker.magicPower*23*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** condenses spyr into it's horn manifesting a massive horn made of destructive winds and crashes into ${defender.name} at full force causing ${damage} damage`)
                     }
                 },{

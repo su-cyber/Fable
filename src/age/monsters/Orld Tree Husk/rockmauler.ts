@@ -76,7 +76,7 @@ export class Rockmauler extends MonsterEntity {
                         let stab = calculateSTAB("terra",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Giga Thrust`)
                         defender.takeDamage
-                            .magical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** condenses spyr into it's crystalline knuckles and thrusts them into ${defender.name} in a fury causing ${damage} damage`)
                     }
                 },{

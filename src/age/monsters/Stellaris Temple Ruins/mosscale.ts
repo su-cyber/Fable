@@ -75,7 +75,7 @@ export class Mosscale extends MonsterEntity {
                         let stab = calculateSTAB("terra",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Swamp Crush`)
                         defender.takeDamage
-                            .magical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** crushes ${defender.name} with huge fists covered with hardened mud causing ${damage} damage`)
                     }
                 },{

@@ -73,7 +73,7 @@ export class Luminaray extends MonsterEntity {
                         let stab = calculateSTAB("light",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Bright Sting`)
                         defender.takeDamage
-                            .magical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .magical(attacker.magicPower*23*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}**'s spyr infused sting penetrates deep into ${defender.name} causing them to lose ${damage} HP`)
                     }
                 },{

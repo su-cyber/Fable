@@ -72,7 +72,7 @@ export class Willowshade extends MonsterEntity {
                         let stab = calculateSTAB("bloom",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Root Rush`)
                         defender.takeDamage
-                            .magical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** attacks ${defender.name} with a barrage of roots with deadly precision causing ${damage} damage`)
                     }
                 },{

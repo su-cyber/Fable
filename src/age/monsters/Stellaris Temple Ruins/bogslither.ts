@@ -73,7 +73,7 @@ export class Bogslither extends MonsterEntity {
                         let stab = calculateSTAB("venom",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Slug Toxin`)
                         defender.takeDamage
-                            .magical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .magical(attacker.magicPower*23*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** throws toxic sludge into ${defender.name} causing ${damage} damage`)
                     }
                 },{
