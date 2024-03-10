@@ -1,10 +1,10 @@
 import { Flora } from "../../classes/flora";
 
-export class Bleedroot extends Flora{
+export class Prismawood extends Flora{
 
 
     static create(){
-        return new Bleedroot({
+        return new Prismawood({
 
     id:"Prismashade_OrldTreeHusk" ,
     name: "Prismawood",

@@ -92,7 +92,7 @@ export class Tempesthorn extends MonsterEntity {
                         attacker.magicResistance = 1.25*attacker.magicResistance
 
                         attacker.addLogMessage(
-                            `${attacker.name} used Aurora Guard`,
+                            `${attacker.name} used Exo Guard`,
                             `${attacker.name}'s exoskeleton hardens several folds creating an impenetrable skin increasing defenses by 25%`
                         )
                         
