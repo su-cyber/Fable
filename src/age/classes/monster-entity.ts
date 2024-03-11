@@ -76,29 +76,47 @@ export class MonsterEntity extends Entity {
                 }
             }
             else if(attacker.hasEffect(blind)){
-                const chance = weightedRandom([true,false],[0.5,0.5])
-                if(chance == true){
-                    this.addLogMessage(`${attacker.name} missed the attack due to blindness!`)
+                if(skill.type != "passive"){
+                    const chance = weightedRandom([true,false],[0.5,0.5])
+                    if(chance == true){
+                        this.addLogMessage(`${attacker.name} could'nt attack due to blindness!`)
+                        attacker.mana+=skill.mana_cost
+                    }
+                    else{
+                        const text = skill.use(this, defender)
+                        if (text) {
+                            this.addLogMessage(...(Array.isArray(text) ? text : [text]))
+                    }
+                    }
                 }
                 else{
                     const text = skill.use(this, defender)
-                    if (text) {
-                        this.addLogMessage(...(Array.isArray(text) ? text : [text]))
-                }
+                        if (text) {
+                            this.addLogMessage(...(Array.isArray(text) ? text : [text]))
+                    }
                 }
             }
             else if(attacker.hasEffect(stun)){
-                const chance = weightedRandom([true,false],[0.5,0.5])
-                if(chance == true){
-                    this.addLogMessage(`${attacker.name} couldn't attack due to being stunned!`)
-                    attacker.mana+=skill.mana_cost
+                if(skill.type != "passive"){
+                    const chance = weightedRandom([true,false],[0.5,0.5])
+                    if(chance == true){
+                        this.addLogMessage(`${attacker.name} could'nt attack due to being stunned!`)
+                        attacker.mana+=skill.mana_cost
+                    }
+                    else{
+                        const text = skill.use(this, defender)
+                        if (text) {
+                            this.addLogMessage(...(Array.isArray(text) ? text : [text]))
+                    }
+                    }
                 }
                 else{
                     const text = skill.use(this, defender)
-                    if (text) {
-                        this.addLogMessage(...(Array.isArray(text) ? text : [text]))
+                        if (text) {
+                            this.addLogMessage(...(Array.isArray(text) ? text : [text]))
+                    }
                 }
-                }
+                
             }
             else if(attacker.hasEffect(illusion)){
                 attacker.addLogMessage("You are under illusion!")

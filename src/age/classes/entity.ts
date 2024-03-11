@@ -272,7 +272,7 @@ export class Entity {
             }
         }
         else if(attacker.hasEffect(illusion)){
-            attacker.addLogMessage("You are under illusion!")
+            attacker.addLogMessage(`${attacker.name} is under illusion!`)
                 const text = skill.use(this, attacker)
                 if (text) {
                     this.addLogMessage(...(Array.isArray(text) ? text : [text]))
