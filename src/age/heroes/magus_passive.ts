@@ -22,7 +22,7 @@ const magus_passive = [{
         .run(() =>{
             
                 attacker.magicResistance += Math.round(0.03*attacker.magicResistance)
-            attacker.addLogMessage(`${attacker.name} raised their attacking stats due to the effect of **Berserk**`)
+            attacker.addLogMessage(`${attacker.name} raised their knowledge stat due to the effect of **Prodigy**`)
             
             
         }

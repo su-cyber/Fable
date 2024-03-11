@@ -292,7 +292,7 @@ export class PvEDuel extends DuelBuilder {
                 if(this.attacker.passive_skills.length !=0){
                     let i
                     for(i=0;i<this.attacker.passive_skills.length;i++){
-                        const passive_skill = passive_skills.find(skill => skill.name === this.attacker.passive_skills[i].name)
+                        const passive_skill = this.attacker.passive_skills[i]
                         this.attacker.useSkill(this.attacker,this.defender,passive_skill)
                         
                         

@@ -7,6 +7,7 @@ import lvl_modifier from '../../../utils/lvl_modifier'
 import { emoji } from '../../../lib/utils/emoji'
 import { calculateModifier } from '../../../../commands/fight'
 import { spyrHorn } from '../../items/spyrHorn'
+import { bogSecretion } from '../../items/bogSecretion'
 
 
 
@@ -33,7 +34,7 @@ export class Bogslither extends MonsterEntity {
 
         await new Dropper([
             {
-                item: spyrHorn,
+                item: bogSecretion,
                 dropRate: 0.2,
             },
         ]).sendDeathMessage(messages, interaction, this,killer)

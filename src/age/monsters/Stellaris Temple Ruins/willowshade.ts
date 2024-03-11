@@ -8,6 +8,7 @@ import { emoji } from '../../../lib/utils/emoji'
 import { calculateModifier } from '../../../../commands/fight'
 import { spyrHorn } from '../../items/spyrHorn'
 import { stun } from '../../effects/stun'
+import { willowBark } from '../../items/willowBark'
 
 
 
@@ -32,7 +33,7 @@ export class Willowshade extends MonsterEntity {
 
         await new Dropper([
             {
-                item: spyrHorn,
+                item: willowBark,
                 dropRate: 0.2,
             },
         ]).sendDeathMessage(messages, interaction, this,killer)

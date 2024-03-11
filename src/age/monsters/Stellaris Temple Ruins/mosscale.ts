@@ -7,6 +7,7 @@ import lvl_modifier from '../../../utils/lvl_modifier'
 import { emoji } from '../../../lib/utils/emoji'
 import { calculateModifier } from '../../../../commands/fight'
 import { spyrHorn } from '../../items/spyrHorn'
+import { mosscaleTooth } from '../../items/mosscale_tooth'
 
 
 
@@ -35,7 +36,7 @@ export class Mosscale extends MonsterEntity {
 
         await new Dropper([
             {
-                item: spyrHorn,
+                item: mosscaleTooth,
                 dropRate: 0.2,
             },
         ]).sendDeathMessage(messages, interaction, this,killer)
