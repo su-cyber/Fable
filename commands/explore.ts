@@ -356,6 +356,83 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                 await interaction.reply({embeds:[successembed],components:[],files:[attachment]})
             
                 }
+                else if(city_town == "Swamp of Abyss"){
+                       
+                      
+                           let btnraw= new MessageActionRow().addComponents([
+                               new MessageButton().setCustomId("btn_accept").setStyle("PRIMARY").setLabel("Enter"),
+                               new MessageButton().setCustomId("btn_reject").setStyle("DANGER").setLabel("Cancel"),])
+       
+                               let d_btnraw = new MessageActionRow().addComponents([
+                                   new MessageButton().setCustomId("dbtn_accept").setStyle("PRIMARY").setLabel("Enter").setDisabled(true),
+                                   new MessageButton().setCustomId("dbtn_reject").setStyle("DANGER").setLabel("Cancel").setDisabled(true),
+                               ])
+                               const attachment = new MessageAttachment('assets/Vesper/swamp_of_abyss.jpeg')
+                           let dungeonEmbed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle(`Exploring ${location}...`)
+                                   .setImage('attachment://swamp_of_abyss.jpeg')
+                                   .setDescription(`As you step into the Swamp of Abyss, a shroud of darkness envelops you, and the air thickens with the scent of decay. The murky waters ripple ominously, and eerie sounds echo through the twisted trees that loom overhead. Your heart pounds in your chest as you venture deeper, the treacherous terrain making each step a test of nerve and skill. You can feel the weight of the swamp pressing down on you, its secrets lurking just beyond the veil of shadows.\n\nYou are about to enter a dungeon!\nDo you wish to proceed?\n\n**Recommeded Level: 17**`)
+               
+                                   let acceptEmbed = new MessageEmbed()
+                                   .setColor('GREEN')
+                                   .setTitle('ENTERED DUNGEON')
+                                   .setDescription('You have decided to enter!\npress /proceeddungeon in DMs to move forward')
+               
+                                   let rejectEmbed = new MessageEmbed()
+                                   .setColor('RED')
+                                   .setTitle('RETREAT')
+                                   .setDescription('You decided to retreat!')
+                                   
+                               
+                               await interaction.reply({content: null,embeds:[dungeonEmbed],components:[btnraw],files:[attachment]})
+                               let filter = i => i.user.id === authorId
+                                   let collector = await interaction.channel.createMessageComponentCollector({filter: filter,time : 1000 * 120})
+                           
+                                   collector.on('collect',async (btn) => {
+                                       if(btn.isButton()){
+                                           if(btn.customId === "btn_accept"){
+                                               await btn.deferUpdate().catch(e => {})
+                                               await interaction.editReply({embeds:[acceptEmbed]})
+                                               foundUser.dungeon.status = true
+                                               foundUser.dungeon.name = "Swamp of Abyss"
+                                               foundUser.dungeon.step = 1 
+                                               await profileModel.updateOne({userID:authorId},{dungeon:foundUser.dungeon})
+                                               interaction.user.send(`You are now inside a dungeon!\npress /proceeddungeon to move forward`)
+           
+                                               
+                                          
+                                           collector.stop()
+                                               
+                                           }
+                                           else if(btn.customId === "btn_reject"){
+                                               await btn.deferUpdate().catch(e => {})
+                                               await interaction.editReply({embeds:[rejectEmbed],components:[]})
+       
+                                           
+           
+                                               collector.stop()
+                                           }
+           
+                                           
+                                           
+                                       }
+                                         
+                           
+                              
+                              
+                               })
+           
+                               collector.on('end', () => {
+                                   interaction.editReply({components: [d_btnraw]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                               })
+                       
+                       
+                   
+                   
+                   
+
+               }
             else{
                 await interaction.reply({content:`You are not in an explorable location!`,ephemeral:true})
              }

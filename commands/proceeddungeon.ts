@@ -20,6 +20,12 @@ import { Hydragon } from '../src/age/Dungeon-Mobs/hydragon'
 import { kabuto } from '../src/age/weapons/kabuto'
 import { Dinocodile } from '../src/age/Dungeon-Mobs/dynocodile'
 import { popGreen_Grimoire } from '../src/age/grimoires/popGreen'
+import { Bogslither } from '../src/age/monsters/Stellaris Temple Ruins/bogslither'
+import { Grimjaws } from '../src/age/Dungeon-Mobs/grimjaws'
+import { Murkwraithe } from '../src/age/Dungeon-Mobs/murkwraithe'
+import { Nebula } from '../src/age/flora/Dungeon Flora/nebulaFlower'
+import { BassiliskVenom } from '../src/age/Dungeon-Mobs/bassiliskAbyss_venom'
+import sample from 'lodash.sample'
 
 
 export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 'Move in the Dungeon' })
@@ -2038,9 +2044,1485 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                     }
                                      
                                     }
+                                    else if(dungeon.name === "Swamp of Abyss"){
+                                        if(dungeon.step == 1){
+                                            let stepembed = new MessageEmbed()
+                                            .setColor('RED')
+                                            .setTitle('STEP #1 - DIALOGUE')
+                                            .setDescription(`Swamp Guard - “This Swamp is very dangerous infested with deadly spyriths, I see you are a ranger but I would recommend you to go only if you have utmost confidence in your abilities.”`)
+                                            await interaction.reply({embeds:[stepembed],components:[]})
+                    
+                                            dungeon.step+=1
+                                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                        }
+                                        else if(dungeon.step == 2){
+                                            
+                                            const pick = weightedRandom(["En1","En2","En3"],[0.6,0.3,0.1])
+                                            if(pick == "En1"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Bogslither.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`While Navigating the murky waters of the swamp, you feel something slithering under your feet. Suddenly a Bogslither attacks you!`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            else if(pick == "En2"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Grimjaws.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`You Notice a pair of glowing eyes approaching you at high speed, It's a Grimjaws coming to Feast on you!`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            else if(pick == "En3"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Murkwraithe.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`As you navigate the Swamp of Abyss, a colossal Murkwraithe, a spectral golem of mud and spyr, awakens sensing your strong spyr. Its glowing eyes pierce the mist staring at you.`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            
+                                            }
+                                        }
+                                        else if(dungeon.step == 3){
+                                            const pick = weightedRandom(["En1","En2","En3"],[0.3,0.4,0.3])
+                                            if(pick == "En1"){
+                                                const attachment = new MessageAttachment(`assets/Vesper/swamp_trap.jpeg`)
+                                                let stepembed
+                                                const damage = Math.round(0.1*getHealth(foundUser.level,foundUser.vitality))
+                                                if(foundUser.health-damage <= 0){
+                                                    stepembed = new MessageEmbed()
+                                                    .setColor('RED')
+                                                    .setTitle('STEP #3')
+                                                    .setImage('attachment://swamp_trap.jpeg')
+                                                    .setDescription(`As you move through the swamp, suddenly, the ground beneath you gives way, pulling you into the deadly clutches of the swamp.\nYou lost ${damage} health!\n\n**You were critically Injured and were rescued out of the Swamp**`)
+                                                    await interaction.reply({embeds:[stepembed],components:[],files:[attachment]})
+
+                                                    foundUser.location = "None"
+                                                    dungeon.status = false
+                                                    dungeon.name = ""
+                                                    dungeon.step = 0
+                                                    await profileModel.updateOne({userID:authorId},{health:Math.round(0.1*getHealth(foundUser.level,foundUser.vitality)),location:foundUser.location,dungeon:dungeon})
+                                                    }
+                                                else{
+                                                    stepembed = new MessageEmbed()
+                                            .setColor('RED')
+                                            .setTitle('STEP #3')
+                                            .setImage('attachment://swamp_trap.jpeg')
+                                            .setDescription(`As you move through the swamp, suddenly, the ground beneath you gives way, pulling you into the deadly clutches of the swamp.\nYou lost ${damage} health!`)
+                                            await interaction.reply({embeds:[stepembed],components:[],files:[attachment]})
+                                            await profileModel.updateOne({userID:authorId},{health:foundUser.health-damage})
+                                            dungeon.step+=1
+                                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                                }
+                                            }
+                                            else if(pick == "En2"){
+                                                const attachment = new MessageAttachment(`assets/Vesper/dead_remains.jpeg`)
+                                                let stepembed = new MessageEmbed()
+                                                .setColor('RED')
+                                                .setTitle('STEP #3 - Floating Remains')
+                                                .setImage('attachment://dead_remains.jpeg')
+                                                .setDescription(`You see the dead remains of few people floating in a nearby patch of the swamp.`)
+                                                await interaction.reply({embeds:[stepembed],components:[],files:[attachment]})
+                        
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            else if(pick == "En3"){
+                                                const attachment = new MessageAttachment(`assets/Vesper/light_show.jpeg`)
+                                                let stepembed = new MessageEmbed()
+                                                .setColor('RED')
+                                                .setTitle('STEP #3 - Light Show')
+                                                .setImage('attachment://light_show.jpeg')
+                                                .setDescription(`A mesmerizing swarm of bioluminescent insects surrounds you, creating a captivating light show. While entranced by the beauty, you become oblivious to approaching danger.`)
+                                                await interaction.reply({embeds:[stepembed],components:[],files:[attachment]})
+                        
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            
+                                            }
+                                            
+                                            
+                                            
+                                            
+                                            
+                                        }
+                                        else if(dungeon.step == 4){
+                                           
+                                            
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Bogslither.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`A large Bogslither, covered in mud and moss, lies in wait for its prey. As you move through the swamp, the Bogslither lunges forward, attempting to catch you off guard.`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            
+                                            
+                                            
+                    
+                                        }
+                                        else if(dungeon.step == 5){
+                                            const attachment = new MessageAttachment(`assets/Vesper/glowing_eyes.jpeg`)
+                                            const pick = weightedRandom(["En1","En2"],[0.5,0.5])
+                                            if(pick == "En1"){
+                                                let stepembed = new MessageEmbed()
+                                                .setColor('RED')
+                                                .setImage('attachment://glowing_eyes.jpeg')
+                                                .setTitle('STEP #5 - Nebula Mirage')
+                                                .setDescription(`You spot what appears to be a Nebula Flower floating on the water's surface. Excitement builds as you approach, only to realize it's an illusion created by the swamp. The illusion dissipates, revealing that the area is infested with aggressive creatures drawn to your presence.`)
+                                                await interaction.reply({embeds:[stepembed],components:[],files:[attachment]})
+                        
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            else if(pick == "En2"){
+                                                let stepembed = new MessageEmbed()
+                                                .setColor('RED')
+                                                .setTitle('STEP #5 - Glowing Eyes')
+                                                .setImage('attachment://glowing_eyes.jpeg')
+                                                .setDescription(`As you go deeper, the swamp becomes shrouded in darkness. Glowing eyes from unseen creatures watch your every move.`)
+                                                await interaction.reply({embeds:[stepembed],components:[],files:[attachment]})
+                        
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            
+                                            
+                                            
+                                            
+                                        }
+                                        else if(dungeon.step == 6){
+                                            const pick = weightedRandom(["En1","En2","En3"],[0.1,0.6,0.3])
+                                            if(pick == "En1"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Bogslither.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`While Navigating the murky waters of the swamp, you feel something slithering under your feet. Suddenly a Bogslither attacks you!`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            else if(pick == "En2"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Grimjaws.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`You Notice a pair of glowing eyes approaching you at high speed, It's a Grimjaws coming to Feast on you!`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            else if(pick == "En3"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Murkwraithe.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`As you navigate the Swamp of Abyss, a colossal Murkwraithe, a spectral golem of mud and spyr, awakens sensing your strong spyr. Its glowing eyes pierce the mist staring at you.`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            
+                                            }
+                                        }
+                                        else if(dungeon.step == 7){
+                                            const attachment = new MessageAttachment(`assets/Vesper/swamp_heal.jpeg`)
+                                            let stepembed = new MessageEmbed()
+                                            .setColor('RED')
+                                            .setTitle('STEP #7')
+                                            .setImage('attachment://swamp_heal.jpeg')
+                                            .setDescription(`Amidst the mystical flora of the Swamp, you discover a radiant pool fed by the healing properties of Herbs. You Immerse yourself in its soothing waters, and the ethereal glow envelops you, mending wounds and revitalizing your spirit.\n\n**Health replenished by 25%!**\n**You obtained 3 Energy!**`)
+                                            let health
+                                            let energy
+                                            if(foundUser.health + 0.25*getHealth(foundUser.level,foundUser.vitality) > getHealth(foundUser.level,foundUser.vitality)){
+                                                health = getHealth(foundUser.level,foundUser.vitality)
+                                            }
+                                            else{
+                                                health = Math.round(foundUser.health + 0.25*getHealth(foundUser.level,foundUser.vitality))
+                                            }
+                                            if(foundUser.energy+3 === 25){
+                                                energy = 25
+                                            }
+                                            else{
+                                                energy = foundUser.energy+3
+                                            }
+                                            await interaction.reply({embeds:[stepembed],components:[],files:[attachment]})
+                                            dungeon.step+=1
+                                            await profileModel.updateOne({userID:authorId},{health:health,dungeon:dungeon,energy:energy})
+                                           
+                                            
+                                        }
+                                        else if(dungeon.step == 8){
+
+                                            const pick = weightedRandom(["En1","En2"],[0.5,0.5])
+                                            if(pick == "En1"){
+                                                let stepembed = new MessageEmbed()
+                                                .setColor('RED')
+                                                .setTitle('STEP #8 - Ranger Encounter')
+                                                .setDescription(`"T-That spyrith…I-I have to get out of here, You! Don't go any further…t-those things..they will kill us all!"`)
+                                                await interaction.reply({embeds:[stepembed],components:[]})
+                        
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            else if(pick == "En2"){
+                                                const attachment = new MessageAttachment(`assets/Vesper/mercenary_encounter.jpeg`)
+                                                let stepembed = new MessageEmbed()
+                                                .setColor('RED')
+                                                .setTitle('STEP #8 - Mercenary Encounter')
+                                                .setImage('attachment://mercenary_encounter.jpeg')
+                                                .setDescription(`"A Ranger eh? Good for you, you guys can traverse this hellhole without any issues. For us regulars, we have to wear a mask at all times or the swamp mist will get us. So much for some cash huh."`)
+                                                await interaction.reply({embeds:[stepembed],components:[],files:[attachment]})
+                        
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            
+                                            
+                                            
+                                        }
+                                        else if(dungeon.step == 9){
+                                            const pick = weightedRandom(["En1","En2","En3"],[0.1,0.6,0.3])
+                                            if(pick == "En1"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Bogslither.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`While Navigating the murky waters of the swamp, you feel something slithering under your feet. Suddenly a Bogslither attacks you!`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            else if(pick == "En2"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Grimjaws.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`You Notice a pair of glowing eyes approaching you at high speed, It's a Grimjaws coming to Feast on you!`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            else if(pick == "En3"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Murkwraithe.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`As you navigate the Swamp of Abyss, a colossal Murkwraithe, a spectral golem of mud and spyr, awakens sensing your strong spyr. Its glowing eyes pierce the mist staring at you.`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            
+                                            }
+                                            
+                                            
+                                        }
+                                        else if(dungeon.step == 10){
+                                            
+                                            const pick = weightedRandom(["En1","En2"],[0.5,0.5])
+                                            if(pick == "En1"){
+                                                const attachment = new MessageAttachment(`assets/Vesper/gas_blast.jpeg`)
+                                                let stepembed
+                                                const damage = Math.round(0.2*getHealth(foundUser.level,foundUser.vitality))
+                                                if(foundUser.health-damage <= 0){
+                                                    stepembed = new MessageEmbed()
+                                                    .setColor('RED')
+                                                    .setTitle('STEP #10 - Gas Blast')
+                                                    .setImage('attachment://gas_blast.jpeg')
+                                                    .setDescription(`Disturbed by your movements, pockets of volatile swamp gas ignite unexpectedly, causing severe burns.\nYou lost ${damage} health!\n\n**You were critically Injured and were rescued out of the Swamp**`)
+                                                    await interaction.reply({embeds:[stepembed],components:[]})
+
+                                                    foundUser.location = "None"
+                                                    dungeon.status = false
+                                                    dungeon.name = ""
+                                                    dungeon.step = 0
+                                                    await profileModel.updateOne({userID:authorId},{health:Math.round(0.1*getHealth(foundUser.level,foundUser.vitality)),location:foundUser.location,dungeon:dungeon})
+                                                    }
+                                                else{
+                                                    stepembed = new MessageEmbed()
+                                            .setColor('RED')
+                                            .setTitle('STEP #10 - Gas Blast')
+                                            .setImage('attachment://gas_blast.jpeg')
+                                            .setDescription(`Disturbed by your movements, pockets of volatile swamp gas ignite unexpectedly, causing severe burns.\nYou lost ${damage} health!\n\n**You were critically Injured and were rescued out of the Swamp**`)
+                                            await interaction.reply({embeds:[stepembed],components:[], files:[attachment]})
+                                            await profileModel.updateOne({userID:authorId},{health:foundUser.health-damage})
+                                            dungeon.step+=1
+                                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                                }
+                                                
+                                            }
+                                            else if(pick == "En2"){
+                                                const attachment = new MessageAttachment(`assets/Vesper/collapse_tree.jpeg`)
+                                                let stepembed
+                                                const damage = Math.round(0.15*getHealth(foundUser.level,foundUser.vitality))
+                                                if(foundUser.health-damage <= 0){
+                                                    stepembed = new MessageEmbed()
+                                                    .setColor('RED')
+                                                    .setTitle('STEP #10 - Collapsing Bridge')
+                                                    .setImage('attachment://collapse_tree.jpeg')
+                                                    .setDescription(`Crossing a seemingly sturdy tree bridge, it suddenly gives way, sending you plummeting into the swamp waters below.\nYou lost ${damage} health!\n\n**You were critically Injured and were rescued out of the Swamp**`)
+                                                    await interaction.reply({embeds:[stepembed],components:[]})
+
+                                                    foundUser.location = "None"
+                                                    dungeon.status = false
+                                                    dungeon.name = ""
+                                                    dungeon.step = 0
+                                                    await profileModel.updateOne({userID:authorId},{health:Math.round(0.1*getHealth(foundUser.level,foundUser.vitality)),location:foundUser.location,dungeon:dungeon})
+                                                    }
+                                                else{
+                                                    stepembed = new MessageEmbed()
+                                            .setColor('RED')
+                                            .setTitle('STEP #10 - Collapsing Bridge')
+                                            .setImage('attachment://collapse_tree.jpeg')
+                                            .setDescription(`Crossing a seemingly sturdy tree bridge, it suddenly gives way, sending you plummeting into the swamp waters below.\nYou lost ${damage} health!\n\n**You were critically Injured and were rescued out of the Swamp**`)
+                                            await interaction.reply({embeds:[stepembed],components:[]})
+                                            await profileModel.updateOne({userID:authorId},{health:foundUser.health-damage})
+                                            dungeon.step+=1
+                                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                                }
+                                        }
+                                        }
+                                        else if(dungeon.step == 11){
+                                            const pick = weightedRandom(["En1","En2"],[0.5,0.5])
+                                            if(pick == "En1"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Bogslither.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`Approaching what seems to be a peaceful clearing, you stumble upon a Bogslither nest. The protective creatures emerge, fiercely defending their territory.`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                                
+                                            }
+                                            else if(pick == "En2"){
+                                                const attachment = new MessageAttachment(`assets/Vesper/whirlpool.jpeg`)
+                                                let stepembed
+                                                const damage = Math.round(0.2*getHealth(foundUser.level,foundUser.vitality))
+                                                if(foundUser.health-damage <= 0){
+                                                    stepembed = new MessageEmbed()
+                                                    .setColor('RED')
+                                                    .setTitle('STEP #11 - Whirlpool Abyss')
+                                                    .setImage('attachment://whirlpool.jpeg')
+                                                    .setDescription(`You Encounter a deadly whirlpool in the swamp  as the currents nearly pull you deep into the abyss.\nYou lost ${damage} health!\n\n**You were critically Injured and were rescued out of the Swamp**`)
+                                                    await interaction.reply({embeds:[stepembed],components:[]})
+
+                                                    foundUser.location = "None"
+                                                    dungeon.status = false
+                                                    dungeon.name = ""
+                                                    dungeon.step = 0
+                                                    await profileModel.updateOne({userID:authorId},{health:Math.round(0.1*getHealth(foundUser.level,foundUser.vitality)),location:foundUser.location,dungeon:dungeon})
+                                                    }
+                                                else{
+                                                    stepembed = new MessageEmbed()
+                                            .setColor('RED')
+                                            .setTitle('STEP #11 - Whirlpool Abyss')
+                                            .setImage('attachment://whirlpool.jpeg')
+                                            .setDescription(`You Encounter a deadly whirlpool in the swamp  as the currents nearly pull you deep into the abyss.\nYou lost ${damage} health!\n\n**You were critically Injured and were rescued out of the Swamp**`)
+                                            await interaction.reply({embeds:[stepembed],components:[],files:[attachment]})
+                                            await profileModel.updateOne({userID:authorId},{health:foundUser.health-damage})
+                                            dungeon.step+=1
+                                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                                }
+                                        }
+                                        }
+                                        else if(dungeon.step == 12){
+                                            const attachment = new MessageAttachment(`assets/Vesper/swamp_camp.jpeg`)
+                                            let stepembed = new MessageEmbed()
+                                            .setColor('RED')
+                                            .setImage('attachment://swamp_camp.jpeg')
+                                            .setTitle('STEP #12')
+                                            .setDescription(`You encounter a party of Nebula Hunters camping above a bed of roots which appears to be a somewhat steady footing. You join them for a night eating and resting well replenishing your health and energy.\n\n**Health replenished by 20%!**\n**You obtained 6 Energy!**`)
+                                            let health
+                                            let energy
+                                            if(foundUser.health + 0.2*getHealth(foundUser.level,foundUser.vitality) > getHealth(foundUser.level,foundUser.vitality)){
+                                                health = getHealth(foundUser.level,foundUser.vitality)
+                                            }
+                                            else{
+                                                health = Math.round(foundUser.health + 0.2*getHealth(foundUser.level,foundUser.vitality))
+                                            }
+                                            if(foundUser.energy+6 === 25){
+                                                energy = 25
+                                            }
+                                            else{
+                                                energy = foundUser.energy+6
+                                            }
+                                            await interaction.reply({embeds:[stepembed],components:[],files:[attachment]})
+                                            dungeon.step+=1
+                                            await profileModel.updateOne({userID:authorId},{health:health,dungeon:dungeon,energy:energy})
+
+                                        }
+                                        else if(dungeon.step == 13){
+                                            const pick = weightedRandom(["En1","En2","En3"],[0.3,0.1,0.6])
+                                            if(pick == "En1"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Bogslither.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`While Navigating the murky waters of the swamp, you feel something slithering under your feet. Suddenly a Bogslither attacks you!`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            else if(pick == "En2"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Grimjaws.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`You Notice a pair of glowing eyes approaching you at high speed, It's a Grimjaws coming to Feast on you!`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            else if(pick == "En3"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Murkwraithe.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`As you navigate the Swamp of Abyss, a colossal Murkwraithe, a spectral golem of mud and spyr, awakens sensing your strong spyr. Its glowing eyes pierce the mist staring at you.`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            
+                                            }
+                                            
+                                            
+                                        }
+                                        else if(dungeon.step == 14){
+                                            
+                                            
+                                                const attachment = new MessageAttachment(`assets/Vesper/stone_pillar.jpeg`)
+                                                let stepembed = new MessageEmbed()
+                                                .setColor('RED')
+                                                .setTitle('STEP #14')
+                                                .setImage('attachment://stone_pillar.jpeg')
+                                                .setDescription(`As you wade through the thick swamp mist, you come across a solitary, moss-covered stone structure rising from the murky waters. Strange paintings are engraved on the stone, on closer inspection it appears to be a painting depicting several figures worshiping a 4 headed spyrith.`)
+                                                await interaction.reply({embeds:[stepembed],components:[],files:[attachment]})
+                        
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            
+                                        }
+                                        else if(dungeon.step == 15){
+                                            const pick = weightedRandom(["En1","En2","En3"],[0.6,0.3,0.1])
+                                            if(pick == "En1"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Bogslither.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`While Navigating the murky waters of the swamp, you feel something slithering under your feet. Suddenly a Bogslither attacks you!`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            else if(pick == "En2"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Grimjaws.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`You Notice a pair of glowing eyes approaching you at high speed, It's a Grimjaws coming to Feast on you!`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            else if(pick == "En3"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Murkwraithe.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`As you navigate the Swamp of Abyss, a colossal Murkwraithe, a spectral golem of mud and spyr, awakens sensing your strong spyr. Its glowing eyes pierce the mist staring at you.`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            
+                                            }
+                                          
+                                        }
+                                        else if(dungeon.step == 16){
+                                            const pick = weightedRandom(["En1","En2","En3"],[0.5,0.3,0.2])
+                                            if(pick == "En1"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Bogslither.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`You hear loud screams coming from a puddle of bloody water in a nearby patch of swamp, upon a closer look you notice several Bogslithers feasting on an unfortunate wanderer.`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            else if(pick == "En2"){
+                                                const attacker = await Warrior.create(author)
+                                                const monster = await Grimjaws.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`You see a Grimjaws tearing through the flesh of an unfortunate person before it locks it's glowing Eyes on you. It isn't happy with you interrupting it's meal!`,files:[attachment]})
+                                                await sleep(5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                            }
+                                            else if(pick == "En3"){
+                                                const attachment = new MessageAttachment(`assets/Vesper/nebula_encounter.jpeg`)
+                                                let stepembed = new MessageEmbed()
+                                            .setColor('RED')
+                                            .setTitle('STEP #16')
+                                            .setImage('attachment://nebula_encounter.jpeg')
+                                            .setDescription(`You stumble across a descent sized Nebula flower radiating immense Spyr with an ethereal glow.You retrieve the flower.\n**Nebula Flower x 1 added to inventory!**`)
+                                            await interaction.reply({embeds:[stepembed],components:[]})
+                    
+                                            inventory.findOne({userID:interaction.user.id},async function(err,foundInventory){
+                                                if(err){
+                                                    console.log(err);
+                                                    
+                                                }
+                                                else{
+                                                    const foundItem = foundInventory.inventory.items.find(item => item.name.name === Nebula.create().name)
+                                                    if (foundItem){
+                                    
+                                                        foundItem.quantity+=1
+                                                    }
+                                                    else{
+                                                        const newItem = {
+                                                            name:Nebula.create(),
+                                                            description:Nebula.create().description,
+                                                            quantity:Number(1)
+                                                        }
+                                                        foundInventory.inventory.items.push(newItem)
+                                                    }
+                                                    
+                                                    await inventory.updateOne({userID:authorId},foundInventory)
+                                                    dungeon.step+=1
+                                                    await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                                }
+                                                
+                                            })
+                                                
+                                            
+                                            }
+                                            
+                                            
+                                        }
+                                        else if(dungeon.step == 17){
+                                            const pick = weightedRandom(["En1","En2"],[0.5,0.5])
+                                            if(pick == "En1"){
+                                                const attachment = new MessageAttachment(`assets/Vesper/gas_blast.jpeg`)
+                                                let stepembed
+                                                const damage = Math.round(0.2*getHealth(foundUser.level,foundUser.vitality))
+                                                if(foundUser.health-damage <= 0){
+                                                    stepembed = new MessageEmbed()
+                                                    .setColor('RED')
+                                                    .setTitle('STEP #17 - Gas Blast')
+                                                    .setImage('attachment://gas_blast.jpeg')
+                                                    .setDescription(`Disturbed by your movements, pockets of volatile swamp gas ignite unexpectedly, causing severe burns.\nYou lost ${damage} health!\n\n**You were critically Injured and were rescued out of the Swamp**`)
+                                                    await interaction.reply({embeds:[stepembed],components:[]})
+
+                                                    foundUser.location = "None"
+                                                    dungeon.status = false
+                                                    dungeon.name = ""
+                                                    dungeon.step = 0
+                                                    await profileModel.updateOne({userID:authorId},{health:Math.round(0.1*getHealth(foundUser.level,foundUser.vitality)),location:foundUser.location,dungeon:dungeon})
+                                                    }
+                                                else{
+                                                    stepembed = new MessageEmbed()
+                                            .setColor('RED')
+                                            .setTitle('STEP #17 - Gas Blast')
+                                            .setImage('attachment://gas_blast.jpeg')
+                                            .setDescription(`Disturbed by your movements, pockets of volatile swamp gas ignite unexpectedly, causing severe burns.\nYou lost ${damage} health!\n\n**You were critically Injured and were rescued out of the Swamp**`)
+                                            await interaction.reply({embeds:[stepembed],components:[], files:[attachment]})
+                                            await profileModel.updateOne({userID:authorId},{health:foundUser.health-damage})
+                                            dungeon.step+=1
+                                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                                }
+                                                
+                                            }
+                                            else if(pick == "En2"){
+                                                const attachment = new MessageAttachment(`assets/Vesper/swamp_trap.jpeg`)
+                                                let stepembed
+                                                const damage = Math.round(0.1*getHealth(foundUser.level,foundUser.vitality))
+                                                if(foundUser.health-damage <= 0){
+                                                    stepembed = new MessageEmbed()
+                                                    .setColor('RED')
+                                                    .setTitle('STEP #17')
+                                                    .setImage('attachment://swamp_trap.jpeg')
+                                                    .setDescription(`As you move through the swamp, suddenly, the ground beneath you gives way, pulling you into the deadly clutches of the swamp.\nYou lost ${damage} health!\n\n**You were critically Injured and were rescued out of the Swamp**`)
+                                                    await interaction.reply({embeds:[stepembed],components:[],files:[attachment]})
+
+                                                    foundUser.location = "None"
+                                                    dungeon.status = false
+                                                    dungeon.name = ""
+                                                    dungeon.step = 0
+                                                    await profileModel.updateOne({userID:authorId},{health:Math.round(0.1*getHealth(foundUser.level,foundUser.vitality)),location:foundUser.location,dungeon:dungeon})
+                                                    }
+                                                else{
+                                                    stepembed = new MessageEmbed()
+                                            .setColor('RED')
+                                            .setTitle('STEP #17')
+                                            .setImage('attachment://swamp_trap.jpeg')
+                                            .setDescription(`As you move through the swamp, suddenly, the ground beneath you gives way, pulling you into the deadly clutches of the swamp.\nYou lost ${damage} health!`)
+                                            await interaction.reply({embeds:[stepembed],components:[],files:[attachment]})
+                                            await profileModel.updateOne({userID:authorId},{health:foundUser.health-damage})
+                                            dungeon.step+=1
+                                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                                }
+                                        }
+                                        }
+                                        else if(dungeon.step == 18){
+                                            const attacker = await Warrior.create(author)
+                                            const monster = await Murkwraithe.create()
+                                            const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                            await interaction.reply({content:`As you press deeper into the heart of the Swamp of Abyss, an ominous presence looms. Suddenly, the colossal form of a Murkwraithe, a spectral golem of mud and spyr, rises from the swamp's depths. Its glowing eyes fixate on you, signaling an inevitable confrontation.`,files:[attachment]})
+                                            await sleep(5)
+                                            await interaction.editReply({files:[]})
+                                            attacker.health=foundUser.health
+                                                    attacker.mana=foundUser.mana
+                                                    attacker.armor=foundUser.armour
+                                                    attacker.magicPower=foundUser.magicPower
+                                                    attacker.magicResistance = foundUser.magicResistance
+                                                    attacker.attackDamage=foundUser.attackDamage
+                                                    attacker.evasion=foundUser.evasion
+                                                    attacker.element = foundUser.elements[0].toLowerCase();
+                                                    attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                    attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                    attacker.maxMana = foundUser.mana
+                                                    attacker.speed = foundUser.speed
+                                                    attacker.skills=foundUser.currentskills
+                                                    attacker.level = foundUser.level
+                                                    attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                            
+                                            if(attacker.speed >= monster.speed){
+                                                await new PvEDuel({
+                                                    interaction,
+                                                    player1: attacker,
+                                                    player2: monster,
+                                                    speed:2,
+                                                }).start()
+                                                
+                                            }
+                                            else{
+                                                await new PvEDuel({
+                                                    interaction,
+                                                    player1: monster,
+                                                    player2: attacker,
+                                                    speed:2
+                                                }).start()
+                                            }
+                                            dungeon.step+=1
+                                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                        }
+                                        else if(dungeon.step == 19){
+                                            const pick = weightedRandom(["En1","En2"],[0.5,0.5])
+                                            if(pick == "En1"){
+                                                const attachment = new MessageAttachment(`assets/Vesper/swamp_heal.jpeg`)
+                                                let stepembed = new MessageEmbed()
+                                                .setColor('RED')
+                                                .setTitle('STEP #19')
+                                                .setImage('attachment://swamp_heal.jpeg')
+                                                .setDescription(`Amidst the mystical flora of the Swamp, you discover a radiant pool fed by the healing properties of Herbs. You Immerse yourself in its soothing waters, and the ethereal glow envelops you, mending wounds and revitalizing your spirit.\n\n**Health replenished by 25%!**\n**You obtained 3 Energy!**`)
+                                                let health
+                                                let energy
+                                                if(foundUser.health + 0.25*getHealth(foundUser.level,foundUser.vitality) > getHealth(foundUser.level,foundUser.vitality)){
+                                                    health = getHealth(foundUser.level,foundUser.vitality)
+                                                }
+                                                else{
+                                                    health = Math.round(foundUser.health + 0.25*getHealth(foundUser.level,foundUser.vitality))
+                                                }
+                                                if(foundUser.energy+3 === 25){
+                                                    energy = 25
+                                                }
+                                                else{
+                                                    energy = foundUser.energy+3
+                                                }
+                                                await interaction.reply({embeds:[stepembed],components:[],files:[attachment]})
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{health:health,dungeon:dungeon,energy:energy})
+                                               
+                                            }
+                                            else if(pick == "En2"){
+                                                const attachment = new MessageAttachment(`assets/Vesper/floating_rations.jpeg`)
+                                                let stepembed = new MessageEmbed()
+                                                .setColor('RED')
+                                                .setTitle('STEP #19')
+                                                .setImage('attachment://floating_rations.jpeg')
+                                                .setDescription(`You discover a package of Ranger Rations floating on the swamp, you pick it up and consume it healing your wounds and revitalizing yourself.\n\n**Health replenished by 25%!**\n**You obtained 3 Energy!**`)
+                                                let health
+                                                let energy
+                                                if(foundUser.health + 0.25*getHealth(foundUser.level,foundUser.vitality) > getHealth(foundUser.level,foundUser.vitality)){
+                                                    health = getHealth(foundUser.level,foundUser.vitality)
+                                                }
+                                                else{
+                                                    health = Math.round(foundUser.health + 0.25*getHealth(foundUser.level,foundUser.vitality))
+                                                }
+                                                if(foundUser.energy+3 === 25){
+                                                    energy = 25
+                                                }
+                                                else{
+                                                    energy = foundUser.energy+3
+                                                }
+                                                await interaction.reply({embeds:[stepembed],components:[],files:[attachment]})
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{health:health,dungeon:dungeon,energy:energy})
+                                               
+                                            }
+                                            
+                                        }
+                                        if(dungeon.step == 20){
+                                            const dialogue = sample([`[Lizardman Warrior] - "Ahead lies the king of this swamp…I faced the Basilisk in battle. Its eyes... they robbed me of my strength, turned me into a trembling shell. My comrades fell one by one. The very air seemed to quiver with fear. Do not underestimate the dread that serpent brings."`,`[Nebula Hunter] - "Beyond this point lies the lair of the Basilisk of Abyss, a beast that strikes terror into the hearts of even the most seasoned hunters. Its scales are like fortress walls, breath venomous enough to end a life. And those eyes... avoid their gaze, for they'll strip you of courage and leave you defenseless.I suggest you to turn back, that thing killed my entire party!"`,`[Ranger Survivor] - "T-The Basilisk…it's over there! Don't go ahead or you will be devoured just like my comrades were, the fear it invoked is etched in my soul. The steel scales, the toxic breath... and those eyes. You'll feel the weight of your every fear, every regret. It's like facing your own nightmares, and no weapon can prepare you for that."`,`[Injured Mercenary] - "Help me! It's coming! That deadly spyrith that rules this swamp. It's eyes were glowing {randomColor} with bloodlust! I have never encountered a spyrith so strong. Save me! Please!"`])
+                                            let stepembed = new MessageEmbed()
+                                            .setColor('RED')
+                                            .setTitle('STEP #20 - DIALOGUE')
+                                            .setDescription(`${dialogue}`)
+                                            await interaction.reply({embeds:[stepembed],components:[]})
+                    
+                                            dungeon.step+=1
+                                            await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                        }
+                                        else if(dungeon.step == 21){
+                                            
+                                               let stepembed = new MessageEmbed()
+                                                        .setColor('RED')
+                                                        .setTitle(`STEP #21 - BOSS ENCOUNTER`)
+                                                        .setDescription(`You approach a completely deserted area in the swamp devoid of any spyriths. Many corpses and dead remains float in the area creating an atmosphere of dread. Suddenly you sense a massive Spyr concentration beneath you as the swamp starts getting acidified, barely avoiding it's deadly jaws you look in awe as the king of the swamp arises from within. The Basilisk of Abyss stares at you with  deadly red eyes.\n\n**FIGHT STARTS IN 10 SECONDS**`)
+                                                        await interaction.reply({embeds:[stepembed],components:[]})
+                                                        await sleep(10)
+                                                        const attacker = await Warrior.create(author)
+                                                const monster = await BassiliskVenom.create()
+                                                const attachment = new MessageAttachment('assets/Monsters/'+ monster.fileName)
+                                                await interaction.reply({content:`You encountered a ${monster.name}!`,files:[attachment]})
+                                                await sleep(2.5)
+                                                await interaction.editReply({files:[]})
+                                                attacker.health=foundUser.health
+                                                        attacker.mana=foundUser.mana
+                                                        attacker.armor=foundUser.armour
+                                                        attacker.magicPower=foundUser.magicPower
+                                                        attacker.attackDamage=foundUser.attackDamage
+                                                        attacker.magicResistance = foundUser.magicResistance
+                                                        attacker.evasion=foundUser.evasion
+                                                        attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                                        attacker.element = foundUser.elements[0].toLowerCase();
+                                                        attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                                        attacker.maxMana = foundUser.mana
+                                                        attacker.speed = foundUser.speed
+                                                        attacker.skills=foundUser.currentskills
+                                                        attacker.level = foundUser.level
+                                                        attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                
+                                                if(attacker.speed >= monster.speed){
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: attacker,
+                                                        player2: monster,
+                                                        speed:2,
+                                                    }).start()
+                                                    
+                                                }
+                                                else{
+                                                    await new PvEDuel({
+                                                        interaction,
+                                                        player1: monster,
+                                                        player2: attacker,
+                                                        speed:2
+                                                    }).start()
+                                                }
+                                                dungeon.step+=1
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon})
+                                        }
+                                        else if(dungeon.step === 22){
+                                            let stepembed = new MessageEmbed()
+                                                        .setColor('GREEN')
+                                                        .setTitle(`BASSILISK'S LAIR`)
+                                                        .addFields([
+                                                            {
+                                                                name: `Rewards:`,
+                                                                value:`**You Recieved Nebula Flower x 3**`
+                                                            }
+                                                        ])
+                                                        .setDescription(`After a gruesome battle with the king of swamp, it quickly gets bored playing with it's new toy. You are on the verge of being knocked out as the multiple wounds on your body ache as the Bassilisk stares at you with it's red reptilian eyes before retreating back to the swamp leaving it's lair temporarily exposed. You quickly manage to forage whatever you can before the bassilisk changes it's mind and kills you. You manage to exit the dswamp without dying still wondering why the bassilisk decided to spare you.`)
+                                                        await interaction.reply({embeds:[stepembed],components:[]})
+                                                        
+                                                        inventory.findOne({userID:interaction.user.id},async function(err,foundInventory){
+                                                            if(err){
+                                                                console.log(err);
+                                                                
+                                                            }
+                                                            else{
+                                                                const foundItem = foundInventory.inventory.items.find(item => item.name.name === Nebula.create().name)
+                                                                if (foundItem){
+                                                
+                                                                    foundItem.quantity+=3
+                                                                }
+                                                                else{
+                                                                    const newItem = {
+                                                                        name:Nebula.create(),
+                                                                        description:Nebula.create().description,
+                                                                        quantity:Number(3)
+                                                                    }
+                                                                    foundInventory.inventory.items.push(newItem)
+                                                                }
+                                                                
+                                                                await inventory.updateOne({userID:authorId},foundInventory)
+                                                               
+                                                            }
+                                                            
+                                                        })
+
+                                                        let fableLog = new MessageEmbed()
+                                                        .setColor('RANDOM')
+                                                        .setTitle('FABLE LOG')
+                                                        .setDescription(`${interaction.user.username} has Cleared the Dungeon **"Swamp of Abyss"**!`)
+                                                        await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
+                                                        
+      
+                                                dungeon.step = 0
+                                                dungeon.name = ""
+                                                dungeon.status = false
+                                                if(!foundUser.completed_dungeons.includes("Swamp of Abyss")){
+                                                    foundUser.completed_dungeons.push("Swamp of Abyss")
+                                                }
+
+                                                await profileModel.updateOne({userID:authorId},{dungeon:dungeon,completed_dungeons:foundUser.completed_dungeons})
+                        
+                                        
+                                                    }
+                                     
+                                    }
                                 }
                                 
                             }
+                            
                             else{
                                 interaction.reply({content:`You are not inside a dungeon!`,ephemeral:true})
                             }
