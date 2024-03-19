@@ -16,10 +16,8 @@ import { calculate } from '../src/age/classes'
 import hunting_contracts from '../src/utils/allHuntingContracts'
 import { Bot } from '../src/bot'
 import { emoji } from '../src/lib/utils/emoji'
-import { PvEDuel } from './fight'
-import { getEmoji } from './fight'
 
-export default new MyCommandSlashBuilder({ name: 'test-fight', description: 'fight with an encounter' })
+export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
             option.setName('speed')
             .setDescription('set speed of simulation:1x,2x,4x')
@@ -120,28 +118,23 @@ export default new MyCommandSlashBuilder({ name: 'test-fight', description: 'fig
                                 .find(m => m.name === foundUser.encounter[0].name)
                                 .create()
                     
-                        let i
-                        for(i=0;i<3;i++){
-                            if(attacker.speed >= monster.speed){
+                    if(attacker.speed >= monster.speed){
+                        await new PvEDuel_Test({
+                            interaction,
+                            player1: attacker,
+                            player2: monster,
+                            speed:setspeed,
+                        }).start()
                         
-                                await new PvEDuel({
-                                    interaction,
-                                    player1: attacker,
-                                    player2: monster,
-                                    speed:setspeed,
-                                }).start()
-                                
-                            }
-                            else{
-                                await new PvEDuel({
-                                    interaction,
-                                    player1: monster,
-                                    player2: attacker,
-                                    speed:setspeed
-                                }).start()
-                            }
-                        }
-                    
+                    }
+                    else{
+                        await new PvEDuel_Test({
+                            interaction,
+                            player1: monster,
+                            player2: attacker,
+                            speed:setspeed
+                        }).start()
+                    }
                                 }
                                 else{
                                     interaction.reply({content:`you are not in ${foundUser.encounter[0].location} where you encountered ${foundUser.encounter[0].name}`,ephemeral:true})
@@ -158,27 +151,26 @@ export default new MyCommandSlashBuilder({ name: 'test-fight', description: 'fig
                                     
                             foundUser.encounter = []
                             await profileModel.updateOne({userID:interaction.user.id},{encounter:foundUser.encounter})
-                            let i
-                            for(i=0;i<3;i++){
-                                if(attacker.speed >= monster.speed){
+                        if(attacker.speed >= monster.speed){
+                            const winner = await new PvEDuel_Test({
+                                interaction,
+                                player1: attacker,
+                                player2: monster,
+                                speed:setspeed,
+                            }).start()
+                            console.log(winner);
                             
-                                    await new PvEDuel({
-                                        interaction,
-                                        player1: attacker,
-                                        player2: monster,
-                                        speed:setspeed,
-                                    }).start()
-                                    
-                                }
-                                else{
-                                    await new PvEDuel({
-                                        interaction,
-                                        player1: monster,
-                                        player2: attacker,
-                                        speed:setspeed
-                                    }).start()
-                                }
-                            }
+                        }
+                        else{
+                            const winner = await new PvEDuel_Test({
+                                interaction,
+                                player1: monster,
+                                player2: attacker,
+                                speed:setspeed
+                            }).start()
+                            console.log(winner);
+                            
+                        }
                                     }
                                     else{
                                         interaction.reply(`you are not in ${foundUser.encounter[0].location} where you encountered ${foundUser.encounter[0].name}`)
@@ -241,3 +233,875 @@ export default new MyCommandSlashBuilder({ name: 'test-fight', description: 'fig
     }
 )
 
+let skills =[]
+let skill_dmg = 0
+let damage_order = []
+let skill_order = []
+
+
+export class PvEDuel_Test extends DuelBuilder {
+    player1: any
+    player2: any
+    speed: number
+    
+    async beforeDuelStart() {
+        super.beforeDuelStart()
+        if(this.attacker instanceof MonsterEntity){
+            await this.replyOrEdit({ content: `starting combat with ${this.player1.name}!`,components:[],embeds:[]})
+        }
+        else{
+            await this.replyOrEdit({ content: `starting combat with ${this.player2.name}!`,components:[],embeds:[] })
+        }
+        
+        await sleep(1.2)
+        
+        
+    }
+    
+
+    // async onSkillSelect(skillName: string) {
+    //     skillName = 'Basic attack'
+    //     const skill = allskills.find(skill => skill.name === skillName)
+
+    //     this.attacker.useSkill(this.attacker,this.defender,skill)
+    // }
+    
+    
+    async onTurn(skipTurn: boolean,turn:number) {
+        this.addLogMessage(`\n`) 
+        this.addLogMessage(`**Turn: ${this.attacker.name}**\n`)
+        const isMonsterTurn = this.attacker instanceof MonsterEntity
+        if (skipTurn) {
+            if (isMonsterTurn) {
+                await sleep(this.speed)
+                this.deleteInfoMessages()
+            }
+
+            return
+        }
+        
+        if (this.attacker instanceof MonsterEntity) {
+           this.attacker.mana += Math.round(this.attacker.maxMana/4)
+           if(this.attacker.mana > this.attacker.maxMana){
+            this.attacker.mana = this.attacker.maxMana
+           }
+
+            
+            if(turn == 0 || turn==1){
+                if(this.attacker.passive_skills.length !=0){
+                    let i
+                    for(i=0;i<this.attacker.passive_skills.length;i++){
+                        const passive_skill = this.attacker.passive_skills[i]
+                        this.attacker.useSkill(this.attacker,this.defender,passive_skill)
+                        
+                        
+                    } 
+                }
+                
+                let skill = this.attacker.skills.find(skill => (skill.type === "buff" || skill.type === "debuff") && skill.mana_cost<=this.attacker.mana)
+                if(skill){
+                    this.attacker.useSkill(this.attacker,this.defender,skill)
+                    await sleep(this.speed)
+                }
+                else{
+                    skills = this.attacker.skills
+                    this.attacker.skills = []
+                    damage_order = []
+                for(let j=0;j<skills.length;j++){
+                    
+                    let val = skills[j]
+                    if(val.type == "physical"){
+                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
+                    }
+                    else if(val.type == "magical"){
+                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
+                    }
+                    
+                    let mod = calculateModifier(val.element,this.defender.element.toLowerCase())
+                    let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
+                    
+                    skill_dmg = skill_dmg * mod * stab
+                    damage_order.push(skill_dmg)
+                    damage_order.sort(function(a,b){return a - b})
+                    const index = damage_order.indexOf(skill_dmg)
+                    this.attacker.skills.splice(index,0,val)
+                    
+                    
+                    
+                    
+                    
+    
+                }
+                this.attacker.skills.reverse()
+                
+                
+                skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                            if(skill){
+                                this.attacker.useSkill(this.attacker,this.defender,skill)
+                                await sleep(this.speed)
+                            }
+                            else{
+                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                                await sleep(this.speed)
+                            }
+               
+                }
+            }
+            else if(this.attacker.health <= 0.5*this.attacker.maxHealth){
+                let skill = this.attacker.skills.find(skill => skill.type === "heal" && skill.mana_cost<=this.attacker.mana)
+                if(skill){
+                        this.attacker.useSkill(this.attacker,this.defender,skill)
+                        await sleep(this.speed)
+                    
+                   
+                }
+                else{
+                    skills = this.attacker.skills
+                    this.attacker.skills = []
+                    damage_order = []
+                for(let j=0;j<skills.length;j++){
+                    
+                    let val = skills[j]
+                    if(val.type == "physical"){
+                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
+                    }
+                    else if(val.type == "magical"){
+                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
+                    }
+                    
+                    let mod = calculateModifier(val.element,this.defender.element.toLowerCase())
+                    let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
+                    
+                    skill_dmg = skill_dmg * mod * stab
+                    damage_order.push(skill_dmg)
+                    damage_order.sort(function(a,b){return a - b})
+                    const index = damage_order.indexOf(skill_dmg)
+                    this.attacker.skills.splice(index,0,val)
+                    
+                    
+
+                }
+                this.attacker.skills.reverse()
+                  
+                skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                            if(skill){
+                                this.attacker.useSkill(this.attacker,this.defender,skill)
+                                await sleep(this.speed)
+                            }
+                            else{
+                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                                await sleep(this.speed)
+                            }
+               
+                }
+                }
+            
+            else{
+                skills = this.attacker.skills
+                this.attacker.skills = []
+                damage_order = []
+            for(let j=0;j<skills.length;j++){
+                
+                let val = skills[j]
+                if(val.type == "physical"){
+                    skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
+                }
+                else if(val.type == "magical"){
+                    skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
+                }
+                
+                let mod = calculateModifier(val.element,this.defender.element.toLowerCase())
+                let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
+                    
+                skill_dmg = skill_dmg * mod * stab
+                damage_order.push(skill_dmg)
+                damage_order.sort(function(a,b){return a - b})
+                const index = damage_order.indexOf(skill_dmg)
+                this.attacker.skills.splice(index,0,val)
+                
+                
+
+            }
+            this.attacker.skills.reverse()
+              
+            let skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                        if(skill){
+                            this.attacker.useSkill(this.attacker,this.defender,skill)
+                            await sleep(this.speed)
+                        }
+                        else{
+                            this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                            await sleep(this.speed)
+                        }
+               
+            }
+               
+            
+            
+        } 
+        else {
+            this.attacker.mana += Math.round(this.attacker.maxMana/4)
+           if(this.attacker.mana > this.attacker.maxMana){
+            this.attacker.mana = this.attacker.maxMana
+           }
+           if(turn == 15 || turn == 16){
+            await this.deleteInfoMessages()
+           }
+            
+            // const max = this.skill_len
+            
+            // const min = 0
+            // const skillName = this.attacker.skills[Math.floor(Math.random() * max)].name
+            // console.log(skillName);
+            
+            // const skill = allskills.find(skill => skill.name === skillName)
+    
+            // this.attacker.useSkill(this.attacker,this.defender,skill)
+            // await sleep(1.5)
+            
+            if(turn == 0 || turn==1){
+                let skills = this.attacker.skills
+                this.attacker.skills=[]
+                damage_order = []
+                for(let j=0;j<skills.length;j++){
+                    
+                    let val = allskills.find(skill => skill.name === skills[j].name)
+                    if(val.type == "physical"){
+                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
+                    }
+                    else if(val.type == "magical"){
+                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
+                    }
+                    
+                    let mod = calculateModifier(val.element,this.defender.element)
+                    let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
+                    
+                    skill_dmg = skill_dmg * mod * stab
+                    damage_order.push(skill_dmg)
+                    damage_order.sort(function(a,b){return a - b})
+                    const index = damage_order.indexOf(skill_dmg)
+                    this.attacker.skills.splice(index,0,val)
+                    
+                    
+
+                }
+                this.attacker.skills.reverse()
+                  
+
+                if(this.attacker.passive_skills.length !=0){
+                    let i
+                    
+                    for(i=0;i<this.attacker.passive_skills.length;i++){
+                        const passive_skill = await passive_skills.find(skill => skill.name === this.attacker.passive_skills[i].name)
+                        this.attacker.useSkill(this.attacker,this.defender,passive_skill)
+                        
+                        
+                    } 
+                }
+                
+            }
+            if(turn == 0 || turn==1){
+                let skill = this.attacker.skills.find(skill => skill.type === "buff" && skill.mana_cost<=this.attacker.mana)
+                if(skill){
+                    this.attacker.useSkill(this.attacker,this.defender,skill)
+                    await sleep(this.speed)
+                }
+                else{
+                    
+                    
+                        skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                                if(skill){
+                                    this.attacker.useSkill(this.attacker,this.defender,skill)
+                                    await sleep(this.speed)
+                                }
+                                else{
+                                    this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                                    await sleep(this.speed)
+                                }
+                               
+                       
+            
+                        
+                    
+
+                }
+            }
+            else if(this.attacker.health <= 0.5*this.attacker.maxHealth){
+                let skill = this.attacker.skills.find(skill => skill.type === "heal" && skill.mana_cost<=this.attacker.mana)
+                if(skill){
+                    
+                        this.attacker.useSkill(this.attacker,this.defender,skill)
+                        await sleep(this.speed)
+                    
+                   
+                }
+                else{
+                skills = this.attacker.skills
+                this.attacker.skills=[]
+                damage_order = []
+                for(let j=0;j<skills.length;j++){
+                    
+                    let val = allskills.find(skill => skill.name === skills[j].name)
+                    if(val.type == "physical"){
+                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
+                    }
+                    else if(val.type == "magical"){
+                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
+                    }
+                    
+                    let mod = calculateModifier(val.element,this.defender.element)
+                    let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
+                    
+                    skill_dmg = skill_dmg * mod * stab
+                    damage_order.push(skill_dmg)
+                    damage_order.sort(function(a,b){return a - b})
+                    const index = damage_order.indexOf(skill_dmg)
+                    this.attacker.skills.splice(index,0,val)
+                    
+                    
+
+                }
+                this.attacker.skills.reverse()
+                  
+                    skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                            if(skill){
+                                this.attacker.useSkill(this.attacker,this.defender,skill)
+                                await sleep(this.speed)
+                            }
+                            else{
+                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                                await sleep(this.speed)
+                            }
+                           
+                   
+                }
+            }
+            else{
+                skills = this.attacker.skills
+                this.attacker.skills=[]
+                damage_order = []
+                for(let j=0;j<skills.length;j++){
+                    
+                    let val = allskills.find(skill => skill.name === skills[j].name)
+                    if(val.type == "physical"){
+                        skill_dmg = calculate.physicalDamage(val.damage*this.attacker.attackDamage,this.defender.armor)
+                    }
+                    else if(val.type == "magical"){
+                        skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
+                    }
+                    
+                    let mod = calculateModifier(val.element,this.defender.element)
+                    let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
+                    
+                    skill_dmg = skill_dmg * mod * stab
+                    damage_order.push(skill_dmg)
+                    damage_order.sort(function(a,b){return a - b})
+                    const index = damage_order.indexOf(skill_dmg)
+                    this.attacker.skills.splice(index,0,val)
+                    
+                    
+
+                }
+                this.attacker.skills.reverse()
+                  
+                let skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
+                            if(skill){
+                                this.attacker.useSkill(this.attacker,this.defender,skill)
+                                await sleep(this.speed)
+                            }
+                            else{
+                                this.attacker.useSkill(this.attacker,this.defender,sample(skills))
+                                await sleep(this.speed)
+                            }
+                           
+               
+            }
+                
+            
+            
+            
+        
+             
+            
+            
+        }
+
+        
+        
+    }
+
+    async start() {
+        await this.beforeDuelStart()
+
+        while (!(this.player1.isDead() || this.player2.isDead()) && !this.run) {
+            this.removeCollector()
+            const skipTurn = await this.scheduler.run(this.attacker, this.defender)
+
+            await this.onTurn(skipTurn,this.turn)
+            
+            const a = this.attacker
+            const b = this.defender
+
+            this.attacker = b
+            this.defender = a
+
+            this.turn += 1
+        }
+
+        this.removeCollector()
+        
+        
+        
+
+        const winner = this.player1.isDead() ? this.player2 : this.player1
+        const loser = this.player1.isDead() ? this.player1 : this.player2
+        
+       return winner.name
+        
+    }
+    
+}
+
+
+
+
+export function calculateModifier(skill_element: string,defender_element: string){
+    let mod = 1
+    if(skill_element == null){
+        mod = 1
+    }
+else if(skill_element == "flame"){
+        
+if(defender_element == "flame"){
+mod  = 0.5
+}
+else if(defender_element == "light"){
+mod  = 0.5
+}
+else if(defender_element == "volt"){
+mod  = 1
+}
+else if(defender_element == "wave"){
+mod  = 0.5
+}
+else if(defender_element == "frost"){
+mod  = 2
+}
+else if(defender_element == "gale"){
+mod  = 2
+}
+else if(defender_element == "bloom"){
+mod  = 2
+}
+else if(defender_element == "terra"){
+mod  = 0.5
+}
+else if(defender_element == "alloy"){
+mod  = 2
+}
+else if(defender_element == "venom"){
+mod  = 1
+}
+else if(defender_element == "draco"){
+mod  = 0.5
+}
+else if(defender_element == "ruin"){
+mod  = 1
+}
+}
+else if(skill_element == "alloy"){
+if(defender_element == "flame"){
+    mod  = 0.5
+}
+else if(defender_element == "light"){
+    mod  = 2
+}
+else if(defender_element == "volt"){
+    mod  = 0.5
+}
+else if(defender_element == "wave"){
+    mod  = 0.5
+}
+else if(defender_element == "frost"){
+    mod  = 2
+}
+else if(defender_element == "gale"){
+    mod  = 1
+}
+else if(defender_element == "bloom"){
+    mod  = 1
+}
+else if(defender_element == "terra"){
+    mod  = 2
+}
+else if(defender_element == "alloy"){
+    mod  = 0.5
+}
+else if(defender_element == "venom"){
+    mod  = 1
+}
+else if(defender_element == "draco"){
+    mod  = 1
+}
+else if(defender_element == "ruin"){
+    mod  = 1
+}
+}
+else if(skill_element == "bloom"){
+    if(defender_element == "flame"){
+        mod  = 0.5
+    }
+    else if(defender_element == "light"){
+        mod  = 1
+    }
+    else if(defender_element == "volt"){
+        mod  = 1
+    }
+    else if(defender_element == "wave"){
+        mod  = 2
+    }
+    else if(defender_element == "frost"){
+        mod  = 0.5
+    }
+    else if(defender_element == "gale"){
+        mod  = 0.5
+    }
+    else if(defender_element == "bloom"){
+        mod  = 0.5
+    }
+    else if(defender_element == "terra"){
+        mod  = 2
+    }
+    else if(defender_element == "alloy"){
+        mod  = 0.5
+    }
+    else if(defender_element == "venom"){
+        mod  = 0.5
+    }
+    else if(defender_element == "draco"){
+        mod  = 0.5
+    }
+    else if(defender_element == "ruin"){
+        mod  = 1
+    }
+}
+else if(skill_element == "frost"){
+    if(defender_element == "flame"){
+        mod  = 0.5
+    }
+    else if(defender_element == "light"){
+        mod  = 1
+    }
+    else if(defender_element == "volt"){
+        mod  = 1
+    }
+    else if(defender_element == "wave"){
+        mod  = 2
+    }
+    else if(defender_element == "frost"){
+        mod  = 0.5
+    }
+    else if(defender_element == "gale"){
+        mod  = 2
+    }
+    else if(defender_element == "bloom"){
+        mod  = 2
+    }
+    else if(defender_element == "terra"){
+        mod  = 1
+    }
+    else if(defender_element == "alloy"){
+        mod  = 0.5
+    }
+    else if(defender_element == "venom"){
+        mod  = 2
+    }
+    else if(defender_element == "draco"){
+        mod  = 2
+    }
+    else if(defender_element == "ruin"){
+        mod  = 1
+    }
+}
+else if(skill_element == "gale"){
+    if(defender_element == "flame"){
+        mod  = 0.5
+    }
+    else if(defender_element == "light"){
+        mod  = 1
+    }
+    else if(defender_element == "volt"){
+        mod  = 0.5
+    }
+    else if(defender_element == "wave"){
+        mod  = 1
+    }
+    else if(defender_element == "frost"){
+        mod  = 0.5
+    }
+    else if(defender_element == "gale"){
+        mod  = 0.5
+    }
+    else if(defender_element == "bloom"){
+        mod  = 2
+    }
+    else if(defender_element == "terra"){
+        mod  = 1
+    }
+    else if(defender_element == "alloy"){
+        mod  = 0.5
+    }
+    else if(defender_element == "venom"){
+        mod  = 1
+    }
+    else if(defender_element == "draco"){
+        mod  = 0.5
+    }
+    else if(defender_element == "ruin"){
+        mod  = 1
+    }
+}
+else if(skill_element == "light"){
+    if(defender_element == "flame"){
+        mod  = 2
+    }
+    else if(defender_element == "light"){
+        mod  = 1
+    }
+    else if(defender_element == "volt"){
+        mod  = 1
+    }
+    else if(defender_element == "wave"){
+        mod  = 1
+    }
+    else if(defender_element == "frost"){
+        mod  = 1
+    }
+    else if(defender_element == "gale"){
+        mod  = 1
+    }
+    else if(defender_element == "bloom"){
+        mod  = 0.5
+    }
+    else if(defender_element == "terra"){
+        mod  = 1
+    }
+    else if(defender_element == "alloy"){
+        mod  = 0.5
+    }
+    else if(defender_element == "venom"){
+        mod  = 2
+    }
+    else if(defender_element == "draco"){
+        mod  = 2
+    }
+    else if(defender_element == "ruin"){
+        mod  = 2
+    }
+}
+else if(skill_element == "venom"){
+    if(defender_element == "flame"){
+        mod  = 1
+    }
+    else if(defender_element == "light"){
+        mod  = 0.5
+    }
+    else if(defender_element == "volt"){
+        mod  = 1
+    }
+    else if(defender_element == "wave"){
+        mod  = 1
+    }
+    else if(defender_element == "frost"){
+        mod  = 1
+    }
+    else if(defender_element == "gale"){
+        mod  = 1
+    }
+    else if(defender_element == "bloom"){
+        mod  = 2
+    }
+    else if(defender_element == "terra"){
+        mod  = 2
+    }
+    else if(defender_element == "alloy"){
+        mod  = 2
+    }
+    else if(defender_element == "venom"){
+        mod  = 0.5
+    }
+    else if(defender_element == "draco"){
+        mod  = 0.5
+    }
+    else if(defender_element == "ruin"){
+        mod  = 1
+    }
+}
+else if(skill_element == "terra"){
+    if(defender_element == "flame"){
+        mod  = 2
+    }
+    else if(defender_element == "light"){
+        mod  = 1
+    }
+    else if(defender_element == "volt"){
+        mod  = 0.5
+    }
+    else if(defender_element == "wave"){
+        mod  = 0.5
+    }
+    else if(defender_element == "frost"){
+        mod  = 1
+    }
+    else if(defender_element == "gale"){
+        mod  = 1
+    }
+    else if(defender_element == "bloom"){
+        mod  = 0.5
+    }
+    else if(defender_element == "terra"){
+        mod  = 1
+    }
+    else if(defender_element == "alloy"){
+        mod  = 2
+    }
+    else if(defender_element == "venom"){
+        mod  = 2
+    }
+    else if(defender_element == "draco"){
+        mod  = 1
+    }
+    else if(defender_element == "ruin"){
+        mod  = 1
+    }
+}
+else if(skill_element == "volt"){
+    if(defender_element == "flame"){
+        mod  = 1
+    }
+    else if(defender_element == "light"){
+        mod  = 0.5
+    }
+    else if(defender_element == "volt"){
+        mod  = 0.5
+    }
+    else if(defender_element == "wave"){
+        mod  = 2
+    }
+    else if(defender_element == "frost"){
+        mod  = 1
+    }
+    else if(defender_element == "gale"){
+        mod  = 2
+    }
+    else if(defender_element == "bloom"){
+        mod  = 0.5
+    }
+    else if(defender_element == "terra"){
+        mod  = 0.5
+    }
+    else if(defender_element == "alloy"){
+        mod  = 2
+    }
+    else if(defender_element == "venom"){
+        mod  = 1
+    }
+    else if(defender_element == "draco"){
+        mod  = 0.5
+    }
+    else if(defender_element == "ruin"){
+        mod  = 1
+    }
+}
+else if(skill_element == "wave"){
+    if(defender_element == "flame"){
+        mod  = 2
+    }
+    else if(defender_element == "light"){
+        mod  = 1
+    }
+    else if(defender_element == "volt"){
+        mod  = 1
+    }
+    else if(defender_element == "wave"){
+        mod  = 0.5
+    }
+    else if(defender_element == "frost"){
+        mod  = 0.5
+    }
+    else if(defender_element == "gale"){
+        mod  = 1
+    }
+    else if(defender_element == "bloom"){
+        mod  = 0.5
+    }
+    else if(defender_element == "terra"){
+        mod  = 2
+    }
+    else if(defender_element == "alloy"){
+        mod  = 2
+    }
+    else if(defender_element == "venom"){
+        mod  = 1
+    }
+    else if(defender_element == "draco"){
+        mod  = 0.5
+    }
+    else if(defender_element == "ruin"){
+        mod  = 1
+    }
+}
+else{
+    mod = 1
+}
+return mod
+}
+
+export function calculateSTAB(skill_element: string,attacker_element: string){
+    let stab = 1
+    if(skill_element == attacker_element){
+        stab = 1.2
+    }
+    return stab
+}
+
+export function getEmoji(element:string){
+    let user_emoji
+    if(element == "flame"){
+        user_emoji = emoji.FLAME
+    }
+    else if(element == "wave"){
+        user_emoji = emoji.WAVE
+    }
+    else if(element == "volt"){
+        user_emoji = emoji.VOLT
+    }
+    else if(element == "venom"){
+        user_emoji = emoji.VENOM
+    }
+    else if(element == "terra"){
+        user_emoji = emoji.TERRA
+    }
+    else if(element == "frost"){
+        user_emoji = emoji.FROST
+    }
+    else if(element == "bloom"){
+        user_emoji = emoji.BLOOM
+    }
+    else if(element == "alloy"){
+        user_emoji = emoji.ALLOY
+    }
+    else if(element == "gale"){
+        user_emoji = emoji.GALE
+    }
+    else if(element == "draco"){
+        user_emoji = emoji.DRACO
+    }
+    else if(element == "ruin"){
+        user_emoji = emoji.RUIN
+    }
+    else if(element == "light"){
+        user_emoji = emoji.LIGHT
+    }
+    return user_emoji
+}

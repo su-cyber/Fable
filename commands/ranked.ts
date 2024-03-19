@@ -531,7 +531,7 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Ranked 
                 let logEmbed = new MessageEmbed()
                 .setTitle(`BATTLE LOG`)
                 .setColor('GREEN')
-                .setDescription(`${this.logMessages}`);
+                .setDescription(`${this.logMessages.join('\n')}`);
                 (await bot.users.fetch(opponentId)).dmChannel.send({embeds:[logEmbed]})
                 if(winner.id == opponentId){
                     (await bot.users.fetch(opponentId)).dmChannel.send(`You won the battle against ${loser.name}!`);
