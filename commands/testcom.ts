@@ -26,7 +26,7 @@ import { Droner } from '../src/age/monsters/Sunshade Forest/Droner'
 import { Treemick } from '../src/age/monsters/Castellan Fields/treemick'
 import { Rockmauler } from '../src/age/monsters/Orld Tree Husk/rockmauler'
 
-export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
+export default new MyCommandSlashBuilder({ name: 'testfight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
             option.setName('speed')
             .setDescription('set speed of simulation:1x,2x,4x')
