@@ -19,7 +19,7 @@ import { emoji } from '../src/lib/utils/emoji'
 import { PvEDuel } from './fight'
 import { getEmoji } from './fight'
 
-export default new MyCommandSlashBuilder({ name: 'Test-fight', description: 'fight with an encounter' })
+export default new MyCommandSlashBuilder({ name: 'test-fight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
             option.setName('speed')
             .setDescription('set speed of simulation:1x,2x,4x')
