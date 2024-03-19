@@ -26,6 +26,7 @@ import { Droner } from '../src/age/monsters/Sunshade Forest/Droner'
 import { Treemick } from '../src/age/monsters/Castellan Fields/treemick'
 import { Rockmauler } from '../src/age/monsters/Orld Tree Husk/rockmauler'
 import { Poisonbeak } from '../src/age/monsters/Asche Peak/poisonbeak'
+import { Embercrest } from '../src/age/monsters/Asche Peak/embercrest'
 
 export default new MyCommandSlashBuilder({ name: 'testfight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
@@ -72,7 +73,7 @@ export default new MyCommandSlashBuilder({ name: 'testfight', description: 'figh
                                 const team2 = [
                                     {name: Treemick.create(),level:1},
                                     {name: Droner.create(),level:2},
-                                    {name: Poisonbeak.create(),level:14},
+                                    {name: Embercrest.create(),level:14},
                                     {name: Rockmauler.create(),level:15},
                                 ]
                                 const matchups = await matchPlayers(team1,team2)
