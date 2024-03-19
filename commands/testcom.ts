@@ -16,6 +16,8 @@ import { calculate } from '../src/age/classes'
 import hunting_contracts from '../src/utils/allHuntingContracts'
 import { Bot } from '../src/bot'
 import { emoji } from '../src/lib/utils/emoji'
+import { BeerBuccaneer1 } from '../src/age/monsters/Sunshade Forest/BeerBuccaneer1'
+import { MagmaGolem } from '../src/age/monsters/Dragon\'s Den/MagmaGolem'
 
 export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
@@ -148,28 +150,44 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                         const monster = await (await getMonsters(foundUser.encounter[0].location)).map(fn => fn.create())
                                     .find(m => m.name === foundUser.encounter[0].name)
                                     
+                                    const monster2 = MagmaGolem.create()
                                     
                             foundUser.encounter = []
                             await profileModel.updateOne({userID:interaction.user.id},{encounter:foundUser.encounter})
                         if(attacker.speed >= monster.speed){
-                            const winner = await new PvEDuel_Test({
+                            const winner1 = await new PvEDuel_Test({
                                 interaction,
                                 player1: attacker,
                                 player2: monster,
                                 speed:setspeed,
                             }).start()
-                            console.log(winner);
+                            console.log(winner1);
+
+                            const winner2 = await new PvEDuel_Test({
+                                interaction,
+                                player1: attacker,
+                                player2: monster2,
+                                speed:setspeed,
+                            }).start()
+                            console.log(winner2);
                             
                         }
                         else{
-                            const winner = await new PvEDuel_Test({
+                            const winner1 = await new PvEDuel_Test({
                                 interaction,
                                 player1: monster,
                                 player2: attacker,
                                 speed:setspeed
                             }).start()
-                            console.log(winner);
+                            console.log(winner1);
                             
+                            const winner2 = await new PvEDuel_Test({
+                                interaction,
+                                player1: attacker,
+                                player2: monster2,
+                                speed:setspeed,
+                            }).start()
+                            console.log(winner2);
                         }
                                     }
                                     else{
