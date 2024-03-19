@@ -65,8 +65,8 @@ export class bloodHound extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"wave", 
-                    damage:23,
-                    mana_cost: 2,
+                    damage:35,
+                    mana_cost: 3,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("wave",defender.element)
                         let stab = calculateSTAB("wave",attacker.element)
@@ -83,9 +83,9 @@ export class bloodHound extends MonsterEntity {
                     element:"wave",
                     type: 'buff',
                     damage:0,
-                    mana_cost: 3,
+                    mana_cost: 6,
                     use: (attacker, defender) => {
-                        attacker.attackDamage += 10
+                        attacker.attackDamage += 13
                         attacker.addLogMessage(
                             `${attacker.name} used Blood Lust`,
                             `${attacker.name} radiates it's bloodlust boosting it's attack power and striking fear into it's prey`
