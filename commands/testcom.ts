@@ -103,7 +103,7 @@ export default new MyCommandSlashBuilder({ name: 'testfight', description: 'figh
                                 
                                 await interaction.reply({embeds:[logEmbed]})
                                 let i
-                                let winners
+                                let winners = []
                                 for(i=0;i<matchups.length;i++){
                                     const player1 = matchups[i].player1.name
                                     const player2 = matchups[i].player2.name
@@ -132,7 +132,7 @@ export default new MyCommandSlashBuilder({ name: 'testfight', description: 'figh
                                 let winEmbed = new MessageEmbed()
                                 .setTitle(`SQUAD BATTLES`)
                                 .setColor('GREEN')
-                                .setDescription(`Here are the Winners for this SB:-\n\n${matchups[0].player1.name} VS ${matchups[0].player2.name} - ${winners[0]}\n\n${matchups[1].player1.name} VS ${matchups[1].player2.name} - ${winners[1]}\n\n${matchups[2].player1.name} VS ${matchups[2].player2.name} - ${winners[2]}\n\n${matchups[3].player1.name} VS ${matchups[3].player2.name} - ${winners[3]}`);
+                                .setDescription(`Here are the Winners for this SB:-\n\n${matchups[0].player1.name.name} VS ${matchups[0].player2.name.name} - ${winners[0]}\n\n${matchups[1].player1.name.name} VS ${matchups[1].player2.name.name} - ${winners[1]}\n\n${matchups[2].player1.name.name} VS ${matchups[2].player2.name.name} - ${winners[2]}\n\n${matchups[3].player1.name.name} VS ${matchups[3].player2.name.name} - ${winners[3]}`);
                                
                                 interaction.editReply({embeds:[winEmbed]})
 
