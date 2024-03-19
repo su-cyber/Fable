@@ -242,6 +242,9 @@ export class PvEDuel_Test extends DuelBuilder {
                     else if(val.type == "magical"){
                         skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
                     }
+                    else{
+                        skill_dmg = 0
+                    }
                     
                     let mod = calculateModifier(val.element,this.defender.element.toLowerCase())
                     let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
@@ -293,6 +296,9 @@ export class PvEDuel_Test extends DuelBuilder {
                     }
                     else if(val.type == "magical"){
                         skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
+                    }
+                    else{
+                        skill_dmg = 0
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element.toLowerCase())
@@ -352,7 +358,6 @@ export class PvEDuel_Test extends DuelBuilder {
 
             }
             this.attacker.skills.reverse()
-            console.log(`${this.attacker.name}:`,this.attacker.skills);
             
             let skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
                         if(skill){
@@ -402,6 +407,9 @@ export class PvEDuel_Test extends DuelBuilder {
                     }
                     else if(val.type == "magical"){
                         skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
+                    }
+                    else{
+                        skill_dmg = 0
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element)
@@ -479,6 +487,9 @@ export class PvEDuel_Test extends DuelBuilder {
                     else if(val.type == "magical"){
                         skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
                     }
+                    else{
+                        skill_dmg = 0
+                    }
                     
                     let mod = calculateModifier(val.element,this.defender.element)
                     let stab = calculateSTAB(val.element,this.attacker.element.toLowerCase())
@@ -519,6 +530,9 @@ export class PvEDuel_Test extends DuelBuilder {
                     }
                     else if(val.type == "magical"){
                         skill_dmg = calculate.magicDamage(val.damage*this.attacker.magicPower,this.defender.magicResistance)
+                    }
+                    else{
+                        skill_dmg = 0
                     }
                     
                     let mod = calculateModifier(val.element,this.defender.element)
