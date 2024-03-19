@@ -528,7 +528,11 @@ export default new MyCommandSlashBuilder({ name: 'ranked', description: 'Ranked 
             // }
         
             async onEnd(winner: Entity, loser: Entity) {
-                (await bot.users.fetch(opponentId)).dmChannel.send({embeds:this.duelMessageEmbeds()})
+                let logEmbed = new MessageEmbed()
+                .setTitle(`BATTLE LOG`)
+                .setColor('GREEN')
+                .setDescription(`${this.logMessages}`);
+                (await bot.users.fetch(opponentId)).dmChannel.send({embeds:[logEmbed]})
                 if(winner.id == opponentId){
                     (await bot.users.fetch(opponentId)).dmChannel.send(`You won the battle against ${loser.name}!`);
                     (await bot.users.fetch(authorId)).dmChannel.send(`You lost the battle against ${winner.name}!`)
