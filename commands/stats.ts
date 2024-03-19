@@ -76,6 +76,7 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'see your
                      let side_quest
                      let sqx
                      let sqy
+                     let sqfont
                      if(foundUser.side_quest.length == 0){
                          sqx = 277
                          sqy = 602
@@ -85,6 +86,15 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'see your
                          sqx = 217
                          sqy = 602
                          side_quest = allQuests.find(quest => quest.quest_id == foundUser.side_quest[0]).name
+
+                         const questLength = side_quest.length;
+                        if (questLength <= 10) {
+                            sqfont = "2rem"; // Adjust this value based on your design requirements
+                        } else if (questLength <= 20) {
+                            sqfont = "1.5rem"; // Adjust this value based on your design requirements
+                        } else {
+                            sqfont = "1rem"; // Adjust this value based on your design requirements
+                        }
                      }
                      let kingdom
                      if(foundUser.kingdom == "solarstrio"){
@@ -169,6 +179,7 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'see your
                      ctx.fillStyle = "#644E41"
                      ctx.font = '38px "serif"'
                      ctx.fillText(`${mainquest}`, 217, 530);
+                     ctx.font = `${sqfont} "serif"`
                      ctx.fillText(`${side_quest}`, sqx, sqy);
                      const buffer = await src.toBuffer('image/jpeg')
                      const attachment = await new MessageAttachment(buffer)
