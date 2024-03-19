@@ -102,8 +102,10 @@ export default new MyCommandSlashBuilder({ name: 'testfight', description: 'figh
                                 //     attacker.element = attacker.element.toLowerCase()
                                 
                                 await interaction.reply({embeds:[logEmbed]})
+                                await sleep(5)
                                 let i
                                 let winners = []
+                                let logs = []
                                 for(i=0;i<matchups.length;i++){
                                     const player1 = matchups[i].player1.name
                                     const player2 = matchups[i].player2.name
@@ -125,7 +127,12 @@ export default new MyCommandSlashBuilder({ name: 'testfight', description: 'figh
                                             speed:setspeed
                                         }).start()
                                     }
-                                winners.push(winner)
+                                winners.push(winner.name)
+                                let logEmbed = new MessageEmbed()
+                                .setTitle(`BATTLE LOG - MATCH${i+1}`)
+                                .setColor('GREEN')
+                                .setDescription(`${winner.logs.join('\n')}`);
+                                logs.push(logEmbed)
                                 
                                 }
                             
@@ -136,6 +143,9 @@ export default new MyCommandSlashBuilder({ name: 'testfight', description: 'figh
                                
                                 interaction.editReply({embeds:[winEmbed]})
 
+                                for(i=0;i<logs.length;i++){
+                                    interaction.channel.send({embeds:[logs[i]]})
+                                }
                             }
                         })
                     
@@ -201,8 +211,6 @@ export class PvEDuel_Test extends DuelBuilder {
            if(this.attacker.mana > this.attacker.maxMana){
             this.attacker.mana = this.attacker.maxMana
            }
-
-            
             if(turn == 0 || turn==1){
                 if(this.attacker.passive_skills.length !=0){
                     let i
@@ -546,7 +554,7 @@ export class PvEDuel_Test extends DuelBuilder {
         
     }
 
-    async start() {
+    async start(): Promise<any> {
         await this.beforeDuelStart()
 
         while (!(this.player1.isDead() || this.player2.isDead()) && !this.run) {
@@ -568,8 +576,13 @@ export class PvEDuel_Test extends DuelBuilder {
 
         const winner = this.player1.isDead() ? this.player2 : this.player1
         const loser = this.player1.isDead() ? this.player1 : this.player2
+
         
-       return winner.name
+     const result = {
+        name: winner.name,
+        logs: this.logMessages
+     }
+       return result
         
     }
     
