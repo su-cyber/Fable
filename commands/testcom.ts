@@ -550,7 +550,6 @@ export class PvEDuel_Test extends DuelBuilder {
         await this.beforeDuelStart()
 
         while (!(this.player1.isDead() || this.player2.isDead()) && !this.run) {
-            this.removeCollector()
             const skipTurn = await this.scheduler.run(this.attacker, this.defender)
 
             await this.onTurn(skipTurn,this.turn)
@@ -563,8 +562,6 @@ export class PvEDuel_Test extends DuelBuilder {
 
             this.turn += 1
         }
-
-        this.removeCollector()
         
         
         
