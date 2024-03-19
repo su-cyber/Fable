@@ -483,9 +483,12 @@ async function monstersDropdown(location:String) {
 }
 
 async function calculateDifficulty(monster: MonsterEntity, player:any){
-    const bst_player = player.attackDamage+player.magicPower+player.armor+player.speed+player.magicResistance
+    const bst_player = player.attackDamage+player.magicPower+player.armour+player.speed+player.magicResistance
     const bst_monster = monster.attackDamage+monster.magicPower+monster.armor+monster.speed+monster.magicResistance
-
+    // console.log("monster",bst_monster);
+    // console.log("player",bst_player);
+    
+    
     if(bst_monster >= 0.95*bst_player &&  bst_monster < 1.2*bst_player){
         return "DANGER"
     }
