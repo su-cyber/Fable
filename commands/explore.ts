@@ -8,6 +8,7 @@ import profileModel from '../models/profileSchema'
 import inventory from '../models/InventorySchema'
 import {MessageButton, MessageEmbed } from 'discord.js'
 import { MessageAttachment } from 'discord.js'
+import { Entity, MonsterEntity } from '../src/age/classes'
 
 
 export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explore the world' })
@@ -114,7 +115,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             let acceptEmbed = new MessageEmbed()
                             .setColor('GREEN')
                             .setTitle('ACCEPTED')
-                            .setDescription('You have decided to fight!\ncheck your private message')
+                            .setDescription(`You have decided to fight!\n\nUse **/fight** to initiate combat with ${monster.name}!\nCombat Difficulty: **${calculateDifficulty(monster,foundUser)}**`)
         
                             let rejectEmbed = new MessageEmbed()
                             .setColor('RED')
@@ -140,7 +141,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                                         
                                         foundUser.encounter.push(encounter)
                                         await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
-                                        interaction.user.send(`Use /fight to begin encounter`).catch(e => {interaction.editReply({content:`It seems your DMs are disabled! kindly turn them on to access the combat feature of Fable.`,embeds:[],components:[]})})
+                                        
     
                                         
                                    
@@ -481,6 +482,22 @@ async function monstersDropdown(location:String) {
     )
 }
 
+async function calculateDifficulty(monster: MonsterEntity, player:any){
+    const bst_player = player.attackDamage+player.magicPower+player.armor+player.speed+player.magicResistance
+    const bst_monster = monster.attackDamage+monster.magicPower+monster.armor+monster.speed+monster.magicResistance
 
+    if(bst_monster >= 0.95*bst_player &&  bst_monster < 1.2*bst_player){
+        return "DANGER"
+    }
+    else if(bst_monster >= 0.80*bst_player &&  bst_monster < 0.95*bst_player){
+        return "MODERATE"
+    }
+    else if(bst_monster < 0.80*bst_player ){
+        return "EASY"
+    }
+    else{
+        return "FATAL DEATH"
+    }
+}
 
 
