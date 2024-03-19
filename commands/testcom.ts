@@ -349,7 +349,8 @@ export class PvEDuel_Test extends DuelBuilder {
 
             }
             this.attacker.skills.reverse()
-              
+            console.log(`${this.attacker.name}:`,this.attacker.skills);
+            
             let skill = this.attacker.skills.find(skill => skill.mana_cost <= this.attacker.mana)
                         if(skill){
                             this.attacker.useSkill(this.attacker,this.defender,skill)
