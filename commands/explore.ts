@@ -115,7 +115,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
                             let acceptEmbed = new MessageEmbed()
                             .setColor('GREEN')
                             .setTitle('ACCEPTED')
-                            .setDescription(`You have decided to fight!\n\nUse **/fight** to initiate combat with ${monster.name}!\nCombat Difficulty: **${calculateDifficulty(monster,foundUser)}**`)
+                            .setDescription(`You have decided to fight!\n\nUse **/fight** to initiate combat with ${monster.name}!\nCombat Difficulty: **${await calculateDifficulty(monster,foundUser)}**`)
         
                             let rejectEmbed = new MessageEmbed()
                             .setColor('RED')
