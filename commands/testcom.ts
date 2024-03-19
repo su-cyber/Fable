@@ -78,7 +78,7 @@ export default new MyCommandSlashBuilder({ name: 'testfight', description: 'figh
                                 let logEmbed = new MessageEmbed()
                                 .setTitle(`SQUAD BATTLES`)
                                 .setColor('GREEN')
-                                .setDescription(`Here are the Matchups for this SB:-\n\n${matchups[0].player1.name} VS ${matchups[0].player2.name}\n\n${matchups[1].player1.name} VS ${matchups[1].player2.name}\n\n${matchups[2].player1.name} VS ${matchups[2].player2.name}\n\n${matchups[3].player1.name} VS ${matchups[3].player2.name}\n\nInitiating Match 1...`);
+                                .setDescription(`Here are the Matchups for this SB:-\n\n${matchups[0].player1.name.name} VS ${matchups[0].player2.name.name}\n\n${matchups[1].player1.name.name} VS ${matchups[1].player2.name.name}\n\n${matchups[2].player1.name.name} VS ${matchups[2].player2.name.name}\n\n${matchups[3].player1.name.name} VS ${matchups[3].player2.name.name}\n\nInitiating Matches...`);
                                 // const attacker = await Warrior.create(author)
                                 // attacker.health=foundUser.health
                                 // attacker.mana=foundUser.mana
@@ -105,8 +105,8 @@ export default new MyCommandSlashBuilder({ name: 'testfight', description: 'figh
                                 let i
                                 let winners
                                 for(i=0;i<matchups.length;i++){
-                                    const player1 = matchups[i].player1
-                                    const player2 = matchups[i].player2
+                                    const player1 = matchups[i].player1.name
+                                    const player2 = matchups[i].player2.name
                                     let winner
                                     if(player1.speed >= player2.speed){
                                          winner = await new PvEDuel_Test({
