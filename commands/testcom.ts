@@ -358,6 +358,9 @@ export class PvEDuel_Test extends DuelBuilder {
                         else{
                             this.attacker.useSkill(this.attacker,this.defender,sample(skills))
                             await sleep(this.speed)
+                            console.log("Blood hound triggered this",skill);
+                            console.log("damage order",damage_order);
+                            
                         }
                
             }
