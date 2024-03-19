@@ -86,7 +86,6 @@ export class bloodHound extends MonsterEntity {
                     mana_cost: 3,
                     use: (attacker, defender) => {
                         attacker.attackDamage += 10
-                        defender.armor -= 10
                         attacker.addLogMessage(
                             `${attacker.name} used Blood Lust`,
                             `${attacker.name} radiates it's bloodlust boosting it's attack power and striking fear into it's prey`
