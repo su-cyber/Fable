@@ -18,6 +18,13 @@ import { Bot } from '../src/bot'
 import { emoji } from '../src/lib/utils/emoji'
 import { BeerBuccaneer1 } from '../src/age/monsters/Sunshade Forest/BeerBuccaneer1'
 import { MagmaGolem } from '../src/age/monsters/Dragon\'s Den/MagmaGolem'
+import { BeerBuccaneer2 } from '../src/age/monsters/Sunshade Forest/BeerBuccaneer2'
+import { Mosscale } from '../src/age/monsters/Stellaris Temple Ruins/mosscale'
+import { bloodHound } from '../src/age/monsters/Bleeding Gorge/bloodHound'
+import { Bogslither } from '../src/age/monsters/Stellaris Temple Ruins/bogslither'
+import { Droner } from '../src/age/monsters/Sunshade Forest/Droner'
+import { Treemick } from '../src/age/monsters/Castellan Fields/treemick'
+import { Rockmauler } from '../src/age/monsters/Orld Tree Husk/rockmauler'
 
 export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
@@ -32,7 +39,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
     async (bot, interaction) => {
         const authorId = interaction.user.id
         var author = await bot.users.fetch(authorId)
-        const setspeed = interaction.options.getInteger('speed')
+        const setspeed = 0
         
         
         
@@ -55,180 +62,80 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                 await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
                             }
                             else{
-                                const attacker = await Warrior.create(author)
-                                attacker.health=foundUser.health
-                                attacker.mana=foundUser.mana
-                                attacker.armor=foundUser.armour
-                                attacker.magicResistance = foundUser.magicResistance
-                                attacker.magicPower=foundUser.magicPower
-                                attacker.attackDamage=foundUser.attackDamage
-                                attacker.element = foundUser.elements[0].toLowerCase();
-                                attacker.evasion=foundUser.evasion
-                                attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
-                                attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
-                                attacker.maxMana = foundUser.mana
-                                attacker.speed = foundUser.speed
-                                attacker.level = foundUser.level
-                                attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
-                                
-                                inventory.findOne({userID:authorId},async function(err,foundProfile) {
-                                    if(foundProfile.inventory.potions.length !=0){
-                                        attacker.potions = []
-                                        for(let i=0;i<foundProfile.inventory.potions.length;i++){
-                                            
-                                            attacker.potions.push(foundProfile.inventory.potions[i].name)
-                                                    }
-                
-                                        
-                                    }
-                                    else{
-                                        attacker.potions =[]
-                                    }
-                                })
-                
-                               
-                                    attacker.skills=foundUser.currentskills
-                                
-                                    attacker.element = attacker.element.toLowerCase()
-                                    
-                                   
-                                
-                
-                                
-                                
-                                
-                            
-                
-                           
-                                
-                                
-                                
-                    
-                
-                               
-                
-                                
-                
-                                
-                                 
-                                    
-                                    
-                            if(foundUser.encounter.length != 0){
-                               if(foundUser.location == "tutorial"){
-                                if(foundUser.location == foundUser.encounter[0].location || foundUser.city_town == foundUser.encounter[0].location){
-                                    const monster = await (await getMonsters(foundUser.location))
-                                .find(m => m.name === foundUser.encounter[0].name)
-                                .create()
-                    
-                    if(attacker.speed >= monster.speed){
-                        await new PvEDuel_Test({
-                            interaction,
-                            player1: attacker,
-                            player2: monster,
-                            speed:setspeed,
-                        }).start()
-                        
-                    }
-                    else{
-                        await new PvEDuel_Test({
-                            interaction,
-                            player1: monster,
-                            player2: attacker,
-                            speed:setspeed
-                        }).start()
-                    }
-                                }
-                                else{
-                                    interaction.reply({content:`you are not in ${foundUser.encounter[0].location} where you encountered ${foundUser.encounter[0].name}`,ephemeral:true})
-                                }
-                               }
-                               else{
-                                const timestamp = Date.now()
-                
-                                if(timestamp - foundUser.encounter[0].time <= 2*60*1000){
-                                    if(foundUser.location == foundUser.encounter[0].location || foundUser.city_town == foundUser.encounter[0].location){
-                                        const monster = await (await getMonsters(foundUser.encounter[0].location)).map(fn => fn.create())
-                                    .find(m => m.name === foundUser.encounter[0].name)
-                                    
-                                    const monster2 = MagmaGolem.create()
-                                    
-                            foundUser.encounter = []
-                            await profileModel.updateOne({userID:interaction.user.id},{encounter:foundUser.encounter})
-                        if(attacker.speed >= monster.speed){
-                            const winner1 = await new PvEDuel_Test({
-                                interaction,
-                                player1: attacker,
-                                player2: monster,
-                                speed:setspeed,
-                            }).start()
-                            console.log(winner1);
+                                const team1 = [
+                                    {name: BeerBuccaneer1.create(),level:1},
+                                    {name: BeerBuccaneer2.create(),level:2},
+                                    {name: Mosscale.create(),level:15},
+                                    {name: bloodHound.create(),level:14},
+                                ]
+                                const team2 = [
+                                    {name: Treemick.create(),level:1},
+                                    {name: Droner.create(),level:2},
+                                    {name: Bogslither.create(),level:14},
+                                    {name: Rockmauler.create(),level:15},
+                                ]
+                                const matchups = await matchPlayers(team1,team2)
+                                let logEmbed = new MessageEmbed()
+                                .setTitle(`SQUAD BATTLES`)
+                                .setColor('GREEN')
+                                .setDescription(`Here are the Matchups for this SB:-\n\n${matchups[0].player1.name} VS ${matchups[0].player2.name}\n\n${matchups[1].player1.name} VS ${matchups[1].player2.name}\n\n${matchups[2].player1.name} VS ${matchups[2].player2.name}\n\n${matchups[3].player1.name} VS ${matchups[3].player2.name}\n\nInitiating Match 1...`);
+                                // const attacker = await Warrior.create(author)
+                                // attacker.health=foundUser.health
+                                // attacker.mana=foundUser.mana
+                                // attacker.armor=foundUser.armour
+                                // attacker.magicResistance = foundUser.magicResistance
+                                // attacker.magicPower=foundUser.magicPower
+                                // attacker.attackDamage=foundUser.attackDamage
+                                // attacker.element = foundUser.elements[0].toLowerCase();
+                                // attacker.evasion=foundUser.evasion
+                                // attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
+                                // attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                // attacker.maxMana = foundUser.mana
+                                // attacker.speed = foundUser.speed
+                                // attacker.level = foundUser.level
+                                // attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
 
-                            const winner2 = await new PvEDuel_Test({
-                                interaction,
-                                player1: attacker,
-                                player2: monster2,
-                                speed:setspeed,
-                            }).start()
-                            console.log(winner2);
-                            
-                        }
-                        else{
-                            const winner1 = await new PvEDuel_Test({
-                                interaction,
-                                player1: monster,
-                                player2: attacker,
-                                speed:setspeed
-                            }).start()
-                            console.log(winner1);
-                            
-                            const winner2 = await new PvEDuel_Test({
-                                interaction,
-                                player1: attacker,
-                                player2: monster2,
-                                speed:setspeed,
-                            }).start()
-                            console.log(winner2);
-                        }
+                
+                               
+                                //     attacker.skills=foundUser.currentskills
+                                
+                                //     attacker.element = attacker.element.toLowerCase()
+                                
+                                await interaction.reply({embeds:[logEmbed]})
+                                let i
+                                let winners
+                                for(i=0;i<matchups.length;i++){
+                                    const player1 = matchups[i].player1
+                                    const player2 = matchups[i].player2
+                                    let winner
+                                    if(player1.speed >= player2.speed){
+                                         winner = await new PvEDuel_Test({
+                                            interaction,
+                                            player1: player1,
+                                            player2: player2,
+                                            speed:setspeed,
+                                        }).start()
+                                        
                                     }
                                     else{
-                                        interaction.reply(`you are not in ${foundUser.encounter[0].location} where you encountered ${foundUser.encounter[0].name}`)
+                                         winner = await new PvEDuel_Test({
+                                            interaction,
+                                            player1: player2,
+                                            player2: player1,
+                                            speed:setspeed
+                                        }).start()
                                     }
+                                winners.push(winner)
+                                
                                 }
-                                else{
-                                    interaction.reply({content:`you responded too late, your encounter is lost`,ephemeral:true})
-                                    const authorID = interaction.user.id
-                                    profileModel.findOne({userID:authorID},async function(err,foundUser) {
                             
-                                        if(err){
-                                            console.log(err);
-                                            
-                                        }
-                                        else{
-                                            foundUser.encounter = []
-                                            await profileModel.updateOne({userID:authorID},{encounter:foundUser.encounter})
-                            
-                                        }
-                                    })
-                                }
-                               }
-                
-                            }
-                            else{
-                                await interaction.reply({content:`you have not encountered anything!`,ephemeral:true})
-                                
-                                
-                            }
-                                        
-                                        
-                                    
-                                
-                             
-                                
-                                
-                    
-                       
-                        
-                        
+                                let winEmbed = new MessageEmbed()
+                                .setTitle(`SQUAD BATTLES`)
+                                .setColor('GREEN')
+                                .setDescription(`Here are the Winners for this SB:-\n\n${matchups[0].player1.name} VS ${matchups[0].player2.name} - ${winners[0]}\n\n${matchups[1].player1.name} VS ${matchups[1].player2.name} - ${winners[1]}\n\n${matchups[2].player1.name} VS ${matchups[2].player2.name} - ${winners[2]}\n\n${matchups[3].player1.name} VS ${matchups[3].player2.name} - ${winners[3]}`);
+                               
+                                interaction.editReply({embeds:[winEmbed]})
+
                             }
                         })
                     
@@ -263,15 +170,6 @@ export class PvEDuel_Test extends DuelBuilder {
     speed: number
     
     async beforeDuelStart() {
-        super.beforeDuelStart()
-        if(this.attacker instanceof MonsterEntity){
-            await this.replyOrEdit({ content: `starting combat with ${this.player1.name}!`,components:[],embeds:[]})
-        }
-        else{
-            await this.replyOrEdit({ content: `starting combat with ${this.player2.name}!`,components:[],embeds:[] })
-        }
-        
-        await sleep(1.2)
         
         
     }
@@ -1122,4 +1020,52 @@ export function getEmoji(element:string){
         user_emoji = emoji.LIGHT
     }
     return user_emoji
+}
+
+async function matchPlayers(array1, array2) {
+    // Sort both arrays by player level in ascending order
+    const sortedArray1 = array1.slice().sort((a, b) => a.level - b.level);
+    const sortedArray2 = array2.slice().sort((a, b) => a.level - b.level);
+
+    const matchups = [];
+
+    let index1 = 0;
+    let index2 = 0;
+
+    while (index1 < sortedArray1.length && index2 < sortedArray2.length) {
+        const player1 = sortedArray1[index1];
+        const player2 = sortedArray2[index2];
+
+        // Calculate the absolute difference in levels between two players
+        const levelDifference = Math.abs(player1.level - player2.level);
+
+        // Add the matchup to the result
+        matchups.push({ player1, player2 });
+
+        // Move to the next player in the array with the smaller level difference
+        if (player1.level < player2.level) {
+            index1++;
+        } else if (player1.level > player2.level) {
+            index2++;
+        } else {
+            // If levels are equal, move both indices
+            index1++;
+            index2++;
+        }
+    }
+
+    // Handle any remaining unmatched players
+    while (index1 < sortedArray1.length) {
+        const player1 = sortedArray1[index1];
+        matchups.push({ player1, player2: null });
+        index1++;
+    }
+
+    while (index2 < sortedArray2.length) {
+        const player2 = sortedArray2[index2];
+        matchups.push({ player1: null, player2 });
+        index2++;
+    }
+
+    return matchups;
 }
