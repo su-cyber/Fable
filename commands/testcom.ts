@@ -27,6 +27,7 @@ import { Treemick } from '../src/age/monsters/Castellan Fields/treemick'
 import { Rockmauler } from '../src/age/monsters/Orld Tree Husk/rockmauler'
 import { Poisonbeak } from '../src/age/monsters/Asche Peak/poisonbeak'
 import { Embercrest } from '../src/age/monsters/Asche Peak/embercrest'
+import { MessageActionRow, MessageButton } from 'discord.js'
 
 export default new MyCommandSlashBuilder({ name: 'testfight', description: 'fight with an encounter' })
 .addIntegerOption((option: SlashCommandIntegerOption) => 
@@ -64,7 +65,78 @@ export default new MyCommandSlashBuilder({ name: 'testfight', description: 'figh
                                 await profileModel.updateOne({userID:authorId},{encounter:foundUser.encounter})
                             }
                             else{
-                                const team1 = [
+                                let red_team = []
+                                let blue_team = []
+                                let btnraw= new MessageActionRow().addComponents([
+                                    new MessageButton().setCustomId("btn_blue").setStyle("PRIMARY").setLabel("Blue"),
+                                    new MessageButton().setCustomId("btn_red").setStyle("DANGER").setLabel("Red"),])
+            
+                                let InitEmbed = new MessageEmbed()
+                                .setTitle(`SQUAD BATTLES`)
+                                .setColor('GREEN')
+                                .setDescription(`RED TEAM:\n\n${red_team.map((player) => {return player}).join("\n")}\n\nBLUE TEAM:\n\n${blue_team.map((player) => {return player}).join("\n")}`);
+                               
+                                interaction.reply({embeds:[InitEmbed],components:[btnraw]})
+                                let collector = await interaction.channel.createMessageComponentCollector({time : 1000 * 600})
+                        
+                                collector.on('collect',async (btn) => {
+                                    if(btn.isButton()){
+                                        if(btn.customId === "btn_red"){
+                                            if(red_team.length != 4){
+                                            await btn.deferUpdate().catch(e => {})
+                                            await red_team.push(btn.user.username)
+                                            let EditEmbed = new MessageEmbed()
+                                            .setTitle(`SQUAD BATTLES`)
+                                            .setColor('GREEN')
+                                            .setDescription(`RED TEAM:\n\n${red_team.map((player) => {return player}).join("\n")}\n\nBLUE TEAM:\n\n${blue_team.map((player) => {return player}).join("\n")}`);
+                                           
+                                            await interaction.editReply({embeds:[EditEmbed],components:[btnraw]})
+                                            if(red_team.length == 4 && blue_team.length == 4){
+                                                collector.stop()
+                                            }
+                                            }
+                                            else{
+                                                interaction.channel.send(`Red team is full!`)
+                                            }
+                                            
+                                        }
+                                        else if(btn.customId === "btn_blue"){
+                                            if(blue_team.length != 4){
+                                                await btn.deferUpdate().catch(e => {})
+                                                await blue_team.push(btn.user.username)
+                                                let EditEmbed = new MessageEmbed()
+                                                .setTitle(`SQUAD BATTLES`)
+                                                .setColor('GREEN')
+                                                .setDescription(`RED TEAM:\n\n${red_team.map((player) => {return player}).join("\n")}\n\nBLUE TEAM:\n\n${blue_team.map((player) => {return player}).join("\n")}`);
+                                               
+                                                await interaction.editReply({embeds:[EditEmbed],components:[btnraw]})
+                                                if(red_team.length == 4 && blue_team.length == 4){
+                                                    collector.stop()
+                                                }
+                                                }
+                                                else{
+                                                    interaction.channel.send(`Blue team is full!`)
+                                                }
+                                        
+                                        }
+        
+                                        
+                                        
+                                    }
+                                      
+                        
+                           
+                           
+                            })
+        
+                            collector.on('end', async () => {
+                                let FinalEmbed = new MessageEmbed()
+                                            .setTitle(`SQUAD BATTLES`)
+                                            .setColor('GREEN')
+                                            .setDescription(`RED TEAM:\n\n${red_team.map((player) => {return player}).join("\n")}\n\nBLUE TEAM:\n\n${blue_team.map((player) => {return player}).join("\n")}`);
+                                           
+                                 await interaction.editReply({embeds:[FinalEmbed],components:[]})
+                                 const team1 = [
                                     {name: BeerBuccaneer1.create(),level:1},
                                     {name: BeerBuccaneer2.create(),level:2},
                                     {name: Mosscale.create(),level:15},
@@ -103,7 +175,7 @@ export default new MyCommandSlashBuilder({ name: 'testfight', description: 'figh
                                 
                                 //     attacker.element = attacker.element.toLowerCase()
                                 
-                                await interaction.reply({embeds:[logEmbed]})
+                                await interaction.editReply({embeds:[logEmbed]})
                                 await sleep(5)
                                 let i
                                 let winners = []
@@ -148,6 +220,11 @@ export default new MyCommandSlashBuilder({ name: 'testfight', description: 'figh
                                 for(i=0;i<logs.length;i++){
                                     interaction.channel.send({embeds:[logs[i]]})
                                 }
+
+                            })
+        
+                               
+                                
                             }
                         })
                     
