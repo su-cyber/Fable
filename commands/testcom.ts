@@ -82,41 +82,58 @@ export default new MyCommandSlashBuilder({ name: 'testfight', description: 'figh
                                 collector.on('collect',async (btn) => {
                                     if(btn.isButton()){
                                         if(btn.customId === "btn_red"){
-                                            if(red_team.length != 4){
-                                            await btn.deferUpdate().catch(e => {})
-                                            await red_team.push(btn.user.username)
-                                            let EditEmbed = new MessageEmbed()
-                                            .setTitle(`SQUAD BATTLES`)
-                                            .setColor('GREEN')
-                                            .setDescription(`RED TEAM:\n\n${red_team.map((player) => {return player}).join("\n")}\n\nBLUE TEAM:\n\n${blue_team.map((player) => {return player}).join("\n")}`);
-                                           
-                                            await interaction.editReply({embeds:[EditEmbed],components:[btnraw]})
-                                            if(red_team.length == 4 && blue_team.length == 4){
-                                                collector.stop()
-                                            }
+                                            if(!red_team.includes(btn.user.username) && !blue_team.includes(btn.user.username)){
+                                                if(red_team.length != 4){
+                                                    await btn.deferUpdate().catch(e => {})
+                                                    await red_team.push(btn.user.username)
+                                                    let EditEmbed = new MessageEmbed()
+                                                    .setTitle(`SQUAD BATTLES`)
+                                                    .setColor('GREEN')
+                                                    .setDescription(`RED TEAM:\n\n${red_team.map((player) => {return player}).join("\n")}\n\nBLUE TEAM:\n\n${blue_team.map((player) => {return player}).join("\n")}`);
+                                                   
+                                                    await interaction.editReply({embeds:[EditEmbed],components:[btnraw]})
+                                                    if(red_team.length == 4 && blue_team.length == 4){
+                                                        collector.stop()
+                                                    }
+                                                    }
+                                                    else{
+                                                        await btn.deferUpdate().catch(e => {})
+                                                        interaction.channel.send(`Red team is full!`)
+                                                    }
                                             }
                                             else{
-                                                interaction.channel.send(`Red team is full!`)
+                                                await btn.deferUpdate().catch(e => {})
+                                                interaction.channel.send(`${btn.user.username} you have already joined the match!`)
                                             }
+                                            
                                             
                                         }
                                         else if(btn.customId === "btn_blue"){
-                                            if(blue_team.length != 4){
+                                            if(!red_team.includes(btn.user.username) && !blue_team.includes(btn.user.username)){
+
+                                                if(blue_team.length != 4){
+                                                    await btn.deferUpdate().catch(e => {})
+                                                    await blue_team.push(btn.user.username)
+                                                    let EditEmbed = new MessageEmbed()
+                                                    .setTitle(`SQUAD BATTLES`)
+                                                    .setColor('GREEN')
+                                                    .setDescription(`RED TEAM:\n\n${red_team.map((player) => {return player}).join("\n")}\n\nBLUE TEAM:\n\n${blue_team.map((player) => {return player}).join("\n")}`);
+                                                   
+                                                    await interaction.editReply({embeds:[EditEmbed],components:[btnraw]})
+                                                    if(red_team.length == 4 && blue_team.length == 4){
+                                                        collector.stop()
+                                                    }
+                                                    }
+                                                    else{
+                                                        await btn.deferUpdate().catch(e => {})
+                                                        interaction.channel.send(`Blue team is full!`)
+                                                    }
+                                            }
+                                            else{
                                                 await btn.deferUpdate().catch(e => {})
-                                                await blue_team.push(btn.user.username)
-                                                let EditEmbed = new MessageEmbed()
-                                                .setTitle(`SQUAD BATTLES`)
-                                                .setColor('GREEN')
-                                                .setDescription(`RED TEAM:\n\n${red_team.map((player) => {return player}).join("\n")}\n\nBLUE TEAM:\n\n${blue_team.map((player) => {return player}).join("\n")}`);
-                                               
-                                                await interaction.editReply({embeds:[EditEmbed],components:[btnraw]})
-                                                if(red_team.length == 4 && blue_team.length == 4){
-                                                    collector.stop()
-                                                }
-                                                }
-                                                else{
-                                                    interaction.channel.send(`Blue team is full!`)
-                                                }
+                                                interaction.channel.send(`${btn.user.username} you have already joined the match!`)
+                                            }
+                                            
                                         
                                         }
         
