@@ -1919,10 +1919,6 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                                 value:`**Travelled on Foot**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙\n`
                                             },
                                             {
-                                                name: `Zephyr Mountain`,
-                                                value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
-                                            },
-                                            {
                                                 name: `Orld Tree's Husk`,
                                                 value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
                                             },
@@ -2029,11 +2025,6 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         label: `Sunstone Mines`,
                         description: ``,
                         value: `Sunstone Mines`,
-                    },
-                    {
-                        label: `Zephyr Mountain`,
-                        description: ``,
-                        value: `Zephyr Mountain`,
                     },
                     {
                         label: `Orld Tree's Husk`,
@@ -2333,10 +2324,6 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                                 value:`**Travelled on Foot**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙\n`
                                             },
                                             {
-                                                name: `Zephyr Mountain`,
-                                                value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
-                                            },
-                                            {
                                                 name: `Orld Tree's Husk`,
                                                 value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
                                             },
@@ -2360,10 +2347,6 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             {
                                                 name: `Sunstone Mines`,
                                                 value:`**Travelled on Spyralink**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙\n`
-                                            },
-                                            {
-                                                name: `Zephyr Mountain`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
@@ -2443,11 +2426,6 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         label: `Sunstone Mines`,
                         description: ``,
                         value: `Sunstone Mines`,
-                    },
-                    {
-                        label: `Zephyr Mountain`,
-                        description: ``,
-                        value: `Zephyr Mountain`,
                     },
                     {
                         label: `Orld Tree's Husk`,
@@ -2745,10 +2723,6 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                                 value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
                                             },
                                             {
-                                                name: `Zephyr Mountain`,
-                                                value:`**Travelled on Foot**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
-                                            },
-                                            {
                                                 name: `Orld Tree's Husk`,
                                                 value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
                                             },
@@ -2772,10 +2746,6 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             {
                                                 name: `Dragon's Den`,
                                                 value:`**Travelled on Spyralink**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
-                                            },
-                                            {
-                                                name: `Zephyr Mountain`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
@@ -2855,11 +2825,6 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         label: `Dragon's Den`,
                         description: ``,
                         value: `Dragon's Den`,
-                    },
-                    {
-                        label: `Zephyr Mountain`,
-                        description: ``,
-                        value: `Zephyr Mountain`,
                     },
                     {
                         label: `Orld Tree's Husk`,
@@ -3578,10 +3543,6 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                                 value:`**Travelled on Foot**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
                                             },
                                             {
-                                                name: `Zephyr Mountain`,
-                                                value:`**Travelled on Foot**\n**Description**:The great mountains of the Zephyr range\n**Cost**:0 🪙`
-                                            },
-                                            {
                                                 name: `Capital of Gloaming`,
                                                 value:`**Travelled on Stagecoach**\n**Description**: Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 🪙\n`
                                             },
@@ -3610,10 +3571,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                                 name: `Sunstone Mines`,
                                                 value:`**Travelled on Spyralink**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
                                             },
-                                            {
-                                                name: `Zephyr Mountain`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The great mountains of the Zephyr range\n**Cost**:0 🪙`
-                                            },
+                                           
                                             {
                                                 name: `Capital of Gloaming`,
                                                 value:`**Travelled on Spyralink**\n**Description**: Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 0 🪙\n`
@@ -3734,11 +3692,6 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         label: `Sunstone Mines`,
                         description: ``,
                         value: `Sunstone Mines`,
-                    },
-                    {
-                        label: `Zephyr Mountain`,
-                        description: ``,
-                        value: `Zephyr Mountain`,
                     },
                     {
                         label: `Capital of Gloaming`,
@@ -4016,7 +3969,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 collector_cancel.stop()
                
                 }
-                else if(collected.customId == "select_interior"){
+                else if(collected.customId == "select_interior2"){
                     await profileModel.updateOne({userID:authorId},{location:location})
                
                     if(location == 'Capitol Central'){
@@ -4588,7 +4541,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://kafig_main.jpg')
+                        .setImage('attachment://kafig_main.jpeg')
                         .setDescription(`As you enter Kafig, vibrant bird houses adorn every corner of the bustling town, creating a picturesque scene. The Avian Square, with its central obsidian statue, stands as a focal point amidst the lively atmosphere. Traders and merchants add to the visual tapestry, drawn to the town's reputation as a thriving market for flying spyriths, while the air carries a sense of reverence for the mythical Avian Spyriths.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
@@ -4609,11 +4562,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     }
                     else if(location == 'Deathrust Forest'){
                         await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
-                        const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                        const attachment = new MessageAttachment('assets/Vigia/deathrust.jpg')
                         let successembed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('LOCATION REACHED')
-                        .setImage('attachment://zephyr_mountain.jpg')
+                        .setImage('attachment://deathrust.jpg')
                         .setDescription(`As you enter DeathRust Forest, the sight is eerie and still. Tall, old trees stand like ghostly statues, their branches reaching out like twisted fingers against a gray, lifeless sky. The ground is covered in dry leaves and brittle plants, creating a carpet of quiet decay. A hazy mist hangs in the air, giving the whole place a ghostly atmosphere. The once-green forest now seems like a graveyard, with rusted figures scattered around—those mindless iron zombies, the Ferromites, blending into the haunting scenery, their skeletal shapes telling a tale of a place forgotten and left to rust.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
@@ -4641,7 +4594,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
-                            .setImage(`attachment://ranger_centre.jpg`)
+                            .setImage(`attachment://templeoftears.jpg`)
                             .setDescription(`Dark and foreboding, Morozh's temple is hewn from age-old stone. Weeping faces spout an endless stream upon which solace seekers float candles in tribute. Shadows dance as you enter, feeling suddenly small beneath the arched passages. What rest may be found in despair's domain?\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
@@ -4656,12 +4609,12 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sol Barracks'){
-                        const attachment = new MessageAttachment('assets/Vigia/ranger_centre.jpeg')
+                        const attachment = new MessageAttachment('assets/Vigia/sol_barracks.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
-                            .setImage('attachment://ranger_centre.jpeg')
+                            .setImage('attachment://sol_barracks.jpeg')
                             .setDescription(` As you pass under the towering stone archway, the pounding of sparring knights fills your ears. Rows of neat barracks lines either side of the central courtyard. Bellowing drills instructors put recruits through their paces with spear, shield and sword. Sweat-slicked trainees grunt and parry under the noon sun.At the far end, an imposing armory bears the banners of past battles. Veterans hone and maintain the garrison's formidable arms within.\n\n**This is a Shop location, you can use /shop here**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
@@ -4676,12 +4629,12 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Castle Arcemis'){
-                        const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
+                        const attachment = new MessageAttachment('assets/Vigia/castle_arcemis.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
-                            .setImage('attachment://ranger_centre.jpeg')
+                            .setImage('attachment://castle_arcemis.jpeg')
                             .setDescription(`As you approach the imposing fortress of castle Arcemis, you crane your neck to take in its sheer scale. Perched atop a hill overlooking the city, its weathered ramparts and towers loom large, dominating the landscape. The last rays of the setting sun paint the stone walls in hues of gold and crimson. Banners with Earl Arvid's crest snap in the wind above parapets manned by watchful guards. Reaching the enormous gate, you glimpse the bustling activity inside - soldiers drilling in the courtyard, stewards rushing about on errands.Though you have not yet entered its halls, the castle radiates power and purpose, an indomitable guardian that has safeguarded Vigia for centuries.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
@@ -4696,7 +4649,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Vigia Ranger Centre'){
-                        const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
+                        const attachment = new MessageAttachment('assets/Vigia/ranger_centre.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
@@ -5099,7 +5052,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
-                            .setImage(`attachment://ranger_centre.jpg`)
+                            .setImage(`attachment://templeoftears.jpg`)
                             .setDescription(`Dark and foreboding, Morozh's temple is hewn from age-old stone. Weeping faces spout an endless stream upon which solace seekers float candles in tribute. Shadows dance as you enter, feeling suddenly small beneath the arched passages. What rest may be found in despair's domain?\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
@@ -5114,12 +5067,12 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sol Barracks'){
-                        const attachment = new MessageAttachment('assets/Vigia/ranger_centre.jpeg')
+                        const attachment = new MessageAttachment('assets/Vigia/sol_barracks.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
-                            .setImage('attachment://ranger_centre.jpeg')
+                            .setImage('attachment://sol_barracks.jpeg')
                             .setDescription(` As you pass under the towering stone archway, the pounding of sparring knights fills your ears. Rows of neat barracks lines either side of the central courtyard. Bellowing drills instructors put recruits through their paces with spear, shield and sword. Sweat-slicked trainees grunt and parry under the noon sun.At the far end, an imposing armory bears the banners of past battles. Veterans hone and maintain the garrison's formidable arms within.\n\n**This is a Shop location, you can use /shop here**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
@@ -5134,12 +5087,12 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Castle Arcemis'){
-                        const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
+                        const attachment = new MessageAttachment('assets/Vigia/castle_arcemis.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
-                            .setImage('attachment://ranger_centre.jpeg')
+                            .setImage('attachment://castle_arcemis.jpeg')
                             .setDescription(`As you approach the imposing fortress of castle Arcemis, you crane your neck to take in its sheer scale. Perched atop a hill overlooking the city, its weathered ramparts and towers loom large, dominating the landscape. The last rays of the setting sun paint the stone walls in hues of gold and crimson. Banners with Earl Arvid's crest snap in the wind above parapets manned by watchful guards. Reaching the enormous gate, you glimpse the bustling activity inside - soldiers drilling in the courtyard, stewards rushing about on errands.Though you have not yet entered its halls, the castle radiates power and purpose, an indomitable guardian that has safeguarded Vigia for centuries.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
@@ -5154,7 +5107,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Vigia Ranger Centre'){
-                        const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
+                        const attachment = new MessageAttachment('assets/Vigia/ranger_centre.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
@@ -5164,8 +5117,6 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
                             await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
-
-                    
                     
                     
     
@@ -5286,7 +5237,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
         
         let btn_cancel = new MessageActionRow().addComponents([
             new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
-            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("interior"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Vigia Interior"),
             new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("exterior")])
         
         let Exteriorselect =  new MessageActionRow().addComponents([
@@ -5411,7 +5362,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
-                            .setImage(`attachment://ranger_centre.jpg`)
+                            .setImage(`attachment://templeoftears.jpg`)
                             .setDescription(`Dark and foreboding, Morozh's temple is hewn from age-old stone. Weeping faces spout an endless stream upon which solace seekers float candles in tribute. Shadows dance as you enter, feeling suddenly small beneath the arched passages. What rest may be found in despair's domain?\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
@@ -5426,12 +5377,12 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Sol Barracks'){
-                        const attachment = new MessageAttachment('assets/Vigia/ranger_centre.jpeg')
+                        const attachment = new MessageAttachment('assets/Vigia/sol_barracks.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
-                            .setImage('attachment://ranger_centre.jpeg')
+                            .setImage('attachment://sol_barracks.jpeg')
                             .setDescription(` As you pass under the towering stone archway, the pounding of sparring knights fills your ears. Rows of neat barracks lines either side of the central courtyard. Bellowing drills instructors put recruits through their paces with spear, shield and sword. Sweat-slicked trainees grunt and parry under the noon sun.At the far end, an imposing armory bears the banners of past battles. Veterans hone and maintain the garrison's formidable arms within.\n\n**This is a Shop location, you can use /shop here**`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
@@ -5446,12 +5397,12 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Castle Arcemis'){
-                        const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
+                        const attachment = new MessageAttachment('assets/Vigia/castle_arcemis.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
                             .setTitle('LOCATION REACHED')
-                            .setImage('attachment://ranger_centre.jpeg')
+                            .setImage('attachment://castle_arcemis.jpeg')
                             .setDescription(`As you approach the imposing fortress of castle Arcemis, you crane your neck to take in its sheer scale. Perched atop a hill overlooking the city, its weathered ramparts and towers loom large, dominating the landscape. The last rays of the setting sun paint the stone walls in hues of gold and crimson. Banners with Earl Arvid's crest snap in the wind above parapets manned by watchful guards. Reaching the enormous gate, you glimpse the bustling activity inside - soldiers drilling in the courtyard, stewards rushing about on errands.Though you have not yet entered its halls, the castle radiates power and purpose, an indomitable guardian that has safeguarded Vigia for centuries.\n\n`)
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
@@ -5466,7 +5417,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     else if(location == 'Vigia Ranger Centre'){
-                        const attachment = new MessageAttachment('assets/Werfall/ranger_centre.jpeg')
+                        const attachment = new MessageAttachment('assets/Vigia/ranger_centre.jpeg')
                         let successembed
                             successembed = new MessageEmbed()
                             .setColor('RANDOM')
@@ -5477,7 +5428,6 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                     }
                     
-    
                 collector_select.stop()
                 collector_cancel.stop()
                
@@ -6166,7 +6116,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                    Interiorembed = new MessageEmbed()
                                    .setColor('RANDOM')
                                    .setTitle('SELECT INTERIOR LOCATION')
-                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .setDescription(`Choose a location to visit in Raflese`)
                                    .addFields([
                                     {
                                         name: `Vita Street`,
@@ -7603,7 +7553,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                    Interiorembed = new MessageEmbed()
                                    .setColor('RANDOM')
                                    .setTitle('SELECT INTERIOR LOCATION')
-                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .setDescription(`Choose a location to visit in Vesper`)
                                    .addFields([
                                     {
                                         name: `Gaiyo Plaza`,
@@ -7894,7 +7844,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                    Interiorembed = new MessageEmbed()
                                    .setColor('RANDOM')
                                    .setTitle('SELECT INTERIOR LOCATION')
-                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .setDescription(`Choose a location to visit in Vesper`)
                                    .addFields([
                                     {
                                         name: `Gaiyo Plaza`,
@@ -8193,7 +8143,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                    Interiorembed = new MessageEmbed()
                                    .setColor('RANDOM')
                                    .setTitle('SELECT INTERIOR LOCATION')
-                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .setDescription(`Choose a location to visit in Lucens`)
                                    .addFields([
                                     {
                                         name: `Betta Market Square`,
@@ -8498,7 +8448,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                    Interiorembed = new MessageEmbed()
                                    .setColor('RANDOM')
                                    .setTitle('SELECT INTERIOR LOCATION')
-                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .setDescription(`Choose a location to visit in Lucens`)
                                    .addFields([
                                     {
                                         name: `Betta Market Square`,
@@ -8786,7 +8736,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                    Interiorembed = new MessageEmbed()
                                    .setColor('RANDOM')
                                    .setTitle('SELECT INTERIOR LOCATION')
-                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .setDescription(`Choose a location to visit in Lucens`)
                                    .addFields([
                                     {
                                         name: `Betta Market Square`,
@@ -9487,7 +9437,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                    Interiorembed = new MessageEmbed()
                                    .setColor('RANDOM')
                                    .setTitle('SELECT INTERIOR LOCATION')
-                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .setDescription(`Choose a location to visit in Nottfall`)
                                    .addFields([
                                     {
                                         name: `Castle Aurum`,
@@ -9797,7 +9747,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                    Interiorembed = new MessageEmbed()
                                    .setColor('RANDOM')
                                    .setTitle('SELECT INTERIOR LOCATION')
-                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .setDescription(`Choose a location to visit in Nottfall`)
                                    .addFields([
                                     {
                                         name: `Castle Aurum`,
@@ -10507,7 +10457,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                    Interiorembed = new MessageEmbed()
                                    .setColor('RANDOM')
                                    .setTitle('SELECT INTERIOR LOCATION')
-                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .setDescription(`Choose a location to visit in Ingenia}`)
                                    .addFields([
                                     {
                                         name: `Storm Collider Tower`,
@@ -10810,7 +10760,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                    Interiorembed = new MessageEmbed()
                                    .setColor('RANDOM')
                                    .setTitle('SELECT INTERIOR LOCATION')
-                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .setDescription(`Choose a location to visit in Ingenia`)
                                    .addFields([
                                     {
                                         name: `Storm Collider Tower`,
@@ -11458,7 +11408,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                    Interiorembed = new MessageEmbed()
                                    .setColor('RANDOM')
                                    .setTitle('SELECT INTERIOR LOCATION')
-                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .setDescription(`Choose a location to visit in Underdagen`)
                                    .addFields([
                                     {
                                         name: `Grand Khan Smithy`,
@@ -11701,7 +11651,8 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
        
                 }
                 else if(city_town == "Zephyr Mountains"){
-                                        let Interiorembed
+                                        let Interiorembed1
+                                        let Interiorembed2
                                         let Exteriorembed
                                         let mount = "None"
                                         if(mount == "None"){
@@ -11718,6 +11669,14 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             {
                                                 name: `Township of Underdagen`,
                                                 value:`**Travelled on Foot**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Tethys`,
+                                                value:`**Travelled on Foot**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Avalon Pass`,
+                                                value:`**Travelled on Foot**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
                                             },
                                             
                                         ])
@@ -11737,14 +11696,34 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                                 name: `Township of Underdagen`,
                                                 value:`**Travelled on Spyralink**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 🪙\n`
                                             },
+                                            {
+                                                name: `Stateship of Tethys`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Den of Terodytes`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Zaffran Plains`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Psalm of Veldora`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Avalon Pass`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                            },
                                         ])
     
                                         }
                                         
-                                   Interiorembed = new MessageEmbed()
+                                   Interiorembed1 = new MessageEmbed()
                                    .setColor('RANDOM')
                                    .setTitle('SELECT INTERIOR LOCATION')
-                                   .setDescription(`Choose a location to visit in ${city_town}`)
+                                   .setDescription(`Choose a location to visit in Underdagen`)
                                    .addFields([
                                     {
                                         name: `Grand Khan Smithy`,
@@ -11768,12 +11747,56 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     },
                                     
                                    ])
+                                   
+                                   Interiorembed2 = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in Tethys`)
+                                   .addFields([
+                                    {
+                                        name: `Eagles Eyrie`,
+                                        value:`**Description**: The Aeroforge where Skysteel is mined and forged by skilled Dwarven blacksmiths.\n`
+                                    },
+                                    {
+                                        name: `Castle Valora`,
+                                        value:`**Description**: A majestic fortress overlooking the sprawling expanse of Tethys, home to Earl Vereth and his court.\n`
+                                    },
+                                    {
+                                        name: `Bridge of Death & Rebirth`,
+                                        value:`**Description**: A perilous span shrouded in legend, where the souls of the departed face their ultimate trial.\n`
+                                    },
+                                    {
+                                        name: `Havens Bazaar`,
+                                        value:`**Description**: A vibrant marketplace suspended between cliffs, offering stunning views and exotic goods.\n`
+                                    },
+                                    {
+                                        name: `Enfys Gorge`,
+                                        value:`**Description**: A mystical chasm where ancient spirits whisper cryptic messages to those who seek guidance.\n`
+                                    },
+                                    {
+                                        name: `Stonewind Chapel`,
+                                        value:`**Description**: An ancient temple nestled in the Frigus District, where Torr Dwarves honor the mountain deity Zephyr.\n`
+                                    },
+                                    {
+                                        name: `Stoneheim Plaza`,
+                                        value:`**Description**: A bustling market filled with extraordinary weapons, armor, and relics forged by Torr Dwarves.\n`
+                                    },
+                                    {
+                                        name: `Chinchord Cantina`,
+                                        value:`**Description**: A lively tavern renowned for its music, where travelers and locals gather to unwind.\n`
+                                    },
+                                    {
+                                        name: `Tethys Ranger Center`,
+                                        value:`**Description**: The headquarters of seasoned rangers that keep the deadly spyriths of Zephyr mountains in check.\n`
+                                    },
+                                    
+                                   ])
         
-        
-        let btn_cancel = new MessageActionRow().addComponents([
-            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
-            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Interior"),
-            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
+                                   let btn_cancel = new MessageActionRow().addComponents([
+                                    new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+                                    new MessageButton().setCustomId("interior1").setStyle("PRIMARY").setLabel("Underdagen Interior"),
+                                    new MessageButton().setCustomId("interior2").setStyle("PRIMARY").setLabel("Tethys Interior"),
+                                    new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
         
         let Exteriorselect =  new MessageActionRow().addComponents([
                 new MessageSelectMenu()
@@ -11789,12 +11812,37 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         label: `Township of Underdagen`,
                         description: ``,
                         value: `Underdagen`,
+                    },
+                    {
+                        label: `Stateship of Tethys`,
+                        description: ``,
+                        value: `Tethys`,
+                    },
+                    {
+                        label: `Den of Terodytes`,
+                        description: ``,
+                        value: `Den of Terodytes`,
+                    },
+                    {
+                        label: `Zaffran Plains`,
+                        description: ``,
+                        value: `Zaffran Plains`,
+                    },
+                    {
+                        label: `Psalm of Veldora`,
+                        description: ``,
+                        value: `Psalm of Veldora`,
+                    },
+                    {
+                        label: `Avalon Pass`,
+                        description: ``,
+                        value: `Avalon Pass`,
                     }
                     )
                     .setDisabled(false),
             ]) 
 
-            let Interiorselect =  new MessageActionRow().addComponents([
+            let Interiorselect1 =  new MessageActionRow().addComponents([
                 new MessageSelectMenu()
                 .setCustomId('select_interior')
                     .setPlaceholder(`Select a location ${interaction.user.username}`)
@@ -11822,16 +11870,62 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                     
                     )
                     .setDisabled(false),
-            ])  
-            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
-            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            ])
+
+            let Interiorselect2 =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior2')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Eagles Eyrie`,
+                        description: ``,
+                        value: `Eagles Eyrie`,
+                    },{
+                        label: `Castle Valora`,
+                        description: ``,
+                        value: `Castle Valora`,
+                    },{
+                        label: `Bridge of Death & Rebirth`,
+                        description: ``,
+                        value: `Bridge of Death & Rebirth`,
+                    },{
+                        label: `Haven's Bazaar`,
+                        description: ``,
+                        value: `Haven's Bazaar`,
+                    },{
+                        label: `Enfys Gorge`,
+                        description: ``,
+                        value: `Enfys Gorge`,
+                    },{
+                        label: `Stonewind Chapel`,
+                        description: ``,
+                        value: `Stonewind Chapel`,
+                    },{
+                        label: `Stoneheim Plaza`,
+                        description: ``,
+                        value: `Stoneheim Plaza`,
+                    },{
+                        label: `Chinchord Cantina`,
+                        description: ``,
+                        value: `Chinchord Cantina`,
+                    },{
+                        label: `Tethys Ranger Center`,
+                        description: ``,
+                        value: `Tethys Ranger Center`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])
+
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_interior2" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior1"|| interaction.customId == "interior2" || interaction.customId == "exterior")    
             let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
             let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
-        
             
         
         
-            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+            await interaction.reply({content: null,embeds:[Interiorembed1],components:[Interiorselect1,btn_cancel]})
         
             collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
                 collected.deferUpdate().catch(() => null)
@@ -11885,7 +11979,72 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         }
                         
                     }
+                    else if(location == 'Tethys'){
+                        if(foundUser.coins>=100 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://tethys_main.jpg')
+                        .setDescription(`As you approach Tethys, the grandeur of the Zephyr Mountains looms before you, their snow-capped peaks piercing the heavens. Cascading waterfalls cascade down the rocky cliffs, feeding the lush greenery below. Suspended between the cliffs, Haven's Bazaar teems with life, offering a dizzying array of sights and sounds. The air is tinged with the scent of exotic spices from the Zaffran Plains, hinting at the riches that await within this bustling mining state.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://tethys_main.jpg')
+                        .setDescription(`As you approach Tethys, the grandeur of the Zephyr Mountains looms before you, their snow-capped peaks piercing the heavens. Cascading waterfalls cascade down the rocky cliffs, feeding the lush greenery below. Suspended between the cliffs, Haven's Bazaar teems with life, offering a dizzying array of sights and sounds. The air is tinged with the scent of exotic spices from the Zaffran Plains, hinting at the riches that await within this bustling mining state.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                        }
                         
+                    }
+                    else if(location == `Den of Terodytes`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/den_terrodytes.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://den_terrodytes.jpg')
+                        .setDescription(`Entering the Den of Terodytes, you're immediately engulfed by darkness, pierced only by the faint glow of luminescent fungi clinging to the cavern walls. Above, the cacophony of screeching echoes reverberates through the chamber, a haunting melody that speaks of ancient terrors lurking in the depths. Every corner holds the promise of danger, as the elusive creatures slink through the shadows, their beady eyes gleaming with predatory intent.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Zaffran Plains`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/zaffran_plains.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://zaffran_plains.jpg')
+                        .setDescription(`As you step onto the Zaffran Plains, a kaleidoscope of colors unfolds before your eyes. Rows of vibrant Zaffran flowers stretch as far as the eye can see, their delicate petals dancing in the gentle breeze. The air is perfumed with the sweet fragrance of the spice, a heady aroma that intoxicates the senses. Yet, amidst the beauty, there's an underlying tension, as vigilant guards patrol the perimeter, protecting this precious commodity from would-be thieves.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Psalm of Veldora`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/psalm_veldora.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://psalm_veldora.jpg')
+                        .setDescription(`Ascending the winding path to the Psalm of Veldora, you're enveloped in a shroud of swirling mist, obscuring the world below. The air is charged with an otherworldly energy, as if the very mountain itself pulses with life. As you reach the summit, the mist parts to reveal a vast chamber, its walls adorned with ancient runes and symbols. A sense of reverence washes over you, as you stand in the presence of a sacred site revered by generations of Torr Dwarves.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Avalon Pass`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/avalon_pass.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://avalon_pass.jpg')
+                        .setDescription(`As you approach Avalon Pass, jagged cliffs loom overhead, casting menacing shadows across the narrow path. The air is thick with an ominous silence, broken only by the occasional echo of distant winds. Every step feels precarious, as if the very stones beneath your feet are reluctant to support your weight. Yet, despite the treacherous terrain, there's an undeniable allure to the pass, beckoning adventurers to brave its dangers and discover what lies beyond.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
                     
 
                     
@@ -11954,6 +12113,549 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 collector_cancel.stop()
                
                 }
+                else if(collected.customId == "select_interior2"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Eagles Eyrie'){
+                        const attachment = new MessageAttachment('assets/Tethys/eagles_eyrie.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://eagles_eyrie.jpg')
+                        .setDescription(`As you approach Eagle's Eyrie, the air grows thin and crisp, carrying the scent of fresh mountain air. Perched atop a towering peak, the eyrie commands a breathtaking view of the surrounding landscape, with rugged cliffs and sweeping valleys stretching out below. The sound of hammers striking anvils resonates through the air, as skilled Dwarven blacksmiths forge Skysteel into magnificent weapons and artifacts, their craftsmanship unparalleled in the realm.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Haven's Bazaar`){
+                        const attachment = new MessageAttachment('assets/Tethys/havens_bazaar.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://havens_bazaar.jpg')
+                        .setDescription(`Stepping into Haven's Bazaar, you're immediately engulfed in a whirlwind of sights, sounds, and smells. Colorful stalls line the narrow streets, offering a dizzying array of goods from far-flung corners of the realm. Merchants haggle and barter with eager customers, their voices blending into a cacophony of noise that fills the air. The scent of exotic spices and freshly baked goods wafts through the bustling marketplace, tantalizing the senses and beckoning you to explore further.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Castle Valora'){
+                        const attachment = new MessageAttachment('assets/Tethys/castle_valora.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://castle_valora.jpg')
+                            .setDescription(`Upon reaching Castle Valora, you're greeted by towering stone walls adorned with intricate carvings depicting scenes of heroic battles and noble deeds. A sense of grandeur permeates the air, as the castle's imposing towers rise defiantly against the sky. Guards clad in gleaming armor stand sentinel at the gates, their watchful eyes surveying all who approach with a mixture of vigilance and suspicion.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Tethys Ranger Center'){
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_rangercentre.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://tethys_rangercentre.jpg')
+                            .setDescription(`Arriving at the Tethys Ranger Center, you're greeted by a bustling hub of activity, as rangers clad in weather-worn attire go about their duties with quiet efficiency. Maps and charts line the walls, detailing the ever-shifting landscape of the surrounding wilderness. A sense of camaraderie fills the air, as rangers share tales of their exploits and offer guidance to weary travelers seeking refuge from the dangers of the wild.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Chinchord Cantina`){
+                        const attachment = new MessageAttachment('assets/Tethys/chinchord_cantina.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://chinchord_cantina.jpg')
+                            .setDescription(`Pushing open the door to the Chinchord Cantina, you're greeted by the lively strains of music and the raucous laughter of patrons enjoying a night of revelry. The air is thick with the scent of spiced ale and roasted meats, mingling with the sweet aroma of tobacco smoke that hangs heavy in the air. Lanterns cast a warm glow over the crowded tables, where travelers and locals alike gather to swap stories and share in the simple pleasures of good food, drink, and company.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    } 
+                    else if(location == `Stoneheim Plaza`){
+                        const attachment = new MessageAttachment('assets/Tethys/stoneheim_plaza.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://stoneheim_plaza.jpg')
+                        .setDescription(` Stepping into Stoneheim Plaza, you're surrounded by a bustling hive of activity, as vendors hawk their wares amidst a sea of eager shoppers. The air is alive with the sounds of bargaining and laughter, as merchants vie for the attention of passersby with colorful displays and enticing offers. At the heart of the plaza stands a grand fountain, its waters shimmering in the sunlight as if infused with the very essence of life itself.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Bridge of Death & Rebirth'){
+                        const attachment = new MessageAttachment('assets/Tethys/bridge_deathrebirth.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://bridge_deathrebirth.jpg')
+                            .setDescription(`As you tread the ancient stones of the Bridge of Death & Rebirth, you feel a shiver run down your spine at the sight of sinister statues flanking your path. Their eyes seem to follow your every move, casting a pall of unease over the crossing. Beneath your feet, the arms of the statues are littered with offerings and trinkets, each one a testament to the human desire for wealth and power`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Enfys Gorge'){
+                        const attachment = new MessageAttachment('assets/Tethys/enfys_gorge.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://enfys_gorge.jpg')
+                            .setDescription(`Venturing into Enfys Gorge, you're greeted by the thunderous roar of cascading waterfalls that echo off the sheer cliffs that flank the narrow ravine. Ancient trees cling to the rocky walls, their gnarled branches reaching out like skeletal fingers towards the sky. A sense of serenity washes over you as you stand amidst the pristine beauty of the gorge, a testament to the timeless power of nature's majesty.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Stonewind Chapel'){
+                        const attachment = new MessageAttachment('assets/Tethys/stonewind_chapel.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://stonewind_chapel.jpg')
+                            .setDescription(`Entering the Stonewind Chapel, you're met with a solemn hush that permeates the sacred space. Carved from the living rock of the mountain itself, the chapel's walls are adorned with intricate symbols and tapestries depicting scenes of divine reverence. A shaft of light filters through a narrow opening in the ceiling, casting a soft glow upon the altar at the chapel's center. Here, Torr Dwarves gather to offer prayers and pay homage to Zephyr, the guardian spirit of the mountain, in a ritual that has been passed down through generations.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    
+
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior1"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed1],components:[Interiorselect1,btn_cancel]})
+                    }
+                else if(j.customId == "interior2"){
+                    
+                        await interaction.editReply({embeds:[Interiorembed2],components:[Interiorselect2,btn_cancel]})
+                    }
+                else if(j.customId == "exterior"){
+                    
+                        await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Tethys"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            
+                                            {
+                                                name: `Zephyr Mountains`,
+                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Avalon Pass`,
+                                                value:`**Travelled on Foot**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Den of Terodytes`,
+                                                value:`**Travelled on Foot**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Zaffran Plains`,
+                                                value:`**Travelled on Foot**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Psalm of Veldora`,
+                                                value:`**Travelled on Foot**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Underdagen`,
+                                                value:`**Travelled on Stagecoach**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 100 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Zephyr Mountains`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Avalon Pass`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Den of Terodytes`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Zaffran Plains`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Psalm of Veldora`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Township of Underdagen`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in Tethys`)
+                                   .addFields([
+                                    {
+                                        name: `Eagles Eyrie`,
+                                        value:`**Description**: The Aeroforge where Skysteel is mined and forged by skilled Dwarven blacksmiths.\n`
+                                    },
+                                    {
+                                        name: `Castle Valora`,
+                                        value:`**Description**: A majestic fortress overlooking the sprawling expanse of Tethys, home to Earl Vereth and his court.\n`
+                                    },
+                                    {
+                                        name: `Bridge of Death & Rebirth`,
+                                        value:`**Description**: A perilous span shrouded in legend, where the souls of the departed face their ultimate trial.\n`
+                                    },
+                                    {
+                                        name: `Havens Bazaar`,
+                                        value:`**Description**: A vibrant marketplace suspended between cliffs, offering stunning views and exotic goods.\n`
+                                    },
+                                    {
+                                        name: `Enfys Gorge`,
+                                        value:`**Description**: A mystical chasm where ancient spirits whisper cryptic messages to those who seek guidance.\n`
+                                    },
+                                    {
+                                        name: `Stonewind Chapel`,
+                                        value:`**Description**: An ancient temple nestled in the Frigus District, where Torr Dwarves honor the mountain deity Zephyr.\n`
+                                    },
+                                    {
+                                        name: `Stoneheim Plaza`,
+                                        value:`**Description**: A bustling market filled with extraordinary weapons, armor, and relics forged by Torr Dwarves.\n`
+                                    },
+                                    {
+                                        name: `Chinchord Cantina`,
+                                        value:`**Description**: A lively tavern renowned for its music, where travelers and locals gather to unwind.\n`
+                                    },
+                                    {
+                                        name: `Tethys Ranger Center`,
+                                        value:`**Description**: The headquarters of seasoned rangers that keep the deadly spyriths of Zephyr mountains in check.\n`
+                                    },
+                                    
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Tethys Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Zephyr Mountains`,
+                        description: ``,
+                        value: `Zephyr Mountains`,
+                    },
+                    {
+                        label: `Avalon Pass`,
+                        description: ``,
+                        value: `Avalon Pass`,
+                    },
+                    {
+                        label: `Den of Terodytes`,
+                        description: ``,
+                        value: `Den of Terodytes`,
+                    },
+                    {
+                        label: `Zaffran Plains`,
+                        description: ``,
+                        value: `Zaffran Plains`,
+                    },
+                    {
+                        label: `Psalm of Veldora`,
+                        description: ``,
+                        value: `Psalm of Veldora`,
+                    },
+                    {
+                        label: `Township of Underdagen`,
+                        description: ``,
+                        value: `Underdagen`,
+                    }
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Eagles Eyrie`,
+                        description: ``,
+                        value: `Eagles Eyrie`,
+                    },{
+                        label: `Castle Valora`,
+                        description: ``,
+                        value: `Castle Valora`,
+                    },{
+                        label: `Bridge of Death & Rebirth`,
+                        description: ``,
+                        value: `Bridge of Death & Rebirth`,
+                    },{
+                        label: `Haven's Bazaar`,
+                        description: ``,
+                        value: `Haven's Bazaar`,
+                    },{
+                        label: `Enfys Gorge`,
+                        description: ``,
+                        value: `Enfys Gorge`,
+                    },{
+                        label: `Stonewind Chapel`,
+                        description: ``,
+                        value: `Stonewind Chapel`,
+                    },{
+                        label: `Stoneheim Plaza`,
+                        description: ``,
+                        value: `Stoneheim Plaza`,
+                    },{
+                        label: `Chinchord Cantina`,
+                        description: ``,
+                        value: `Chinchord Cantina`,
+                    },{
+                        label: `Tethys Ranger Center`,
+                        description: ``,
+                        value: `Tethys Ranger Center`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+
+                    if(location == `Avalon Pass`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/avalon_pass.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://avalon_pass.jpg')
+                        .setDescription(`As you approach Avalon Pass, jagged cliffs loom overhead, casting menacing shadows across the narrow path. The air is thick with an ominous silence, broken only by the occasional echo of distant winds. Every step feels precarious, as if the very stones beneath your feet are reluctant to support your weight. Yet, despite the treacherous terrain, there's an undeniable allure to the pass, beckoning adventurers to brave its dangers and discover what lies beyond.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Zephyr Mountains'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`LOCATION REACHED`)
+                        .setImage('attachment://zephyr_mountain.jpg')
+                        .setDescription(`As you embark on the journey to explore Zephyr Mountain, a sense of awe washes over you. The air grows crisper, and the surroundings transform into a realm of rugged beauty. Towering cliffs and cascading waterfalls paint a breathtaking backdrop, while the distant echo of wind whispers tales of ancient secrets. With each step, the terrain becomes more challenging, urging you to push beyond your limits. Yet, as you ascend the mountain's slopes, a sense of accomplishment fills your being, knowing that you are conquering nature's formidable playground. From the summit, you witness a panorama of majestic landscapes, a testament to the boundless wonders that await those who dare to venture into the heart of Zephyr Mountain.`)
+                       await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    
+                    else if(location == 'Underdagen'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        
+                    }
+
+                    else if(location == `Den of Terodytes`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/den_terrodytes.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://den_terrodytes.jpg')
+                        .setDescription(`Entering the Den of Terodytes, you're immediately engulfed by darkness, pierced only by the faint glow of luminescent fungi clinging to the cavern walls. Above, the cacophony of screeching echoes reverberates through the chamber, a haunting melody that speaks of ancient terrors lurking in the depths. Every corner holds the promise of danger, as the elusive creatures slink through the shadows, their beady eyes gleaming with predatory intent.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Zaffran Plains`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/zaffran_plains.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://zaffran_plains.jpg')
+                        .setDescription(`As you step onto the Zaffran Plains, a kaleidoscope of colors unfolds before your eyes. Rows of vibrant Zaffran flowers stretch as far as the eye can see, their delicate petals dancing in the gentle breeze. The air is perfumed with the sweet fragrance of the spice, a heady aroma that intoxicates the senses. Yet, amidst the beauty, there's an underlying tension, as vigilant guards patrol the perimeter, protecting this precious commodity from would-be thieves.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Psalm of Veldora`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/psalm_veldora.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://psalm_veldora.jpg')
+                        .setDescription(`Ascending the winding path to the Psalm of Veldora, you're enveloped in a shroud of swirling mist, obscuring the world below. The air is charged with an otherworldly energy, as if the very mountain itself pulses with life. As you reach the summit, the mist parts to reveal a vast chamber, its walls adorned with ancient runes and symbols. A sense of reverence washes over you, as you stand in the presence of a sacred site revered by generations of Torr Dwarves.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                        
+                    
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Eagles Eyrie'){
+                        const attachment = new MessageAttachment('assets/Tethys/eagles_eyrie.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://eagles_eyrie.jpg')
+                        .setDescription(`As you approach Eagle's Eyrie, the air grows thin and crisp, carrying the scent of fresh mountain air. Perched atop a towering peak, the eyrie commands a breathtaking view of the surrounding landscape, with rugged cliffs and sweeping valleys stretching out below. The sound of hammers striking anvils resonates through the air, as skilled Dwarven blacksmiths forge Skysteel into magnificent weapons and artifacts, their craftsmanship unparalleled in the realm.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Haven's Bazaar`){
+                        const attachment = new MessageAttachment('assets/Tethys/havens_bazaar.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://havens_bazaar.jpg')
+                        .setDescription(`Stepping into Haven's Bazaar, you're immediately engulfed in a whirlwind of sights, sounds, and smells. Colorful stalls line the narrow streets, offering a dizzying array of goods from far-flung corners of the realm. Merchants haggle and barter with eager customers, their voices blending into a cacophony of noise that fills the air. The scent of exotic spices and freshly baked goods wafts through the bustling marketplace, tantalizing the senses and beckoning you to explore further.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Castle Valora'){
+                        const attachment = new MessageAttachment('assets/Tethys/castle_valora.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://castle_valora.jpg')
+                            .setDescription(`Upon reaching Castle Valora, you're greeted by towering stone walls adorned with intricate carvings depicting scenes of heroic battles and noble deeds. A sense of grandeur permeates the air, as the castle's imposing towers rise defiantly against the sky. Guards clad in gleaming armor stand sentinel at the gates, their watchful eyes surveying all who approach with a mixture of vigilance and suspicion.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Tethys Ranger Center'){
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_rangercentre.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://tethys_rangercentre.jpg')
+                            .setDescription(`Arriving at the Tethys Ranger Center, you're greeted by a bustling hub of activity, as rangers clad in weather-worn attire go about their duties with quiet efficiency. Maps and charts line the walls, detailing the ever-shifting landscape of the surrounding wilderness. A sense of camaraderie fills the air, as rangers share tales of their exploits and offer guidance to weary travelers seeking refuge from the dangers of the wild.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Chinchord Cantina`){
+                        const attachment = new MessageAttachment('assets/Tethys/chinchord_cantina.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://chinchord_cantina.jpg')
+                            .setDescription(`Pushing open the door to the Chinchord Cantina, you're greeted by the lively strains of music and the raucous laughter of patrons enjoying a night of revelry. The air is thick with the scent of spiced ale and roasted meats, mingling with the sweet aroma of tobacco smoke that hangs heavy in the air. Lanterns cast a warm glow over the crowded tables, where travelers and locals alike gather to swap stories and share in the simple pleasures of good food, drink, and company.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    } 
+                    else if(location == `Stoneheim Plaza`){
+                        const attachment = new MessageAttachment('assets/Tethys/stoneheim_plaza.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://stoneheim_plaza.jpg')
+                        .setDescription(` Stepping into Stoneheim Plaza, you're surrounded by a bustling hive of activity, as vendors hawk their wares amidst a sea of eager shoppers. The air is alive with the sounds of bargaining and laughter, as merchants vie for the attention of passersby with colorful displays and enticing offers. At the heart of the plaza stands a grand fountain, its waters shimmering in the sunlight as if infused with the very essence of life itself.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Bridge of Death & Rebirth'){
+                        const attachment = new MessageAttachment('assets/Tethys/bridge_deathrebirth.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://bridge_deathrebirth.jpg')
+                            .setDescription(`As you tread the ancient stones of the Bridge of Death & Rebirth, you feel a shiver run down your spine at the sight of sinister statues flanking your path. Their eyes seem to follow your every move, casting a pall of unease over the crossing. Beneath your feet, the arms of the statues are littered with offerings and trinkets, each one a testament to the human desire for wealth and power`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Enfys Gorge'){
+                        const attachment = new MessageAttachment('assets/Tethys/enfys_gorge.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://enfys_gorge.jpg')
+                            .setDescription(`Venturing into Enfys Gorge, you're greeted by the thunderous roar of cascading waterfalls that echo off the sheer cliffs that flank the narrow ravine. Ancient trees cling to the rocky walls, their gnarled branches reaching out like skeletal fingers towards the sky. A sense of serenity washes over you as you stand amidst the pristine beauty of the gorge, a testament to the timeless power of nature's majesty.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Stonewind Chapel'){
+                        const attachment = new MessageAttachment('assets/Tethys/stonewind_chapel.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://stonewind_Chapel.jpg')
+                            .setDescription(`Entering the Stonewind Chapel, you're met with a solemn hush that permeates the sacred space. Carved from the living rock of the mountain itself, the chapel's walls are adorned with intricate symbols and tapestries depicting scenes of divine reverence. A shaft of light filters through a narrow opening in the ceiling, casting a soft glow upon the altar at the chapel's center. Here, Torr Dwarves gather to offer prayers and pay homage to Zephyr, the guardian spirit of the mountain, in a ritual that has been passed down through generations.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    
+
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
                 
                 
         
@@ -11986,7 +12688,1821 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
             })              
        
                 }
+                else if(city_town == "Avalon Pass"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            
+                                            {
+                                                name: `Zephyr Mountains`,
+                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Den of Terodytes`,
+                                                value:`**Travelled on Foot**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Zaffran Plains`,
+                                                value:`**Travelled on Foot**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Psalm of Veldora`,
+                                                value:`**Travelled on Foot**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Tethys`,
+                                                value:`**Travelled on Foot**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Zephyr Mountains`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Den of Terodytes`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Zaffran Plains`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Psalm of Veldora`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Tethys`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                            },
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in Tethys`)
+                                   .addFields([
+                                    {
+                                        name: `Eagles Eyrie`,
+                                        value:`**Description**: The Aeroforge where Skysteel is mined and forged by skilled Dwarven blacksmiths.\n`
+                                    },
+                                    {
+                                        name: `Castle Valora`,
+                                        value:`**Description**: A majestic fortress overlooking the sprawling expanse of Tethys, home to Earl Vereth and his court.\n`
+                                    },
+                                    {
+                                        name: `Bridge of Death & Rebirth`,
+                                        value:`**Description**: A perilous span shrouded in legend, where the souls of the departed face their ultimate trial.\n`
+                                    },
+                                    {
+                                        name: `Havens Bazaar`,
+                                        value:`**Description**: A vibrant marketplace suspended between cliffs, offering stunning views and exotic goods.\n`
+                                    },
+                                    {
+                                        name: `Enfys Gorge`,
+                                        value:`**Description**: A mystical chasm where ancient spirits whisper cryptic messages to those who seek guidance.\n`
+                                    },
+                                    {
+                                        name: `Stonewind Chapel`,
+                                        value:`**Description**: An ancient temple nestled in the Frigus District, where Torr Dwarves honor the mountain deity Zephyr.\n`
+                                    },
+                                    {
+                                        name: `Stoneheim Plaza`,
+                                        value:`**Description**: A bustling market filled with extraordinary weapons, armor, and relics forged by Torr Dwarves.\n`
+                                    },
+                                    {
+                                        name: `Chinchord Cantina`,
+                                        value:`**Description**: A lively tavern renowned for its music, where travelers and locals gather to unwind.\n`
+                                    },
+                                    {
+                                        name: `Tethys Ranger Center`,
+                                        value:`**Description**: The headquarters of seasoned rangers that keep the deadly spyriths of Zephyr mountains in check.\n`
+                                    },
+                                    
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Tethys Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Zephyr Mountains`,
+                        description: ``,
+                        value: `Zephyr Mountains`,
+                    },
+                    {
+                        label: `Den of Terodytes`,
+                        description: ``,
+                        value: `Den of Terodytes`,
+                    },
+                    {
+                        label: `Zaffran Plains`,
+                        description: ``,
+                        value: `Zaffran Plains`,
+                    },
+                    {
+                        label: `Psalm of Veldora`,
+                        description: ``,
+                        value: `Psalm of Veldora`,
+                    },
+                    {
+                        label: `Stateship of Tethys`,
+                        description: ``,
+                        value: `Tethys`,
+                    }
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Eagles Eyrie`,
+                        description: ``,
+                        value: `Eagles Eyrie`,
+                    },{
+                        label: `Castle Valora`,
+                        description: ``,
+                        value: `Castle Valora`,
+                    },{
+                        label: `Bridge of Death & Rebirth`,
+                        description: ``,
+                        value: `Bridge of Death & Rebirth`,
+                    },{
+                        label: `Haven's Bazaar`,
+                        description: ``,
+                        value: `Haven's Bazaar`,
+                    },{
+                        label: `Enfys Gorge`,
+                        description: ``,
+                        value: `Enfys Gorge`,
+                    },{
+                        label: `Stonewind Chapel`,
+                        description: ``,
+                        value: `Stonewind Chapel`,
+                    },{
+                        label: `Stoneheim Plaza`,
+                        description: ``,
+                        value: `Stoneheim Plaza`,
+                    },{
+                        label: `Chinchord Cantina`,
+                        description: ``,
+                        value: `Chinchord Cantina`,
+                    },{
+                        label: `Tethys Ranger Center`,
+                        description: ``,
+                        value: `Tethys Ranger Center`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
                 
+                if(collected.customId == "select_exterior"){
+
+                    if(location == `Avalon Pass`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/avalon_pass.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://avalon_pass.jpg')
+                        .setDescription(`As you approach Avalon Pass, jagged cliffs loom overhead, casting menacing shadows across the narrow path. The air is thick with an ominous silence, broken only by the occasional echo of distant winds. Every step feels precarious, as if the very stones beneath your feet are reluctant to support your weight. Yet, despite the treacherous terrain, there's an undeniable allure to the pass, beckoning adventurers to brave its dangers and discover what lies beyond.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Zephyr Mountains'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`LOCATION REACHED`)
+                        .setImage('attachment://zephyr_mountain.jpg')
+                        .setDescription(`As you embark on the journey to explore Zephyr Mountain, a sense of awe washes over you. The air grows crisper, and the surroundings transform into a realm of rugged beauty. Towering cliffs and cascading waterfalls paint a breathtaking backdrop, while the distant echo of wind whispers tales of ancient secrets. With each step, the terrain becomes more challenging, urging you to push beyond your limits. Yet, as you ascend the mountain's slopes, a sense of accomplishment fills your being, knowing that you are conquering nature's formidable playground. From the summit, you witness a panorama of majestic landscapes, a testament to the boundless wonders that await those who dare to venture into the heart of Zephyr Mountain.`)
+                       await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    
+                    else if(location == 'Underdagen'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        
+                    }
+
+                    else if(location == `Den of Terodytes`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/den_terrodytes.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://den_terrodytes.jpg')
+                        .setDescription(`Entering the Den of Terodytes, you're immediately engulfed by darkness, pierced only by the faint glow of luminescent fungi clinging to the cavern walls. Above, the cacophony of screeching echoes reverberates through the chamber, a haunting melody that speaks of ancient terrors lurking in the depths. Every corner holds the promise of danger, as the elusive creatures slink through the shadows, their beady eyes gleaming with predatory intent.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Zaffran Plains`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/zaffran_plains.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://zaffran_plains.jpg')
+                        .setDescription(`As you step onto the Zaffran Plains, a kaleidoscope of colors unfolds before your eyes. Rows of vibrant Zaffran flowers stretch as far as the eye can see, their delicate petals dancing in the gentle breeze. The air is perfumed with the sweet fragrance of the spice, a heady aroma that intoxicates the senses. Yet, amidst the beauty, there's an underlying tension, as vigilant guards patrol the perimeter, protecting this precious commodity from would-be thieves.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Psalm of Veldora`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/psalm_veldora.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://psalm_veldora.jpg')
+                        .setDescription(`Ascending the winding path to the Psalm of Veldora, you're enveloped in a shroud of swirling mist, obscuring the world below. The air is charged with an otherworldly energy, as if the very mountain itself pulses with life. As you reach the summit, the mist parts to reveal a vast chamber, its walls adorned with ancient runes and symbols. A sense of reverence washes over you, as you stand in the presence of a sacred site revered by generations of Torr Dwarves.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Tethys'){
+                        if(foundUser.coins>=100 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://tethys_main.jpg')
+                        .setDescription(`As you approach Tethys, the grandeur of the Zephyr Mountains looms before you, their snow-capped peaks piercing the heavens. Cascading waterfalls cascade down the rocky cliffs, feeding the lush greenery below. Suspended between the cliffs, Haven's Bazaar teems with life, offering a dizzying array of sights and sounds. The air is tinged with the scent of exotic spices from the Zaffran Plains, hinting at the riches that await within this bustling mining state.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://tethys_main.jpg')
+                        .setDescription(`As you approach Tethys, the grandeur of the Zephyr Mountains looms before you, their snow-capped peaks piercing the heavens. Cascading waterfalls cascade down the rocky cliffs, feeding the lush greenery below. Suspended between the cliffs, Haven's Bazaar teems with life, offering a dizzying array of sights and sounds. The air is tinged with the scent of exotic spices from the Zaffran Plains, hinting at the riches that await within this bustling mining state.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                        
+                    
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Eagles Eyrie'){
+                        const attachment = new MessageAttachment('assets/Tethys/eagles_eyrie.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://eagles_eyrie.jpg')
+                        .setDescription(`As you approach Eagle's Eyrie, the air grows thin and crisp, carrying the scent of fresh mountain air. Perched atop a towering peak, the eyrie commands a breathtaking view of the surrounding landscape, with rugged cliffs and sweeping valleys stretching out below. The sound of hammers striking anvils resonates through the air, as skilled Dwarven blacksmiths forge Skysteel into magnificent weapons and artifacts, their craftsmanship unparalleled in the realm.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Haven's Bazaar`){
+                        const attachment = new MessageAttachment('assets/Tethys/havens_bazaar.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://havens_bazaar.jpg')
+                        .setDescription(`Stepping into Haven's Bazaar, you're immediately engulfed in a whirlwind of sights, sounds, and smells. Colorful stalls line the narrow streets, offering a dizzying array of goods from far-flung corners of the realm. Merchants haggle and barter with eager customers, their voices blending into a cacophony of noise that fills the air. The scent of exotic spices and freshly baked goods wafts through the bustling marketplace, tantalizing the senses and beckoning you to explore further.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Castle Valora'){
+                        const attachment = new MessageAttachment('assets/Tethys/castle_valora.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://castle_valora.jpg')
+                            .setDescription(`Upon reaching Castle Valora, you're greeted by towering stone walls adorned with intricate carvings depicting scenes of heroic battles and noble deeds. A sense of grandeur permeates the air, as the castle's imposing towers rise defiantly against the sky. Guards clad in gleaming armor stand sentinel at the gates, their watchful eyes surveying all who approach with a mixture of vigilance and suspicion.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Tethys Ranger Center'){
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_rangercentre.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://tethys_rangercentre.jpg')
+                            .setDescription(`Arriving at the Tethys Ranger Center, you're greeted by a bustling hub of activity, as rangers clad in weather-worn attire go about their duties with quiet efficiency. Maps and charts line the walls, detailing the ever-shifting landscape of the surrounding wilderness. A sense of camaraderie fills the air, as rangers share tales of their exploits and offer guidance to weary travelers seeking refuge from the dangers of the wild.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Chinchord Cantina`){
+                        const attachment = new MessageAttachment('assets/Tethys/chinchord_cantina.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://chinchord_cantina.jpg')
+                            .setDescription(`Pushing open the door to the Chinchord Cantina, you're greeted by the lively strains of music and the raucous laughter of patrons enjoying a night of revelry. The air is thick with the scent of spiced ale and roasted meats, mingling with the sweet aroma of tobacco smoke that hangs heavy in the air. Lanterns cast a warm glow over the crowded tables, where travelers and locals alike gather to swap stories and share in the simple pleasures of good food, drink, and company.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    } 
+                    else if(location == `Stoneheim Plaza`){
+                        const attachment = new MessageAttachment('assets/Tethys/stoneheim_plaza.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://stoneheim_plaza.jpg')
+                        .setDescription(` Stepping into Stoneheim Plaza, you're surrounded by a bustling hive of activity, as vendors hawk their wares amidst a sea of eager shoppers. The air is alive with the sounds of bargaining and laughter, as merchants vie for the attention of passersby with colorful displays and enticing offers. At the heart of the plaza stands a grand fountain, its waters shimmering in the sunlight as if infused with the very essence of life itself.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Bridge of Death & Rebirth'){
+                        const attachment = new MessageAttachment('assets/Tethys/bridge_deathrebirth.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://bridge_deathrebirth.jpg')
+                            .setDescription(`As you tread the ancient stones of the Bridge of Death & Rebirth, you feel a shiver run down your spine at the sight of sinister statues flanking your path. Their eyes seem to follow your every move, casting a pall of unease over the crossing. Beneath your feet, the arms of the statues are littered with offerings and trinkets, each one a testament to the human desire for wealth and power`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Enfys Gorge'){
+                        const attachment = new MessageAttachment('assets/Tethys/enfys_gorge.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://enfys_gorge.jpg')
+                            .setDescription(`Venturing into Enfys Gorge, you're greeted by the thunderous roar of cascading waterfalls that echo off the sheer cliffs that flank the narrow ravine. Ancient trees cling to the rocky walls, their gnarled branches reaching out like skeletal fingers towards the sky. A sense of serenity washes over you as you stand amidst the pristine beauty of the gorge, a testament to the timeless power of nature's majesty.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Stonewind Chapel'){
+                        const attachment = new MessageAttachment('assets/Tethys/stonewind_chapel.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://stonewind_chapel.jpg')
+                            .setDescription(`Entering the Stonewind Chapel, you're met with a solemn hush that permeates the sacred space. Carved from the living rock of the mountain itself, the chapel's walls are adorned with intricate symbols and tapestries depicting scenes of divine reverence. A shaft of light filters through a narrow opening in the ceiling, casting a soft glow upon the altar at the chapel's center. Here, Torr Dwarves gather to offer prayers and pay homage to Zephyr, the guardian spirit of the mountain, in a ritual that has been passed down through generations.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    
+
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Den of Terrodytes"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            
+                                            {
+                                                name: `Zephyr Mountains`,
+                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Avalon Pass`,
+                                                value:`**Travelled on Foot**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Zaffran Plains`,
+                                                value:`**Travelled on Foot**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Psalm of Veldora`,
+                                                value:`**Travelled on Foot**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Tethys`,
+                                                value:`**Travelled on Foot**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Zephyr Mountains`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Avalon Pass`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Zaffran Plains`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Psalm of Veldora`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Tethys`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in Tethys`)
+                                   .addFields([
+                                    {
+                                        name: `Eagles Eyrie`,
+                                        value:`**Description**: The Aeroforge where Skysteel is mined and forged by skilled Dwarven blacksmiths.\n`
+                                    },
+                                    {
+                                        name: `Castle Valora`,
+                                        value:`**Description**: A majestic fortress overlooking the sprawling expanse of Tethys, home to Earl Vereth and his court.\n`
+                                    },
+                                    {
+                                        name: `Bridge of Death & Rebirth`,
+                                        value:`**Description**: A perilous span shrouded in legend, where the souls of the departed face their ultimate trial.\n`
+                                    },
+                                    {
+                                        name: `Havens Bazaar`,
+                                        value:`**Description**: A vibrant marketplace suspended between cliffs, offering stunning views and exotic goods.\n`
+                                    },
+                                    {
+                                        name: `Enfys Gorge`,
+                                        value:`**Description**: A mystical chasm where ancient spirits whisper cryptic messages to those who seek guidance.\n`
+                                    },
+                                    {
+                                        name: `Stonewind Chapel`,
+                                        value:`**Description**: An ancient temple nestled in the Frigus District, where Torr Dwarves honor the mountain deity Zephyr.\n`
+                                    },
+                                    {
+                                        name: `Stoneheim Plaza`,
+                                        value:`**Description**: A bustling market filled with extraordinary weapons, armor, and relics forged by Torr Dwarves.\n`
+                                    },
+                                    {
+                                        name: `Chinchord Cantina`,
+                                        value:`**Description**: A lively tavern renowned for its music, where travelers and locals gather to unwind.\n`
+                                    },
+                                    {
+                                        name: `Tethys Ranger Center`,
+                                        value:`**Description**: The headquarters of seasoned rangers that keep the deadly spyriths of Zephyr mountains in check.\n`
+                                    },
+                                    
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Tethys Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Zephyr Mountains`,
+                        description: ``,
+                        value: `Zephyr Mountains`,
+                    },
+                    {
+                        label: `Avalon Pass`,
+                        description: ``,
+                        value: `Avalon Pass`,
+                    },
+                    {
+                        label: `Zaffran Plains`,
+                        description: ``,
+                        value: `Zaffran Plains`,
+                    },
+                    {
+                        label: `Psalm of Veldora`,
+                        description: ``,
+                        value: `Psalm of Veldora`,
+                    },
+                    {
+                        label: `Stateship of Tethys`,
+                        description: ``,
+                        value: `Tethys`,
+                    }
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Eagles Eyrie`,
+                        description: ``,
+                        value: `Eagles Eyrie`,
+                    },{
+                        label: `Castle Valora`,
+                        description: ``,
+                        value: `Castle Valora`,
+                    },{
+                        label: `Bridge of Death & Rebirth`,
+                        description: ``,
+                        value: `Bridge of Death & Rebirth`,
+                    },{
+                        label: `Haven's Bazaar`,
+                        description: ``,
+                        value: `Haven's Bazaar`,
+                    },{
+                        label: `Enfys Gorge`,
+                        description: ``,
+                        value: `Enfys Gorge`,
+                    },{
+                        label: `Stonewind Chapel`,
+                        description: ``,
+                        value: `Stonewind Chapel`,
+                    },{
+                        label: `Stoneheim Plaza`,
+                        description: ``,
+                        value: `Stoneheim Plaza`,
+                    },{
+                        label: `Chinchord Cantina`,
+                        description: ``,
+                        value: `Chinchord Cantina`,
+                    },{
+                        label: `Tethys Ranger Center`,
+                        description: ``,
+                        value: `Tethys Ranger Center`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+
+                    if(location == `Avalon Pass`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/avalon_pass.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://avalon_pass.jpg')
+                        .setDescription(`As you approach Avalon Pass, jagged cliffs loom overhead, casting menacing shadows across the narrow path. The air is thick with an ominous silence, broken only by the occasional echo of distant winds. Every step feels precarious, as if the very stones beneath your feet are reluctant to support your weight. Yet, despite the treacherous terrain, there's an undeniable allure to the pass, beckoning adventurers to brave its dangers and discover what lies beyond.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Zephyr Mountains'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`LOCATION REACHED`)
+                        .setImage('attachment://zephyr_mountain.jpg')
+                        .setDescription(`As you embark on the journey to explore Zephyr Mountain, a sense of awe washes over you. The air grows crisper, and the surroundings transform into a realm of rugged beauty. Towering cliffs and cascading waterfalls paint a breathtaking backdrop, while the distant echo of wind whispers tales of ancient secrets. With each step, the terrain becomes more challenging, urging you to push beyond your limits. Yet, as you ascend the mountain's slopes, a sense of accomplishment fills your being, knowing that you are conquering nature's formidable playground. From the summit, you witness a panorama of majestic landscapes, a testament to the boundless wonders that await those who dare to venture into the heart of Zephyr Mountain.`)
+                       await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    
+                    else if(location == 'Underdagen'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        
+                    }
+
+                    else if(location == `Den of Terodytes`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/den_terrodytes.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://den_terrodytes.jpg')
+                        .setDescription(`Entering the Den of Terodytes, you're immediately engulfed by darkness, pierced only by the faint glow of luminescent fungi clinging to the cavern walls. Above, the cacophony of screeching echoes reverberates through the chamber, a haunting melody that speaks of ancient terrors lurking in the depths. Every corner holds the promise of danger, as the elusive creatures slink through the shadows, their beady eyes gleaming with predatory intent.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Zaffran Plains`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/zaffran_plains.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://zaffran_plains.jpg')
+                        .setDescription(`As you step onto the Zaffran Plains, a kaleidoscope of colors unfolds before your eyes. Rows of vibrant Zaffran flowers stretch as far as the eye can see, their delicate petals dancing in the gentle breeze. The air is perfumed with the sweet fragrance of the spice, a heady aroma that intoxicates the senses. Yet, amidst the beauty, there's an underlying tension, as vigilant guards patrol the perimeter, protecting this precious commodity from would-be thieves.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Psalm of Veldora`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/psalm_veldora.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://psalm_veldora.jpg')
+                        .setDescription(`Ascending the winding path to the Psalm of Veldora, you're enveloped in a shroud of swirling mist, obscuring the world below. The air is charged with an otherworldly energy, as if the very mountain itself pulses with life. As you reach the summit, the mist parts to reveal a vast chamber, its walls adorned with ancient runes and symbols. A sense of reverence washes over you, as you stand in the presence of a sacred site revered by generations of Torr Dwarves.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Tethys'){
+                        if(foundUser.coins>=100 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://tethys_main.jpg')
+                        .setDescription(`As you approach Tethys, the grandeur of the Zephyr Mountains looms before you, their snow-capped peaks piercing the heavens. Cascading waterfalls cascade down the rocky cliffs, feeding the lush greenery below. Suspended between the cliffs, Haven's Bazaar teems with life, offering a dizzying array of sights and sounds. The air is tinged with the scent of exotic spices from the Zaffran Plains, hinting at the riches that await within this bustling mining state.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://tethys_main.jpg')
+                        .setDescription(`As you approach Tethys, the grandeur of the Zephyr Mountains looms before you, their snow-capped peaks piercing the heavens. Cascading waterfalls cascade down the rocky cliffs, feeding the lush greenery below. Suspended between the cliffs, Haven's Bazaar teems with life, offering a dizzying array of sights and sounds. The air is tinged with the scent of exotic spices from the Zaffran Plains, hinting at the riches that await within this bustling mining state.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                        
+                    
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Eagles Eyrie'){
+                        const attachment = new MessageAttachment('assets/Tethys/eagles_eyrie.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://eagles_eyrie.jpg')
+                        .setDescription(`As you approach Eagle's Eyrie, the air grows thin and crisp, carrying the scent of fresh mountain air. Perched atop a towering peak, the eyrie commands a breathtaking view of the surrounding landscape, with rugged cliffs and sweeping valleys stretching out below. The sound of hammers striking anvils resonates through the air, as skilled Dwarven blacksmiths forge Skysteel into magnificent weapons and artifacts, their craftsmanship unparalleled in the realm.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Haven's Bazaar`){
+                        const attachment = new MessageAttachment('assets/Tethys/havens_bazaar.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://havens_bazaar.jpg')
+                        .setDescription(`Stepping into Haven's Bazaar, you're immediately engulfed in a whirlwind of sights, sounds, and smells. Colorful stalls line the narrow streets, offering a dizzying array of goods from far-flung corners of the realm. Merchants haggle and barter with eager customers, their voices blending into a cacophony of noise that fills the air. The scent of exotic spices and freshly baked goods wafts through the bustling marketplace, tantalizing the senses and beckoning you to explore further.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Castle Valora'){
+                        const attachment = new MessageAttachment('assets/Tethys/castle_valora.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://castle_valora.jpg')
+                            .setDescription(`Upon reaching Castle Valora, you're greeted by towering stone walls adorned with intricate carvings depicting scenes of heroic battles and noble deeds. A sense of grandeur permeates the air, as the castle's imposing towers rise defiantly against the sky. Guards clad in gleaming armor stand sentinel at the gates, their watchful eyes surveying all who approach with a mixture of vigilance and suspicion.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Tethys Ranger Center'){
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_rangercentre.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://tethys_rangercentre.jpg')
+                            .setDescription(`Arriving at the Tethys Ranger Center, you're greeted by a bustling hub of activity, as rangers clad in weather-worn attire go about their duties with quiet efficiency. Maps and charts line the walls, detailing the ever-shifting landscape of the surrounding wilderness. A sense of camaraderie fills the air, as rangers share tales of their exploits and offer guidance to weary travelers seeking refuge from the dangers of the wild.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Chinchord Cantina`){
+                        const attachment = new MessageAttachment('assets/Tethys/chinchord_cantina.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://chinchord_cantina.jpg')
+                            .setDescription(`Pushing open the door to the Chinchord Cantina, you're greeted by the lively strains of music and the raucous laughter of patrons enjoying a night of revelry. The air is thick with the scent of spiced ale and roasted meats, mingling with the sweet aroma of tobacco smoke that hangs heavy in the air. Lanterns cast a warm glow over the crowded tables, where travelers and locals alike gather to swap stories and share in the simple pleasures of good food, drink, and company.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    } 
+                    else if(location == `Stoneheim Plaza`){
+                        const attachment = new MessageAttachment('assets/Tethys/stoneheim_plaza.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://stoneheim_plaza.jpg')
+                        .setDescription(` Stepping into Stoneheim Plaza, you're surrounded by a bustling hive of activity, as vendors hawk their wares amidst a sea of eager shoppers. The air is alive with the sounds of bargaining and laughter, as merchants vie for the attention of passersby with colorful displays and enticing offers. At the heart of the plaza stands a grand fountain, its waters shimmering in the sunlight as if infused with the very essence of life itself.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Bridge of Death & Rebirth'){
+                        const attachment = new MessageAttachment('assets/Tethys/bridge_deathrebirth.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://bridge_deathrebirth.jpg')
+                            .setDescription(`As you tread the ancient stones of the Bridge of Death & Rebirth, you feel a shiver run down your spine at the sight of sinister statues flanking your path. Their eyes seem to follow your every move, casting a pall of unease over the crossing. Beneath your feet, the arms of the statues are littered with offerings and trinkets, each one a testament to the human desire for wealth and power`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Enfys Gorge'){
+                        const attachment = new MessageAttachment('assets/Tethys/enfys_gorge.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://enfys_gorge.jpg')
+                            .setDescription(`Venturing into Enfys Gorge, you're greeted by the thunderous roar of cascading waterfalls that echo off the sheer cliffs that flank the narrow ravine. Ancient trees cling to the rocky walls, their gnarled branches reaching out like skeletal fingers towards the sky. A sense of serenity washes over you as you stand amidst the pristine beauty of the gorge, a testament to the timeless power of nature's majesty.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Stonewind Chapel'){
+                        const attachment = new MessageAttachment('assets/Tethys/stonewind_chapel.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://stonewind_chapel.jpg')
+                            .setDescription(`Entering the Stonewind Chapel, you're met with a solemn hush that permeates the sacred space. Carved from the living rock of the mountain itself, the chapel's walls are adorned with intricate symbols and tapestries depicting scenes of divine reverence. A shaft of light filters through a narrow opening in the ceiling, casting a soft glow upon the altar at the chapel's center. Here, Torr Dwarves gather to offer prayers and pay homage to Zephyr, the guardian spirit of the mountain, in a ritual that has been passed down through generations.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    
+
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Zaffran Plains"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            
+                                            {
+                                                name: `Zephyr Mountains`,
+                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Avalon Pass`,
+                                                value:`**Travelled on Foot**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Den of Terodytes`,
+                                                value:`**Travelled on Foot**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Psalm of Veldora`,
+                                                value:`**Travelled on Foot**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Tethys`,
+                                                value:`**Travelled on Foot**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Zephyr Mountains`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Avalon Pass`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Den of Terodytes`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Psalm of Veldora`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Tethys`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in Tethys`)
+                                   .addFields([
+                                    {
+                                        name: `Eagles Eyrie`,
+                                        value:`**Description**: The Aeroforge where Skysteel is mined and forged by skilled Dwarven blacksmiths.\n`
+                                    },
+                                    {
+                                        name: `Castle Valora`,
+                                        value:`**Description**: A majestic fortress overlooking the sprawling expanse of Tethys, home to Earl Vereth and his court.\n`
+                                    },
+                                    {
+                                        name: `Bridge of Death & Rebirth`,
+                                        value:`**Description**: A perilous span shrouded in legend, where the souls of the departed face their ultimate trial.\n`
+                                    },
+                                    {
+                                        name: `Havens Bazaar`,
+                                        value:`**Description**: A vibrant marketplace suspended between cliffs, offering stunning views and exotic goods.\n`
+                                    },
+                                    {
+                                        name: `Enfys Gorge`,
+                                        value:`**Description**: A mystical chasm where ancient spirits whisper cryptic messages to those who seek guidance.\n`
+                                    },
+                                    {
+                                        name: `Stonewind Chapel`,
+                                        value:`**Description**: An ancient temple nestled in the Frigus District, where Torr Dwarves honor the mountain deity Zephyr.\n`
+                                    },
+                                    {
+                                        name: `Stoneheim Plaza`,
+                                        value:`**Description**: A bustling market filled with extraordinary weapons, armor, and relics forged by Torr Dwarves.\n`
+                                    },
+                                    {
+                                        name: `Chinchord Cantina`,
+                                        value:`**Description**: A lively tavern renowned for its music, where travelers and locals gather to unwind.\n`
+                                    },
+                                    {
+                                        name: `Tethys Ranger Center`,
+                                        value:`**Description**: The headquarters of seasoned rangers that keep the deadly spyriths of Zephyr mountains in check.\n`
+                                    },
+                                    
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Tethys Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Zephyr Mountains`,
+                        description: ``,
+                        value: `Zephyr Mountains`,
+                    },
+                    {
+                        label: `Avalon Pass`,
+                        description: ``,
+                        value: `Avalon Pass`,
+                    },
+                    {
+                        label: `Den of Terrodytes`,
+                        description: ``,
+                        value: `Den of Terrodytes`,
+                    },
+                    {
+                        label: `Psalm of Veldora`,
+                        description: ``,
+                        value: `Psalm of Veldora`,
+                    },
+                    {
+                        label: `Stateship of Tethys`,
+                        description: ``,
+                        value: `Tethys`,
+                    }
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Eagles Eyrie`,
+                        description: ``,
+                        value: `Eagles Eyrie`,
+                    },{
+                        label: `Castle Valora`,
+                        description: ``,
+                        value: `Castle Valora`,
+                    },{
+                        label: `Bridge of Death & Rebirth`,
+                        description: ``,
+                        value: `Bridge of Death & Rebirth`,
+                    },{
+                        label: `Haven's Bazaar`,
+                        description: ``,
+                        value: `Haven's Bazaar`,
+                    },{
+                        label: `Enfys Gorge`,
+                        description: ``,
+                        value: `Enfys Gorge`,
+                    },{
+                        label: `Stonewind Chapel`,
+                        description: ``,
+                        value: `Stonewind Chapel`,
+                    },{
+                        label: `Stoneheim Plaza`,
+                        description: ``,
+                        value: `Stoneheim Plaza`,
+                    },{
+                        label: `Chinchord Cantina`,
+                        description: ``,
+                        value: `Chinchord Cantina`,
+                    },{
+                        label: `Tethys Ranger Center`,
+                        description: ``,
+                        value: `Tethys Ranger Center`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+
+                    if(location == `Avalon Pass`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/avalon_pass.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://avalon_pass.jpg')
+                        .setDescription(`As you approach Avalon Pass, jagged cliffs loom overhead, casting menacing shadows across the narrow path. The air is thick with an ominous silence, broken only by the occasional echo of distant winds. Every step feels precarious, as if the very stones beneath your feet are reluctant to support your weight. Yet, despite the treacherous terrain, there's an undeniable allure to the pass, beckoning adventurers to brave its dangers and discover what lies beyond.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Zephyr Mountains'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`LOCATION REACHED`)
+                        .setImage('attachment://zephyr_mountain.jpg')
+                        .setDescription(`As you embark on the journey to explore Zephyr Mountain, a sense of awe washes over you. The air grows crisper, and the surroundings transform into a realm of rugged beauty. Towering cliffs and cascading waterfalls paint a breathtaking backdrop, while the distant echo of wind whispers tales of ancient secrets. With each step, the terrain becomes more challenging, urging you to push beyond your limits. Yet, as you ascend the mountain's slopes, a sense of accomplishment fills your being, knowing that you are conquering nature's formidable playground. From the summit, you witness a panorama of majestic landscapes, a testament to the boundless wonders that await those who dare to venture into the heart of Zephyr Mountain.`)
+                       await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    
+                    else if(location == 'Underdagen'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        
+                    }
+
+                    else if(location == `Den of Terodytes`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/den_terrodytes.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://den_terrodytes.jpg')
+                        .setDescription(`Entering the Den of Terodytes, you're immediately engulfed by darkness, pierced only by the faint glow of luminescent fungi clinging to the cavern walls. Above, the cacophony of screeching echoes reverberates through the chamber, a haunting melody that speaks of ancient terrors lurking in the depths. Every corner holds the promise of danger, as the elusive creatures slink through the shadows, their beady eyes gleaming with predatory intent.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Zaffran Plains`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/zaffran_plains.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://zaffran_plains.jpg')
+                        .setDescription(`As you step onto the Zaffran Plains, a kaleidoscope of colors unfolds before your eyes. Rows of vibrant Zaffran flowers stretch as far as the eye can see, their delicate petals dancing in the gentle breeze. The air is perfumed with the sweet fragrance of the spice, a heady aroma that intoxicates the senses. Yet, amidst the beauty, there's an underlying tension, as vigilant guards patrol the perimeter, protecting this precious commodity from would-be thieves.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Psalm of Veldora`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/psalm_veldora.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://psalm_veldora.jpg')
+                        .setDescription(`Ascending the winding path to the Psalm of Veldora, you're enveloped in a shroud of swirling mist, obscuring the world below. The air is charged with an otherworldly energy, as if the very mountain itself pulses with life. As you reach the summit, the mist parts to reveal a vast chamber, its walls adorned with ancient runes and symbols. A sense of reverence washes over you, as you stand in the presence of a sacred site revered by generations of Torr Dwarves.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Tethys'){
+                        if(foundUser.coins>=100 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://tethys_main.jpg')
+                        .setDescription(`As you approach Tethys, the grandeur of the Zephyr Mountains looms before you, their snow-capped peaks piercing the heavens. Cascading waterfalls cascade down the rocky cliffs, feeding the lush greenery below. Suspended between the cliffs, Haven's Bazaar teems with life, offering a dizzying array of sights and sounds. The air is tinged with the scent of exotic spices from the Zaffran Plains, hinting at the riches that await within this bustling mining state.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://tethys_main.jpg')
+                        .setDescription(`As you approach Tethys, the grandeur of the Zephyr Mountains looms before you, their snow-capped peaks piercing the heavens. Cascading waterfalls cascade down the rocky cliffs, feeding the lush greenery below. Suspended between the cliffs, Haven's Bazaar teems with life, offering a dizzying array of sights and sounds. The air is tinged with the scent of exotic spices from the Zaffran Plains, hinting at the riches that await within this bustling mining state.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                        
+                    
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Eagles Eyrie'){
+                        const attachment = new MessageAttachment('assets/Tethys/eagles_eyrie.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://eagles_eyrie.jpg')
+                        .setDescription(`As you approach Eagle's Eyrie, the air grows thin and crisp, carrying the scent of fresh mountain air. Perched atop a towering peak, the eyrie commands a breathtaking view of the surrounding landscape, with rugged cliffs and sweeping valleys stretching out below. The sound of hammers striking anvils resonates through the air, as skilled Dwarven blacksmiths forge Skysteel into magnificent weapons and artifacts, their craftsmanship unparalleled in the realm.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Haven's Bazaar`){
+                        const attachment = new MessageAttachment('assets/Tethys/havens_bazaar.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://havens_bazaar.jpg')
+                        .setDescription(`Stepping into Haven's Bazaar, you're immediately engulfed in a whirlwind of sights, sounds, and smells. Colorful stalls line the narrow streets, offering a dizzying array of goods from far-flung corners of the realm. Merchants haggle and barter with eager customers, their voices blending into a cacophony of noise that fills the air. The scent of exotic spices and freshly baked goods wafts through the bustling marketplace, tantalizing the senses and beckoning you to explore further.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Castle Valora'){
+                        const attachment = new MessageAttachment('assets/Tethys/castle_valora.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://castle_valora.jpg')
+                            .setDescription(`Upon reaching Castle Valora, you're greeted by towering stone walls adorned with intricate carvings depicting scenes of heroic battles and noble deeds. A sense of grandeur permeates the air, as the castle's imposing towers rise defiantly against the sky. Guards clad in gleaming armor stand sentinel at the gates, their watchful eyes surveying all who approach with a mixture of vigilance and suspicion.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Tethys Ranger Center'){
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_rangercentre.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://tethys_rangercentre.jpg')
+                            .setDescription(`Arriving at the Tethys Ranger Center, you're greeted by a bustling hub of activity, as rangers clad in weather-worn attire go about their duties with quiet efficiency. Maps and charts line the walls, detailing the ever-shifting landscape of the surrounding wilderness. A sense of camaraderie fills the air, as rangers share tales of their exploits and offer guidance to weary travelers seeking refuge from the dangers of the wild.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Chinchord Cantina`){
+                        const attachment = new MessageAttachment('assets/Tethys/chinchord_cantina.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://chinchord_cantina.jpg')
+                            .setDescription(`Pushing open the door to the Chinchord Cantina, you're greeted by the lively strains of music and the raucous laughter of patrons enjoying a night of revelry. The air is thick with the scent of spiced ale and roasted meats, mingling with the sweet aroma of tobacco smoke that hangs heavy in the air. Lanterns cast a warm glow over the crowded tables, where travelers and locals alike gather to swap stories and share in the simple pleasures of good food, drink, and company.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    } 
+                    else if(location == `Stoneheim Plaza`){
+                        const attachment = new MessageAttachment('assets/Tethys/stoneheim_plaza.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://stoneheim_plaza.jpg')
+                        .setDescription(` Stepping into Stoneheim Plaza, you're surrounded by a bustling hive of activity, as vendors hawk their wares amidst a sea of eager shoppers. The air is alive with the sounds of bargaining and laughter, as merchants vie for the attention of passersby with colorful displays and enticing offers. At the heart of the plaza stands a grand fountain, its waters shimmering in the sunlight as if infused with the very essence of life itself.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Bridge of Death & Rebirth'){
+                        const attachment = new MessageAttachment('assets/Tethys/bridge_deathrebirth.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://bridge_deathrebirth.jpg')
+                            .setDescription(`As you tread the ancient stones of the Bridge of Death & Rebirth, you feel a shiver run down your spine at the sight of sinister statues flanking your path. Their eyes seem to follow your every move, casting a pall of unease over the crossing. Beneath your feet, the arms of the statues are littered with offerings and trinkets, each one a testament to the human desire for wealth and power`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Enfys Gorge'){
+                        const attachment = new MessageAttachment('assets/Tethys/enfys_gorge.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://enfys_gorge.jpg')
+                            .setDescription(`Venturing into Enfys Gorge, you're greeted by the thunderous roar of cascading waterfalls that echo off the sheer cliffs that flank the narrow ravine. Ancient trees cling to the rocky walls, their gnarled branches reaching out like skeletal fingers towards the sky. A sense of serenity washes over you as you stand amidst the pristine beauty of the gorge, a testament to the timeless power of nature's majesty.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Stonewind Chapel'){
+                        const attachment = new MessageAttachment('assets/Tethys/stonewind_chapel.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://stonewind_chapel.jpg')
+                            .setDescription(`Entering the Stonewind Chapel, you're met with a solemn hush that permeates the sacred space. Carved from the living rock of the mountain itself, the chapel's walls are adorned with intricate symbols and tapestries depicting scenes of divine reverence. A shaft of light filters through a narrow opening in the ceiling, casting a soft glow upon the altar at the chapel's center. Here, Torr Dwarves gather to offer prayers and pay homage to Zephyr, the guardian spirit of the mountain, in a ritual that has been passed down through generations.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    
+
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+
+                        }
+                    
+                
+            })              
+       
+                }
+                else if(city_town == "Psalm of Veldora"){
+                                        let Interiorembed
+                                        let Exteriorembed
+                                        let mount = "None"
+                                        if(mount == "None"){
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT EXTERIOR LOCATION')
+                                        .setDescription(`choose a place to travel outside ${city_town}`)
+                                        .addFields([
+                                            
+                                            {
+                                                name: `Zephyr Mountains`,
+                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Avalon Pass`,
+                                                value:`**Travelled on Foot**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Den of Terodytes`,
+                                                value:`**Travelled on Foot**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Zaffran Plains`,
+                                                value:`**Travelled on Foot**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Tethys`,
+                                                value:`**Travelled on Foot**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+                                        
+                                        }
+                                        else{
+                                            Exteriorembed = new MessageEmbed()
+                                        .setColor('RANDOM')
+                                        .setTitle('SELECT PLACE')
+                                        .setDescription(`choose a place to travel from ${city_town}`)
+                                        .addFields([
+                                            {
+                                                name: `Zephyr Mountains`,
+                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Avalon Pass`,
+                                                value:`**Travelled on Spyralink**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Den of Terodytes`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Zaffran Plains`,
+                                                value:`**Travelled on Spyralink**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                            },
+                                            {
+                                                name: `Stateship of Tethys`,
+                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                            },
+                                            
+                                        ])
+    
+                                        }
+                                        
+                                   Interiorembed = new MessageEmbed()
+                                   .setColor('RANDOM')
+                                   .setTitle('SELECT INTERIOR LOCATION')
+                                   .setDescription(`Choose a location to visit in Tethys`)
+                                   .addFields([
+                                    {
+                                        name: `Eagles Eyrie`,
+                                        value:`**Description**: The Aeroforge where Skysteel is mined and forged by skilled Dwarven blacksmiths.\n`
+                                    },
+                                    {
+                                        name: `Castle Valora`,
+                                        value:`**Description**: A majestic fortress overlooking the sprawling expanse of Tethys, home to Earl Vereth and his court.\n`
+                                    },
+                                    {
+                                        name: `Bridge of Death & Rebirth`,
+                                        value:`**Description**: A perilous span shrouded in legend, where the souls of the departed face their ultimate trial.\n`
+                                    },
+                                    {
+                                        name: `Havens Bazaar`,
+                                        value:`**Description**: A vibrant marketplace suspended between cliffs, offering stunning views and exotic goods.\n`
+                                    },
+                                    {
+                                        name: `Enfys Gorge`,
+                                        value:`**Description**: A mystical chasm where ancient spirits whisper cryptic messages to those who seek guidance.\n`
+                                    },
+                                    {
+                                        name: `Stonewind Chapel`,
+                                        value:`**Description**: An ancient temple nestled in the Frigus District, where Torr Dwarves honor the mountain deity Zephyr.\n`
+                                    },
+                                    {
+                                        name: `Stoneheim Plaza`,
+                                        value:`**Description**: A bustling market filled with extraordinary weapons, armor, and relics forged by Torr Dwarves.\n`
+                                    },
+                                    {
+                                        name: `Chinchord Cantina`,
+                                        value:`**Description**: A lively tavern renowned for its music, where travelers and locals gather to unwind.\n`
+                                    },
+                                    {
+                                        name: `Tethys Ranger Center`,
+                                        value:`**Description**: The headquarters of seasoned rangers that keep the deadly spyriths of Zephyr mountains in check.\n`
+                                    },
+                                    
+                                   ])
+        
+        
+        let btn_cancel = new MessageActionRow().addComponents([
+            new MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("cancel"),
+            new MessageButton().setCustomId("interior").setStyle("PRIMARY").setLabel("Tethys Interior"),
+            new MessageButton().setCustomId("exterior").setStyle("PRIMARY").setLabel("Exterior")])
+        
+        let Exteriorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_exterior')
+                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
+                    .addOptions(
+                    {
+                        label: `Zephyr Mountains`,
+                        description: ``,
+                        value: `Zephyr Mountains`,
+                    },
+                    {
+                        label: `Avalon Pass`,
+                        description: ``,
+                        value: `Avalon Pass`,
+                    },
+                    {
+                        label: `Den of Terrodytes`,
+                        description: ``,
+                        value: `Den of Terrodytes`,
+                    },
+                    {
+                        label: `Zaffran Plains`,
+                        description: ``,
+                        value: `Zaffran Plains`,
+                    },
+                    {
+                        label: `Stateship of Tethys`,
+                        description: ``,
+                        value: `Tethys`,
+                    }
+                    )
+                    .setDisabled(false),
+            ]) 
+
+            let Interiorselect =  new MessageActionRow().addComponents([
+                new MessageSelectMenu()
+                .setCustomId('select_interior')
+                    .setPlaceholder(`Select a location ${interaction.user.username}`)
+                    .addOptions({
+                        label: `Eagles Eyrie`,
+                        description: ``,
+                        value: `Eagles Eyrie`,
+                    },{
+                        label: `Castle Valora`,
+                        description: ``,
+                        value: `Castle Valora`,
+                    },{
+                        label: `Bridge of Death & Rebirth`,
+                        description: ``,
+                        value: `Bridge of Death & Rebirth`,
+                    },{
+                        label: `Haven's Bazaar`,
+                        description: ``,
+                        value: `Haven's Bazaar`,
+                    },{
+                        label: `Enfys Gorge`,
+                        description: ``,
+                        value: `Enfys Gorge`,
+                    },{
+                        label: `Stonewind Chapel`,
+                        description: ``,
+                        value: `Stonewind Chapel`,
+                    },{
+                        label: `Stoneheim Plaza`,
+                        description: ``,
+                        value: `Stoneheim Plaza`,
+                    },{
+                        label: `Chinchord Cantina`,
+                        description: ``,
+                        value: `Chinchord Cantina`,
+                    },{
+                        label: `Tethys Ranger Center`,
+                        description: ``,
+                        value: `Tethys Ranger Center`,
+                    }
+                    
+                    )
+                    .setDisabled(false),
+            ])  
+            let filter_select = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "select_interior" || interaction.customId == "select_exterior")
+            let filter_cancel = (interaction : any) => interaction.user.id === authorId && (interaction.customId == "cancel" || interaction.customId == "interior" || interaction.customId == "exterior")    
+            let collector_select = interaction.channel.createMessageComponentCollector({ filter:filter_select,time:1000*300 })
+            let collector_cancel = interaction.channel.createMessageComponentCollector({ filter:filter_cancel,time:1000*300 })
+        
+            
+        
+        
+            await interaction.reply({content: null,embeds:[Interiorembed],components:[Interiorselect,btn_cancel]})
+        
+            collector_select.on('collect',async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+                collected.deferUpdate().catch(() => null)
+                const location = collected.values[0]
+                
+                if(collected.customId == "select_exterior"){
+
+                    if(location == `Avalon Pass`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/avalon_pass.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://avalon_pass.jpg')
+                        .setDescription(`As you approach Avalon Pass, jagged cliffs loom overhead, casting menacing shadows across the narrow path. The air is thick with an ominous silence, broken only by the occasional echo of distant winds. Every step feels precarious, as if the very stones beneath your feet are reluctant to support your weight. Yet, despite the treacherous terrain, there's an undeniable allure to the pass, beckoning adventurers to brave its dangers and discover what lies beyond.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Zephyr Mountains'){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Zorya/zephyr_mountain.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`LOCATION REACHED`)
+                        .setImage('attachment://zephyr_mountain.jpg')
+                        .setDescription(`As you embark on the journey to explore Zephyr Mountain, a sense of awe washes over you. The air grows crisper, and the surroundings transform into a realm of rugged beauty. Towering cliffs and cascading waterfalls paint a breathtaking backdrop, while the distant echo of wind whispers tales of ancient secrets. With each step, the terrain becomes more challenging, urging you to push beyond your limits. Yet, as you ascend the mountain's slopes, a sense of accomplishment fills your being, knowing that you are conquering nature's formidable playground. From the summit, you witness a panorama of majestic landscapes, a testament to the boundless wonders that await those who dare to venture into the heart of Zephyr Mountain.`)
+                       await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    
+                    else if(location == 'Underdagen'){
+                        if(foundUser.coins >=100 && foundUser.mount == "None"){
+                            await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Underdagen/underdagen_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://underdagen_main.jpg')
+                        .setDescription(`As you descend into the depths of Underdagen, the air grows cooler, echoing with the clang of mining and the hiss of steam. Dwarven craftsmanship adorns the rocky walls, while traders and artisans bustle through narrow streets, their eyes glittering with the promise of Hex Crystals and tales of mythical hot springs.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        
+                    }
+
+                    else if(location == `Den of Terodytes`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/den_terrodytes.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://den_terrodytes.jpg')
+                        .setDescription(`Entering the Den of Terodytes, you're immediately engulfed by darkness, pierced only by the faint glow of luminescent fungi clinging to the cavern walls. Above, the cacophony of screeching echoes reverberates through the chamber, a haunting melody that speaks of ancient terrors lurking in the depths. Every corner holds the promise of danger, as the elusive creatures slink through the shadows, their beady eyes gleaming with predatory intent.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Zaffran Plains`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/zaffran_plains.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://zaffran_plains.jpg')
+                        .setDescription(`As you step onto the Zaffran Plains, a kaleidoscope of colors unfolds before your eyes. Rows of vibrant Zaffran flowers stretch as far as the eye can see, their delicate petals dancing in the gentle breeze. The air is perfumed with the sweet fragrance of the spice, a heady aroma that intoxicates the senses. Yet, amidst the beauty, there's an underlying tension, as vigilant guards patrol the perimeter, protecting this precious commodity from would-be thieves.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Psalm of Veldora`){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/psalm_veldora.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://psalm_veldora.jpg')
+                        .setDescription(`Ascending the winding path to the Psalm of Veldora, you're enveloped in a shroud of swirling mist, obscuring the world below. The air is charged with an otherworldly energy, as if the very mountain itself pulses with life. As you reach the summit, the mist parts to reveal a vast chamber, its walls adorned with ancient runes and symbols. A sense of reverence washes over you, as you stand in the presence of a sacred site revered by generations of Torr Dwarves.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Tethys'){
+                        if(foundUser.coins>=100 && foundUser.mount == "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-100,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://tethys_main.jpg')
+                        .setDescription(`As you approach Tethys, the grandeur of the Zephyr Mountains looms before you, their snow-capped peaks piercing the heavens. Cascading waterfalls cascade down the rocky cliffs, feeding the lush greenery below. Suspended between the cliffs, Haven's Bazaar teems with life, offering a dizzying array of sights and sounds. The air is tinged with the scent of exotic spices from the Zaffran Plains, hinting at the riches that await within this bustling mining state.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else if(foundUser.mount != "None"){
+                        await profileModel.updateOne({userID:authorId},{city_town:location,coins:foundUser.coins-0,location:"None"})
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_main.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://tethys_main.jpg')
+                        .setDescription(`As you approach Tethys, the grandeur of the Zephyr Mountains looms before you, their snow-capped peaks piercing the heavens. Cascading waterfalls cascade down the rocky cliffs, feeding the lush greenery below. Suspended between the cliffs, Haven's Bazaar teems with life, offering a dizzying array of sights and sounds. The air is tinged with the scent of exotic spices from the Zaffran Plains, hinting at the riches that await within this bustling mining state.\n\n`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                        }
+                        else{
+                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                        }
+                        
+                    }
+                        
+                    
+
+                    
+                    
+                collector_select.stop()
+                collector_cancel.stop()
+                    
+                }
+                else if(collected.customId == "select_interior"){
+                    await profileModel.updateOne({userID:authorId},{location:location})
+               
+                    if(location == 'Eagles Eyrie'){
+                        const attachment = new MessageAttachment('assets/Tethys/eagles_eyrie.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://eagles_eyrie.jpg')
+                        .setDescription(`As you approach Eagle's Eyrie, the air grows thin and crisp, carrying the scent of fresh mountain air. Perched atop a towering peak, the eyrie commands a breathtaking view of the surrounding landscape, with rugged cliffs and sweeping valleys stretching out below. The sound of hammers striking anvils resonates through the air, as skilled Dwarven blacksmiths forge Skysteel into magnificent weapons and artifacts, their craftsmanship unparalleled in the realm.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Haven's Bazaar`){
+                        const attachment = new MessageAttachment('assets/Tethys/havens_bazaar.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://havens_bazaar.jpg')
+                        .setDescription(`Stepping into Haven's Bazaar, you're immediately engulfed in a whirlwind of sights, sounds, and smells. Colorful stalls line the narrow streets, offering a dizzying array of goods from far-flung corners of the realm. Merchants haggle and barter with eager customers, their voices blending into a cacophony of noise that fills the air. The scent of exotic spices and freshly baked goods wafts through the bustling marketplace, tantalizing the senses and beckoning you to explore further.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Castle Valora'){
+                        const attachment = new MessageAttachment('assets/Tethys/castle_valora.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://castle_valora.jpg')
+                            .setDescription(`Upon reaching Castle Valora, you're greeted by towering stone walls adorned with intricate carvings depicting scenes of heroic battles and noble deeds. A sense of grandeur permeates the air, as the castle's imposing towers rise defiantly against the sky. Guards clad in gleaming armor stand sentinel at the gates, their watchful eyes surveying all who approach with a mixture of vigilance and suspicion.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Tethys Ranger Center'){
+                        const attachment = new MessageAttachment('assets/Tethys/tethys_rangercentre.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://tethys_rangercentre.jpg')
+                            .setDescription(`Arriving at the Tethys Ranger Center, you're greeted by a bustling hub of activity, as rangers clad in weather-worn attire go about their duties with quiet efficiency. Maps and charts line the walls, detailing the ever-shifting landscape of the surrounding wilderness. A sense of camaraderie fills the air, as rangers share tales of their exploits and offer guidance to weary travelers seeking refuge from the dangers of the wild.\n\n**use /questboard to view the Questboard**`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == `Chinchord Cantina`){
+                        const attachment = new MessageAttachment('assets/Tethys/chinchord_cantina.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://chinchord_cantina.jpg')
+                            .setDescription(`Pushing open the door to the Chinchord Cantina, you're greeted by the lively strains of music and the raucous laughter of patrons enjoying a night of revelry. The air is thick with the scent of spiced ale and roasted meats, mingling with the sweet aroma of tobacco smoke that hangs heavy in the air. Lanterns cast a warm glow over the crowded tables, where travelers and locals alike gather to swap stories and share in the simple pleasures of good food, drink, and company.`)
+                            await profileModel.updateOne({userID:authorId},{health:getHealth(foundUser.level,foundUser.vitality)})
+                            await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    } 
+                    else if(location == `Stoneheim Plaza`){
+                        const attachment = new MessageAttachment('assets/Tethys/stoneheim_plaza.jpg')
+                        let successembed = new MessageEmbed()
+                        .setColor('RANDOM')
+                        .setTitle('LOCATION REACHED')
+                        .setImage('attachment://stoneheim_plaza.jpg')
+                        .setDescription(` Stepping into Stoneheim Plaza, you're surrounded by a bustling hive of activity, as vendors hawk their wares amidst a sea of eager shoppers. The air is alive with the sounds of bargaining and laughter, as merchants vie for the attention of passersby with colorful displays and enticing offers. At the heart of the plaza stands a grand fountain, its waters shimmering in the sunlight as if infused with the very essence of life itself.\n\nThis is a shop location, use **/shop** to open the shop`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Bridge of Death & Rebirth'){
+                        const attachment = new MessageAttachment('assets/Tethys/bridge_deathrebirth.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://bridge_deathrebirth.jpg')
+                            .setDescription(`As you tread the ancient stones of the Bridge of Death & Rebirth, you feel a shiver run down your spine at the sight of sinister statues flanking your path. Their eyes seem to follow your every move, casting a pall of unease over the crossing. Beneath your feet, the arms of the statues are littered with offerings and trinkets, each one a testament to the human desire for wealth and power`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Enfys Gorge'){
+                        const attachment = new MessageAttachment('assets/Tethys/enfys_gorge.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://enfys_gorge.jpg')
+                            .setDescription(`Venturing into Enfys Gorge, you're greeted by the thunderous roar of cascading waterfalls that echo off the sheer cliffs that flank the narrow ravine. Ancient trees cling to the rocky walls, their gnarled branches reaching out like skeletal fingers towards the sky. A sense of serenity washes over you as you stand amidst the pristine beauty of the gorge, a testament to the timeless power of nature's majesty.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    else if(location == 'Stonewind Chapel'){
+                        const attachment = new MessageAttachment('assets/Tethys/stonewind_chapel.jpg')
+                        let successembed
+                            successembed = new MessageEmbed()
+                            .setColor('RANDOM')
+                            .setTitle('LOCATION REACHED')
+                            .setImage('attachment://stonewind_chapel.jpg')
+                            .setDescription(`Entering the Stonewind Chapel, you're met with a solemn hush that permeates the sacred space. Carved from the living rock of the mountain itself, the chapel's walls are adorned with intricate symbols and tapestries depicting scenes of divine reverence. A shaft of light filters through a narrow opening in the ceiling, casting a soft glow upon the altar at the chapel's center. Here, Torr Dwarves gather to offer prayers and pay homage to Zephyr, the guardian spirit of the mountain, in a ritual that has been passed down through generations.`)
+                        await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                    
+
+                collector_select.stop()
+                collector_cancel.stop()
+               
+                }
+                
+                
+        
+                
+                
+            })
+        
+            collector_cancel.on('collect', async j => {
+                j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                if(j.customId == "cancel"){
+                let delembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('CANCELLED')
+                .setDescription(`location visit cancelled!`)
+                
+                await interaction.editReply({embeds:[delembed],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                collector_cancel.stop()
+                collector_select.stop()
+                }
+                else if(j.customId == "interior"){
+                    
+                    await interaction.editReply({embeds:[Interiorembed],components:[Interiorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    }
+                else if(j.customId == "exterior"){
+                       await interaction.editReply({embeds:[Exteriorembed],components:[Exteriorselect,btn_cancel]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+
+                        }
+                    
+                
+            })              
+       
+                }
                     
                                 }
                                }

@@ -1487,7 +1487,148 @@ export default new MyCommandSlashBuilder({ name: 'talktolocals', description: 't
                                             
                                             
                                         }
-                                        
+                                        else if(foundUser.city_town == "Tethys"){
+                                            if(foundUser.location == "Eagles Eyrie"){
+                                                dialogue = [
+                                                    `Amias: “Did you ever think to yourself, what makes those Airships fly? Well you don’t have to wonder anymore. The hulls of the Airships are made from “Skysteel”. It’s a rare kind of mineral that defies the laws of Vearth. The more heavier the metal gets, the higher it floats! They put a layer of Skysteel right below the hull of the Airships to make them float. You should maybe check out the mines where we get it. They’re called the Eagle’s Eyrie.”`,
+                                                    `Emilia: “Ah! I am starving after a long day at the ‘Eyrie. What, are you surprised that Humans can also work with Torrs in the mines? Well, of course we can! We get paid well for our hard work and it’s not like there’s any line preventing Humans and Dwarves from working equally. Basically they’ve been occupying Zephyr long before Humans came, and this is a shrine to them. So we maintain a good relationship by leaving it to the Torrs on how much we can mine in Zephyr for resources. When they ask us to stop, we stop.”`,
+                                                    `Humphrey: “I swear, the tender meat from the Cavernous Feast Hall after a long day’s work is just all I need. It’s a fully Dwarven-run establishment and the ladies there are pretty cute. It’s also very warm there, which is a must when you live in Tethys.”`,
+                                                    `Lucian: “Oh, don’t mind me, I’m just visiting the Eyrie to place bids on the Skysteel for my customer all the way back in Fargon. They’re foreigners so they’re not allowed to come directly and purchase, so they track agents such as myself to do it. Of course I take care of everything, from legal documents to ensuring quality purchase. But currently I am doing some due diligence on my customer. Even though I get paid by them, I don’t want Skysteel falling into the wrong hands. I owe the Kingdom at least that much. Plus I don’t want to be jailed so it works out.”`,
+                                                    `Trigg: “Halt, Ranger. Before you proceed, I must ask you, have you tried a sip of Burning Love Saison? It’s a homebrew from Tethys! I won’t spoil it, but if you’re in town for one, I’m going to teach you how to order it. Head to the barkeep and say “What’s cooking?” and if he replies “You are!”, well you’ve successfully ordered one!”`
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Castle Valora"){
+                                                dialogue = [
+                                                    `Aloysius: “Haven’s Bazaar is a unique and bustling marketplace suspended between the cliffs of Tethys. It’s positioned high above the city, and the market offers stunning panoramic views of Tethys and the surrounding mountainous landscape. Whenever I explain the Haven’s Bazaar like this, the listener always gets scared, thinking it wouldn’t be safe and it may be the worst place to build a marketplace. But it’s very safe and actually a great location for it to be in.”`,
+                                                    `Ginny: “Tethys has all authority over Skysteel and Torrs get to resell all other minerals and metals they mine except Skysteel. But it is a good agreement, which was put in place by Earl Vereth’s predecessor. I mean if you take a look back, the Torrs never understood the value of Skysteel when this place belonged to them…so technically they didn’t lose anything.”`,
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Bridge of Death & Rebirth"){
+                                                dialogue = [
+                                                    `Reynard: “Did you know, Tethys is actually the largest State in the Kingdom? Most people think we’re just a few hundred mountain-folk people putting our lives on the line daily so we can put food on the table, and struggle to find proper treatments. Since most of them will never visit Tethys, and you Rangers only talk about your valiant battles, I’m afraid the public’s opinion of Tethys will not change soon. I await the day when the Gondola construction headed by Earl Auriga is complete and people see us for who we really are. Far superior than them…at everything.”`,
+                                                      ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Tethys Ranger Center"){
+                                                dialogue = [
+                                                    `Hiram: “Earl Vereth of Tethys is a force to be reckoned with, let me tell you. The Castle Valora, where he lives and operates is literally situated at the foot of Avalon Pass. Like he wants Solarstrio’s enemies to know - as long as they can’t get past Castle Valora, they can’t get into Solarstrio. Even his Knight Chapter - The Sun’s Halo gets its name from the phenomena when the Sun’s covered by darkness during an eclipse but you can still see its halo around it. That’s what this Knight Chapter is, Solarstrio’s defense against absolute darkness.”`,
+                                                    `Maycock: “Earl Vereth lives over there, in that huge building, at Castle Valora. He is powerful, strong, smart and sympathetic. He has good relationships with other Earls, as well as the respect of nearby countries. I’ve even heard rumors of the Kingdom of Haganeshiro offering to poach him from Solarstrio! Personally I think he could be the next King of Solarstrio!”`,
+                                                    `Bazel: “Zaffran is an extremely expensive spice, the most expensive even, due to the fact that over 75,000 Zaffran flowers are used to make a smidge of Zaffran Spice. It is one of the major exports of Solarstrio to the Mirazh Empire who just love it. Due to its nature, the security around the plains is very tight, and many merchants who visit Tethys to purchase it, bring guards along so they can prevent attacks from bandits over the spice. For someone like me, I would say it just isn’t worth it.”`
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Havens Bazaar"){
+                                                dialogue = [
+                                                    `Bertram: “Both the Gold and White Pavilions are so eerie. Even though I live here in Tethys, I’ve only been there once. It’s majestic, don’t get me wrong, but on the whole, when you hear stories of the place, and what it stands for - which is basically a representation of a person’s judgment in the afterlife, it gives you goosebumps and kind of saps away the energy you have when you’re alive. But really, you should visit it once, and form your own opinions.”`,
+                                                    `Eli: “Dwarves in Tethys are different from the Dwarves in Haganeshiro. They’re known as Torrs, and they are all walking giants at about 7-8ft tall. They’ve still got beards but they’re slender and gentle, and honestly they can’t be called Dwarves at all. In fact, we’re the Dwarves to them! I think it has something to do with them having lived for decades up here in the mountains, while their cousins are on flat lands over at Haganeshiro.”`
+                                                   
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Enfys Gorge"){
+                                                dialogue = [
+                                                    `Alina: “As you may have noticed, there isn’t much to do in Aetheris district. There’s few very houses and people around. This district is mostly untamed nature but it’s part of Tethys just because there are some important landmarks that are of interest to the State.”`,
+                                                    `Emory: “The Zaffran Plains - as the name says it, is a large plain over which the famous spice Zaffran is grown. Due to its rarity and climatic conditions required to grow it, Tethys has total monopoly over the spice.”`,
+                                                    `Clarence: “Hey fellow Ranger, nice to meet you. Are you visiting the Enfys Gorge as well? They say if you meditate there long enough, you will begin to hear whispers of the dead, who will give you guidance. I am in need of such guidance. These Nightmares…they scare me, but isn’t that the job? I feel really conflicted. Perhaps I will see you there?”`
+                                                   
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Stonewind Chapel"){
+                                                dialogue = [
+                                                    `Aethra: “Special ceremonies are held in the Stonewind Chapel during powerful gusts of wind, where the Torrs gather to perform traditional dances and rituals. These ceremonies are believed to renew the bond between the Torr Dwarves and the Zephyr Mountain.”`,
+                                                    `Aetherion: “The Stonewind Chapel is an ancient temple left behind by the ancestors of Gabalt so they could offer prayers to Zephyr, the caretaker of the mountain, who was chosen by the God of Wind and Wisdom - Veldora himself. Zephyr is believed to be one of the primordial spyriths who guides the winds throughout Vearth.”`,
+                                                    `Zephon: “Torr Dwarves from Tethys are deeply connected to the vibrations and harmonics of the Zephyr Mountain. They believe that the mountain itself is a living entity, and their culture revolves around maintaining a harmonious relationship with it. Torr Dwarves are even given names that reflect the harmonic vibrations they emit. Names are chosen based on the rhythm of the mountain winds at the time of a dwarf's birth. It’s pretty cool. It makes you wonder how lazy my parents were. Ugh.”   `
+                                                   
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Stoneheim Plaza"){
+                                                dialogue = [
+                                                    `Grimm: “Welcome to the most chilly district in Tethys, Ranger! The Frigus district is a little bit farther away than most places but I’m sure you’re surprised by the huge crowd gathered here! You see we’ve got the most elusive gear for Rangers here! You should take a look around and browse some wares.”`,
+                                                    `Thrain: “As per the Torr Dwarves’ contract with the currently ruling Earl Vereth, we get to mine inside Zephyr however and wherever we like, even receiving the Earl’s full support from equipment to lodging, in exchange for his promise to never desecrate our sacred mountain. In fact, us Torrs are even allowed to use the State’s foundries to forge weapons of our own, with any material we mine and sell it - as long as it isn’t Skysteel.”`,
+                                                    `Celestia: “Wow, this place is simply amazing! You know my career as a Ranger came to a halt immediately after I became one. New Rangers always head to the Dragon’s Den to test their power but I was getting overwhelmed. However, I then heard that Tethys has some of the best equipment in the Kingdom so I used my family’s wealth and closed the gap. This is my second time visiting. Magma Golem means nothing to me now. I have my eyes set on that spyrith they call 'King of Abyss' in Vesper.”`
+                                                   
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            else if(foundUser.location == "Chinchord Cantina"){
+                                                dialogue = [
+                                                    `Sheriden: “The Bay of Plenty is an extremely wide lake formed by the melting glaciers from the highest peaks of Zephyr Mountain. The Bay of Plenty received its name due to its richness in taste and minerals, which not only affect the growth of the region’s flora, but also its fauna. The land surrounding the Bay is home to some of the tastiest fruits in the country, and the rich marine life within the Bay feeds many mouths in Tethys.”`,
+                                                    `Bardell: “ There is a small dam attached to the Bay of Plenty which is responsible for dispersing the water into the Seven Waves. At the start of every year, when the first water is released, the Torrs stuff themselves into Wine Barrels and jump into the stream of released water. It’s illegal for everyone else though, don’t know why.”`,
+                                                    `Ainsworth: “Everytime I go near Avalon Pass, I puke after seeing how massive it is. There are like a few 100,000 steps that you need to walk in a raise incline. It is also heavily guarded by the Earl’s own Sun’s Halo. Those Knights are scary. I’ve heard even Rangers pissing at the sheer sight of them.”`,
+                                                    `Arthur: No offense, but you Rangers are tools that can be used by the public in exchange for value. This is how us Regulars reap benefits from the Ajins that are born. Some tasks are simply impossible for us, so we have you do it, in exchange for payment. However, I recently saw a member of the Sun’s Halo, who wasn’t an Ajin, actually force a Ranger to kneel. It was wild. Perhaps our world has begun catching up to you Rangers eh?”`,
+                                                    `Wyndham: “The Psalm of Veldora is the highest walkable point of Zephyr Mountains. There is a large chamber covered by large rocks, where it is believed that Veldora used to live. When entering, I’ve heard, if a certain poem is recited, the chamber stays dormant, allowing one to walk freely. If not, the winds flow with force capable of severing a person into a million bits.”`,
+                                                    `Theobald: “You have got to try the Wildberry Whiskey! Bursting with the untamed flavors of wildberries, this wheat beer is a whimsical journey for your taste buds. A perfect blend of sweet and tart, it's like a walk through a berry-filled meadow - is what it reads, but yeah, it’s great. Backbreaker has nothing on this.”`
+                                                   
+                                                    
+                                                ]
+                                                dialogue.map((diag) => {
+                                                    dialogueembed = new MessageEmbed()
+                                                    .setColor('RANDOM')
+                                                    .setTitle('Dialogue Initiated')
+                                                    .setDescription(`${diag}`)
+                                                    totalEmbeds.push(dialogueembed)
+                                                })
+                                            }
+                                            
+                                            
+                                        }
                                         else{
                                             dialogueembed = new MessageEmbed()
                                             .setColor('RANDOM')
