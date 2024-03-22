@@ -66,14 +66,14 @@ export class Luminaray extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     element:"light", 
-                    damage:23,
+                    damage:25,
                     mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("light",defender.element)
                         let stab = calculateSTAB("light",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Bright Sting`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*23*lvl_modifier(attacker.level)*mod*stab)
+                            .magical(attacker.magicPower*25*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}**'s spyr infused sting penetrates deep into ${defender.name} causing them to lose ${damage} HP`)
                     }
                 },{
@@ -84,10 +84,10 @@ export class Luminaray extends MonsterEntity {
                     type: 'buff',
                     element:"light",
                     damage:0,
-                    mana_cost: 6,
+                    mana_cost: 5,
                     use: (attacker, defender) => {
-                        attacker.armor = 1.15*attacker.armor
-                        attacker.magicResistance = 1.15*attacker.magicResistance
+                        attacker.armor += 13
+                        attacker.magicResistance += 13
             
             
                         attacker.addLogMessage(

@@ -52,14 +52,14 @@ export class Marinowl extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"wave", 
-                    damage:23,
+                    damage:25,
                     mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("wave",defender.element)
                         let stab = calculateSTAB("wave",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Aqua Talon`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*25*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${defender.name}** lost ${damage} HP by a deadly arial attack from the water imbued talons of the Marinowl`)
                     }
                 },{
@@ -69,14 +69,14 @@ export class Marinowl extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     element:"gale", 
-                    damage:55,
+                    damage:45,
                     mana_cost: 4,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("gale",defender.element)
             let stab = calculateSTAB("gale",attacker.element)
             attacker.addLogMessage(`**${attacker.name}** used Siren Call`)
             defender.takeDamage
-                .magical((attacker.magicPower*55)*mod*stab*lvl_modifier(attacker.level))
+                .magical((attacker.magicPower*45)*mod*stab*lvl_modifier(attacker.level))
                 .run(damage => `**${defender.name}** lost ${damage} HP by an insanely loud screech vibrating the very space around you`)
                     }
                 },

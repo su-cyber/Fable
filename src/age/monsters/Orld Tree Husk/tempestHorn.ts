@@ -68,14 +68,14 @@ export class Tempesthorn extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     element:"gale", 
-                    damage:23,
-                    mana_cost: 2,
+                    damage:25,
+                    mana_cost: 3,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("gale",defender.element)
                         let stab = calculateSTAB("gale",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Tempest Charge`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*23*lvl_modifier(attacker.level)*mod*stab)
+                            .magical(attacker.magicPower*25*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** condenses spyr into it's horn manifesting a massive horn made of destructive winds and crashes into ${defender.name} at full force causing ${damage} damage`)
                     }
                 },{
@@ -86,10 +86,10 @@ export class Tempesthorn extends MonsterEntity {
                     type: 'buff',
                     element:"gale",
                     damage:0,
-                    mana_cost: 6,
+                    mana_cost: 7,
                     use: (attacker, defender) => {
-                        attacker.armor = 1.25*attacker.armor
-                        attacker.magicResistance = 1.25*attacker.magicResistance
+                        attacker.armor += 16
+                        attacker.magicResistance += 16
 
                         attacker.addLogMessage(
                             `${attacker.name} used Exo Guard`,

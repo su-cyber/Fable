@@ -49,7 +49,7 @@ export class shadowCat extends MonsterEntity {
                     type: 'physical',
                     element:"normal", 
                     damage:22,
-                    mana_cost: 0,
+                    mana_cost: 1,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Shredding Swipe`)
                         defender.takeDamage

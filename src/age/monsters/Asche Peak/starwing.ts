@@ -53,14 +53,14 @@ export class Starwing extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"light", 
-                    damage:40,
-                    mana_cost: 3,
+                    damage:25,
+                    mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("light",defender.element)
                         let stab = calculateSTAB("light",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Twilight Strike`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*35*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*25*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${defender.name}** lost ${damage} HP by a deadly strike shrouded in darkness`)
                     }
                 },{
@@ -71,10 +71,10 @@ export class Starwing extends MonsterEntity {
                     type: 'debuff',
                     element:"light", 
                     damage:0,
-                    mana_cost: 4,
+                    mana_cost: 6,
                     use: (attacker, defender) =>{
-                        defender.attackDamage -=20
-                        defender.armor -=10
+                        defender.attackDamage -=13
+                        defender.armor -=13
                         attacker.addLogMessage(`${attacker.name} used Cosmic Gaze`,
                         `${attacker.name} stares at you with it's ethereal gaze as you feel your body lose strength and endurance`
                         )

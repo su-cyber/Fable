@@ -52,7 +52,7 @@ export class Emberbeast extends MonsterEntity {
                     type: 'physical',
                     element:"flame", 
                     damage:26,
-                    mana_cost: 0,
+                    mana_cost: 1,
                     use: (attacker, defender) =>{
                         defender.element = defender.element.toLowerCase()
                         let mod = calculateModifier("flame",defender.element)

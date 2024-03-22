@@ -51,7 +51,7 @@ export class starHound extends MonsterEntity {
                     type: 'magical',
                     element:"light", 
                     damage:26,
-                    mana_cost: 0,
+                    mana_cost: 1,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("light",defender.element)
                         let stab = calculateSTAB("light",attacker.element)

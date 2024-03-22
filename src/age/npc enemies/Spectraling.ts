@@ -49,7 +49,7 @@ export class  Spectraling extends MonsterEntity {
                     type: 'physical',
                     element:"normal", 
                     damage:22,
-                    mana_cost: 2,
+                    mana_cost: 1,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Phantom Hold`)
                         defender.takeDamage

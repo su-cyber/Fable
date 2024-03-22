@@ -50,7 +50,7 @@ export class Gildedwyvern extends MonsterEntity {
                     type: 'magical',
                     element:"flame",
                     damage:28,
-                    mana_cost: 2,
+                    mana_cost: 1,
                     use: (attacker, defender) =>{
                         let mod
                         defender.element = defender.element.toLowerCase()
@@ -105,7 +105,7 @@ export class Gildedwyvern extends MonsterEntity {
                     type: 'physical',
                     element:"normal",
                     damage:30,
-                    mana_cost: 3,
+                    mana_cost: 2,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Razor Slash`)
                         defender.takeDamage

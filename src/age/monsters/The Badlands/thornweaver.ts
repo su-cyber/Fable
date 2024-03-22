@@ -77,14 +77,14 @@ export class Thornweaver extends MonsterEntity {
                     canEvade: false,
                     type: 'physical',
                     element: "bloom",
-                    damage: 30,
-                    mana_cost: 3,
+                    damage: 45,
+                    mana_cost: 4,
                     use: (attacker, defender) => {
                         let mod = calculateModifier("bloom",defender.element)
                         let stab = calculateSTAB("bloom",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Vine Smash`);
                         defender.takeDamage
-                            .physical(attacker.attackDamage * 30 * lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage * 45 * lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `${defender.name} is struck by a powerful smash of thorny vines, taking ${damage} physical damage and having their armor reduced.`);
                         defender.removeArmor(3)
                     }

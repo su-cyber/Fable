@@ -50,7 +50,7 @@ export class MagmaGolem extends MonsterEntity {
                     type: 'magical',
                     element:"flame", 
                     damage:30,
-                    mana_cost: 2,
+                    mana_cost: 1,
                     use: (attacker, defender) =>{
                         let mod
             if(defender.element == "flame"){
@@ -104,7 +104,7 @@ export class MagmaGolem extends MonsterEntity {
                     type: 'physical',
                     element:"flame", 
                     damage:32,
-                    mana_cost: 3,
+                    mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod
                         defender.element = defender.element.toLowerCase()

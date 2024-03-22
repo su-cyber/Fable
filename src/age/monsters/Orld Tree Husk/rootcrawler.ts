@@ -67,14 +67,14 @@ export class Rootcrawler extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"bloom", 
-                    damage:23,
-                    mana_cost: 2,
+                    damage:35,
+                    mana_cost: 3,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("bloom",defender.element)
                         let stab = calculateSTAB("bloom",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Root Trap`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*35*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** traps ${defender.name} by coiling around them causing ${damage} damage`)
                     }
                 },{
@@ -84,14 +84,14 @@ export class Rootcrawler extends MonsterEntity {
                     canEvade: false,
                     element:"bloom",
                     type: 'physical',
-                    damage:0,
-                    mana_cost: 3,
+                    damage:45,
+                    mana_cost: 4,
                     use: (attacker, defender) => {
                         let mod = calculateModifier("bloom",defender.element)
                         let stab = calculateSTAB("bloom",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Silent Fangs`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*45*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** disappears among the roots and suddenly strikes ${defender.name} causing ${damage} damage`)
                  
                     },

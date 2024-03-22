@@ -51,7 +51,7 @@ export class Droner extends MonsterEntity {
                     name: 'Acid Sting',
                     description: 'A sting attack with droner acid',
                     canEvade: true,
-                    damage:20,
+                    damage:15,
                     type: 'magical',
                     element:"venom", 
                     mana_cost: 0,
@@ -97,7 +97,7 @@ export class Droner extends MonsterEntity {
             let stab = calculateSTAB("venom",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Acid Sting`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*20*mod*stab*lvl_modifier(attacker.level))
+                            .magical(attacker.magicPower*15*mod*stab*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by getting stung by the Droner`)
                     }
                 },

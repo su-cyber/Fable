@@ -67,14 +67,14 @@ export class Bogslither extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     element:"venom", 
-                    damage:23,
+                    damage:35,
                     mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("venom",defender.element)
                         let stab = calculateSTAB("venom",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Slug Toxin`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*23*lvl_modifier(attacker.level)*mod*stab)
+                            .magical(attacker.magicPower*35*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** throws toxic sludge into ${defender.name} causing ${damage} damage`)
                     }
                 },{
@@ -85,7 +85,7 @@ export class Bogslither extends MonsterEntity {
                     type: 'buff',
                     element:"venom",
                     damage:0,
-                    mana_cost: 6,
+                    mana_cost: 7,
                     use: (attacker, defender) => {
                         attacker.evasion = 0.15
 

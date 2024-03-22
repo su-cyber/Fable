@@ -52,14 +52,14 @@ export class stoneCarver extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"wave", 
-                    damage:23,
+                    damage:25,
                     mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("wave",defender.element)
                         let stab = calculateSTAB("wave",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Shard Slice`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*25*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${defender.name}** lost ${damage} HP by a razor cut by the Stonecarver's shards`)
                     }
                 },{
@@ -69,14 +69,14 @@ export class stoneCarver extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"wave", 
-                    damage:55,
+                    damage:45,
                     mana_cost: 4,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("wave",defender.element)
             let stab = calculateSTAB("wave",attacker.element)
             attacker.addLogMessage(`**${attacker.name}** used Stonecarver Slash`)
             defender.takeDamage
-                .physical((attacker.attackDamage*55)*mod*stab*lvl_modifier(attacker.level))
+                .physical((attacker.attackDamage*45)*mod*stab*lvl_modifier(attacker.level))
                 .run(damage => `**${defender.name}** lost ${damage} HP by being slashed by the wave imbued Stonecarver's pincers`)
                     }
                 },

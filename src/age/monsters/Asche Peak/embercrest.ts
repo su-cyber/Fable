@@ -53,14 +53,14 @@ export class Embercrest extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     element:"flame", 
-                    damage:23,
+                    damage:25,
                     mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("flame",defender.element)
                         let stab = calculateSTAB("flame",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Heatwave`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*23*lvl_modifier(attacker.level)*mod*stab)
+                            .magical(attacker.magicPower*25*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** radiates a scorching heatwave causing ${defender.name} to lose ${damage} HP`)
                     }
                 },{
@@ -70,14 +70,14 @@ export class Embercrest extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"flame", 
-                    damage:55,
+                    damage:45,
                     mana_cost: 4,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("flame",defender.element)
             let stab = calculateSTAB("flame",attacker.element)
             attacker.addLogMessage(`**${attacker.name}** used Infernal Soar`)
             defender.takeDamage
-                .physical((attacker.attackDamage*55)*mod*stab*lvl_modifier(attacker.level))
+                .physical((attacker.attackDamage*45)*mod*stab*lvl_modifier(attacker.level))
                 .run(damage => `**${attacker.name}** carries ${defender.name} to the sky before errupting into deadly flames causing ${damage} Dmg`)
                     }
                 },

@@ -48,7 +48,7 @@ export class Treemick extends MonsterEntity {
                     name: 'Wood Spike',
                     description: 'attacks with a spike of wood',
                     canEvade: true,
-                    damage:20,
+                    damage:15,
                     type: 'physical',
                     element:"bloom", 
                     mana_cost: 0,
@@ -57,7 +57,7 @@ export class Treemick extends MonsterEntity {
                         let stab = calculateSTAB("bloom",attacker.element)
                         attacker.addLogMessage(`${attacker.name} used Wood Spike`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*20*stab*mod*lvl_modifier(attacker.level))
+                            .physical(attacker.attackDamage*15*stab*mod*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by Wood Spikes`)
                     }
                 },

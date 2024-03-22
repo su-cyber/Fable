@@ -71,8 +71,8 @@ export class Poisonbeak extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"venom", 
-                    damage:57,
-                    mana_cost: 4,
+                    damage:50,
+                    mana_cost: 5,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("venom",defender.element)
             let stab = calculateSTAB("venom",attacker.element)
@@ -81,7 +81,7 @@ export class Poisonbeak extends MonsterEntity {
             
             attacker.addLogMessage(`**${attacker.name}** used Toxin Barrage`)
             defender.takeDamage
-                .physical((attacker.attackDamage*57)*mod*stab*lvl_modifier(attacker.level))
+                .physical((attacker.attackDamage*50)*mod*stab*lvl_modifier(attacker.level))
                 .run(damage => `**${defender.name}** lost ${damage} HP by a barrage of feathers toxicated by deadly poison`)
                 if(chance){
                     const Toxic = attacker.scheduler.task

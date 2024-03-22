@@ -78,7 +78,7 @@ export class Siroccowraith extends MonsterEntity {
                     type: 'magical',
                     element: "terra",
                     damage: 45,
-                    mana_cost: 3,
+                    mana_cost: 4,
                     use: (attacker, defender) => {
                         let mod = calculateModifier("terra",defender.element)
                         let stab = calculateSTAB("terra",attacker.element)

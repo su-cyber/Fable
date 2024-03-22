@@ -52,14 +52,14 @@ export class Dinocodile extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"wave", 
-                    damage:25,
+                    damage:35,
                     mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("wave",defender.element)
                         let stab = calculateSTAB("wave",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Abyss Jaw`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*25*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*35*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${defender.name}** lost ${damage} HP by being bitten by the collosal jaws of the Dynocodile`)
                     }
                 },{
@@ -69,14 +69,14 @@ export class Dinocodile extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"wave", 
-                    damage:57,
+                    damage:50,
                     mana_cost: 4,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("wave",defender.element)
             let stab = calculateSTAB("wave",attacker.element)
             attacker.addLogMessage(`**${attacker.name}** used Torrential Maw`)
             defender.takeDamage
-                .physical((attacker.attackDamage*57)*mod*stab*lvl_modifier(attacker.level))
+                .physical((attacker.attackDamage*50)*mod*stab*lvl_modifier(attacker.level))
                 .run(damage => `**${defender.name}** lost ${damage} HP by being crushed by the collosal torrent imbued tail of Dynocodile`)
                     }
                 },

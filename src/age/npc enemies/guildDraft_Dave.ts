@@ -50,7 +50,7 @@ export class  Fiskille extends MonsterEntity {
                     type: 'physical',
                     element:"volt",
                     damage:26,
-                    mana_cost: 1,
+                    mana_cost: 0,
                     use: (attacker, defender) =>{
                         let mod = 1
                         if(defender.element == "flame"){

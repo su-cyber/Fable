@@ -69,14 +69,14 @@ export class Mosscale extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"terra", 
-                    damage:23,
-                    mana_cost: 2,
+                    damage:35,
+                    mana_cost: 3,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("terra",defender.element)
                         let stab = calculateSTAB("terra",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Swamp Crush`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*35*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** crushes ${defender.name} with huge fists covered with hardened mud causing ${damage} damage`)
                     }
                 },{
@@ -87,10 +87,10 @@ export class Mosscale extends MonsterEntity {
                     type: 'buff',
                     element:"gale",
                     damage:0,
-                    mana_cost: 6,
+                    mana_cost: 5,
                     use: (attacker, defender) => {
-                        attacker.armor = 1.25*attacker.armor
-                        attacker.magicResistance = 1.25*attacker.magicResistance
+                        attacker.armor += 16
+                        
 
                         attacker.addLogMessage(
                             `${attacker.name} used Upscale`,

@@ -51,7 +51,7 @@ export class gloomRoot extends MonsterEntity {
                     type: 'physical',
                     element:"bloom", 
                     damage:26,
-                    mana_cost: 0,
+                    mana_cost: 1,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("bloom",defender.element.toLowerCase())
                         let stab = calculateSTAB("bloom",attacker.element)

@@ -73,14 +73,14 @@ export class Murkwraithe extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     element:"terra", 
-                    damage:23,
-                    mana_cost: 2,
+                    damage:35,
+                    mana_cost: 3,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("terra",defender.element)
                         let stab = calculateSTAB("terra",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Devouring Swamp`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*23*lvl_modifier(attacker.level)*mod*stab)
+                            .magical(attacker.magicPower*35*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `The ground beneath ${defender.name} trembles before getting devoured by the swamp loosing ${damage} HP`)
                     }
                 },{
@@ -90,14 +90,14 @@ export class Murkwraithe extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     element:"terra", 
-                    damage:23,
-                    mana_cost: 2,
+                    damage:45,
+                    mana_cost: 4,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("terra",defender.element)
                         let stab = calculateSTAB("terra",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Mud Slide`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*23*lvl_modifier(attacker.level)*mod*stab)
+                            .magical(attacker.magicPower*45*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** summons a powerful torrent to crush ${defender.name} causing ${damage} damage`)
                     }
                 }

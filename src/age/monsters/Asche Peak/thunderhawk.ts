@@ -53,14 +53,14 @@ export class Thunderhawk extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"volt", 
-                    damage:23,
+                    damage:25,
                     mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("volt",defender.element)
                         let stab = calculateSTAB("volt",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Volt Dive`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*25*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** covers itself in electricity and crashes into ${defender.name} causing them to lose ${damage} HP`)
                     }
                 },{
@@ -70,14 +70,14 @@ export class Thunderhawk extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     element:"volt", 
-                    damage:55,
+                    damage:45,
                     mana_cost: 4,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("volt",defender.element)
             let stab = calculateSTAB("volt",attacker.element)
             attacker.addLogMessage(`**${attacker.name}** used Charged Rupture`)
             defender.takeDamage
-                .magical((attacker.magicPower*55)*mod*stab*lvl_modifier(attacker.level))
+                .magical((attacker.magicPower*45)*mod*stab*lvl_modifier(attacker.level))
                 .run(damage => `**${defender.name}** lost ${damage} HP by destructive electrical blasts screeching through the air`)
                     }
                 },

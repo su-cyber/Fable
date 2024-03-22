@@ -57,7 +57,7 @@ export class BeerBuccsDuo extends MonsterEntity {
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`${attacker.name} used Dual Slash`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*20*lvl_modifier(attacker.level))
+                            .physical(attacker.attackDamage*15*lvl_modifier(attacker.level))
                             .run(damage => `${defender.name} lost ${damage} HP by a Dual knife slash`)
                     }
                 },

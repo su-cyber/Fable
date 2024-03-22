@@ -66,14 +66,14 @@ export class Willowshade extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"bloom", 
-                    damage:23,
+                    damage:35,
                     mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("bloom",defender.element)
                         let stab = calculateSTAB("bloom",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Root Rush`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*35*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** attacks ${defender.name} with a barrage of roots with deadly precision causing ${damage} damage`)
                     }
                 },{
@@ -84,7 +84,7 @@ export class Willowshade extends MonsterEntity {
                     type: 'debuff',
                     element:"gale",
                     damage:0,
-                    mana_cost: 6,
+                    mana_cost: 9,
                     use: (attacker, defender) => {
                         const weepingGaze = attacker.scheduler.task
                         .id('willowShade_stun')

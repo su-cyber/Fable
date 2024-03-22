@@ -63,14 +63,14 @@ export class Haemophage extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"wave", 
-                    damage:23,
+                    damage:25,
                     mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("wave",defender.element)
                         let stab = calculateSTAB("wave",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Drain Bite`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*25*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}**'s razor sharp teeths bite into ${defender.name} causing them to lose ${damage} HP`)
                     }
                 },{
@@ -81,13 +81,13 @@ export class Haemophage extends MonsterEntity {
                     element:"wave",
                     type: 'heal',
                     damage:0,
-                    mana_cost: 3,
+                    mana_cost: 7,
                     use: (attacker, defender) => {
-                        if(attacker.health+100 > attacker.maxHealth){
+                        if(attacker.health+150 > attacker.maxHealth){
                             attacker.health = attacker.maxHealth
                         }
                         else{
-                            attacker.health = attacker.health+100
+                            attacker.health = attacker.health+150
                         }
 
 

@@ -63,14 +63,14 @@ export class scarletMarsh extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"bloom", 
-                    damage:23,
+                    damage:25,
                     mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("bloom",defender.element)
                         let stab = calculateSTAB("bloom",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Root Grip`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*25*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** binds ${defender.name} with it's strong roots crushing them causing ${damage} damage`)
                     }
                 },{
@@ -80,14 +80,14 @@ export class scarletMarsh extends MonsterEntity {
                     canEvade: false,
                     element:"wave",
                     type: 'magical',
-                    damage:0,
-                    mana_cost: 3,
+                    damage:45,
+                    mana_cost: 4,
                     use: (attacker, defender) => {
                         let mod = calculateModifier("wave",defender.element)
                         let stab = calculateSTAB("wave",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Blood Mist`)
                         defender.takeDamage
-                            .magical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .magical(attacker.attackDamage*45*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** sprays a deadly crimson mist into the air intoxicating ${defender.name} causing ${damage} damage`)
                    
                     },

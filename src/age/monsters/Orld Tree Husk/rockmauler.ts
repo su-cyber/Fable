@@ -69,14 +69,14 @@ export class Rockmauler extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"terra", 
-                    damage:23,
+                    damage:35,
                     mana_cost: 2,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("terra",defender.element)
                         let stab = calculateSTAB("terra",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Giga Thrust`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*35*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** condenses spyr into it's crystalline knuckles and thrusts them into ${defender.name} in a fury causing ${damage} damage`)
                     }
                 },{
@@ -87,11 +87,10 @@ export class Rockmauler extends MonsterEntity {
                     type: 'buff',
                     element:"terra",
                     damage:0,
-                    mana_cost: 6,
+                    mana_cost: 9,
                     use: (attacker, defender) => {
-                        attacker.attackDamage = 1.25*attacker.attackDamage
-                        attacker.armor = 1.25*attacker.armor
-
+                        attacker.attackDamage += 10
+                        attacker.armor += 10
                         attacker.addLogMessage(
                             `${attacker.name} used Kong Beat`,
                             `${attacker.name} lets out a roar in a fit of rage increasing it's attackpower and endurance by 25%`

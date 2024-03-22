@@ -30,7 +30,7 @@ export class captainCrook extends MonsterEntity {
             spawnRate: 0.5,
             health: 120,
             level:4,
-            mana:4,
+            mana:2,
             xp: generateXP(25,30),
             evasion: 0.05,
             attackDamage: 18,
@@ -50,7 +50,7 @@ export class captainCrook extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"normal", 
-                    damage:24,
+                    damage:15,
                     mana_cost: 0,
                     use: (attacker, defender) =>{
                         attacker.addLogMessage(`**${attacker.name}** used Swift Cleave`)
@@ -65,8 +65,8 @@ export class captainCrook extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"wave", 
-                    damage:35,
-                    mana_cost: 2,
+                    damage:20,
+                    mana_cost: 1,
                     use: (attacker, defender) =>{
                         let mod
                         defender.element = defender.element.toLowerCase()
