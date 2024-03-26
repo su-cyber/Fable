@@ -34,19 +34,39 @@ export default new MyCommandSlashBuilder({ name: 'equip_spyralink', description:
             const playerSpyralinks = foundUser.all_mounts
             const totalEmbeds = []
             const allAttachments = []
-            let select_spyralink = new MessageActionRow().addComponents([
-                new MessageSelectMenu()
-                .setCustomId('select_spyralink')
-                    .setPlaceholder(`Select a place to travel ${interaction.user.username}`)
-                    .addOptions(
-                        playerSpyralinks.map(spyralink => ({
-                            label: spyralink.name,
-                            description: ``,
-                            value: spyralink.name,
-                        }))
-                    )
-                    .setDisabled(false),
-            ])
+            let select_spyralink 
+
+            if(playerSpyralinks.length == 0){
+                select_spyralink = new MessageActionRow().addComponents([
+                    new MessageSelectMenu()
+                    .setCustomId('select_spyralink')
+                        .setPlaceholder(`Select a Spyralink ${interaction.user.username}`)
+                        .addOptions(
+                            {
+                                label: 'None',
+                                description: ``,
+                                value: 'None',
+                            }
+                        )
+                        .setDisabled(true),
+                ])
+            }
+            else{
+                select_spyralink = new MessageActionRow().addComponents([
+                    new MessageSelectMenu()
+                    .setCustomId('select_spyralink')
+                        .setPlaceholder(`Select a Spyralink ${interaction.user.username}`)
+                        .addOptions(
+                            playerSpyralinks.map(spyralink => ({
+                                label: spyralink.name,
+                                description: ``,
+                                value: spyralink.name,
+                            }))
+                        )
+                        .setDisabled(false),
+                ])
+            }
+
 
     let filter = i => i.user.id === authorId
     let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 300})
@@ -74,7 +94,7 @@ export default new MyCommandSlashBuilder({ name: 'equip_spyralink', description:
         totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
     }
     await interaction.deferReply()
-    await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw,select_spyralink],files:[allAttachments[0]]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+    await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw,select_spyralink],files:[allAttachments[0]]})
     let count = 0
     collector.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
         if(collected.customId === 'forward'){

@@ -68,6 +68,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                 attacker.speed = foundUser.speed
                                 attacker.level = foundUser.level
                                 attacker.name = `${interaction.user.username} ${getEmoji(attacker.element)}`
+                                console.log(attacker.passive_skills);
                                 
                                 inventory.findOne({userID:authorId},async function(err,foundProfile) {
                                     if(foundProfile.inventory.potions.length !=0){
