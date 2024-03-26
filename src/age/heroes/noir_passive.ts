@@ -39,5 +39,5 @@ const noir_passive = [{
             `All attacks of ${attacker.name} will have 50% chance to inflict poison damage`
         )
     }
-}]
+},]
 export default noir_passive

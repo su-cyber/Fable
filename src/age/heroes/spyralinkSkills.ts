@@ -1,7 +1,6 @@
 import { weightedRandom } from "../../utils"
 import lvl_modifier from "../../utils/lvl_modifier"
-const spyralinkSkills = [
-    {
+const spyralinkSkills = [{
         cooldown: 0,
         name: 'Shadow Prowl',
         description: 'The Umbraline mends into the shadows and prowls on the enemy when they are vulnerable.',
