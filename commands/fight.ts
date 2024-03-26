@@ -63,7 +63,7 @@ export default new MyCommandSlashBuilder({ name: 'fight', description: 'fight wi
                                 attacker.element = foundUser.elements[0].toLowerCase();
                                 attacker.evasion=foundUser.evasion
                                 attacker.maxHealth=getHealth(foundUser.level,foundUser.vitality)
-                                attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills)
+                                attacker.passive_skills = foundUser.innate_passive.concat(foundUser.passiveskills,foundUser.mount.skills)
                                 attacker.maxMana = foundUser.mana
                                 attacker.speed = foundUser.speed
                                 attacker.level = foundUser.level
