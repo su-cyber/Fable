@@ -304,7 +304,10 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                                         ranger_grade:"None",
                                         titles:[],
                                         current_title:"None",
-                                        mount:"None"
+                                        mount:{
+                                            name:"None"
+                                        },
+                                        all_mounts:[]
                                         
                                         
                                     })

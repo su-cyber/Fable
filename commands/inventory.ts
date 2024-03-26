@@ -115,7 +115,7 @@ export default new MyCommandSlashBuilder({ name: 'inventory', description: 'Acce
       let empty = new MessageEmbed()
       .setColor('RANDOM')
       .setTitle('INVENTORY')
-      .setDescription(`**YOUR ENTIRE INVETORY IS EMPTY**`)
+      .setDescription(`**YOUR ENTIRE INVENTORY IS EMPTY**`)
     let totalEmbeds = weaponEmbeds.concat(ArmourEmbeds,PotionEmbeds,ItemEmbeds)
     if(totalEmbeds.length == 0){
         totalEmbeds.push(empty)

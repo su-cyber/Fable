@@ -98,14 +98,14 @@ export class BassiliskVenom extends MonsterEntity {
                     canEvade: true,
                     type: 'magical',
                     element:"venom", 
-                    damage:60,
-                    mana_cost: 2,
+                    damage:35,
+                    mana_cost: 3,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("venom",defender.element)
                         let stab = calculateSTAB("venom",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Venom Breath`)
                         defender.takeDamage
-                            .magical(attacker.magicPower*60*lvl_modifier(attacker.level)*mod*stab)
+                            .magical(attacker.magicPower*35*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** sprays a gust of toxic breath on ${defender.name} causing ${damage} damage`)
                     }
                 },{
@@ -116,7 +116,7 @@ export class BassiliskVenom extends MonsterEntity {
                     type: 'debuff',
                     element:"venom",
                     damage:0,
-                    mana_cost: 6,
+                    mana_cost: 7,
                     use: (attacker, defender) => {
                         const serpentGaze = attacker.scheduler.task
                         .id('bassilisk_stun')
@@ -146,16 +146,14 @@ export class BassiliskVenom extends MonsterEntity {
                     description: `Wraps the target and suffocates them and breaks their armour`,
                     canEvade: true,
                     type: 'physical',
-                    element:"venom", 
-                    damage:60,
-                    mana_cost: 2,
+                    element:"normal", 
+                    damage:25,
+                    mana_cost: 5,
                     use: (attacker, defender) =>{
-                        defender.armor -= 0.3*defender.armor
-                        let mod = calculateModifier("venom",defender.element)
-                        let stab = calculateSTAB("venom",attacker.element)
+                        defender.armor -= 16
                         attacker.addLogMessage(`**${attacker.name}** used Suffocate`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*60*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*25*lvl_modifier(attacker.level))
                             .run(damage => `**${attacker.name}** coils around ${defender.name} suffocating them and breaking their armour causing ${damage} damage and reducing endurance by 30%`)
                     }
                 }

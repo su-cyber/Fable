@@ -62,7 +62,7 @@ export default new MyCommandSlashBuilder({ name: 'stats', description: 'see your
                      const weapon = weaponExist? foundUser.weapon[0].name : "None"
                      const armour = armourExist? foundUser.armourSuit[0].name : "None"
                      const items = itemExist? foundUser.items[0].name : "None"
-                     const mount = foundUser.mount
+                     const mount = foundUser.mount.name
                      let grade
                      if(foundUser.ranger_grade == "None"){
                          grade = "         "

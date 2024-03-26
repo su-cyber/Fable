@@ -35,7 +35,7 @@ export default new MyCommandSlashBuilder({ name: 'equip', description: 'Equip a 
                                         let foundWeapon = await foundUser.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject)
                                         let foundarmour = await foundUser.inventory.armour.find(object => object.name.name.toLowerCase() === userobject)
                                         let foundItem = await foundUser.inventory.items.find(object => object.name.name.toLowerCase() === userobject)
-                                
+    
                                 if(foundItem || foundWeapon || foundarmour){
                                     if(foundWeapon){
                                         foundObject = await foundUser.inventory.weapons.find(object => object.name.name.toLowerCase() === userobject)

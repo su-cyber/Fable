@@ -5,8 +5,9 @@ import gladius_passive from "./gladius_passive";
 import magus_passive from "./magus_passive";
 import noir_passive from "./noir_passive";
 import other_passive_skills from "./passive_skills";
+import spyralinkSkills from "./spyralinkSkills";
 
 
-const passive_skills = other_passive_skills.concat(buushin_passive,gladius_passive,magus_passive,dragoon_passive,noir_passive)
+const passive_skills = other_passive_skills.concat(buushin_passive,gladius_passive,magus_passive,dragoon_passive,noir_passive,spyralinkSkills)
 
 export default passive_skills

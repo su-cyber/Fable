@@ -40,7 +40,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                     if(city_town == "aube"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -421,7 +421,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         else if(city_town == "Castellan Fields"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -707,7 +707,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                  else if(city_town == "Sunshade Forest"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -992,7 +992,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "The Badlands"){
                                        let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -1279,7 +1279,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                      else if(city_town == "Zorya"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -1899,7 +1899,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "ellior"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -2304,7 +2304,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Dragon's Den"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -2703,7 +2703,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Sunstone Mines"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -3104,7 +3104,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Zephyr Mountain"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -3519,7 +3519,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         let Interiorembed1
                                         let Interiorembed2
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -4089,7 +4089,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Werfall"){
                     let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -4317,7 +4317,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Vigia"){
                     let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -4705,7 +4705,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         let Interiorembed1
                                         let Interiorembed2
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -5167,7 +5167,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Deathrust Forest"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -5467,7 +5467,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Kafig"){
                     let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -5776,7 +5776,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Raflese"){
                     let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -6085,7 +6085,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Bleeding Gorge"){
                     let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -6334,7 +6334,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Dremenlond"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -6695,7 +6695,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Gloaming"){
                     let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -7124,7 +7124,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Vesper"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -7513,7 +7513,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Swamp of Abyss"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -7804,7 +7804,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Stellaris Temple Ruins"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -8095,7 +8095,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Lucens"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -8408,7 +8408,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Buccaneer Shipwreck"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -8696,7 +8696,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Marvory Cove"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -8984,7 +8984,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Nottfall"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -9396,7 +9396,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Spezia Cliffs"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -9706,7 +9706,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Riverside Ruins"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -10016,7 +10016,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Ingenia"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -10416,7 +10416,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Stella Vallis"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -10719,7 +10719,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Ingenia Dump"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -11022,7 +11022,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Underdagen"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -11367,7 +11367,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Crystal Mines"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -11654,7 +11654,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         let Interiorembed1
                                         let Interiorembed2
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -12251,7 +12251,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Tethys"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -12691,7 +12691,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Avalon Pass"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -13144,7 +13144,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Den of Terrodytes"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -13598,7 +13598,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Zaffran Plains"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
@@ -14052,7 +14052,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 else if(city_town == "Psalm of Veldora"){
                                         let Interiorembed
                                         let Exteriorembed
-                                        let mount = "None"
+                                        let mount = foundUser.mount.name
                                         if(mount == "None"){
                                             Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')

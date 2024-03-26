@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { Spyralink } from "../src/age/classes/spyralink";
 
 
 const profileSchema = new mongoose.Schema({
@@ -50,9 +51,10 @@ const profileSchema = new mongoose.Schema({
     merit:{type: Number},
     titles:{type: Array},
     current_title:{type: Array},
-    mount:{type:String},
+    mount:{type: Object},
     all_passives:{type: Array},
-    innate_passive:{type: Array}
+    innate_passive:{type: Array},
+    all_mounts:{type: Array}
 });
 
 const model = mongoose.model('ProfileModels',profileSchema);

@@ -72,14 +72,14 @@ export class Grimjaws extends MonsterEntity {
                     canEvade: true,
                     type: 'physical',
                     element:"wave", 
-                    damage:23,
-                    mana_cost: 2,
+                    damage:35,
+                    mana_cost: 3,
                     use: (attacker, defender) =>{
                         let mod = calculateModifier("wave",defender.element)
                         let stab = calculateSTAB("wave",attacker.element)
                         attacker.addLogMessage(`**${attacker.name}** used Rip Jaws`)
                         defender.takeDamage
-                            .physical(attacker.attackDamage*23*lvl_modifier(attacker.level)*mod*stab)
+                            .physical(attacker.attackDamage*35*lvl_modifier(attacker.level)*mod*stab)
                             .run(damage => `**${attacker.name}** showers ${defender.name} with a relentless onsalught of it's razor claws causing ${damage} damage`)
                     }
                 },{
@@ -90,7 +90,7 @@ export class Grimjaws extends MonsterEntity {
                     type: 'buff',
                     element:"gale",
                     damage:0,
-                    mana_cost: 6,
+                    mana_cost: 7,
                     use: (attacker, defender) => {
                         attacker.evasion = 0.2
 
