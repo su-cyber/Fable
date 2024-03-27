@@ -65,22 +65,24 @@ export default new MyCommandSlashBuilder({ name: 'equip_spyralink', description:
                         )
                         .setDisabled(false),
                 ])
+
+                playerSpyralinks.map((data) => {
+                    const attachment = new MessageAttachment(`assets/Spyralinks/${data.image}`)
+                    const newEmbed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle('SPYRALINKS')
+                    .setImage(`attachment://${data.image}`)
+                    .setDescription(`## ${data.name}\n\n### Description:\n${data.description}\n\n### Skill:\n**Name:**${data.skills[0].name}\n**Description:**${data.skills[0].description}`)
+                    totalEmbeds.push(newEmbed)
+                    allAttachments.push(attachment)
+                  })
             }
 
 
     let filter = i => i.user.id === authorId
     let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 300})
     
-    playerSpyralinks.map((data) => {
-        const attachment = new MessageAttachment(`assets/Spyralinks/${data.image}`)
-        const newEmbed = new MessageEmbed()
-        .setColor('RANDOM')
-        .setTitle('SPYRALINKS')
-        .setImage(`attachment://${data.image}`)
-        .setDescription(`## ${data.name}\n\n### Description:\n${data.description}\n\n### Skill:\n**Name:**${data.skills[0].name}\n**Description:**${data.skills[0].description}`)
-        totalEmbeds.push(newEmbed)
-        allAttachments.push(attachment)
-      })
+    
 
       let empty = new MessageEmbed()
       .setColor('RANDOM')
@@ -89,6 +91,8 @@ export default new MyCommandSlashBuilder({ name: 'equip_spyralink', description:
 
       if(totalEmbeds.length == 0){
         totalEmbeds.push(empty)
+        const attachment = new MessageAttachment(`assets/Spyralinks/umbraline.jpeg`)
+        allAttachments.push(attachment)
     }
     for(let j =0;j<totalEmbeds.length;j++){
         totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
