@@ -185,7 +185,7 @@ export default new MyCommandSlashBuilder({ name: 'progressmainquest', descriptio
                                     iconURL:interaction.user.displayAvatarURL(),
                                     name:interaction.user.tag
                                 })
-                                .setImage('attachment2://waking.jpeg')
+                                .setImage('attachment://waking.jpeg')
                                 .addFields([
                                     {
                                         name: `Current Objective:`,

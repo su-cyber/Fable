@@ -89,14 +89,13 @@ export default new MyCommandSlashBuilder({ name: 'equip_spyralink', description:
       .setTitle('INVENTORY')
       .setDescription(`**YOU DO NOT OWN ANY SPYRALINK!**`)
 
-      if(totalEmbeds.length == 0){
-        totalEmbeds.push(empty)
-    }
+      
     for(let j =0;j<totalEmbeds.length;j++){
         totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
     }
     await interaction.deferReply()
     if(totalEmbeds.length == 0){
+        totalEmbeds.push(empty)
         await interaction.editReply({embeds:[totalEmbeds[0]],components:[],files:[]})
     }
     else{

@@ -208,7 +208,7 @@ export default new MyCommandSlashBuilder({ name: 'awaken', description: 'Awaken 
                         let prologueEmbed = new MessageEmbed()
                         .setColor('BLUE')
                         .setTitle('A New Beginning')
-                        .setImage('attachment2://nightmare.jpeg')
+                        .setImage('attachment://nightmare.jpeg')
                         .setAuthor({
                             iconURL:interaction.user.displayAvatarURL(),
                             name:interaction.user.tag
