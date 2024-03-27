@@ -91,69 +91,75 @@ export default new MyCommandSlashBuilder({ name: 'equip_spyralink', description:
 
       if(totalEmbeds.length == 0){
         totalEmbeds.push(empty)
-        const attachment = new MessageAttachment(`assets/Spyralinks/umbraline.jpeg`)
-        allAttachments.push(attachment)
     }
     for(let j =0;j<totalEmbeds.length;j++){
         totalEmbeds[j].setFooter({text:`Page: ${j+1}/${totalEmbeds.length}`})
     }
     await interaction.deferReply()
-    await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw,select_spyralink],files:[allAttachments[0]]})
-    let count = 0
-    collector.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
-        if(collected.customId === 'forward'){
-            await collected.deferUpdate().catch(e => {})
-            if(count== totalEmbeds.length-1){
-                count=0
-            }
-            else{
-                count +=1
-            }
-            
-            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw,select_spyralink],files:[allAttachments[count]]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
-        }
-        else if(collected.customId === 'backward'){
-            await collected.deferUpdate().catch(e => {})
-            if(count== 0){
-                count=totalEmbeds.length-1
-            }
-            else{
-                count-=1
-            }
-            
-            await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw,select_spyralink],files:[allAttachments[count]]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+    if(totalEmbeds.length == 0){
+        await interaction.editReply({embeds:[totalEmbeds[0]],components:[],files:[]})
+    }
+    else{
+        await interaction.editReply({embeds:[totalEmbeds[0]],components:[btnraw,select_spyralink],files:[allAttachments[0]]})
 
-        }
-        else if(collected.customId === 'stop'){
-            collector.stop()
-            
-        }
-        else if(collected.customId === 'select_spyralink'){
-            const value = collected.values[0]
-            const spyralink = await allSpyralinks.find(object => object.name === value)
-            const spyralinkSkill = (spyralink as any).skills[0]
-            const finalAttachment = new MessageAttachment(`assets/Spyralinks/${spyralink.image}`)
-            let successembed = new MessageEmbed()
-            .setColor('RANDOM')
-            .setTitle('SPYRALINK SELECTED')
-            .setImage(`attachment://${spyralink.image}`)
-            .setDescription(`## ${spyralink.name}\n\n### Description:\n${spyralink.description}\n\n### Skill:\n**Name:**${spyralinkSkill.name}\n**Description:**${spyralinkSkill.description}`)
-
-            await profileModel.updateOne({userID:authorId},{mount:spyralink})
-            await interaction.editReply({content: null,embeds:[successembed],components:[],files:[finalAttachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
-        }
-        else{
-
-        }
-
-  
+        let count = 0
+        collector.on('collect', async (collected : MessageComponentInteraction<CacheType> & { values: string[] }) => {
+            if(collected.customId === 'forward'){
+                await collected.deferUpdate().catch(e => {})
+                if(count== totalEmbeds.length-1){
+                    count=0
+                }
+                else{
+                    count +=1
+                }
+                
+                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw,select_spyralink],files:[allAttachments[count]]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+            }
+            else if(collected.customId === 'backward'){
+                await collected.deferUpdate().catch(e => {})
+                if(count== 0){
+                    count=totalEmbeds.length-1
+                }
+                else{
+                    count-=1
+                }
+                
+                await interaction.editReply({content: null,embeds:[totalEmbeds[count]],components:[btnraw,select_spyralink],files:[allAttachments[count]]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
     
+            }
+            else if(collected.customId === 'stop'){
+                collector.stop()
+                
+            }
+            else if(collected.customId === 'select_spyralink'){
+                const value = collected.values[0]
+                const spyralink = await allSpyralinks.find(object => object.name === value)
+                const spyralinkSkill = (spyralink as any).skills[0]
+                const finalAttachment = new MessageAttachment(`assets/Spyralinks/${spyralink.image}`)
+                let successembed = new MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('SPYRALINK SELECTED')
+                .setImage(`attachment://${spyralink.image}`)
+                .setDescription(`## ${spyralink.name}\n\n### Description:\n${spyralink.description}\n\n### Skill:\n**Name:**${spyralinkSkill.name}\n**Description:**${spyralinkSkill.description}`)
+    
+                await profileModel.updateOne({userID:authorId},{mount:spyralink})
+                await interaction.editReply({content: null,embeds:[successembed],components:[],files:[finalAttachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+            }
+            else{
+    
+            }
+    
+      
+        
+        })
+    
+    collector.on('end', () => {
+    interaction.deleteReply()
     })
-
-collector.on('end', () => {
-interaction.deleteReply()
-})
-
+    
+    }
+    
+   
 
         })
     }

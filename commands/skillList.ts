@@ -65,7 +65,7 @@ export default new MyCommandSlashBuilder({ name: 'listskills', description: 'lis
             description:"None"
         }]
       }
-      let external_passive = cloneDeep(foundUser.passiveskills)
+      let external_passive = cloneDeep(foundUser.passiveskills).concat(cloneDeep(foundUser.mount.skills))
       let mapped_external = external_passive.map((skill) => {
            
         return `__**Name**__: ${skill.name}\n__**Description**__:${skill.description}`
