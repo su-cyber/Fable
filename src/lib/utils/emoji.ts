@@ -22,6 +22,7 @@ export const emoji = {
     DRACO        : '<:draco_custom:1152989864732655646>',
     FROST        : '<:frost_custom:1152990048661291049>',
     TERRA        : '<:terra_custom:1152990221105893376>',
+    CRUS         : '<:crus:1218103076574072952>'
 
 
 }

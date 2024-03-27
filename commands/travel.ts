@@ -3,6 +3,7 @@ import profileModel from '../models/profileSchema'
 import {MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu, MessageComponentInteraction,CacheType} from 'discord.js'
 import { MessageAttachment } from 'discord.js'
 import getHealth from '../src/utils/getHealth'
+import { emoji } from '../src/lib/utils/emoji'
 
 
 export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel to a place' })
@@ -49,23 +50,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Castellan Fields`,
-                                                value:`**Travelled on Foot**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙`
+                                                value:`**Travelled on Foot**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 ${emoji.CRUS}`
                                             },
                                             {
                                                 name: `Sunshade Forest`,
-                                                value:`**Travelled on Foot**\n**Description**:a forest outside aube town\n**Cost**:0 🪙`
+                                                value:`**Travelled on Foot**\n**Description**:a forest outside aube town\n**Cost**:0 ${emoji.CRUS}`
                                             },
                                             {
                                                 name: `The Badlands`,
-                                                value:`**Travelled on Foot**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙`
+                                                value:`**Travelled on Foot**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 ${emoji.CRUS}`
                                             },
                                             {
                                                 name: `State of Zorya`,
-                                                value:`**Travelled on StageCoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:100 🪙`
+                                                value:`**Travelled on StageCoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:100 ${emoji.CRUS}`
                                             },
                                             {
                                                 name: `Township of Ingenia`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                         ])
                                         
@@ -78,23 +79,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Castellan Fields`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunshade Forest`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `The Badlands`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `State of Zorya`,
-                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.a\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.a\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Ingenia`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -272,7 +273,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                             }
                             else{
-                                interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                                interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                             }
                             
                 
@@ -306,7 +307,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                 
                 }
@@ -430,15 +431,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Aube Town`,
-                                                value:`**Travelled on Foot**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The township of aube\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunshade Forest`,
-                                                value:`**Travelled on Foot**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `The Badlands`,
-                                                value:`**Travelled on Foot**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                         ])
                                         
@@ -451,15 +452,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Aube Town`,
-                                                value:`**Travelled on Foot**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The township of aube\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunshade Forest`,
-                                                value:`**Travelled on Foot**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `The Badlands`,
-                                                value:`**Travelled on Foot**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -716,15 +717,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Aube Town`,
-                                                value:`**Travelled on Foot**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The township of aube\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunshade Forest`,
-                                                value:`**Travelled on Foot**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `The Badlands`,
-                                                value:`**Travelled on Foot**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                         ])
                                         
@@ -737,15 +738,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Aube Town`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The township of aube\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Castellan Fields`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `The Badlands`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Face the crippling heat, with nothing to find in it.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -1001,15 +1002,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Aube Town`,
-                                                value:`**Travelled on Foot**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The township of aube\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Castellan Fields`,
-                                                value:`**Travelled on Foot**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunshade Forest`,
-                                                value:`**Travelled on Foot**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                         ])
                                         
@@ -1022,15 +1023,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Aube Town`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The township of aube\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The township of aube\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Castellan Fields`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The famous golden hued fields of Aube.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunshade Forest`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A treacherous place for travelers and explorers alike.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -1288,39 +1289,39 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Ellior Forest`,
-                                                value:`**Travelled on Foot**\n**Description**:The enchanting Forest of Ellior\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The enchanting Forest of Ellior\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Dragon's Den`,
-                                                value:`**Travelled on Foot**\n**Description**:The Den of an Ancient Dragon\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The Den of an Ancient Dragon\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunstone Mines`,
-                                                value:`**Travelled on Foot**\n**Description**:The minefield where sunstones are mined\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The minefield where sunstones are mined\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Aube`,
-                                                value:`**Travelled on Stage Coach**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**:100 🪙\n`
+                                                value:`**Travelled on Stage Coach**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**:100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Ingenia`,
-                                                value:`**Travelled on Stage Coach**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stage Coach**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Underdagen`,
-                                                value:`**Travelled on Stage Coach**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**:100 🪙\n`
+                                                value:`**Travelled on Stage Coach**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**:100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Capital State of Gloaming`,
-                                                value:`**Travelled on Stage Coach**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:200 🪙\n`
+                                                value:`**Travelled on Stage Coach**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:200 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Foot**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Werfall`,
-                                                value:`**Travelled on Stage Coach**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**:150 🪙`
+                                                value:`**Travelled on Stage Coach**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**:150 ${emoji.CRUS}`
                                             },
                                         ])
                                         
@@ -1333,39 +1334,39 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Ellior Forest`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The enchanting Forest of Ellior\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The enchanting Forest of Ellior\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Dragon's Den`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The Den of an Ancient Dragon\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Den of an Ancient Dragon\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunstone Mines`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The minefield where sunstones are mined\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The minefield where sunstones are mined\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Aube`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Ingenia`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Underdagen`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Capital State of Gloaming`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Werfall`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -1563,7 +1564,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                            interaction.editReply(`You don't have enough Crus ${emoji.CRUS} to pay for the Stagecoach`)
                         }
                         
                     }
@@ -1630,7 +1631,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -1656,7 +1657,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -1682,7 +1683,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -1743,7 +1744,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                             await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                            interaction.editReply(`You don't have enough Crus ${emoji.CRUS} to pay for the Stagecoach`)
                         }
                         
                     }
@@ -1908,19 +1909,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Dragon's Den`,
-                                                value:`**Travelled on Foot**\n**Description**:The den of an ancient Dragon\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The den of an ancient Dragon\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunstone Mines`,
-                                                value:`**Travelled on Foot**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                                value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 ${emoji.CRUS}`
                                             },
                                         ])
                                         
@@ -1933,23 +1934,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Dragon's Den`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The den of an ancient Dragon\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The den of an ancient Dragon\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunstone Mines`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Zephyr Mountain`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The great mountains of Zephyr range\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The husk of the orld tree\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -2313,19 +2314,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Ellior Forest`,
-                                                value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunstone Mines`,
-                                                value:`**Travelled on Foot**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                         ])
                                         
@@ -2338,19 +2339,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Ellior Forest`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunstone Mines`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A minefield where sunstones are mined\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                                value:`**Travelled on Spyralink**\n**Description**:The husk of the orld tree\n**Cost**:0 ${emoji.CRUS}`
                                             },
                                         ])
     
@@ -2712,19 +2713,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Ellior Forest`,
-                                                value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Dragon's Den`,
-                                                value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                         ])
                                         
@@ -2737,19 +2738,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Ellior Forest`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Dragon's Den`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The husk of the orld tree\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -3113,23 +3114,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Ellior Forest`,
-                                                value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Dragon's Den`,
-                                                value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunstone Mines`,
-                                                value:`**Travelled on Foot**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                                value:`**Travelled on Foot**\n**Description**:The husk of the orld tree\n**Cost**:0 ${emoji.CRUS}`
                                             },
                                         ])
                                         
@@ -3142,23 +3143,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Ellior Forest`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Dragon's Den`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunstone Mines`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The husk of the orld tree\n**Cost**:0 🪙`
+                                                value:`**Travelled on Spyralink**\n**Description**:The husk of the orld tree\n**Cost**:0 ${emoji.CRUS}`
                                             },
                                         ])
     
@@ -3528,23 +3529,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Ellior Forest`,
-                                                value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Dragon's Den`,
-                                                value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunstone Mines`,
-                                                value:`**Travelled on Foot**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Capital of Gloaming`,
-                                                value:`**Travelled on Stagecoach**\n**Description**: Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**: Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                         ])
                                         
@@ -3557,24 +3558,24 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Ellior Forest`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Enchanted Forest of Ellior\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Dragon's Den`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Den of an ancient Dragon\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Sunstone Mines`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The minefield when sunstones are mined\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                            
                                             {
                                                 name: `Capital of Gloaming`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -4098,10 +4099,10 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:150 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:150 ${emoji.CRUS}\n`
                                             },{
                                                 name: `Stateship of Vigia`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**:150 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**:150 ${emoji.CRUS}\n`
                                             },
                                         ])
                                         
@@ -4114,11 +4115,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Vigia`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -4217,7 +4218,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -4243,7 +4244,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -4326,19 +4327,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Township of Werfall`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**:150 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**:150 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Kafig`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**:100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**:100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Asche Peak`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:A charred hill crowned in perpetual darkness, its soot-blackened soil radiating intense heat, home to a rich variety of Avian Spyriths.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:A charred hill crowned in perpetual darkness, its soot-blackened soil radiating intense heat, home to a rich variety of Avian Spyriths.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Deathrust Forest`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:DeathRust Forest, a forsaken realm devoid of life, haunted by the relentless menace of mindless iron zombies known as Ferromites, where the very air carries an infectious rust turning all who breathe it into rusted husks with burning cores.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:DeathRust Forest, a forsaken realm devoid of life, haunted by the relentless menace of mindless iron zombies known as Ferromites, where the very air carries an infectious rust turning all who breathe it into rusted husks with burning cores.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
                                         
@@ -4351,19 +4352,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Township of Werfall`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Kafig`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Asche Peak`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A charred hill crowned in perpetual darkness, its soot-blackened soil radiating intense heat, home to a rich variety of Avian Spyriths.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A charred hill crowned in perpetual darkness, its soot-blackened soil radiating intense heat, home to a rich variety of Avian Spyriths.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Deathrust Forest`,
-                                                value:`**Travelled on Spyralink**\n**Description**:DeathRust Forest, a forsaken realm devoid of life, haunted by the relentless menace of mindless iron zombies known as Ferromites, where the very air carries an infectious rust turning all who breathe it into rusted husks with burning cores.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:DeathRust Forest, a forsaken realm devoid of life, haunted by the relentless menace of mindless iron zombies known as Ferromites, where the very air carries an infectious rust turning all who breathe it into rusted husks with burning cores.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -4520,7 +4521,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -4546,7 +4547,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -4714,11 +4715,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Township of Kafig`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Vigia`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                         ])
                                         
@@ -4731,11 +4732,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Township of Kafig`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Vigia`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -4940,7 +4941,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -4967,7 +4968,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -5176,7 +5177,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Vigia`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                         ])
                                         
@@ -5189,7 +5190,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Vigia`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -5331,7 +5332,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -5476,15 +5477,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Asche Peak`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:A charred hill crowned in perpetual darkness, its soot-blackened soil radiating intense heat, home to a rich variety of Avian Spyriths.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:A charred hill crowned in perpetual darkness, its soot-blackened soil radiating intense heat, home to a rich variety of Avian Spyriths.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Vigia`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Raflese`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                         ])
                                         
@@ -5497,15 +5498,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Asche Peak`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A charred hill crowned in perpetual darkness, its soot-blackened soil radiating intense heat, home to a rich variety of Avian Spyriths.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A charred hill crowned in perpetual darkness, its soot-blackened soil radiating intense heat, home to a rich variety of Avian Spyriths.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Vigia`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Raflese`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -5632,7 +5633,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -5670,7 +5671,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -5785,15 +5786,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Dremenlond`,
-                                                value:`**Travelled on Stagecoach**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Kafig`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Bleeding Gorge`,
-                                                value:`**Travelled on Stagecoach**\n**Description**: A hauntingly beautiful canyon, where blood red streams cascade through rugged cliffs\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**: A hauntingly beautiful canyon, where blood red streams cascade through rugged cliffs\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
                                         
@@ -5806,15 +5807,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Dremenlond`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Kafig`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Bleeding Gorge`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A hauntingly beautiful canyon, where blood red streams cascade through rugged cliffs\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A hauntingly beautiful canyon, where blood red streams cascade through rugged cliffs\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -5941,7 +5942,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -5979,7 +5980,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -6094,7 +6095,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Township of Raflese`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
                                         
@@ -6107,7 +6108,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Township of Raflese`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -6228,7 +6229,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -6343,15 +6344,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Capital of Gloaming`,
-                                                value:`**Travelled on Stagecoach**\n**Description**: Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**: Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Kafig`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Raflese`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -6365,15 +6366,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Capital of Gloaming`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Kafig`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Raflese`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 0 ${emoji.CRUS}\n`
                                         },
                                         
                                         ])
@@ -6517,7 +6518,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -6543,7 +6544,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -6570,7 +6571,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -6704,23 +6705,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Dremenlond`,
-                                                value:`**Travelled on Stagecoach**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Foot**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on StageCoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:100 🪙`
+                                                value:`**Travelled on StageCoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**:100 ${emoji.CRUS}`
                                             },
                                             {
                                                 name: `Stateship of Nottfall`,
-                                                value:`**Travelled on Stagecoach**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Vesper`,
-                                                value:`**Travelled on Stagecoach**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -6734,23 +6735,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stateship of Dremenlond`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Orld Tree's Husk`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The Husk of the ancient Orld Tree\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**: 0 🪙`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**: 0 ${emoji.CRUS}`
                                             },
                                             {
                                                 name: `Stateship of Nottfall`,
-                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Vesper`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         
                                         ])
@@ -6905,7 +6906,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -6931,7 +6932,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -6959,7 +6960,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                 
                 }
@@ -6998,7 +6999,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else{
-                    interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 
             }
@@ -7133,23 +7134,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Swamp of Abyss`,
-                                                value:`**Travelled on Foot**\n**Description**:A misty, foreboding swamp with an indefinite depth, shrouded in mystery and danger.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A misty, foreboding swamp with an indefinite depth, shrouded in mystery and danger.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stellaris Temple Ruins`,
-                                                value:`**Travelled on Foot**\n**Description**:The remains of a once-sacred temple where a monstrous transformation unfolded.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The remains of a once-sacred temple where a monstrous transformation unfolded.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Capital of Gloaming`,
-                                                value:`**Travelled on StageCoach**\n**Description**:Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on StageCoach**\n**Description**:Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Nottfall`,
-                                                value:`**Travelled on Stagecoach**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Lucens`,
-                                                value:`**Travelled on Stagecoach**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -7163,23 +7164,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Swamp of Abyss`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A misty, foreboding swamp with an indefinite depth, shrouded in mystery and danger.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A misty, foreboding swamp with an indefinite depth, shrouded in mystery and danger.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stellaris Temple Ruins`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The remains of a once-sacred temple where a monstrous transformation unfolded.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The remains of a once-sacred temple where a monstrous transformation unfolded.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Capital of Gloaming`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Nottfall`,
-                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Lucens`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         
                                         ])
@@ -7326,7 +7327,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -7352,7 +7353,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -7378,7 +7379,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -7522,11 +7523,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stellaris Temple Ruins`,
-                                                value:`**Travelled on Foot**\n**Description**:The remains of a once-sacred temple where a monstrous transformation unfolded.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:The remains of a once-sacred temple where a monstrous transformation unfolded.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Vesper`,
-                                                value:`**Travelled on Foot**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -7540,11 +7541,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stellaris Temple Ruins`,
-                                                value:`**Travelled on Spyralink**\n**Description**:The remains of a once-sacred temple where a monstrous transformation unfolded.\n**Cost**:0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:The remains of a once-sacred temple where a monstrous transformation unfolded.\n**Cost**:0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Vesper`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -7689,7 +7690,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else{
-                    interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 
             }
@@ -7813,11 +7814,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Swamp of Abyss`,
-                                                value:`**Travelled on Foot**\n**Description**:A misty, foreboding swamp with an indefinite depth, shrouded in mystery and danger.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A misty, foreboding swamp with an indefinite depth, shrouded in mystery and danger.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Vesper`,
-                                                value:`**Travelled on Foot**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -7831,11 +7832,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Swamp of Abyss`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A misty, foreboding swamp with an indefinite depth, shrouded in mystery and danger.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A misty, foreboding swamp with an indefinite depth, shrouded in mystery and danger.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Vesper`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -7980,7 +7981,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else{
-                    interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 
             }
@@ -8104,15 +8105,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Buccaneer Shipwreck`,
-                                                value:`**Travelled on Foot**\n**Description**:A shipwreck lies abandoned on the sandy shores, a relic of a bygone era of piracy and adventure.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A shipwreck lies abandoned on the sandy shores, a relic of a bygone era of piracy and adventure.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Marvory Cove`,
-                                                value:`**Travelled on Foot**\n**Description**: Marvory Cove, with its shimmering waters and ivory sands, offers a serene escape amidst the rugged coastline, captivating visitors with its natural beauty and tranquility.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Marvory Cove, with its shimmering waters and ivory sands, offers a serene escape amidst the rugged coastline, captivating visitors with its natural beauty and tranquility.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Vesper`,
-                                                value:`**Travelled on Stagecoach**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -8126,15 +8127,15 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Buccaneer Shipwreck`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A shipwreck lies abandoned on the sandy shores, a relic of a bygone era of piracy and adventure.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A shipwreck lies abandoned on the sandy shores, a relic of a bygone era of piracy and adventure.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Marvory Cove`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Marvory Cove, with its shimmering waters and ivory sands, offers a serene escape amidst the rugged coastline, captivating visitors with its natural beauty and tranquility.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Marvory Cove, with its shimmering waters and ivory sands, offers a serene escape amidst the rugged coastline, captivating visitors with its natural beauty and tranquility.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Vesper`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -8294,7 +8295,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                 await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 else{
-                    interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                    interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                 }
                 
             }
@@ -8417,11 +8418,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Marvory Cove`,
-                                                value:`**Travelled on Foot**\n**Description**: Marvory Cove, with its shimmering waters and ivory sands, offers a serene escape amidst the rugged coastline, captivating visitors with its natural beauty and tranquility.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Marvory Cove, with its shimmering waters and ivory sands, offers a serene escape amidst the rugged coastline, captivating visitors with its natural beauty and tranquility.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Lucens`,
-                                                value:`**Travelled on Foot**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -8435,11 +8436,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Marvory Cove`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Marvory Cove, with its shimmering waters and ivory sands, offers a serene escape amidst the rugged coastline, captivating visitors with its natural beauty and tranquility.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Marvory Cove, with its shimmering waters and ivory sands, offers a serene escape amidst the rugged coastline, captivating visitors with its natural beauty and tranquility.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Lucens`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -8582,7 +8583,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -8705,11 +8706,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Buccaneer Shipwreck`,
-                                                value:`**Travelled on Foot**\n**Description**:A shipwreck shrouded in mystery, lies abandoned on the sandy shores, a relic of a bygone era of piracy and adventure.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A shipwreck shrouded in mystery, lies abandoned on the sandy shores, a relic of a bygone era of piracy and adventure.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Lucens`,
-                                                value:`**Travelled on Foot**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -8723,11 +8724,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Buccaneer Shipwreck`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A shipwreck shrouded in mystery, lies abandoned on the sandy shores, a relic of a bygone era of piracy and adventure.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A shipwreck shrouded in mystery, lies abandoned on the sandy shores, a relic of a bygone era of piracy and adventure.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Lucens`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -8870,7 +8871,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -8993,23 +8994,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Spezia Cliffs`,
-                                                value:`**Travelled on Foot**\n**Description**:Spezia Cliffs tower above the coastline, their rugged cliffsides bathed in the warm glow of the setting sun.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:Spezia Cliffs tower above the coastline, their rugged cliffsides bathed in the warm glow of the setting sun.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Riverside Ruins`,
-                                                value:`**Travelled on Foot**\n**Description**: Ruins stand as silent sentinels amidst the tranquil beauty of the forest, their weathered stones whispering secrets of a bygone era.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Ruins stand as silent sentinels amidst the tranquil beauty of the forest, their weathered stones whispering secrets of a bygone era.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Capital of Gloaming`,
-                                                value:`**Travelled on StageCoach**\n**Description**:Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on StageCoach**\n**Description**:Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Vesper`,
-                                                value:`**Travelled on Stagecoach**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Ingenia`,
-                                                value:`**Travelled on Stagecoach**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -9023,23 +9024,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Spezia Cliffs`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Spezia Cliffs tower above the coastline, their rugged cliffsides bathed in the warm glow of the setting sun.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Spezia Cliffs tower above the coastline, their rugged cliffsides bathed in the warm glow of the setting sun.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Riverside Ruins`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Ruins stand as silent sentinels amidst the tranquil beauty of the forest, their weathered stones whispering secrets of a bygone era.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Ruins stand as silent sentinels amidst the tranquil beauty of the forest, their weathered stones whispering secrets of a bygone era.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Capital of Gloaming`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Majestic cityscape where history, commerce, and culture converge under the watchful eye of Castle Heliad, embodying Solarstrio's rich heritage and vibrant trade.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Vesper`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Ingenia`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -9217,7 +9218,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply(`You dont have enough Crus ${emoji.CRUS} to pay for the Stagecoach`)
                         }
                         
                     }
@@ -9243,7 +9244,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -9269,7 +9270,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -9405,11 +9406,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Riverside Ruins`,
-                                                value:`**Travelled on Foot**\n**Description**: Ruins stand as silent sentinels amidst the tranquil beauty of the forest, their weathered stones whispering secrets of a bygone era.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Ruins stand as silent sentinels amidst the tranquil beauty of the forest, their weathered stones whispering secrets of a bygone era.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Nottfall`,
-                                                value:`**Travelled on Foot**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -9423,11 +9424,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Riverside Ruins`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Ruins stand as silent sentinels amidst the tranquil beauty of the forest, their weathered stones whispering secrets of a bygone era.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Ruins stand as silent sentinels amidst the tranquil beauty of the forest, their weathered stones whispering secrets of a bygone era.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Nottfall`,
-                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -9579,7 +9580,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply(`You dont have enough Crus ${emoji.CRUS} to pay for the Stagecoach`)
                         }
                         
                     }
@@ -9715,11 +9716,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Spezia Cliffs`,
-                                                value:`**Travelled on Foot**\n**Description**: Spezia Cliffs tower above the coastline, their rugged cliffsides bathed in the warm glow of the setting sun.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Spezia Cliffs tower above the coastline, their rugged cliffsides bathed in the warm glow of the setting sun.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Nottfall`,
-                                                value:`**Travelled on Foot**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -9733,11 +9734,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Spezia Cliffs`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Spezia Cliffs tower above the coastline, their rugged cliffsides bathed in the warm glow of the setting sun.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Spezia Cliffs tower above the coastline, their rugged cliffsides bathed in the warm glow of the setting sun.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Nottfall`,
-                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -9889,7 +9890,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply(`You dont have enough Crus ${emoji.CRUS} to pay for the Stagecoach`)
                         }
                         
                     }
@@ -10025,23 +10026,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stella Vallis`,
-                                                value:`**Travelled on Foot**\n**Description**: A scenic valley on the outskirts, surrounded by the inventive energy of Ingenia.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: A scenic valley on the outskirts, surrounded by the inventive energy of Ingenia.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Ingenia Dump`,
-                                                value:`**Travelled on Foot**\n**Description**: The repository of discarded inventions and experiments.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: The repository of discarded inventions and experiments.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Nottfall`,
-                                                value:`**Travelled on Stagecoach**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Aube`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -10055,23 +10056,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stella Vallis`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A scenic valley on the outskirts, surrounded by the inventive energy of Ingenia.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A scenic valley on the outskirts, surrounded by the inventive energy of Ingenia.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Ingenia Dump`,
-                                                value:`**Travelled on Spyralink**\n**Description**: The repository of discarded inventions and experiments.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: The repository of discarded inventions and experiments.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Nottfall`,
-                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Aube`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -10240,7 +10241,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]})
                         }
                         else{
-                            interaction.editReply(`You dont have enough coins to pay for the Stagecoach`)
+                            interaction.editReply(`You dont have enough Crus ${emoji.CRUS} to pay for the Stagecoach`)
                         }
                         
                     }
@@ -10266,7 +10267,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                            interaction.editReply(`You don't have enough Crus ${emoji.CRUS} to pay for the Stagecoach`)
                         }
                         
                     }
@@ -10293,7 +10294,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                 
                 }
@@ -10426,11 +10427,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             
                                             {
                                                 name: `Ingenia Dump`,
-                                                value:`**Travelled on Foot**\n**Description**: The repository of discarded inventions and experiments.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: The repository of discarded inventions and experiments.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Ingenia`,
-                                                value:`**Travelled on Foot**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -10444,11 +10445,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Ingenia Dump`,
-                                                value:`**Travelled on Spyralink**\n**Description**: The repository of discarded inventions and experiments.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: The repository of discarded inventions and experiments.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Ingenia`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -10602,7 +10603,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -10729,11 +10730,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             
                                             {
                                                 name: `Stella Vallis`,
-                                                value:`**Travelled on Foot**\n**Description**: A scenic valley on the outskirts, surrounded by the inventive energy of Ingenia.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: A scenic valley on the outskirts, surrounded by the inventive energy of Ingenia.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Ingenia`,
-                                                value:`**Travelled on Foot**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -10747,11 +10748,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Stella Vallis`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A scenic valley on the outskirts, surrounded by the inventive energy of Ingenia.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A scenic valley on the outskirts, surrounded by the inventive energy of Ingenia.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Ingenia`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -10905,7 +10906,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -11032,19 +11033,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             
                                             {
                                                 name: `Zephyr Mountains`,
-                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Crystal Mines`,
-                                                value:`**Travelled on Foot**\n**Description**: A subterranean labyrinth where Dwarven miners extract coveted hex crystals for Solastrio's elite.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: A subterranean labyrinth where Dwarven miners extract coveted hex crystals for Solastrio's elite.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Tethys`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -11058,19 +11059,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Zephyr Mountains`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Crystal Mines`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A subterranean labyrinth where Dwarven miners extract coveted hex crystals for Solastrio's elite.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A subterranean labyrinth where Dwarven miners extract coveted hex crystals for Solastrio's elite.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Zorya`,
-                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Tethys`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -11227,7 +11228,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                 
                 }
@@ -11259,7 +11260,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                            interaction.editReply(`You don't have enough Crus ${emoji.CRUS} to pay for the Stagecoach`)
                         }
                         
                     }
@@ -11377,11 +11378,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             
                                             {
                                                 name: `Zephyr Mountains`,
-                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Underdagen`,
-                                                value:`**Travelled on Foot**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -11395,11 +11396,11 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Zephyr Mountains`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Underdagen`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -11545,7 +11546,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -11664,19 +11665,19 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             
                                             {
                                                 name: `Crystal Mines`,
-                                                value:`**Travelled on Foot**\n**Description**: A subterranean labyrinth where Dwarven miners extract coveted hex crystals for Solastrio's elite.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: A subterranean labyrinth where Dwarven miners extract coveted hex crystals for Solastrio's elite.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Underdagen`,
-                                                value:`**Travelled on Foot**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Tethys`,
-                                                value:`**Travelled on Foot**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Avalon Pass`,
-                                                value:`**Travelled on Foot**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -11690,31 +11691,31 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Crystal Mines`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A subterranean labyrinth where Dwarven miners extract coveted hex crystals for Solastrio's elite.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A subterranean labyrinth where Dwarven miners extract coveted hex crystals for Solastrio's elite.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Underdagen`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Tethys`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Den of Terodytes`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Zaffran Plains`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Psalm of Veldora`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Avalon Pass`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -11975,7 +11976,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -12001,7 +12002,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                            interaction.editReply(`You don't have enough Crus ${emoji.CRUS} to pay for the Stagecoach`)
                         }
                         
                     }
@@ -12261,27 +12262,27 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             
                                             {
                                                 name: `Zephyr Mountains`,
-                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Avalon Pass`,
-                                                value:`**Travelled on Foot**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Den of Terodytes`,
-                                                value:`**Travelled on Foot**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Zaffran Plains`,
-                                                value:`**Travelled on Foot**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Psalm of Veldora`,
-                                                value:`**Travelled on Foot**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Underdagen`,
-                                                value:`**Travelled on Stagecoach**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 100 🪙\n`
+                                                value:`**Travelled on Stagecoach**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 100 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -12295,27 +12296,27 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Zephyr Mountains`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Avalon Pass`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Den of Terodytes`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Zaffran Plains`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Psalm of Veldora`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Township of Underdagen`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -12514,7 +12515,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -12701,23 +12702,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             
                                             {
                                                 name: `Zephyr Mountains`,
-                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Den of Terodytes`,
-                                                value:`**Travelled on Foot**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Zaffran Plains`,
-                                                value:`**Travelled on Foot**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Psalm of Veldora`,
-                                                value:`**Travelled on Foot**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Tethys`,
-                                                value:`**Travelled on Foot**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -12731,23 +12732,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Zephyr Mountains`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Den of Terodytes`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Zaffran Plains`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Psalm of Veldora`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Tethys`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                         ])
     
@@ -12941,7 +12942,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -12998,7 +12999,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                            interaction.editReply(`You don't have enough Crus ${emoji.CRUS} to pay for the Stagecoach`)
                         }
                         
                     }
@@ -13154,23 +13155,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             
                                             {
                                                 name: `Zephyr Mountains`,
-                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Avalon Pass`,
-                                                value:`**Travelled on Foot**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Zaffran Plains`,
-                                                value:`**Travelled on Foot**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Psalm of Veldora`,
-                                                value:`**Travelled on Foot**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Tethys`,
-                                                value:`**Travelled on Foot**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -13184,23 +13185,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Zephyr Mountains`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Avalon Pass`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Zaffran Plains`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Psalm of Veldora`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Tethys`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -13395,7 +13396,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -13452,7 +13453,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                            interaction.editReply(`You don't have enough Crus ${emoji.CRUS} to pay for the Stagecoach`)
                         }
                         
                     }
@@ -13608,23 +13609,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             
                                             {
                                                 name: `Zephyr Mountains`,
-                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Avalon Pass`,
-                                                value:`**Travelled on Foot**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Den of Terodytes`,
-                                                value:`**Travelled on Foot**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Psalm of Veldora`,
-                                                value:`**Travelled on Foot**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Tethys`,
-                                                value:`**Travelled on Foot**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -13638,23 +13639,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Zephyr Mountains`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Avalon Pass`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Den of Terodytes`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Psalm of Veldora`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A sacred chamber atop Zephyr Mountain, where whispers of the divine are said to linger in the air.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Tethys`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -13849,7 +13850,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -13906,7 +13907,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                            interaction.editReply(`You don't have enough Crus ${emoji.CRUS} to pay for the Stagecoach`)
                         }
                         
                     }
@@ -14062,23 +14063,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                             
                                             {
                                                 name: `Zephyr Mountains`,
-                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Avalon Pass`,
-                                                value:`**Travelled on Foot**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Den of Terodytes`,
-                                                value:`**Travelled on Foot**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Zaffran Plains`,
-                                                value:`**Travelled on Foot**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Tethys`,
-                                                value:`**Travelled on Foot**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Foot**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -14092,23 +14093,23 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         .addFields([
                                             {
                                                 name: `Zephyr Mountains`,
-                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: Zephyr Mountains is a perillious mountain range at the north of solarstrio that is sacred to the Torr Dwarves.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Avalon Pass`,
-                                                value:`**Travelled on Spyralink**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**: A heavily guarded mountain pass leading to the neighboring Kingdom of Haganeshiro.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Den of Terodytes`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A cavernous lair echoing with the haunting cries of the majestic Terodytes.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Zaffran Plains`,
-                                                value:`**Travelled on Spyralink**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:Vast expanses where the rare and precious spice Zaffran is cultivated, guarded closely by Tethys.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             {
                                                 name: `Stateship of Tethys`,
-                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                                value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 ${emoji.CRUS}\n`
                                             },
                                             
                                         ])
@@ -14303,7 +14304,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply({content:`You do not have enough coins to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                            interaction.editReply({content:`You do not have enough Crus ${emoji.CRUS} to pay for the Stagecoach`,embeds:[],components:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         
                     }
@@ -14360,7 +14361,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                         await interaction.editReply({embeds:[successembed],components:[],files:[attachment]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
                         }
                         else{
-                            interaction.editReply(`You don't have enough coins to pay for the Stagecoach`)
+                            interaction.editReply(`You don't have enough Crus ${emoji.CRUS} to pay for the Stagecoach`)
                         }
                         
                     }

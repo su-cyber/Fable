@@ -16,6 +16,7 @@ import { goblinWhistle } from '../src/age/items/goblinWhistle'
 import { TextChannel } from 'discord.js'
 import { MessageAttachment } from 'discord.js'
 import { WindblownFeather } from '../src/age/flora/The Badlands/windblown_feather'
+import { emoji } from '../src/lib/utils/emoji'
 
 
 export default new MyCommandSlashBuilder({ name: 'progresssidequest', description: 'progress your side quest' }).setDo(
@@ -209,10 +210,10 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                 .addFields([
                                                     {
                                                         name: `Rewards:`,
-                                                        value:`**Obtained Solarcorn Stalk X 1**\n**You recieved 300🪙**\n**You recieve 10 Merit**`
+                                                        value:`**Obtained Solarcorn Stalk X 1**\n**You recieved 300${emoji.CRUS}**\n**You recieve 10 Merit**`
                                                     }
                                                 ])
-                                                .setDescription(`you hand over the stalk to the Crofters, and they give you some to keep.They thank you for your service and give 300🪙 as a token of gratitude.`)
+                                                .setDescription(`you hand over the stalk to the Crofters, and they give you some to keep.They thank you for your service and give 300${emoji.CRUS} as a token of gratitude.`)
                                                 interaction.reply({embeds:[successembed]})
                                                 foundObject.quantity-=4
                                                         if(foundObject.quantity===0){
@@ -228,7 +229,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                 let fableLog = new MessageEmbed()
                                                 .setColor('RANDOM')
                                                 .setTitle('FABLE LOG')
-                                                .setDescription(`${interaction.user.username} has Completed the Side Quest **"Feed the Radiantura"** and recieved **300🪙**!`)
+                                                .setDescription(`${interaction.user.username} has Completed the Side Quest **"Feed the Radiantura"** and recieved **300${emoji.CRUS}**!`)
                                                 await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
                                           
                                             }
@@ -740,7 +741,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 .addFields([
                                     {
                                         name: `Rewards:`,
-                                        value:`**You recieved 1500🪙!**\n**You recieved 35 Merit!**`
+                                        value:`**You recieved 1500${emoji.CRUS}!**\n**You recieved 35 Merit!**`
                                     }
                                 ])
                                 .setDescription(`“That was **Revok**. Those who have mastered it will have the vigour of a hundred men, the endurance of a blackstone, knowledge of the unseeable and the agility surpassing all reflexes. Such is the power of a **Super-Regular**.” Madam Cornelia commented as she paced around the room.\n\n“Do not drag your name any further in the mud, Ranger. You see, despite your loss here today, I am quite impressed with your loyalty and conviction. You don’t see that everyday. Look, Earl Auriga isn’t in Zorya at the moment. So for you, I will hand this letter to the Earl when he returns and convey the Mayor’s request for aid in his matter concerning Aube. You may be asked to present yourself in the Earl’s court in the future regarding this matter. I hope you will be stronger the next time we meet.\n\n You hand the Letter to Madam Cornelia and leave Castle Luminar, wondering about **“Revok”** and the reason for Madam Cornelia’s disliking towards the Guild Rangers.`)
@@ -759,7 +760,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                 let fableLog = new MessageEmbed()
                                                 .setColor('RANDOM')
                                                 .setTitle('FABLE LOG')
-                                                .setDescription(`${interaction.user.username} has Completed the Side Quest **"Aube Town's Water Crisis"** and recieved **1500🪙**!`)
+                                                .setDescription(`${interaction.user.username} has Completed the Side Quest **"Aube Town's Water Crisis"** and recieved **1500${emoji.CRUS}**!`)
                                                 await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
 
                                 }
@@ -981,7 +982,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                     .addFields([
                                         {
                                             name: `Rewards:`,
-                                            value:`**1500🪙**`
+                                            value:`**1500${emoji.CRUS}**`
                                         }
                                     ])
                                     .setDescription(`You bring back the Astrolabe to the wealthy citizen who hired you to find it. He is ecstatic since you brought it back and pays you well for your troubles. In the moment you think how Butch got lucky in the sense that he got caught by you, who spared him, and how you ended up being owed a favor by the thieving siblings as soon as you held the Astrolabe. Perhaps there is something about them that is just hard to explain.`)
@@ -993,7 +994,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                 let fableLog = new MessageEmbed()
                                                 .setColor('RANDOM')
                                                 .setTitle('FABLE LOG')
-                                                .setDescription(`${interaction.user.username} has Completed the Side Quest **"Heirloom Missing"** and recieved 1500🪙!`)
+                                                .setDescription(`${interaction.user.username} has Completed the Side Quest **"Heirloom Missing"** and recieved 1500${emoji.CRUS}!`)
                                                 await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
                      
                                
@@ -1204,7 +1205,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                         .addFields([
                                             {
                                                 name: `Rewards:`,
-                                                value:`**You recieved 1500🪙!**\n**You recieved 35 Merit!**`
+                                                value:`**You recieved 1500${emoji.CRUS}!**\n**You recieved 35 Merit!**`
                                             }
                                         ])
                                         .setDescription(`Cantieri is visibly pleased with your aid and commends your efforts.\n\n**Cantieri:** "This is exactly what we needed. You've been a great help."\n\nThe shipwrights incorporate your contributions into the airship, completing the project with renewed efficiency.\n\nThe shipwrights offer you a reward for your assistance and acknowledge your pivotal role in their success.`)
@@ -1216,7 +1217,7 @@ export default new MyCommandSlashBuilder({ name: 'progresssidequest', descriptio
                                                 let fableLog = new MessageEmbed()
                                                 .setColor('RANDOM')
                                                 .setTitle('FABLE LOG')
-                                                .setDescription(`${interaction.user.username} has Completed the Side Quest **"Helping Set Sail"** and recieved **1500🪙**!`)
+                                                .setDescription(`${interaction.user.username} has Completed the Side Quest **"Helping Set Sail"** and recieved **1500${emoji.CRUS}**!`)
                                                 await (interaction.client.channels.cache.get(`1141991984526012466`) as TextChannel).send({embeds:[fableLog]})
                                     }
                                     else{

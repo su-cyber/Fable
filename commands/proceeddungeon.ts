@@ -26,6 +26,7 @@ import { Murkwraithe } from '../src/age/Dungeon-Mobs/murkwraithe'
 import { Nebula } from '../src/age/flora/Dungeon Flora/nebulaFlower'
 import { BassiliskVenom } from '../src/age/Dungeon-Mobs/bassiliskAbyss_venom'
 import sample from 'lodash.sample'
+import { emoji } from '../src/lib/utils/emoji'
 
 
 export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 'Move in the Dungeon' })
@@ -204,7 +205,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 let stepembed = new MessageEmbed()
                                             .setColor('RED')
                                             .setTitle('STEP #3')
-                                            .setDescription(`you found a stash of Money!\nYou recieved 1000 coins!`)
+                                            .setDescription(`you found a stash of Money!\nYou recieved 1000 ${emoji.CRUS}!`)
                                             await interaction.reply({embeds:[stepembed],components:[]})
                                             await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+1000})
                                             dungeon.step+=1
@@ -348,7 +349,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 let stepembed = new MessageEmbed()
                                             .setColor('RED')
                                             .setTitle('STEP #6')
-                                            .setDescription(`you found a stash of Money!\nYou recieved 1000 coins!`)
+                                            .setDescription(`you found a stash of Money!\nYou recieved 1000 ${emoji.CRUS}!`)
                                             await interaction.reply({embeds:[stepembed],components:[]})
                                             await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+1000})
                                             dungeon.step+=1
@@ -429,7 +430,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 let stepembed = new MessageEmbed()
                                             .setColor('RED')
                                             .setTitle('STEP #7')
-                                            .setDescription(`you found a stash of Money!\nYou recieved 1000 coins!`)
+                                            .setDescription(`you found a stash of Money!\nYou recieved 1000 ${emoji.CRUS}!`)
                                             await interaction.reply({embeds:[stepembed],components:[]})
                                             await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+1000})
                                             dungeon.step+=1
@@ -526,7 +527,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                 let stepembed = new MessageEmbed()
                                             .setColor('RED')
                                             .setTitle('STEP #9')
-                                            .setDescription(`you found a stash of Money!\nYou recieved 1000 coins!`)
+                                            .setDescription(`you found a stash of Money!\nYou recieved 1000 ${emoji.CRUS}!`)
                                             await interaction.reply({embeds:[stepembed],components:[]})
                                             await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+1000})
                                             dungeon.step+=1
@@ -625,7 +626,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                                 value:`**press /progressmainquest at the guild outpost to continue**`
                                                             }
                                                         ])
-                                                        .setDescription(`You finally reached the end of the dungeon!You enter a rather well maintained room which looks like the personal room of Captain Crook You found many valuable items and decided to return all of them keeping only some for yourself\nYou found Coin Bag x 1!\n500 coins added!\n\n**You have Successfully completed the quest "Aube Town's Hero" and exited the Abandoned Castle**`)
+                                                        .setDescription(`You finally reached the end of the dungeon!You enter a rather well maintained room which looks like the personal room of Captain Crook You found many valuable items and decided to return all of them keeping only some for yourself\nYou found Coin Bag x 1!\n500 ${emoji.CRUS} added!\n\n**You have Successfully completed the quest "Aube Town's Hero" and exited the Abandoned Castle**`)
                                                         await interaction.reply({embeds:[stepembed],components:[]})
                                                         await profileModel.updateOne({userID:authorId},{coins:foundUser.coins+500})
                                                         let fableLog = new MessageEmbed()
@@ -2018,7 +2019,7 @@ export default new MyCommandSlashBuilder({ name: 'proceeddungeon', description: 
                                                         .addFields([
                                                             {
                                                                 name: `Rewards:`,
-                                                                value:`**You Recieved 2500🪙**\n**You Recieved 45 Merit!**`
+                                                                value:`**You Recieved 2500${emoji.CRUS}**\n**You Recieved 45 Merit!**`
                                                             }
                                                         ])
                                                         .setDescription(`Even after all your attacks, you still fail to kill the Dinocodile. The fight leaves you extremely weakened and unable to stand up. You retreat slightly crawling on the floor using your arms and legs, but the Dinocodile doesn’t let you. It wails around its tail to crush you but then, you see Jetta atop an Aqueduct, using his whips to bind the Dinocodile’s tail. You take this moment to launch one final attack using Kabuto and slay the Spyrith.\n\n“When I lost my parents, I thought to myself how these Sea Spyriths could just decide to kill my parents anytime, and they would do that without any consequences. That day I vowed to myself, I would never let the same happen to anybody else, at least not on my watch. But it still happened. I am sorry. Today I wasn’t the expert people thought me to be. But you, you were still the Hero I had heard about. Seeing you march into danger like that, without hesitation, reminded me of what I had lost over these few years.\n\nThanks to you, I think I have regained some of it back. You were great, Hero.” said Jetta leaning his head to the side, with a glowing grin on his face\n\nWith that, you had defeated all the Sea Spyriths that had entered through the Sea Gates. Due to your efforts, engineers in Zorya were able to fix the Sea Gates in time. Meanwhile authorities arrive with backup, handle the situation and escort you back to Zorya alongside other Rangers. You bid farewell to Jetta as he hops into a Skyship headed for the Coral Islands. The two of you promise to have a battle the next time you meet. Until then, Jetta lets you hold onto his Kabuto.`)

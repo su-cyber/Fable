@@ -62,10 +62,14 @@ import { Nebula } from '../flora/Dungeon Flora/nebulaFlower'
 import { murkEssence } from './murkEssence'
 import { bassiliskScale } from './bassiliskScale'
 import { grimjawFin } from './grimjawFin'
+import { boulderbackShell } from './boulderbackShell'
+import { tidalgeistEssence } from './tidalgeistEssence'
+import { mawCrystal } from './mawCrystal'
 
 export default [Chorusbloom.create(),
     SunshadeWood.create(),Dreamlily.create(),ArgentenumLeaves.create(),solarCorn,Radiantura_milk,steamShovel,guildTshirt,salePoster,treemickBranch,silkBlob,
     dronerAcid,RayleighFlower.create(),backBreaker,buzzHoney,thornbackShell,shadowCat_tuft,glowingEssence,starHound_tooth,gloomRoot_branch,
     crystalShard,gildedScale,solidifiedMagma,emberScale,shadowViel,solBracelet,goblinWhistle,Glimmerroot.create(),bottleWine,smokeBomb,steamedBread,amberRing,SunbleachedBones.create(),WindblownFeather.create(),MirageCrystal.create(),CrimsonFruit.create(),QuakecoreCrystal,LithoFragment,Siroccowraith_essence,Thornweaver_Thorns,
-    staticTalon,embercrestAsh,venomousPlume,cosmoFeather,Bleedroot.create(),Veinwood.create(),bloodGlobule,bloodStainedHide,bloodwoodResin,rockmaulerShard,rootcrawlerScale,spyrHorn,luminarayNeedle,Prismawood.create(),Briarweb.create(),Mistveil.create(),mosscaleTooth,bogSecretion,willowBark,Nebula.create(),murkEssence,bassiliskScale,grimjawFin
+    staticTalon,embercrestAsh,venomousPlume,cosmoFeather,Bleedroot.create(),Veinwood.create(),bloodGlobule,bloodStainedHide,bloodwoodResin,rockmaulerShard,rootcrawlerScale,spyrHorn,luminarayNeedle,Prismawood.create(),Briarweb.create(),Mistveil.create(),mosscaleTooth,bogSecretion,willowBark,Nebula.create(),murkEssence,bassiliskScale,grimjawFin,boulderbackShell,
+    tidalgeistEssence,mawCrystal
 ]

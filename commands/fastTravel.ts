@@ -4,6 +4,7 @@ import {MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu, Messag
 import { MessageAttachment } from 'discord.js'
 import getHealth from '../src/utils/getHealth'
 import { sleep } from '../src/utils'
+import { emoji } from '../src/lib/utils/emoji'
 
 
 export default new MyCommandSlashBuilder({ name: 'fast_travel', description: 'travel to a place instantly' })
@@ -57,35 +58,35 @@ export default new MyCommandSlashBuilder({ name: 'fast_travel', description: 'tr
                                     .addFields([
                                         {
                                             name: `Township of Aube`,
-                                            value:`**Travelled on Steamrail**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**: 300 🪙\n`
+                                            value:`**Travelled on Steamrail**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**: 300 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Township of Werfall`,
-                                            value:`**Travelled on Steamrail**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**:300 🪙`
+                                            value:`**Travelled on Steamrail**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**:300 ${emoji.CRUS}`
                                         },
                                         {
                                             name: `Township of Kafig`,
-                                            value:`**Travelled on Steamrail**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**:300 🪙\n`
+                                            value:`**Travelled on Steamrail**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**:300 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Township of Raflese`,
-                                            value:`**Travelled on Steamrail**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 300 🪙\n`
+                                            value:`**Travelled on Steamrail**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 300 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Township of Vesper`,
-                                            value:`**Travelled on Steamrail**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 300 🪙\n`
+                                            value:`**Travelled on Steamrail**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 300 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Township of Lucens`,
-                                            value:`**Travelled on Steamrail**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 300 🪙\n`
+                                            value:`**Travelled on Steamrail**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 300 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Township of Ingenia`,
-                                            value:`**Travelled on Steamrail**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 300 🪙\n`
+                                            value:`**Travelled on Steamrail**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 300 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Township of Underdagen`,
-                                            value:`**Travelled on Steamrail**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**:300 🪙\n`
+                                            value:`**Travelled on Steamrail**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**:300 ${emoji.CRUS}\n`
                                         },
                                     ])
                                     
@@ -96,27 +97,27 @@ export default new MyCommandSlashBuilder({ name: 'fast_travel', description: 'tr
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Steamrail**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.a\n**Cost**:300 🪙\n`
+                                            value:`**Travelled on Steamrail**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.a\n**Cost**:300 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Stateship of Vigia`,
-                                            value:`**Travelled on Steamrail**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**:300 🪙\n`
+                                            value:`**Travelled on Steamrail**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**:300 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Stateship of Dremenlond`,
-                                            value:`**Travelled on Steamrail**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 300 🪙\n`
+                                            value:`**Travelled on Steamrail**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 300 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Capital State of Gloaming`,
-                                            value:`**Travelled on Steamrail**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:300 🪙\n`
+                                            value:`**Travelled on Steamrail**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:300 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Stateship of Nottfall`,
-                                            value:`**Travelled on Steamrail**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 300 🪙\n`
+                                            value:`**Travelled on Steamrail**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 300 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Stateship of Tethys`,
-                                            value:`**Travelled on Steamrail**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 300 🪙\n`
+                                            value:`**Travelled on Steamrail**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 300 ${emoji.CRUS}\n`
                                         }
                                     ])
                                     }
@@ -128,35 +129,35 @@ export default new MyCommandSlashBuilder({ name: 'fast_travel', description: 'tr
                                     .addFields([
                                         {
                                             name: `Township of Aube`,
-                                            value:`**Travelled on Spyralink**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**: 0 🪙\n`
+                                            value:`**Travelled on Spyralink**\n**Description**:Aube Town, nestled on the eastern borders of Solarstrio, thrives as a farming community while facing threats from bandits.\n**Cost**: 0 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Township of Werfall`,
-                                            value:`**Travelled on Spyralink**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**: 0 🪙`
+                                            value:`**Travelled on Spyralink**\n**Description**:Werfall, once a thriving trade hub known for efficient distribution, collapsed due to a mysterious incident, leaving its lands infertile. Now a war-torn battleground between Abyssals and Rangers, the town's former prosperity is but a memory.\n**Cost**: 0 ${emoji.CRUS}`
                                         },
                                         {
                                             name: `Township of Kafig`,
-                                            value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 🪙\n`
+                                            value:`**Travelled on Spyralink**\n**Description**:Kafig, a vibrant town nestled near the mystical Asche Peak, where the locals revere Avian Spyriths, especially the mythical Radohn, and thrive in a bustling market for flying spyriths.\n**Cost**: 0 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Township of Raflese`,
-                                            value:`**Travelled on Spyralink**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 0 🪙\n`
+                                            value:`**Travelled on Spyralink**\n**Description**:A botanical paradise where lush greenery, cultural traditions, and medicinal intrigue converge.\n**Cost**: 0 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Township of Vesper`,
-                                            value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 🪙\n`
+                                            value:`**Travelled on Spyralink**\n**Description**: A hidden town in the shadow of danger, driven by the allure of Nebula Flowers and governed by a delicate treaty with the lizardmen.\n**Cost**: 0 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Township of Lucens`,
-                                            value:`**Travelled on Spyralink**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 🪙\n`
+                                            value:`**Travelled on Spyralink**\n**Description**: A coastal town steeped in maritime charm, adorned with vibrant streets, legendary landmarks, and tales of the sea.\n**Cost**: 0 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Township of Ingenia`,
-                                            value:`**Travelled on Spyralink**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 🪙\n`
+                                            value:`**Travelled on Spyralink**\n**Description**:Ingenia Town, a haven for mad scientists and engineers, thrives on innovation and eccentricity.\n**Cost**: 0 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Township of Underdagen`,
-                                            value:`**Travelled on Spyralink**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 🪙\n`
+                                            value:`**Travelled on Spyralink**\n**Description**:A dwarven town nestled in an underground canyon, thrives as the last stop before the treacherous journey through the Zephyr Mountains\n**Cost**: 0 ${emoji.CRUS}\n`
                                         },
                                     ])
 
@@ -167,27 +168,27 @@ export default new MyCommandSlashBuilder({ name: 'fast_travel', description: 'tr
                                     .addFields([
                                         {
                                             name: `Stateship of Zorya`,
-                                            value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.a\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Spyralink**\n**Description**:One of the largest Stateships in Solarstrio, where progress meets modernity.a\n**Cost**:0 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Stateship of Vigia`,
-                                            value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Spyralink**\n**Description**:The state of Vigia is a fortress state in Solarstrio, standing as the first and last defense against the deadly forest of DeathRust.\n**Cost**:0 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Stateship of Dremenlond`,
-                                            value:`**Travelled on Spyralink**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 0 🪙\n`
+                                            value:`**Travelled on Spyralink**\n**Description**: A realm of opulence and ambition, where dreams are bought and sold amidst the whispers of power and privilege.\n**Cost**: 0 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Capital State of Gloaming`,
-                                            value:`**Travelled on Spyralink**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:0 🪙\n`
+                                            value:`**Travelled on Spyralink**\n**Description**:The Capital of Solarstrio, stateship of Gloaming\n**Cost**:0 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Stateship of Nottfall`,
-                                            value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 🪙\n`
+                                            value:`**Travelled on Spyralink**\n**Description**: An Enigmatic nocturnal cityscape engulfed in the ethereal glow of moonlit revelry, where flying carpets traverse canals and dreams intertwine with reality under the rule of the resolute Earl Solis.\n**Cost**: 0 ${emoji.CRUS}\n`
                                         },
                                         {
                                             name: `Stateship of Tethys`,
-                                            value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 🪙\n`
+                                            value:`**Travelled on Spyralink**\n**Description**:A mountainous state known as the largest in solarstrio and for its precious Skysteel, vibrant marketplaces, and harmonious relationship with the Zephyr Mountain.\n**Cost**: 0 ${emoji.CRUS}\n`
                                         }
                                     ])
 
@@ -474,7 +475,7 @@ export default new MyCommandSlashBuilder({ name: 'fast_travel', description: 'tr
                                                 collector_cancel.stop()
                                             }
                                             else{
-                                                await interaction.editReply({content:`You do not have enough 🪙 to pay for the Steamrail!`})
+                                                await interaction.editReply({content:`You do not have enough ${emoji.CRUS} to pay for the Steamrail!`})
                                                 collector_select.stop()
                                                 collector_cancel.stop()
                                             }

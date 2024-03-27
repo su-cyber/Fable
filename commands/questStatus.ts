@@ -4,6 +4,7 @@ import { MessageEmbed } from 'discord.js'
 import xpFormulate from '../src/utils/XPformulate'
 import allQuests from '../src/utils/allQuests'
 import hunting_contracts from '../src/utils/allHuntingContracts'
+import { emoji } from '../src/lib/utils/emoji'
 
 export default new MyCommandSlashBuilder({ name: 'questinfo', description: 'Know about your current quests' }).setDo(
     async (bot, interaction) => {
@@ -45,7 +46,7 @@ export default new MyCommandSlashBuilder({ name: 'questinfo', description: 'Know
                         statEmbed= new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('QUEST INFO')
-                        .setDescription(`## CURRENT MAIN QUEST:\n\n__**Name:**__ ${mainQuest.name}\n__**Description:**__ ${mainQuest.info}\n__**Rewards:**__ ${mainQuest.rewards}\n\n\n## CURRENT SIDE QUEST:\n\n__**Name:**__ ${sideQuest.name}\n__**Description:**__ ${sideQuest.info}\n__**Rewards:**__ ${sideQuest.rewards}\n\n\n## CURRENT HUNTING CONTRACT:\n\n__**Name:**__ ${foundContract.name}\n__**Description:**__ ${foundContract.info}\n__**Rewards:**__ ${foundContract.rewards.coins}🪙 | ${foundContract.rewards.merit} Merit\n__**Remaining Targets:**__ ${foundUser.quest_quantity}`)
+                        .setDescription(`## CURRENT MAIN QUEST:\n\n__**Name:**__ ${mainQuest.name}\n__**Description:**__ ${mainQuest.info}\n__**Rewards:**__ ${mainQuest.rewards}\n\n\n## CURRENT SIDE QUEST:\n\n__**Name:**__ ${sideQuest.name}\n__**Description:**__ ${sideQuest.info}\n__**Rewards:**__ ${sideQuest.rewards}\n\n\n## CURRENT HUNTING CONTRACT:\n\n__**Name:**__ ${foundContract.name}\n__**Description:**__ ${foundContract.info}\n__**Rewards:**__ ${foundContract.rewards.coins}${emoji.CRUS} | ${foundContract.rewards.merit} Merit\n__**Remaining Targets:**__ ${foundUser.quest_quantity}`)
                     }
 
                         

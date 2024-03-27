@@ -708,7 +708,7 @@ export class PvEDuel extends DuelBuilder {
                                 let huntEmbed = new MessageEmbed()
                                 .setColor('GREEN')
                                 .setTitle('HUNT COMPLETED')
-                                .setDescription(`You have Successfully Completed the Hunting Contract!\n\nObtained ${foundContract.rewards.coins}🪙!\nObtained ${foundContract.rewards.merit} Merit!`)
+                                .setDescription(`You have Successfully Completed the Hunting Contract!\n\nObtained ${foundContract.rewards.coins}${emoji.CRUS}!\nObtained ${foundContract.rewards.merit} Merit!`)
     
                                 await user.send({embeds:[huntEmbed]})
                                 foundUser.quest = "None"

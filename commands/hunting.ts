@@ -13,6 +13,7 @@ import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
 import allQuests from '../src/utils/allQuests'
 import hunting_contracts from '../src/utils/allHuntingContracts'
+import { emoji } from '../src/lib/utils/emoji'
 
 export default new MyCommandSlashBuilder({ name: 'hunting_contract', description: 'get a hunting conract' })
 
@@ -41,12 +42,12 @@ export default new MyCommandSlashBuilder({ name: 'hunting_contract', description
                                 let Quest_embed_1 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('Contract - Thornbacks')
-                                .setDescription(`The Ranger Association has put up a contract to eliminate 5 Thornbacks due to their recent hostile nature\n\n__Rewards__:**500🪙 | 35 Merit**`)
+                                .setDescription(`The Ranger Association has put up a contract to eliminate 5 Thornbacks due to their recent hostile nature\n\n__Rewards__:**500${emoji.CRUS} | 35 Merit**`)
 
                                 let Quest_embed_2 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('Contract - Mudcrawlers')
-                                .setDescription(`The Ranger Association has put up a contract to eliminate 3 Mudcrawlers as crofters are having difficulties in farming the Castellan Fields due to an onslaught of Mudcrawlers\n\n__Rewards__:**150🪙 | 35 Merit**`)
+                                .setDescription(`The Ranger Association has put up a contract to eliminate 3 Mudcrawlers as crofters are having difficulties in farming the Castellan Fields due to an onslaught of Mudcrawlers\n\n__Rewards__:**150${emoji.CRUS} | 35 Merit**`)
 
                                 
 
@@ -174,17 +175,17 @@ export default new MyCommandSlashBuilder({ name: 'hunting_contract', description
                                 let Quest_embed_1 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('Contract - Gloomroots')
-                                .setDescription(`The Ranger Association has put up a contract to eliminate 3 Gloomroots residing in the Forest of Ellior. Their rapidly growing population is affecting travel of citizens from and around Zorya. Even though Gloomroots aren’t the most threatening Spyriths, they can prove to be a challenge for many Rookies. Proceed with caution.\n\n__Rewards__:**200🪙 | 45 Merit**`)
+                                .setDescription(`The Ranger Association has put up a contract to eliminate 3 Gloomroots residing in the Forest of Ellior. Their rapidly growing population is affecting travel of citizens from and around Zorya. Even though Gloomroots aren’t the most threatening Spyriths, they can prove to be a challenge for many Rookies. Proceed with caution.\n\n__Rewards__:**200${emoji.CRUS} | 45 Merit**`)
 
                                 let Quest_embed_2 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('Contract - Emberbeasts')
-                                .setDescription(`The Ranger Association has put up a contract to eliminate 5 Emberbeasts residing in the Dragon’s Den. Due to their flame affinity, the meat of the Emberbeasts is very popular among the residents of Solarstrio. The meat has amazing taste due to it being cooked twice. Due to its high demand, the Association has put up this request.\n\n__Rewards__:**200🪙 | 45 Merit**`)
+                                .setDescription(`The Ranger Association has put up a contract to eliminate 5 Emberbeasts residing in the Dragon’s Den. Due to their flame affinity, the meat of the Emberbeasts is very popular among the residents of Solarstrio. The meat has amazing taste due to it being cooked twice. Due to its high demand, the Association has put up this request.\n\n__Rewards__:**200${emoji.CRUS} | 45 Merit**`)
 
                                 let Quest_embed_3 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('Contract - Gilded Wyverns')
-                                .setDescription(`The Ranger Association has put up a contract to eliminate 1 Gilded Wyvern residing in the Dragon’s Den. Their recent emergence and scavenging nature has disturbed the entire ecosystem of the place. Since they hunt in packs, the Association requests you to hunt down a Gilded Wyvern that is not part of a pack. Trying to hunt large numbers may be fatal.\n\n__Rewards__:**500🪙 | 55 Merit**`)
+                                .setDescription(`The Ranger Association has put up a contract to eliminate 1 Gilded Wyvern residing in the Dragon’s Den. Their recent emergence and scavenging nature has disturbed the entire ecosystem of the place. Since they hunt in packs, the Association requests you to hunt down a Gilded Wyvern that is not part of a pack. Trying to hunt large numbers may be fatal.\n\n__Rewards__:**500${emoji.CRUS} | 55 Merit**`)
 
                                 
 

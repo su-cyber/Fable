@@ -9,6 +9,7 @@ import { Armour } from '../src/age/classes/armour'
 import { Potion } from '../src/age/classes/potion'
 import zoryaShop from '../src/age/shops/zoryaShop'
 import blackMarket_zorya from '../src/age/shops/blackMarket_zorya'
+import { emoji } from '../src/lib/utils/emoji'
 
 
 export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any weapon,armour or item' })
@@ -47,7 +48,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                     }
                                     else{
                                         if(userProfile.coins<foundObject.cost*userQuantity){
-                                            interaction.reply({content:"you dont have enough coins!",ephemeral:true})
+                                            interaction.reply({content:`you dont have enough Crus ${emoji.CRUS}!`,ephemeral:true})
                                         }
                                         else{
                                             userProfile.coins-=foundObject.cost*userQuantity
@@ -168,7 +169,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                                 }
                                 else{
                                     if(userProfile.coins<foundObject.cost*userQuantity){
-                                        interaction.reply({content:"you dont have enough coins!",ephemeral:true})
+                                        interaction.reply({content:`you dont have enough Crus ${emoji.CRUS}!`,ephemeral:true})
                                     }
                                     else{
                                         userProfile.coins-=foundObject.cost*userQuantity
@@ -289,7 +290,7 @@ export default new MyCommandSlashBuilder({ name: 'buy', description: 'buy any we
                             }
                             else{
                                 if(userProfile.coins<foundObject.cost*userQuantity){
-                                    interaction.reply({content:"you dont have enough coins!",ephemeral:true})
+                                    interaction.reply({content:`you dont have enough Crus ${emoji.CRUS}!`,ephemeral:true})
                                 }
                                 else{
                                     userProfile.coins-=foundObject.cost*userQuantity

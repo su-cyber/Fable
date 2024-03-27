@@ -4,6 +4,7 @@ import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 import aubeTownShop from '../src/age/shops/aubeTownShop'
 import zoryaShop from '../src/age/shops/zoryaShop'
 import blackMarket_zorya from '../src/age/shops/blackMarket_zorya'
+import { emoji } from '../src/lib/utils/emoji'
 
 export default new MyCommandSlashBuilder({ name: 'shop', description: 'Access the Shop' })
     .setDo(
@@ -51,15 +52,15 @@ if(foundUser.location == "Crofter's Market"){
     let filter = i => i.user.id === authorId
     let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
     const brassShovel=aubeTownShop.brassShovel.map((weapon) => {
-        return `${weapon.name} - ${weapon.cost} 🪙\n__Description__: ${weapon.description}`
+        return `${weapon.name} - ${weapon.cost} ${emoji.CRUS}\n__Description__: ${weapon.description}`
     }).join("\n\n")
 
     const artrights_Wares = aubeTownShop.artrights_Wares.map((item) => {
-        return `${item.name} - ${item.cost} 🪙\n__Description__: ${item.description}`
+        return `${item.name} - ${item.cost} ${emoji.CRUS}\n__Description__: ${item.description}`
     }).join("\n\n")
 
     const spring_radiance = aubeTownShop.spring_radiance.map((item) => {
-        return `${item.name} - ${item.cost} 🪙\n__Description__: ${item.description}`
+        return `${item.name} - ${item.cost} ${emoji.CRUS}\n__Description__: ${item.description}`
     }).join("\n\n")
 
 
@@ -134,15 +135,15 @@ else if(foundUser.location == "Siewelle Port"){
     let filter = i => i.user.id === authorId
     let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
     const vulkunPier=zoryaShop.vulkunPier.map((weapon) => {
-        return `${weapon.name} - ${weapon.cost} 🪙\n__Description__: ${weapon.description}`
+        return `${weapon.name} - ${weapon.cost} ${emoji.CRUS}\n__Description__: ${weapon.description}`
     }).join("\n\n")
 
     const arcturusPier = zoryaShop.arcturusPier.map((item) => {
-        return `${item.name} - ${item.cost} 🪙\n__Description__: ${item.description}`
+        return `${item.name} - ${item.cost} ${emoji.CRUS}\n__Description__: ${item.description}`
     }).join("\n\n")
 
     const hexosPier = zoryaShop.hexosPier.map((item) => {
-        return `${item.name} - ${item.cost} 🪙\n__Description__: ${item.description}`
+        return `${item.name} - ${item.cost} ${emoji.CRUS}\n__Description__: ${item.description}`
     }).join("\n\n")
 
 
@@ -213,7 +214,7 @@ else if(foundUser.location == "Black Market"){
     let filter = i => i.user.id === authorId
     let collector = await interaction.channel.createMessageComponentCollector({filter: filter , time : 1000 * 120})
     const blackMarket=blackMarket_zorya.blackMarket.map((weapon) => {
-        return `${weapon.name} - ${weapon.cost} 🪙\n__Description__: ${weapon.description}`
+        return `${weapon.name} - ${weapon.cost} ${emoji.CRUS}\n__Description__: ${weapon.description}`
     }).join("\n\n")
 
     

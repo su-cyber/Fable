@@ -1,3 +1,4 @@
+import { emoji } from "../lib/utils/emoji"
 const allQuests = [{
     name: "War with Ravens",
     description:"The Solarii farms are suffering from an onslaught of Ravens",
@@ -8,7 +9,7 @@ const allQuests = [{
     name:"Feed the Radiantura",
     description:"The Radiantura in Castellan Fields need to be fed",
     quest_id:"KS-TA-SQ2",
-    rewards:"300🪙",
+    rewards:`300${emoji.CRUS}`,
     info:"The Radiantura in Castellan Fields need to be fed with the Stalks of Solarcorn. However the Crofters have run out. Visit the Lager Estate where you can find the Solarcorn Stalks and bring them back to feed the Radiantura."
 
 },{
@@ -29,7 +30,7 @@ const allQuests = [{
     name:"Heirloom Missing",
     description:"find the missing Heirloom",
     quest_id:"KS-ZS-SQ1",
-    rewards:"1500🪙",
+    rewards:`1500${emoji.CRUS}`,
     info:"you are hired by a wealthy citizen of Zorya to find their missing astrolabe. The astrolabe is a family heirloom that is believed to bring good fortune to its owner. You must search the city and interview locals to find out where the astrolabe may have ended up."
 
 },{
@@ -64,21 +65,21 @@ const allQuests = [{
     name:"Aube Town's Water Crisis",
     description:"Aube Town is suffering from a water crisis",
     quest_id:"KS-TA-SQ6",
-    rewards:"1500🪙 || 35 Merit",
+    rewards:"1500${emoji.CRUS} || 35 Merit",
     info:`The player is asked by the mayor of Aube Town to investigate a recent shortage of water in the town. The player must explore the badlands and find the source of the problem, which could be due to a drought, a blocked aqueduct, or even sabotage.`
 
 },{
     name:"Helping Set Sail",
     description:"Help the shipwrights in Auriga Sails Company",
     quest_id:"KS-ZS-SQ2",
-    rewards:"1500🪙 || 35 Merit",
+    rewards:`1500${emoji.CRUS} || 35 Merit`,
     info:`The Shipwrights at Auriga Sails Company are running behind schedule in finishing a new ship for the Golden Dutchman Fleet. And to rub salt on the wound, one of their best workers has fallen ill. The Player must fill in for the helper by assisting the shipwrights in various tasks around the Port, and help them in completing the project on time.`
 
 },{
     name:"Mysterious Seagate Malfunction",
     description:"Investigate the seagates",
     quest_id:"KS-ZS-SQ3",
-    rewards:"2500🪙 || 45 Merit",
+    rewards:"2500${emoji.CRUS} || 45 Merit",
     info:`One of the State's sea-gates has malfunctioned, causing dangerous Sea Spyriths to enter the State at the Aqueduct Canals. If not stopped, they will reach the Siewelle Port very soon. Many Rangers have already responded to the call, and many are still going there to provide aid. If you partake, you must stop the Sea Spyriths from entering the State.`
 
 }]

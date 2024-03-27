@@ -12,6 +12,7 @@ import {
 import { MyCommandSlashBuilder } from '../src/lib/builders/slash-command'
 import profileModel from '../models/profileSchema'
 import allQuests from '../src/utils/allQuests'
+import { emoji } from '../src/lib/utils/emoji'
 
 export default new MyCommandSlashBuilder({ name: 'questboard', description: 'select a quest' })
 
@@ -45,7 +46,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
                                 let Quest_embed_2 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle('Feed the Radiantura')
-                                .setDescription(`The Radiantura in Castellan Fields need to be fed with the Stalks of Solarcorn. However the Crofters have run out.\n\n__Rewards__:**300🪙**`)
+                                .setDescription(`The Radiantura in Castellan Fields need to be fed with the Stalks of Solarcorn. However the Crofters have run out.\n\n__Rewards__:**300${emoji.CRUS}**`)
 
                                 
 
@@ -57,7 +58,7 @@ export default new MyCommandSlashBuilder({ name: 'questboard', description: 'sel
                                 let Quest_embed_6 = new MessageEmbed()
                                 .setColor('RANDOM')
                                 .setTitle(`Aube Town's Water Crisis`)
-                                .setDescription(`The player is asked by the mayor of Aube Town to investigate a recent shortage of water in the town. The player must explore the badlands and find the source of the problem, which could be due to a drought, a blocked aqueduct, or even sabotage.\n\n__Rewards__:**1500🪙**`)
+                                .setDescription(`The player is asked by the mayor of Aube Town to investigate a recent shortage of water in the town. The player must explore the badlands and find the source of the problem, which could be due to a drought, a blocked aqueduct, or even sabotage.\n\n__Rewards__:**1500${emoji.CRUS}**`)
                                 
                             
                                 
