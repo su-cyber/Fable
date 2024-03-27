@@ -71,7 +71,7 @@ export default new MyCommandSlashBuilder({ name: 'travel', description: 'travel 
                                         
                                         }
                                         else{
-                                            Exteriorembed = new MessageEmbed()
+                                        Exteriorembed = new MessageEmbed()
                                         .setColor('RANDOM')
                                         .setTitle('SELECT PLACE')
                                         .setDescription(`choose a place to travel from Aube Town`)

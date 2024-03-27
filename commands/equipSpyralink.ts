@@ -86,7 +86,7 @@ export default new MyCommandSlashBuilder({ name: 'equip_spyralink', description:
 
       let empty = new MessageEmbed()
       .setColor('RANDOM')
-      .setTitle('INVENTORY')
+      .setTitle('SPYRALINKS')
       .setDescription(`**YOU DO NOT OWN ANY SPYRALINK!**`)
 
       
