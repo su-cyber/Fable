@@ -65,11 +65,18 @@ import { grimjawFin } from './grimjawFin'
 import { boulderbackShell } from './boulderbackShell'
 import { tidalgeistEssence } from './tidalgeistEssence'
 import { mawCrystal } from './mawCrystal'
+import { ghorghonNecklace } from './ghorghonNecklace'
+import { thistleBruteThorn } from './thistleBruteThorn'
+import { ibexionHorn } from './ibexionHorn'
+import { whiperScale } from './whiperScale'
+import { ThistlebruteSapling } from '../flora/Spezia Cliffs/thistlebruteSapling'
+import { LeafPouch } from '../flora/Spezia Cliffs/leafPouch'
+import { RawGunpowder } from '../flora/Spezia Cliffs/gunpowder'
 
 export default [Chorusbloom.create(),
     SunshadeWood.create(),Dreamlily.create(),ArgentenumLeaves.create(),solarCorn,Radiantura_milk,steamShovel,guildTshirt,salePoster,treemickBranch,silkBlob,
     dronerAcid,RayleighFlower.create(),backBreaker,buzzHoney,thornbackShell,shadowCat_tuft,glowingEssence,starHound_tooth,gloomRoot_branch,
     crystalShard,gildedScale,solidifiedMagma,emberScale,shadowViel,solBracelet,goblinWhistle,Glimmerroot.create(),bottleWine,smokeBomb,steamedBread,amberRing,SunbleachedBones.create(),WindblownFeather.create(),MirageCrystal.create(),CrimsonFruit.create(),QuakecoreCrystal,LithoFragment,Siroccowraith_essence,Thornweaver_Thorns,
     staticTalon,embercrestAsh,venomousPlume,cosmoFeather,Bleedroot.create(),Veinwood.create(),bloodGlobule,bloodStainedHide,bloodwoodResin,rockmaulerShard,rootcrawlerScale,spyrHorn,luminarayNeedle,Prismawood.create(),Briarweb.create(),Mistveil.create(),mosscaleTooth,bogSecretion,willowBark,Nebula.create(),murkEssence,bassiliskScale,grimjawFin,boulderbackShell,
-    tidalgeistEssence,mawCrystal
+    tidalgeistEssence,mawCrystal,ghorghonNecklace,thistleBruteThorn,ibexionHorn,whiperScale,ThistlebruteSapling.create(),LeafPouch.create(),RawGunpowder.create()
 ]

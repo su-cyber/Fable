@@ -41,7 +41,7 @@ export default new MyCommandSlashBuilder({ name: 'explore', description: 'Explor
             const location = foundUser.location
             const city_town = foundUser.city_town
             if(foundUser.kingdom == "solarstrio"){
-                const monster_locations = ["ellior","Castellan Fields","Sunshade Forest","The Badlands","Dragon's Den","Bleeding Gorge","Asche Peak","Orld Tree Husk","Stellaris Temple Ruins","Marvory Cove"]
+                const monster_locations = ["ellior","Castellan Fields","Sunshade Forest","The Badlands","Dragon's Den","Bleeding Gorge","Asche Peak","Orld Tree Husk","Stellaris Temple Ruins","Marvory Cove","Spezia Cliffs"]
                 if(monster_locations.includes(city_town)){
                     const pick = weightedRandom(["flora","monster"],[0.4,0.6])
 
