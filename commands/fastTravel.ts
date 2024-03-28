@@ -660,7 +660,7 @@ export default new MyCommandSlashBuilder({ name: 'fast_travel', description: 'tr
                                     })
 
                                     collector_cancel.on('collect', async j => {
-                                        j.deferUpdate().catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                                        j.deferUpdate().catch(err => {})
                                         if(j.customId == "cancel"){
                                         let delembed = new MessageEmbed()
                                         .setColor('RANDOM')

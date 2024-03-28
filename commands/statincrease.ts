@@ -86,6 +86,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                 
                                     if(num>foundUser.skill_points){
                                         interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                                        collector_btn.stop()
                                     }
                                     else{
                                         foundUser.attackDamage += 5*Number(num)
@@ -109,6 +110,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                 
                                     if(num>foundUser.skill_points){
                                         interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                                        collector_btn.stop()
                                     }
                                     else{
                                         foundUser.magicPower += 5*Number(num)
@@ -132,6 +134,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                 
                                 if(num>foundUser.skill_points){
                                     interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                                    collector_btn.stop()
                                 }
                                 else{
                                     foundUser.armour += 5*Number(num)
@@ -153,6 +156,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                 
                                     if(num>foundUser.skill_points){
                                         interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                                        collector_btn.stop()
                                     }
                                     else{
                                         foundUser.magicResistance += 5*Number(num)
@@ -175,6 +179,7 @@ export default new MyCommandSlashBuilder({ name: 'statinvest', description: 'inv
                 
                                     if(num>foundUser.skill_points){
                                         interaction.editReply({content:`not enough skill points to invest!`,components:[],embeds:[]}).catch(err => {interaction.channel.send({embeds:[exceptionEmbed]})})
+                                        collector_btn.stop()
                                     }
                                     else{
                                         foundUser.speed += 5*Number(num)
